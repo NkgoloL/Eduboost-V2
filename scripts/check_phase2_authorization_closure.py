@@ -2,7 +2,7 @@
 """Run the final Phase 2 authorization closure checks."""
 from __future__ import annotations
 
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -35,7 +35,7 @@ COMMANDS: tuple[tuple[str, ...], ...] = (
 
 def run_command(command: tuple[str, ...]) -> int:
     print(f"$ {' '.join(command)}", flush=True)
-    result = subprocess.run(command, cwd=REPO_ROOT)
+    result = run(command, cwd=REPO_ROOT)
     return result.returncode
 
 

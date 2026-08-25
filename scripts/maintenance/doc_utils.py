@@ -1,9 +1,10 @@
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import hashlib
 import os
 import re
-import subprocess
+from scripts._subprocess import check_output, run
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
@@ -129,7 +130,7 @@ def git_changed_markdown(root: Path) -> list[Path]:
     output = ""
     for command in commands:
         try:
-            output = subprocess.check_output(command, cwd=root, text=True, stderr=subprocess.DEVNULL)
+            output = check_output(command, cwd=root, text=True, stderr=subprocess.DEVNULL)
             break
         except Exception:
             output = ""

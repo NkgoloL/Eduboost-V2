@@ -6,7 +6,9 @@ import argparse
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-import subprocess
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from scripts._subprocess import run
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -24,7 +26,7 @@ class RestoreEvidenceInput:
 
 
 def _git_value(args: list[str], fallback: str = "unknown") -> str:
-    result = subprocess.run(["git", *args], cwd=REPO_ROOT, check=False, capture_output=True, text=True)
+    result = run(["git", *args], cwd=REPO_ROOT, check=False, capture_output=True, text=True)
     return result.stdout.strip() or fallback
 
 

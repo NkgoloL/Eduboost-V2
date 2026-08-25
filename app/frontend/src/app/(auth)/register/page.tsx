@@ -2,8 +2,8 @@
 
 import React, { useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Card } from "../../../components/ui/Card-legacy";
-import { Button } from "../../../components/ui/Button-legacy";
+import { Card } from "../../../components/ui/card";
+import { Button } from "../../../components/ui/button";
 import { AuthService, ConsentService, LearnerService } from "../../../lib/api/services";
 import { extractErrorMessage } from "../../../lib/api/client";
 import { useLearner } from "../../../context/LearnerContext";
@@ -196,7 +196,7 @@ export default function RegisterPage() {
           )}
         </div>
 
-        <Button type="submit" fullWidth disabled={loading} aria-busy={loading}>
+        <Button type="submit" className="w-full" disabled={loading} aria-busy={loading}>
           {loading ? "Creating account and consent..." : "Create Account & Start Diagnostic"}
         </Button>
       </form>

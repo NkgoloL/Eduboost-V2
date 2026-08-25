@@ -1,0 +1,311 @@
+{
+  "contract_id": "product_runtime_test_gate_contract",
+  "contract_path": "docs/roadmap/production_readiness/product_runtime_test_gate_contract.json",
+  "contract_sha256": "016600e5c1074a71fa270906029474e9cf04a82d82d7e4011f87753bd45e9f2d",
+  "reviewed_contract": {
+    "domains": [
+      {
+        "capability": "Service-layer behaviours execute with real contracts, not constructor-presence checks.",
+        "class": "product",
+        "command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov",
+        "evidence_source": "independent_command_result",
+        "governance_substitution_allowed": false,
+        "id": "services",
+        "negative_evidence": [
+          "at_least_one_denial_or_failure_path_tested",
+          "gate_demonstrates_it_can_fail_when_dependency_or_authorisation_is_invalid"
+        ],
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "command_exit_code_recorded",
+          "command_stdout_stderr_or_artifact_recorded",
+          "fresh_commit_or_stack_context_recorded"
+        ]
+      },
+      {
+        "capability": "HTTP routes enforce request/response/auth semantics through ASGI/client tests.",
+        "class": "product",
+        "command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov",
+        "evidence_source": "independent_command_result",
+        "governance_substitution_allowed": false,
+        "id": "routes",
+        "negative_evidence": [
+          "at_least_one_denial_or_failure_path_tested",
+          "gate_demonstrates_it_can_fail_when_dependency_or_authorisation_is_invalid"
+        ],
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "command_exit_code_recorded",
+          "command_stdout_stderr_or_artifact_recorded",
+          "fresh_commit_or_stack_context_recorded"
+        ]
+      },
+      {
+        "capability": "Repository/database contracts validate persisted state and not only method names.",
+        "class": "product",
+        "command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov",
+        "evidence_source": "independent_command_result",
+        "governance_substitution_allowed": false,
+        "id": "database_contracts",
+        "negative_evidence": [
+          "at_least_one_denial_or_failure_path_tested",
+          "gate_demonstrates_it_can_fail_when_dependency_or_authorisation_is_invalid"
+        ],
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "command_exit_code_recorded",
+          "command_stdout_stderr_or_artifact_recorded",
+          "fresh_commit_or_stack_context_recorded"
+        ]
+      },
+      {
+        "capability": "Authentication, refresh/revocation and object-authorisation allow/deny paths are tested.",
+        "class": "product",
+        "command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov",
+        "evidence_source": "independent_command_result",
+        "governance_substitution_allowed": false,
+        "id": "auth_authorisation",
+        "negative_evidence": [
+          "at_least_one_denial_or_failure_path_tested",
+          "gate_demonstrates_it_can_fail_when_dependency_or_authorisation_is_invalid"
+        ],
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "command_exit_code_recorded",
+          "command_stdout_stderr_or_artifact_recorded",
+          "fresh_commit_or_stack_context_recorded"
+        ]
+      },
+      {
+        "capability": "POPIA export/delete/restriction/correction lifecycle tests prove allowed and denied outcomes.",
+        "class": "product",
+        "command": "PYTHONPATH=. pytest -m product tests/integration -q --no-cov",
+        "evidence_source": "independent_command_result",
+        "governance_substitution_allowed": false,
+        "id": "popia_lifecycle",
+        "negative_evidence": [
+          "at_least_one_denial_or_failure_path_tested",
+          "gate_demonstrates_it_can_fail_when_dependency_or_authorisation_is_invalid"
+        ],
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "command_exit_code_recorded",
+          "command_stdout_stderr_or_artifact_recorded",
+          "fresh_commit_or_stack_context_recorded"
+        ]
+      },
+      {
+        "capability": "Billing/subscription/webhook/idempotency behaviours are tested with provider/test-mode or explicit fakes.",
+        "class": "product",
+        "command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov",
+        "evidence_source": "independent_command_result",
+        "governance_substitution_allowed": false,
+        "id": "billing_commercial",
+        "negative_evidence": [
+          "at_least_one_denial_or_failure_path_tested",
+          "gate_demonstrates_it_can_fail_when_dependency_or_authorisation_is_invalid"
+        ],
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "command_exit_code_recorded",
+          "command_stdout_stderr_or_artifact_recorded",
+          "fresh_commit_or_stack_context_recorded"
+        ]
+      },
+      {
+        "capability": "Learner/guardian journey tests cover progress, consent and denial behaviours.",
+        "class": "product",
+        "command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov",
+        "evidence_source": "independent_command_result",
+        "governance_substitution_allowed": false,
+        "id": "learner_journeys",
+        "negative_evidence": [
+          "at_least_one_denial_or_failure_path_tested",
+          "gate_demonstrates_it_can_fail_when_dependency_or_authorisation_is_invalid"
+        ],
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "command_exit_code_recorded",
+          "command_stdout_stderr_or_artifact_recorded",
+          "fresh_commit_or_stack_context_recorded"
+        ]
+      },
+      {
+        "capability": "Diagnostic/assessment flows cover IRT fields, attempt creation and invalid input rejection.",
+        "class": "product",
+        "command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov",
+        "evidence_source": "independent_command_result",
+        "governance_substitution_allowed": false,
+        "id": "diagnostics_assessments",
+        "negative_evidence": [
+          "at_least_one_denial_or_failure_path_tested",
+          "gate_demonstrates_it_can_fail_when_dependency_or_authorisation_is_invalid"
+        ],
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "command_exit_code_recorded",
+          "command_stdout_stderr_or_artifact_recorded",
+          "fresh_commit_or_stack_context_recorded"
+        ]
+      },
+      {
+        "capability": "PostgreSQL connectivity and transactional probes are required before readiness is green.",
+        "class": "runtime",
+        "command": "PYTHONPATH=. pytest -m runtime tests -q --no-cov",
+        "evidence_source": "independent_command_result",
+        "governance_substitution_allowed": false,
+        "id": "postgres",
+        "negative_evidence": [
+          "at_least_one_denial_or_failure_path_tested",
+          "gate_demonstrates_it_can_fail_when_dependency_or_authorisation_is_invalid"
+        ],
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "command_exit_code_recorded",
+          "command_stdout_stderr_or_artifact_recorded",
+          "fresh_commit_or_stack_context_recorded"
+        ]
+      },
+      {
+        "capability": "Redis dependency absence must fail runtime readiness and Redis availability must pass.",
+        "class": "runtime",
+        "command": "PYTHONPATH=. pytest -m runtime tests -q --no-cov",
+        "evidence_source": "independent_command_result",
+        "governance_substitution_allowed": false,
+        "id": "redis",
+        "negative_evidence": [
+          "at_least_one_denial_or_failure_path_tested",
+          "gate_demonstrates_it_can_fail_when_dependency_or_authorisation_is_invalid"
+        ],
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "command_exit_code_recorded",
+          "command_stdout_stderr_or_artifact_recorded",
+          "fresh_commit_or_stack_context_recorded"
+        ]
+      },
+      {
+        "capability": "Alembic live revision must equal a known single repository head; unknown/behind/split states fail.",
+        "class": "runtime",
+        "command": "PYTHONPATH=. python3 scripts/runtime/verify_disposable_stack_schema_lineage.py --require-live --json",
+        "evidence_source": "independent_command_result",
+        "governance_substitution_allowed": false,
+        "id": "migrations",
+        "negative_evidence": [
+          "at_least_one_denial_or_failure_path_tested",
+          "gate_demonstrates_it_can_fail_when_dependency_or_authorisation_is_invalid"
+        ],
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "command_exit_code_recorded",
+          "command_stdout_stderr_or_artifact_recorded",
+          "fresh_commit_or_stack_context_recorded"
+        ]
+      },
+      {
+        "capability": "Critical runtime tables/columns are probed after migrations, including IRT and runtime KG contracts.",
+        "class": "runtime",
+        "command": "PYTHONPATH=. python3 scripts/runtime/verify_runtime_stack_readiness.py --json",
+        "evidence_source": "independent_command_result",
+        "governance_substitution_allowed": false,
+        "id": "schema_contract",
+        "negative_evidence": [
+          "at_least_one_denial_or_failure_path_tested",
+          "gate_demonstrates_it_can_fail_when_dependency_or_authorisation_is_invalid"
+        ],
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "command_exit_code_recorded",
+          "command_stdout_stderr_or_artifact_recorded",
+          "fresh_commit_or_stack_context_recorded"
+        ]
+      },
+      {
+        "capability": "/ready must fail when critical dependencies fail and pass only when all critical probes pass.",
+        "class": "runtime",
+        "command": "curl -fsS ${API_BASE_URL:-http://localhost:8000}/ready",
+        "evidence_source": "independent_command_result",
+        "governance_substitution_allowed": false,
+        "id": "ready_endpoint",
+        "negative_evidence": [
+          "at_least_one_denial_or_failure_path_tested",
+          "gate_demonstrates_it_can_fail_when_dependency_or_authorisation_is_invalid"
+        ],
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "command_exit_code_recorded",
+          "command_stdout_stderr_or_artifact_recorded",
+          "fresh_commit_or_stack_context_recorded"
+        ]
+      },
+      {
+        "capability": "Background worker/queue availability must be proven or explicitly blocked.",
+        "class": "runtime",
+        "command": "docker compose -f docker-compose.yml ps worker",
+        "evidence_source": "independent_command_result",
+        "governance_substitution_allowed": false,
+        "id": "worker",
+        "negative_evidence": [
+          "at_least_one_denial_or_failure_path_tested",
+          "gate_demonstrates_it_can_fail_when_dependency_or_authorisation_is_invalid"
+        ],
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "command_exit_code_recorded",
+          "command_stdout_stderr_or_artifact_recorded",
+          "fresh_commit_or_stack_context_recorded"
+        ]
+      },
+      {
+        "capability": "Frontend proxy/backend handoff must be proven with backend-backed journeys, not mocked-only journeys.",
+        "class": "runtime",
+        "command": "cd app/frontend && pnpm test -- --runInBand",
+        "evidence_source": "independent_command_result",
+        "governance_substitution_allowed": false,
+        "id": "frontend_proxy",
+        "negative_evidence": [
+          "at_least_one_denial_or_failure_path_tested",
+          "gate_demonstrates_it_can_fail_when_dependency_or_authorisation_is_invalid"
+        ],
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "command_exit_code_recorded",
+          "command_stdout_stderr_or_artifact_recorded",
+          "fresh_commit_or_stack_context_recorded"
+        ]
+      }
+    ],
+    "execution8_governance_refresh": true,
+    "execution8_review_branch": "codex/prd-1100r-runtime-restore-execution-7-coverage-static-security-green-evidence",
+    "execution8_review_commit": "be78626cc1d526238040986bea67ecd0a60ebd01",
+    "last_reviewed_at": "2026-08-25T21:41:05.997068+00:00",
+    "next_after_evidence": "PRD-11.0R.RUNTIME-RESTORE-4",
+    "prd_id": "PRD-11.0R.RUNTIME-RESTORE-3",
+    "release_gate_policy": {
+      "captured_evidence_must_store_command_outputs": true,
+      "governance_evidence_can_substitute_for_product_runtime": false,
+      "independent_command_results_required": true,
+      "positive_and_negative_paths_required": true,
+      "presence_only_tests_release_blocking": false,
+      "runtime_baseline_must_be_green_before_production_release_evidence": true
+    },
+    "schema_version": "prd11.0r/runtime-restore-3/product-runtime-test-gates/v1",
+    "status": "evidence_recorded",
+    "title": "Product and Runtime Test Gate Repair Contract"
+  }
+}

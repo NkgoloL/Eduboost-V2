@@ -1,10 +1,10 @@
 import pytest
 pytestmark = pytest.mark.integration
 
-from unittest.mock import AsyncMock
-from fastapi.testclient import TestClient
-from app.api_v2 import app
-from app.core import security as core_security
+from unittest.mock import AsyncMock  # noqa: E402
+from fastapi.testclient import TestClient  # noqa: E402
+from app.api_v2 import app  # noqa: E402
+from app.core import security as core_security  # noqa: E402
 
 client = TestClient(app)
 

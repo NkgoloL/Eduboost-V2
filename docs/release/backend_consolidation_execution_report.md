@@ -1,6 +1,6 @@
 # Backend Consolidation Execution Report
 
-Generated at: `2026-06-27T02:21:27Z`
+Generated at: `2026-08-01T21:00:35Z`
 
 | Check | Return code | Command |
 |---|---:|---|
@@ -110,6 +110,8 @@ Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/pytho
 Return code: `0`
 
 ```text
+/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/modules/consent/service.py:27: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+  from app.core.exceptions import ConsentExpiredError, ConsentRequiredError
 Audit runtime compatibility surface
 - PASS [audit compat] AuditRepositoryCompatAdapter: present
 - PASS [audit compat] AuditEventInput: present

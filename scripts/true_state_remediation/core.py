@@ -5,7 +5,8 @@ import json
 import os
 import platform
 import shutil
-import subprocess
+from scripts._subprocess import run
+from subprocess import TimeoutExpired  # nosec B404 -- exception type only; calls go through scripts._subprocess
 import sys
 import tempfile
 from dataclasses import dataclass
@@ -71,27 +72,27 @@ def sha256_text(text: str) -> str:
 
 def command_version(command: list[str]) -> dict[str, Any]:
     try:
-        proc = subprocess.run(command, text=True, capture_output=True, timeout=20, check=False)
+        proc = run(command, text=True, capture_output=True, timeout=20, check=False)
         output = (proc.stdout or proc.stderr).strip().splitlines()
         return {"available": proc.returncode == 0, "exit_code": proc.returncode, "version": output[0] if output else ""}
-    except (OSError, subprocess.TimeoutExpired) as exc:
+    except (OSError, TimeoutExpired) as exc:
         return {"available": False, "error": str(exc)}
 
 
 def git_state(root: Path) -> dict[str, Any]:
     if not (root / ".git").exists():
         return {"available": False, "reason": ".git metadata absent"}
-    def run(*args: str) -> str:
-        proc = subprocess.run(["git", *args], cwd=root, text=True, capture_output=True, check=False)
+    def _run_git(*args: str) -> str:
+        proc = run(["git", *args], cwd=root, text=True, capture_output=True, check=False)
         return proc.stdout.strip() if proc.returncode == 0 else ""
-    status = run("status", "--porcelain")
+    status = _run_git("status", "--porcelain")
     return {
         "available": True,
-        "commit": run("rev-parse", "HEAD"),
-        "branch": run("branch", "--show-current"),
+        "commit": _run_git("rev-parse", "HEAD"),
+        "branch": _run_git("branch", "--show-current"),
         "status_porcelain": status,
         "clean": not bool(status),
-        "submodules": run("submodule", "status"),
+        "submodules": _run_git("submodule", "status"),
     }
 
 
@@ -125,6 +126,7 @@ class CommandSpec:
     cwd: str = "."
     required: bool = True
     env: dict[str, str] | None = None
+    write_evidence: bool = True
 
 
 def run_command(root: Path, spec: CommandSpec, evidence_dir: Path) -> dict[str, Any]:
@@ -137,7 +139,7 @@ def run_command(root: Path, spec: CommandSpec, evidence_dir: Path) -> dict[str, 
     if spec.env:
         env.update(spec.env)
     try:
-        proc = subprocess.run(
+        proc = run(
             list(spec.command), cwd=workdir, env=env, text=True, capture_output=True,
             timeout=spec.timeout, check=False,
         )
@@ -155,7 +157,7 @@ def run_command(root: Path, spec: CommandSpec, evidence_dir: Path) -> dict[str, 
             "stdout_sha256": sha256_text(stdout),
             "stderr_sha256": sha256_text(stderr),
         }
-    except subprocess.TimeoutExpired as exc:
+    except TimeoutExpired as exc:
         stdout = exc.stdout or ""
         stderr = exc.stderr or ""
         if isinstance(stdout, bytes): stdout = stdout.decode(errors="replace")
@@ -175,9 +177,10 @@ def run_command(root: Path, spec: CommandSpec, evidence_dir: Path) -> dict[str, 
             "required": spec.required, "passed": False, "error": str(exc),
             "stdout_sha256": sha256_text(stdout), "stderr_sha256": sha256_text(stderr),
         }
-    (evidence_dir / f"{spec.name}.stdout.log").write_text(stdout, encoding="utf-8")
-    (evidence_dir / f"{spec.name}.stderr.log").write_text(stderr, encoding="utf-8")
-    atomic_write_json(evidence_dir / f"{spec.name}.json", result)
+    if getattr(spec, "write_evidence", True):
+        (evidence_dir / f"{spec.name}.stdout.log").write_text(stdout, encoding="utf-8")
+        (evidence_dir / f"{spec.name}.stderr.log").write_text(stderr, encoding="utf-8")
+        atomic_write_json(evidence_dir / f"{spec.name}.json", result)
     return result
 
 
@@ -279,6 +282,38 @@ def record_manual_evidence(root: Path, bundle_id: str, control_id: str, *, revie
     return path
 
 
+
+def require_reviewed_artifact(
+    root: Path,
+    bundle_id: str,
+    control_id: str,
+    artifact_path: str | Path,
+) -> dict[str, Any]:
+    """Require a digest-bound manual decision for one expected artifact.
+
+    The generic helper verifies both the existing manual-evidence schema and
+    that the record binds the exact contract/evidence artifact the caller owns.
+    It is reusable by later PRD-11 execution stages without another recorder
+    or a writable validity flag.
+    """
+    expected = Path(artifact_path)
+    if not expected.is_absolute():
+        expected = (root / expected).resolve()
+    result = require_manual_evidence(root, bundle_id, (control_id,))
+    path = manual_evidence_path(root, bundle_id, control_id)
+    if not path.exists():
+        return result
+    data = load_json(path, {})
+    recorded = Path(str(data.get("artifact_path", "")))
+    if not recorded.is_absolute():
+        recorded = (root / recorded).resolve()
+    if recorded != expected:
+        result["valid"] = False
+        result["invalid"].append(
+            f"{control_id}: record must bind {expected.relative_to(root)}"
+        )
+    return result
+
 def register_path(root: Path) -> Path:
     return root / "docs/roadmap/production_readiness/true_state_remediation_register.json"
 
@@ -302,6 +337,24 @@ def update_task_status(root: Path, task_ids: Iterable[str], status: str, evidenc
     missing = ids - found
     if missing:
         raise BundleError(f"Task ids missing from remediation register: {sorted(missing)}")
+    data["updated_at"] = utc_now()
+    atomic_write_json(path, data)
+
+
+def update_bundle_status(root: Path, bundle_id: str, status: str, next_bundle_status: str | None = None) -> None:
+    path = register_path(root)
+    data = load_json(path, {})
+    bundles = data.get("bundles", [])
+    found = False
+    for index, bundle in enumerate(bundles):
+        if bundle.get("id") == bundle_id:
+            bundle["status"] = status
+            found = True
+            if next_bundle_status and index + 1 < len(bundles):
+                bundles[index + 1]["status"] = next_bundle_status
+            break
+    if not found:
+        raise BundleError(f"Bundle id missing from remediation register: {bundle_id}")
     data["updated_at"] = utc_now()
     atomic_write_json(path, data)
 

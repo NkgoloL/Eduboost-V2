@@ -58,7 +58,8 @@ The EduBoost V2 system consists of:
 ### Step 1: Backend API Service
 
 ```bash
-cd /home/azureuser/Dev/SandBox/ml/Eduboost-V2
+REPO_ROOT="$(pwd)"
+cd "$REPO_ROOT"
 
 # Activate venv
 source .venv/bin/activate
@@ -81,7 +82,7 @@ Health check: `curl http://localhost:8000/ready`
 ### Step 2: Frontend Development Server
 
 ```bash
-cd /home/azureuser/Dev/SandBox/ml/Eduboost-V2/app/frontend
+cd "$REPO_ROOT/app/frontend"
 
 # Install dependencies (one-time)
 pnpm install --frozen-lockfile
@@ -100,7 +101,8 @@ Expected output:
 After both services are running, trigger the CAPS acquisition pipeline:
 
 ```bash
-cd /home/azureuser/Dev/SandBox/ml/Eduboost-V2
+REPO_ROOT="$(pwd)"
+cd "$REPO_ROOT"
 
 # Run CAPS source acquisition phases
 python3 scripts/curriculum/resolve_dbe_caps_urls.py

@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import ast
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -62,7 +63,7 @@ def main() -> int:
         except Exception as exc:
             failures.append(str(exc))
 
-    ruff = subprocess.run(
+    ruff = run(
         [sys.executable, "-m", "ruff", "check", *CRITICAL, "--select", "F821,F401,F811,E402"],
         cwd=ROOT,
         text=True,

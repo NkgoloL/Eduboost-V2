@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Capture PRD-0.10 PRD-0 closure evidence and PRD-1 handoff."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import check_output, run
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -35,7 +36,7 @@ def write_json(path: Path, data: dict) -> None:
 def git_state(target_branch: str) -> dict:
     def run(args: list[str]) -> str | None:
         try:
-            return subprocess.check_output(args, text=True, stderr=subprocess.DEVNULL).strip()
+            return check_output(args, text=True, stderr=subprocess.DEVNULL).strip()
         except (subprocess.CalledProcessError, FileNotFoundError):
             return None
 

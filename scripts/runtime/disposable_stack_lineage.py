@@ -6,11 +6,12 @@ blocked until a disposable PostgreSQL/Redis/API/worker/frontend stack is running
 and the live database revision exactly matches the repository Alembic head.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json
 import os
-import subprocess
+from scripts._subprocess import run
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -53,7 +54,7 @@ class LineageProbeConfig:
 
 def _run(cmd: list[str], root: Path, timeout: int = 60) -> dict[str, Any]:
     try:
-        completed = subprocess.run(
+        completed = run(
             cmd,
             cwd=root,
             text=True,

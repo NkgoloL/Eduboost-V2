@@ -3,12 +3,12 @@ from __future__ import annotations
 import pytest
 pytestmark = pytest.mark.integration
 
-import importlib.util
-import subprocess
-import sys
-from pathlib import Path
+import importlib.util  # noqa: E402
+import subprocess  # noqa: E402
+import sys  # noqa: E402
+from pathlib import Path  # noqa: E402
 
-import pytest
+import pytest  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 SCRIPT = REPO_ROOT / "scripts" / "check_pr002r_evidence.py"

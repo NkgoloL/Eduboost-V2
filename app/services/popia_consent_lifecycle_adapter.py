@@ -74,7 +74,7 @@ def _dump_candidate(result: Any) -> dict[str, Any]:
             value = result.model_dump()
             if isinstance(value, dict):
                 return value
-        except Exception:
+        except Exception:  # best-effort probe, cannot fail-close
             pass
 
     data: dict[str, Any] = {}

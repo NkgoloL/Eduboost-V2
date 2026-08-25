@@ -12,7 +12,7 @@ import json
 import os
 import re
 import shutil
-import subprocess
+from scripts._subprocess import run
 import sys
 from collections import Counter
 from pathlib import Path
@@ -48,7 +48,7 @@ def _run(cmd: list[str], root: Path, timeout: int = 120) -> dict[str, Any]:
             "stdout": "",
             "stderr": f"tool not found on PATH: {cmd[0]}",
         }
-    completed = subprocess.run(
+    completed = run(
         cmd,
         cwd=root,
         text=True,
@@ -66,7 +66,7 @@ def _run(cmd: list[str], root: Path, timeout: int = 120) -> dict[str, Any]:
 
 
 def _run_git(args: list[str], root: Path) -> dict[str, Any]:
-    completed = subprocess.run(
+    completed = run(
         ["git", *args],
         cwd=root,
         text=True,
@@ -214,8 +214,8 @@ def _migration_revision_info(path: Path) -> dict[str, Any]:
                     revision = ast.literal_eval(node.value)
                 if "down_revision" in names:
                     down_revision = ast.literal_eval(node.value)
-    except Exception:
-        pass
+    except Exception:  # best-effort probe, cannot fail-close
+            pass
     return {
         "path": str(path),
         "revision": revision,

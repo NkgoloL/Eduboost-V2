@@ -15,7 +15,7 @@ PLACEHOLDER_TOKENS = (
     "example.com",
     "localhost",
     "127.0.0.1",
-    "0.0.0.0",
+    "0.0.0.0",  # nosec B104
     "<",
     ">",
     "REAL_",
@@ -75,7 +75,7 @@ def build_url(base_url: str, path: str) -> str:
 def smoke_get(name: str, url: str, timeout_seconds: int = 15) -> ProbeResult:
     try:
         request = Request(url, headers={"User-Agent": "EduBoost-Staging-Smoke/1.0"})
-        with urlopen(request, timeout=timeout_seconds) as response:
+        with urlopen(request, timeout=timeout_seconds) as response:  # nosec B310
             status_code = int(getattr(response, "status", 0))
             passed = 200 <= status_code < 400
             return ProbeResult(

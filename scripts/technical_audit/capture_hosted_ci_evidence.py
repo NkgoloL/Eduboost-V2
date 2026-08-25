@@ -8,6 +8,7 @@ success.
 """
 
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import datetime as dt
@@ -16,7 +17,7 @@ import json
 import os
 import pathlib
 import re
-import subprocess
+from scripts._subprocess import run
 import sys
 from typing import Any
 
@@ -32,20 +33,20 @@ def utc_now() -> str:
     return dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
-def run(cmd: list[str], *, check: bool = True) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(cmd, check=check, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+def run_command(cmd: list[str], *, check: bool = True) -> subprocess.CompletedProcess[str]:
+    return run(cmd, check=check, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 
 def git_value(args: list[str], default: str | None = None) -> str | None:
     try:
-        return run(["git", *args]).stdout.strip()
+        return run_command(["git", *args]).stdout.strip()
     except Exception:
         return default
 
 
 def require_gh() -> None:
     try:
-        run(["gh", "--version"])
+        run_command(["gh", "--version"])
     except Exception as exc:
         raise SystemExit(
             "GitHub CLI 'gh' is required to capture hosted CI evidence. "
@@ -54,7 +55,7 @@ def require_gh() -> None:
 
 
 def load_json_stdout(cmd: list[str]) -> Any:
-    completed = run(cmd)
+    completed = run_command(cmd)
     try:
         return json.loads(completed.stdout)
     except json.JSONDecodeError as exc:
@@ -117,7 +118,7 @@ def select_run(runs: list[dict[str, Any]], sha: str, workflow_name: str | None) 
 def fetch_branch_protection(repo: str, target_branch: str, raw_dir: pathlib.Path) -> tuple[bool, pathlib.Path | None, dict[str, Any] | None]:
     raw_path = raw_dir / f"branch_protection_{target_branch}.json"
     cmd = ["gh", "api", f"repos/{repo}/branches/{target_branch}/protection"]
-    completed = run(cmd, check=False)
+    completed = run_command(cmd, check=False)
     payload: dict[str, Any]
     if completed.returncode == 0:
         try:

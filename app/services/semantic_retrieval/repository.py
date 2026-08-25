@@ -84,7 +84,7 @@ class SemanticRetrievalRepository:
                 "limit": limit,
             }
         )
-        sql = text(
+        sql = text(  # nosec B608 — fragments are fixed SQL templates and validated bind names
             f"""
             SELECT {_COMMON_SELECT},
                    GREATEST(0.0, LEAST(1.0,
@@ -117,7 +117,7 @@ class SemanticRetrievalRepository:
         params.update({"query": query, "limit": limit})
         document = "to_tsvector('simple', COALESCE(c.heading, '') || ' ' || c.content)"
         tsquery = "websearch_to_tsquery('simple', :query)"
-        sql = text(
+        sql = text(  # nosec B608 — fragments are fixed SQL templates and validated bind names
             f"""
             SELECT {_COMMON_SELECT},
                    ts_rank_cd({document}, {tsquery}, 32) AS score
@@ -145,7 +145,7 @@ class SemanticRetrievalRepository:
         placeholders = ", ".join(f":{name}" for name in names)
         params = _filter_params(filters)
         params.update(dict(zip(names, chunk_ids)))
-        sql = text(
+        sql = text(  # nosec B608 — placeholders are generated from validated bind names
             f"""
             SELECT {_COMMON_SELECT}, 1.0 AS score
             FROM retrieval_source_chunks c
@@ -174,7 +174,7 @@ class SemanticRetrievalRepository:
                 "limit": limit,
             }
         )
-        sql = text(
+        sql = text(  # nosec B608 — fragments are fixed SQL templates and validated bind names
             f"""
             EXPLAIN (FORMAT TEXT)
             SELECT c.chunk_id

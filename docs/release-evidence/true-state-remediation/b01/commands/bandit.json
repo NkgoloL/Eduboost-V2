@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python",
+    "-m",
+    "bandit",
+    "-r",
+    "app",
+    "scripts",
+    "-c",
+    ".bandit",
+    "-q"
+  ],
+  "cwd": ".",
+  "exit_code": 0,
+  "finished_at": "2026-08-25T22:07:15.337160+00:00",
+  "name": "bandit",
+  "passed": true,
+  "required": true,
+  "started_at": "2026-08-25T22:06:59.363516+00:00",
+  "stderr_sha256": "1f74afa6a1f741f9a57f451f72135fab88a0a35c85218e72047f7214b7cb3780",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

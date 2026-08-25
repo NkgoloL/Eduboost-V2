@@ -5,16 +5,16 @@ pytestmark = pytest.mark.integration
 
 """HTTP contract tests for parent access-bundle export authorization."""
 
-from types import SimpleNamespace
-from typing import Any
+from types import SimpleNamespace  # noqa: E402
+from typing import Any  # noqa: E402
 
-import pytest
-from fastapi.testclient import TestClient
+import pytest  # noqa: E402
+from fastapi.testclient import TestClient  # noqa: E402
 
-from app.api_v2_deps.auth import AuthContext, TokenType, require_parent_or_admin
-from app.api_v2 import app
-from app.api_v2_routers import parents as parents_router
-from app.models import UserRole
+from app.api_v2_deps.auth import AuthContext, TokenType, require_parent_or_admin  # noqa: E402
+from app.api_v2 import app  # noqa: E402
+from app.api_v2_routers import parents as parents_router  # noqa: E402
+from app.models import UserRole  # noqa: E402
 
 
 class FakeDB:

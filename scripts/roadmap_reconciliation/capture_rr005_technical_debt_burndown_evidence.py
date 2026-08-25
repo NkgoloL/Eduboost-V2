@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import run
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -26,7 +26,7 @@ BOUNDARY_FALSE = {
 
 
 def _run_git(args: list[str], root: Path) -> dict[str, Any]:
-    completed = subprocess.run(["git", *args], cwd=root, text=True, capture_output=True, check=False)
+    completed = run(["git", *args], cwd=root, text=True, capture_output=True, check=False)
     return {
         "command": ["git", *args],
         "returncode": completed.returncode,

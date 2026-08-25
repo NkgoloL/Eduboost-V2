@@ -100,3 +100,8 @@ The following architectural standards must be maintained:
 
 - ADR-019: Roadmap After Production Readiness Baseline
 - Production Readiness Baseline Boundary Contract: `docs/roadmap/production_readiness_baseline_boundary_contract.md`
+## Authoritative Registers
+
+This contract depends on the baseline boundary register, post-baseline roadmap register, deferred scope register, roadmap dependency register, and post-baseline risk register. Explicit external/manual dependencies must be documented and owned.
+
+Control: explicit external/manual dependencies are required.

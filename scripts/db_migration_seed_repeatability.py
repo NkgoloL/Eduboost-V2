@@ -3,10 +3,13 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 import importlib.util
+import shutil
+import sys
 import json
+import subprocess  # nosec B404 — subprocess constants are passed to the controlled wrapper
 from pathlib import Path
 import re
-import subprocess
+from scripts._subprocess import run
 from typing import Any
 
 
@@ -88,7 +91,7 @@ class DbRepeatabilityStatus:
 
 
 def _run(command: list[str], env: dict[str, str] | None = None) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
+    return run(
         command,
         cwd=ROOT,
         env=env,
@@ -110,7 +113,10 @@ def generate_raw_alembic_sql() -> tuple[bool, str]:
         **__import__("os").environ,
         "DATABASE_URL": "postgresql+asyncpg://user:pass@localhost:5432/eduboost",
     }
-    alembic_path = ROOT / ".venv" / "bin" / "alembic"
+    active_alembic = Path(sys.executable).with_name("alembic")
+    alembic_path = active_alembic if active_alembic.is_file() else shutil.which("alembic")
+    if not alembic_path:
+        raise RuntimeError("alembic executable is not available in the active environment")
     result = _run([str(alembic_path), "upgrade", "head", "--sql"], env=env)
     RAW_SQL.write_text(result.stdout, encoding="utf-8")
     return result.returncode == 0, result.stdout
@@ -170,7 +176,7 @@ def generate_irt_seed_sql() -> tuple[int, int]:
             _sql_literal(row["b_param"]),
         ]
         lines.append(
-            "INSERT INTO public.irt_items "
+            "INSERT INTO public.irt_items "  # nosec B608
             "(id, grade, subject, topic, language, question_text, options, correct_option, a_param, b_param) "
             f"VALUES ({', '.join(values)}) ON CONFLICT (id) DO NOTHING;"
         )

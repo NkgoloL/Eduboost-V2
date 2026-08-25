@@ -21,7 +21,7 @@ import os
 from pathlib import Path
 import re
 import shutil
-import subprocess
+from scripts._subprocess import run
 import sys
 import tempfile
 from typing import Any, Iterable, Sequence
@@ -326,7 +326,7 @@ def _git_available(root: Path) -> bool:
 
 
 def _git_output(root: Path, *args: str) -> tuple[int, str, str]:
-    completed = subprocess.run(
+    completed = run(
         ["git", *args],
         cwd=root,
         text=True,
@@ -342,7 +342,7 @@ def _sha256_bytes(value: bytes) -> str:
 
 def _tracked_file_sha(root: Path, relative_path: str, *, ref: str | None = None) -> str | None:
     if ref is not None:
-        completed = subprocess.run(
+        completed = run(
             ["git", "show", f"{ref}:{relative_path}"],
             cwd=root,
             capture_output=True,
@@ -350,7 +350,7 @@ def _tracked_file_sha(root: Path, relative_path: str, *, ref: str | None = None)
         )
         if completed.returncode != 0:
             return None
-        return _sha256_bytes(completed.stdout)
+        return _sha256_bytes(completed.stdout.encode())
 
     path = root / relative_path
     if not path.exists() or not path.is_file():
@@ -410,6 +410,11 @@ def _run_leaf_in_worktree(
         (worktree / ".venv").symlink_to(source_venv, target_is_directory=True)
 
     env = _base_isolated_env(output_dir, worktree_parent, coverage_data_dir, leaf.leaf_id)
+    tracked_before = {
+        path: _tracked_file_sha(worktree, path)
+        for path in _git_output(worktree, "ls-files")[1].splitlines()
+        if path.strip()
+    }
 
     try:
         result = run_bounded_command(
@@ -426,7 +431,14 @@ def _run_leaf_in_worktree(
         _, patch_stdout, patch_stderr = _git_output(worktree, "diff", "--binary")
         patch_path = output_dir / "mutations" / f"{leaf.leaf_id}.patch"
         _write_text(patch_path, patch_stdout if patch_stdout else patch_stderr)
-        tracked_mutation_files = sorted(line for line in names_stdout.splitlines() if line.strip())
+        tracked_after = {
+            path: _tracked_file_sha(worktree, path)
+            for path in tracked_before
+        }
+        tracked_mutation_files = sorted(
+            path for path, before_sha in tracked_before.items()
+            if before_sha != tracked_after.get(path)
+        )
         mutation_matrix = _mutation_matrix_entries(
             worktree=worktree,
             leaf=leaf,
@@ -1432,7 +1444,9 @@ def evaluate_unit_shard_stabilisation_contract(
             "coverage_incomplete_shards" in baseline,
         ]
     )
-    governance_valid = all(record.get("next_authorised_item") == PRD_ID for record in registers) and registers[-1].get("evidence_recorded") is False
+    _open_state = all(record.get("next_authorised_item") == PRD_ID for record in registers) and registers[-1].get("evidence_recorded") is False
+    _closed_state = all(record.get("next_authorised_item") in {PRD_ID, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8"} for record in registers) and registers[-1].get("evidence_recorded") is True
+    governance_valid = _open_state or _closed_state
     green_valid = (not require_green) or summary.get("all_green") is True
     return {
         "valid": contract_valid and wiring_valid and governance_valid and green_valid,

@@ -58,14 +58,10 @@ Claims must be phrased according to evidence:
 
 ## Compatibility Boundary
 
-EduBoost is V2-first, but not every historical surface has disappeared:
+## Runtime Boundary
 
-- Archived legacy code is kept under app/legacy.
-- app.legacy.api.main:app is retained as a compatibility shim.
-- The legacy shim may expose a 410 Gone response for /api/v1/lessons/generate when explicitly imported.
-- The canonical production runtime remains app.api_v2:app.
-- Legacy compatibility routes must not appear in the canonical V2 OpenAPI schema.
-
+- app.api_v2:app is the sole backend runtime entrypoint.
+- V1 and legacy-prefixed routes are excluded from the canonical OpenAPI schema.
 ## Remaining Release Blockers
 
 Current blockers are evidence-backed, not inferred:

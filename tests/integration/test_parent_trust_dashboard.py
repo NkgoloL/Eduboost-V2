@@ -3,17 +3,17 @@ import pytest
 pytestmark = pytest.mark.integration
 
 
-from types import SimpleNamespace
-from unittest.mock import AsyncMock
+from types import SimpleNamespace  # noqa: E402
+from unittest.mock import AsyncMock  # noqa: E402
 
-from fastapi.testclient import TestClient
+from fastapi.testclient import TestClient  # noqa: E402
 
-from app.api_v2_deps.auth import AuthContext, TokenType, require_parent_or_admin
-from app.api_v2 import app
-from app.core.database import get_db
-from app.models import UserRole
+from app.api_v2_deps.auth import AuthContext, TokenType, require_parent_or_admin  # noqa: E402
+from app.api_v2 import app  # noqa: E402
+from app.core.database import get_db  # noqa: E402
+from app.models import UserRole  # noqa: E402
 
-from app.api_v2_routers import parents as parents_router
+from app.api_v2_routers import parents as parents_router  # noqa: E402
 
 
 class _ScalarListResult:

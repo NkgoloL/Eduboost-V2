@@ -4,17 +4,17 @@ pytestmark = pytest.mark.integration
 
 """HTTP contract tests for lesson stream write authorization."""
 
-from datetime import datetime, timedelta, timezone
-from typing import Any
-from unittest.mock import AsyncMock
+from datetime import datetime, timedelta, timezone  # noqa: E402
+from typing import Any  # noqa: E402
+from unittest.mock import AsyncMock  # noqa: E402
 
-import pytest
-from fastapi.testclient import TestClient
+import pytest  # noqa: E402
+from fastapi.testclient import TestClient  # noqa: E402
 
-from app.api_v2 import app
-from app.api_v2_deps.auth import AuthContext, TokenType
-from app.api_v2_routers import lessons as lessons_router
-from app.models import UserRole
+from app.api_v2 import app  # noqa: E402
+from app.api_v2_deps.auth import AuthContext, TokenType  # noqa: E402
+from app.api_v2_routers import lessons as lessons_router  # noqa: E402
+from app.models import UserRole  # noqa: E402
 
 
 LEARNER_ID = "11111111-1111-1111-1111-111111111111"

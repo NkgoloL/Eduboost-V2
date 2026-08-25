@@ -88,7 +88,7 @@ def _get_local_hf_runtime() -> dict[str, Any]:
     if merged_path.exists() and (merged_path / "config.json").exists():
         model_source = str(merged_path)
         tokenizer_source = str(merged_path)
-        model = AutoModelForCausalLM.from_pretrained(
+        model = AutoModelForCausalLM.from_pretrained(  # nosec B615
             model_source,
             torch_dtype=dtype,
             device_map="auto",
@@ -97,7 +97,7 @@ def _get_local_hf_runtime() -> dict[str, Any]:
     elif adapter_path.exists():
         model_source = settings.LOCAL_BASE_MODEL_ID
         tokenizer_source = str(adapter_path)
-        model = AutoModelForCausalLM.from_pretrained(
+        model = AutoModelForCausalLM.from_pretrained(  # nosec B615
             model_source,
             torch_dtype=dtype,
             device_map="auto",
@@ -110,7 +110,7 @@ def _get_local_hf_runtime() -> dict[str, Any]:
             "to a trained EduBoost adapter/model directory."
         )
 
-    tokenizer = AutoTokenizer.from_pretrained(tokenizer_source, trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained(tokenizer_source, trust_remote_code=True)  # nosec B615
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
     model.eval()

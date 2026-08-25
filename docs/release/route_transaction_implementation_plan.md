@@ -1,7 +1,7 @@
 # Route Transaction Implementation Plan
 
-Generated at: `2026-06-12T17:40:54Z`
-Commit: `a70b57616bb29572fcb57961b91a3f68f0c66329`
+Generated at: `2026-08-01T20:58:27Z`
+Commit: `66323711cba9ebc39919f32491c707aeb92e5e58`
 
 - Source inventory: `docs/architecture/tx_route_wiring_inventory.json`
 - Source status: `production-route-transaction-wiring-not-proven`
@@ -14,19 +14,19 @@ Commit: `a70b57616bb29572fcb57961b91a3f68f0c66329`
 |---|---|---|---|---|---:|---|---:|
 | `P0` | `ROUTE-TX-001-auth-register` | `auth` | `register` | `app/api_v2_routers/auth.py` | 87 | `TransactionalAuthRegistrationService` | True |
 | `P0` | `ROUTE-TX-002-auth-create_dev_session` | `auth` | `create_dev_session` | `app/api_v2_routers/auth.py` | 124 | `TransactionalAuthRegistrationService` | True |
-| `P0` | `ROUTE-TX-003-popia-grant_consent` | `popia` | `grant_consent` | `app/api_v2_routers/popia.py` | 102 | `TransactionalPOPIAConsentLifecycleService` | True |
+| `P0` | `ROUTE-TX-003-popia-grant_consent` | `popia` | `grant_consent` | `app/api_v2_routers/popia.py` | 103 | `TransactionalPOPIAConsentLifecycleService` | True |
 | `P0` | `ROUTE-TX-004-popia-deny_consent` | `popia` | `deny_consent` | `app/api_v2_routers/popia.py` | 120 | `TransactionalPOPIAConsentLifecycleService` | True |
 | `P0` | `ROUTE-TX-005-popia-withdraw_consent` | `popia` | `withdraw_consent` | `app/api_v2_routers/popia.py` | 138 | `TransactionalPOPIAConsentLifecycleService` | True |
 | `P0` | `ROUTE-TX-006-popia-renew_consent` | `popia` | `renew_consent` | `app/api_v2_routers/popia.py` | 153 | `TransactionalPOPIAConsentLifecycleService` | True |
 | `P0` | `ROUTE-TX-007-popia-create_export_request` | `popia` | `create_export_request` | `app/api_v2_routers/popia.py` | 173 | `TransactionalPOPIAConsentLifecycleService` | True |
-| `P1` | `ROUTE-TX-008-diagnostics-submit_diagnostic` | `diagnostics` | `submit_diagnostic` | `app/api_v2_routers/diagnostics.py` | 81 | `TransactionalDiagnosticResponseService` | True |
-| `P1` | `ROUTE-TX-009-diagnostics-start_diagnostic_session` | `diagnostics` | `start_diagnostic_session` | `app/api_v2_routers/diagnostics.py` | 229 | `TransactionalDiagnosticResponseService` | True |
-| `P1` | `ROUTE-TX-010-diagnostics-diagnostic_respond` | `diagnostics` | `diagnostic_respond` | `app/api_v2_routers/diagnostics.py` | 293 | `TransactionalDiagnosticResponseService` | True |
-| `P2` | `ROUTE-TX-011-lessons-generate_lesson` | `lessons` | `generate_lesson` | `app/api_v2_routers/lessons.py` | 33 | `TransactionalLessonCompletionService` | True |
-| `P2` | `ROUTE-TX-012-lessons-generate_lesson_stream` | `lessons` | `generate_lesson_stream` | `app/api_v2_routers/lessons.py` | 58 | `TransactionalLessonCompletionService` | True |
-| `P2` | `ROUTE-TX-013-lessons-get_lesson` | `lessons` | `get_lesson` | `app/api_v2_routers/lessons.py` | 81 | `TransactionalLessonCompletionService` | True |
-| `P2` | `ROUTE-TX-014-lessons-complete_lesson` | `lessons` | `complete_lesson` | `app/api_v2_routers/lessons.py` | 102 | `TransactionalLessonCompletionService` | True |
-| `P2` | `ROUTE-TX-015-lessons-sync_lessons` | `lessons` | `sync_lessons` | `app/api_v2_routers/lessons.py` | 119 | `TransactionalLessonCompletionService` | True |
+| `P1` | `ROUTE-TX-008-diagnostics-submit_diagnostic` | `diagnostics` | `submit_diagnostic` | `app/api_v2_routers/diagnostics.py` | 103 | `TransactionalDiagnosticResponseService` | True |
+| `P1` | `ROUTE-TX-009-diagnostics-start_diagnostic_session` | `diagnostics` | `start_diagnostic_session` | `app/api_v2_routers/diagnostics.py` | 251 | `TransactionalDiagnosticResponseService` | True |
+| `P1` | `ROUTE-TX-010-diagnostics-diagnostic_respond` | `diagnostics` | `diagnostic_respond` | `app/api_v2_routers/diagnostics.py` | 316 | `TransactionalDiagnosticResponseService` | True |
+| `P2` | `ROUTE-TX-011-lessons-generate_lesson` | `lessons` | `generate_lesson` | `app/api_v2_routers/lessons.py` | 41 | `TransactionalLessonCompletionService` | True |
+| `P2` | `ROUTE-TX-012-lessons-generate_lesson_stream` | `lessons` | `generate_lesson_stream` | `app/api_v2_routers/lessons.py` | 73 | `TransactionalLessonCompletionService` | True |
+| `P2` | `ROUTE-TX-013-lessons-get_lesson` | `lessons` | `get_lesson` | `app/api_v2_routers/lessons.py` | 97 | `TransactionalLessonCompletionService` | True |
+| `P2` | `ROUTE-TX-014-lessons-complete_lesson` | `lessons` | `complete_lesson` | `app/api_v2_routers/lessons.py` | 117 | `TransactionalLessonCompletionService` | True |
+| `P2` | `ROUTE-TX-015-lessons-sync_lessons` | `lessons` | `sync_lessons` | `app/api_v2_routers/lessons.py` | 134 | `TransactionalLessonCompletionService` | True |
 
 ## Implementation detail
 

@@ -8,7 +8,8 @@ from __future__ import annotations
 
 import argparse
 import json
-import subprocess
+import subprocess  # nosec B404 — subprocess constants are passed to the controlled wrapper
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 from typing import Any
@@ -56,7 +57,7 @@ def _py_compile(root: Path) -> dict[str, Any]:
         "scripts/production_readiness/collect_prd1100r_true_state_runtime_baseline.py",
         "scripts/runtime/verify_runtime_stack_readiness.py",
     ]
-    completed = subprocess.run(cmd, cwd=root, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
+    completed = run(cmd, cwd=root, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
     return {
         "valid": completed.returncode == 0,
         "returncode": completed.returncode,

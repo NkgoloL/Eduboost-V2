@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -53,7 +53,7 @@ def main() -> int:
     output = root / "var/prd11/runtime-restore/execution-7/targeted-baseline-reconciliation"
     output.mkdir(parents=True, exist_ok=True)
     command = [sys.executable, "-m", "pytest", "-q", *FOCUSED_FILES, "--no-cov"]
-    completed = subprocess.run(command, cwd=root, env=sanitized_test_environment(), text=True, capture_output=True, check=False)
+    completed = run(command, cwd=root, env=sanitized_test_environment(), text=True, capture_output=True, check=False)
     (output / "focused.stdout.txt").write_text(completed.stdout, encoding="utf-8")
     (output / "focused.stderr.txt").write_text(completed.stderr, encoding="utf-8")
     probes = [run_pytest_probe(root, node, output / "timeout-probes", timeout_seconds=args.timeout_seconds) for node in TIMEOUT_NODES]

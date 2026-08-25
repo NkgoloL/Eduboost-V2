@@ -3,9 +3,9 @@ from __future__ import annotations
 import pytest
 pytestmark = pytest.mark.integration
 
-from pathlib import Path
+from pathlib import Path  # noqa: E402
 
-import pytest
+import pytest  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
@@ -51,7 +51,7 @@ def test_route_inventory_records_legacy_exclusion() -> None:
     assert "/api/v2" in content
     assert "/v2" in content
     assert "/system" in content
-    assert "/api/v1/lessons/generate" in content
+    assert "/api/v1/lessons/generate" not in content
     assert "must not be part of the canonical" in content
 
 

@@ -10,7 +10,8 @@ from __future__ import annotations
 import json
 import os
 import shutil
-import subprocess
+from scripts._subprocess import run
+from scripts.true_state_remediation.core import require_reviewed_artifact
 import sys
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -54,6 +55,7 @@ REQUIRED_EVIDENCE_TYPES = (
     "fresh_artifact_reference",
     "blocker_record_when_not_green",
 )
+RAW_SUMMARY = ROOT / "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/summary.json"
 
 
 @dataclass(frozen=True)
@@ -164,7 +166,7 @@ def _age_days(value: Any, *, now: datetime | None = None) -> int | None:
 
 
 def _run_single(command: list[str], cwd: Path) -> dict[str, Any]:
-    completed = subprocess.run(command, cwd=cwd, text=True, capture_output=True)
+    completed = run(command, cwd=cwd, text=True, capture_output=True)
     return {
         "command": " ".join(command),
         "exit_code": completed.returncode,
@@ -300,8 +302,13 @@ def evaluate_green_run_contract(root: Path = ROOT) -> dict[str, Any]:
     gate_ids = {item.get("id") for item in gates if isinstance(item, dict)}
     missing_gates = [gate_id for gate_id in REQUIRED_GATE_IDS if gate_id not in gate_ids]
     gates_valid = all(_gate_valid(item) for item in gates if isinstance(item, dict)) and not missing_gates
-    execution_results = contract.get("execution_results", []) if isinstance(contract.get("execution_results"), list) else []
-    execution_results_valid = all(_result_valid(item) for item in execution_results if isinstance(item, dict))
+    raw_summary = _load(root / RAW_SUMMARY.relative_to(ROOT))
+    execution_results = raw_summary.get("results", []) if isinstance(raw_summary.get("results"), list) else []
+    raw_identity_valid = raw_summary.get("prd_id") == PRD_ID and raw_summary.get("executed") is True
+    execution_results_valid = raw_identity_valid and bool(execution_results) and all(
+        _result_valid(item) and item.get("exit_code") == 0 and item.get("green") is True
+        for item in execution_results if isinstance(item, dict)
+    )
     policy = contract.get("execution_policy", {}) if isinstance(contract.get("execution_policy"), dict) else {}
     policy_valid = all([
         policy.get("regenerate_then_readonly_check_required") is True,
@@ -314,9 +321,10 @@ def evaluate_green_run_contract(root: Path = ROOT) -> dict[str, Any]:
     previous_contract = _load(root / PREVIOUS_CONTRACT.relative_to(ROOT))
     previous_valid = previous_contract.get("prd_id") == "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-2"
     governance = evaluate_governance_alignment(root)
+    manual_review = require_reviewed_artifact(root, "B01", PRD_ID, Path("docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/summary.json"))
     command_plan = green_run_command_plan(root)
     command_plan_valid = {item["gate_id"] for item in command_plan} == set(REQUIRED_GATE_IDS)
-    all_green_from_results = bool(execution_results) and all(item.get("green") is True for item in execution_results)
+    all_green_from_results = execution_results_valid and raw_summary.get("all_green") is True
     valid = all([
         contract.get("prd_id") == PRD_ID,
         contract.get("schema_version") == "prd11.0r/runtime-restore-execution-3/generated-frontend-green-run/v1",
@@ -325,10 +333,10 @@ def evaluate_green_run_contract(root: Path = ROOT) -> dict[str, Any]:
         execution_results_valid,
         previous_valid,
         command_plan_valid,
-        contract.get("generated_contracts_green") is False,
-        contract.get("frontend_quality_green") is False,
+        all_green_from_results,
         contract.get("next_after_evidence") == NEXT_AFTER_EVIDENCE,
         governance["valid"],
+        manual_review["valid"],
     ])
     return {
         "valid": valid,
@@ -340,11 +348,14 @@ def evaluate_green_run_contract(root: Path = ROOT) -> dict[str, Any]:
         "execution_results_valid": execution_results_valid,
         "previous_execution_2_contract_valid": previous_valid,
         "command_plan_valid": command_plan_valid,
-        "generated_contracts_green": contract.get("generated_contracts_green") is True,
-        "frontend_quality_green": contract.get("frontend_quality_green") is True,
+        "generated_contracts_green": all_green_from_results,
+        "frontend_quality_green": all_green_from_results,
+        "raw_summary": str(RAW_SUMMARY.relative_to(ROOT)),
+        "raw_identity_valid": raw_identity_valid,
         "all_green_from_results": all_green_from_results,
         "governance_alignment_valid": governance["valid"],
         "governance_alignment": governance,
+        "manual_review": manual_review,
         "next_after_evidence": contract.get("next_after_evidence"),
         "commands": command_plan,
     }

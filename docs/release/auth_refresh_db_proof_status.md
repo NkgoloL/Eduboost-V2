@@ -1,7 +1,7 @@
 # Auth Refresh DB Proof Status
 
-Generated at: `2026-05-20T23:54:20Z`
-Commit: `aa1e1e883fe9ea07116238229dca4694c7216d3a`
+Generated at: `2026-08-01T20:59:08Z`
+Commit: `66323711cba9ebc39919f32491c707aeb92e5e58`
 
 **Status:** `auth-refresh-db-proof-external-blocked`
 **DSN present:** `False`
@@ -11,28 +11,27 @@ Commit: `aa1e1e883fe9ea07116238229dca4694c7216d3a`
 
 | Field | Value | Valid | Reason |
 |---|---|---:|---|
-| `Database DSN label` | `staging-postgres` | True | ok |
-| `Test command` | `AUTH_REFRESH_DB_PROOF_DSN="$REAL_AUTH_REFRESH_DB_PROOF_DSN" make auth-refresh-db-proof-release-check` | True | ok |
+| `Database DSN label` | `github-actions-postgres-service` | True | ok |
+| `Test command` | `python -m pytest -c pytest.ini tests/integration/test_auth_refresh_db_proof.py -q --no-cov --tb=short -rs` | True | ok |
 | `Test result` | `passed` | True | ok |
 | `Refresh persistence result` | `passed` | True | ok |
 | `Logout revocation result` | `passed` | True | ok |
 | `Revoke-all result` | `passed` | True | ok |
 | `Reuse detection result` | `passed` | True | ok |
-| `Evidence URL` | `https://github.com/NkgoloL/Eduboost-V2/actions/runs/REAL_RUN_ID` | True | ok |
-| `Commit SHA` | `aa1e1e883fe9ea07116238229dca4694c7216d3a` | True | ok |
-| `Verified by` | `Nkgolo Lebelo` | True | ok |
+| `Evidence URL` | `https://github.com/NkgoloL/Eduboost-V2/actions/runs/26226114014` | True | ok |
+| `Commit SHA` | `84ace987e1f577fcf647fbe105f78680003c5aaa` | True | ok |
+| `Verified by` | `github-actions` | True | ok |
 | `Date verified` | `2026-05-21` | True | ok |
 
 ## Pytest summary
 
 ```text
-AUTH_REFRESH_DB_PROOF_DSN not set; DB proof not executed
+DB pytest not requested
 ```
 
 ## Blockers
 
 - AUTH_REFRESH_DB_PROOF_DSN is not set
-- DB pytest did not pass
 
 ## No false-closure rules
 

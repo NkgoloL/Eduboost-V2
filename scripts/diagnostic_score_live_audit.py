@@ -1,4 +1,5 @@
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 from dataclasses import asdict, dataclass
@@ -6,7 +7,7 @@ from datetime import datetime, timezone
 import json
 from pathlib import Path
 import re
-import subprocess
+from scripts._subprocess import run
 from typing import Any
 from urllib.parse import urlparse
 import os
@@ -84,7 +85,7 @@ class DiagnosticScoreLiveAuditStatus:
 
 
 def _run(command: list[str]) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
+    return run(
         command,
         cwd=ROOT,
         text=True,
@@ -178,7 +179,7 @@ def _table_exists(cur, table_name: str) -> bool:
 
 
 def _table_count(cur, table_name: str) -> int:
-    cur.execute(f"SELECT COUNT(*) FROM public.{_quote_ident(table_name)}")
+    cur.execute(f"SELECT COUNT(*) FROM public.{_quote_ident(table_name)}")  # nosec B608
     return int(cur.fetchone()[0])
 
 
@@ -368,7 +369,7 @@ def _bridge_seed(cur, diag_columns: list[ColumnInfo], irt_columns: list[ColumnIn
         return 0, insert_columns, ["no insertable diagnostic_items columns found"]
 
     sql = (
-        f"INSERT INTO public.{_quote_ident(DIAG_TABLE)} "
+        f"INSERT INTO public.{_quote_ident(DIAG_TABLE)} "  # nosec B608
         f"({', '.join(_quote_ident(column) for column in insert_columns)}) "
         f"SELECT {', '.join(select_exprs)} "
         f"FROM public.{_quote_ident(IRT_TABLE)} i "

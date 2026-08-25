@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """Verify the Phase 0-equivalent reproducibility baseline for Gate 2R.0."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import hashlib
 import json
 import os
 import shutil
-import subprocess
+from scripts._subprocess import run
 import sys
 from datetime import UTC, datetime
 from pathlib import Path
@@ -15,8 +16,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def run(args: list[str], *, timeout: int = 60) -> tuple[int, str]:
-    completed = subprocess.run(
+def run_command(args: list[str], *, timeout: int = 60) -> tuple[int, str]:
+    completed = run(
         args,
         cwd=ROOT,
         text=True,
@@ -30,7 +31,7 @@ def run(args: list[str], *, timeout: int = 60) -> tuple[int, str]:
 
 def version_output(command: list[str]) -> str:
     try:
-        rc, output = run(command, timeout=20)
+        rc, output = run_command(command, timeout=20)
     except Exception as exc:  # pragma: no cover - defensive reporting
         return f"unavailable: {exc}"
     return output if rc == 0 else f"unavailable: {output}"
@@ -55,7 +56,7 @@ def probe_object_storage() -> tuple[bool, dict[str, object], list[str]]:
     errors: list[str] = []
     backend = os.getenv("PHASE02R_OBJECT_STORAGE_BACKEND", "").strip().lower()
     if backend in {"s3", "minio"}:
-        rc, output = run([sys.executable, "scripts/prove_phase02r_object_storage.py", "--json"], timeout=120)
+        rc, output = run_command([sys.executable, "scripts/prove_phase02r_object_storage.py", "--json"], timeout=120)
         try:
             payload = json.loads(output)
         except json.JSONDecodeError:
@@ -170,7 +171,7 @@ def main() -> int:
         if shutil.which(executable) is None:
             errors.append(f"{executable} is not available on PATH")
 
-    rc, status = run(["git", "status", "--porcelain"], timeout=20)
+    rc, status = run_command(["git", "status", "--porcelain"], timeout=20)
     checks["git_status_porcelain"] = status
     if rc != 0:
         errors.append("git status --porcelain failed")
@@ -191,17 +192,17 @@ def main() -> int:
     if not any((ROOT / path).exists() for path in ("requirements.txt", "requirements/base.txt", "requirements/constraints.snapshot.txt")):
         errors.append("required Python dependency lock/input files are missing")
 
-    rc, output = run([sys.executable, "scripts/verify_migration_graph.py"], timeout=120)
+    rc, output = run_command([sys.executable, "scripts/verify_migration_graph.py"], timeout=120)
     checks["migration_graph"] = output
     if rc != 0:
         errors.append("migration graph check failed")
 
-    rc, output = run([sys.executable, "scripts/validate_schema_integrity.py"], timeout=120)
+    rc, output = run_command([sys.executable, "scripts/validate_schema_integrity.py"], timeout=120)
     checks["schema_integrity"] = output
     if rc != 0:
         errors.append("schema integrity check failed")
 
-    rc, output = run([sys.executable, "-c", "from app.api_v2 import app; print(app.title)"], timeout=60)
+    rc, output = run_command([sys.executable, "-c", "from app.api_v2 import app; print(app.title)"], timeout=60)
     checks["backend_entrypoint"] = output
     if rc != 0:
         errors.append("backend app.api_v2 entrypoint import failed")

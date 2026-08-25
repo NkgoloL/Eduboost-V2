@@ -7,11 +7,12 @@ installation, config discovery, and executable E2E command wiring without
 claiming full backend-backed production journey readiness.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json
 import os
-import subprocess
+from scripts._subprocess import run
 import time
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -36,7 +37,7 @@ def _run_step(name: str, command: list[str], output_dir: Path, env: dict[str, st
     stdout_path = output_dir / f"{name}.stdout.txt"
     stderr_path = output_dir / f"{name}.stderr.txt"
     try:
-        proc = subprocess.run(
+        proc = run(
             command,
             cwd=REPO_ROOT,
             env=env,

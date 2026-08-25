@@ -24,7 +24,7 @@ def check_endpoint(url: str, expected_status: int = 200) -> tuple[bool, str]:
     """Check if an endpoint returns the expected status code."""
     try:
         req = Request(url, headers={"User-Agent": "EduBoost-HealthCheck/1.0"})
-        with urlopen(req, timeout=10) as response:
+        with urlopen(req, timeout=10) as response:  # nosec B310
             status = response.status
             body = response.read().decode("utf-8")
             if status != expected_status:

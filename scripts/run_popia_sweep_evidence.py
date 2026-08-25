@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
-import subprocess
+from scripts._subprocess import run
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -17,7 +18,7 @@ def main() -> int:
         return 0
 
     cmd = [sys.executable, "scripts/popia_sweep.py", "--fail-on-issues"]
-    result = subprocess.run(cmd, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+    result = run(cmd, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
     OUT.write_text(
         f"# POPIA Sweep Evidence\n\nGenerated: `{datetime.now(timezone.utc).isoformat()}`\n\n"
         f"Command: `{' '.join(cmd)}`\n\nReturn code: `{result.returncode}`\n\n"

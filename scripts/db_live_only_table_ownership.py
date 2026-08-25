@@ -1,11 +1,12 @@
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 import json
 from pathlib import Path
 import re
-import subprocess
+from scripts._subprocess import run
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -57,7 +58,7 @@ class DbLiveOnlyTableOwnershipStatus:
 
 
 def _run(command: list[str]) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
+    return run(
         command,
         cwd=ROOT,
         text=True,

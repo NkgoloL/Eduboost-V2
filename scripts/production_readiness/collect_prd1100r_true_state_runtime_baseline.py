@@ -4,11 +4,12 @@ The collector is intentionally fail-closed.  Missing infrastructure is recorded
 as a blocker instead of being converted into a green readiness claim.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 from typing import Any
@@ -38,7 +39,7 @@ STATIC_REQUIRED_FILES = (
 
 def _run(cmd: list[str], root: Path, timeout: int = 45) -> dict[str, Any]:
     try:
-        completed = subprocess.run(
+        completed = run(
             cmd,
             cwd=root,
             text=True,
@@ -147,7 +148,7 @@ def _ready_http_probe() -> dict[str, Any]:
         return {"status": "blocked", "reason": "API_BASE_URL not set; HTTP /ready not proven"}
     url = base_url.rstrip("/") + "/ready"
     try:  # pragma: no cover - requires live api
-        with urlopen(url, timeout=5) as response:
+        with urlopen(url, timeout=5) as response:  # nosec B310
             body = response.read(4096).decode("utf-8", errors="replace")
             status = response.getcode()
         return {"status": "pass" if status == 200 else "fail", "http_status": status, "url": url, "body_head": body[:1000]}

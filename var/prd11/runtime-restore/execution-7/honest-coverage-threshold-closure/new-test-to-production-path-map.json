@@ -1,0 +1,67 @@
+{
+  "coverage_source": "var/prd11/runtime-restore/execution-7/coverage-baseline-stabilisation/coverage.json",
+  "slice": "prd-1100r-execution-7-honest-coverage-threshold-closure",
+  "tests": [
+    {
+      "behaviour": "release-readiness contract defaults stay clean and malformed evidence fails closed",
+      "domain": "readiness_dependency_paths",
+      "production_paths": [
+        "app/modules/*/production_readiness_contracts.py"
+      ],
+      "test_path": "tests/unit/test_honest_coverage_readiness_contracts.py"
+    },
+    {
+      "behaviour": "training eligibility, educator review eligibility, provider fallback and dependency failure paths",
+      "domain": "curriculum_content_review_llm_safety",
+      "production_paths": [
+        "app/services/curriculum_expansion.py",
+        "app/services/content_review_governance.py",
+        "app/services/llm_provider.py"
+      ],
+      "test_path": "tests/unit/test_honest_coverage_product_behaviour.py"
+    },
+    {
+      "behaviour": "audit trails, dataset split/contamination, feedback resolution, monitoring and grounded source context",
+      "domain": "etl_audit_dataset_generation",
+      "production_paths": [
+        "app/services/etl/etl_pipeline_v2.py",
+        "app/services/etl/etl_pipeline_v3_additions.py",
+        "app/services/batch_generation.py"
+      ],
+      "test_path": "tests/unit/test_honest_coverage_etl_behaviour.py"
+    },
+    {
+      "behaviour": "diagnostic schema validation, IRT item selection, gap ranking and item-bank launch coverage",
+      "domain": "assessments_diagnostics",
+      "production_paths": [
+        "app/modules/diagnostics/production_readiness_contracts.py"
+      ],
+      "test_path": "tests/unit/test_honest_coverage_diagnostics_contracts.py"
+    },
+    {
+      "behaviour": "RLHF export PII gate detects and reports email, phone and name leakage",
+      "domain": "consent_popia_privacy",
+      "production_paths": [
+        "app/services/pii_sweep.py"
+      ],
+      "test_path": "tests/unit/test_honest_coverage_privacy_pii_sweep.py"
+    },
+    {
+      "behaviour": "required secret detection, optional LLM degradation and deep-health readiness classification",
+      "domain": "readiness_dependency_paths",
+      "production_paths": [
+        "app/core/health.py"
+      ],
+      "test_path": "tests/unit/test_honest_coverage_runtime_health.py"
+    },
+    {
+      "behaviour": "refresh token failure, password reset lifecycle, logout revocation and lockout helper boundaries",
+      "domain": "authentication_authorization",
+      "production_paths": [
+        "app/services/auth_service.py",
+        "app/core/password.py"
+      ],
+      "test_path": "tests/unit/test_honest_coverage_auth_service_behaviour.py"
+    }
+  ]
+}

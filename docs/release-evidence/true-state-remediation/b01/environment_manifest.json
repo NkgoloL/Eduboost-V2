@@ -1,33 +1,33 @@
 {
-  "captured_at": "2026-07-16T21:08:39.636955+00:00",
+  "captured_at": "2026-08-20T18:40:30.083553+00:00",
   "docker": {
     "available": true,
     "exit_code": 0,
-    "version": "Docker version 29.5.3, build d1c06ef"
+    "version": "Docker version 29.7.2, build a7dcaa6"
   },
   "docker_compose": {
     "available": true,
     "exit_code": 0,
-    "version": "Docker Compose version v5.1.4"
+    "version": "Docker Compose version v5.5.0"
   },
   "git": {
     "available": true,
-    "branch": "master",
+    "branch": "codex/prd-1100r-runtime-restore-execution-7-coverage-static-security-green-evidence",
     "clean": false,
-    "commit": "ede543a7a9d0bc7d762903b133a5cb706d912238",
-    "status_porcelain": "?? .tsr/\n?? config/\n?? docs/engineering/audits/\n?? docs/roadmap/execution/true_state_remediation_roadmap_2026-07-13.md\n?? docs/roadmap/production_readiness/true_state_remediation_register.json\n?? scripts/true_state_remediation/",
+    "commit": "cd370c7f9085eed48ad6af09b77fac492f35a490",
+    "status_porcelain": "?? .venv",
     "submodules": ""
   },
   "input_digests": {
     ".python-version": "fa682ae9d943f5c8076e68335c9ba3ab4d063ad035c07ac6928653dd4ac50af7",
-    "app/frontend/package.json": "61ea7cd241e6af05935b3d705eccf694b93ee2f459e06dc768163d6f51cba7a5",
+    "app/frontend/package.json": "b3f4759545ee3b259bc89eb12d815a6c25da2d310f4e55801e9fc14afae69471",
     "package.json": "0f1b96117bd811f6fb46fb8f06f4f63729d1a5dfc501efa556f26f59495403f9",
     "pnpm-lock.yaml": "9e280652ecab533b5542e225a4ed06488a5c155ec4fc79498b2e8f36dbd9c665",
     "pyproject.toml": "4240162de806751c5976aee2f270187032d9c95de0482b8b15ae4b912d36403a",
-    "requirements/base.txt": "60a795579ff7bc34f0cd1fb428eb64f54f98e2e5e66ea466847e9aba0ac83c1c",
-    "requirements/dev.txt": "2a2ea8ff64e132e5b821916a6d4578cba50b0f69b91e96c6e48010747a288817",
+    "requirements/base.txt": "bc83e83ef52fab7072af7c777936d6730d9fff9a048bf7d664eb79bb09441c8d",
+    "requirements/dev.txt": "a19156e19770a629b5ebfda8ba70d0b684589733f7b008d0f08059315610f18a",
     "requirements/docs.txt": "baf122c71989e7fa24a8cb8726dc492bf5eb1542f191921f6ab21f4a7354e04c",
-    "requirements/ml.txt": "e2fa147e3446dcf6c38f372b31dea2d887067abe5ebda63c9ad70dc186956ade"
+    "requirements/ml.txt": "2ad806623ae7a2639f3e43f4836bb502bf56100667901751756dc82df574b34c"
   },
   "machine": "x86_64",
   "node": {
@@ -38,7 +38,7 @@
   "pip": {
     "available": true,
     "exit_code": 0,
-    "version": "pip 26.1.2 from /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/lib/python3.12/site-packages/pip (python 3.12)"
+    "version": "pip 26.1.2 from /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/lib/python3.12/site-packages/pip (python 3.12)"
   },
   "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
   "pnpm": {
@@ -49,10 +49,10 @@
   "postgres_client": {
     "available": true,
     "exit_code": 0,
-    "version": "psql (PostgreSQL) 18.4 (Ubuntu 18.4-1.pgdg24.04+1)"
+    "version": "psql (PostgreSQL) 18.6 (Ubuntu 18.6-1.pgdg24.04+2)"
   },
   "python": {
-    "executable": "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+    "executable": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python",
     "version": "3.12.3"
   },
   "redis_client": {

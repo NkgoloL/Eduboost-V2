@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import ast
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -46,7 +47,7 @@ def main() -> int:
         print(f"- PASS syntax {path}")
     if not os.getenv("SKIP_PYTEST_RECURSION"):
         env = {**os.environ, "PYTHONPATH": str(ROOT), "SKIP_PYTEST_RECURSION": "1"}
-        result = subprocess.run(
+        result = run(
             [sys.executable, "-m", "pytest", "-c", "pytest.ini", "tests/unit/test_beta_blocker_burndown.py", "-q", "--no-cov", "--tb=short"],
             cwd=ROOT,
             text=True,
@@ -60,7 +61,7 @@ def main() -> int:
             print("- PASS beta blocker burn-down tests")
         else:
             failures.append("beta blocker burn-down tests failed")
-    ruff = subprocess.run(
+    ruff = run(
         [sys.executable, "-m", "ruff", "check", *CRITICAL, "--select", "F821,F401,F811,E402"],
         cwd=ROOT,
         text=True,

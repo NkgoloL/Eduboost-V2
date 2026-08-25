@@ -1,0 +1,173 @@
+{
+  "contract_id": "product_gate_execution_contract",
+  "contract_path": "docs/roadmap/production_readiness/product_gate_execution_contract.json",
+  "contract_sha256": "ebc49569555eb92a2767601cadd292f9363f93727533078706fdddf6cf8613d7",
+  "reviewed_contract": {
+    "critical_flows": [
+      {
+        "capability": "Auth and object-authorisation behaviour for valid, expired, wrong-role and wrong-owner access.",
+        "class": "product",
+        "critical_behaviours": [
+          "valid JWT permits owned learner access",
+          "expired/tampered token rejected",
+          "wrong guardian/role denied"
+        ],
+        "evidence_source": "independent_command_result",
+        "failure_modes": [
+          "401 unauthenticated",
+          "403 wrong owner/role"
+        ],
+        "governance_substitution_allowed": false,
+        "id": "auth_authorisation",
+        "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "requires_negative_path": true,
+        "requires_positive_path": true,
+        "requires_runtime_context": false
+      },
+      {
+        "capability": "POPIA export/delete/restriction/correction lifecycle behaviour with allowed and denied outcomes.",
+        "class": "product",
+        "critical_behaviours": [
+          "authorised guardian can request rights action",
+          "audit event recorded",
+          "service handles lifecycle status"
+        ],
+        "evidence_source": "independent_command_result",
+        "failure_modes": [
+          "unauthorised request denied",
+          "wrong actor denied"
+        ],
+        "governance_substitution_allowed": false,
+        "id": "popia_lifecycle",
+        "negative_command": "PYTHONPATH=. pytest -m product tests/integration -q --no-cov --tb=short",
+        "positive_command": "PYTHONPATH=. pytest -m product tests/integration -q --no-cov --tb=short",
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "requires_negative_path": true,
+        "requires_positive_path": true,
+        "requires_runtime_context": true
+      },
+      {
+        "capability": "Subscription, checkout/webhook/idempotency and entitlement behaviour under test-mode/fake provider.",
+        "class": "product",
+        "critical_behaviours": [
+          "checkout/session request handled",
+          "webhook idempotency preserved",
+          "subscription status persisted"
+        ],
+        "evidence_source": "independent_command_result",
+        "failure_modes": [
+          "invalid signature rejected",
+          "duplicate webhook idempotent"
+        ],
+        "governance_substitution_allowed": false,
+        "id": "billing_commercial",
+        "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "requires_negative_path": true,
+        "requires_positive_path": true,
+        "requires_runtime_context": false
+      },
+      {
+        "capability": "Learner/guardian progress, consent, lesson and study-plan journey behaviour.",
+        "class": "product",
+        "critical_behaviours": [
+          "guardian-linked learner access works",
+          "progress/study plan projection returned"
+        ],
+        "evidence_source": "independent_command_result",
+        "failure_modes": [
+          "unlinked learner access denied"
+        ],
+        "governance_substitution_allowed": false,
+        "id": "learner_journeys",
+        "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "requires_negative_path": true,
+        "requires_positive_path": true,
+        "requires_runtime_context": false
+      },
+      {
+        "capability": "Diagnostic assessment attempt, IRT field and invalid answer/input behaviour.",
+        "class": "product",
+        "critical_behaviours": [
+          "attempt can be created",
+          "IRT fields are part of contract",
+          "assessment payload accepted"
+        ],
+        "evidence_source": "independent_command_result",
+        "failure_modes": [
+          "invalid item/input rejected"
+        ],
+        "governance_substitution_allowed": false,
+        "id": "diagnostics_assessments",
+        "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "requires_negative_path": true,
+        "requires_positive_path": true,
+        "requires_runtime_context": false
+      },
+      {
+        "capability": "Audit trail capture for product-critical writes and denial events.",
+        "class": "product",
+        "critical_behaviours": [
+          "audit event emitted for critical action",
+          "request context retained"
+        ],
+        "evidence_source": "independent_command_result",
+        "failure_modes": [
+          "missing actor/context fails closed or records denial"
+        ],
+        "governance_substitution_allowed": false,
+        "id": "audit_trail",
+        "negative_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "positive_command": "PYTHONPATH=. pytest -m product tests/unit -q --no-cov --tb=short",
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "requires_negative_path": true,
+        "requires_positive_path": true,
+        "requires_runtime_context": false
+      }
+    ],
+    "execution8_governance_refresh": true,
+    "execution8_review_branch": "codex/prd-1100r-runtime-restore-execution-7-coverage-static-security-green-evidence",
+    "execution8_review_commit": "be78626cc1d526238040986bea67ecd0a60ebd01",
+    "execution_policy": {
+      "capture_independent_command_outputs": true,
+      "execute_product_gates_before_runtime_green_claim": true,
+      "governance_records_cannot_override_failed_flow": true,
+      "green_status_requires_all_flow_results_green": true,
+      "known_failures_must_be_recorded_as_blockers": true,
+      "positive_and_negative_outputs_required": true,
+      "presence_only_outputs_forbidden": true
+    },
+    "execution_results": [],
+    "known_product_gate_blockers": [
+      "Existing product/runtime gates are not yet green; RESTORE-4 records critical-flow execution contract and keeps operational hold active until independent command outputs pass.",
+      "POPIA and backend-backed journey repairs remain required before product_gate_green can become true."
+    ],
+    "last_reviewed_at": "2026-08-25T21:41:05.997068+00:00",
+    "next_after_evidence": "PRD-11.0R.RUNTIME-RESTORE-5",
+    "prd_id": "PRD-11.0R.RUNTIME-RESTORE-4",
+    "product_gate_green": false,
+    "runtime_dependencies": [
+      "postgres",
+      "redis",
+      "exact_alembic_head",
+      "schema_contract",
+      "ready_endpoint"
+    ],
+    "schema_version": "prd11.0r/runtime-restore-4/product-gate-execution/v1",
+    "status": "evidence_recorded",
+    "title": "Product Gate Execution and Critical Flow Repair Contract"
+  }
+}

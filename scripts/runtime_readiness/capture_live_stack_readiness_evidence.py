@@ -7,12 +7,13 @@ It intentionally does not authorise production release, deployment, release
 """
 
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import hashlib
 import json
 import pathlib
-import subprocess
+from scripts._subprocess import run
 import sys
 from datetime import datetime, timezone
 from typing import Any
@@ -37,13 +38,13 @@ def utc_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
-def run(cmd: list[str]) -> dict[str, Any]:
-    proc = subprocess.run(cmd, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+def run_command(cmd: list[str]) -> dict[str, Any]:
+    proc = run(cmd, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     return {"cmd": cmd, "returncode": proc.returncode, "stdout": proc.stdout, "stderr": proc.stderr}
 
 
 def git_value(args: list[str]) -> str | None:
-    proc = run(["git", *args])
+    proc = run_command(["git", *args])
     if proc["returncode"] != 0:
         return None
     return str(proc["stdout"]).strip()
@@ -77,7 +78,7 @@ def write_sha256sums(evidence_dir: pathlib.Path) -> pathlib.Path:
 
 
 def collect_verifier(script: str) -> dict[str, Any]:
-    proc = run([sys.executable, script, "--json"])
+    proc = run_command([sys.executable, script, "--json"])
     try:
         parsed = json.loads(proc["stdout"] or "{}")
     except json.JSONDecodeError:
@@ -105,7 +106,7 @@ def http_probe(base_url: str, path: str, timeout: int) -> dict[str, Any]:
     body = ""
     try:
         req = Request(url, headers={"User-Agent": "EduBoost-Phase14-Live-Stack-Readiness/1.0"})
-        with urlopen(req, timeout=timeout) as response:
+        with urlopen(req, timeout=timeout) as response:  # nosec B310
             body = response.read(8 * 1024 * 1024).decode("utf-8", errors="replace")
             result["status_code"] = int(getattr(response, "status", 0))
             result["body_excerpt"] = body[:4000]
@@ -203,8 +204,8 @@ def main() -> int:
     branch = git_value(["branch", "--show-current"])
     head_sha = git_value(["rev-parse", "HEAD"])
     remote_sha = git_value(["rev-parse", f"origin/{args.target_branch}"])
-    tracked_status = run(["git", "status", "--porcelain", "--untracked-files=no"])
-    all_status = run(["git", "status", "--porcelain", "--untracked-files=normal"])
+    tracked_status = run_command(["git", "status", "--porcelain", "--untracked-files=no"])
+    all_status = run_command(["git", "status", "--porcelain", "--untracked-files=normal"])
     git_state = {
         "branch": branch,
         "head_sha": head_sha,

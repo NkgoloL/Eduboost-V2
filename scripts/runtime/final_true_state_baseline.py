@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Any
 
 from scripts.advisory_suites.advisory_gate import evaluate_advisory_quality_gate_contract
+from scripts.true_state_remediation.core import require_reviewed_artifact
 from scripts.coverage_suites.coverage_contract import evaluate_coverage_contract
 from scripts.production_readiness.collect_prd1100r_true_state_runtime_baseline import collect_baseline
 from scripts.test_suites.product_gate_execution import evaluate_product_gate_execution_contract
@@ -59,6 +60,7 @@ FALSE_BOUNDARIES = (
     "live_payment_processing_authorised",
     "prd12_implementation_authorised",
 )
+RAW_SUMMARY = ROOT / "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-6-final-true-state-baseline-handoff/raw-20260817/summary.json"
 
 
 @dataclass(frozen=True)
@@ -255,12 +257,19 @@ def evaluate_final_true_state_handoff_contract(root: Path = ROOT) -> dict[str, A
         policy.get("red_handoff_target") == NEXT_IF_RED,
     ])
     governance = evaluate_governance_alignment(root)
+    manual_review = require_reviewed_artifact(root, "B01", PRD_ID, Path("docs/release-evidence/production-readiness/prd-1100r-runtime-restore-6-final-true-state-baseline-handoff/raw-20260817/summary.json"))
+    raw_summary = _load(root / RAW_SUMMARY.relative_to(ROOT))
+    raw_execution_valid = raw_summary.get("prd_id") == PRD_ID and raw_summary.get("executed") is True
+    raw_all_release_gates_green = raw_summary.get("all_release_gates_green") is True
     valid = all([
         contract.get("prd_id") == PRD_ID,
         contract.get("schema_version") == "prd11.0r/runtime-restore-6/final-true-state-baseline-handoff/v1",
         gates_valid,
         policy_valid,
         governance.get("valid") is True,
+        manual_review["valid"],
+        raw_execution_valid,
+        raw_all_release_gates_green,
         contract.get("next_if_green") == NEXT_IF_GREEN,
         contract.get("next_if_red") == NEXT_IF_RED,
     ])
@@ -274,6 +283,10 @@ def evaluate_final_true_state_handoff_contract(root: Path = ROOT) -> dict[str, A
         "gates_valid": gates_valid,
         "policy_valid": policy_valid,
         "governance_alignment": governance,
+        "manual_review": manual_review,
+        "raw_summary": str(RAW_SUMMARY.relative_to(ROOT)),
+        "raw_execution_valid": raw_execution_valid,
+        "raw_all_release_gates_green": raw_all_release_gates_green,
         "commands": gate_command_plan(),
         "next_if_green": contract.get("next_if_green"),
         "next_if_red": contract.get("next_if_red"),

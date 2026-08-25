@@ -196,11 +196,7 @@ def render_route_inventory(app: FastAPI, app_spec: str = DEFAULT_APP) -> str:
 
     lines.extend([
         "",
-        "The archived compatibility shim `app.legacy.api.main:app` may attach hidden 410 Gone routes, but those routes must remain outside the canonical `app.api_v2:app` import and OpenAPI schema.",
-        "",
-        "Archived compatibility routes:",
-        "",
-        "- `/api/v1/lessons/generate` returns HTTP 410 Gone only when `app.legacy.api.main:app` is explicitly imported.",
+        "The canonical runtime is app.api_v2:app; no compatibility API entrypoint is retained.",
         "",
         "## Canonical Route Table",
         "",

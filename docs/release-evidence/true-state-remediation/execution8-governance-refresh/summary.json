@@ -1,0 +1,95 @@
+{
+  "applied": [
+    {
+      "contract_id": "test_suite_taxonomy",
+      "control_id": "EXECUTION-8-GOV-01",
+      "manual_evidence": "docs/release-evidence/true-state-remediation/b01/manual/execution-8-gov-01.json",
+      "snapshot": "docs/release-evidence/true-state-remediation/execution8-governance-refresh/test_suite_taxonomy.json",
+      "snapshot_sha256": "315c0bdecd1ed2e6a8af5dfe991c0450acab9a2a35fb307a4ea20e743bce0b3d"
+    },
+    {
+      "contract_id": "script_taxonomy",
+      "control_id": "EXECUTION-8-GOV-02",
+      "manual_evidence": "docs/release-evidence/true-state-remediation/b01/manual/execution-8-gov-02.json",
+      "snapshot": "docs/release-evidence/true-state-remediation/execution8-governance-refresh/script_taxonomy.json",
+      "snapshot_sha256": "11084546d15cdcc26ec731a3852fb21349ebd82339680899f8763596700ff3e2"
+    },
+    {
+      "contract_id": "coverage_contract",
+      "control_id": "EXECUTION-8-GOV-03",
+      "manual_evidence": "docs/release-evidence/true-state-remediation/b01/manual/execution-8-gov-03.json",
+      "snapshot": "docs/release-evidence/true-state-remediation/execution8-governance-refresh/coverage_contract.json",
+      "snapshot_sha256": "1618afad9c9577100babf7a169c897bd07287ba7cebe6161e00676e265391da2"
+    },
+    {
+      "contract_id": "product_runtime_test_gate_contract",
+      "control_id": "EXECUTION-8-GOV-04",
+      "manual_evidence": "docs/release-evidence/true-state-remediation/b01/manual/execution-8-gov-04.json",
+      "snapshot": "docs/release-evidence/true-state-remediation/execution8-governance-refresh/product_runtime_test_gate_contract.json",
+      "snapshot_sha256": "dd56009960ab1bcc2c9228f5f9fa024bad74c76546a0affbda1acb3f667321fe"
+    },
+    {
+      "contract_id": "product_gate_execution_contract",
+      "control_id": "EXECUTION-8-GOV-05",
+      "manual_evidence": "docs/release-evidence/true-state-remediation/b01/manual/execution-8-gov-05.json",
+      "snapshot": "docs/release-evidence/true-state-remediation/execution8-governance-refresh/product_gate_execution_contract.json",
+      "snapshot_sha256": "b7e0ca411e9a95f46d44b5bb06567956ebae6287efc506481c9c01db0e769465"
+    },
+    {
+      "contract_id": "coverage_frontend_advisory_gate_contract",
+      "control_id": "EXECUTION-8-GOV-06",
+      "manual_evidence": "docs/release-evidence/true-state-remediation/b01/manual/execution-8-gov-06.json",
+      "snapshot": "docs/release-evidence/true-state-remediation/execution8-governance-refresh/coverage_frontend_advisory_gate_contract.json",
+      "snapshot_sha256": "13f79aef63a66f3232e6f115bbc8f8df857498c0c41c0ded84751d0a48f7ee98"
+    }
+  ],
+  "branch": "codex/prd-1100r-runtime-restore-execution-7-coverage-static-security-green-evidence",
+  "contracts": [
+    {
+      "contract_id": "test_suite_taxonomy",
+      "contract_path": "docs/roadmap/production_readiness/test_suite_taxonomy.json",
+      "current_last_reviewed_at": "2026-08-25T13:21:33.362186+00:00",
+      "current_sha256": "5d0ac1b34892fef759c141e4dedb513b8ae49cb3244fad089abd7e9004a4a49f"
+    },
+    {
+      "contract_id": "script_taxonomy",
+      "contract_path": "docs/roadmap/production_readiness/script_taxonomy.json",
+      "current_last_reviewed_at": "2026-08-25T13:21:33.362186+00:00",
+      "current_sha256": "67e9d6a29b2f2f993404c6c4ef1ecebec77d11da8385774365bafb4a24cef87c"
+    },
+    {
+      "contract_id": "coverage_contract",
+      "contract_path": "docs/roadmap/production_readiness/coverage_contract.json",
+      "current_last_reviewed_at": "2026-08-25T13:21:33.362186+00:00",
+      "current_sha256": "06561e3a426be8829a0c6823bb00c7c9aa697618eca2387bed24afddb85c5768"
+    },
+    {
+      "contract_id": "product_runtime_test_gate_contract",
+      "contract_path": "docs/roadmap/production_readiness/product_runtime_test_gate_contract.json",
+      "current_last_reviewed_at": "2026-08-25T13:21:33.362186+00:00",
+      "current_sha256": "016600e5c1074a71fa270906029474e9cf04a82d82d7e4011f87753bd45e9f2d"
+    },
+    {
+      "contract_id": "product_gate_execution_contract",
+      "contract_path": "docs/roadmap/production_readiness/product_gate_execution_contract.json",
+      "current_last_reviewed_at": "2026-08-25T13:21:33.362186+00:00",
+      "current_sha256": "ebc49569555eb92a2767601cadd292f9363f93727533078706fdddf6cf8613d7"
+    },
+    {
+      "contract_id": "coverage_frontend_advisory_gate_contract",
+      "contract_path": "docs/roadmap/production_readiness/coverage_frontend_advisory_gate_contract.json",
+      "current_last_reviewed_at": "2026-08-25T13:21:33.362186+00:00",
+      "current_sha256": "81d8928b75e5ff2a9552d3fd28345b1ac72185843b2388614353e5531a96cf94"
+    }
+  ],
+  "execution8_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8",
+  "register_errors": [],
+  "release_boundaries_preserved_false": true,
+  "review_notes": "Completed self-review of current Execution-8 governance contract evidence. Conflict disclosed: sole developer; not independent approval.",
+  "reviewed_at": "2026-08-25T21:41:05.997068+00:00",
+  "reviewer": "Nkgolo Lebelo",
+  "reviewer_role": "Lead Engineer (Self-Review)",
+  "schema_version": "eduboost/execution8-governance-refresh/v1",
+  "source_commit": "be78626cc1d526238040986bea67ecd0a60ebd01",
+  "valid_for_apply": true
+}

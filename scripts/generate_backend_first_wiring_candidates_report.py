@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -19,7 +20,7 @@ COMMANDS = [
 
 
 def _run(command: list[str]) -> tuple[int, str]:
-    result = subprocess.run(
+    result = run(
         command,
         cwd=REPO_ROOT,
         env={**os.environ, "PYTHONPATH": str(REPO_ROOT)},

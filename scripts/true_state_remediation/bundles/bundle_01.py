@@ -1,9 +1,10 @@
 from __future__ import annotations
-import json, subprocess, sys
+import json, sys
+from scripts._subprocess import run
 from pathlib import Path
 from scripts.true_state_remediation.core import (
  BundleError, atomic_write_json, environment_manifest, load_json, register_path, require_manual_evidence,
- run_command, CommandSpec, sha256_file, update_task_status, utc_now, verify_false_release_boundaries, verify_register,
+ run_command, CommandSpec, sha256_file, update_bundle_status, update_task_status, utc_now, verify_false_release_boundaries, verify_register,
 )
 TASKS=[f"TSR-0.{i}" for i in range(1,9)]+[f"TSR-1.{i}" for i in range(1,15)]
 MANUAL=("TSR-0.7","TSR-1.11")
@@ -32,7 +33,11 @@ def verify(*,root:Path,evidence_dir:Path,skip_heavy:bool):
     checks["commands"]={"valid":summary.get("all_required_green") is True,"summary":summary}
     checks["manual"]=require_manual_evidence(root,"B01",MANUAL)
     valid=all(c.get("valid") for c in checks.values())
-    if valid: update_task_status(root,TASKS,"verified",[str(evidence_dir.relative_to(root))])
-    else: update_task_status(root,TASKS,"evidence_pending",[str(evidence_dir.relative_to(root))])
+    if valid:
+        update_task_status(root,TASKS,"verified",[str(evidence_dir.relative_to(root))])
+        update_bundle_status(root,"B01","verified",next_bundle_status="authorised")
+    else:
+        update_task_status(root,TASKS,"evidence_pending",[str(evidence_dir.relative_to(root))])
+        update_bundle_status(root,"B01","in_progress")
     atomic_write_json(evidence_dir/"verification.json",{"valid":valid,"checks":checks,"verified_at":utc_now()})
     return {"valid":valid,"checks":checks}

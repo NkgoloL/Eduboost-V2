@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import argparse
 import filecmp
-import subprocess
+from scripts._subprocess import run
 import sys
 import tempfile
 from pathlib import Path
@@ -29,7 +29,7 @@ def run_inventory(root: Path, outputs: list[str]) -> int:
         "--out-findings",
         outputs[2],
     ]
-    return subprocess.call(cmd, cwd=root)
+    return run(cmd, cwd=root)
 
 
 def main() -> int:

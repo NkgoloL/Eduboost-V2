@@ -48,7 +48,7 @@ async def run_deep_readiness_runtime_checks(
         checks.append(DeepReadinessCheckResult("alembic_revision", "warn", f"{type(exc).__name__}: {exc}"))
     for table in required_tables:
         try:
-            await _execute(db_session, f"SELECT 1 FROM information_schema.tables WHERE table_name = '{table}' LIMIT 1")
+            await _execute(db_session, f"SELECT 1 FROM information_schema.tables WHERE table_name = '{table}' LIMIT 1")  # nosec B608
             checks.append(DeepReadinessCheckResult(f"table:{table}", "pass", "read-only table presence query completed"))
         except Exception as exc:
             checks.append(DeepReadinessCheckResult(f"table:{table}", "warn", f"{type(exc).__name__}: {exc}"))

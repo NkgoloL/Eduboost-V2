@@ -80,5 +80,4 @@ Place new work in:
 - `app/repositories/`
 - `app/core/`
 
-Legacy compatibility shims live under `app/legacy/` and should not receive new
 feature work.

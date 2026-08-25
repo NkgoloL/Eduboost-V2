@@ -1,4 +1,5 @@
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 from datetime import datetime, timezone
@@ -8,7 +9,7 @@ import os
 from pathlib import Path
 import re
 import shutil
-import subprocess
+from scripts._subprocess import run
 from urllib.parse import urlparse
 
 try:
@@ -39,8 +40,8 @@ def env(name: str) -> str:
     return os.getenv(name, "").strip()
 
 
-def run(cmd: list[str]) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
+def run_command(cmd: list[str]) -> subprocess.CompletedProcess[str]:
+    return run(
         cmd,
         cwd=ROOT,
         text=True,
@@ -51,7 +52,7 @@ def run(cmd: list[str]) -> subprocess.CompletedProcess[str]:
 
 
 def current_commit() -> str:
-    result = run(["git", "rev-parse", "HEAD"])
+    result = run_command(["git", "rev-parse", "HEAD"])
     return result.stdout.strip() if result.returncode == 0 else "unknown"
 
 
@@ -145,7 +146,7 @@ def count_table(conn, table: str) -> int | None:
     if not table_exists(conn, table):
         return None
     with conn.cursor() as cur:
-        cur.execute(f'SELECT COUNT(*) FROM public."{table}"')
+        cur.execute(f'SELECT COUNT(*) FROM public."{table}"')  # nosec B608
         return int(cur.fetchone()[0])
 
 
@@ -221,11 +222,11 @@ def gh_run(run_id: str, expected_sha: str) -> dict:
     if not re.fullmatch(r"[0-9]+", run_id):
         blockers.append("DB_ROLLBACK_RUN_ID is not numeric")
         return evidence
-    if run(["gh", "--version"]).returncode != 0:
+    if run_command(["gh", "--version"]).returncode != 0:
         blockers.append("GitHub CLI is unavailable")
         return evidence
 
-    result = run([
+    result = run_command([
         "gh", "run", "view", run_id,
         "--json", "status,conclusion,headSha,url,workflowName",
     ])
@@ -313,7 +314,7 @@ def write_status(run_drill: bool = False) -> dict:
         dump_path = WORK_DIR / f"db_rollback_{commit[:12]}_{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}.dump"
         dump_label = dump_path.name
 
-        backup = run(["pg_dump", "--format=custom", "--no-owner", "--no-acl", "--file", str(dump_path), pg_url_for_tool(src_url)])
+        backup = run_command(["pg_dump", "--format=custom", "--no-owner", "--no-acl", "--file", str(dump_path), pg_url_for_tool(src_url)])
         backup_cmd = command_evidence("pg_dump --format=custom --no-owner --no-acl --file <dump> <source-db>", backup)
         if backup.returncode != 0:
             blockers.append(f"backup command failed with exit code {backup.returncode}")
@@ -325,7 +326,7 @@ def write_status(run_drill: bool = False) -> dict:
             blockers.append("backup dump was not created or was empty")
 
         if not blockers:
-            restore = run(["pg_restore", "--clean", "--if-exists", "--no-owner", "--no-acl", "--dbname", dst_url, str(dump_path)])
+            restore = run_command(["pg_restore", "--clean", "--if-exists", "--no-owner", "--no-acl", "--dbname", dst_url, str(dump_path)])
             restore_cmd = command_evidence("pg_restore --clean --if-exists --no-owner --no-acl --dbname <restore-db> <dump>", restore)
             if restore.returncode != 0:
                 blockers.append(f"restore command failed with exit code {restore.returncode}")

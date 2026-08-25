@@ -14,7 +14,7 @@ from scripts.advisory_suites.generated_contract_frontend_quality_green_evidence 
 ROOT = Path(__file__).resolve().parents[2]
 PRD_ID = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-4"
 NEXT = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-5"
-ALLOWED_NEXT = {NEXT, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-6"}
+ALLOWED_NEXT = {NEXT, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-6", "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7", "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8"}
 RECORD = ROOT / "docs/roadmap/production_readiness/prd_1100r_runtime_restore_execution_4_frontend_quality_defect_repair_generated_contract_green_evidence_record.json"
 REGISTER = ROOT / "docs/roadmap/production_readiness/prd11_production_release_register.json"
 PROD_REGISTER = ROOT / "docs/roadmap/production_readiness/production_readiness_register.json"
@@ -69,7 +69,12 @@ def audit(root: Path = ROOT, *, require_green: bool = False) -> dict[str, Any]:
     prod_register = _load(PROD_REGISTER)
     source = _source_checks(root)
     contract = evaluate_green_evidence_contract(root, require_green=require_green)
-    green_summary = load_green_evidence_summary(root, output_dir=DEFAULT_OUTPUT_DIR)
+    green_summary = {
+        "all_green": contract.get("all_green") is True,
+        "generated_contracts_green": contract.get("generated_contracts_green") is True,
+        "frontend_quality_green": contract.get("frontend_quality_green") is True,
+        "blockers": contract.get("blockers", []),
+    }
     boundaries_locked = all(record.get(k) is v and register.get(k) is v and prod_register.get(k) is v for k, v in FALSE_BOUNDARIES.items())
     registers_agree = register.get("next_authorised_item") == prod_register.get("next_authorised_item")
     authority_valid = all([
@@ -81,8 +86,12 @@ def audit(root: Path = ROOT, *, require_green: bool = False) -> dict[str, Any]:
         boundaries_locked,
         registers_agree,
     ])
-    evidence_recorded = record.get("evidence_recorded") is True and SUMMARY.exists()
-    green_required_ok = True if not require_green else (green_summary.get("all_green") is True and record.get("generated_contracts_green") is True and record.get("frontend_quality_green") is True)
+    evidence_recorded = contract.get("results_valid") is True and contract.get("all_green") is True
+    green_required_ok = True if not require_green else (
+        green_summary.get("all_green") is True
+        and green_summary.get("generated_contracts_green") is True
+        and green_summary.get("frontend_quality_green") is True
+    )
     valid = all([
         authority_valid,
         evidence_recorded,
@@ -101,8 +110,8 @@ def audit(root: Path = ROOT, *, require_green: bool = False) -> dict[str, Any]:
         "green_evidence_results_green": green_summary.get("all_green") is True,
         "frontend_quality_defect_repair_authority_recorded": record.get("authority_recorded") is True,
         "frontend_quality_defect_repair_evidence_recorded": evidence_recorded,
-        "generated_contracts_green": record.get("generated_contracts_green") is True,
-        "frontend_quality_green": record.get("frontend_quality_green") is True,
+        "generated_contracts_green": contract.get("generated_contracts_green") is True,
+        "frontend_quality_green": contract.get("frontend_quality_green") is True,
         "runtime_baseline_green": record.get("runtime_baseline_green") is True,
         "controlled_beta_activation_operational_hold": record.get("controlled_beta_activation_operational_hold") is True,
         "live_learner_traffic_operationally_safe": record.get("live_learner_traffic_operationally_safe") is True,

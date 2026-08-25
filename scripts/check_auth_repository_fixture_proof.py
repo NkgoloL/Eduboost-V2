@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import ast
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -46,7 +47,7 @@ def main() -> int:
         ast.parse(read(path))
         print(f"- PASS syntax {path}")
 
-    pytest_result = subprocess.run(
+    pytest_result = run(
         [
             sys.executable,
             "-m",
@@ -71,7 +72,7 @@ def main() -> int:
     else:
         failures.append("auth repository fixture proof tests failed")
 
-    ruff = subprocess.run(
+    ruff = run(
         [
             sys.executable,
             "-m",

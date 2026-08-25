@@ -1,18 +1,3 @@
----
-title: "Phase 2 Authorization Closure Report"
-status: current-evidence
-owner: security
-reviewers: [security, engineering, privacy]
-audience: security-reviewer
-source_of_truth: false
-supersedes: []
-superseded_by: null
-last_reviewed: 2026-07-02
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage4-check"
-code_anchors: [docs/security/README.md, app/security]
----
-
 # Phase 2 Authorization Closure Report
 
 ## Scope
@@ -23,10 +8,10 @@ routes that do not carry a learner object.
 
 ## Route Matrix Summary
 
-- Routes inspected: 202
-- Covered learner-scoped routes: 67
-- Non-learner-scoped routes: 132
-- Missing learner authorization markers: 3
+- Routes inspected: 219
+- Covered learner-scoped routes: 68
+- Non-learner-scoped routes: 145
+- Missing learner authorization markers: 6
 
 ## Key Evidence
 
@@ -69,7 +54,10 @@ Status: **not closed** — missing learner authorization markers remain.
 
 - `auth.py` `POST /dev-session` via `create_dev_session`
 - `auth_extended.py` `GET /verify-email` via `verify_email`
+- `controlled_beta.py` `GET /preflight` via `get_controlled_beta_preflight`
 - `gamification.py` `GET /leaderboard` via `get_leaderboard`
+- `privacy_operations.py` `GET /live-data/readiness` via `get_popia_live_data_operations_readiness`
+- `privacy_operations.py` `GET /live-data/final-assurance` via `get_popia_live_data_operations_final_assurance`
 
 ## Closure Stamp
 

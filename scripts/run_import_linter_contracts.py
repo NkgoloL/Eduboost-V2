@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import shutil
-import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
-
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from scripts._subprocess import run  # noqa: E402
 OUT = ROOT / "docs/architecture/import_linter_contract_run.md"
 
 
@@ -31,7 +34,7 @@ def main() -> int:
         print(f"Wrote {OUT.relative_to(ROOT)}")
         return 0
 
-    result = subprocess.run(["lint-imports"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+    result = run(["lint-imports"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
     lines.extend([
         f"**Status:** {'pass' if result.returncode == 0 else 'fail'}",
         "",

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Button } from "./Button-legacy";
+import { Button } from "./button";
 
 interface ErrorMessageProps {
   title?: string;

@@ -392,7 +392,7 @@ def _make_progress_cb(source_id: str, job_id: str | None, qm: QueueManager | Non
         try:
             loop = asyncio.get_running_loop()
             loop.create_task(qm.update_progress(progress))
-        except RuntimeError:
+        except Exception:  # best-effort probe, cannot fail-close
             pass  # No running loop — skip progress update
 
     return cb

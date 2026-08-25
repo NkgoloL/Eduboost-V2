@@ -137,13 +137,13 @@ def _dependency_remediation_valid(root: Path) -> bool:
     dev_txt = (root / "requirements/dev.txt").read_text() if (root / "requirements/dev.txt").exists() else ""
     security_plan = _load_json(root / SECURITY_PLAN.relative_to(ROOT))
     return all([
-        "aiohttp==3.13.5" in base_in,
+        "aiohttp==3.14.3" in base_in,
         "beautifulsoup4==4.12.3" in base_in,
-        "aiohttp==3.13.5" in dev_in,
+        "aiohttp==3.14.3" in dev_in,
         "beautifulsoup4==4.12.3" in dev_in,
-        "aiohttp==3.13.5" in dev_txt,
+        "aiohttp==3.14.3" in dev_txt,
         "beautifulsoup4==4.12.3" in dev_txt,
-        "cryptography==49.0.0" in base_in,
+        "cryptography==50.0.0" in base_in,
         security_plan.get("cryptography_bumped_in_requirements") is True,
         (security_plan.get("python_jose_to_pyjwt_required_before") == "PRD-10 live learner traffic authorisation" or security_plan.get("python_jose_to_pyjwt_completed_in") == "PRD-10.0-10.4"),
         security_plan.get("secrets_baseline_reduction_required_before") == "PRD-10 live learner traffic authorisation",

@@ -47,7 +47,7 @@ def download_pdf(url: str, target: Path, *, max_bytes: int) -> int:
     total = 0
     tmp = target.with_suffix(target.suffix + ".part")
     try:
-        with urlopen(request, timeout=90) as response, tmp.open("wb") as handle:  # noqa: S310 - approved manifest URL only
+        with urlopen(request, timeout=90) as response, tmp.open("wb") as handle:  # noqa: S310 - approved manifest URL only  # nosec B310
             first = response.read(5)
             total += len(first)
             if first != b"%PDF-":

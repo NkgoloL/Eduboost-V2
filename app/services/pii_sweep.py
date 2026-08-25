@@ -202,7 +202,7 @@ class PIIScanner:
                     field_name=field_name,
                     position=match.start,
                 ))
-        except ImportError:
+        except Exception:  # best-effort probe, cannot fail-close
             pass  # Optional dependency; regex check above still runs
 
     @staticmethod

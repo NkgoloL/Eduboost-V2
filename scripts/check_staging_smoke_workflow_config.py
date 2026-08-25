@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import ast
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 import json
 from pathlib import Path
-import subprocess
+from scripts._subprocess import run
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,7 +32,7 @@ class WorkflowConfigStatus:
 
 
 def current_commit() -> str:
-    result = subprocess.run(
+    result = run(
         ["git", "rev-parse", "HEAD"],
         cwd=ROOT,
         text=True,

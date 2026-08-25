@@ -6,7 +6,7 @@ import argparse
 import hashlib
 import json
 import shutil
-import subprocess
+from scripts._subprocess import check_output, run
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -39,7 +39,7 @@ def _sha256(path: Path) -> str:
 
 def _git_state() -> dict[str, str]:
     def run(*cmd: str) -> str:
-        return subprocess.check_output(cmd, cwd=ROOT, text=True).strip()
+        return check_output(cmd, cwd=ROOT, text=True).strip()
     return {
         "branch": run("git", "branch", "--show-current"),
         "head_sha": run("git", "rev-parse", "HEAD"),

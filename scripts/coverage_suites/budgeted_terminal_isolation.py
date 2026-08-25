@@ -13,7 +13,7 @@ from importlib import metadata
 import json
 from pathlib import Path
 import platform
-import subprocess
+from scripts._subprocess import run
 import tarfile
 import time
 from typing import Any, Sequence
@@ -58,7 +58,7 @@ def sha256_file(path: Path) -> str:
 
 
 def revision_sha(root: Path) -> str:
-    completed = subprocess.run(
+    completed = run(
         ["git", "rev-parse", "HEAD"],
         cwd=root,
         text=True,

@@ -297,7 +297,7 @@ class EduboostETLv3(EduboostETLv2):
 
         set_clauses.append("updated_at=?")
         params.extend([_now(), document_id])
-        db.execute(f"UPDATE documents SET {', '.join(set_clauses)} WHERE document_id=?", params)
+        db.execute(f"UPDATE documents SET {', '.join(set_clauses)} WHERE document_id=?", params)  # nosec B608
         db.commit()
 
         for col, old_val, new_val in changes:
@@ -407,8 +407,8 @@ class EduboostETLv3(EduboostETLv2):
         Split a training dataset into train / validation / test subsets.
         Creates three child datasets linked via dataset_splits.
         """
-        assert abs(train + val + test - 1.0) < 1e-6, "Split ratios must sum to 1.0"
-
+        if not (abs(train + val + test - 1.0) < 1e-6):
+            raise AssertionError("Split ratios must sum to 1.0")
         db = self._db()
         parent = db.execute(
             "SELECT * FROM training_datasets WHERE dataset_id=?", (dataset_id,)

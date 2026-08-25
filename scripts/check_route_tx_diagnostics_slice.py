@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import ast
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -56,13 +57,13 @@ def main() -> int:
         print(f"- PASS syntax {path}")
     if not os.getenv("SKIP_PYTEST_RECURSION"):
         env = {**os.environ, "PYTHONPATH": str(ROOT), "SKIP_PYTEST_RECURSION": "1"}
-        result = subprocess.run([sys.executable, "-m", "pytest", "-c", "pytest.ini", "tests/unit/test_route_tx_diagnostics_slice.py", "-q", "--no-cov", "--tb=short"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, env=env, check=False)
+        result = run([sys.executable, "-m", "pytest", "-c", "pytest.ini", "tests/unit/test_route_tx_diagnostics_slice.py", "-q", "--no-cov", "--tb=short"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, env=env, check=False)
         print(result.stdout)
         if result.returncode == 0:
             print("- PASS diagnostics route transaction slice tests")
         else:
             failures.append("diagnostics route transaction slice tests failed")
-    ruff = subprocess.run([sys.executable, "-m", "ruff", "check", *CRITICAL, "--select", "F821,F401,F811,E402"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+    ruff = run([sys.executable, "-m", "ruff", "check", *CRITICAL, "--select", "F821,F401,F811,E402"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
     if ruff.returncode == 0:
         print("- PASS focused Ruff diagnostics route transaction slice check")
     else:

@@ -7,6 +7,7 @@ Green evidence requires every gate to be backed by independent command
 output, with blocker records when anything fails.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -14,7 +15,7 @@ import json
 import os
 from pathlib import Path
 import re
-import subprocess
+from scripts._subprocess import run
 import sys
 import time
 from typing import Any
@@ -101,7 +102,7 @@ def command_plan() -> list[CoverageStaticSecurityCommand]:
         CoverageStaticSecurityCommand(
             "bandit_release_security",
             "Bandit security scan over application and script code.",
-            [_py(), "-m", "bandit", "-r", "app", "scripts", "-q"],
+            [_py(), "-m", "bandit", "-r", "app", "scripts", "-c", ".bandit", "-q"],
             "bandit-release-security.json",
             600,
         ),
@@ -122,7 +123,7 @@ def command_plan() -> list[CoverageStaticSecurityCommand]:
         CoverageStaticSecurityCommand(
             "secret_baseline_review",
             "Secret-baseline drift/reviewability scan over release-relevant source paths.",
-            ["bash", "-lc", "detect-secrets scan --baseline .secrets.baseline app scripts .github"],
+            [sys.executable, "-m", "detect_secrets", "scan", "--baseline", ".secrets.baseline", "app", "scripts", ".github"],
             "secret-baseline-review.json",
             300,
         ),
@@ -331,7 +332,7 @@ def _run_one(item: CoverageStaticSecurityCommand, output_dir: Path) -> dict[str,
     monotonic_started = time.monotonic()
     timed_out = False
     try:
-        completed = subprocess.run(
+        completed = run(
             item.command,
             cwd=ROOT,
             text=True,

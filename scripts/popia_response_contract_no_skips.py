@@ -1,10 +1,11 @@
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import ast
 import json
 import os
 import re
-import subprocess
+from scripts._subprocess import run
 import sys
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -47,7 +48,7 @@ class Status:
 
 
 def current_commit() -> str:
-    result = subprocess.run(
+    result = run(
         ["git", "rev-parse", "HEAD"],
         cwd=ROOT,
         text=True,
@@ -149,7 +150,7 @@ def has_skip(output: str) -> bool:
 def run_pytest() -> tuple[int, str, bool]:
     env = {**os.environ, "PYTHONPATH": str(ROOT), "SKIP_PYTEST_RECURSION": "1"}
     venv_py = str((ROOT / ".venv" / "bin" / "python")) if (ROOT / ".venv" / "bin" / "python").exists() else sys.executable
-    result = subprocess.run(
+    result = run(
         [
             venv_py,
             "-m",

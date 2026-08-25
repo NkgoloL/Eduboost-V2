@@ -23,7 +23,7 @@ FALSE_BOUNDARIES = {
     "live_payment_processing_authorised": False,
     "prd12_implementation_authorised": False,
 }
-ALLOWED_NEXT = {PRD_ID, NEXT, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7"}
+ALLOWED_NEXT = {PRD_ID, NEXT, "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7", "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8"}
 
 
 def _load(path: Path) -> dict[str, Any]:

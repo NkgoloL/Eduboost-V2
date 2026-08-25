@@ -15,11 +15,13 @@ def test_green_evidence_command_plan_contains_all_release_blockers():
     assert any(item["gate_id"] == "frontend_build_side_effect_check" for item in plan)
 
 
-def test_green_evidence_contract_is_valid_before_live_green_run():
+def test_green_evidence_contract_uses_completed_digest_bound_raw_review():
     result = evaluate_green_evidence_contract(require_green=False)
     assert result["base_valid"] is True
     assert result["valid"] is True
-    assert result["all_green"] is False
+    assert result["manual_review"]["valid"] is True
+    assert result["raw_identity_valid"] is True
+    assert result["all_green"] is True
 
 
 def test_green_evidence_execute_records_missing_executable_as_blocker(tmp_path: Path, monkeypatch):

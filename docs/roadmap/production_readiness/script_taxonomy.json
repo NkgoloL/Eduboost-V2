@@ -1,4 +1,7 @@
 {
+  "execution8_governance_refresh": true,
+  "execution8_review_branch": "codex/prd-1100r-runtime-restore-execution-7-coverage-static-security-green-evidence",
+  "execution8_review_commit": "be78626cc1d526238040986bea67ecd0a60ebd01",
   "freshness_max_age_days": 21,
   "functional_roles": [
     {
@@ -44,7 +47,7 @@
       "requires_machine_readable_output": true
     }
   ],
-  "last_reviewed_at": "2026-07-10T18:43:16.764520+00:00",
+  "last_reviewed_at": "2026-08-25T21:41:05.997068+00:00",
   "prd_id": "PRD-11.2R",
   "purpose": "Classify scripts by release-evidence domain and function so scripts are operational tools with explicit mutability, evidence, and runtime contracts rather than unstructured helper sprawl.",
   "release_gate_policy": "Script output is supporting evidence only. Product/runtime/security release claims require scripts in the product/runtime/advisory classes to execute behaviour or checks and emit current command results; governance/capture scripts cannot generate their own proof from constants.",

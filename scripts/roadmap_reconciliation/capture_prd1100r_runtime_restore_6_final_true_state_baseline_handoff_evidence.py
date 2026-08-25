@@ -43,11 +43,30 @@ def main() -> int:
     parser.add_argument("--prd-owner", default="Nkgolo Lebelo")
     parser.add_argument("--target-branch", default="master")
     parser.add_argument("--run-expensive-checks", action="store_true")
+    parser.add_argument("--collect-only", action="store_true", help="Write a raw standalone snapshot without mutating authority records.")
     parser.add_argument("--require-valid", action="store_true")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
     if not args.claim_prd1100r_runtime_restore_6_final_true_state_baseline_handoff:
         raise SystemExit("missing --claim-prd1100r-runtime-restore-6-final-true-state-baseline-handoff")
+    if args.collect_only:
+        now = datetime.now(timezone.utc).isoformat()
+        contract = evaluate_final_true_state_handoff_contract(ROOT)
+        baseline = collect_final_true_state_baseline(ROOT, run_expensive_checks=args.run_expensive_checks)
+        raw_dir = EVIDENCE_DIR / "raw-20260817"
+        payload = {
+            "prd_id": PRD_ID,
+            "executed": True,
+            "captured_at": now,
+            "collector": "capture_prd1100r_runtime_restore_6_final_true_state_baseline_handoff_evidence --collect-only",
+            "contract": contract,
+            "baseline": baseline,
+            "all_release_gates_green": baseline.get("all_release_gates_green") is True,
+            "blockers": baseline.get("blockers", []),
+        }
+        _write(raw_dir / "summary.json", payload)
+        print(json.dumps(payload, indent=2, sort_keys=True) if args.json else payload)
+        return 0
     before = audit(ROOT)
     if not before["authority_valid"]:
         raise SystemExit(json.dumps(before, indent=2, sort_keys=True))

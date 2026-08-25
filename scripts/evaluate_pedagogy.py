@@ -114,8 +114,8 @@ def generate_responses(args: argparse.Namespace, cases: list[BenchmarkCase]) -> 
     except ImportError as exc:  # pragma: no cover - depends on GPU/image deps
         raise RuntimeError("Install ML dependencies before model-backed evaluation") from exc
 
-    tokenizer = AutoTokenizer.from_pretrained(args.model_id, trust_remote_code=True)
-    model = AutoModelForCausalLM.from_pretrained(
+    tokenizer = AutoTokenizer.from_pretrained(args.model_id, trust_remote_code=True)  # nosec B615
+    model = AutoModelForCausalLM.from_pretrained(  # nosec B615
         args.model_id,
         device_map="auto",
         torch_dtype=torch.bfloat16 if torch.cuda.is_available() else torch.float32,

@@ -1,8 +1,8 @@
 # Release Evidence Manifest
 
-Generated: `2026-06-12T17:36:28Z`
-Branch: `phase-11/technical-debt-burn-down`
-Commit: `b33e49720860a084e7a7c42ead1b620cb859e64f`
+Generated: `2026-08-03T14:11:36Z`
+Branch: `fix/tsr-b01-gate-remediation`
+Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 
 ## Required Evidence Commands
 

@@ -8,15 +8,16 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from scripts._subprocess import run  # noqa: E402
 from scripts.route_tx_auth_slice import write_report  # noqa: E402
 
 REGISTRY = ROOT / "docs/release/evidence_status_registry.yml"
 
 
 def current_commit() -> str:
-    import subprocess
+    import subprocess  # nosec B404 -- only .PIPE/.DEVNULL constants used here
 
-    result = subprocess.run(
+    result = run(
         ["git", "rev-parse", "HEAD"],
         cwd=ROOT,
         text=True,

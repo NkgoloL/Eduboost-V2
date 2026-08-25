@@ -1,4 +1,5 @@
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone, timedelta
@@ -9,7 +10,7 @@ import hmac
 import json
 import os
 import re
-import subprocess
+from scripts._subprocess import run
 from pathlib import Path
 from typing import Any
 
@@ -72,7 +73,7 @@ class JwtSecretRotationEvidenceStatus:
     blockers: list[str]
 
 def _run(cmd: list[str]) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(cmd, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+    return run(cmd, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
 
 def current_commit() -> str:
     r = _run(["git", "rev-parse", "HEAD"])
@@ -141,7 +142,7 @@ def verify_hs256_jwt(token: str, secret: str, *, expected_use: str) -> bool:
 def _tamper(token: str) -> str:
     p = token.split(".")
     if len(p) != 3: return token + "x"
-    p[2] = p[2][:-1] + ("A" if not p[2].endswith("A") else "B")
+    p[1] = ("A" if p[1][0] != "A" else "B") + p[1][1:]
     return ".".join(p)
 
 def run_token_self_test(access_secret: str, refresh_secret: str) -> TokenSelfTest:

@@ -7,14 +7,14 @@ so we can control what the service returns/raises without touching the DB.
 import pytest
 pytestmark = pytest.mark.integration
 
-from unittest.mock import AsyncMock
-from fastapi import HTTPException
-from fastapi.testclient import TestClient
+from unittest.mock import AsyncMock  # noqa: E402
+from fastapi import HTTPException  # noqa: E402
+from fastapi.testclient import TestClient  # noqa: E402
 
-from app.api_v2 import app
-from app.core import security as core_security
-from app.api_v2_deps.consent_lifecycle import get_canonical_data_rights_service
-from app.services.popia_service import POPIADataRightsService
+from app.api_v2 import app  # noqa: E402
+from app.core import security as core_security  # noqa: E402
+from app.api_v2_deps.consent_lifecycle import get_canonical_data_rights_service  # noqa: E402
+from app.services.popia_service import POPIADataRightsService  # noqa: E402
 
 client = TestClient(app)
 

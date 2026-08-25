@@ -161,7 +161,8 @@ async def accept_assignment(
         )
         artifact = await session.get(ContentGenerationArtifact, assignment.artifact_id)
         await session.commit()
-        assert artifact is not None
+        if not (artifact is not None):
+            raise AssertionError("assertion failed")
         return _artifact_status(artifact)
     except LookupError as exc:
         await session.rollback()

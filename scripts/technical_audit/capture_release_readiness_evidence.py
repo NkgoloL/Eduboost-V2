@@ -8,6 +8,7 @@ not authorise a production launch, deployment, release tag, or runtime KG pivot.
 """
 
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import datetime as dt
@@ -15,7 +16,7 @@ import hashlib
 import json
 import pathlib
 import re
-import subprocess
+from scripts._subprocess import run
 import sys
 from typing import Any
 
@@ -45,13 +46,13 @@ def utc_now() -> str:
     return dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
-def run(cmd: list[str], *, check: bool = True) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(cmd, check=check, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+def run_command(cmd: list[str], *, check: bool = True) -> subprocess.CompletedProcess[str]:
+    return run(cmd, check=check, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 
 def git_value(args: list[str], default: str | None = None) -> str | None:
     try:
-        return run(["git", *args]).stdout.strip()
+        return run_command(["git", *args]).stdout.strip()
     except Exception:
         return default
 
@@ -60,7 +61,7 @@ def git_is_ancestor_or_equal(candidate: str, descendant: str) -> bool:
     """Return True if candidate is an ancestor of (or equal to) descendant."""
     try:
         # git merge-base --is-ancestor exits 0 if true, 1 if false
-        result = subprocess.run(
+        result = run(
             ["git", "merge-base", "--is-ancestor", candidate, descendant],
             capture_output=True,
             text=True,
@@ -71,14 +72,14 @@ def git_is_ancestor_or_equal(candidate: str, descendant: str) -> bool:
 
 
 def tracked_worktree_clean() -> bool:
-    diff = subprocess.run(["git", "diff", "--quiet"], text=True)
-    staged = subprocess.run(["git", "diff", "--cached", "--quiet"], text=True)
+    diff = run_command(["git", "diff", "--quiet"], text=True)
+    staged = run_command(["git", "diff", "--cached", "--quiet"], text=True)
     return diff.returncode == 0 and staged.returncode == 0
 
 
 def untracked_files() -> list[str]:
     try:
-        out = run(["git", "ls-files", "--others", "--exclude-standard"]).stdout
+        out = run_command(["git", "ls-files", "--others", "--exclude-standard"]).stdout
     except Exception:
         return []
     return [line for line in out.splitlines() if line.strip()]
@@ -120,7 +121,7 @@ def run_merge_verifier() -> dict[str, Any]:
             "warnings": [],
             "checked": [],
         }
-    completed = run([sys.executable, str(MERGE_VERIFIER), "--json"], check=False)
+    completed = run_command([sys.executable, str(MERGE_VERIFIER), "--json"], check=False)
     try:
         payload = json.loads(completed.stdout)
     except json.JSONDecodeError:

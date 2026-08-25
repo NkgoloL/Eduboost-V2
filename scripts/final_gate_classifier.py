@@ -1,8 +1,9 @@
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import json
 import re
-import subprocess
+from scripts._subprocess import run
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -107,7 +108,7 @@ class FinalGateRefresh:
 
 
 def current_commit() -> str:
-    result = subprocess.run(
+    result = run(
         ["git", "rev-parse", "HEAD"],
         cwd=ROOT,
         text=True,
@@ -174,8 +175,8 @@ def _load_yaml() -> dict[str, Any]:
         data = yaml.safe_load(text) or {}
         if isinstance(data, dict):
             return data
-    except Exception:
-        pass
+    except Exception:  # best-effort probe, cannot fail-close
+            pass
     return {"findings": _parse_registry_fallback(text)}
 
 
@@ -219,8 +220,8 @@ def _read_json_status(path: Path, keys: tuple[str, ...] = ("status", "beta_decis
             for key in keys:
                 if key in data:
                     return str(data[key])
-    except Exception:
-        pass
+    except Exception:  # best-effort probe, cannot fail-close
+            pass
     return path.stem
 
 

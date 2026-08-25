@@ -1,9 +1,10 @@
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import ast
 import importlib
 import json
-import subprocess
+from scripts._subprocess import run
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -49,7 +50,7 @@ class Status:
 
 
 def current_commit() -> str:
-    result = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, check=False)
+    result = run(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, check=False)
     return result.stdout.strip() if result.returncode == 0 else "unknown"
 
 
@@ -123,7 +124,7 @@ def registered_routes() -> tuple[bool, bool, dict[str, dict[str, list[str]]]]:
         app = FastAPI()
         app.include_router(router)
         routes: dict[str, dict[str, list[str]]] = {}
-        for route in app.routes:
+        for route in router.routes:
             if not isinstance(route, APIRoute):
                 continue
             endpoint_name = getattr(route.endpoint, "__name__", "")

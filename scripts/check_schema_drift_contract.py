@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -26,7 +27,7 @@ def main() -> int:
             print(f"- FAIL [file] {path}: missing")
             failures.append(f"missing {path}")
 
-    result = subprocess.run(
+    result = run(
         [sys.executable, "scripts/compare_orm_tables_to_database.py", "--database-url", ""],
         cwd=REPO_ROOT,
         env={**os.environ, "PYTHONPATH": str(REPO_ROOT)},

@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import ast
 import json
 import os
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -30,7 +31,7 @@ def main() -> int:
     failures: list[str] = []
     print("Transaction boundary guardrail check")
 
-    result = subprocess.run(
+    result = run(
         [sys.executable, "scripts/transaction_boundary_inventory.py"],
         cwd=ROOT,
         text=True,
@@ -72,7 +73,7 @@ def main() -> int:
         print(f"- PASS syntax {path}")
 
     if not os.environ.get("SKIP_PYTEST_RECURSION"):
-        pytest_result = subprocess.run(
+        pytest_result = run(
             [
                 sys.executable,
                 "-m",
@@ -98,7 +99,7 @@ def main() -> int:
     else:
         print("- SKIP transaction boundary guardrail unit tests (recursion break)")
 
-    ruff = subprocess.run(
+    ruff = run(
         [
             sys.executable,
             "-m",

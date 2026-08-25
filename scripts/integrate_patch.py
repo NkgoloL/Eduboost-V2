@@ -13,12 +13,7 @@ import os
 import sys
 import shutil
 from pathlib import Path
-import subprocess
-
-
-def run(cmd, cwd=None):
-    print(f"> {cmd}")
-    subprocess.check_call(cmd, shell=True, cwd=cwd)
+from scripts._subprocess import run
 
 
 def main():
@@ -69,16 +64,17 @@ def main():
         for d in sorted(src.glob("**/*"), reverse=True):
             if d.is_dir() and not any(d.iterdir()):
                 d.rmdir()
-    except Exception:
-        pass
+    except Exception:  # best-effort probe, cannot fail-close
+            pass
 
-    # Stage changes
-    try:
-        run("git add -A")
-        commit_msg = f"chore(integrate): apply patch from {src} (moved {len(moved)} files, staged {len(staged_conflicts)} conflicts)"
-        run(f"git commit -m \"{commit_msg}\" || echo 'No changes to commit'")
-    except subprocess.CalledProcessError as e:
-        print("Git operations failed:", e)
+    # Stage changes. Argv-list form (no shell=True): commit_msg embeds
+    # `src`, which comes from sys.argv[1] and must never be interpolated
+    # into a shell command string.
+    run(["git", "add", "-A"])
+    commit_msg = f"chore(integrate): apply patch from {src} (moved {len(moved)} files, staged {len(staged_conflicts)} conflicts)"
+    commit_result = run(["git", "commit", "-m", commit_msg], check=False)
+    if commit_result.returncode != 0 and "nothing to commit" not in (commit_result.stdout or ""):
+        print("Git commit failed:", commit_result.stdout, commit_result.stderr)
         sys.exit(1)
 
     print("Integration complete.")

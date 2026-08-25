@@ -4,13 +4,13 @@ from tests.support.governance_state import assert_archival_or_current_valid, ass
 from scripts.production_readiness.audit_prd1100r_runtime_restore_execution_2_generated_contract_frontend_quality import audit
 
 
-def test_prd1100r_runtime_restore_execution_2_authority_valid() -> None:
+def test_prd1100r_runtime_restore_execution_2_uses_completed_digest_bound_review() -> None:
     result = audit()
     assert_archival_or_current_valid(result)
-    assert_archival_or_current_valid(result)
     assert result["generated_frontend_contract_valid"] is True
-    assert result["generated_contracts_green"] is False
-    assert result["frontend_quality_green"] is False
+    assert result["authority_valid"] is True
+    assert result["generated_contracts_green"] is True
+    assert result["frontend_quality_green"] is True
     assert_current_execution_state(result)
 
 

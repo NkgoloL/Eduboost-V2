@@ -2,6 +2,7 @@
 """Capture evidence for the Roadmap Reconciliation Slice."""
 
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import hashlib
@@ -9,7 +10,7 @@ import json
 import pathlib
 import shutil
 import sys
-import subprocess
+from scripts._subprocess import run
 from datetime import datetime, timezone
 from typing import Any
 
@@ -54,7 +55,7 @@ def sha256_file(path: pathlib.Path) -> str:
 
 def git_state(target_branch: str) -> dict[str, Any]:
     def _git(*args: str) -> str:
-        proc = subprocess.run(["git", *args], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
+        proc = run(["git", *args], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
         return proc.stdout.strip()
     return {
         "branch": _git("branch", "--show-current"),

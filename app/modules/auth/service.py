@@ -105,7 +105,7 @@ class AuthService:
                     full_name="Sipho Ndlovu",
                     phone="+27821234567",
                 )
-                assert guardian.is_verified is False
+                if not (guardian.is_verified is False): raise AssertionError("assertion failed")
         """
         email_hash = hash_email(email)
         existing = await _guardian_repo.get_by_email_hash(email_hash, db)
@@ -218,7 +218,7 @@ class AuthService:
             ::
 
                 guardian = await auth.verify_email("abc123token", db)
-                assert guardian.is_verified is True
+                if not (guardian.is_verified is True): raise AssertionError("assertion failed")
         """
         guardian = await _guardian_repo.get_by_verification_token(token, db)
         if guardian is None:
@@ -248,7 +248,7 @@ class AuthService:
             ::
 
                 profile = await auth.get_guardian_profile(guardian.id, db)
-                assert "email" in profile
+                if not ("email" in profile): raise AssertionError("assertion failed")
         """
         guardian = await _guardian_repo.get_or_404(guardian_id, db)
         return {

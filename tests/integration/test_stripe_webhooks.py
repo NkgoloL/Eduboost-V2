@@ -3,11 +3,11 @@ import pytest
 pytestmark = pytest.mark.integration
 
 
-from types import SimpleNamespace
+from types import SimpleNamespace  # noqa: E402
 
-import pytest
+import pytest  # noqa: E402
 
-from app.core.stripe_client import StripeService
+from app.core.stripe_client import StripeService  # noqa: E402
 
 
 @pytest.mark.asyncio

@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import hashlib
 import json
-import subprocess
+from scripts._subprocess import check_output, run
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -28,7 +29,7 @@ CHECKSUM_FILES = [
 
 def _run_git(args: list[str]) -> str:
     try:
-        return subprocess.check_output(["git", *args], cwd=ROOT, text=True, stderr=subprocess.STDOUT).strip()
+        return check_output(["git", *args], cwd=ROOT, text=True, stderr=subprocess.STDOUT).strip()
     except Exception as exc:
         return f"unavailable: {exc}"
 

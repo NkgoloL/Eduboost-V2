@@ -5,7 +5,7 @@
   "status": "remediation_authority_only",
   "purpose": "Replace the timed-out monolithic coverage command with deterministic, bounded and independently diagnosable coverage execution without claiming Execution-7 closure.",
   "coverage_threshold": 70,
-  "marker_expression": "not governance and not slow and not llm and not e2e",
+  "marker_expression": "not slow and not llm and not e2e",
   "unit_execution": "deterministic_parallel_shards",
   "integration_execution": "deterministic_sequential_shards",
   "default_unit_shards": 8,

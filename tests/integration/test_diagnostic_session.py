@@ -26,26 +26,26 @@ Test strategy:
 """
 
 
-import uuid
-from datetime import datetime, timezone
-from unittest.mock import AsyncMock, MagicMock
+import uuid  # noqa: E402
+from datetime import datetime, timezone  # noqa: E402
+from unittest.mock import AsyncMock, MagicMock  # noqa: E402
 
-import pytest
-import pytest_asyncio
+import pytest  # noqa: E402
+import pytest_asyncio  # noqa: E402
 
-from app.modules.diagnostics.irt_engine import (
+from app.modules.diagnostics.irt_engine import (  # noqa: E402
     GRADE_LEVEL_THRESHOLD,
     MAX_ITEMS,
     MIN_ITEMS,
     IRTEngine,
 )
-from app.modules.diagnostics.item_bank_service import ItemBankService
-from app.services.diagnostic_session_service import (
+from app.modules.diagnostics.item_bank_service import ItemBankService  # noqa: E402
+from app.services.diagnostic_session_service import (  # noqa: E402
     DiagnosticSessionNotFoundError,
     DiagnosticSessionService,
 )
-from app.services.lesson_context_builder import LessonContextBuilder
-from app.services.study_plan_updater import StudyPlanUpdater
+from app.services.lesson_context_builder import LessonContextBuilder  # noqa: E402
+from app.services.study_plan_updater import StudyPlanUpdater  # noqa: E402
 
 
 # ─── Helpers / Fixtures ───────────────────────────────────────────────────────

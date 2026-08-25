@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Capture KG-5 graph-grounded lesson and assessment generation evidence."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import check_output, run
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -33,7 +34,7 @@ def write_json(path: Path, payload: dict[str, Any]) -> None:
 def git_state(target_branch: str) -> dict[str, str]:
     def run(args: list[str]) -> str:
         try:
-            return subprocess.check_output(args, text=True, stderr=subprocess.DEVNULL).strip()
+            return check_output(args, text=True, stderr=subprocess.DEVNULL).strip()
         except Exception:
             return ""
     return {

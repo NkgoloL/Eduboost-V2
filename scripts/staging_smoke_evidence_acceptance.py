@@ -1,4 +1,5 @@
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -6,7 +7,7 @@ import json
 import os
 from pathlib import Path
 import re
-import subprocess
+from scripts._subprocess import run
 from typing import Any
 from urllib.parse import urlparse
 
@@ -22,7 +23,7 @@ PLACEHOLDER_TOKENS = {
     "example.com",
     "localhost",
     "127.0.0.1",
-    "0.0.0.0",
+    "0.0.0.0",  # nosec B104
     "<",
     ">",
     "REAL_",
@@ -56,7 +57,7 @@ class StagingSmokeEvidenceStatus:
 
 
 def _run(command: list[str]) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(
+    return run(
         command,
         cwd=ROOT,
         text=True,

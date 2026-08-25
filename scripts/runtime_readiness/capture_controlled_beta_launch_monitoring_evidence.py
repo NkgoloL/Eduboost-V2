@@ -9,12 +9,13 @@ implementation.
 """
 
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import hashlib
 import json
 import pathlib
-import subprocess
+from scripts._subprocess import run
 from datetime import datetime, timezone
 from typing import Any, Mapping
 
@@ -82,7 +83,7 @@ def sha256_file(path: pathlib.Path) -> str:
 
 
 def run_command(args: list[str]) -> dict[str, Any]:
-    proc = subprocess.run(args, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
+    proc = run(args, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
     payload: dict[str, Any] | None = None
     if proc.stdout.strip():
         try:
@@ -101,7 +102,7 @@ def run_command(args: list[str]) -> dict[str, Any]:
 
 def git_state(target_branch: str) -> dict[str, Any]:
     def _git(*args: str) -> str:
-        proc = subprocess.run(["git", *args], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
+        proc = run(["git", *args], text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
         return proc.stdout.strip()
 
     return {

@@ -6,10 +6,11 @@ control plane exists and that prior local/static gates have evidence bundles
 available. It does not claim hosted GitHub Actions success.
 """
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import json
-import subprocess
+from scripts._subprocess import run
 from pathlib import Path
 from typing import Any
 
@@ -55,7 +56,7 @@ REQUIRED_ASSETS = [
 
 def _run_git(args: list[str]) -> str | None:
     try:
-        proc = subprocess.run(
+        proc = run(
             ["git", *args],
             cwd=ROOT,
             text=True,

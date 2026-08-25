@@ -1,9 +1,10 @@
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import json
 import os
 import re
-import subprocess
+from scripts._subprocess import run
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -70,7 +71,7 @@ PLACEHOLDER_TOKENS = {
     "change-me",
     "localhost",
     "127.0.0.1",
-    "0.0.0.0",
+    "0.0.0.0",  # nosec B104
     "::1",
     "real_run_id",
     "run_id",
@@ -112,7 +113,7 @@ class AuthRefreshDbEvidenceStatus:
 
 
 def current_commit() -> str:
-    result = subprocess.run(
+    result = run(
         ["git", "rev-parse", "HEAD"],
         cwd=ROOT,
         text=True,

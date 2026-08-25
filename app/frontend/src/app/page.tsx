@@ -3,7 +3,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { StarsBackground } from "../components/ui/StarsBackground";
-import { Button } from "../components/ui/Button-legacy";
+import { Button } from "../components/ui/button";
 
 export default function Home() {
   const router = useRouter();
@@ -23,8 +23,7 @@ export default function Home() {
         <div className="flex flex-col gap-4 items-center">
           <Button 
             onClick={() => router.push("/login")} 
-            fullWidth 
-            className="py-4 text-lg"
+            className="w-full py-4 text-lg"
           >
             🚀 Start Learning!
           </Button>
@@ -32,8 +31,7 @@ export default function Home() {
           <Button 
             onClick={() => router.push("/login")} 
             variant="secondary" 
-            fullWidth 
-            className="py-4 text-lg"
+            className="w-full py-4 text-lg"
           >
             👨‍👩‍👧 Parent / Guardian Portal
           </Button>

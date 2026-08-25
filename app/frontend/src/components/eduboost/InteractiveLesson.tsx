@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { Card } from "../ui/Card-legacy";
-import { Button } from "../ui/Button-legacy";
+import { Card } from "../ui/card";
+import { Button } from "../ui/button";
 import { LoadingSpinner } from "../ui/LoadingSpinner";
 import { ErrorMessage } from "../ui/ErrorMessage";
 import { SUBJECTS } from "./constants";

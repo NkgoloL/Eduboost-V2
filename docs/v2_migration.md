@@ -12,23 +12,13 @@ In the current repository state:
 - `app/api_v2_routers/`, `app/services/`, `app/repositories/`, `app/core/`,
   and `app/modules/` hold the main V2 implementation path.
 - `docker compose up --build` starts the V2-oriented local stack.
-- The frontend defaults to the V2 API surface.
+## Retired Compatibility Surface
 
-## What Still Exists for Compatibility
+The historical compatibility API and its dedicated tests were removed.
 
-The migration is far enough along that V2 is the default development path, but
-not so complete that every historical surface has vanished.
-
-The repository still keeps:
-
-- [`app/legacy/api/main.py`](/app/legacy/api/main.py) as a compatibility import shim
-- archived legacy runtime code under [`app/legacy`](/app/legacy/DEPRECATED.md)
-- a narrow set of migration-era compatibility behaviors instead of a total
-  hard delete of every old path
-
-That means the repository should be described as "V2-first with compatibility
-shims", not as "every legacy artifact has been erased from history."
-
+- app/api_v2.py is the only supported FastAPI entrypoint.
+- V1 and legacy-prefixed routes are forbidden from the canonical runtime.
+- Migration-era compatibility behavior is retained only where it is part of an active V2 module, not as a second API surface.
 ## Current Verified V2 Behaviors
 
 - auth and role-aware access control live in the V2 runtime

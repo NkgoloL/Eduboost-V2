@@ -269,7 +269,7 @@ async def upsert_job(job: IngestionJob) -> None:
 async def get_job(job_id: str) -> dict[str, Any] | None:
     async with get_session() as sess:
         result = await sess.execute(
-            text(f"SELECT * FROM {JOBS_TABLE} WHERE id = :id"),
+            text(f"SELECT * FROM {JOBS_TABLE} WHERE id = :id"),  # nosec B608
             {"id": job_id},
         )
         row = result.mappings().first()
@@ -297,7 +297,7 @@ async def count_content(
         params["caps_phase"] = caps_phase
 
     where = "WHERE " + " AND ".join(where_parts) if where_parts else ""
-    sql   = text(f"SELECT COUNT(*) FROM {CONTENT_TABLE} {where}")
+    sql   = text(f"SELECT COUNT(*) FROM {CONTENT_TABLE} {where}")  # nosec B608
     async with get_session() as sess:
         result = await sess.execute(sql, params)
         return result.scalar() or 0

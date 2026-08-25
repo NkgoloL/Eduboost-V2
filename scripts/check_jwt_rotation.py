@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -12,7 +12,7 @@ SECURITY = ROOT / "app/core/security.py"
 def main() -> int:
     failures: list[str] = []
     print("JWT rotation check")
-    subprocess.run([sys.executable, "scripts/inspect_jwt_rotation.py"], cwd=ROOT, check=True)
+    run([sys.executable, "scripts/inspect_jwt_rotation.py"], cwd=ROOT, check=True)
     security_text = SECURITY.read_text(encoding="utf-8") if SECURITY.exists() else ""
 
     if (ROOT / "app/services/jwt_keyring.py").exists():

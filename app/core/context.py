@@ -14,7 +14,7 @@ def set_request_id(request_id: str | None) -> None:
     if request_id is None:
         try:
             _request_id_var.set(None)
-        except Exception:
+        except Exception:  # best-effort probe, cannot fail-close
             pass
     else:
         _request_id_var.set(request_id)
@@ -30,5 +30,5 @@ def clear_request_id() -> None:
     """Clear the request id from the current context."""
     try:
         _request_id_var.set(None)
-    except Exception:
-        pass
+    except Exception:  # best-effort probe, cannot fail-close
+            pass

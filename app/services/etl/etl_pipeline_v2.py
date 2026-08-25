@@ -431,7 +431,7 @@ class EduboostETLv2(EduboostETL):
         clauses = ", ".join(f"{k}=?" for k in filtered)
         values = list(filtered.values()) + [_now(), document_id]
         self._db().execute(
-            f"UPDATE documents SET {clauses}, updated_at=? WHERE document_id=?",
+            f"UPDATE documents SET {clauses}, updated_at=? WHERE document_id=?",  # nosec B608
             values
         )
         self._db().commit()
@@ -592,6 +592,9 @@ class EduboostETLv2(EduboostETL):
             return [{"warning": "numpy not installed — install numpy for semantic search"}]
 
         db = self._db()
+        # Static query (no string concatenation): grade/subject are bound
+        # parameters, and the "(? IS NULL OR col = ?)" idiom makes each
+        # filter optional without building the SQL text dynamically.
         rows = db.execute(
             """SELECT ce.chunk_id, ce.document_id, ce.embedding_blob, ce.embedding_dim,
                       dc.heading, dc.content, dc.section_path, dc.page_start,
@@ -601,8 +604,9 @@ class EduboostETLv2(EduboostETL):
                JOIN documents d ON ce.document_id = d.document_id
                WHERE d.processing_status IN ('approved','indexed','training_ready')
                  AND ce.embedding_blob IS NOT NULL
-            """ + (f" AND d.grade={grade}" if grade else "")
-              + (f" AND d.subject='{subject}'" if subject else "")
+                 AND (? IS NULL OR d.grade = ?)
+                 AND (? IS NULL OR d.subject = ?)""",
+            (grade, grade, subject, subject),
         ).fetchall()
 
         if not rows:
@@ -709,11 +713,14 @@ class EduboostETLv2(EduboostETL):
             clause = "d.processing_status IN ('approved','indexed','training_ready')"
             params = []
 
-        rows = self._db().execute(
-            f"""SELECT dc.*, d.grade, d.subject, d.document_type, d.title
+        query_template = (
+            """SELECT dc.*, d.grade, d.subject, d.document_type, d.title
                 FROM document_chunks dc
                 JOIN documents d ON dc.document_id = d.document_id
-                WHERE {clause}
+                WHERE """
+        )
+        rows = self._db().execute(
+            query_template + clause + """
                 ORDER BY dc.document_id, dc.chunk_index""",
             params
         ).fetchall()
@@ -982,12 +989,15 @@ class EduboostETLv2(EduboostETL):
         cutoff = (datetime.now(timezone.utc) - timedelta(days=days_threshold)).isoformat()
         early_statuses = ("acquired", "extracted", "normalized", "metadata_enriched", "chunked")
         placeholders = ",".join("?" * len(early_statuses))
-        rows = self._db().execute(
-            f"""SELECT document_id, title, processing_status, grade, subject,
+        query_template = (
+            """SELECT document_id, title, processing_status, grade, subject,
                        document_type, updated_at, created_at,
                        julianday('now') - julianday(updated_at) AS days_stale
                 FROM documents
-                WHERE processing_status IN ({placeholders})
+                WHERE processing_status IN ("""
+        )
+        rows = self._db().execute(
+            query_template + placeholders + """)
                   AND updated_at < ?
                 ORDER BY days_stale DESC""",
             [*early_statuses, cutoff]

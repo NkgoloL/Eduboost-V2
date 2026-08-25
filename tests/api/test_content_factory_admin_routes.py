@@ -6,7 +6,8 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.api_v2 import app
-from app.core.security import get_current_user
+from app.api_v2_deps.auth import get_auth_context, AuthContext
+from app.models import UserRole
 
 
 pytestmark = pytest.mark.unit
@@ -16,12 +17,24 @@ def _client() -> TestClient:
     return TestClient(app, raise_server_exceptions=False)
 
 
-def _admin_user() -> dict[str, str]:
-    return {"sub": str(uuid.uuid4()), "role": "admin", "type": "access"}
+def _admin_auth() -> AuthContext:
+    return AuthContext(
+        user_id=str(uuid.uuid4()),
+        roles=[UserRole.ADMIN],
+        token_type="access",
+        raw_claims={"sub": str(uuid.uuid4()), "role": "admin", "type": "access"},
+        jti=str(uuid.uuid4()),
+    )
 
 
-def _parent_user() -> dict[str, str]:
-    return {"sub": str(uuid.uuid4()), "role": "parent", "type": "access"}
+def _parent_auth() -> AuthContext:
+    return AuthContext(
+        user_id=str(uuid.uuid4()),
+        roles=[UserRole.PARENT],
+        token_type="access",
+        raw_claims={"sub": str(uuid.uuid4()), "role": "parent", "type": "access"},
+        jti=str(uuid.uuid4()),
+    )
 
 
 def _valid_source() -> dict[str, object]:
@@ -52,7 +65,7 @@ def test_content_factory_admin_health_requires_authentication() -> None:
 
 
 def test_content_factory_admin_health_rejects_non_admin_user() -> None:
-    app.dependency_overrides[get_current_user] = _parent_user
+    app.dependency_overrides[get_auth_context] = _parent_auth
 
     response = _client().get("/api/v2/admin/content-factory/health")
 
@@ -60,7 +73,7 @@ def test_content_factory_admin_health_rejects_non_admin_user() -> None:
 
 
 def test_content_factory_admin_health_accepts_admin_user() -> None:
-    app.dependency_overrides[get_current_user] = _admin_user
+    app.dependency_overrides[get_auth_context] = _admin_auth
 
     response = _client().get("/api/v2/admin/content-factory/health")
 
@@ -72,7 +85,7 @@ def test_content_factory_admin_health_accepts_admin_user() -> None:
 
 
 def test_validate_artifact_rejects_missing_source_citations() -> None:
-    app.dependency_overrides[get_current_user] = _admin_user
+    app.dependency_overrides[get_auth_context] = _admin_auth
 
     response = _client().post(
         "/api/v2/admin/content-factory/validate-artifact",
@@ -91,7 +104,7 @@ def test_validate_artifact_rejects_missing_source_citations() -> None:
 
 
 def test_validate_artifact_rejects_diagnostic_item_without_answer_key() -> None:
-    app.dependency_overrides[get_current_user] = _admin_user
+    app.dependency_overrides[get_auth_context] = _admin_auth
 
     response = _client().post(
         "/api/v2/admin/content-factory/validate-artifact",

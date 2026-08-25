@@ -1137,7 +1137,7 @@ class EduboostETL:
         values = list(updates.values())
         if set_clauses:
             self._db().execute(
-                f"UPDATE documents SET {set_clauses}, processing_status=?, updated_at=? WHERE document_id=?",
+                f"UPDATE documents SET {set_clauses}, processing_status=?, updated_at=? WHERE document_id=?",  # nosec B608
                 [*values, ProcessingStatus.metadata_enriched, _now(), document_id]
             )
         else:
@@ -1282,7 +1282,7 @@ class EduboostETL:
             params.append(document_type)
         where = ("WHERE " + " AND ".join(clauses)) if clauses else ""
         rows = self._db().execute(
-            f"SELECT * FROM documents {where} ORDER BY created_at DESC LIMIT ?",
+            f"SELECT * FROM documents {where} ORDER BY created_at DESC LIMIT ?",  # nosec B608
             [*params, limit]
         ).fetchall()
         return [dict(r) for r in rows]

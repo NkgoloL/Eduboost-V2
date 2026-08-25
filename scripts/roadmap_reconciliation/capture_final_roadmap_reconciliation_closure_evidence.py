@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Capture final roadmap reconciliation closure evidence."""
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import argparse
 import hashlib
 import json
-import subprocess
+from scripts._subprocess import check_output, run
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -31,7 +32,7 @@ BOUNDARY_FALSE = {
 
 def _run(cmd: list[str]) -> str:
     try:
-        return subprocess.check_output(cmd, text=True, stderr=subprocess.DEVNULL).strip()
+        return check_output(cmd, text=True, stderr=subprocess.DEVNULL).strip()
     except Exception:
         return ""
 

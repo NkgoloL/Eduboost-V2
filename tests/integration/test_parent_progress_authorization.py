@@ -2,16 +2,16 @@ from __future__ import annotations
 
 """Direct-call authorization tests for parent learner-progress access."""
 
-from datetime import UTC, datetime
-from types import SimpleNamespace
-from typing import Any
+from datetime import UTC, datetime  # noqa: E402
+from types import SimpleNamespace  # noqa: E402
+from typing import Any  # noqa: E402
 
-import pytest
-from fastapi import HTTPException
+import pytest  # noqa: E402
+from fastapi import HTTPException  # noqa: E402
 
-from app.api_v2_deps.auth import AuthContext, TokenType
-from app.api_v2_routers import parents as parents_router
-from app.models import UserRole
+from app.api_v2_deps.auth import AuthContext, TokenType  # noqa: E402
+from app.api_v2_routers import parents as parents_router  # noqa: E402
+from app.models import UserRole  # noqa: E402
 
 pytestmark = pytest.mark.integration
 

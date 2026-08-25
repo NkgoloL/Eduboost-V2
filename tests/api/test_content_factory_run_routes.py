@@ -12,23 +12,23 @@ pytestmark = pytest.mark.unit
 
 class FakeRun:
     def __init__(self):
-        self.run_id = uuid.uuid4(); self.scope_id = "grade4_mathematics_en"; self.status = "planned"; self.requested_by = "admin"; self.run_metadata = {"dry_run": True}
+        self.run_id = uuid.uuid4(); self.scope_id = "grade4_mathematics_en"; self.status = "planned"; self.requested_by = "admin"; self.run_metadata = {"dry_run": True}  # noqa: E702
 
 
 class FakeTask:
     def __init__(self, run_id):
-        self.task_id = uuid.uuid4(); self.run_id = run_id; self.scope_id = "grade4_mathematics_en"; self.caps_ref = "4.M.1.1"; self.content_layer = "diagnostic_items"; self.status = "queued"; self.attempt_number = 1; self.max_attempts = 3; self.output_artifact_ids = []; self.validation_failures = []
+        self.task_id = uuid.uuid4(); self.run_id = run_id; self.scope_id = "grade4_mathematics_en"; self.caps_ref = "4.M.1.1"; self.content_layer = "diagnostic_items"; self.status = "queued"; self.attempt_number = 1; self.max_attempts = 3; self.output_artifact_ids = []; self.validation_failures = []  # noqa: E702
 
 
 class FakeRunService:
     def __init__(self):
-        self.run = FakeRun(); self.tasks = [FakeTask(self.run.run_id)]
+        self.run = FakeRun(); self.tasks = [FakeTask(self.run.run_id)]  # noqa: E702
     async def list_runs(self, session, scope_id=None): return [self.run]
     async def create_run(self, session, **kwargs): return self.run
     async def create_tasks_for_run(self, session, run_id): return self.tasks
     async def get_run(self, session, run_id): return self.run
     async def get_run_tasks(self, session, run_id): return self.tasks
-    async def cancel_run(self, session, run_id, actor_id): self.run.status = "cancelled"; return self.run
+    async def cancel_run(self, session, run_id, actor_id): self.run.status = "cancelled"; return self.run  # noqa: E702
     async def retry_failed_tasks(self, session, run_id, actor_id): return self.tasks
 
 
@@ -43,9 +43,9 @@ def _fake_run_service(): return FakeRunService()
 
 @pytest.fixture(autouse=True)
 def clear_overrides():
-    app.dependency_overrides.clear(); app.openapi_schema = None
+    app.dependency_overrides.clear(); app.openapi_schema = None  # noqa: E702
     yield
-    app.dependency_overrides.clear(); app.openapi_schema = None
+    app.dependency_overrides.clear(); app.openapi_schema = None  # noqa: E702
 
 
 def test_admin_can_list_runs() -> None:

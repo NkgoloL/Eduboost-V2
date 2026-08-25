@@ -13,7 +13,10 @@ import argparse
 import json
 import os
 import shutil
-import subprocess
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from scripts._subprocess import run
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -113,7 +116,7 @@ def execute_backup(*, output_dir: str, env: dict[str, str] | None = None) -> Bac
     artifact, manifest = artifact_paths(output_dir)
     artifact.parent.mkdir(parents=True, exist_ok=True)
     command = build_pg_dump_command(values["DATABASE_URL"], artifact)
-    subprocess.run(command, check=True)
+    run(command, check=True)
     manifest.write_text(
         json.dumps(
             {

@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import subprocess  # nosec B404 — subprocess constants support the controlled wrapper
 
 import ast
 import importlib
-import subprocess
+from scripts._subprocess import run
 import sys
 from pathlib import Path
 
@@ -77,7 +78,7 @@ def main() -> int:
     for path in (AUTH, SERVICE):
         ast.parse(path.read_text(encoding="utf-8"))
 
-    ruff = subprocess.run(
+    ruff = run(
         [
             sys.executable,
             "-m",
