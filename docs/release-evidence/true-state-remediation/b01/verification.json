@@ -14,8 +14,8 @@
     },
     "commands": {
       "summary": {
-        "all_required_green": false,
-        "captured_at": "2026-08-20T19:04:24.712048+00:00",
+        "all_required_green": true,
+        "captured_at": "2026-08-25T20:52:11.246736+00:00",
         "commands": [
           {
             "command": [
@@ -30,11 +30,11 @@
             ],
             "cwd": ".",
             "exit_code": 0,
-            "finished_at": "2026-08-20T18:41:28.996846+00:00",
+            "finished_at": "2026-08-25T20:28:15.170515+00:00",
             "name": "compileall",
             "passed": true,
             "required": true,
-            "started_at": "2026-08-20T18:41:26.864542+00:00",
+            "started_at": "2026-08-25T20:28:13.896666+00:00",
             "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
             "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
           },
@@ -50,13 +50,13 @@
             ],
             "cwd": ".",
             "exit_code": 0,
-            "finished_at": "2026-08-20T18:41:32.611284+00:00",
+            "finished_at": "2026-08-25T20:28:17.372933+00:00",
             "name": "mcp_stub_isolation",
             "passed": true,
             "required": true,
-            "started_at": "2026-08-20T18:41:28.997911+00:00",
+            "started_at": "2026-08-25T20:28:15.171557+00:00",
             "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-            "stdout_sha256": "83d6b6eccb049277a9385735449b549af424dc7073334c1f62ecbfd5e62c34e3"
+            "stdout_sha256": "b834d154d8fc19fda76f00fad8fc11f1864ec2cdb75b2d532f7ca2baa05191a8"
           },
           {
             "command": [
@@ -68,13 +68,32 @@
             ],
             "cwd": ".",
             "exit_code": 0,
-            "finished_at": "2026-08-20T18:41:46.918120+00:00",
+            "finished_at": "2026-08-25T20:28:29.632812+00:00",
             "name": "test_collection",
             "passed": true,
             "required": true,
-            "started_at": "2026-08-20T18:41:32.612797+00:00",
+            "started_at": "2026-08-25T20:28:17.374078+00:00",
             "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-            "stdout_sha256": "1d0f6d7a4212966b16b50fa75e4826528ebc36ca4a50a69745dd0c1e0db1f3a0"
+            "stdout_sha256": "6f599f6292e5afb3ba2a39a6099364593e31eeea2a9459b3d4748aab522ba2d6"
+          },
+          {
+            "command": [
+              "git",
+              "commit",
+              "-a",
+              "--allow-empty",
+              "-m",
+              "evidence(b01): pre-coverage quick-gate artefacts"
+            ],
+            "cwd": ".",
+            "exit_code": 0,
+            "finished_at": "2026-08-25T20:28:29.717281+00:00",
+            "name": "pre_coverage_commit",
+            "passed": true,
+            "required": false,
+            "started_at": "2026-08-25T20:28:29.636989+00:00",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout_sha256": "e35ca9ba29d9b0a2b7e7bb2647da17d8fd4557dad0f0f369c60c5b9ca776d987"
           },
           {
             "command": [
@@ -84,14 +103,14 @@
               "--require-green"
             ],
             "cwd": ".",
-            "exit_code": 1,
-            "finished_at": "2026-08-20T19:03:38.939676+00:00",
+            "exit_code": 0,
+            "finished_at": "2026-08-25T20:50:40.420938+00:00",
             "name": "execution7_gate_suite",
-            "passed": false,
+            "passed": true,
             "required": true,
-            "started_at": "2026-08-20T18:41:46.919820+00:00",
+            "started_at": "2026-08-25T20:28:29.717351+00:00",
             "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-            "stdout_sha256": "f3507759bef3cb804a26c2a8413654092eba00fbaa0006e548713b5ee85482cb"
+            "stdout_sha256": "3ea973aeae6e50085e93038bdeb5456d9c06bce9bc25f99f76f00b5727520f39"
           },
           {
             "command": [
@@ -104,11 +123,11 @@
             ],
             "cwd": ".",
             "exit_code": 0,
-            "finished_at": "2026-08-20T19:03:38.980130+00:00",
+            "finished_at": "2026-08-25T20:50:40.479307+00:00",
             "name": "ruff",
             "passed": true,
             "required": true,
-            "started_at": "2026-08-20T19:03:38.943098+00:00",
+            "started_at": "2026-08-25T20:50:40.448064+00:00",
             "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
             "stdout_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
           },
@@ -121,11 +140,11 @@
             ],
             "cwd": ".",
             "exit_code": 0,
-            "finished_at": "2026-08-20T19:03:40.229047+00:00",
+            "finished_at": "2026-08-25T20:50:41.520476+00:00",
             "name": "mypy",
             "passed": true,
             "required": true,
-            "started_at": "2026-08-20T19:03:38.981936+00:00",
+            "started_at": "2026-08-25T20:50:40.480379+00:00",
             "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
             "stdout_sha256": "c03a022ee0faf6e3859009834422efdd70ba84810630679740b4bdd750ca506d"
           },
@@ -143,11 +162,11 @@
             ],
             "cwd": ".",
             "exit_code": 0,
-            "finished_at": "2026-08-20T19:03:56.110188+00:00",
+            "finished_at": "2026-08-25T20:50:54.443534+00:00",
             "name": "bandit",
             "passed": true,
             "required": true,
-            "started_at": "2026-08-20T19:03:40.229903+00:00",
+            "started_at": "2026-08-25T20:50:41.521970+00:00",
             "stderr_sha256": "1f74afa6a1f741f9a57f451f72135fab88a0a35c85218e72047f7214b7cb3780",
             "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
           },
@@ -157,29 +176,15 @@
               "-m",
               "pip_audit",
               "-r",
-              "requirements/base.txt",
-              "--ignore-vuln",
-              "PYSEC-2026-161",
-              "--ignore-vuln",
-              "PYSEC-2026-248",
-              "--ignore-vuln",
-              "PYSEC-2026-249",
-              "--ignore-vuln",
-              "PYSEC-2026-1943",
-              "--ignore-vuln",
-              "PYSEC-2026-1941",
-              "--ignore-vuln",
-              "PYSEC-2026-2281",
-              "--ignore-vuln",
-              "PYSEC-2026-2280"
+              "requirements/base.txt"
             ],
             "cwd": ".",
             "exit_code": 0,
-            "finished_at": "2026-08-20T19:04:08.478819+00:00",
+            "finished_at": "2026-08-25T20:51:04.634519+00:00",
             "name": "pip_audit_base",
             "passed": true,
             "required": true,
-            "started_at": "2026-08-20T19:03:56.122389+00:00",
+            "started_at": "2026-08-25T20:50:54.445217+00:00",
             "stderr_sha256": "15950a68a7ed99c59779717acefdceb3f69cfd31bde67d2c954f2a3cea4d7955",
             "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
           },
@@ -193,11 +198,11 @@
             ],
             "cwd": ".",
             "exit_code": 0,
-            "finished_at": "2026-08-20T19:04:22.799834+00:00",
+            "finished_at": "2026-08-25T20:51:19.652905+00:00",
             "name": "pip_audit_dev",
             "passed": true,
             "required": true,
-            "started_at": "2026-08-20T19:04:08.479734+00:00",
+            "started_at": "2026-08-25T20:51:04.635573+00:00",
             "stderr_sha256": "15950a68a7ed99c59779717acefdceb3f69cfd31bde67d2c954f2a3cea4d7955",
             "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
           },
@@ -209,12 +214,12 @@
             ],
             "cwd": "app/frontend",
             "exit_code": 0,
-            "finished_at": "2026-08-20T19:04:23.770434+00:00",
+            "finished_at": "2026-08-25T20:51:20.479985+00:00",
             "name": "frontend_audit",
             "passed": true,
             "required": true,
-            "started_at": "2026-08-20T19:04:22.810534+00:00",
-            "stderr_sha256": "11941d74f8bd9dfa1e2e40be5b61aad34fbc16ece4fb454c43b1c9aa1bab5a41",
+            "started_at": "2026-08-25T20:51:19.654472+00:00",
+            "stderr_sha256": "5071bb89cb42d318a00435e20434833e78ef9559b52c153a503f0a53486dd724",
             "stdout_sha256": "15950a68a7ed99c59779717acefdceb3f69cfd31bde67d2c954f2a3cea4d7955"
           },
           {
@@ -224,14 +229,14 @@
               "quality:release"
             ],
             "cwd": "app/frontend",
-            "exit_code": 1,
-            "finished_at": "2026-08-20T19:04:24.562802+00:00",
+            "exit_code": 0,
+            "finished_at": "2026-08-25T20:52:11.079615+00:00",
             "name": "frontend_quality",
-            "passed": false,
+            "passed": true,
             "required": true,
-            "started_at": "2026-08-20T19:04:23.771169+00:00",
-            "stderr_sha256": "33af716eb914a6da553969f1903c61938cd8d2741492b02d8e4a08c3faf3943a",
-            "stdout_sha256": "99ca0d9201336e6c27e1c288d397a651a26ed8d4ac37424b40de01efeb660fe4"
+            "started_at": "2026-08-25T20:51:20.481479+00:00",
+            "stderr_sha256": "d510f4abd252fff7af739cf13b9c8bb37507b4a520ef74c5a121833ebfaa8dec",
+            "stdout_sha256": "9352df491dfb6e8d9d4d8528c39998406907228b778720816a64f82e74170905"
           },
           {
             "command": [
@@ -239,14 +244,14 @@
               "scripts/test_suites/verify_product_gate_execution.py"
             ],
             "cwd": ".",
-            "exit_code": 1,
-            "finished_at": "2026-08-20T19:04:24.610048+00:00",
+            "exit_code": 0,
+            "finished_at": "2026-08-25T20:52:11.130684+00:00",
             "name": "product_gate",
-            "passed": false,
+            "passed": true,
             "required": true,
-            "started_at": "2026-08-20T19:04:24.563372+00:00",
+            "started_at": "2026-08-25T20:52:11.081217+00:00",
             "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-            "stdout_sha256": "6932db7cbb1bdf736d4d77dd79775f0ed189ffc78253b3d5b1b281f31826f8ce"
+            "stdout_sha256": "d0288884702c3ff3100f49180ab74a8816f47b079247aa8e2ed84182919bafae"
           },
           {
             "command": [
@@ -254,14 +259,14 @@
               "scripts/test_suites/verify_product_runtime_test_gates.py"
             ],
             "cwd": ".",
-            "exit_code": 1,
-            "finished_at": "2026-08-20T19:04:24.658741+00:00",
+            "exit_code": 0,
+            "finished_at": "2026-08-25T20:52:11.190373+00:00",
             "name": "product_runtime_gate",
-            "passed": false,
+            "passed": true,
             "required": true,
-            "started_at": "2026-08-20T19:04:24.611534+00:00",
+            "started_at": "2026-08-25T20:52:11.131410+00:00",
             "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-            "stdout_sha256": "640ae8914ecde0f1a9914d1998087cb3ed322125643d820b5e9890bbd3578db5"
+            "stdout_sha256": "1e45a7fcd93d1fae91ad9a731f929ffeeb2543b85b9a9144fdd78d33dec656aa"
           },
           {
             "command": [
@@ -271,18 +276,18 @@
               "--json"
             ],
             "cwd": ".",
-            "exit_code": 1,
-            "finished_at": "2026-08-20T19:04:24.710832+00:00",
+            "exit_code": 0,
+            "finished_at": "2026-08-25T20:52:11.245849+00:00",
             "name": "execution7_verifier",
-            "passed": false,
+            "passed": true,
             "required": true,
-            "started_at": "2026-08-20T19:04:24.659428+00:00",
+            "started_at": "2026-08-25T20:52:11.191865+00:00",
             "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-            "stdout_sha256": "f0475b3d416c5fcb6a2182d5fc8de87e791be93d87cfcfa3b7a1e999b8aebeef"
+            "stdout_sha256": "959c84daf83b19f8a6cb89a2592582361be44fd2517771c62cd34b0b87e8b8ea"
           }
         ]
       },
-      "valid": false
+      "valid": true
     },
     "manual": {
       "invalid": [],
@@ -307,6 +312,6 @@
       "valid": true
     }
   },
-  "valid": false,
-  "verified_at": "2026-08-25T13:23:49.277961+00:00"
+  "valid": true,
+  "verified_at": "2026-08-25T20:54:51.695550+00:00"
 }
