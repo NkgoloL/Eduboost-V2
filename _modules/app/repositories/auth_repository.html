@@ -383,7 +383,7 @@
            <div itemprop="articleBody">
              
   <h1>Source code for app.repositories.auth_repository</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;Guardian persistence repository for EduBoost V2.&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""Guardian persistence repository for EduBoost V2."""</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
@@ -399,14 +399,14 @@
 <div class="viewcode-block" id="GuardianRepository">
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.GuardianRepository">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">GuardianRepository</span><span class="p">(</span><span class="n">BaseRepository</span><span class="p">[</span><span class="n">Guardian</span><span class="p">]):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Repository for guardian accounts and token lifecycle operations.</span>
+<span class="w">    </span><span class="sd">"""Repository for guardian accounts and token lifecycle operations.</span>
 
 <span class="sd">    The repository is intentionally usable in both canonical V2 styles:</span>
 <span class="sd">    ``GuardianRepository().method(..., db)`` and the legacy/billing runtime</span>
 <span class="sd">    style ``GuardianRepository(db).method(...)``.  This removes the release</span>
 <span class="sd">    blocker where live billing code constructed the modern repository with a</span>
 <span class="sd">    bound session but the modern class did not accept one.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="n">model</span> <span class="o">=</span> <span class="n">Guardian</span>
 
@@ -416,7 +416,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncSession</span><span class="p">:</span>
         <span class="n">session</span> <span class="o">=</span> <span class="n">db</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span>
         <span class="k">if</span> <span class="n">session</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;GuardianRepository requires an AsyncSession&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"GuardianRepository requires an AsyncSession"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">session</span>
 
 <div class="viewcode-block" id="GuardianRepository.get_by_id">
@@ -484,18 +484,18 @@
 <div class="viewcode-block" id="GuardianRepository.revoke_jti">
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.GuardianRepository.revoke_jti">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">revoke_jti</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jti</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">expires_at</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mark a JWT JTI as revoked so it cannot be reused.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Mark a JWT JTI as revoked so it cannot be reused."""</span>
         <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
         <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
             <span class="n">text</span><span class="p">(</span>
-                <span class="s2">&quot;INSERT INTO revoked_tokens (jti, revoked_at, expires_at) &quot;</span>
-                <span class="s2">&quot;VALUES (:jti, :revoked_at, :expires_at) &quot;</span>
-                <span class="s2">&quot;ON CONFLICT (jti) DO NOTHING&quot;</span>
+                <span class="s2">"INSERT INTO revoked_tokens (jti, revoked_at, expires_at) "</span>
+                <span class="s2">"VALUES (:jti, :revoked_at, :expires_at) "</span>
+                <span class="s2">"ON CONFLICT (jti) DO NOTHING"</span>
             <span class="p">),</span>
             <span class="p">{</span>
-                <span class="s2">&quot;jti&quot;</span><span class="p">:</span> <span class="n">jti</span><span class="p">,</span>
-                <span class="s2">&quot;revoked_at&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">),</span>
-                <span class="s2">&quot;expires_at&quot;</span><span class="p">:</span> <span class="n">expires_at</span><span class="p">,</span>
+                <span class="s2">"jti"</span><span class="p">:</span> <span class="n">jti</span><span class="p">,</span>
+                <span class="s2">"revoked_at"</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">),</span>
+                <span class="s2">"expires_at"</span><span class="p">:</span> <span class="n">expires_at</span><span class="p">,</span>
             <span class="p">},</span>
         <span class="p">)</span></div>
 
@@ -503,10 +503,10 @@
 <div class="viewcode-block" id="GuardianRepository.is_jti_revoked">
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.GuardianRepository.is_jti_revoked">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">is_jti_revoked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jti</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return True if the given JTI has been revoked.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Return True if the given JTI has been revoked."""</span>
         <span class="n">session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-            <span class="n">text</span><span class="p">(</span><span class="s2">&quot;SELECT 1 FROM revoked_tokens WHERE jti = :jti&quot;</span><span class="p">),</span> <span class="p">{</span><span class="s2">&quot;jti&quot;</span><span class="p">:</span> <span class="n">jti</span><span class="p">}</span>
+            <span class="n">text</span><span class="p">(</span><span class="s2">"SELECT 1 FROM revoked_tokens WHERE jti = :jti"</span><span class="p">),</span> <span class="p">{</span><span class="s2">"jti"</span><span class="p">:</span> <span class="n">jti</span><span class="p">}</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span></div>
 </div>

@@ -383,7 +383,7 @@
            <div itemprop="articleBody">
              
   <h1>Source code for app.repositories.learner_repository</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;Learner persistence repository for EduBoost V2.&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""Learner persistence repository for EduBoost V2."""</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
@@ -409,7 +409,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncSession</span><span class="p">:</span>
         <span class="n">session</span> <span class="o">=</span> <span class="n">db</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span>
         <span class="k">if</span> <span class="n">session</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;LearnerRepository requires an AsyncSession&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"LearnerRepository requires an AsyncSession"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">session</span>
 
 <div class="viewcode-block" id="LearnerRepository.get_by_id">
@@ -422,7 +422,7 @@
 <div class="viewcode-block" id="LearnerRepository.delete_by_id">
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.LearnerRepository.delete_by_id">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">delete_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">learner_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Physically delete a learner record (Right to Erasure).&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Physically delete a learner record (Right to Erasure)."""</span>
         <span class="n">db</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">delete</span><span class="p">(</span><span class="n">Learner</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Learner</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">UUID</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">learner_id</span><span class="p">))))</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">rowcount</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span></div>
@@ -435,7 +435,7 @@
         <span class="n">learner</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_by_id</span><span class="p">(</span><span class="n">learner_id</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">learner</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
-        <span class="n">learner</span><span class="o">.</span><span class="n">display_name</span> <span class="o">=</span> <span class="s2">&quot;[erased]&quot;</span>
+        <span class="n">learner</span><span class="o">.</span><span class="n">display_name</span> <span class="o">=</span> <span class="s2">"[erased]"</span>
         <span class="n">learner</span><span class="o">.</span><span class="n">is_deleted</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">learner</span><span class="o">.</span><span class="n">deletion_requested_at</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
         <span class="n">add_result</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">learner</span><span class="p">)</span>

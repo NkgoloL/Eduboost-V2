@@ -383,12 +383,12 @@
            <div itemprop="articleBody">
              
   <h1>Source code for app.repositories.audit_repository</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">app/repositories/audit_repository.py</span>
 <span class="sd">Append-only PostgreSQL audit repository.</span>
 <span class="sd">Implements §4.5: event hash, previous-hash chain, HMAC signature.</span>
 <span class="sd">The DB role used at runtime must NOT have UPDATE/DELETE on this table.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">hashlib</span>
@@ -406,7 +406,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">app.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AuditEvent</span>
 
 
-<span class="n">_HMAC_SECRET</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>   <span class="c1"># injected at startup from settings.AUDIT_HMAC_SECRET</span>
+<span class="n">_HMAC_SECRET</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">""</span>   <span class="c1"># injected at startup from settings.AUDIT_HMAC_SECRET</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">configure_hmac_secret</span><span class="p">(</span><span class="n">secret</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -423,44 +423,44 @@
     <span class="n">previous_event_hash</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return deterministic SHA-256 hash for audit-chain tests.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Return deterministic SHA-256 hash for audit-chain tests."""</span>
     <span class="n">canonical</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span>
         <span class="p">{</span>
-            <span class="s2">&quot;event_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">event_id</span><span class="p">),</span>
-            <span class="s2">&quot;event_type&quot;</span><span class="p">:</span> <span class="n">event_type</span><span class="p">,</span>
-            <span class="s2">&quot;actor_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">actor_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">actor_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="s2">&quot;resource_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">resource_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">resource_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="s2">&quot;previous_event_hash&quot;</span><span class="p">:</span> <span class="n">previous_event_hash</span><span class="p">,</span>
-            <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="n">payload</span><span class="p">,</span>
+            <span class="s2">"event_id"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">event_id</span><span class="p">),</span>
+            <span class="s2">"event_type"</span><span class="p">:</span> <span class="n">event_type</span><span class="p">,</span>
+            <span class="s2">"actor_id"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">actor_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">actor_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">"resource_id"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">resource_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">resource_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">"previous_event_hash"</span><span class="p">:</span> <span class="n">previous_event_hash</span><span class="p">,</span>
+            <span class="s2">"payload"</span><span class="p">:</span> <span class="n">payload</span><span class="p">,</span>
         <span class="p">},</span>
         <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">default</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">canonical</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">canonical</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">sign_audit_hash</span><span class="p">(</span><span class="n">event_hash</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">secret</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return HMAC-SHA256 signature for an audit hash.&quot;&quot;&quot;</span>
-    <span class="n">key</span> <span class="o">=</span> <span class="n">secret</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">secret</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">secret</span>
-    <span class="k">return</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">event_hash</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">),</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="w">    </span><span class="sd">"""Return HMAC-SHA256 signature for an audit hash."""</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">secret</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">secret</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">secret</span>
+    <span class="k">return</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">event_hash</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">),</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_compute_hash</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;SHA-256 of the canonical JSON payload.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""SHA-256 of the canonical JSON payload."""</span>
     <span class="n">canonical</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">canonical</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_compute_hmac</span><span class="p">(</span><span class="n">event_hash</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">previous_hash</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;HMAC-SHA256 over &#39;{event_hash}:{previous_hash}&#39;.&quot;&quot;&quot;</span>
-    <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">event_hash</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">previous_hash</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+<span class="w">    </span><span class="sd">"""HMAC-SHA256 over '{event_hash}:{previous_hash}'."""</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">event_hash</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">previous_hash</span><span class="si">}</span><span class="s2">"</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">hmac</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">_HMAC_SECRET</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 
 
 <div class="viewcode-block" id="AuditRepository">
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.AuditRepository">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">AuditRepository</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    §4.5 – append-only audit log.</span>
 <span class="sd">    Every INSERT chains hashes to form a tamper-evident log.</span>
 <span class="sd">    The underlying table must have:</span>
@@ -468,7 +468,7 @@
 <span class="sd">      - NO DELETE privilege for the app role</span>
 <span class="sd">      - NO UPDATE privilege for the app role</span>
 <span class="sd">      - A row-level trigger that raises on UPDATE/DELETE as a belt-and-suspenders guard</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="n">asyncpg</span><span class="o">.</span><span class="n">Pool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_db</span> <span class="o">=</span> <span class="n">db</span>
@@ -476,8 +476,8 @@
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_is_async_session</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="c1"># Avoid isinstance check which can fail with certain mock setups.</span>
-        <span class="c1"># AsyncSession has &#39;add&#39;, asyncpg.Connection/Pool does not.</span>
-        <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span> <span class="s2">&quot;add&quot;</span><span class="p">)</span>
+        <span class="c1"># AsyncSession has 'add', asyncpg.Connection/Pool does not.</span>
+        <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">,</span> <span class="s2">"add"</span><span class="p">)</span>
 
     <span class="c1"># ------------------------------------------------------------------</span>
     <span class="c1"># Public write API (INSERT only)</span>
@@ -494,31 +494,31 @@
         <span class="o">*</span><span class="p">,</span>
         <span class="n">conn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">asyncpg</span><span class="o">.</span><span class="n">Connection</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Append one audit event. Returns the new event&#39;s UUID.</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Append one audit event. Returns the new event's UUID.</span>
 <span class="sd">        Automatically chains the hash to the previous event for the same resource</span>
 <span class="sd">        (or global tail if resource_id is None).</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">payload</span> <span class="o">=</span> <span class="n">payload</span> <span class="ow">or</span> <span class="p">{}</span>
         <span class="n">event_id</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span>
 
         <span class="n">event_type_value</span> <span class="o">=</span> <span class="n">event_type</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">event_type</span><span class="p">,</span> <span class="n">AuditEventType</span><span class="p">)</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">event_type</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">event_type_value</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;event_type must not be blank&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"event_type must not be blank"</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_payload</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
 
         <span class="n">previous_event_hash</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_latest_hash</span><span class="p">(</span><span class="n">resource_id</span><span class="p">,</span> <span class="n">conn</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
         <span class="n">hash_payload</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;event_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">event_id</span><span class="p">),</span>
-            <span class="s2">&quot;event_type&quot;</span><span class="p">:</span> <span class="n">event_type_value</span><span class="p">,</span>
-            <span class="s2">&quot;actor_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">actor_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">actor_id</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="s2">&quot;resource_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">resource_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">resource_id</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="s2">&quot;previous_event_hash&quot;</span><span class="p">:</span> <span class="n">previous_event_hash</span><span class="p">,</span>
-            <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="n">payload</span><span class="p">,</span>
+            <span class="s2">"event_id"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">event_id</span><span class="p">),</span>
+            <span class="s2">"event_type"</span><span class="p">:</span> <span class="n">event_type_value</span><span class="p">,</span>
+            <span class="s2">"actor_id"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">actor_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">actor_id</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">"resource_id"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">resource_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">resource_id</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">"previous_event_hash"</span><span class="p">:</span> <span class="n">previous_event_hash</span><span class="p">,</span>
+            <span class="s2">"payload"</span><span class="p">:</span> <span class="n">payload</span><span class="p">,</span>
         <span class="p">}</span>
         <span class="n">event_hash</span> <span class="o">=</span> <span class="n">_compute_hash</span><span class="p">(</span><span class="n">hash_payload</span><span class="p">)</span>
         <span class="n">signature</span> <span class="o">=</span> <span class="n">_compute_hmac</span><span class="p">(</span><span class="n">event_hash</span><span class="p">,</span> <span class="n">previous_event_hash</span><span class="p">)</span>
-        <span class="n">persisted_previous_event_hash</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">previous_event_hash</span> <span class="o">==</span> <span class="s2">&quot;GENESIS&quot;</span> <span class="k">else</span> <span class="n">previous_event_hash</span>
+        <span class="n">persisted_previous_event_hash</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">previous_event_hash</span> <span class="o">==</span> <span class="s2">"GENESIS"</span> <span class="k">else</span> <span class="n">previous_event_hash</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_async_session</span><span class="p">:</span>
             <span class="n">event</span> <span class="o">=</span> <span class="n">AuditEvent</span><span class="p">(</span>
@@ -535,13 +535,13 @@
             <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
             <span class="k">return</span> <span class="n">event</span><span class="o">.</span><span class="n">id</span>
 
-        <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">            INSERT INTO audit_events (</span>
 <span class="s2">                id, event_type, actor_id, resource_id,</span>
 <span class="s2">                payload, created_at,</span>
 <span class="s2">                event_hash, previous_event_hash, hmac_signature</span>
 <span class="s2">            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)</span>
-<span class="s2">        &quot;&quot;&quot;</span>
+<span class="s2">        """</span>
         <span class="n">execute</span> <span class="o">=</span> <span class="p">(</span><span class="n">conn</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">)</span><span class="o">.</span><span class="n">execute</span>
         <span class="k">await</span> <span class="n">execute</span><span class="p">(</span>
             <span class="n">sql</span><span class="p">,</span>
@@ -569,29 +569,29 @@
         <span class="o">*</span><span class="p">,</span>
         <span class="n">conn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">asyncpg</span><span class="o">.</span><span class="n">Connection</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AuditEvent</span> <span class="o">|</span> <span class="n">asyncpg</span><span class="o">.</span><span class="n">Record</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Append one audit event and return the inserted row.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">payload</span> <span class="o">=</span> <span class="n">payload</span> <span class="ow">or</span> <span class="p">{}</span>
         <span class="n">event_id</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span>
 
         <span class="n">event_type_value</span> <span class="o">=</span> <span class="n">event_type</span><span class="o">.</span><span class="n">value</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">event_type</span><span class="p">,</span> <span class="n">AuditEventType</span><span class="p">)</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">event_type</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">event_type_value</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;event_type must not be blank&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"event_type must not be blank"</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_payload</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
 
         <span class="n">previous_event_hash</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_latest_hash</span><span class="p">(</span><span class="n">resource_id</span><span class="p">,</span> <span class="n">conn</span><span class="o">=</span><span class="n">conn</span><span class="p">)</span>
         <span class="n">hash_payload</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;event_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">event_id</span><span class="p">),</span>
-            <span class="s2">&quot;event_type&quot;</span><span class="p">:</span> <span class="n">event_type_value</span><span class="p">,</span>
-            <span class="s2">&quot;actor_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">actor_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">actor_id</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="s2">&quot;resource_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">resource_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">resource_id</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="s2">&quot;previous_event_hash&quot;</span><span class="p">:</span> <span class="n">previous_event_hash</span><span class="p">,</span>
-            <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="n">payload</span><span class="p">,</span>
+            <span class="s2">"event_id"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">event_id</span><span class="p">),</span>
+            <span class="s2">"event_type"</span><span class="p">:</span> <span class="n">event_type_value</span><span class="p">,</span>
+            <span class="s2">"actor_id"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">actor_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">actor_id</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">"resource_id"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">resource_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">resource_id</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">"previous_event_hash"</span><span class="p">:</span> <span class="n">previous_event_hash</span><span class="p">,</span>
+            <span class="s2">"payload"</span><span class="p">:</span> <span class="n">payload</span><span class="p">,</span>
         <span class="p">}</span>
         <span class="n">event_hash</span> <span class="o">=</span> <span class="n">_compute_hash</span><span class="p">(</span><span class="n">hash_payload</span><span class="p">)</span>
         <span class="n">signature</span> <span class="o">=</span> <span class="n">_compute_hmac</span><span class="p">(</span><span class="n">event_hash</span><span class="p">,</span> <span class="n">previous_event_hash</span><span class="p">)</span>
-        <span class="n">persisted_previous_event_hash</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">previous_event_hash</span> <span class="o">==</span> <span class="s2">&quot;GENESIS&quot;</span> <span class="k">else</span> <span class="n">previous_event_hash</span>
+        <span class="n">persisted_previous_event_hash</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">previous_event_hash</span> <span class="o">==</span> <span class="s2">"GENESIS"</span> <span class="k">else</span> <span class="n">previous_event_hash</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_async_session</span><span class="p">:</span>
             <span class="n">event</span> <span class="o">=</span> <span class="n">AuditEvent</span><span class="p">(</span>
@@ -608,7 +608,7 @@
             <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
             <span class="k">return</span> <span class="n">event</span>
 
-        <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">            INSERT INTO audit_events (</span>
 <span class="s2">                id, event_type, actor_id, resource_id,</span>
 <span class="s2">                payload, created_at,</span>
@@ -617,7 +617,7 @@
 <span class="s2">            RETURNING id, event_type, actor_id, resource_id,</span>
 <span class="s2">                      payload, created_at, event_hash,</span>
 <span class="s2">                      previous_event_hash, hmac_signature</span>
-<span class="s2">        &quot;&quot;&quot;</span>
+<span class="s2">        """</span>
         <span class="n">fetchrow</span> <span class="o">=</span> <span class="p">(</span><span class="n">conn</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">)</span><span class="o">.</span><span class="n">fetchrow</span>
         <span class="n">row</span> <span class="o">=</span> <span class="k">await</span> <span class="n">fetchrow</span><span class="p">(</span>
             <span class="n">sql</span><span class="p">,</span>
@@ -631,7 +631,8 @@
             <span class="n">persisted_previous_event_hash</span><span class="p">,</span>
             <span class="n">signature</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="k">assert</span> <span class="n">row</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">row</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">"assertion failed"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">row</span></div>
 
 
@@ -649,13 +650,13 @@
             <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">stmt</span><span class="p">)</span>
             <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">scalars</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
 
-        <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">            SELECT * FROM audit_events</span>
 <span class="s2">            WHERE resource_id = $1</span>
-<span class="s2">        &quot;&quot;&quot;</span>
+<span class="s2">        """</span>
         <span class="n">args</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">object</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">resource_id</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">event_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">sql</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">            AND event_type = $2&quot;</span>
+            <span class="n">sql</span> <span class="o">+=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">            AND event_type = $2"</span>
             <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_type</span><span class="p">)</span>
         <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
 
@@ -674,13 +675,13 @@
             <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">stmt</span><span class="p">)</span>
             <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">scalars</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
 
-        <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">            SELECT * FROM audit_events</span>
 <span class="s2">            WHERE actor_id = $1</span>
-<span class="s2">        &quot;&quot;&quot;</span>
+<span class="s2">        """</span>
         <span class="n">args</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">object</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">actor_id</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">event_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">sql</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">            AND event_type = $2&quot;</span>
+            <span class="n">sql</span> <span class="o">+=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">            AND event_type = $2"</span>
             <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_type</span><span class="p">)</span>
         <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
 
@@ -696,16 +697,16 @@
         <span class="n">resource_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10_000</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Walk the audit chain for a resource (or globally) and verify:</span>
 <span class="sd">          1. event_hash matches re-computed hash of payload columns</span>
 <span class="sd">          2. hmac_signature matches re-computed HMAC</span>
-<span class="sd">          3. previous_event_hash equals prior row&#39;s event_hash</span>
+<span class="sd">          3. previous_event_hash equals prior row's event_hash</span>
 
 <span class="sd">        Returns (ok, list_of_errors).</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">errors</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">prev_hash</span> <span class="o">=</span> <span class="s2">&quot;GENESIS&quot;</span>
+        <span class="n">prev_hash</span> <span class="o">=</span> <span class="s2">"GENESIS"</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_async_session</span><span class="p">:</span>
             <span class="n">stmt</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="n">AuditEvent</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
@@ -714,14 +715,14 @@
             <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">stmt</span><span class="p">)</span>
             <span class="n">rows</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">scalars</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+            <span class="n">sql</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">                SELECT id, event_type, actor_id, resource_id, payload,</span>
 <span class="s2">                       created_at, event_hash, previous_event_hash, hmac_signature</span>
 <span class="s2">                FROM audit_events</span>
 <span class="s2">                WHERE ($1::uuid IS NULL OR resource_id = $1)</span>
 <span class="s2">                ORDER BY created_at ASC, id ASC</span>
 <span class="s2">                LIMIT $2</span>
-<span class="s2">            &quot;&quot;&quot;</span>
+<span class="s2">            """</span>
             <span class="n">rows</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">resource_id</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
@@ -735,34 +736,34 @@
                 <span class="n">event_hash_value</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">event_hash</span>
                 <span class="n">hmac_signature_value</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">hmac_signature</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">eid</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
-                <span class="n">payload_value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;payload&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;payload&quot;</span><span class="p">],</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;payload&quot;</span><span class="p">])</span>
-                <span class="n">event_type_value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;event_type&quot;</span><span class="p">]</span>
-                <span class="n">actor_id_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;actor_id&quot;</span><span class="p">])</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;actor_id&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
-                <span class="n">resource_id_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;resource_id&quot;</span><span class="p">])</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;resource_id&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
-                <span class="n">previous_event_hash_value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;previous_event_hash&quot;</span><span class="p">]</span>
-                <span class="n">event_hash_value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;event_hash&quot;</span><span class="p">]</span>
-                <span class="n">hmac_signature_value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;hmac_signature&quot;</span><span class="p">]</span>
+                <span class="n">eid</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"id"</span><span class="p">])</span>
+                <span class="n">payload_value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"payload"</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"payload"</span><span class="p">],</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"payload"</span><span class="p">])</span>
+                <span class="n">event_type_value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"event_type"</span><span class="p">]</span>
+                <span class="n">actor_id_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"actor_id"</span><span class="p">])</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"actor_id"</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
+                <span class="n">resource_id_value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"resource_id"</span><span class="p">])</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s2">"resource_id"</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
+                <span class="n">previous_event_hash_value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"previous_event_hash"</span><span class="p">]</span>
+                <span class="n">event_hash_value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"event_hash"</span><span class="p">]</span>
+                <span class="n">hmac_signature_value</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">"hmac_signature"</span><span class="p">]</span>
 
             <span class="n">hash_payload</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s2">&quot;event_id&quot;</span><span class="p">:</span> <span class="n">eid</span><span class="p">,</span>
-                <span class="s2">&quot;event_type&quot;</span><span class="p">:</span> <span class="n">event_type_value</span><span class="p">,</span>
-                <span class="s2">&quot;actor_id&quot;</span><span class="p">:</span> <span class="n">actor_id_value</span><span class="p">,</span>
-                <span class="s2">&quot;resource_id&quot;</span><span class="p">:</span> <span class="n">resource_id_value</span><span class="p">,</span>
-                <span class="s2">&quot;previous_event_hash&quot;</span><span class="p">:</span> <span class="n">previous_event_hash_value</span><span class="p">,</span>
-                <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="n">payload_value</span><span class="p">,</span>
+                <span class="s2">"event_id"</span><span class="p">:</span> <span class="n">eid</span><span class="p">,</span>
+                <span class="s2">"event_type"</span><span class="p">:</span> <span class="n">event_type_value</span><span class="p">,</span>
+                <span class="s2">"actor_id"</span><span class="p">:</span> <span class="n">actor_id_value</span><span class="p">,</span>
+                <span class="s2">"resource_id"</span><span class="p">:</span> <span class="n">resource_id_value</span><span class="p">,</span>
+                <span class="s2">"previous_event_hash"</span><span class="p">:</span> <span class="n">previous_event_hash_value</span><span class="p">,</span>
+                <span class="s2">"payload"</span><span class="p">:</span> <span class="n">payload_value</span><span class="p">,</span>
             <span class="p">}</span>
             <span class="n">expected_hash</span> <span class="o">=</span> <span class="n">_compute_hash</span><span class="p">(</span><span class="n">hash_payload</span><span class="p">)</span>
             <span class="n">expected_hmac</span> <span class="o">=</span> <span class="n">_compute_hmac</span><span class="p">(</span><span class="n">expected_hash</span><span class="p">,</span> <span class="n">previous_event_hash_value</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">event_hash_value</span> <span class="o">!=</span> <span class="n">expected_hash</span><span class="p">:</span>
-                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">eid</span><span class="si">}</span><span class="s2">] event_hash mismatch&quot;</span><span class="p">)</span>
+                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">eid</span><span class="si">}</span><span class="s2">] event_hash mismatch"</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">hmac_signature_value</span> <span class="o">!=</span> <span class="n">expected_hmac</span><span class="p">:</span>
-                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">eid</span><span class="si">}</span><span class="s2">] HMAC mismatch&quot;</span><span class="p">)</span>
+                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">eid</span><span class="si">}</span><span class="s2">] HMAC mismatch"</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">previous_event_hash_value</span> <span class="o">!=</span> <span class="n">prev_hash</span><span class="p">:</span>
                 <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">eid</span><span class="si">}</span><span class="s2">] chain broken: expected previous_event_hash=</span><span class="si">{</span><span class="n">prev_hash</span><span class="si">!r}</span><span class="s2">, &quot;</span>
-                    <span class="sa">f</span><span class="s2">&quot;got </span><span class="si">{</span><span class="n">previous_event_hash_value</span><span class="si">!r}</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">"[</span><span class="si">{</span><span class="n">eid</span><span class="si">}</span><span class="s2">] chain broken: expected previous_event_hash=</span><span class="si">{</span><span class="n">prev_hash</span><span class="si">!r}</span><span class="s2">, "</span>
+                    <span class="sa">f</span><span class="s2">"got </span><span class="si">{</span><span class="n">previous_event_hash_value</span><span class="si">!r}</span><span class="s2">"</span>
                 <span class="p">)</span>
             <span class="n">prev_hash</span> <span class="o">=</span> <span class="n">event_hash_value</span>
 
@@ -787,51 +788,51 @@
             <span class="n">stmt</span> <span class="o">=</span> <span class="n">stmt</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">AuditEvent</span><span class="o">.</span><span class="n">created_at</span><span class="o">.</span><span class="n">desc</span><span class="p">(),</span> <span class="n">AuditEvent</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
             <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">stmt</span><span class="p">)</span>
             <span class="n">row</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">scalar_one_or_none</span><span class="p">()</span>
-            <span class="k">return</span> <span class="n">row</span> <span class="k">if</span> <span class="n">row</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;GENESIS&quot;</span>
+            <span class="k">return</span> <span class="n">row</span> <span class="k">if</span> <span class="n">row</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">"GENESIS"</span>
 
-        <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">            SELECT event_hash FROM audit_events</span>
 <span class="s2">            WHERE ($1::uuid IS NULL OR resource_id = $1)</span>
 <span class="s2">            ORDER BY created_at DESC, id DESC</span>
 <span class="s2">            LIMIT 1</span>
-<span class="s2">        &quot;&quot;&quot;</span>
+<span class="s2">        """</span>
         <span class="n">fetch_one</span> <span class="o">=</span> <span class="p">(</span><span class="n">conn</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_db</span><span class="p">)</span><span class="o">.</span><span class="n">fetchrow</span>
         <span class="n">row</span> <span class="o">=</span> <span class="k">await</span> <span class="n">fetch_one</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">resource_id</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;event_hash&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">row</span> <span class="k">else</span> <span class="s2">&quot;GENESIS&quot;</span>
+        <span class="k">return</span> <span class="n">row</span><span class="p">[</span><span class="s2">"event_hash"</span><span class="p">]</span> <span class="k">if</span> <span class="n">row</span> <span class="k">else</span> <span class="s2">"GENESIS"</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_validate_payload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">payload</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="n">pii_field_names</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;email&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;email_address&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;date_of_birth&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;display_name&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;full_name&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;first_name&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;last_name&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;phone&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;phone_number&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;ssn&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;identity_number&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;national_id&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;passport_number&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;address&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;street_address&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;city&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;zip&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;postal_code&quot;</span><span class="p">,</span>
+            <span class="s2">"email"</span><span class="p">,</span>
+            <span class="s2">"email_address"</span><span class="p">,</span>
+            <span class="s2">"date_of_birth"</span><span class="p">,</span>
+            <span class="s2">"display_name"</span><span class="p">,</span>
+            <span class="s2">"full_name"</span><span class="p">,</span>
+            <span class="s2">"first_name"</span><span class="p">,</span>
+            <span class="s2">"last_name"</span><span class="p">,</span>
+            <span class="s2">"phone"</span><span class="p">,</span>
+            <span class="s2">"phone_number"</span><span class="p">,</span>
+            <span class="s2">"ssn"</span><span class="p">,</span>
+            <span class="s2">"identity_number"</span><span class="p">,</span>
+            <span class="s2">"national_id"</span><span class="p">,</span>
+            <span class="s2">"passport_number"</span><span class="p">,</span>
+            <span class="s2">"address"</span><span class="p">,</span>
+            <span class="s2">"street_address"</span><span class="p">,</span>
+            <span class="s2">"city"</span><span class="p">,</span>
+            <span class="s2">"zip"</span><span class="p">,</span>
+            <span class="s2">"postal_code"</span><span class="p">,</span>
         <span class="p">}</span>
 
-        <span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
                 <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                     <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">pii_field_names</span><span class="p">:</span>
-                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PII field names are not permitted in audit payload: </span><span class="si">{</span><span class="n">path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-                    <span class="n">check</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}{</span><span class="n">key</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"PII field names are not permitted in audit payload: </span><span class="si">{</span><span class="n">path</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">key</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+                    <span class="n">check</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">path</span><span class="si">}{</span><span class="n">key</span><span class="si">}</span><span class="s2">."</span><span class="p">)</span>
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
                 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-                    <span class="n">check</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">[</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">].&quot;</span><span class="p">)</span>
+                    <span class="n">check</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">[</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">]."</span><span class="p">)</span>
 
         <span class="n">check</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span></div>
 

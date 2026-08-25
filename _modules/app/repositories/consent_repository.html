@@ -383,10 +383,10 @@
            <div itemprop="articleBody">
              
   <h1>Source code for app.repositories.consent_repository</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">app/repositories/consent_repository.py</span>
 <span class="sd">PostgreSQL persistence for ConsentRecord.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
@@ -410,12 +410,12 @@
         <span class="bp">self</span><span class="p">,</span> <span class="n">learner_id</span><span class="p">:</span> <span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ConsentRecord</span><span class="p">]:</span>
         <span class="n">row</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pool</span><span class="o">.</span><span class="n">fetchrow</span><span class="p">(</span>
-<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">"""</span>
 <span class="sd">            SELECT * FROM consent_records</span>
 <span class="sd">            WHERE learner_id = $1</span>
 <span class="sd">            ORDER BY created_at DESC</span>
 <span class="sd">            LIMIT 1</span>
-<span class="sd">            &quot;&quot;&quot;</span><span class="p">,</span>
+<span class="sd">            """</span><span class="p">,</span>
             <span class="n">learner_id</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_row_to_model</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">if</span> <span class="n">row</span> <span class="k">else</span> <span class="kc">None</span></div>
@@ -425,7 +425,7 @@
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.ConsentRepository.get_by_id">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record_id</span><span class="p">:</span> <span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ConsentRecord</span><span class="p">]:</span>
         <span class="n">row</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pool</span><span class="o">.</span><span class="n">fetchrow</span><span class="p">(</span>
-            <span class="s2">&quot;SELECT * FROM consent_records WHERE id = $1&quot;</span><span class="p">,</span> <span class="n">record_id</span>
+            <span class="s2">"SELECT * FROM consent_records WHERE id = $1"</span><span class="p">,</span> <span class="n">record_id</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_row_to_model</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">if</span> <span class="n">row</span> <span class="k">else</span> <span class="kc">None</span></div>
 
@@ -434,13 +434,13 @@
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.ConsentRepository.create">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">:</span> <span class="n">ConsentRecord</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConsentRecord</span><span class="p">:</span>
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">"""</span>
 <span class="sd">            INSERT INTO consent_records (</span>
 <span class="sd">                id, learner_id, guardian_id, privacy_notice_version,</span>
 <span class="sd">                state, granted_at, expires_at, withdrawn_at,</span>
 <span class="sd">                denial_reason, created_at, updated_at</span>
 <span class="sd">            ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)</span>
-<span class="sd">            &quot;&quot;&quot;</span><span class="p">,</span>
+<span class="sd">            """</span><span class="p">,</span>
             <span class="n">record</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">record</span><span class="o">.</span><span class="n">learner_id</span><span class="p">,</span> <span class="n">record</span><span class="o">.</span><span class="n">guardian_id</span><span class="p">,</span>
             <span class="n">record</span><span class="o">.</span><span class="n">privacy_notice_version</span><span class="p">,</span> <span class="n">record</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
             <span class="n">record</span><span class="o">.</span><span class="n">granted_at</span><span class="p">,</span> <span class="n">record</span><span class="o">.</span><span class="n">expires_at</span><span class="p">,</span> <span class="n">record</span><span class="o">.</span><span class="n">withdrawn_at</span><span class="p">,</span>
@@ -453,13 +453,13 @@
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.ConsentRepository.update">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">:</span> <span class="n">ConsentRecord</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConsentRecord</span><span class="p">:</span>
         <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pool</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
-<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">"""</span>
 <span class="sd">            UPDATE consent_records SET</span>
 <span class="sd">                state = $2, granted_at = $3, expires_at = $4,</span>
 <span class="sd">                withdrawn_at = $5, denial_reason = $6,</span>
 <span class="sd">                privacy_notice_version = $7, updated_at = $8</span>
 <span class="sd">            WHERE id = $1</span>
-<span class="sd">            &quot;&quot;&quot;</span><span class="p">,</span>
+<span class="sd">            """</span><span class="p">,</span>
             <span class="n">record</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">record</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">record</span><span class="o">.</span><span class="n">granted_at</span><span class="p">,</span>
             <span class="n">record</span><span class="o">.</span><span class="n">expires_at</span><span class="p">,</span> <span class="n">record</span><span class="o">.</span><span class="n">withdrawn_at</span><span class="p">,</span> <span class="n">record</span><span class="o">.</span><span class="n">denial_reason</span><span class="p">,</span>
             <span class="n">record</span><span class="o">.</span><span class="n">privacy_notice_version</span><span class="p">,</span>
@@ -472,12 +472,12 @@
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.ConsentRepository.list_expiring_soon">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">list_expiring_soon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">within_days</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ConsentRecord</span><span class="p">]:</span>
         <span class="n">rows</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pool</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span>
-<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">"""</span>
 <span class="sd">            SELECT * FROM consent_records</span>
-<span class="sd">            WHERE state = &#39;granted&#39;</span>
-<span class="sd">              AND expires_at &lt;= NOW() + ($1 || &#39; days&#39;)::interval</span>
+<span class="sd">            WHERE state = 'granted'</span>
+<span class="sd">              AND expires_at &lt;= NOW() + ($1 || ' days')::interval</span>
 <span class="sd">              AND expires_at &gt; NOW()</span>
-<span class="sd">            &quot;&quot;&quot;</span><span class="p">,</span>
+<span class="sd">            """</span><span class="p">,</span>
             <span class="nb">str</span><span class="p">(</span><span class="n">within_days</span><span class="p">),</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_row_to_model</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span></div>
@@ -488,17 +488,17 @@
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_row_to_model</span><span class="p">(</span><span class="n">row</span><span class="p">:</span> <span class="n">asyncpg</span><span class="o">.</span><span class="n">Record</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConsentRecord</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">ConsentRecord</span><span class="p">(</span>
-            <span class="nb">id</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span>
-            <span class="n">learner_id</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;learner_id&quot;</span><span class="p">],</span>
-            <span class="n">guardian_id</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;guardian_id&quot;</span><span class="p">],</span>
-            <span class="n">privacy_notice_version</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;privacy_notice_version&quot;</span><span class="p">],</span>
-            <span class="n">state</span><span class="o">=</span><span class="n">ConsentState</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]),</span>
-            <span class="n">granted_at</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;granted_at&quot;</span><span class="p">],</span>
-            <span class="n">expires_at</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;expires_at&quot;</span><span class="p">],</span>
-            <span class="n">withdrawn_at</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;withdrawn_at&quot;</span><span class="p">],</span>
-            <span class="n">denial_reason</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;denial_reason&quot;</span><span class="p">],</span>
-            <span class="n">created_at</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;created_at&quot;</span><span class="p">],</span>
-            <span class="n">updated_at</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;updated_at&quot;</span><span class="p">],</span>
+            <span class="nb">id</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span>
+            <span class="n">learner_id</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">"learner_id"</span><span class="p">],</span>
+            <span class="n">guardian_id</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">"guardian_id"</span><span class="p">],</span>
+            <span class="n">privacy_notice_version</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">"privacy_notice_version"</span><span class="p">],</span>
+            <span class="n">state</span><span class="o">=</span><span class="n">ConsentState</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"state"</span><span class="p">]),</span>
+            <span class="n">granted_at</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">"granted_at"</span><span class="p">],</span>
+            <span class="n">expires_at</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">"expires_at"</span><span class="p">],</span>
+            <span class="n">withdrawn_at</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">"withdrawn_at"</span><span class="p">],</span>
+            <span class="n">denial_reason</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">"denial_reason"</span><span class="p">],</span>
+            <span class="n">created_at</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">"created_at"</span><span class="p">],</span>
+            <span class="n">updated_at</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s2">"updated_at"</span><span class="p">],</span>
         <span class="p">)</span></div>
 
 </pre></div>

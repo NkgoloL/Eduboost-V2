@@ -383,7 +383,7 @@
            <div itemprop="articleBody">
              
   <h1>Source code for app.repositories.assessment_repository</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;Assessment persistence repository for EduBoost V2.&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""Assessment persistence repository for EduBoost V2."""</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
@@ -398,7 +398,7 @@
 <div class="viewcode-block" id="AssessmentRepository">
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.AssessmentRepository">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">AssessmentRepository</span><span class="p">(</span><span class="n">BaseRepository</span><span class="p">[</span><span class="n">Assessment</span><span class="p">]):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Canonical assessment repository with live-route compatibility methods.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Canonical assessment repository with live-route compatibility methods."""</span>
 
     <span class="n">model</span> <span class="o">=</span> <span class="n">Assessment</span>
 
@@ -408,7 +408,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">_resolve_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncSession</span><span class="p">:</span>
         <span class="n">session</span> <span class="o">=</span> <span class="n">db</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">db</span>
         <span class="k">if</span> <span class="n">session</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;AssessmentRepository requires an AsyncSession&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"AssessmentRepository requires an AsyncSession"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">session</span>
 
 <div class="viewcode-block" id="AssessmentRepository.list_active">
@@ -420,14 +420,14 @@
         <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
         <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Assessment</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a list of active assessments.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_resolve_db</span><span class="p">(</span><span class="n">db</span><span class="p">),</span> <span class="n">filters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;is_active&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">)</span></div>
+<span class="w">        </span><span class="sd">"""Return a list of active assessments."""</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_resolve_db</span><span class="p">(</span><span class="n">db</span><span class="p">),</span> <span class="n">filters</span><span class="o">=</span><span class="p">{</span><span class="s2">"is_active"</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="AssessmentRepository.get_by_id_str">
 <a class="viewcode-back" href="../../../api/repositories.html#app.repositories.AssessmentRepository.get_by_id_str">[docs]</a>
     <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_by_id_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assessment_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Assessment</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fetch a single assessment by its ID string.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Fetch a single assessment by its ID string."""</span>
         <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">UUID</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">assessment_id</span><span class="p">)),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_db</span><span class="p">(</span><span class="n">db</span><span class="p">))</span></div>
 
 
@@ -440,7 +440,7 @@
         <span class="n">offset</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
         <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compatibility method consumed by AssessmentServiceV2 live routes.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Compatibility method consumed by AssessmentServiceV2 live routes."""</span>
         <span class="n">rows</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_active</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">to_payload</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">]</span></div>
 
@@ -452,7 +452,7 @@
         <span class="n">assessment_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compatibility method consumed by AssessmentServiceV2 live routes.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Compatibility method consumed by AssessmentServiceV2 live routes."""</span>
         <span class="n">row</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_by_id_str</span><span class="p">(</span><span class="n">assessment_id</span><span class="p">,</span> <span class="n">db</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_payload</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">if</span> <span class="n">row</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span></div>
 
@@ -470,12 +470,12 @@
         <span class="n">time_taken_seconds</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="n">db</span><span class="p">:</span> <span class="n">AsyncSession</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an attempt and return its ID as the V2 service expects.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Create an attempt and return its ID as the V2 service expects."""</span>
         <span class="n">attempt</span> <span class="o">=</span> <span class="k">await</span> <span class="n">AssessmentAttemptRepository</span><span class="p">()</span><span class="o">.</span><span class="n">create_attempt</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_db</span><span class="p">(</span><span class="n">db</span><span class="p">),</span>
             <span class="n">assessment_id</span><span class="o">=</span><span class="n">assessment_id</span><span class="p">,</span>
             <span class="n">learner_id</span><span class="o">=</span><span class="n">learner_id</span><span class="p">,</span>
-            <span class="n">responses</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;responses&quot;</span><span class="p">:</span> <span class="n">responses</span><span class="p">},</span>
+            <span class="n">responses</span><span class="o">=</span><span class="p">{</span><span class="s2">"responses"</span><span class="p">:</span> <span class="n">responses</span><span class="p">},</span>
             <span class="n">score</span><span class="o">=</span><span class="n">score</span><span class="p">,</span>
             <span class="n">marks_obtained</span><span class="o">=</span><span class="n">marks_obtained</span><span class="p">,</span>
             <span class="n">time_taken_seconds</span><span class="o">=</span><span class="n">time_taken_seconds</span><span class="p">,</span>
@@ -489,18 +489,18 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">to_payload</span><span class="p">(</span><span class="n">row</span><span class="p">:</span> <span class="n">Assessment</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
         <span class="n">questions</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">questions</span> <span class="ow">or</span> <span class="p">[]</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">questions</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-            <span class="n">questions</span> <span class="o">=</span> <span class="n">questions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;questions&quot;</span><span class="p">,</span> <span class="n">questions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;items&quot;</span><span class="p">,</span> <span class="p">[]))</span>
+            <span class="n">questions</span> <span class="o">=</span> <span class="n">questions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"questions"</span><span class="p">,</span> <span class="n">questions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"items"</span><span class="p">,</span> <span class="p">[]))</span>
         <span class="k">return</span> <span class="p">{</span>
-            <span class="s2">&quot;assessment_id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
-            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
-            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
-            <span class="s2">&quot;subject_code&quot;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">subject_code</span><span class="p">,</span>
-            <span class="s2">&quot;grade_level&quot;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">grade_level</span><span class="p">,</span>
-            <span class="s2">&quot;assessment_type&quot;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">assessment_type</span><span class="p">,</span>
-            <span class="s2">&quot;total_marks&quot;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">total_marks</span><span class="p">,</span>
-            <span class="s2">&quot;questions&quot;</span><span class="p">:</span> <span class="n">questions</span><span class="p">,</span>
-            <span class="s2">&quot;passing_score&quot;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">passing_score</span><span class="p">,</span>
-            <span class="s2">&quot;is_active&quot;</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">is_active</span><span class="p">,</span>
+            <span class="s2">"assessment_id"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+            <span class="s2">"title"</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
+            <span class="s2">"subject_code"</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">subject_code</span><span class="p">,</span>
+            <span class="s2">"grade_level"</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">grade_level</span><span class="p">,</span>
+            <span class="s2">"assessment_type"</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">assessment_type</span><span class="p">,</span>
+            <span class="s2">"total_marks"</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">total_marks</span><span class="p">,</span>
+            <span class="s2">"questions"</span><span class="p">:</span> <span class="n">questions</span><span class="p">,</span>
+            <span class="s2">"passing_score"</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">passing_score</span><span class="p">,</span>
+            <span class="s2">"is_active"</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">is_active</span><span class="p">,</span>
         <span class="p">}</span></div>
 </div>
 
@@ -519,7 +519,7 @@
         <span class="n">time_taken_seconds</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="n">responses</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AssessmentAttempt</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Record a new assessment attempt.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Record a new assessment attempt."""</span>
         <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
             <span class="n">db</span><span class="p">,</span>
             <span class="n">assessment_id</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">assessment_id</span><span class="p">),</span>
