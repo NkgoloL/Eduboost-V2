@@ -31,6 +31,8 @@ CONTRACTS = (
     ("script_taxonomy", "docs/roadmap/production_readiness/script_taxonomy.json"),
     ("coverage_contract", "docs/roadmap/production_readiness/coverage_contract.json"),
     ("product_runtime_test_gate_contract", "docs/roadmap/production_readiness/product_runtime_test_gate_contract.json"),
+    ("product_gate_execution_contract", "docs/roadmap/production_readiness/product_gate_execution_contract.json"),
+    ("coverage_frontend_advisory_gate_contract", "docs/roadmap/production_readiness/coverage_frontend_advisory_gate_contract.json"),
 )
 EXPECTED_NEXT = "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8"
 SELF_REVIEWER = "Nkgolo Lebelo"

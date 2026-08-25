@@ -341,6 +341,24 @@ def update_task_status(root: Path, task_ids: Iterable[str], status: str, evidenc
     atomic_write_json(path, data)
 
 
+def update_bundle_status(root: Path, bundle_id: str, status: str, next_bundle_status: str | None = None) -> None:
+    path = register_path(root)
+    data = load_json(path, {})
+    bundles = data.get("bundles", [])
+    found = False
+    for index, bundle in enumerate(bundles):
+        if bundle.get("id") == bundle_id:
+            bundle["status"] = status
+            found = True
+            if next_bundle_status and index + 1 < len(bundles):
+                bundles[index + 1]["status"] = next_bundle_status
+            break
+    if not found:
+        raise BundleError(f"Bundle id missing from remediation register: {bundle_id}")
+    data["updated_at"] = utc_now()
+    atomic_write_json(path, data)
+
+
 def verify_register(root: Path) -> dict[str, Any]:
     path = register_path(root)
     if not path.exists():

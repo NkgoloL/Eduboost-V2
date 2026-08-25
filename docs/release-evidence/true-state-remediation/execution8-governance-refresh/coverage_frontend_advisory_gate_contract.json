@@ -1,0 +1,203 @@
+{
+  "contract_id": "coverage_frontend_advisory_gate_contract",
+  "contract_path": "docs/roadmap/production_readiness/coverage_frontend_advisory_gate_contract.json",
+  "contract_sha256": "81d8928b75e5ff2a9552d3fd28345b1ac72185843b2388614353e5531a96cf94",
+  "reviewed_contract": {
+    "advisory_static_gate_green": false,
+    "coverage_gate_green": false,
+    "dependency_audit_gate_green": false,
+    "execution8_governance_refresh": true,
+    "execution8_review_branch": "codex/prd-1100r-runtime-restore-execution-7-coverage-static-security-green-evidence",
+    "execution8_review_commit": "be78626cc1d526238040986bea67ecd0a60ebd01",
+    "execution_policy": {
+      "advisory_static_gates_required": true,
+      "dependency_audit_must_resolve_and_report": true,
+      "fresh_coverage_report_required": true,
+      "frontend_lint_vitest_build_required": true,
+      "generated_contract_drift_must_be_clean": true,
+      "governance_records_cannot_override_failed_gate": true,
+      "green_status_requires_all_gate_results_green": true,
+      "presence_only_outputs_forbidden": true,
+      "secret_baseline_must_be_reviewable": true
+    },
+    "execution_results": [],
+    "freshness_max_age_days": 21,
+    "frontend_quality_green": false,
+    "gates": [
+      {
+        "class": "product",
+        "command": "make test-coverage COVERAGE_THRESHOLD=70",
+        "evidence_source": "independent_command_result",
+        "expected_artifacts": [
+          "fresh coverage XML/HTML summary",
+          "line and branch coverage threshold result",
+          "domain coverage blocker register"
+        ],
+        "governance_substitution_allowed": false,
+        "id": "coverage_execution",
+        "known_failure_modes": [
+          "coverage below documentation threshold",
+          "test failure must not be swallowed"
+        ],
+        "negative_or_failure_command": "python3 scripts/coverage_suites/verify_coverage_contract.py --json",
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "independent_command_output",
+          "positive_path_result",
+          "negative_or_failure_path_result",
+          "fresh_artifact_reference",
+          "blocker_record_when_not_green"
+        ],
+        "requires_negative_or_failure_path": true,
+        "requires_positive_path": true
+      },
+      {
+        "class": "product",
+        "command": "cd app/frontend && pnpm lint && pnpm test:run && pnpm build",
+        "evidence_source": "independent_command_result",
+        "expected_artifacts": [
+          "lint result",
+          "Vitest result",
+          "production build result"
+        ],
+        "governance_substitution_allowed": false,
+        "id": "frontend_quality",
+        "known_failure_modes": [
+          "conditional hook lint failure",
+          "test timeout"
+        ],
+        "negative_or_failure_command": "cd app/frontend && pnpm lint --max-warnings=0",
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "independent_command_output",
+          "positive_path_result",
+          "negative_or_failure_path_result",
+          "fresh_artifact_reference",
+          "blocker_record_when_not_green"
+        ],
+        "requires_negative_or_failure_path": true,
+        "requires_positive_path": true
+      },
+      {
+        "class": "advisory",
+        "command": "python3 -m ruff check app tests && python3 -m mypy app && python3 -m bandit -r app scripts -q",
+        "evidence_source": "independent_command_result",
+        "expected_artifacts": [
+          "Ruff result",
+          "mypy result",
+          "Bandit result"
+        ],
+        "governance_substitution_allowed": false,
+        "id": "advisory_static_quality",
+        "known_failure_modes": [
+          "type debt",
+          "security static finding"
+        ],
+        "negative_or_failure_command": "python3 -m ruff check app tests --select F,E9",
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "independent_command_output",
+          "positive_path_result",
+          "negative_or_failure_path_result",
+          "fresh_artifact_reference",
+          "blocker_record_when_not_green"
+        ],
+        "requires_negative_or_failure_path": true,
+        "requires_positive_path": true
+      },
+      {
+        "class": "advisory",
+        "command": "python3 scripts/generate_openapi.py --check && python3 scripts/generate_route_inventory.py --check",
+        "evidence_source": "independent_command_result",
+        "expected_artifacts": [
+          "OpenAPI check result",
+          "route inventory check result"
+        ],
+        "governance_substitution_allowed": false,
+        "id": "generated_contract_drift",
+        "known_failure_modes": [
+          "generated artifact drift"
+        ],
+        "negative_or_failure_command": "python3 scripts/generate_openapi.py --check",
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "independent_command_output",
+          "positive_path_result",
+          "negative_or_failure_path_result",
+          "fresh_artifact_reference",
+          "blocker_record_when_not_green"
+        ],
+        "requires_negative_or_failure_path": true,
+        "requires_positive_path": true
+      },
+      {
+        "class": "advisory",
+        "command": "pip-audit -r requirements/base.txt -r requirements/dev.txt && cd app/frontend && pnpm audit --prod",
+        "evidence_source": "independent_command_result",
+        "expected_artifacts": [
+          "Python audit result",
+          "frontend audit result",
+          "accepted risk register if any"
+        ],
+        "governance_substitution_allowed": false,
+        "id": "dependency_security_audit",
+        "known_failure_modes": [
+          "unresolved dependency conflict",
+          "unaccepted high/critical advisory"
+        ],
+        "negative_or_failure_command": "pip-audit -r requirements/base.txt --strict",
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "independent_command_output",
+          "positive_path_result",
+          "negative_or_failure_path_result",
+          "fresh_artifact_reference",
+          "blocker_record_when_not_green"
+        ],
+        "requires_negative_or_failure_path": true,
+        "requires_positive_path": true
+      },
+      {
+        "class": "advisory",
+        "command": "detect-secrets scan --baseline .secrets.baseline app scripts .github",
+        "evidence_source": "independent_command_result",
+        "expected_artifacts": [
+          "secret scan result",
+          "reviewed baseline delta",
+          "remaining candidate disposition"
+        ],
+        "governance_substitution_allowed": false,
+        "id": "secret_baseline_review",
+        "known_failure_modes": [
+          "noisy baseline hides true finding",
+          "unreviewed secret candidate"
+        ],
+        "negative_or_failure_command": "detect-secrets audit .secrets.baseline",
+        "presence_only_evidence_allowed": false,
+        "release_blocking": true,
+        "required_evidence": [
+          "independent_command_output",
+          "positive_path_result",
+          "negative_or_failure_path_result",
+          "fresh_artifact_reference",
+          "blocker_record_when_not_green"
+        ],
+        "requires_negative_or_failure_path": true,
+        "requires_positive_path": true
+      }
+    ],
+    "generated_contracts_green": false,
+    "last_reviewed_at": "2026-08-25T21:41:05.997068+00:00",
+    "next_after_evidence": "PRD-11.0R.RUNTIME-RESTORE-6",
+    "prd_id": "PRD-11.0R.RUNTIME-RESTORE-5",
+    "schema_version": "prd11.0r/runtime-restore-5/coverage-frontend-advisory/v1",
+    "secret_baseline_gate_green": false,
+    "status": "evidence_recorded",
+    "title": "Coverage Execution, Frontend Quality, and Advisory Gate Repair"
+  }
+}

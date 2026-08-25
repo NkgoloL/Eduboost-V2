@@ -134,6 +134,9 @@
       "requires_runtime_context": false
     }
   ],
+  "execution8_governance_refresh": true,
+  "execution8_review_branch": "codex/prd-1100r-runtime-restore-execution-7-coverage-static-security-green-evidence",
+  "execution8_review_commit": "be78626cc1d526238040986bea67ecd0a60ebd01",
   "execution_policy": {
     "capture_independent_command_outputs": true,
     "execute_product_gates_before_runtime_green_claim": true,
@@ -148,7 +151,7 @@
     "Existing product/runtime gates are not yet green; RESTORE-4 records critical-flow execution contract and keeps operational hold active until independent command outputs pass.",
     "POPIA and backend-backed journey repairs remain required before product_gate_green can become true."
   ],
-  "last_reviewed_at": "2026-08-25T13:21:33.362186+00:00",
+  "last_reviewed_at": "2026-08-25T21:41:05.997068+00:00",
   "next_after_evidence": "PRD-11.0R.RUNTIME-RESTORE-5",
   "prd_id": "PRD-11.0R.RUNTIME-RESTORE-4",
   "product_gate_green": false,
@@ -160,5 +163,6 @@
     "ready_endpoint"
   ],
   "schema_version": "prd11.0r/runtime-restore-4/product-gate-execution/v1",
+  "status": "evidence_recorded",
   "title": "Product Gate Execution and Critical Flow Repair Contract"
 }
