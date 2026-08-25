@@ -1,6 +1,6 @@
 {
   "all_required_green": false,
-  "captured_at": "2026-08-20T19:04:24.712048+00:00",
+  "captured_at": "2026-08-25T18:03:11.688009+00:00",
   "commands": [
     {
       "command": [
@@ -15,11 +15,11 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-20T18:41:28.996846+00:00",
+      "finished_at": "2026-08-25T17:41:00.526922+00:00",
       "name": "compileall",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-20T18:41:26.864542+00:00",
+      "started_at": "2026-08-25T17:40:58.712016+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
@@ -35,13 +35,13 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-20T18:41:32.611284+00:00",
+      "finished_at": "2026-08-25T17:41:03.037536+00:00",
       "name": "mcp_stub_isolation",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-20T18:41:28.997911+00:00",
+      "started_at": "2026-08-25T17:41:00.527635+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "83d6b6eccb049277a9385735449b549af424dc7073334c1f62ecbfd5e62c34e3"
+      "stdout_sha256": "c6abffb8d65171e91b958748c9d37ef32046ef362e79a06b72182e089040d686"
     },
     {
       "command": [
@@ -53,13 +53,50 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-20T18:41:46.918120+00:00",
+      "finished_at": "2026-08-25T17:41:11.905630+00:00",
       "name": "test_collection",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-20T18:41:32.612797+00:00",
+      "started_at": "2026-08-25T17:41:03.038414+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "1d0f6d7a4212966b16b50fa75e4826528ebc36ca4a50a69745dd0c1e0db1f3a0"
+      "stdout_sha256": "40332837aaf48624b2f638d7fdf095a9a15486b85a8e4f3ca8979cd78bf93afa"
+    },
+    {
+      "command": [
+        "git",
+        "add",
+        "-A",
+        "docs/release-evidence/true-state-remediation/b01/commands/compileall.json",
+        "docs/release-evidence/true-state-remediation/b01/commands/mcp_stub_isolation.json",
+        "docs/release-evidence/true-state-remediation/b01/commands/test_collection.json"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "finished_at": "2026-08-25T17:41:11.918571+00:00",
+      "name": "pre_coverage_commit",
+      "passed": true,
+      "required": false,
+      "started_at": "2026-08-25T17:41:11.907569+00:00",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "git",
+        "commit",
+        "--allow-empty",
+        "-m",
+        "evidence(b01): pre-coverage quick-gate artefacts (compileall/mcp_stub/test_collection)"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "finished_at": "2026-08-25T17:41:11.975233+00:00",
+      "name": "pre_coverage_git_commit",
+      "passed": true,
+      "required": false,
+      "started_at": "2026-08-25T17:41:11.919291+00:00",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "c121337f0d86eb9103f30e1c1058ad741c3479455808022c66fa535289a1dfe3"
     },
     {
       "command": [
@@ -70,13 +107,13 @@
       ],
       "cwd": ".",
       "exit_code": 1,
-      "finished_at": "2026-08-20T19:03:38.939676+00:00",
+      "finished_at": "2026-08-25T18:01:27.288742+00:00",
       "name": "execution7_gate_suite",
       "passed": false,
       "required": true,
-      "started_at": "2026-08-20T18:41:46.919820+00:00",
+      "started_at": "2026-08-25T17:41:11.975872+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "f3507759bef3cb804a26c2a8413654092eba00fbaa0006e548713b5ee85482cb"
+      "stdout_sha256": "3c506005b56b42609c4a17a8fd18a0af48a9a3d99bd12ee26857c208d4b044e4"
     },
     {
       "command": [
@@ -89,11 +126,11 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-20T19:03:38.980130+00:00",
+      "finished_at": "2026-08-25T18:01:27.326047+00:00",
       "name": "ruff",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-20T19:03:38.943098+00:00",
+      "started_at": "2026-08-25T18:01:27.297555+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stdout_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
     },
@@ -106,11 +143,11 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-20T19:03:40.229047+00:00",
+      "finished_at": "2026-08-25T18:01:28.488157+00:00",
       "name": "mypy",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-20T19:03:38.981936+00:00",
+      "started_at": "2026-08-25T18:01:27.327210+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stdout_sha256": "c03a022ee0faf6e3859009834422efdd70ba84810630679740b4bdd750ca506d"
     },
@@ -127,14 +164,14 @@
         "-q"
       ],
       "cwd": ".",
-      "exit_code": 0,
-      "finished_at": "2026-08-20T19:03:56.110188+00:00",
+      "exit_code": 1,
+      "finished_at": "2026-08-25T18:01:42.462493+00:00",
       "name": "bandit",
-      "passed": true,
+      "passed": false,
       "required": true,
-      "started_at": "2026-08-20T19:03:40.229903+00:00",
+      "started_at": "2026-08-25T18:01:28.489879+00:00",
       "stderr_sha256": "1f74afa6a1f741f9a57f451f72135fab88a0a35c85218e72047f7214b7cb3780",
-      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "stdout_sha256": "ca8eac32d4aae0e48ec1c13592453923e75c740f30891c1c324b2b743d0292c1"
     },
     {
       "command": [
@@ -142,29 +179,15 @@
         "-m",
         "pip_audit",
         "-r",
-        "requirements/base.txt",
-        "--ignore-vuln",
-        "PYSEC-2026-161",
-        "--ignore-vuln",
-        "PYSEC-2026-248",
-        "--ignore-vuln",
-        "PYSEC-2026-249",
-        "--ignore-vuln",
-        "PYSEC-2026-1943",
-        "--ignore-vuln",
-        "PYSEC-2026-1941",
-        "--ignore-vuln",
-        "PYSEC-2026-2281",
-        "--ignore-vuln",
-        "PYSEC-2026-2280"
+        "requirements/base.txt"
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-20T19:04:08.478819+00:00",
+      "finished_at": "2026-08-25T18:01:56.658219+00:00",
       "name": "pip_audit_base",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-20T19:03:56.122389+00:00",
+      "started_at": "2026-08-25T18:01:42.464246+00:00",
       "stderr_sha256": "15950a68a7ed99c59779717acefdceb3f69cfd31bde67d2c954f2a3cea4d7955",
       "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
@@ -178,11 +201,11 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-20T19:04:22.799834+00:00",
+      "finished_at": "2026-08-25T18:02:10.096618+00:00",
       "name": "pip_audit_dev",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-20T19:04:08.479734+00:00",
+      "started_at": "2026-08-25T18:01:56.660153+00:00",
       "stderr_sha256": "15950a68a7ed99c59779717acefdceb3f69cfd31bde67d2c954f2a3cea4d7955",
       "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
@@ -194,12 +217,12 @@
       ],
       "cwd": "app/frontend",
       "exit_code": 0,
-      "finished_at": "2026-08-20T19:04:23.770434+00:00",
+      "finished_at": "2026-08-25T18:02:11.002020+00:00",
       "name": "frontend_audit",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-20T19:04:22.810534+00:00",
-      "stderr_sha256": "11941d74f8bd9dfa1e2e40be5b61aad34fbc16ece4fb454c43b1c9aa1bab5a41",
+      "started_at": "2026-08-25T18:02:10.098445+00:00",
+      "stderr_sha256": "efdee36dc2429d4a791219ed7ae27851f435326e5b759d6374e9a68234be5318",
       "stdout_sha256": "15950a68a7ed99c59779717acefdceb3f69cfd31bde67d2c954f2a3cea4d7955"
     },
     {
@@ -209,14 +232,14 @@
         "quality:release"
       ],
       "cwd": "app/frontend",
-      "exit_code": 1,
-      "finished_at": "2026-08-20T19:04:24.562802+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-08-25T18:03:11.482975+00:00",
       "name": "frontend_quality",
-      "passed": false,
+      "passed": true,
       "required": true,
-      "started_at": "2026-08-20T19:04:23.771169+00:00",
-      "stderr_sha256": "33af716eb914a6da553969f1903c61938cd8d2741492b02d8e4a08c3faf3943a",
-      "stdout_sha256": "99ca0d9201336e6c27e1c288d397a651a26ed8d4ac37424b40de01efeb660fe4"
+      "started_at": "2026-08-25T18:02:11.002824+00:00",
+      "stderr_sha256": "14ec37658a416fda30228f549b19189959ac78f145d9e204d584d7038fd94107",
+      "stdout_sha256": "7959ab50b7e19b2f6674fd4ec59e131b86e2d0e236ab5acc08bfc70527b0fdf6"
     },
     {
       "command": [
@@ -225,13 +248,13 @@
       ],
       "cwd": ".",
       "exit_code": 1,
-      "finished_at": "2026-08-20T19:04:24.610048+00:00",
+      "finished_at": "2026-08-25T18:03:11.551364+00:00",
       "name": "product_gate",
       "passed": false,
       "required": true,
-      "started_at": "2026-08-20T19:04:24.563372+00:00",
+      "started_at": "2026-08-25T18:03:11.486685+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "6932db7cbb1bdf736d4d77dd79775f0ed189ffc78253b3d5b1b281f31826f8ce"
+      "stdout_sha256": "291c7eac84eced6cfa4ee421c34d57f4030b64dac0c59e22b098629c9b2156f1"
     },
     {
       "command": [
@@ -239,14 +262,14 @@
         "scripts/test_suites/verify_product_runtime_test_gates.py"
       ],
       "cwd": ".",
-      "exit_code": 1,
-      "finished_at": "2026-08-20T19:04:24.658741+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-08-25T18:03:11.621992+00:00",
       "name": "product_runtime_gate",
-      "passed": false,
+      "passed": true,
       "required": true,
-      "started_at": "2026-08-20T19:04:24.611534+00:00",
+      "started_at": "2026-08-25T18:03:11.552648+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "640ae8914ecde0f1a9914d1998087cb3ed322125643d820b5e9890bbd3578db5"
+      "stdout_sha256": "1e45a7fcd93d1fae91ad9a731f929ffeeb2543b85b9a9144fdd78d33dec656aa"
     },
     {
       "command": [
@@ -257,13 +280,13 @@
       ],
       "cwd": ".",
       "exit_code": 1,
-      "finished_at": "2026-08-20T19:04:24.710832+00:00",
+      "finished_at": "2026-08-25T18:03:11.686657+00:00",
       "name": "execution7_verifier",
       "passed": false,
       "required": true,
-      "started_at": "2026-08-20T19:04:24.659428+00:00",
+      "started_at": "2026-08-25T18:03:11.623781+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "f0475b3d416c5fcb6a2182d5fc8de87e791be93d87cfcfa3b7a1e999b8aebeef"
+      "stdout_sha256": "10850093f7f1ae508d9f3f640e32f6e22820b9311c41d685b11809f91bd14c6a"
     }
   ]
 }

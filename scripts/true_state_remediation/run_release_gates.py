@@ -15,7 +15,7 @@ def specs(root: Path):
       # Commit pre-checks evidence so the worktree is clean before the coverage gate runs its hygiene check.
       CommandSpec("pre_coverage_commit",("git","add","-A","docs/release-evidence/true-state-remediation/b01/commands/compileall.json","docs/release-evidence/true-state-remediation/b01/commands/mcp_stub_isolation.json","docs/release-evidence/true-state-remediation/b01/commands/test_collection.json"),30,required=False),
       CommandSpec("pre_coverage_git_commit",("git","commit","--allow-empty","-m","evidence(b01): pre-coverage quick-gate artefacts (compileall/mcp_stub/test_collection)"),30,required=False),
-      CommandSpec("execution7_gate_suite",coverage,7200),
+      CommandSpec("execution7_gate_suite",coverage,7200,env={"PYTHONPATH":"."}),
       CommandSpec("ruff",(py,"-m","ruff","check","app","tests"),1800),
       CommandSpec("mypy",(py,"-m","mypy","app"),2400),
       CommandSpec("bandit",(py,"-m","bandit","-r","app","scripts","-c",".bandit","-q"),2400),
@@ -23,9 +23,9 @@ def specs(root: Path):
       CommandSpec("pip_audit_dev",(py,"-m","pip_audit","-r","requirements/dev.txt"),1800),
       CommandSpec("frontend_audit",("pnpm","audit","--prod"),1800,cwd="app/frontend"),
       CommandSpec("frontend_quality",("pnpm","run","quality:release"),3600,cwd="app/frontend"),
-      CommandSpec("product_gate",(py,"scripts/test_suites/verify_product_gate_execution.py"),1200),
-      CommandSpec("product_runtime_gate",(py,"scripts/test_suites/verify_product_runtime_test_gates.py"),1200),
-      CommandSpec("execution7_verifier",(py,"scripts/roadmap_reconciliation/verify_prd1100r_runtime_restore_execution_7_coverage_static_security_green.py","--require-green","--json"),1200),
+      CommandSpec("product_gate",(py,"scripts/test_suites/verify_product_gate_execution.py"),1200,env={"PYTHONPATH":"."}),
+      CommandSpec("product_runtime_gate",(py,"scripts/test_suites/verify_product_runtime_test_gates.py"),1200,env={"PYTHONPATH":"."}),
+      CommandSpec("execution7_verifier",(py,"scripts/roadmap_reconciliation/verify_prd1100r_runtime_restore_execution_7_coverage_static_security_green.py","--require-green","--json"),1200,env={"PYTHONPATH":"."}),
     ]
 
 def main()->int:

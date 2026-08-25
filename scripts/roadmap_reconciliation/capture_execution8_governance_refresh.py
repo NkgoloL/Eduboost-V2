@@ -14,11 +14,11 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from scripts._subprocess import run_git
 from scripts.true_state_remediation.core import (
     atomic_write_json,
     record_manual_evidence,
@@ -51,7 +51,7 @@ FALSE_BOUNDARIES = (
 
 
 def _git(root: Path, *args: str) -> str:
-    result = subprocess.run(["git", *args], cwd=root, text=True, capture_output=True, check=True)
+    result = run_git(*args, repo_root=root, check=True)
     return result.stdout.strip()
 
 
