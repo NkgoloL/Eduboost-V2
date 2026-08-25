@@ -103,7 +103,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-0",
       "title": "Create `true_state_remediation_register.json` containing every finding in the audit",
-      "updated_at": "2026-08-10T23:37:56.935339+00:00"
+      "updated_at": "2026-08-25T13:23:49.274833+00:00"
     },
     {
       "acceptance_criteria": "Branch, commit, worktree status, submodules, source archive digest, lockfile digests, migration head, and OpenAPI digest are recorded.",
@@ -120,7 +120,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-0",
       "title": "Record exact canonical source state",
-      "updated_at": "2026-08-10T23:37:56.935410+00:00"
+      "updated_at": "2026-08-25T13:23:49.274900+00:00"
     },
     {
       "acceptance_criteria": "Python, pip, OS, Node, pnpm, Docker, Postgres/pgvector, Redis, browser, and relevant native-library versions are machine-readable.",
@@ -137,7 +137,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-0",
       "title": "Capture canonical environment identity",
-      "updated_at": "2026-08-10T23:37:56.935417+00:00"
+      "updated_at": "2026-08-25T13:23:49.274904+00:00"
     },
     {
       "acceptance_criteria": "Backend and frontend install from locked inputs; undeclared/manual dependencies are not required.",
@@ -154,7 +154,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-0",
       "title": "Reproduce clean dependency installs without using prior caches",
-      "updated_at": "2026-08-10T23:37:56.935421+00:00"
+      "updated_at": "2026-08-25T13:23:49.274906+00:00"
     },
     {
       "acceptance_criteria": "Coverage, collection, Ruff, mypy, Bandit, pip-audit, pnpm audit, secrets, frontend quality, product/runtime, route, schema, and migration checks have raw outputs.",
@@ -171,7 +171,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-0",
       "title": "Capture the complete starting failure profile",
-      "updated_at": "2026-08-10T23:37:56.935425+00:00"
+      "updated_at": "2026-08-25T13:23:49.274908+00:00"
     },
     {
       "acceptance_criteria": "Pull requests outside remediation/safety/reliability require an explicit exception; no release flag changes are allowed.",
@@ -188,7 +188,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-0",
       "title": "Enforce temporary feature freeze",
-      "updated_at": "2026-08-10T23:37:56.935429+00:00"
+      "updated_at": "2026-08-25T13:23:49.274910+00:00"
     },
     {
       "acceptance_criteria": "Engineering, release, evidence, security, privacy, curriculum, and operations responsibilities are named; self-review conflicts are disclosed.",
@@ -205,7 +205,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-0",
       "title": "Define owners and independence controls",
-      "updated_at": "2026-08-10T23:37:56.935433+00:00"
+      "updated_at": "2026-08-25T13:23:49.274912+00:00"
     },
     {
       "acceptance_criteria": "Missing finding IDs, duplicate authorities, impossible status transitions, stale evidence pointers, or unauthorised release flags fail closed.",
@@ -222,7 +222,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-0",
       "title": "Add roadmap/register schema validation",
-      "updated_at": "2026-08-10T23:37:56.935437+00:00"
+      "updated_at": "2026-08-25T13:23:49.274913+00:00"
     },
     {
       "acceptance_criteria": "Stub tests explicitly prevent real backend import, assert `FASTMCP_BACKEND == \"test-stub\"`, and pass whether or not the real MCP package is installed.",
@@ -239,7 +239,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-1",
       "title": "Repair MCP startup-test isolation",
-      "updated_at": "2026-08-10T23:37:56.935441+00:00"
+      "updated_at": "2026-08-25T13:23:49.274915+00:00"
     },
     {
       "acceptance_criteria": "With the stub flag unset and the real dependency installed, the real backend path is exercised and verified independently.",
@@ -256,7 +256,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-1",
       "title": "Preserve real-backend startup coverage",
-      "updated_at": "2026-08-10T23:37:56.935444+00:00"
+      "updated_at": "2026-08-25T13:23:49.274917+00:00"
     },
     {
       "acceptance_criteria": "Zero unexpected collection errors; required dependencies are declared in the correct profile; skips and xfails are explicit.",
@@ -273,7 +273,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-1",
       "title": "Stabilize test collection in the canonical environment",
-      "updated_at": "2026-08-10T23:37:56.935447+00:00"
+      "updated_at": "2026-08-25T13:23:49.274918+00:00"
     },
     {
       "acceptance_criteria": "All shards terminate, no unresolved timeout leaves remain, combined line coverage meets or exceeds 70%, and missing-line data is published.",
@@ -290,7 +290,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-1",
       "title": "Complete bounded, sharded coverage execution",
-      "updated_at": "2026-08-10T23:37:56.935451+00:00"
+      "updated_at": "2026-08-25T13:23:49.274920+00:00"
     },
     {
       "acceptance_criteria": "New coverage primarily targets authorization, consent, payments-disabled paths, learner state, data export/erasure, migration, and failure handling.",
@@ -307,7 +307,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-1",
       "title": "Add risk-based tests rather than superficial line padding",
-      "updated_at": "2026-08-10T23:37:56.935454+00:00"
+      "updated_at": "2026-08-25T13:23:49.274921+00:00"
     },
     {
       "acceptance_criteria": "`python3 -m ruff check app tests` exits zero; no blanket ignores are introduced.",
@@ -324,7 +324,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-1",
       "title": "Close Ruff findings in `app` and `tests`",
-      "updated_at": "2026-08-10T23:37:56.935497+00:00"
+      "updated_at": "2026-08-25T13:23:49.274923+00:00"
     },
     {
       "acceptance_criteria": "`python3 -m mypy app` exits zero under the committed configuration; CI no longer uses `continue-on-error` for the release job.",
@@ -341,7 +341,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-1",
       "title": "Close mypy findings in `app`",
-      "updated_at": "2026-08-10T23:37:56.935502+00:00"
+      "updated_at": "2026-08-25T13:23:49.274924+00:00"
     },
     {
       "acceptance_criteria": "No unreviewed high findings; medium findings are fixed or narrowly accepted with owner and expiry; no blanket `# nosec`.",
@@ -358,7 +358,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-1",
       "title": "Close Bandit findings",
-      "updated_at": "2026-08-10T23:37:56.935506+00:00"
+      "updated_at": "2026-08-25T13:23:49.274926+00:00"
     },
     {
       "acceptance_criteria": "Base and development requirements have no unaccepted known vulnerabilities; exceptions are time-boxed and approved.",
@@ -375,7 +375,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-1",
       "title": "Close Python dependency findings",
-      "updated_at": "2026-08-10T23:37:56.935509+00:00"
+      "updated_at": "2026-08-25T13:23:49.274927+00:00"
     },
     {
       "acceptance_criteria": "Production dependency audit is green under the approved policy after dependency alignment; high/critical issues are zero or independently accepted.",
@@ -392,7 +392,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-1",
       "title": "Close frontend production dependency findings",
-      "updated_at": "2026-08-10T23:37:56.935513+00:00"
+      "updated_at": "2026-08-25T13:23:49.274929+00:00"
     },
     {
       "acceptance_criteria": "Every detected candidate is human-reviewed; real secrets are rotated and removed from history where necessary; baseline regeneration alone is insufficient.",
@@ -409,7 +409,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-1",
       "title": "Review the secret baseline",
-      "updated_at": "2026-08-10T23:37:56.935516+00:00"
+      "updated_at": "2026-08-25T13:23:49.274930+00:00"
     },
     {
       "acceptance_criteria": "Every gate is run independently from the exact merged source; command, exit code, duration, environment, artifact hash, warnings, skips, and failures are retained.",
@@ -426,7 +426,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-1",
       "title": "Capture independent Execution-7 evidence",
-      "updated_at": "2026-08-10T23:37:56.935521+00:00"
+      "updated_at": "2026-08-25T13:23:49.274932+00:00"
     },
     {
       "acceptance_criteria": "Previously green critical product, runtime stack, frontend, schema, generated-contract, and database-lineage gates remain green.",
@@ -443,7 +443,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-1",
       "title": "Re-run product/runtime regression gates",
-      "updated_at": "2026-08-10T23:37:56.935525+00:00"
+      "updated_at": "2026-08-25T13:23:49.274934+00:00"
     },
     {
       "acceptance_criteria": "Ruff, mypy, Bandit, vulnerabilities, secret candidates, coverage gaps, timeouts, and test collection deltas are quantified.",
@@ -460,7 +460,7 @@
       "status": "evidence_pending",
       "target_gate": "RG-1",
       "title": "Publish a debt delta",
-      "updated_at": "2026-08-10T23:37:56.935528+00:00"
+      "updated_at": "2026-08-25T13:23:49.274935+00:00"
     },
     {
       "acceptance_criteria": "Top-level status, current truth, active item, closed predecessors, and release flags are derived from one canonical state object and cannot disagree.",
@@ -2439,5 +2439,5 @@
       "title": "Lift feature freeze only after RG-6"
     }
   ],
-  "updated_at": "2026-08-10T23:37:56.936355+00:00"
+  "updated_at": "2026-08-25T13:23:49.274951+00:00"
 }

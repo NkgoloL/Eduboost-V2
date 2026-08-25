@@ -1,0 +1,101 @@
+{
+  "contract_id": "test_suite_taxonomy",
+  "contract_path": "docs/roadmap/production_readiness/test_suite_taxonomy.json",
+  "contract_sha256": "af951a82c670301cb158e61a12ff398edfb6b8a03690c7ed89977870a1f8b814",
+  "reviewed_contract": {
+    "execution8_governance_refresh": true,
+    "execution8_review_branch": "codex/prd-1100r-runtime-restore-execution-7-coverage-static-security-green-evidence",
+    "execution8_review_commit": "d50e78a257e9107e57bfdcd56b574588c09e22a8",
+    "freshness_max_age_days": 21,
+    "handoff_rule": "PRD-11.2R is not authorised until PRD-11.1R evidence records a valid taxonomy, governance sync/freshness check, and behavioural-gate contract.",
+    "last_reviewed_at": "2026-08-25T13:21:33.362186+00:00",
+    "prd_id": "PRD-11.1R",
+    "release_gate_rule": "Product, runtime, governance, and advisory classes must be explicitly separated. Product/runtime/security-contract evidence is blocking for release; governance/evidence is supporting unless it consumes independent runtime proof.",
+    "schema_version": "prd11.1r/test-suite-taxonomy/v1",
+    "status": "evidence_recorded",
+    "test_classes": [
+      {
+        "blocking_for_release": true,
+        "description": "Real application behaviour: services, routes, DB-backed domain flows, auth, POPIA, billing, learner journeys.",
+        "id": "product",
+        "label": "Product tests",
+        "marker": "product",
+        "minimum_evidence": [
+          "pytest product marker result",
+          "critical HTTP negative tests",
+          "DB-backed journey or explicit skip justification"
+        ],
+        "required_capabilities": [
+          "service_contracts",
+          "http_authorisation_allow_deny",
+          "db_backed_domain_flows",
+          "popia_lifecycle",
+          "billing_test_mode_flow",
+          "learner_parent_journeys",
+          "diagnostic_lesson_study_plan_flows"
+        ]
+      },
+      {
+        "blocking_for_release": true,
+        "description": "Stack health: Postgres, Redis, migrations, schema, /ready, worker, frontend proxy.",
+        "id": "runtime",
+        "label": "Runtime tests",
+        "marker": "runtime",
+        "minimum_evidence": [
+          "stack probe summary",
+          "migration/schema diff result",
+          "/ready component payload"
+        ],
+        "required_capabilities": [
+          "fresh_database_migration_base_to_head",
+          "live_revision_equals_repository_head",
+          "required_tables_columns_probe",
+          "redis_required_when_configured",
+          "ready_endpoint_200",
+          "worker_boot",
+          "frontend_backend_proxy"
+        ]
+      },
+      {
+        "blocking_for_release": false,
+        "description": "PRD records, registers, evidence files, authority transitions, documentation sync/freshness.",
+        "id": "governance",
+        "label": "Governance/evidence tests",
+        "marker": "governance",
+        "minimum_evidence": [
+          "production register next item agrees with PRD register",
+          "governance docs reviewed within 21 days",
+          "closed PRD verifiers tolerate later register progression"
+        ],
+        "required_capabilities": [
+          "register_state_agreement",
+          "authority_boundary_preservation",
+          "evidence_file_presence",
+          "documentation_state_sync",
+          "freshness_max_21_days",
+          "historical_verifier_archival_compatibility"
+        ]
+      },
+      {
+        "blocking_for_release": true,
+        "description": "Ruff, mypy, Bandit, coverage, dependency audit, route inventory, OpenAPI drift.",
+        "id": "advisory",
+        "label": "Advisory/static tests",
+        "marker": "advisory",
+        "minimum_evidence": [
+          "static gate result",
+          "dependency audit result or accepted risk ledger",
+          "current generated-artifact drift report"
+        ],
+        "required_capabilities": [
+          "ruff_mypy_black",
+          "bandit_secret_scan_dependency_audit",
+          "coverage_baseline",
+          "openapi_drift_check",
+          "route_inventory_drift_check",
+          "frontend_lint_typecheck_vitest_build"
+        ]
+      }
+    ]
+  }
+}
