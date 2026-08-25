@@ -126,6 +126,7 @@ class CommandSpec:
     cwd: str = "."
     required: bool = True
     env: dict[str, str] | None = None
+    write_evidence: bool = True
 
 
 def run_command(root: Path, spec: CommandSpec, evidence_dir: Path) -> dict[str, Any]:
@@ -176,9 +177,10 @@ def run_command(root: Path, spec: CommandSpec, evidence_dir: Path) -> dict[str, 
             "required": spec.required, "passed": False, "error": str(exc),
             "stdout_sha256": sha256_text(stdout), "stderr_sha256": sha256_text(stderr),
         }
-    (evidence_dir / f"{spec.name}.stdout.log").write_text(stdout, encoding="utf-8")
-    (evidence_dir / f"{spec.name}.stderr.log").write_text(stderr, encoding="utf-8")
-    atomic_write_json(evidence_dir / f"{spec.name}.json", result)
+    if getattr(spec, "write_evidence", True):
+        (evidence_dir / f"{spec.name}.stdout.log").write_text(stdout, encoding="utf-8")
+        (evidence_dir / f"{spec.name}.stderr.log").write_text(stderr, encoding="utf-8")
+        atomic_write_json(evidence_dir / f"{spec.name}.json", result)
     return result
 
 

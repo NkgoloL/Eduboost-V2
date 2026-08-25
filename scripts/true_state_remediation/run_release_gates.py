@@ -13,8 +13,7 @@ def specs(root: Path):
       CommandSpec("mcp_stub_isolation",(py,"-m","pytest","-c","pytest.ini","tests/unit/test_etl_mcp_server_startup.py","-q"),600,env={"PYTHONPATH":"."}),
       CommandSpec("test_collection",(py,"-m","pytest","--collect-only","-q"),1800,env={"PYTHONPATH":"."}),
       # Commit pre-checks evidence so the worktree is clean before the coverage gate runs its hygiene check.
-      CommandSpec("pre_coverage_commit",("git","add","-A","docs/release-evidence/true-state-remediation/b01/commands"),30,required=False),
-      CommandSpec("pre_coverage_git_commit",("git","commit","--allow-empty","-m","evidence(b01): pre-coverage quick-gate artefacts (compileall/mcp_stub/test_collection)"),30,required=False),
+      CommandSpec("pre_coverage_commit",("git","commit","-a","--allow-empty","-m","evidence(b01): pre-coverage quick-gate artefacts"),30,required=False,write_evidence=False),
       CommandSpec("execution7_gate_suite",coverage,7200,env={"PYTHONPATH":"."}),
       CommandSpec("ruff",(py,"-m","ruff","check","app","tests"),1800),
       CommandSpec("mypy",(py,"-m","mypy","app"),2400),

@@ -1,6 +1,6 @@
 {
   "all_required_green": false,
-  "captured_at": "2026-08-25T19:47:33.689884+00:00",
+  "captured_at": "2026-08-25T20:14:03.721025+00:00",
   "commands": [
     {
       "command": [
@@ -15,11 +15,11 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-25T19:24:26.866981+00:00",
+      "finished_at": "2026-08-25T19:50:07.951055+00:00",
       "name": "compileall",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-25T19:24:25.985100+00:00",
+      "started_at": "2026-08-25T19:50:07.229261+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
@@ -35,13 +35,13 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-25T19:24:28.395543+00:00",
+      "finished_at": "2026-08-25T19:50:09.359353+00:00",
       "name": "mcp_stub_isolation",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-25T19:24:26.867983+00:00",
+      "started_at": "2026-08-25T19:50:07.951856+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "29dfaadb73977f4d958826f9fe727776d7cfc85207543b453ecdd2304ffa15cd"
+      "stdout_sha256": "e310cdd63a8c70c913b47759eb9ee7c1db83be874db234095ac21000c3912e0d"
     },
     {
       "command": [
@@ -53,30 +53,28 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-25T19:24:37.662480+00:00",
+      "finished_at": "2026-08-25T19:50:18.039322+00:00",
       "name": "test_collection",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-25T19:24:28.396463+00:00",
+      "started_at": "2026-08-25T19:50:09.360038+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "0b53a258eafbc62c28d3146a09eee3b753f2acf692df75555e6e1f6d036a846b"
+      "stdout_sha256": "df17ee5f9523ba033312af824a9f76e96d6611d3de98b6b6ef74b10ae76351fb"
     },
     {
       "command": [
         "git",
         "add",
         "-A",
-        "docs/release-evidence/true-state-remediation/b01/commands/compileall.json",
-        "docs/release-evidence/true-state-remediation/b01/commands/mcp_stub_isolation.json",
-        "docs/release-evidence/true-state-remediation/b01/commands/test_collection.json"
+        "docs/release-evidence/true-state-remediation/b01/commands"
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-25T19:24:37.676059+00:00",
+      "finished_at": "2026-08-25T19:50:18.053086+00:00",
       "name": "pre_coverage_commit",
       "passed": true,
       "required": false,
-      "started_at": "2026-08-25T19:24:37.664156+00:00",
+      "started_at": "2026-08-25T19:50:18.041090+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
@@ -90,13 +88,13 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-25T19:24:37.735867+00:00",
+      "finished_at": "2026-08-25T19:50:18.115370+00:00",
       "name": "pre_coverage_git_commit",
       "passed": true,
       "required": false,
-      "started_at": "2026-08-25T19:24:37.676731+00:00",
+      "started_at": "2026-08-25T19:50:18.053760+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "594432c65f23e764ab99e5691b1f026fb1120e8b758b9c3786fd737698b6415c"
+      "stdout_sha256": "f4ff5d6663bd64d49177294da88842fd3ed9c65a61b023e738c4b311bfc3bd0f"
     },
     {
       "command": [
@@ -107,13 +105,13 @@
       ],
       "cwd": ".",
       "exit_code": 1,
-      "finished_at": "2026-08-25T19:45:24.315124+00:00",
+      "finished_at": "2026-08-25T20:12:07.318051+00:00",
       "name": "execution7_gate_suite",
       "passed": false,
       "required": true,
-      "started_at": "2026-08-25T19:24:37.737040+00:00",
+      "started_at": "2026-08-25T19:50:18.116007+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout_sha256": "758dce36efa9ac646c733fa27ac21266d4a433d30afb487ca99416c96eeadde0"
+      "stdout_sha256": "04658fa2736b2a06711c179d8d3a32deda5f1d7ea3ae5cdd734c06422968152d"
     },
     {
       "command": [
@@ -126,11 +124,11 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-25T19:45:24.343810+00:00",
+      "finished_at": "2026-08-25T20:12:07.348257+00:00",
       "name": "ruff",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-25T19:45:24.316451+00:00",
+      "started_at": "2026-08-25T20:12:07.321129+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stdout_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
     },
@@ -143,11 +141,11 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-25T19:45:25.434663+00:00",
+      "finished_at": "2026-08-25T20:12:08.511728+00:00",
       "name": "mypy",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-25T19:45:24.344857+00:00",
+      "started_at": "2026-08-25T20:12:07.349133+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stdout_sha256": "c03a022ee0faf6e3859009834422efdd70ba84810630679740b4bdd750ca506d"
     },
@@ -165,11 +163,11 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-25T19:45:39.882443+00:00",
+      "finished_at": "2026-08-25T20:12:26.431353+00:00",
       "name": "bandit",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-25T19:45:25.435524+00:00",
+      "started_at": "2026-08-25T20:12:08.512725+00:00",
       "stderr_sha256": "1f74afa6a1f741f9a57f451f72135fab88a0a35c85218e72047f7214b7cb3780",
       "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
@@ -183,11 +181,11 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-25T19:46:04.556727+00:00",
+      "finished_at": "2026-08-25T20:12:38.225274+00:00",
       "name": "pip_audit_base",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-25T19:45:39.883673+00:00",
+      "started_at": "2026-08-25T20:12:26.432468+00:00",
       "stderr_sha256": "15950a68a7ed99c59779717acefdceb3f69cfd31bde67d2c954f2a3cea4d7955",
       "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
@@ -201,11 +199,11 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-25T19:46:37.308304+00:00",
+      "finished_at": "2026-08-25T20:12:55.119005+00:00",
       "name": "pip_audit_dev",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-25T19:46:04.557459+00:00",
+      "started_at": "2026-08-25T20:12:38.226011+00:00",
       "stderr_sha256": "15950a68a7ed99c59779717acefdceb3f69cfd31bde67d2c954f2a3cea4d7955",
       "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
@@ -217,12 +215,12 @@
       ],
       "cwd": "app/frontend",
       "exit_code": 0,
-      "finished_at": "2026-08-25T19:46:38.185667+00:00",
+      "finished_at": "2026-08-25T20:12:56.471824+00:00",
       "name": "frontend_audit",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-25T19:46:37.309042+00:00",
-      "stderr_sha256": "4646c0fcb0e65e2322bf556328f42e27871495aa2ed1eec13455868ea97add1a",
+      "started_at": "2026-08-25T20:12:55.120695+00:00",
+      "stderr_sha256": "a291f0dcbc264b2ea501df83c1b9b10b1a6892889414fe79e6baf84f16a936f9",
       "stdout_sha256": "15950a68a7ed99c59779717acefdceb3f69cfd31bde67d2c954f2a3cea4d7955"
     },
     {
@@ -233,13 +231,13 @@
       ],
       "cwd": "app/frontend",
       "exit_code": 0,
-      "finished_at": "2026-08-25T19:47:33.497738+00:00",
+      "finished_at": "2026-08-25T20:14:03.467942+00:00",
       "name": "frontend_quality",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-25T19:46:38.186568+00:00",
-      "stderr_sha256": "2f8215beeab0077620d10587254c4958403607d2962ffd21302fe445065963cf",
-      "stdout_sha256": "98c8f1f2694af8d9993e325c91c6b076ab83da50b76cdf9dd47eaf48b81a9e9f"
+      "started_at": "2026-08-25T20:12:56.472997+00:00",
+      "stderr_sha256": "d510f4abd252fff7af739cf13b9c8bb37507b4a520ef74c5a121833ebfaa8dec",
+      "stdout_sha256": "b4fe3f7773d7287abb895094d1190d3e12cce09d11c68d175fbd3b1ebcf2100e"
     },
     {
       "command": [
@@ -248,11 +246,11 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-25T19:47:33.561245+00:00",
+      "finished_at": "2026-08-25T20:14:03.540534+00:00",
       "name": "product_gate",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-25T19:47:33.499331+00:00",
+      "started_at": "2026-08-25T20:14:03.469574+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stdout_sha256": "d0288884702c3ff3100f49180ab74a8816f47b079247aa8e2ed84182919bafae"
     },
@@ -263,11 +261,11 @@
       ],
       "cwd": ".",
       "exit_code": 0,
-      "finished_at": "2026-08-25T19:47:33.616648+00:00",
+      "finished_at": "2026-08-25T20:14:03.641716+00:00",
       "name": "product_runtime_gate",
       "passed": true,
       "required": true,
-      "started_at": "2026-08-25T19:47:33.562289+00:00",
+      "started_at": "2026-08-25T20:14:03.542493+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stdout_sha256": "1e45a7fcd93d1fae91ad9a731f929ffeeb2543b85b9a9144fdd78d33dec656aa"
     },
@@ -280,11 +278,11 @@
       ],
       "cwd": ".",
       "exit_code": 1,
-      "finished_at": "2026-08-25T19:47:33.688660+00:00",
+      "finished_at": "2026-08-25T20:14:03.717133+00:00",
       "name": "execution7_verifier",
       "passed": false,
       "required": true,
-      "started_at": "2026-08-25T19:47:33.617633+00:00",
+      "started_at": "2026-08-25T20:14:03.642667+00:00",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stdout_sha256": "f0475b3d416c5fcb6a2182d5fc8de87e791be93d87cfcfa3b7a1e999b8aebeef"
     }
