@@ -476,7 +476,7 @@
       "status": "verified",
       "target_gate": "RG-2A",
       "title": "Repair production-register summary derivation",
-      "updated_at": "2026-08-25T23:40:20.120556+00:00"
+      "updated_at": "2026-08-26T08:35:32.210606+00:00"
     },
     {
       "acceptance_criteria": "Both pages identify PRD-11 Execution-7/its successor correctly, show the operational hold, and include generation source/time.",
@@ -492,7 +492,7 @@
       "status": "verified",
       "target_gate": "RG-2A",
       "title": "Generate current-state documentation",
-      "updated_at": "2026-08-25T23:40:20.120580+00:00"
+      "updated_at": "2026-08-26T08:35:32.210636+00:00"
     },
     {
       "acceptance_criteria": "Grade 4 Mathematics is marked launch-active; Grade R\u20137 and other subjects are clearly planned, review-only, or inactive.",
@@ -508,7 +508,7 @@
       "status": "verified",
       "target_gate": "RG-2A",
       "title": "Correct product-scope statements",
-      "updated_at": "2026-08-25T23:40:20.120583+00:00"
+      "updated_at": "2026-08-26T08:35:32.210640+00:00"
     },
     {
       "acceptance_criteria": "Governance authorization, operational safety, activation hold, cohort limits, and kill-switch state are distinct fields.",
@@ -524,7 +524,7 @@
       "status": "verified",
       "target_gate": "RG-2A",
       "title": "Clarify controlled-beta semantics",
-      "updated_at": "2026-08-25T23:40:20.120587+00:00"
+      "updated_at": "2026-08-26T08:35:32.210643+00:00"
     },
     {
       "acceptance_criteria": "`docs/openapi.json` or a newly designated single location is authoritative; stale root artifacts are removed or atomically regenerated.",
@@ -540,7 +540,7 @@
       "status": "verified",
       "target_gate": "RG-2A",
       "title": "Establish one canonical OpenAPI artifact",
-      "updated_at": "2026-08-25T23:40:20.120589+00:00"
+      "updated_at": "2026-08-26T08:35:32.210646+00:00"
     },
     {
       "acceptance_criteria": "JSON and YAML contain the same paths, operations, schemas, metadata, and hash-equivalent normalized form.",
@@ -556,7 +556,7 @@
       "status": "verified",
       "target_gate": "RG-2A",
       "title": "Generate JSON/YAML formats from one in-memory schema",
-      "updated_at": "2026-08-25T23:40:20.120593+00:00"
+      "updated_at": "2026-08-26T08:35:32.210649+00:00"
     },
     {
       "acceptance_criteria": "Router registry, canonical prefix, OpenAPI paths, frontend client inventory, and SDK inputs agree; the 22-path drift cannot recur.",
@@ -572,7 +572,7 @@
       "status": "verified",
       "target_gate": "RG-2A",
       "title": "Add route/OpenAPI/client consistency verification",
-      "updated_at": "2026-08-25T23:40:20.120596+00:00"
+      "updated_at": "2026-08-26T08:35:32.210652+00:00"
     },
     {
       "acceptance_criteria": "Default navigation exposes current state, architecture, setup, domains, operations, security/privacy, current roadmap, and archive entry only.",
@@ -588,7 +588,7 @@
       "status": "verified",
       "target_gate": "RG-2A",
       "title": "Reorganize documentation navigation",
-      "updated_at": "2026-08-25T23:40:20.120599+00:00"
+      "updated_at": "2026-08-26T08:35:32.210655+00:00"
     },
     {
       "acceptance_criteria": "Historical records remain available and hashed but are marked non-authoritative and excluded from normal current-state navigation.",
@@ -604,7 +604,7 @@
       "status": "verified",
       "target_gate": "RG-2A",
       "title": "Quarantine historical evidence from ordinary search/navigation",
-      "updated_at": "2026-08-25T23:40:20.120602+00:00"
+      "updated_at": "2026-08-26T08:35:32.210657+00:00"
     },
     {
       "acceptance_criteria": "A current-state page that disagrees with the register or exceeds the defined freshness threshold fails CI.",
@@ -620,7 +620,7 @@
       "status": "verified",
       "target_gate": "RG-2A",
       "title": "Add freshness and contradiction checks",
-      "updated_at": "2026-08-25T23:40:20.120605+00:00"
+      "updated_at": "2026-08-26T08:35:32.210660+00:00"
     },
     {
       "acceptance_criteria": "Package version, release-candidate status, Python support, active API version, and product scope derive from one source.",
@@ -636,7 +636,7 @@
       "status": "verified",
       "target_gate": "RG-2A",
       "title": "Standardize project/version metadata",
-      "updated_at": "2026-08-25T23:40:20.120607+00:00"
+      "updated_at": "2026-08-26T08:35:32.210662+00:00"
     },
     {
       "acceptance_criteria": "Next.js, React, React DOM, `eslint-config-next`, bundle analyzer, TypeScript, Node, and pnpm use an intentionally supported combination.",
@@ -652,7 +652,7 @@
       "status": "verified",
       "target_gate": "RG-2B",
       "title": "Decide and document the supported frontend compatibility matrix",
-      "updated_at": "2026-08-25T23:40:20.120610+00:00"
+      "updated_at": "2026-08-26T08:35:32.210665+00:00"
     },
     {
       "acceptance_criteria": "Clean frozen install succeeds without incompatible peer assumptions; type-check, lint, unit, E2E, build, and production audit pass.",
@@ -668,7 +668,7 @@
       "status": "verified",
       "target_gate": "RG-2B",
       "title": "Align frontend packages and regenerate lockfiles",
-      "updated_at": "2026-08-25T23:40:20.120613+00:00"
+      "updated_at": "2026-08-26T08:35:32.210667+00:00"
     },
     {
       "acceptance_criteria": "Either a formal pnpm workspace is committed or root E2E tooling is isolated with explicit lockfile ownership.",
@@ -684,7 +684,7 @@
       "status": "verified",
       "target_gate": "RG-2B",
       "title": "Decide root-package architecture",
-      "updated_at": "2026-08-25T23:40:20.120633+00:00"
+      "updated_at": "2026-08-26T08:35:32.210670+00:00"
     },
     {
       "acceptance_criteria": "Local, CI, Docker, and release jobs use the same supported Node and pnpm versions.",
@@ -700,7 +700,7 @@
       "status": "verified",
       "target_gate": "RG-2B",
       "title": "Enforce one Node/pnpm policy",
-      "updated_at": "2026-08-25T23:40:20.120638+00:00"
+      "updated_at": "2026-08-26T08:35:32.210673+00:00"
     },
     {
       "acceptance_criteria": "Pin production/development to 3.12.3 or define a tested support matrix; `pyproject.toml`, docs, CI, images, and deployment agree.",
@@ -716,7 +716,7 @@
       "status": "verified",
       "target_gate": "RG-2B",
       "title": "Resolve Python support inconsistency",
-      "updated_at": "2026-08-25T23:40:20.120641+00:00"
+      "updated_at": "2026-08-26T08:35:32.210676+00:00"
     },
     {
       "acceptance_criteria": "API runtime, worker, ETL/content, ML research, docs, and dev/test profiles are separate and independently auditable.",
@@ -732,7 +732,7 @@
       "status": "verified",
       "target_gate": "RG-2B",
       "title": "Split Python dependencies by deployable profile",
-      "updated_at": "2026-08-25T23:40:20.120644+00:00"
+      "updated_at": "2026-08-26T08:35:32.210679+00:00"
     },
     {
       "acceptance_criteria": "Unused packages and stale Celery TODOs are removed, or an active worker architecture and tests are documented.",
@@ -748,7 +748,7 @@
       "status": "verified",
       "target_gate": "RG-2B",
       "title": "Remove or justify Celery/Flower",
-      "updated_at": "2026-08-25T23:40:20.120647+00:00"
+      "updated_at": "2026-08-26T08:35:32.210681+00:00"
     },
     {
       "acceptance_criteria": "Production API image excludes GPU/transformer research stacks unless required by measured runtime behavior.",
@@ -764,7 +764,7 @@
       "status": "verified",
       "target_gate": "RG-2B",
       "title": "Keep research/ML dependencies out of API images",
-      "updated_at": "2026-08-25T23:40:20.120650+00:00"
+      "updated_at": "2026-08-26T08:35:32.210684+00:00"
     },
     {
       "acceptance_criteria": "Compose, CI, staging, migration tests, and production IaC use one supported version line or an explicit compatibility matrix.",
@@ -780,7 +780,7 @@
       "status": "verified",
       "target_gate": "RG-2B",
       "title": "Standardize Postgres/pgvector and Redis versions",
-      "updated_at": "2026-08-25T23:40:20.120654+00:00"
+      "updated_at": "2026-08-26T08:35:32.210688+00:00"
     },
     {
       "acceptance_criteria": "Backend and frontend release artifacts have reproducible SBOMs linked to source and image digests.",
@@ -796,7 +796,7 @@
       "status": "verified",
       "target_gate": "RG-2B",
       "title": "Produce SBOMs for release images",
-      "updated_at": "2026-08-25T23:40:20.120656+00:00"
+      "updated_at": "2026-08-26T08:35:32.210690+00:00"
     },
     {
       "acceptance_criteria": "Update cadence, compatibility tests, vulnerability SLAs, lockfile ownership, and emergency-patch process are defined.",
@@ -812,7 +812,7 @@
       "status": "verified",
       "target_gate": "RG-2B",
       "title": "Add dependency-update policy",
-      "updated_at": "2026-08-25T23:40:20.120659+00:00"
+      "updated_at": "2026-08-26T08:35:32.210693+00:00"
     },
     {
       "acceptance_criteria": "API image size, install duration, package count, and vulnerability surface are recorded and materially reduced.",
@@ -828,7 +828,7 @@
       "status": "verified",
       "target_gate": "RG-2B",
       "title": "Measure image/install reductions",
-      "updated_at": "2026-08-25T23:40:20.120662+00:00"
+      "updated_at": "2026-08-26T08:35:32.210696+00:00"
     },
     {
       "acceptance_criteria": "Each workflow has purpose, trigger, branches, commands, tool versions, required/advisory status, replacement, and retirement decision.",
@@ -2508,5 +2508,5 @@
       "title": "Lift feature freeze only after RG-6"
     }
   ],
-  "updated_at": "2026-08-25T23:40:20.126235+00:00"
+  "updated_at": "2026-08-26T08:35:32.213542+00:00"
 }

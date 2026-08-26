@@ -17,6 +17,7 @@ from scripts.true_state_remediation.core import (
     CommandSpec,
     atomic_write_json,
     environment_manifest,
+    git_state,
     load_json,
     require_manual_evidence,
     run_command,
@@ -93,7 +94,24 @@ def verify(*, root: Path, evidence_dir: Path, skip_heavy: bool) -> dict[str, Any
         "boundaries": verify_false_release_boundaries(root),
     }
 
-    # Check 1: OpenAPI JSON/YAML existence and format consistency
+    # Check 1: Worktree hygiene (no stray or unrecognized untracked files)
+    git = git_state(root)
+    status_lines = [line.strip() for line in git.get("status_porcelain", "").splitlines() if line.strip()]
+    stray_untracked = [
+        line for line in status_lines 
+        if line.startswith("??") and not (
+            line.startswith("?? docs/release-evidence/") or 
+            line.startswith("?? scripts/true_state_remediation/") or
+            line.startswith("?? scripts/maintenance/")
+        )
+    ]
+    checks["hygiene"] = {
+        "valid": git.get("available") is True and len(stray_untracked) == 0,
+        "stray_untracked": stray_untracked,
+        "status_porcelain": git.get("status_porcelain", ""),
+    }
+
+    # Check 2: OpenAPI JSON/YAML existence and format consistency
     openapi_json = root / "docs/openapi.json"
     openapi_yaml = root / "docs/openapi.yaml"
     checks["openapi_canonical"] = {
@@ -102,21 +120,21 @@ def verify(*, root: Path, evidence_dir: Path, skip_heavy: bool) -> dict[str, Any
         "yaml_path": str(openapi_yaml),
     }
 
-    # Check 2: Route inventory existence and consistency
+    # Check 3: Route inventory existence and consistency
     route_inv = root / "docs/route_inventory.md"
     checks["route_inventory"] = {
         "valid": route_inv.exists() and route_inv.stat().st_size > 1000,
         "path": str(route_inv),
     }
 
-    # Check 3: Current state documentation existence and consistency
+    # Check 4: Current state documentation existence and consistency
     current_state_doc = root / "docs/current_state.md"
     checks["current_state_docs"] = {
         "valid": current_state_doc.exists() and current_state_doc.stat().st_size > 500,
         "path": str(current_state_doc),
     }
 
-    # Check 4: SBOM existence
+    # Check 5: SBOM existence
     backend_sbom = root / "docs/release-evidence/true-state-remediation/b02/sbom/sbom-backend.cdx.json"
     frontend_sbom = root / "docs/release-evidence/true-state-remediation/b02/sbom/sbom-frontend.cdx.json"
     checks["sboms"] = {
@@ -129,7 +147,7 @@ def verify(*, root: Path, evidence_dir: Path, skip_heavy: bool) -> dict[str, Any
         valid = all(c.get("valid") for c in checks.values())
         return {"valid": valid, "structural_only": True, "checks": checks}
 
-    # Check 5: Check manual evidence records for architecture/decision deliverables
+    # Check 6: Check manual evidence records for architecture/decision deliverables
     checks["manual"] = require_manual_evidence(root, "B02", MANUAL)
 
     valid = all(c.get("valid") for c in checks.values())

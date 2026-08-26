@@ -1,7 +1,7 @@
 {
   "bundle_id": "B02",
   "environment": {
-    "captured_at": "2026-08-25T23:40:20.149940+00:00",
+    "captured_at": "2026-08-26T08:35:32.218959+00:00",
     "docker": {
       "available": true,
       "exit_code": 0,
@@ -16,8 +16,8 @@
       "available": true,
       "branch": "codex/tsr-b02-canonical-truth-toolchain",
       "clean": false,
-      "commit": "85f0b505a14da9636dffe0e62827a10aa5acad27",
-      "status_porcelain": "M .env.example\n M README.md\n M app/api_v2_routers/auth_extended.py\n M docs/current_state.md\n M docs/openapi.json\n M docs/roadmap/production_readiness/true_state_remediation_register.json\n M docs/route_inventory.md\n D openapi.json\n D openapi.yaml\n M pyproject.toml\n M scripts/dump_openapi.py\n M scripts/generate_openapi.py\n M scripts/generate_route_inventory.py\n?? =20.0.0\n?? docs/openapi.yaml\n?? docs/release-evidence/true-state-remediation/b02/\n?? scripts/maintenance/generate_current_state_docs.py\n?? scripts/maintenance/generate_release_sboms.py\n?? scripts/true_state_remediation/bundles/bundle_02.py",
+      "commit": "e6eba7ef135ecbbdb9daaf908cead232c9ebb844",
+      "status_porcelain": "M docs/release-evidence/true-state-remediation/b02/implementation_state.json\n M docs/release-evidence/true-state-remediation/b02/verification.json\n M docs/roadmap/production_readiness/true_state_remediation_register.json\n M scripts/true_state_remediation/bundles/bundle_02.py",
       "submodules": ""
     },
     "input_digests": {
@@ -62,15 +62,8 @@
       "error": "[Errno 2] No such file or directory: 'redis-cli'"
     }
   },
-  "phase": "all",
+  "phase": "verify",
   "phases": {
-    "apply": {
-      "valid": true
-    },
-    "prepare": {
-      "environment_manifest": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release-evidence/true-state-remediation/b02/environment_manifest.json",
-      "valid": true
-    },
     "verify": {
       "checks": {
         "boundaries": {
@@ -84,6 +77,11 @@
         },
         "current_state_docs": {
           "path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/current_state.md",
+          "valid": true
+        },
+        "hygiene": {
+          "status_porcelain": "M docs/release-evidence/true-state-remediation/b02/implementation_state.json\n M docs/release-evidence/true-state-remediation/b02/verification.json\n M docs/roadmap/production_readiness/true_state_remediation_register.json\n M scripts/true_state_remediation/bundles/bundle_02.py",
+          "stray_untracked": [],
           "valid": true
         },
         "manual": {
@@ -123,7 +121,7 @@
       "valid": true
     }
   },
-  "recorded_at": "2026-08-25T23:40:21.686778+00:00",
+  "recorded_at": "2026-08-26T08:35:34.771606+00:00",
   "schema_version": "eduboost/true-state-remediation/bundle-state/v1",
   "skip_heavy": false,
   "valid": true
