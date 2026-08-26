@@ -2,10 +2,10 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-08-03T14:20:15.807577+00:00`
-- branch: `fix/tsr-b01-gate-remediation`
-- commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
-- release_candidate: `beta-a55336c411`
+- generated_at_utc: `2026-08-26T17:00:23.195419+00:00`
+- branch: `codex/tsr-b04-architecture-and-data-integrity`
+- commit: `107d58c62d28a0d0a7a094f69894809af40f8db0`
+- release_candidate: `beta-107d58c62`
 
 ## Tagging Convention
 
@@ -26,8 +26,8 @@
 ## Example Commands
 
 ```bash
-git tag -a beta-a55336c411 -m "Beta release candidate beta-a55336c411"
-git push origin beta-a55336c411
+git tag -a beta-107d58c62 -m "Beta release candidate beta-107d58c62"
+git push origin beta-107d58c62
 ```
 
 ## Safety Boundary

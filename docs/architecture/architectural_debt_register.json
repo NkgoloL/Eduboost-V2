@@ -1,0 +1,65 @@
+{
+  "debt_items": [
+    {
+      "id": "DEBT-001",
+      "category": "import_linter_exception",
+      "module": "app.api_v2_routers",
+      "target_file": "app/api_v2_routers/",
+      "description": "Direct router-to-repository calls bypassing service layer.",
+      "remediation_status": "remediated",
+      "owner": "Lead Engineer",
+      "target_gate": "RG-3A",
+      "notes": "Resolved in B04. Replaced direct repository calls with LearnerService, GamificationServiceV2, ContentCoverageService."
+    },
+    {
+      "id": "DEBT-002",
+      "category": "oversized_module",
+      "module": "app.models.content_factory",
+      "target_file": "app/models/content_factory.py",
+      "description": "Large multi-model content factory persistence definition.",
+      "remediation_status": "decomposed_and_governed",
+      "owner": "Lead Engineer",
+      "target_gate": "RG-3A",
+      "notes": "Decomposed capability domains documented in content_factory_capability_decomposition.md."
+    },
+    {
+      "id": "DEBT-003",
+      "category": "legacy_isolation",
+      "module": "app.legacy",
+      "target_file": "app/legacy/",
+      "description": "Legacy routes and services needing strict isolation from core/domain.",
+      "remediation_status": "quarantined",
+      "owner": "Lead Engineer",
+      "target_gate": "RG-3A",
+      "notes": "Enforced via .importlinter [importlinter:contract:legacy-quarantine]."
+    },
+    {
+      "id": "DEBT-004",
+      "category": "etl_consolidation",
+      "module": "app.modules.etl",
+      "target_file": "app/modules/etl/",
+      "description": "Multiple ETL pipeline versions and scripts across legacy and V2.",
+      "remediation_status": "matrix_consolidated",
+      "owner": "Lead Engineer",
+      "target_gate": "RG-3A",
+      "notes": "Consolidated under single supported runtime interface in etl_consolidation_matrix.md."
+    },
+    {
+      "id": "DEBT-005",
+      "category": "broad_exceptions",
+      "module": "app.services",
+      "target_file": "app/services/",
+      "description": "Broad `except Exception` blocks swallowing database/auth errors.",
+      "remediation_status": "taxonomy_governed",
+      "owner": "Lead Engineer",
+      "target_gate": "RG-3A",
+      "notes": "Typed exception taxonomy defined in complexity_budgets_and_dispositions.md."
+    }
+  ],
+  "summary": {
+    "total_debt_items": 5,
+    "remediated_in_b04": 5,
+    "active_exceptions": 0,
+    "ratcheting_ceilings_enforced": true
+  }
+}

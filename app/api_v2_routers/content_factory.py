@@ -63,8 +63,6 @@ from app.domain.content_factory_schemas import (
 from app.domain.content_coverage import CapsRefCoverageReport, ContentLayer, CoverageTarget, ScopeCoverageReport
 from app.domain.content_scope import ContentScope
 from app.models.content_factory import ContentArtifactStatus, ContentGenerationArtifact, ContentGenerationTask
-from app.repositories.item_bank_repository import ItemBankRepository
-from app.repositories.lesson_repository import LessonRepository
 from app.services.content_artifact_lifecycle import ContentArtifactLifecycleService
 from app.services.content_factory import ContentFactoryService, ContentValidationService
 from app.services.content_factory_orchestrator import ContentFactoryOrchestrator
@@ -98,7 +96,7 @@ router = APIRouter(
 
 
 def get_content_coverage_service(session: AsyncSession = Depends(get_db)) -> ContentCoverageService:
-    return ContentCoverageService(item_repo=ItemBankRepository(session), lesson_repo=LessonRepository(session))
+    return ContentCoverageService.from_session(session)
 
 
 def get_content_generation_run_service() -> ContentGenerationRunService:

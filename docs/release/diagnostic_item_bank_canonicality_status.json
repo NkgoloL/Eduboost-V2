@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-27T16:21:30Z",
-  "current_commit": "96a44fcb30032631891f43b86faab0e8f45288a3",
+  "generated_at": "2026-08-26T17:21:25Z",
+  "current_commit": "107d58c62d28a0d0a7a094f69894809af40f8db0",
   "status": "diagnostic-item-bank-policy-accepted",
   "policy_path": "docs/architecture/diagnostic_item_bank_canonicality.yml",
   "decision": "diagnostic_items-runtime-required",
@@ -368,19 +368,19 @@
     },
     {
       "path": "app/api_v2_routers/content_factory.py",
-      "line_number": 1077,
+      "line_number": 1075,
       "line_excerpt": "diagnostic_items = await service.get_diagnostic_items(session, scope_id=scope_id, caps_ref=caps_ref)",
       "runtime_surface": true
     },
     {
       "path": "app/api_v2_routers/content_factory.py",
-      "line_number": 1079,
+      "line_number": 1077,
       "line_excerpt": "return {\"diagnostic_items\": diagnostic_items, \"lessons\": lessons}",
       "runtime_surface": true
     },
     {
       "path": "app/api_v2_routers/content_factory.py",
-      "line_number": 1100,
+      "line_number": 1098,
       "line_excerpt": "run_metadata={\"layers\": [\"diagnostic_items\", \"lessons\", \"assessment_blueprints\", \"study_plan_templates\"]},",
       "runtime_surface": true
     },
@@ -416,13 +416,13 @@
     },
     {
       "path": "app/models/diagnostic_item.py",
-      "line_number": 111,
+      "line_number": 112,
       "line_excerpt": "ORM representation of the diagnostic_items table.",
       "runtime_surface": true
     },
     {
       "path": "app/models/diagnostic_item.py",
-      "line_number": 117,
+      "line_number": 118,
       "line_excerpt": "__tablename__ = \"diagnostic_items\"",
       "runtime_surface": true
     },
@@ -559,12 +559,6 @@
       "runtime_surface": false
     },
     {
-      "path": "docs/archive/codemaps_pre_20260826T101910Z/eduboost_v2_repository_layer_data_access_abstraction_and_domain_persistence.md",
-      "line_number": 492,
-      "line_excerpt": "\u2502   \u2502   \u2514\u2500\u2500 UPDATE diagnostic_items <-- 6f",
-      "runtime_surface": false
-    },
-    {
       "path": "docs/archive/legacy-doc-framework/20260622T193052Z/DOC/Tier 2 - Architecture & Design/DOC-10_Database-Design-Document_(DDD).md",
       "line_number": 124,
       "line_excerpt": "| `DiagnosticItem` | `diagnostic_items` | `app/models/diagnostic_item.py` |",
@@ -580,6 +574,12 @@
       "path": "docs/backlog/pr_cf_013_full_generation_runner.md",
       "line_number": 15,
       "line_excerpt": "- Extended `ContentGenerationPlanner` to support all layers (diagnostic_items, lessons, assessment_blueprints, study_plan_templates)",
+      "runtime_surface": false
+    },
+    {
+      "path": "docs/codemaps/eduboost_v2_repository_layer_data_access_abstraction_and_domain_persistence.md",
+      "line_number": 492,
+      "line_excerpt": "\u2502   \u2502   \u2514\u2500\u2500 UPDATE diagnostic_items <-- 6f",
       "runtime_surface": false
     },
     {
@@ -620,19 +620,19 @@
     },
     {
       "path": "docs/openapi.yaml",
-      "line_number": 14795,
+      "line_number": 14840,
       "line_excerpt": "- diagnostic_items",
       "runtime_surface": false
     },
     {
       "path": "docs/openapi.yaml",
-      "line_number": 18708,
+      "line_number": 18781,
       "line_excerpt": "- diagnostic_items",
       "runtime_surface": false
     },
     {
       "path": "docs/openapi.yaml",
-      "line_number": 18716,
+      "line_number": 18789,
       "line_excerpt": "- diagnostic_items",
       "runtime_surface": false
     },
@@ -716,31 +716,31 @@
     },
     {
       "path": "docs/release/audit_callsite_inventory.md",
-      "line_number": 3344,
+      "line_number": 3365,
       "line_excerpt": "| `scripts/diagnostic_item_bank_canonicality.py` | 143 | audit_append_call | `blockers.append(\"no diagnostic_items references found; runtime-required policy is unsupported\")` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/audit_callsite_inventory.md",
-      "line_number": 3363,
+      "line_number": 3384,
       "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 495 | audit_append_call | `blockers.append(\"diagnostic_items table is missing\")` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/audit_callsite_inventory.md",
-      "line_number": 3366,
+      "line_number": 3387,
       "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 515 | audit_append_call | `blockers.append(\"DIAG_SCORE_ALLOW_BRIDGE_SEED must be 1 before mutating diagnostic_items\")` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/audit_callsite_inventory.md",
-      "line_number": 3367,
+      "line_number": 3388,
       "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 517 | audit_append_call | `blockers.append(\"cannot bridge-seed without both diagnostic_items and irt_items\")` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/audit_callsite_inventory.md",
-      "line_number": 3369,
+      "line_number": 3390,
       "line_excerpt": "| `scripts/diagnostic_score_live_audit.py` | 533 | audit_append_call | `blockers.append(\"diagnostic_items has 0 rows; runtime-required item bank is not seeded\")` |",
       "runtime_surface": false
     },
@@ -752,13 +752,13 @@
     },
     {
       "path": "docs/release/backend_deletion_candidate_inventory.md",
-      "line_number": 356224,
-      "line_excerpt": "| `docs/release/backend_deletion_candidate_inventory.md` | 355742 | legacy_consent | `\\| `docs/release/no_false_closure_status_after_3311_3350.md` \\| 20 \\| legacy_consent \\| `- Key table counts match for `alembic_version`, `audit_events`, `",
+      "line_number": 354960,
+      "line_excerpt": "| `docs/release/backend_deletion_candidate_inventory.md` | 353800 | legacy_consent | `\\| `docs/release/no_false_closure_status_after_3311_3350.md` \\| 20 \\| legacy_consent \\| `- Key table counts match for `alembic_version`, `audit_events`, `",
       "runtime_surface": false
     },
     {
       "path": "docs/release/backend_deletion_candidate_inventory.md",
-      "line_number": 357392,
+      "line_number": 356128,
       "line_excerpt": "| `docs/release/no_false_closure_status_after_3311_3350.md` | 20 | legacy_consent | `- Key table counts match for `alembic_version`, `audit_events`, `diagnostic_items`, `irt_items`, and `parental_consents`.` | TODO | no |",
       "runtime_surface": false
     },
@@ -807,19 +807,19 @@
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 30,
-      "line_excerpt": "| `app/api_v2_routers/content_factory.py` | 1077 | `diagnostic_items = await service.get_diagnostic_items(session, scope_id=scope_id, caps_ref=caps_ref)` |",
+      "line_excerpt": "| `app/api_v2_routers/content_factory.py` | 1075 | `diagnostic_items = await service.get_diagnostic_items(session, scope_id=scope_id, caps_ref=caps_ref)` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 31,
-      "line_excerpt": "| `app/api_v2_routers/content_factory.py` | 1079 | `return {\"diagnostic_items\": diagnostic_items, \"lessons\": lessons}` |",
+      "line_excerpt": "| `app/api_v2_routers/content_factory.py` | 1077 | `return {\"diagnostic_items\": diagnostic_items, \"lessons\": lessons}` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 32,
-      "line_excerpt": "| `app/api_v2_routers/content_factory.py` | 1100 | `run_metadata={\"layers\": [\"diagnostic_items\", \"lessons\", \"assessment_blueprints\", \"study_plan_templates\"]},` |",
+      "line_excerpt": "| `app/api_v2_routers/content_factory.py` | 1098 | `run_metadata={\"layers\": [\"diagnostic_items\", \"lessons\", \"assessment_blueprints\", \"study_plan_templates\"]},` |",
       "runtime_surface": false
     },
     {
@@ -855,13 +855,13 @@
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 38,
-      "line_excerpt": "| `app/models/diagnostic_item.py` | 111 | `ORM representation of the diagnostic_items table.` |",
+      "line_excerpt": "| `app/models/diagnostic_item.py` | 112 | `ORM representation of the diagnostic_items table.` |",
       "runtime_surface": false
     },
     {
       "path": "docs/release/diagnostic_item_bank_canonicality_status.md",
       "line_number": 39,
-      "line_excerpt": "| `app/models/diagnostic_item.py` | 117 | `__tablename__ = \"diagnostic_items\"` |",
+      "line_excerpt": "| `app/models/diagnostic_item.py` | 118 | `__tablename__ = \"diagnostic_items\"` |",
       "runtime_surface": false
     },
     {
@@ -1816,19 +1816,19 @@
   "runtime_diagnostic_items_references": [
     {
       "path": "app/api_v2_routers/content_factory.py",
-      "line_number": 1077,
+      "line_number": 1075,
       "line_excerpt": "diagnostic_items = await service.get_diagnostic_items(session, scope_id=scope_id, caps_ref=caps_ref)",
       "runtime_surface": true
     },
     {
       "path": "app/api_v2_routers/content_factory.py",
-      "line_number": 1079,
+      "line_number": 1077,
       "line_excerpt": "return {\"diagnostic_items\": diagnostic_items, \"lessons\": lessons}",
       "runtime_surface": true
     },
     {
       "path": "app/api_v2_routers/content_factory.py",
-      "line_number": 1100,
+      "line_number": 1098,
       "line_excerpt": "run_metadata={\"layers\": [\"diagnostic_items\", \"lessons\", \"assessment_blueprints\", \"study_plan_templates\"]},",
       "runtime_surface": true
     },
@@ -1864,13 +1864,13 @@
     },
     {
       "path": "app/models/diagnostic_item.py",
-      "line_number": 111,
+      "line_number": 112,
       "line_excerpt": "ORM representation of the diagnostic_items table.",
       "runtime_surface": true
     },
     {
       "path": "app/models/diagnostic_item.py",
-      "line_number": 117,
+      "line_number": 118,
       "line_excerpt": "__tablename__ = \"diagnostic_items\"",
       "runtime_surface": true
     },

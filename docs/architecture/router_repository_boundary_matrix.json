@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T16:20:31Z",
+  "generated_at": "2026-08-26T17:20:23Z",
   "rows": [
     {
       "router": "app/api_v2_routers/0005_irt_seed.py",
@@ -81,13 +81,9 @@
     {
       "router": "app/api_v2_routers/consent.py",
       "p0_router": false,
-      "repository_imports": [
-        "app.repositories.repositories"
-      ],
+      "repository_imports": [],
       "transition_allowed": [],
-      "violations": [
-        "app.repositories.repositories"
-      ]
+      "violations": []
     },
     {
       "router": "app/api_v2_routers/consent_renewal.py",
@@ -99,15 +95,9 @@
     {
       "router": "app/api_v2_routers/content_factory.py",
       "p0_router": false,
-      "repository_imports": [
-        "app.repositories.item_bank_repository",
-        "app.repositories.lesson_repository"
-      ],
+      "repository_imports": [],
       "transition_allowed": [],
-      "violations": [
-        "app.repositories.item_bank_repository",
-        "app.repositories.lesson_repository"
-      ]
+      "violations": []
     },
     {
       "router": "app/api_v2_routers/content_quality.py",
@@ -154,15 +144,9 @@
     {
       "router": "app/api_v2_routers/gamification.py",
       "p0_router": false,
-      "repository_imports": [
-        "app.repositories.gamification_repository",
-        "app.repositories.repositories"
-      ],
+      "repository_imports": [],
       "transition_allowed": [],
-      "violations": [
-        "app.repositories.gamification_repository",
-        "app.repositories.repositories"
-      ]
+      "violations": []
     },
     {
       "router": "app/api_v2_routers/generation.py",
@@ -195,15 +179,9 @@
     {
       "router": "app/api_v2_routers/learners.py",
       "p0_router": false,
-      "repository_imports": [
-        "app.repositories.mastery_repository",
-        "app.repositories.repositories"
-      ],
+      "repository_imports": [],
       "transition_allowed": [],
-      "violations": [
-        "app.repositories.mastery_repository",
-        "app.repositories.repositories"
-      ]
+      "violations": []
     },
     {
       "router": "app/api_v2_routers/lessons.py",
@@ -222,24 +200,16 @@
     {
       "router": "app/api_v2_routers/onboarding.py",
       "p0_router": false,
-      "repository_imports": [
-        "app.repositories.repositories"
-      ],
+      "repository_imports": [],
       "transition_allowed": [],
-      "violations": [
-        "app.repositories.repositories"
-      ]
+      "violations": []
     },
     {
       "router": "app/api_v2_routers/parents.py",
       "p0_router": false,
-      "repository_imports": [
-        "app.repositories.repositories"
-      ],
+      "repository_imports": [],
       "transition_allowed": [],
-      "violations": [
-        "app.repositories.repositories"
-      ]
+      "violations": []
     },
     {
       "router": "app/api_v2_routers/performance_scale_cost.py",

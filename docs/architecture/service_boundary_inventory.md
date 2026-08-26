@@ -1,6 +1,6 @@
 # Service Boundary Inventory
 
-Generated at: `2026-08-27T16:20:31Z`
+Generated at: `2026-08-26T17:20:25Z`
 
 | Path | Classification |
 |---|---|
@@ -227,6 +227,7 @@ Generated at: `2026-08-27T16:20:31Z`
 | `app/modules/lessons/lesson_generator.py` | unclassified |
 | `app/modules/lessons/lesson_metrics.py` | unclassified |
 | `app/modules/lessons/lesson_review_router.py` | unclassified |
+| `app/modules/lessons/lesson_review_service.py` | domain_or_cross_cutting_service |
 | `app/modules/lessons/lesson_schema_v1.py` | unclassified |
 | `app/modules/lessons/lesson_validator.py` | unclassified |
 | `app/modules/lessons/lesson_variants.py` | unclassified |
@@ -246,6 +247,7 @@ Generated at: `2026-08-27T16:20:31Z`
 | `app/modules/performance_scale_cost/readiness.py` | unclassified |
 | `app/modules/practice/practice_generator.py` | unclassified |
 | `app/modules/practice/router.py` | unclassified |
+| `app/modules/practice/service.py` | domain_or_cross_cutting_service |
 | `app/modules/practice/spaced_repetition_scheduler.py` | unclassified |
 | `app/modules/privacy_ops/assurance.py` | unclassified |
 | `app/modules/privacy_ops/readiness.py` | unclassified |

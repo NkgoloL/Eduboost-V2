@@ -33,6 +33,3 @@ This file must be updated with an actual GitHub Actions run URL before CI-001 ca
 ## No false closure rule
 
 Local command success is not remote CI authority. CI-001 remains `external-blocked` until an actual GitHub Actions run URL and passing result metadata are attached.
-
-- GitHub Actions run URL: `PENDING`
-- Route alias policy: `PENDING`

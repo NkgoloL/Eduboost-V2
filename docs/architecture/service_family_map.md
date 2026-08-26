@@ -1,6 +1,6 @@
 # Service Family Map
 
-Generated at: `2026-08-27T12:09:41Z`
+Generated at: `2026-08-26T16:48:52Z`
 
 | Domain | Path | Classification | Classes |
 |---|---|---|---|
@@ -227,6 +227,7 @@ Generated at: `2026-08-27T12:09:41Z`
 | lesson | `app/modules/lessons/lesson_generator.py` | unclassified | `LessonGenerationError`, `LessonGenerator`, `VerificationResult` |
 | lesson | `app/modules/lessons/lesson_metrics.py` | unclassified | `LessonMetrics` |
 | lesson | `app/modules/lessons/lesson_review_router.py` | unclassified | `CurrentUser`, `LessonReviewRequest`, `QueuedLessonSummary`, `ReviewActionResponse`, `ReviewDecision`, `ReviewQueueResponse`, `UserRole` |
+| lesson | `app/modules/lessons/lesson_review_service.py` | canonical_domain_service | `LessonReviewService` |
 | lesson | `app/modules/lessons/lesson_schema_v1.py` | unclassified | `AnswerKeyEntry`, `DifficultyLevel`, `LLMProvider`, `LessonCreate`, `LessonResponse`, `PracticeQuestion`, `RemediationHint`, `ReviewStatus`, `SafetyClassification`, `SubjectEnum`, `TokenUsage`, `VariantType`, `WorkedExample` |
 | lesson | `app/modules/lessons/lesson_validator.py` | unclassified | `LessonValidationError`, `LessonValidator`, `ValidationResult` |
 | lesson | `app/modules/lessons/lesson_variants.py` | unclassified | `LessonVariantType`, `VariantPromptConfig` |
@@ -246,6 +247,7 @@ Generated at: `2026-08-27T12:09:41Z`
 | other | `app/modules/performance_scale_cost/readiness.py` | unclassified | `PerformanceScaleCostEvidenceControl`, `PerformanceScaleCostReadinessInputs`, `PerformanceScaleCostReadinessReport` |
 | other | `app/modules/practice/practice_generator.py` | unclassified | `PracticeGenerator` |
 | other | `app/modules/practice/router.py` | unclassified | `PracticeResponseRequest`, `PracticeSessionRequest` |
+| other | `app/modules/practice/service.py` | canonical_domain_service | `PracticeService` |
 | other | `app/modules/practice/spaced_repetition_scheduler.py` | unclassified | `SpacedRepetitionScheduler`, `SpacedReviewPlan` |
 | other | `app/modules/privacy_ops/assurance.py` | unclassified | `AuditCrosswalkItem`, `PrivacyFinalAssuranceInputs`, `PrivacyFinalAssuranceReport` |
 | other | `app/modules/privacy_ops/readiness.py` | unclassified | `DataFlowControl`, `PrivacyLiveDataReadinessInputs`, `PrivacyLiveDataReadinessReport` |

@@ -96,6 +96,8 @@ class RuntimeKGEdge(Base):
     graph_load_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("runtime_kg_graph_loads.id", ondelete="CASCADE"), nullable=False)
     from_node_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("runtime_kg_nodes.id", ondelete="CASCADE"), nullable=False)
     to_node_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("runtime_kg_nodes.id", ondelete="CASCADE"), nullable=False)
+    source_node_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), ForeignKey("runtime_kg_nodes.id", ondelete="CASCADE"), nullable=True)
+    target_node_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True), ForeignKey("runtime_kg_nodes.id", ondelete="CASCADE"), nullable=True)
     edge_type: Mapped[str] = mapped_column(String(60), nullable=False)
     weight: Mapped[float] = mapped_column(Float, nullable=False, default=1.0)
     properties_json: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False, default=dict)

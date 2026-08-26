@@ -11,8 +11,7 @@ from app.api_v2_deps.auth import AuthContext, require_auth_context
 from app.core.security import get_current_user  # noqa: F401
 from app.security.dependencies import require_active_consent_for_current_user, require_learner_read_for_current_user
 from app.security.dependencies import require_learner_write_for_current_user
-from app.repositories.gamification_repository import GamificationRepository
-from app.repositories.repositories import LearnerRepository, LessonRepository
+from app.services.learner_service import LearnerService
 from app.services.fourth_estate import FourthEstateService
 from app.services.gamification_service_v2 import GamificationServiceV2
 
@@ -32,13 +31,13 @@ async def get_profile(
     db: AsyncSession = Depends(get_db),
     current_user: AuthContext = Depends(require_auth_context),
 ):
-    learner = await LearnerRepository(db).get_by_id(learner_id)
+    learner = await LearnerService(db).get_learner_summary(learner_id)
     if learner is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
     require_learner_read_for_current_user(current_user, learner)
     await require_active_consent_for_current_user(db, current_user, learner_id)
     try:
-        return await GamificationServiceV2(GamificationRepository(db)).get_profile(learner_id)
+        return await GamificationServiceV2.from_session(db).get_profile(learner_id)
     except ValueError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found") from exc
 
@@ -49,16 +48,14 @@ async def award_xp(
     db: AsyncSession = Depends(get_db),
     current_user: AuthContext = Depends(require_auth_context),
 ):
-    learner = await LearnerRepository(db).get_by_id(body.learner_id)
+    learner = await LearnerService(db).get_learner_summary(body.learner_id)
     if learner is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
     require_learner_write_for_current_user(current_user, body.learner_id)
     await require_active_consent_for_current_user(db, current_user, body.learner_id)
 
-    learner_repo = LearnerRepository(db)
-    await learner_repo.add_xp(body.learner_id, body.xp_amount)
-    if body.lesson_id:
-        await LessonRepository(db).mark_completed(body.lesson_id)
+    gamification_svc = GamificationServiceV2.from_session(db)
+    await gamification_svc.award_xp(body.learner_id, body.xp_amount, body.lesson_id)
 
     await FourthEstateService(db).record(
         event_type="gamification.xp_awarded",
@@ -76,7 +73,7 @@ async def award_xp(
     await db.commit()
     # Expire objects to ensure get_profile fetches fresh data from DB
     db.expire_all()
-    updated_profile = await GamificationServiceV2(GamificationRepository(db)).get_profile(body.learner_id)
+    updated_profile = await GamificationServiceV2.from_session(db).get_profile(body.learner_id)
     return {
         "awarded": True,
         "xp_amount": body.xp_amount,
@@ -87,4 +84,4 @@ async def award_xp(
 
 @router.get("/leaderboard")
 async def get_leaderboard(limit: int = 10, db: AsyncSession = Depends(get_db)):
-    return await GamificationServiceV2(GamificationRepository(db)).leaderboard(limit=limit)
+    return await GamificationServiceV2.from_session(db).leaderboard(limit=limit)

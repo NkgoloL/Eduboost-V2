@@ -43,7 +43,7 @@
         "TSR-6",
         "TSR-7"
       ],
-      "status": "authorised",
+      "status": "verified",
       "title": "Architecture and Data Integrity"
     },
     {
@@ -52,7 +52,7 @@
         "TSR-8",
         "TSR-9"
       ],
-      "status": "identified",
+      "status": "authorised",
       "title": "Security Privacy and Educational Validity"
     },
     {
@@ -844,7 +844,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Inventory all 86 workflows",
-      "updated_at": "2026-08-27T16:45:06.737037+00:00"
+      "updated_at": "2026-08-26T15:49:40.366715+00:00"
     },
     {
       "acceptance_criteria": "Every branch-protection check maps to one canonical job and command; duplicate names are prohibited.",
@@ -860,7 +860,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Define required-check authority",
-      "updated_at": "2026-08-27T16:45:06.737058+00:00"
+      "updated_at": "2026-08-26T15:49:40.366737+00:00"
     },
     {
       "acceptance_criteria": "Required PR and release signals are complete; redundant workflows are disabled and moved outside `.github/workflows`.",
@@ -876,7 +876,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Implement the six-workflow target graph",
-      "updated_at": "2026-08-27T16:45:06.737061+00:00"
+      "updated_at": "2026-08-26T15:49:40.366741+00:00"
     },
     {
       "acceptance_criteria": "mypy, security, dependency, secret, migration, and generated-contract gates fail closed where designated.",
@@ -892,7 +892,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Remove release-critical `continue-on-error`",
-      "updated_at": "2026-08-27T16:45:06.737063+00:00"
+      "updated_at": "2026-08-26T15:49:40.366744+00:00"
     },
     {
       "acceptance_criteria": "setup-python, Node, Postgres/pgvector, Redis, pnpm, and action major versions are consistent.",
@@ -908,7 +908,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Standardize tool/action/service versions",
-      "updated_at": "2026-08-27T16:45:06.737064+00:00"
+      "updated_at": "2026-08-26T15:49:40.366746+00:00"
     },
     {
       "acceptance_criteria": "Canonical branch naming is used; historical `main`, `develop`, and obsolete release-branch triggers are removed or justified.",
@@ -924,7 +924,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Standardize branch triggers",
-      "updated_at": "2026-08-27T16:45:06.737080+00:00"
+      "updated_at": "2026-08-26T15:49:40.366749+00:00"
     },
     {
       "acceptance_criteria": "Local and CI execution invoke the same command implementations, not divergent inline shell logic.",
@@ -940,7 +940,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Centralize commands in repository scripts/Make targets",
-      "updated_at": "2026-08-27T16:45:06.737084+00:00"
+      "updated_at": "2026-08-26T15:49:40.366752+00:00"
     },
     {
       "acceptance_criteria": "Product failures are visible in fast feedback; governance tests remain strict but separately reported.",
@@ -956,7 +956,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Separate ordinary product checks from governance/evidence checks",
-      "updated_at": "2026-08-27T16:45:06.737086+00:00"
+      "updated_at": "2026-08-26T15:49:40.366755+00:00"
     },
     {
       "acceptance_criteria": "Stale runs cancel safely; caches are keyed to lockfiles; raw evidence retention and sensitivity are defined.",
@@ -972,7 +972,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Add concurrency, cache, and artifact-retention policy",
-      "updated_at": "2026-08-27T16:45:06.737088+00:00"
+      "updated_at": "2026-08-26T15:49:40.366758+00:00"
     },
     {
       "acceptance_criteria": "Required check list exactly matches canonical jobs; direct pushes and stale approvals are governed.",
@@ -988,7 +988,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Reconcile branch protection",
-      "updated_at": "2026-08-27T16:45:06.737089+00:00"
+      "updated_at": "2026-08-26T15:49:40.366761+00:00"
     },
     {
       "acceptance_criteria": "Historical workflow source remains retrievable but cannot execute accidentally.",
@@ -1004,7 +1004,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Archive superseded workflows",
-      "updated_at": "2026-08-27T16:45:06.737091+00:00"
+      "updated_at": "2026-08-26T15:49:40.366763+00:00"
     },
     {
       "acceptance_criteria": "A clean merge commit runs all required checks successfully; evidence includes run IDs, commit SHA, and artifact hashes.",
@@ -1020,7 +1020,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Prove post-merge authority from exact source",
-      "updated_at": "2026-08-27T16:45:06.737093+00:00"
+      "updated_at": "2026-08-26T15:49:40.366766+00:00"
     },
     {
       "acceptance_criteria": "Median duration, failure categories, flake rate, queue time, and monthly compute use are monitored.",
@@ -1036,7 +1036,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Track CI health and cost",
-      "updated_at": "2026-08-27T16:45:06.737094+00:00"
+      "updated_at": "2026-08-26T15:49:40.366769+00:00"
     },
     {
       "acceptance_criteria": "Tests are classified as product-unit, product-integration, runtime-stack, architecture-static, governance-contract, or release-evidence.",
@@ -1052,7 +1052,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Enforce test taxonomy",
-      "updated_at": "2026-08-27T16:45:06.737096+00:00"
+      "updated_at": "2026-08-26T15:49:40.366772+00:00"
     },
     {
       "acceptance_criteria": "The same test set runs locally and in PR CI; no hidden environment-based inclusion.",
@@ -1068,7 +1068,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Make fast PR test selection deterministic",
-      "updated_at": "2026-08-27T16:45:06.737098+00:00"
+      "updated_at": "2026-08-26T15:49:40.366774+00:00"
     },
     {
       "acceptance_criteria": "Product pass/failure counts and governance pass/failure counts are independently visible.",
@@ -1084,7 +1084,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Separate governance tests from product unit counts",
-      "updated_at": "2026-08-27T16:45:06.737099+00:00"
+      "updated_at": "2026-08-26T15:49:40.366777+00:00"
     },
     {
       "acceptance_criteria": "Optional integrations are forced explicitly in unit tests; real backends have dedicated integration tests.",
@@ -1100,7 +1100,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Eliminate environment-sensitive backend selection",
-      "updated_at": "2026-08-27T16:45:06.737101+00:00"
+      "updated_at": "2026-08-26T15:49:40.366780+00:00"
     },
     {
       "acceptance_criteria": "Retries cannot conceal first-attempt failures; quarantines have owners, expiry, and reproduction evidence.",
@@ -1116,7 +1116,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Establish flake policy",
-      "updated_at": "2026-08-27T16:45:06.737102+00:00"
+      "updated_at": "2026-08-26T15:49:40.366782+00:00"
     },
     {
       "acceptance_criteria": "Database, auth, learner, guardian, consent, curriculum, and provider fixtures are reusable and deterministic.",
@@ -1132,7 +1132,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Standardize factories and fixtures",
-      "updated_at": "2026-08-27T16:45:06.737104+00:00"
+      "updated_at": "2026-08-26T15:49:40.366785+00:00"
     },
     {
       "acceptance_criteria": "Global threshold is supplemented by stricter targets for authorization, privacy, payments, migration, and learner-state calculations.",
@@ -1148,7 +1148,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Add risk-based coverage thresholds",
-      "updated_at": "2026-08-27T16:45:06.737106+00:00"
+      "updated_at": "2026-08-26T15:49:40.366788+00:00"
     },
     {
       "acceptance_criteria": "Critical authorization/consent/mastery branches demonstrate that tests fail when behavior is altered.",
@@ -1164,7 +1164,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Introduce mutation testing on high-risk modules",
-      "updated_at": "2026-08-27T16:45:06.737107+00:00"
+      "updated_at": "2026-08-26T15:49:40.366792+00:00"
     },
     {
       "acceptance_criteria": "Every shard has a budget; terminal timeout leaves are classified and cannot be ignored.",
@@ -1180,7 +1180,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Bound slow and hanging tests",
-      "updated_at": "2026-08-27T16:45:06.737109+00:00"
+      "updated_at": "2026-08-26T15:49:40.366795+00:00"
     },
     {
       "acceptance_criteria": "Full collection and selected suites pass from an empty cache/container, eliminating audit-host ambiguity.",
@@ -1196,7 +1196,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Validate tests from a disposable dependency-complete environment",
-      "updated_at": "2026-08-27T16:45:06.737110+00:00"
+      "updated_at": "2026-08-26T15:49:40.366798+00:00"
     },
     {
       "acceptance_criteria": "Repeated text-presence tests are replaced by generated schemas and a small number of semantic verifiers.",
@@ -1212,7 +1212,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Reduce duplicated governance test logic",
-      "updated_at": "2026-08-27T16:45:06.737112+00:00"
+      "updated_at": "2026-08-26T15:49:40.366801+00:00"
     },
     {
       "acceptance_criteria": "Collection time, run duration, flake rate, skip/xfail age, coverage by domain, and failure recurrence are tracked.",
@@ -1228,397 +1228,487 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Publish test-suite health metrics",
-      "updated_at": "2026-08-27T16:45:06.737113+00:00"
+      "updated_at": "2026-08-26T15:49:40.366804+00:00"
     },
     {
       "acceptance_criteria": "Every import-linter exception, oversized module, legacy alias, duplicate implementation, broad exception hotspot, TODO, `pass`, and coverage exclusion has an owner and retirement target.",
       "bundle_id": "B04",
       "deliverable": "Debt register",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-6.1",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3A",
-      "title": "Create an architectural-debt register"
+      "title": "Create an architectural-debt register",
+      "updated_at": "2026-08-26T17:57:39.350937+00:00"
     },
     {
       "acceptance_criteria": "Generation, review, staging, promotion, and production-read paths delegate to typed services; route modules no longer import repositories directly.",
       "bundle_id": "B04",
       "deliverable": "Thin route modules",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-6.2",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3A",
-      "title": "Split `content_factory.py` by capability"
+      "title": "Split `content_factory.py` by capability",
+      "updated_at": "2026-08-26T17:57:39.350950+00:00"
     },
     {
       "acceptance_criteria": "`etl_pipeline.py`, `_v2.py`, and `_v3_additions.py` are merged, wrapped, or retired under one supported interface with migration tests.",
       "bundle_id": "B04",
       "deliverable": "One versioned ETL interface",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-6.3",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3A",
-      "title": "Consolidate ETL implementations"
+      "title": "Consolidate ETL implementations",
+      "updated_at": "2026-08-26T17:57:39.350952+00:00"
     },
     {
       "acceptance_criteria": "Export, erasure, consent, retention, and audit flows have explicit boundaries and transaction ownership.",
       "bundle_id": "B04",
       "deliverable": "Typed command/query services",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-6.4",
       "owner_role": "privacy",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3A",
-      "title": "Decompose POPIA orchestration"
+      "title": "Decompose POPIA orchestration",
+      "updated_at": "2026-08-26T17:57:39.350954+00:00"
     },
     {
       "acceptance_criteria": "Graph load, mapping, review, versioning, and publication logic are independently testable.",
       "bundle_id": "B04",
       "deliverable": "Smaller domain services",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-6.5",
       "owner_role": "curriculum",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3A",
-      "title": "Decompose curriculum graph and content-review orchestration"
+      "title": "Decompose curriculum graph and content-review orchestration",
+      "updated_at": "2026-08-26T17:57:39.350955+00:00"
     },
     {
       "acceptance_criteria": "Provider calls, budget reservations, persistence, review, and retries use explicit state transitions.",
       "bundle_id": "B04",
       "deliverable": "Typed jobs and command objects",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-6.6",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3A",
-      "title": "Decompose batch/content generation"
+      "title": "Decompose batch/content generation",
+      "updated_at": "2026-08-26T17:57:39.350957+00:00"
     },
     {
       "acceptance_criteria": "The exception list trends to zero; any remaining exception has a documented expiry.",
       "bundle_id": "B04",
       "deliverable": "Import-linter enforcement",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-6.7",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3A",
-      "title": "Remove direct router-to-repository exceptions"
+      "title": "Remove direct router-to-repository exceptions",
+      "updated_at": "2026-08-26T17:57:39.350959+00:00"
     },
     {
       "acceptance_criteria": "Integration boundaries classify retryable, client, provider, persistence, policy, and internal failures; unexpected exceptions propagate to observability.",
       "bundle_id": "B04",
       "deliverable": "Typed exception taxonomy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-6.8",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3A",
-      "title": "Replace broad exception hotspots"
+      "title": "Replace broad exception hotspots",
+      "updated_at": "2026-08-26T17:57:39.350960+00:00"
     },
     {
       "acceptance_criteria": "Health, provider, job, and persistence failures return the intended status and metric, not silent 200 responses.",
       "bundle_id": "B04",
       "deliverable": "Error-contract tests",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-6.9",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3A",
-      "title": "Prevent degraded failures from returning success"
+      "title": "Prevent degraded failures from returning success",
+      "updated_at": "2026-08-26T17:57:39.350962+00:00"
     },
     {
       "acceptance_criteria": "`app/core/authorization.py`, `app/security/authorization.py`, and `app/security/object_authorization.py` have one authoritative implementation.",
       "bundle_id": "B04",
       "deliverable": "One object-authorization service",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-6.10",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3A",
-      "title": "Consolidate authorization modules"
+      "title": "Consolidate authorization modules",
+      "updated_at": "2026-08-26T17:57:39.350963+00:00"
     },
     {
       "acceptance_criteria": "Guardian/teacher relationship helpers no longer remain ambiguous placeholders; tests cover every policy path.",
       "bundle_id": "B04",
       "deliverable": "Implemented or removed helpers",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-6.11",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3A",
-      "title": "Resolve fail-closed placeholders"
+      "title": "Resolve fail-closed placeholders",
+      "updated_at": "2026-08-26T17:57:39.350965+00:00"
     },
     {
       "acceptance_criteria": "Production imports from legacy code are zero or explicitly permitted by a temporary compatibility adapter.",
       "bundle_id": "B04",
       "deliverable": "Legacy boundary",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-6.12",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3A",
-      "title": "Inventory and quarantine `app/legacy`"
+      "title": "Inventory and quarantine `app/legacy`",
+      "updated_at": "2026-08-26T17:57:39.350967+00:00"
     },
     {
       "acceptance_criteria": "Usage inventory proves no supported caller depends on the removed alias; deprecation is tested where external.",
       "bundle_id": "B04",
       "deliverable": "Retirement changes",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-6.13",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3A",
-      "title": "Remove obsolete aliases and compatibility shims"
+      "title": "Remove obsolete aliases and compatibility shims",
+      "updated_at": "2026-08-26T17:57:39.350968+00:00"
     },
     {
       "acceptance_criteria": "New modules/functions cannot exceed approved limits; existing hotspots have ratcheting ceilings rather than blanket exemptions.",
       "bundle_id": "B04",
       "deliverable": "Lint/architecture policy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-6.14",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3A",
-      "title": "Set gradual complexity budgets"
+      "title": "Set gradual complexity budgets",
+      "updated_at": "2026-08-26T17:57:39.350969+00:00"
     },
     {
       "acceptance_criteria": "Each item is implemented, removed, or narrowly justified with an expiry and test rationale.",
       "bundle_id": "B04",
       "deliverable": "Disposition register",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-6.15",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3A",
-      "title": "Resolve `pass`, TODO/HACK, and `pragma: no cover` debt"
+      "title": "Resolve `pass`, TODO/HACK, and `pragma: no cover` debt",
+      "updated_at": "2026-08-26T17:57:39.350971+00:00"
     },
     {
       "acceptance_criteria": "Each domain exposes supported services/events/contracts and prohibits cross-domain internal imports.",
       "bundle_id": "B04",
       "deliverable": "Architecture index",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-6.16",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3A",
-      "title": "Establish domain ownership and public interfaces"
+      "title": "Establish domain ownership and public interfaces",
+      "updated_at": "2026-08-26T17:57:39.350972+00:00"
     },
     {
       "acceptance_criteria": "Module size, function length, exception count, type errors, import exceptions, and coverage improve without behavior regression.",
       "bundle_id": "B04",
       "deliverable": "Before/after metrics",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-6.17",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3A",
-      "title": "Re-measure complexity after each domain slice"
+      "title": "Re-measure complexity after each domain slice",
+      "updated_at": "2026-08-26T17:57:39.350973+00:00"
     },
     {
       "acceptance_criteria": "Every table has business purpose, owner, personal-data class, lawful basis, retention, export, erasure, encryption, backup, and isolation treatment.",
       "bundle_id": "B04",
       "deliverable": "Data inventory",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-7.1",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3B",
-      "title": "Build a table/field data inventory"
+      "title": "Build a table/field data inventory",
+      "updated_at": "2026-08-26T17:57:39.350975+00:00"
     },
     {
       "acceptance_criteria": "Primary DB, Redis, object storage, analytics, audit, KG events, generated content, logs, and backups are linked.",
       "bundle_id": "B04",
       "deliverable": "Lineage map",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-7.2",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3B",
-      "title": "Map data lineage across derived stores"
+      "title": "Map data lineage across derived stores",
+      "updated_at": "2026-08-26T17:57:39.350977+00:00"
     },
     {
       "acceptance_criteria": "Alembic upgrades a clean supported database to the single head and schema/model drift is zero.",
       "bundle_id": "B04",
       "deliverable": "Migration evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-7.3",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3B",
-      "title": "Prove empty-database bootstrap"
+      "title": "Prove empty-database bootstrap",
+      "updated_at": "2026-08-26T17:57:39.350979+00:00"
     },
     {
       "acceptance_criteria": "Realistic prior schema/data upgrades without loss; duration and locks are measured.",
       "bundle_id": "B04",
       "deliverable": "Upgrade fixture and evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-7.4",
       "owner_role": "release",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3B",
-      "title": "Prove upgrade from the last supported release state"
+      "title": "Prove upgrade from the last supported release state",
+      "updated_at": "2026-08-26T17:57:39.350980+00:00"
     },
     {
       "acceptance_criteria": "Large representative datasets migrate inside the approved maintenance/zero-downtime strategy.",
       "bundle_id": "B04",
       "deliverable": "Migration benchmark",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-7.5",
       "owner_role": "release",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3B",
-      "title": "Prove production-like migration performance"
+      "title": "Prove production-like migration performance",
+      "updated_at": "2026-08-26T17:57:39.350982+00:00"
     },
     {
       "acceptance_criteria": "Each migration class identifies rollback feasibility, backup requirement, forward-fix path, and stop condition.",
       "bundle_id": "B04",
       "deliverable": "Migration runbook",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-7.6",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3B",
-      "title": "Define rollback versus forward-fix policy"
+      "title": "Define rollback versus forward-fix policy",
+      "updated_at": "2026-08-26T17:57:39.350983+00:00"
     },
     {
       "acceptance_criteria": "ORM metadata, Alembic head, live schema, and generated schema artifacts agree.",
       "bundle_id": "B04",
       "deliverable": "CI verifier",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-7.7",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3B",
-      "title": "Add schema/model/generated-contract drift checks"
+      "title": "Add schema/model/generated-contract drift checks",
+      "updated_at": "2026-08-26T17:57:39.350985+00:00"
     },
     {
       "acceptance_criteria": "Read queries do not commit; commands explicitly own commit/rollback; audit writes and domain writes have documented atomicity.",
       "bundle_id": "B04",
       "deliverable": "Transaction policy and refactor",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-7.8",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3B",
-      "title": "Replace implicit request-wide transaction ownership"
+      "title": "Replace implicit request-wide transaction ownership",
+      "updated_at": "2026-08-26T17:57:39.350986+00:00"
     },
     {
       "acceptance_criteria": "Cross-learner, cross-guardian, and unauthorized object access fail at service/query boundaries.",
       "bundle_id": "B04",
       "deliverable": "Isolation suite",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-7.9",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3B",
-      "title": "Test tenant/object isolation at persistence boundaries"
+      "title": "Test tenant/object isolation at persistence boundaries",
+      "updated_at": "2026-08-26T17:57:39.350988+00:00"
     },
     {
       "acceptance_criteria": "Mutation prevention is effective under the deployed database role model and survives migrations/restores.",
       "bundle_id": "B04",
       "deliverable": "DB-level tests",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-7.10",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3B",
-      "title": "Validate audit immutability controls"
+      "title": "Validate audit immutability controls",
+      "updated_at": "2026-08-26T17:57:39.350989+00:00"
     },
     {
       "acceptance_criteria": "Unused tables are retired through safe migrations or assigned active owners.",
       "bundle_id": "B04",
       "deliverable": "Schema disposition",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-7.11",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3B",
-      "title": "Identify obsolete/redundant tables"
+      "title": "Identify obsolete/redundant tables",
+      "updated_at": "2026-08-26T17:57:39.350991+00:00"
     },
     {
       "acceptance_criteria": "Retention, encryption, access, restore, and legally defensible erasure treatment are explicit.",
       "bundle_id": "B04",
       "deliverable": "Backup policy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-7.12",
       "owner_role": "privacy",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3B",
-      "title": "Align backup handling with retention and erasure"
+      "title": "Align backup handling with retention and erasure",
+      "updated_at": "2026-08-26T17:57:39.350992+00:00"
     },
     {
       "acceptance_criteria": "Critical learner, parent, KG, consent, lesson, and reporting queries have plans and latency budgets on representative data.",
       "bundle_id": "B04",
       "deliverable": "Query report",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b04"
+      ],
       "id": "TSR-7.13",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3B",
-      "title": "Measure query/index health"
+      "title": "Measure query/index health",
+      "updated_at": "2026-08-26T17:57:39.350993+00:00"
     },
     {
       "acceptance_criteria": "Every protected route/service calls the same object-policy layer; duplicates are removed or adapters only.",
@@ -2583,5 +2673,5 @@
       "title": "Lift feature freeze only after RG-6"
     }
   ],
-  "updated_at": "2026-08-27T16:45:06.739395+00:00"
+  "updated_at": "2026-08-26T17:57:39.353217+00:00"
 }

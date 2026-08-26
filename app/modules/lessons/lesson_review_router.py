@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 
 from app.core.security import get_current_user
 from app.domain.lesson import ReviewStatus, SafetyClassification
-from app.repositories.lesson_repository import LessonRepository, get_lesson_repository
+from app.modules.lessons.lesson_review_service import LessonReviewService, get_lesson_review_service
 
 router = APIRouter(tags=["lesson-review"])
 QUALITY_SCORE_REVIEW_THRESHOLD = 0.7
@@ -112,9 +112,9 @@ async def get_review_queue(
     limit: int = Query(50, ge=1, le=200),
     offset: int = Query(0, ge=0),
     _: CurrentUser = Depends(require_reviewer),
-    repo: LessonRepository = Depends(get_lesson_repository),
+    service: LessonReviewService = Depends(get_lesson_review_service),
 ) -> ReviewQueueResponse:
-    lessons = await repo.list_pending_review(grade=grade, subject=subject, caps_ref=caps_ref, limit=limit, offset=offset)
+    lessons = await service.list_pending_review(grade=grade, subject=subject, caps_ref=caps_ref, limit=limit, offset=offset)
     summaries = [
         QueuedLessonSummary(
             lesson_id=str(lesson.id),
@@ -142,10 +142,10 @@ async def review_lesson(
     lesson_id: UUID,
     body: LessonReviewRequest,
     current_user: CurrentUser = Depends(require_reviewer),
-    repo: LessonRepository = Depends(get_lesson_repository),
+    service: LessonReviewService = Depends(get_lesson_review_service),
 ) -> ReviewActionResponse:
-    updated = await repo.update_review_status(
-        lesson_id, review_status=body.decision.value, reviewer_id=current_user.user_id, reviewer_notes=body.reviewer_notes
+    updated = await service.review_lesson(
+        lesson_id, decision=body.decision.value, reviewer_id=current_user.user_id, reviewer_notes=body.reviewer_notes
     )
     if updated is None:
         raise HTTPException(status_code=404, detail="Lesson not found")

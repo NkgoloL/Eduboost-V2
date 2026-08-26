@@ -80,6 +80,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/modules/content_quality/readiness.py` | `llm, remediation` |
 | `app/modules/deployment/production_readiness_contracts.py` | `llm` |
 | `app/modules/diagnostics/__init__.py` | `diagnostic` |
+| `app/modules/diagnostics/bias_review_router.py` | `diagnostic` |
 | `app/modules/diagnostics/diagnostic_session_service.py` | `diagnostic` |
 | `app/modules/diagnostics/irt_engine.py` | `diagnostic` |
 | `app/modules/diagnostics/irt_params.py` | `diagnostic` |
@@ -492,6 +493,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/true_state_remediation/bundles/bundle_01.py` | `remediation` |
 | `scripts/true_state_remediation/bundles/bundle_02.py` | `remediation` |
 | `scripts/true_state_remediation/bundles/bundle_03.py` | `remediation` |
+| `scripts/true_state_remediation/bundles/bundle_04.py` | `remediation` |
 | `scripts/true_state_remediation/capture_baseline.py` | `remediation` |
 | `scripts/true_state_remediation/check_feature_freeze.py` | `remediation` |
 | `scripts/true_state_remediation/core.py` | `remediation` |

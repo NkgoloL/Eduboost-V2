@@ -35,6 +35,7 @@ from sqlalchemy import (
     CheckConstraint,
     DateTime,
     Enum,
+    Float,
     ForeignKey,
     Integer,
     Numeric,
@@ -196,6 +197,9 @@ class DiagnosticItem(Base):
     guessing_c: Mapped[float] = mapped_column(
         Numeric(precision=6, scale=4), nullable=False, server_default="0.25"
     )
+    irt_difficulty: Mapped[float | None] = mapped_column(Float, nullable=True)
+    irt_discrimination: Mapped[float | None] = mapped_column(Float, nullable=True)
+    irt_guessing: Mapped[float | None] = mapped_column(Float, nullable=True)
     difficulty_band: Mapped[DifficultyBandEnum] = mapped_column(
         Enum(DifficultyBandEnum, name="difficultyband", create_type=False, values_callable=lambda x: [e.value for e in x]),
         nullable=False,

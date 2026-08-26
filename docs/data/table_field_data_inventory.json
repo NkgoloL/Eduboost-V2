@@ -1,0 +1,1320 @@
+{
+  "tables": [
+    {
+      "table_name": "alembic_version",
+      "column_count": 1,
+      "columns": [
+        "version_num"
+      ],
+      "primary_keys": [
+        "version_num"
+      ],
+      "foreign_keys": [],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "assessment_blueprints",
+      "column_count": 16,
+      "columns": [
+        "blueprint_id",
+        "artifact_id",
+        "scope_id",
+        "blueprint_json",
+        "status",
+        "created_at",
+        "caps_ref",
+        "grade",
+        "subject_code",
+        "language",
+        "title",
+        "referenced_artifact_ids",
+        "review_status",
+        "validation_status",
+        "created_by_run_id",
+        "updated_at"
+      ],
+      "primary_keys": [
+        "blueprint_id"
+      ],
+      "foreign_keys": [
+        [
+          "artifact_id"
+        ],
+        [
+          "created_by_run_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "audit_events",
+      "column_count": 9,
+      "columns": [
+        "id",
+        "event_type",
+        "actor_id",
+        "resource_id",
+        "payload",
+        "created_at",
+        "previous_event_hash",
+        "event_hash",
+        "hmac_signature"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "classification": "personal_data"
+    },
+    {
+      "table_name": "audit_logs",
+      "column_count": 7,
+      "columns": [
+        "id",
+        "event_type",
+        "actor_id",
+        "learner_pseudonym",
+        "payload",
+        "constitutional_outcome",
+        "created_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "classification": "personal_data"
+    },
+    {
+      "table_name": "calibration_audits",
+      "column_count": 7,
+      "columns": [
+        "id",
+        "item_id",
+        "response_count",
+        "old_parameters",
+        "new_parameters",
+        "review_required",
+        "created_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "item_id"
+        ]
+      ],
+      "classification": "personal_data"
+    },
+    {
+      "table_name": "consent_records",
+      "column_count": 11,
+      "columns": [
+        "id",
+        "learner_id",
+        "guardian_id",
+        "privacy_notice_version",
+        "state",
+        "granted_at",
+        "expires_at",
+        "withdrawn_at",
+        "denial_reason",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "classification": "personal_data"
+    },
+    {
+      "table_name": "consent_version_history",
+      "column_count": 9,
+      "columns": [
+        "id",
+        "consent_id",
+        "policy_version",
+        "status",
+        "granted_at",
+        "expires_at",
+        "revoked_at",
+        "transition_reason",
+        "created_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "consent_id"
+        ]
+      ],
+      "classification": "personal_data"
+    },
+    {
+      "table_name": "content_artifact_reviews",
+      "column_count": 7,
+      "columns": [
+        "review_id",
+        "artifact_id",
+        "reviewer_id",
+        "review_action",
+        "review_reason",
+        "quality_score",
+        "reviewed_at"
+      ],
+      "primary_keys": [
+        "review_id"
+      ],
+      "foreign_keys": [
+        [
+          "artifact_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "content_artifact_sources",
+      "column_count": 22,
+      "columns": [
+        "source_id",
+        "artifact_id",
+        "source_document_id",
+        "source_chunk_id",
+        "curriculum_mapping_id",
+        "source_hash",
+        "source_role",
+        "source_metadata",
+        "created_at",
+        "source_title",
+        "source_type",
+        "source_uri",
+        "citation_text",
+        "caps_ref",
+        "grade",
+        "subject_code",
+        "language",
+        "license_status",
+        "source_quality_score",
+        "etl_version",
+        "document_version_id",
+        "chunk_hash"
+      ],
+      "primary_keys": [
+        "source_id"
+      ],
+      "foreign_keys": [
+        [
+          "artifact_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "content_coverage_targets",
+      "column_count": 7,
+      "columns": [
+        "target_id",
+        "scope_id",
+        "caps_ref",
+        "content_layer",
+        "target_count",
+        "minimum_approved_sources",
+        "created_at"
+      ],
+      "primary_keys": [
+        "target_id"
+      ],
+      "foreign_keys": [
+        [
+          "scope_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "content_generation_artifacts",
+      "column_count": 26,
+      "columns": [
+        "artifact_id",
+        "run_id",
+        "task_id",
+        "scope_id",
+        "content_layer",
+        "artifact_type",
+        "caps_ref",
+        "grade",
+        "subject_code",
+        "language",
+        "status",
+        "artifact_json",
+        "artifact_hash",
+        "schema_version",
+        "source_snapshot_hash",
+        "provider",
+        "model",
+        "prompt_version",
+        "token_usage",
+        "cost_metadata",
+        "quality_score",
+        "safety_status",
+        "answer_key_verified",
+        "caps_alignment_score",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_keys": [
+        "artifact_id"
+      ],
+      "foreign_keys": [
+        [
+          "run_id"
+        ],
+        [
+          "task_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "content_generation_runs",
+      "column_count": 10,
+      "columns": [
+        "run_id",
+        "scope_id",
+        "requested_by",
+        "status",
+        "provider",
+        "model",
+        "prompt_version",
+        "run_metadata",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_keys": [
+        "run_id"
+      ],
+      "foreign_keys": [
+        [
+          "scope_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "content_generation_tasks",
+      "column_count": 27,
+      "columns": [
+        "task_id",
+        "run_id",
+        "scope_id",
+        "caps_ref",
+        "content_layer",
+        "status",
+        "task_metadata",
+        "created_at",
+        "updated_at",
+        "attempt_number",
+        "max_attempts",
+        "idempotency_key",
+        "depends_on_task_ids",
+        "input_artifact_ids",
+        "output_artifact_ids",
+        "provider",
+        "model",
+        "prompt_version",
+        "token_usage",
+        "cost_metadata",
+        "validation_failures",
+        "artifact_paths",
+        "locked_by",
+        "lock_expires_at",
+        "started_at",
+        "finished_at",
+        "admin_actor_id"
+      ],
+      "primary_keys": [
+        "task_id"
+      ],
+      "foreign_keys": [
+        [
+          "run_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "content_production_artifacts",
+      "column_count": 13,
+      "columns": [
+        "id",
+        "artifact_id",
+        "staging_artifact_id",
+        "scope_id",
+        "caps_ref",
+        "layer",
+        "artifact_type",
+        "payload_json",
+        "source_artifact_hash",
+        "production_status",
+        "created_by_promotion_event_id",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "artifact_id"
+        ],
+        [
+          "created_by_promotion_event_id"
+        ],
+        [
+          "staging_artifact_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "content_promotion_events",
+      "column_count": 7,
+      "columns": [
+        "promotion_event_id",
+        "artifact_id",
+        "promoted_table",
+        "promoted_record_id",
+        "promoted_by",
+        "promoted_at",
+        "rollback_metadata"
+      ],
+      "primary_keys": [
+        "promotion_event_id"
+      ],
+      "foreign_keys": [
+        [
+          "artifact_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "content_review_assignments",
+      "column_count": 11,
+      "columns": [
+        "id",
+        "artifact_id",
+        "assigned_to",
+        "assigned_by",
+        "assigned_at",
+        "due_by",
+        "priority",
+        "status",
+        "resolved_at",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "artifact_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "content_scopes",
+      "column_count": 12,
+      "columns": [
+        "scope_id",
+        "grade",
+        "subject_code",
+        "subject_slug",
+        "subject_display_name",
+        "language",
+        "curriculum",
+        "status",
+        "source_policy",
+        "targets",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_keys": [
+        "scope_id"
+      ],
+      "foreign_keys": [],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "content_seed_runs",
+      "column_count": 6,
+      "columns": [
+        "seed_run_id",
+        "scope_id",
+        "dry_run",
+        "status",
+        "summary",
+        "created_at"
+      ],
+      "primary_keys": [
+        "seed_run_id"
+      ],
+      "foreign_keys": [],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "content_staging_artifacts",
+      "column_count": 12,
+      "columns": [
+        "id",
+        "artifact_id",
+        "scope_id",
+        "caps_ref",
+        "layer",
+        "artifact_type",
+        "payload_json",
+        "source_artifact_hash",
+        "staging_status",
+        "created_by_seed_run_id",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "artifact_id"
+        ],
+        [
+          "created_by_seed_run_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "content_staging_seed_items",
+      "column_count": 15,
+      "columns": [
+        "id",
+        "seed_run_id",
+        "artifact_id",
+        "scope_id",
+        "caps_ref",
+        "layer",
+        "artifact_type",
+        "target_table",
+        "target_record_id",
+        "status",
+        "skip_reason",
+        "rollback_payload_json",
+        "seed_payload_hash",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "artifact_id"
+        ],
+        [
+          "seed_run_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "content_staging_verification_runs",
+      "column_count": 6,
+      "columns": [
+        "run_id",
+        "status",
+        "summary_json",
+        "created_by",
+        "created_at",
+        "completed_at"
+      ],
+      "primary_keys": [
+        "run_id"
+      ],
+      "foreign_keys": [],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "content_staging_verification_scope_results",
+      "column_count": 11,
+      "columns": [
+        "id",
+        "run_id",
+        "scope_id",
+        "status",
+        "can_seed_staging",
+        "can_promote_production",
+        "summary_json",
+        "blockers_json",
+        "created_by",
+        "created_at",
+        "completed_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "run_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "content_validation_reports",
+      "column_count": 6,
+      "columns": [
+        "validation_report_id",
+        "artifact_id",
+        "passed",
+        "checks",
+        "errors",
+        "created_at"
+      ],
+      "primary_keys": [
+        "validation_report_id"
+      ],
+      "foreign_keys": [
+        [
+          "artifact_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "correction_requests",
+      "column_count": 9,
+      "columns": [
+        "id",
+        "learner_id",
+        "requested_by",
+        "field_name",
+        "old_value",
+        "new_value",
+        "status",
+        "created_at",
+        "completed_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "data_export_requests",
+      "column_count": 10,
+      "columns": [
+        "id",
+        "learner_id",
+        "requested_by",
+        "status",
+        "format",
+        "download_url",
+        "artifact_path",
+        "sla_deadline",
+        "created_at",
+        "completed_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "diagnostic_items",
+      "column_count": 30,
+      "columns": [
+        "item_id",
+        "caps_ref",
+        "grade",
+        "subject",
+        "term",
+        "topic",
+        "subtopic",
+        "skill",
+        "stem",
+        "answer_key",
+        "options",
+        "explanation",
+        "distractor_rationale",
+        "misconception_tags",
+        "item_type",
+        "language",
+        "difficulty_b",
+        "discrimination_a",
+        "guessing_c",
+        "difficulty_band",
+        "review_status",
+        "reviewer_id",
+        "reviewed_at",
+        "exposure_count",
+        "max_exposure",
+        "quality_score",
+        "safety_passed",
+        "source",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_keys": [
+        "item_id"
+      ],
+      "foreign_keys": [],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "diagnostic_sessions",
+      "column_count": 14,
+      "columns": [
+        "id",
+        "learner_id",
+        "responses",
+        "theta_before",
+        "theta_after",
+        "completed_at",
+        "created_at",
+        "items_correct",
+        "se_estimate",
+        "session_state",
+        "gap_topics",
+        "misconception_tags",
+        "items_served",
+        "theta_history"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "learner_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "erasure_request",
+      "column_count": 20,
+      "columns": [
+        "id",
+        "learner_id",
+        "requester_id",
+        "requester_role",
+        "state",
+        "reason",
+        "legal_basis",
+        "export_offered",
+        "export_waived",
+        "legal_hold",
+        "grace_period_end_at",
+        "scheduled_at",
+        "executed_at",
+        "execution_method",
+        "preflight_result",
+        "postflight_result",
+        "admin_override",
+        "admin_override_reason",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "learner_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "erasure_requests",
+      "column_count": 10,
+      "columns": [
+        "id",
+        "learner_id",
+        "requested_by",
+        "status",
+        "review_notes",
+        "legal_hold",
+        "sla_deadline",
+        "created_at",
+        "approved_at",
+        "executed_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "guardians",
+      "column_count": 14,
+      "columns": [
+        "id",
+        "email_hash",
+        "email_encrypted",
+        "display_name",
+        "role",
+        "password_hash",
+        "subscription_tier",
+        "stripe_customer_id",
+        "stripe_subscription_id",
+        "is_active",
+        "created_at",
+        "updated_at",
+        "email_verified",
+        "guardian_uuid"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "classification": "personal_data"
+    },
+    {
+      "table_name": "irt_items",
+      "column_count": 16,
+      "columns": [
+        "id",
+        "grade",
+        "subject",
+        "topic",
+        "language",
+        "question_text",
+        "options",
+        "correct_option",
+        "a_param",
+        "b_param",
+        "created_at",
+        "skill",
+        "caps_reference",
+        "explanation",
+        "misconception_tag",
+        "review_status"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "item_exposures",
+      "column_count": 9,
+      "columns": [
+        "id",
+        "item_id",
+        "learner_id",
+        "session_id",
+        "served_at",
+        "answered_at",
+        "learner_response",
+        "is_correct",
+        "response_time_ms"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "item_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "knowledge_gaps",
+      "column_count": 8,
+      "columns": [
+        "id",
+        "learner_id",
+        "grade",
+        "subject",
+        "topic",
+        "severity",
+        "resolved",
+        "created_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "learner_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "learner_profiles",
+      "column_count": 15,
+      "columns": [
+        "id",
+        "pseudonym_id",
+        "guardian_id",
+        "display_name",
+        "grade",
+        "language",
+        "archetype",
+        "theta",
+        "xp",
+        "streak_days",
+        "last_active",
+        "is_deleted",
+        "deletion_requested_at",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "guardian_id"
+        ]
+      ],
+      "classification": "personal_data"
+    },
+    {
+      "table_name": "lesson_bank",
+      "column_count": 17,
+      "columns": [
+        "lesson_id",
+        "artifact_id",
+        "scope_id",
+        "caps_ref",
+        "grade",
+        "subject_code",
+        "language",
+        "title",
+        "lesson_json",
+        "content_hash",
+        "review_status",
+        "safety_status",
+        "quality_score",
+        "source_snapshot_hash",
+        "promoted_at",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_keys": [
+        "lesson_id"
+      ],
+      "foreign_keys": [
+        [
+          "artifact_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "lesson_feedback",
+      "column_count": 11,
+      "columns": [
+        "id",
+        "lesson_id",
+        "learner_pseudonym",
+        "rating",
+        "comment",
+        "subject",
+        "grade_level",
+        "language_code",
+        "prompt_version",
+        "submitted_at",
+        "exported_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "lesson_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "lessons",
+      "column_count": 41,
+      "columns": [
+        "id",
+        "learner_id",
+        "knowledge_gap_id",
+        "grade",
+        "subject",
+        "topic",
+        "language",
+        "archetype",
+        "content",
+        "llm_provider",
+        "served_from_cache",
+        "feedback_score",
+        "created_at",
+        "completed_at",
+        "caps_reference",
+        "alignment_confidence",
+        "quality_score",
+        "trust_label",
+        "caps_ref",
+        "term",
+        "subtopic",
+        "learning_objectives",
+        "explanation",
+        "worked_examples",
+        "practice_questions",
+        "answer_key",
+        "remediation_hints",
+        "difficulty_level",
+        "language_level",
+        "safety_classification",
+        "pii_check_passed",
+        "answer_key_verified",
+        "review_status",
+        "reviewer_id",
+        "reviewed_at",
+        "prompt_template_version",
+        "provider",
+        "model_version",
+        "generation_latency_ms",
+        "token_usage",
+        "variant_type"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "knowledge_gap_id"
+        ],
+        [
+          "learner_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "mastery_snapshots",
+      "column_count": 10,
+      "columns": [
+        "id",
+        "learner_id",
+        "caps_ref",
+        "mastery_score",
+        "mastery_label",
+        "theta_estimate",
+        "theta_se",
+        "practice_accuracy",
+        "trigger",
+        "snapshot_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "learner_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "onboarding_states",
+      "column_count": 10,
+      "columns": [
+        "id",
+        "user_id",
+        "email_verified",
+        "profile_complete",
+        "guardian_consent",
+        "diagnostic_done",
+        "plan_accepted",
+        "completed_at",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "user_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "parental_consents",
+      "column_count": 11,
+      "columns": [
+        "id",
+        "guardian_id",
+        "learner_id",
+        "policy_version",
+        "granted_at",
+        "expires_at",
+        "revoked_at",
+        "ip_address_hash",
+        "status",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "guardian_id"
+        ],
+        [
+          "learner_id"
+        ]
+      ],
+      "classification": "personal_data"
+    },
+    {
+      "table_name": "practice_queue",
+      "column_count": 8,
+      "columns": [
+        "id",
+        "learner_id",
+        "caps_ref",
+        "item_id",
+        "scheduled_at",
+        "completed_at",
+        "response",
+        "correct"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "item_id"
+        ],
+        [
+          "learner_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "privacy_settings",
+      "column_count": 11,
+      "columns": [
+        "id",
+        "user_id",
+        "analytics_enabled",
+        "ai_improvement",
+        "marketing_emails",
+        "data_retention_days",
+        "show_leaderboard",
+        "export_requested_at",
+        "deletion_requested_at",
+        "created_at",
+        "updated_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "user_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "restriction_requests",
+      "column_count": 7,
+      "columns": [
+        "id",
+        "learner_id",
+        "requested_by",
+        "reason",
+        "status",
+        "created_at",
+        "lifted_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "rlhf_exports",
+      "column_count": 8,
+      "columns": [
+        "id",
+        "format",
+        "language_code",
+        "positive_count",
+        "negative_count",
+        "record_count",
+        "dataset_json",
+        "exported_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "secure_tokens",
+      "column_count": 7,
+      "columns": [
+        "id",
+        "user_id",
+        "purpose",
+        "token_hash",
+        "expires_at",
+        "used_at",
+        "created_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "user_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "spaced_review_schedule",
+      "column_count": 7,
+      "columns": [
+        "id",
+        "learner_id",
+        "caps_ref",
+        "next_review_at",
+        "interval_days",
+        "easiness_factor",
+        "updated_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "learner_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "stripe_webhook_events",
+      "column_count": 6,
+      "columns": [
+        "id",
+        "stripe_event_id",
+        "event_type",
+        "processed_at",
+        "payload",
+        "created_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "study_plan_templates",
+      "column_count": 16,
+      "columns": [
+        "template_id",
+        "artifact_id",
+        "scope_id",
+        "template_json",
+        "status",
+        "created_at",
+        "caps_ref",
+        "grade",
+        "subject_code",
+        "language",
+        "title",
+        "referenced_artifact_ids",
+        "review_status",
+        "validation_status",
+        "created_by_run_id",
+        "updated_at"
+      ],
+      "primary_keys": [
+        "template_id"
+      ],
+      "foreign_keys": [
+        [
+          "artifact_id"
+        ],
+        [
+          "created_by_run_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "subject_mastery",
+      "column_count": 8,
+      "columns": [
+        "id",
+        "learner_id",
+        "subject",
+        "topic",
+        "theta",
+        "standard_error",
+        "last_updated",
+        "created_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "learner_id"
+        ]
+      ],
+      "classification": "educational_content"
+    },
+    {
+      "table_name": "topic_mastery",
+      "column_count": 8,
+      "columns": [
+        "id",
+        "learner_id",
+        "caps_ref",
+        "mastery_score",
+        "mastery_label",
+        "theta_estimate",
+        "theta_se",
+        "last_updated_at"
+      ],
+      "primary_keys": [
+        "id"
+      ],
+      "foreign_keys": [
+        [
+          "learner_id"
+        ]
+      ],
+      "classification": "educational_content"
+    }
+  ],
+  "total_tables": 50
+}

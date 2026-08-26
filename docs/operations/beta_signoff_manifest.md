@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-08-03T14:14:03.938997+00:00`
-- branch: `fix/tsr-b01-gate-remediation`
-- commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
+- generated_at_utc: `2026-08-26T16:56:33.908862+00:00`
+- branch: `codex/tsr-b04-architecture-and-data-integrity`
+- commit: `107d58c62d28a0d0a7a094f69894809af40f8db0`
 - release_candidate: `unset`
 
 ## Required Sign-Off Areas

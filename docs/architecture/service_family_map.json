@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T12:09:41Z",
+  "generated_at": "2026-08-26T16:48:52Z",
   "domains": {
     "other": [
       {
@@ -1547,6 +1547,14 @@
         ]
       },
       {
+        "path": "app/modules/practice/service.py",
+        "domain": "other",
+        "classification": "canonical_domain_service",
+        "classes": [
+          "PracticeService"
+        ]
+      },
+      {
         "path": "app/modules/practice/spaced_repetition_scheduler.py",
         "domain": "other",
         "classification": "unclassified",
@@ -2134,6 +2142,14 @@
           "ReviewDecision",
           "ReviewQueueResponse",
           "UserRole"
+        ]
+      },
+      {
+        "path": "app/modules/lessons/lesson_review_service.py",
+        "domain": "lesson",
+        "classification": "canonical_domain_service",
+        "classes": [
+          "LessonReviewService"
         ]
       },
       {
@@ -4750,6 +4766,14 @@
       ]
     },
     {
+      "path": "app/modules/lessons/lesson_review_service.py",
+      "domain": "lesson",
+      "classification": "canonical_domain_service",
+      "classes": [
+        "LessonReviewService"
+      ]
+    },
+    {
       "path": "app/modules/lessons/lesson_schema_v1.py",
       "domain": "lesson",
       "classification": "unclassified",
@@ -4976,6 +5000,14 @@
       "classes": [
         "PracticeResponseRequest",
         "PracticeSessionRequest"
+      ]
+    },
+    {
+      "path": "app/modules/practice/service.py",
+      "domain": "other",
+      "classification": "canonical_domain_service",
+      "classes": [
+        "PracticeService"
       ]
     },
     {

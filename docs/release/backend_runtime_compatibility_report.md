@@ -1,13 +1,13 @@
 # Backend Runtime Compatibility Report
 
-Generated at: `2026-08-27T16:18:30Z`
+Generated at: `2026-08-26T17:24:53Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| runtime compatibility | 0 | `/usr/bin/python3 scripts/check_backend_runtime_compatibility.py` |
-| audit compatibility | 0 | `/usr/bin/python3 scripts/generate_audit_callsite_inventory.py --fail-empty` |
-| consent compatibility | 0 | `/usr/bin/python3 scripts/generate_consent_callsite_inventory.py --fail-empty` |
-| health readiness | 0 | `/usr/bin/python3 scripts/check_health_readiness_contract.py` |
+| runtime compatibility | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_backend_runtime_compatibility.py` |
+| audit compatibility | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/generate_audit_callsite_inventory.py --fail-empty` |
+| consent compatibility | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/generate_consent_callsite_inventory.py --fail-empty` |
+| health readiness | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_health_readiness_contract.py` |
 
 ## Boundary
 
@@ -15,11 +15,13 @@ This report proves compatibility surfaces exist. It does not approve deletion, t
 
 ## runtime compatibility
 
-Command: `/usr/bin/python3 scripts/check_backend_runtime_compatibility.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_backend_runtime_compatibility.py`
 
 Return code: `0`
 
 ```text
+/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/app/modules/consent/service.py:27: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+  from app.core.exceptions import ConsentExpiredError, ConsentRequiredError
 Audit runtime compatibility surface
 - PASS [audit compat] AuditRepositoryCompatAdapter: present
 - PASS [audit compat] AuditEventInput: present
@@ -41,27 +43,27 @@ Deep-health compatibility surface
 
 ## audit compatibility
 
-Command: `/usr/bin/python3 scripts/generate_audit_callsite_inventory.py --fail-empty`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/generate_audit_callsite_inventory.py --fail-empty`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2/docs/release/audit_callsite_inventory.md (6046 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release/audit_callsite_inventory.md (6056 row(s))
 ```
 
 ## consent compatibility
 
-Command: `/usr/bin/python3 scripts/generate_consent_callsite_inventory.py --fail-empty`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/generate_consent_callsite_inventory.py --fail-empty`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2/docs/release/consent_callsite_inventory.md (596 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release/consent_callsite_inventory.md (596 row(s))
 ```
 
 ## health readiness
 
-Command: `/usr/bin/python3 scripts/check_health_readiness_contract.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_health_readiness_contract.py`
 
 Return code: `0`
 

@@ -10,13 +10,6 @@ source_modules =
     app.api_v2_routers
 forbidden_modules =
     app.repositories
-ignore_imports =
-    app.api_v2_routers.consent -> app.repositories.*
-    app.api_v2_routers.content_factory -> app.repositories.*
-    app.api_v2_routers.gamification -> app.repositories.*
-    app.api_v2_routers.learners -> app.repositories.*
-    app.api_v2_routers.onboarding -> app.repositories.*
-    app.api_v2_routers.parents -> app.repositories.*
 
 [importlinter:contract:popia_router_uses_dependency_layer]
 name = POPIA router uses dependency layer rather than repository construction
@@ -37,3 +30,12 @@ source_modules =
     app.api_v2_routers.lessons
 forbidden_modules =
     app.repositories
+
+[importlinter:contract:legacy-quarantine]
+name = Prevent imports from legacy into core or domain
+type = forbidden
+source_modules =
+    app.core
+    app.domain
+forbidden_modules =
+    app.legacy

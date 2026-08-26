@@ -62,6 +62,10 @@ class ContentCoverageService:
         self.item_repo = item_repo
         self.lesson_repo = lesson_repo
 
+    @classmethod
+    def from_session(cls, session: Any) -> ContentCoverageService:
+        return cls(item_repo=ItemBankRepository(session), lesson_repo=LessonRepository(session))
+
     async def get_scope_coverage(
         self,
         scope_id: str,

@@ -879,3 +879,12 @@ from app.models.curriculum_graph import (  # noqa: E402, F401
     CurriculumNodeVersion,
     CurriculumSourceMappingVersion,
 )
+
+# Runtime Knowledge Graph models
+from app.models.runtime_kg import (  # noqa: E402, F401
+    LearnerKGNodeState,
+    RuntimeKGEdge,
+    RuntimeKGEvent,
+    RuntimeKGGraphLoad,
+    RuntimeKGNode,
+)

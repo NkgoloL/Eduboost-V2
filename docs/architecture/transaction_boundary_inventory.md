@@ -1,21 +1,6 @@
----
-title: "Transaction Boundary Inventory"
-status: "active"
-owner: "engineering"
-reviewers: ["engineering"]
-audience: "developer"
-source_of_truth: false
-supersedes: []
-superseded_by: null
-last_reviewed: "2026-08-26"
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-check"
-code_anchors: ["docs/architecture/transaction_boundary_inventory.md"]
----
-
 # Transaction Boundary Inventory
 
-Generated at: `2026-08-03T14:20:40Z`
+Generated at: `2026-08-26T17:00:43Z`
 
 Candidate count: `367`
 Critical candidate count: `60`
@@ -42,33 +27,33 @@ Policy: Multi-write candidates remain not-proven until rollback/integration test
 | `app/api_v2_routers/auth_extended.py` | `request_account_deletion` | 571 | `multi-write-candidate-not-proven` | `-` | `add, commit, execute` | `-` |
 | `app/api_v2_routers/consent.py` | `grant_consent` | 39 | `multi-write-candidate-not-proven` | `popia_lifecycle` | `grant` | `-` |
 | `app/api_v2_routers/consent.py` | `revoke_consent` | 72 | `multi-write-candidate-not-proven` | `popia_lifecycle` | `revoke` | `-` |
-| `app/api_v2_routers/content_factory.py` | `create_generation_run` | 263 | `single-mutation-candidate` | `-` | `commit` | `-` |
-| `app/api_v2_routers/content_factory.py` | `plan_missing_generation_tasks` | 307 | `single-mutation-candidate` | `-` | `commit` | `-` |
-| `app/api_v2_routers/content_factory.py` | `execute_generation_run` | 322 | `single-mutation-candidate` | `-` | `commit` | `-` |
-| `app/api_v2_routers/content_factory.py` | `execute_generation_task` | 340 | `single-mutation-candidate` | `-` | `commit` | `-` |
-| `app/api_v2_routers/content_factory.py` | `cancel_generation_run` | 380 | `single-mutation-candidate` | `-` | `commit` | `-` |
-| `app/api_v2_routers/content_factory.py` | `retry_failed_generation_tasks` | 395 | `single-mutation-candidate` | `-` | `commit` | `-` |
-| `app/api_v2_routers/content_factory.py` | `list_artifacts` | 407 | `single-mutation-candidate` | `-` | `execute` | `-` |
-| `app/api_v2_routers/content_factory.py` | `submit_artifact_for_review` | 464 | `single-mutation-candidate` | `-` | `commit` | `-` |
-| `app/api_v2_routers/content_factory.py` | `reject_artifact` | 474 | `single-mutation-candidate` | `-` | `commit` | `-` |
-| `app/api_v2_routers/content_factory.py` | `quarantine_artifact` | 481 | `single-mutation-candidate` | `-` | `commit` | `-` |
-| `app/api_v2_routers/content_factory.py` | `assign_reviewer` | 536 | `single-mutation-candidate` | `-` | `commit` | `-` |
-| `app/api_v2_routers/content_factory.py` | `bulk_assign_reviewer` | 551 | `single-mutation-candidate` | `-` | `commit` | `-` |
-| `app/api_v2_routers/content_factory.py` | `bulk_approve_review` | 583 | `single-mutation-candidate` | `-` | `commit` | `-` |
-| `app/api_v2_routers/content_factory.py` | `bulk_reject_review` | 598 | `single-mutation-candidate` | `-` | `commit` | `-` |
-| `app/api_v2_routers/content_factory.py` | `bulk_quarantine_review` | 613 | `single-mutation-candidate` | `-` | `commit` | `-` |
-| `app/api_v2_routers/content_factory.py` | `run_all_scope_staging_verification` | 628 | `single-mutation-candidate` | `-` | `commit` | `-` |
-| `app/api_v2_routers/content_factory.py` | `seed_scope_staging` | 727 | `single-mutation-candidate` | `-` | `commit` | `-` |
-| `app/api_v2_routers/content_factory.py` | `rollback_seed_run` | 802 | `transaction-marker-present` | `-` | `commit` | `rollback` |
-| `app/api_v2_routers/content_factory.py` | `promote_production` | 866 | `single-mutation-candidate` | `-` | `commit` | `-` |
-| `app/api_v2_routers/content_factory.py` | `get_promotion_event_items` | 923 | `single-mutation-candidate` | `-` | `execute` | `-` |
-| `app/api_v2_routers/content_factory.py` | `rollback_promotion_event` | 972 | `transaction-marker-present` | `-` | `commit` | `rollback` |
-| `app/api_v2_routers/content_factory.py` | `get_content_factory_report` | 1009 | `single-mutation-candidate` | `-` | `execute` | `-` |
-| `app/api_v2_routers/content_factory.py` | `plan_full_generation` | 1086 | `multi-write-candidate-not-proven` | `-` | `add, flush` | `-` |
-| `app/api_v2_routers/content_factory.py` | `start_full_generation` | 1120 | `single-mutation-candidate` | `-` | `flush` | `-` |
-| `app/api_v2_routers/content_factory.py` | `list_full_generation_runs` | 1155 | `single-mutation-candidate` | `-` | `execute` | `-` |
-| `app/api_v2_routers/content_factory.py` | `cancel_full_generation_run` | 1214 | `multi-write-candidate-not-proven` | `-` | `execute, flush` | `-` |
-| `app/api_v2_routers/content_factory.py` | `resume_full_generation_run` | 1249 | `single-mutation-candidate` | `-` | `flush` | `-` |
+| `app/api_v2_routers/content_factory.py` | `create_generation_run` | 261 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/api_v2_routers/content_factory.py` | `plan_missing_generation_tasks` | 305 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/api_v2_routers/content_factory.py` | `execute_generation_run` | 320 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/api_v2_routers/content_factory.py` | `execute_generation_task` | 338 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/api_v2_routers/content_factory.py` | `cancel_generation_run` | 378 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/api_v2_routers/content_factory.py` | `retry_failed_generation_tasks` | 393 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/api_v2_routers/content_factory.py` | `list_artifacts` | 405 | `single-mutation-candidate` | `-` | `execute` | `-` |
+| `app/api_v2_routers/content_factory.py` | `submit_artifact_for_review` | 462 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/api_v2_routers/content_factory.py` | `reject_artifact` | 472 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/api_v2_routers/content_factory.py` | `quarantine_artifact` | 479 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/api_v2_routers/content_factory.py` | `assign_reviewer` | 534 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/api_v2_routers/content_factory.py` | `bulk_assign_reviewer` | 549 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/api_v2_routers/content_factory.py` | `bulk_approve_review` | 581 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/api_v2_routers/content_factory.py` | `bulk_reject_review` | 596 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/api_v2_routers/content_factory.py` | `bulk_quarantine_review` | 611 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/api_v2_routers/content_factory.py` | `run_all_scope_staging_verification` | 626 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/api_v2_routers/content_factory.py` | `seed_scope_staging` | 725 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/api_v2_routers/content_factory.py` | `rollback_seed_run` | 800 | `transaction-marker-present` | `-` | `commit` | `rollback` |
+| `app/api_v2_routers/content_factory.py` | `promote_production` | 864 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/api_v2_routers/content_factory.py` | `get_promotion_event_items` | 921 | `single-mutation-candidate` | `-` | `execute` | `-` |
+| `app/api_v2_routers/content_factory.py` | `rollback_promotion_event` | 970 | `transaction-marker-present` | `-` | `commit` | `rollback` |
+| `app/api_v2_routers/content_factory.py` | `get_content_factory_report` | 1007 | `single-mutation-candidate` | `-` | `execute` | `-` |
+| `app/api_v2_routers/content_factory.py` | `plan_full_generation` | 1084 | `multi-write-candidate-not-proven` | `-` | `add, flush` | `-` |
+| `app/api_v2_routers/content_factory.py` | `start_full_generation` | 1118 | `single-mutation-candidate` | `-` | `flush` | `-` |
+| `app/api_v2_routers/content_factory.py` | `list_full_generation_runs` | 1153 | `single-mutation-candidate` | `-` | `execute` | `-` |
+| `app/api_v2_routers/content_factory.py` | `cancel_full_generation_run` | 1212 | `multi-write-candidate-not-proven` | `-` | `execute, flush` | `-` |
+| `app/api_v2_routers/content_factory.py` | `resume_full_generation_run` | 1247 | `single-mutation-candidate` | `-` | `flush` | `-` |
 | `app/api_v2_routers/content_review.py` | `get_review_actor` | 65 | `single-mutation-candidate` | `-` | `update` | `-` |
 | `app/api_v2_routers/content_review.py` | `assign_reviewers` | 117 | `transaction-marker-present` | `-` | `commit` | `rollback` |
 | `app/api_v2_routers/content_review.py` | `accept_assignment` | 147 | `transaction-marker-present` | `-` | `commit` | `rollback` |
@@ -84,13 +69,12 @@ Policy: Multi-write candidates remain not-proven until rollback/integration test
 | `app/api_v2_routers/curriculum_expansion.py` | `decide_training_manifest` | 121 | `single-mutation-candidate` | `-` | `commit` | `-` |
 | `app/api_v2_routers/curriculum_expansion.py` | `export_training_manifest` | 141 | `single-mutation-candidate` | `-` | `commit` | `-` |
 | `app/api_v2_routers/diagnostics.py` | `submit_diagnostic` | 155 | `multi-write-candidate-not-proven` | `diagnostics_response` | `upsert` | `-` |
-| `app/api_v2_routers/gamification.py` | `award_xp` | 47 | `multi-write-candidate-not-proven` | `lesson_completion` | `commit` | `-` |
+| `app/api_v2_routers/gamification.py` | `award_xp` | 46 | `multi-write-candidate-not-proven` | `lesson_completion` | `commit` | `-` |
 | `app/api_v2_routers/generation.py` | `start_generation_run` | 100 | `multi-write-candidate-not-proven` | `lesson_completion` | `commit, execute, update` | `-` |
 | `app/api_v2_routers/generation.py` | `get_generation_run` | 228 | `single-mutation-candidate` | `-` | `execute` | `-` |
 | `app/api_v2_routers/generation.py` | `list_run_tasks` | 243 | `single-mutation-candidate` | `-` | `execute` | `-` |
 | `app/api_v2_routers/generation.py` | `cancel_generation_run` | 276 | `multi-write-candidate-not-proven` | `-` | `commit, execute, update` | `-` |
-| `app/api_v2_routers/learners.py` | `create_learner` | 24 | `single-mutation-candidate` | `-` | `create` | `-` |
-| `app/api_v2_routers/learners.py` | `request_erasure` | 122 | `single-mutation-candidate` | `-` | `delete` | `-` |
+| `app/api_v2_routers/learners.py` | `request_erasure` | 100 | `single-mutation-candidate` | `-` | `delete` | `-` |
 | `app/api_v2_routers/parents.py` | `get_parent_trust_dashboard` | 103 | `multi-write-candidate-not-proven` | `lesson_completion` | `execute` | `-` |
 | `app/api_v2_routers/parents.py` | `get_learner_progress` | 217 | `single-mutation-candidate` | `-` | `execute` | `-` |
 | `app/api_v2_routers/parents.py` | `request_erasure` | 269 | `single-mutation-candidate` | `-` | `delete` | `-` |
@@ -137,8 +121,9 @@ Policy: Multi-write candidates remain not-proven until rollback/integration test
 | `app/modules/lessons/service.py` | `_build_learner_context` | 222 | `multi-write-candidate-not-proven` | `lesson_completion` | `execute` | `-` |
 | `app/modules/lessons/teacher_insight_mode.py` | `generate_teacher_insight` | 319 | `multi-write-candidate-not-proven` | `lesson_completion` | `complete` | `-` |
 | `app/modules/notifications/production_readiness_contracts.py` | `enqueue` | 256 | `single-mutation-candidate` | `-` | `add` | `-` |
-| `app/modules/practice/router.py` | `create_practice_session` | 33 | `multi-write-candidate-not-proven` | `-` | `commit, create` | `-` |
-| `app/modules/practice/router.py` | `respond_practice` | 86 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/modules/practice/router.py` | `create_practice_session` | 34 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/modules/practice/router.py` | `respond_practice` | 83 | `single-mutation-candidate` | `-` | `commit` | `-` |
+| `app/modules/practice/service.py` | `create_session` | 27 | `single-mutation-candidate` | `-` | `create` | `-` |
 | `app/services/ai_operations.py` | `_ensure_counter` | 81 | `multi-write-candidate-not-proven` | `-` | `add, execute, flush` | `-` |
 | `app/services/ai_operations.py` | `reserve` | 115 | `multi-write-candidate-not-proven` | `-` | `add, flush` | `-` |
 | `app/services/ai_operations.py` | `finalize` | 169 | `multi-write-candidate-not-proven` | `-` | `add, flush` | `-` |
@@ -178,7 +163,7 @@ Policy: Multi-write candidates remain not-proven until rollback/integration test
 | `app/services/content_artifact_lifecycle.py` | `mark_seeded_staging` | 144 | `single-mutation-candidate` | `-` | `flush` | `-` |
 | `app/services/content_artifact_lifecycle.py` | `mark_promoted_production` | 171 | `single-mutation-candidate` | `-` | `flush` | `-` |
 | `app/services/content_artifact_lifecycle.py` | `_set_status` | 198 | `single-mutation-candidate` | `-` | `flush` | `-` |
-| `app/services/content_coverage_service.py` | `_artifact_layer_approved_total` | 159 | `single-mutation-candidate` | `-` | `execute` | `-` |
+| `app/services/content_coverage_service.py` | `_artifact_layer_approved_total` | 163 | `single-mutation-candidate` | `-` | `execute` | `-` |
 | `app/services/content_factory.py` | `create_artifact` | 170 | `multi-write-candidate-not-proven` | `-` | `add, flush` | `-` |
 | `app/services/content_factory.py` | `validate_existing_artifact` | 242 | `multi-write-candidate-not-proven` | `-` | `add, flush` | `-` |
 | `app/services/content_factory.py` | `review_artifact` | 276 | `multi-write-candidate-not-proven` | `-` | `add, flush` | `-` |
@@ -366,7 +351,7 @@ Policy: Multi-write candidates remain not-proven until rollback/integration test
 | `app/services/launch_content_seed.py` | `_seed_items` | 147 | `single-mutation-candidate` | `-` | `upsert` | `-` |
 | `app/services/launch_content_seed.py` | `_seed_lessons` | 156 | `single-mutation-candidate` | `-` | `add` | `-` |
 | `app/services/launch_content_seed.py` | `_seed_learner_id` | 177 | `multi-write-candidate-not-proven` | `-` | `add, execute, flush` | `-` |
-| `app/services/learner_service.py` | `create_learner` | 21 | `single-mutation-candidate` | `-` | `create` | `-` |
+| `app/services/learner_service.py` | `create_learner` | 26 | `single-mutation-candidate` | `-` | `create` | `-` |
 | `app/services/learner_tutor.py` | `create_session` | 84 | `transaction-marker-present` | `-` | `add, commit` | `rollback` |
 | `app/services/learner_tutor.py` | `cancel_session` | 141 | `single-mutation-candidate` | `-` | `commit` | `-` |
 | `app/services/learner_tutor.py` | `ask` | 151 | `multi-write-candidate-not-proven` | `-` | `add, commit, flush` | `-` |

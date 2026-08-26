@@ -17,7 +17,7 @@ from app.domain.schemas import (
     ParentTrustDashboardResponse,
 )
 from app.models import Guardian, KnowledgeGap, Lesson
-from app.repositories.repositories import LearnerRepository
+from app.services.learner_service import LearnerService
 from app.security.dependencies import require_active_consent_for_current_user, require_learner_read_for_current_user
 from app.services.executive import ExecutiveService
 from app.services.popia_service import POPIADataRightsService
@@ -36,7 +36,7 @@ async def get_parent_dashboard(
     if guardian is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Guardian not found")
 
-    learners = await LearnerRepository(db).get_by_guardian(current_user.user_id)
+    learners = await LearnerService(db).list_by_guardian(current_user.user_id)
     one_week_ago = datetime.now(timezone.utc) - timedelta(days=7)
 
     dashboard_learners: list[ParentDashboardLearner] = []
@@ -113,7 +113,7 @@ async def get_parent_trust_dashboard(
     if guardian is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Guardian not found")
 
-    learners = await LearnerRepository(db).get_by_guardian(guardian_id)
+    learners = await LearnerService(db).list_by_guardian(guardian_id)
     seven_days_ago = datetime.now(timezone.utc) - timedelta(days=7)
     response_learners: list[ParentTrustDashboardLearner] = []
 
@@ -194,7 +194,7 @@ async def export_parent_access_bundle(
     if guardian is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Guardian not found")
 
-    learners = await LearnerRepository(db).get_by_guardian(guardian_id)
+    learners = await LearnerService(db).list_by_guardian(guardian_id)
     exports = []
     for learner in learners:
         require_learner_read_for_current_user(current_user, learner)
@@ -219,7 +219,7 @@ async def get_learner_progress(
     db: AsyncSession = Depends(get_db),
     current_user: AuthContext = Depends(require_parent_or_admin),
 ) -> dict:
-    learner = await LearnerRepository(db).get_by_id(learner_id)
+    learner = await LearnerService(db).get_learner_summary(learner_id)
     if learner is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
     require_learner_read_for_current_user(current_user, learner)

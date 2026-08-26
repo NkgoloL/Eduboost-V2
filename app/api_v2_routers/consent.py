@@ -14,7 +14,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.database import get_db
 from app.api_v2_deps.auth import AuthContext, require_auth_context
 from app.core.security import get_current_user  # noqa: F401
-from app.repositories.repositories import LearnerRepository
+from app.services.learner_service import LearnerService
 from app.modules.consent.service import ConsentService
 from app.services.popia_service import POPIADataRightsService
 from app.security.dependencies import require_learner_write_for_current_user
@@ -43,7 +43,7 @@ async def grant_consent(
     db: AsyncSession = Depends(get_db),
 ) -> dict:
     learner_id = str(body.learner_id)
-    learner = await LearnerRepository(db).get_by_id(learner_id)
+    learner = await LearnerService(db).get_learner_summary(learner_id)
     if learner is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
     require_learner_write_for_current_user(current_user, learner_id)
@@ -76,7 +76,7 @@ async def revoke_consent(
     db: AsyncSession = Depends(get_db),
 ) -> dict:
     learner_id = str(body.learner_id)
-    learner = await LearnerRepository(db).get_by_id(learner_id)
+    learner = await LearnerService(db).get_learner_summary(learner_id)
     if learner is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
     require_learner_write_for_current_user(current_user, learner_id)
@@ -123,7 +123,7 @@ async def consent_status(
     current_user: AuthContext = Depends(require_auth_context),
     db: AsyncSession = Depends(get_db),
 ) -> dict:
-    learner = await LearnerRepository(db).get_by_id(str(learner_id))
+    learner = await LearnerService(db).get_learner_summary(str(learner_id))
     if learner is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
     require_learner_read_for_current_user(current_user, learner)

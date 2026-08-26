@@ -248,10 +248,10 @@ This inventory supports consent service/table consolidation. It is diagnostic on
 | `app/services/job_dependency_factory.py` | 70 | consent_repository | `kwargs["consent_repository"] = consent_repo` |
 | `app/services/job_dependency_factory.py` | 71 | consent_repository | `if "consent_repo" in params:` |
 | `app/services/job_dependency_factory.py` | 72 | consent_repository | `kwargs["consent_repo"] = consent_repo` |
-| `app/services/learner_service.py` | 9 | consent_service | `from app.services.consent import ConsentService` |
-| `app/services/learner_service.py` | 30 | consent_service | `consent = ConsentService(self.db)` |
-| `app/services/learner_service.py` | 31 | require_active_consent | `await consent.require_active_consent(learner_id, actor_id=actor_id)` |
-| `app/services/learner_service.py` | 68 | consent_service | `consent_svc = ConsentService(self.db)` |
+| `app/services/learner_service.py` | 10 | consent_service | `from app.services.consent import ConsentService` |
+| `app/services/learner_service.py` | 35 | consent_service | `consent = ConsentService(self.db)` |
+| `app/services/learner_service.py` | 36 | require_active_consent | `await consent.require_active_consent(learner_id, actor_id=actor_id)` |
+| `app/services/learner_service.py` | 143 | consent_service | `consent_svc = ConsentService(self.db)` |
 | `app/services/popia_consent_lifecycle_adapter.py` | 215 | consent_grant | `async def grant(self, *args: Any, **kwargs: Any) -> ConsentRecord:` |
 | `app/services/popia_consent_lifecycle_adapter.py` | 234 | consent_revoke | `async def revoke(self, *args: Any, **kwargs: Any) -> ConsentRecord:` |
 | `app/services/popia_service.py` | 36 | parental_consent_model | `ParentalConsent,` |
