@@ -1,6 +1,6 @@
 # EduBoost V2 CI Workflow Authority & Inventory
 
-**Generated**: 2026-08-26T15:07:12.940798+00:00  
+**Generated**: 2026-08-26T15:49:40.203421+00:00  
 **Total Workflows Tracked**: 90  
 **Canonical Active Workflows**: 6  
 **Archived / Superseded Workflows**: 84  
