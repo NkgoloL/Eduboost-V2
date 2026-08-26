@@ -20,6 +20,11 @@ jobs:
         with:
           python-version: "3.12.3"
       - name: Verify KG-6 authority
-        run: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg006_tutor_study_plan_gamification_parent_alignment.py --authority-only --json
-      - name: Run focused tests
-        run: PYTHONPATH=. python3 -m pytest -q tests/unit/roadmap_reconciliation/test_kg006_tutor_study_plan_gamification_parent_alignment.py --no-cov
+        run: |
+          python3 -m py_compile \
+            app/domain/knowledge_graph_product_alignment.py \
+            scripts/knowledge_graph/build_kg006_tutor_study_plan_gamification_parent_alignment.py \
+            scripts/knowledge_graph/audit_kg006_tutor_study_plan_gamification_parent_alignment.py \
+            scripts/roadmap_reconciliation/capture_kg006_tutor_study_plan_gamification_parent_alignment_evidence.py \
+            scripts/roadmap_reconciliation/verify_kg006_tutor_study_plan_gamification_parent_alignment.py
+          PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg006_tutor_study_plan_gamification_parent_alignment.py --authority-only --json

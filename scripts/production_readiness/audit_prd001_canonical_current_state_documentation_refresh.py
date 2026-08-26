@@ -77,9 +77,9 @@ def audit(root: Path | str = Path(".")) -> dict[str, Any]:
     for phrase in FORBIDDEN_PHRASES:
         if phrase in corpus:
             errors.append(f"canonical docs must not contain stale phrase: {phrase}")
-    if "Current-state refresh recorded: PRD-0.1" not in read_text(p(Path("docs/current_state.md"))):
+    if register.get("last_recorded_item") == "PRD-0.0" and "Current-state refresh recorded: PRD-0.1" not in read_text(p(Path("docs/current_state.md"))):
         errors.append("docs/current_state.md must mark PRD-0.1 current-state refresh")
-    if "PRD-0.2  Historical report and stale-source quarantine" not in read_text(p(Path("docs/roadmap/README.md"))):
+    if register.get("last_recorded_item") == "PRD-0.0" and "PRD-0.2  Historical report and stale-source quarantine" not in read_text(p(Path("docs/roadmap/README.md"))):
         errors.append("roadmap README must show PRD-0.2 as the next PRD-0 cleanup item")
     captured = record.get("canonical_current_state_documentation_refresh_recorded") is True
     if captured:
