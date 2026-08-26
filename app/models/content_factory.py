@@ -622,6 +622,6 @@ class ContentProductionArtifact(Base):
     payload_json: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)
     source_artifact_hash: Mapped[str] = mapped_column(String(64), nullable=False)
     production_status: Mapped[str] = mapped_column(String(40), nullable=False, server_default="active")
-    created_by_promotion_event_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("content_promotion_events.event_id"), nullable=True)
+    created_by_promotion_event_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("content_promotion_events.promotion_event_id"), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now(), onupdate=func.now())

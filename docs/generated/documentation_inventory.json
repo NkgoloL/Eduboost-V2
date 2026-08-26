@@ -8363,14 +8363,14 @@
     {
       "audience": "developer",
       "broken_local_links": 0,
-      "byte_count": 3534,
+      "byte_count": 3980,
       "content_kind": "markdown",
       "h1": "EduBoost Current State",
       "has_front_matter": true,
       "last_reviewed": "2026-08-25",
       "lfs_sha256": "",
       "lfs_size": 0,
-      "line_count": 86,
+      "line_count": 92,
       "owner": "release-management",
       "path": "docs/current_state.md",
       "review_interval_days": "14",
@@ -36291,22 +36291,22 @@
       "title": "POPIA Consent Boundary Check"
     },
     {
-      "audience": "developer",
+      "audience": "",
       "broken_local_links": 0,
-      "byte_count": 26520,
+      "byte_count": 26160,
       "content_kind": "markdown",
       "h1": "POPIA Consent Boundary Matrix",
-      "has_front_matter": true,
-      "last_reviewed": "2026-08-26",
+      "has_front_matter": false,
+      "last_reviewed": "",
       "lfs_sha256": "",
       "lfs_size": 0,
-      "line_count": 252,
-      "owner": "engineering",
+      "line_count": 237,
+      "owner": "",
       "path": "docs/security/popia_consent_boundary_matrix.md",
-      "review_interval_days": "60",
+      "review_interval_days": "",
       "risky_terms": "",
-      "source_of_truth": false,
-      "status": "active",
+      "source_of_truth": "",
+      "status": "",
       "title": "POPIA Consent Boundary Matrix"
     },
     {
@@ -36367,22 +36367,22 @@
       "title": "POPIA Consent Gate Check"
     },
     {
-      "audience": "developer",
+      "audience": "",
       "broken_local_links": 0,
-      "byte_count": 21025,
+      "byte_count": 20667,
       "content_kind": "markdown",
       "h1": "POPIA Consent Gate Inventory",
-      "has_front_matter": true,
-      "last_reviewed": "2026-08-26",
+      "has_front_matter": false,
+      "last_reviewed": "",
       "lfs_sha256": "",
       "lfs_size": 0,
-      "line_count": 219,
-      "owner": "engineering",
+      "line_count": 204,
+      "owner": "",
       "path": "docs/security/popia_consent_gate_inventory.md",
-      "review_interval_days": "60",
+      "review_interval_days": "",
       "risky_terms": "",
-      "source_of_truth": false,
-      "status": "active",
+      "source_of_truth": "",
+      "status": "",
       "title": "POPIA Consent Gate Inventory"
     },
     {
@@ -45387,6 +45387,18 @@
     },
     {
       "detail": "No YAML front matter",
+      "path": "docs/security/popia_consent_boundary_matrix.md",
+      "severity": "medium",
+      "type": "missing_metadata"
+    },
+    {
+      "detail": "No YAML front matter",
+      "path": "docs/security/popia_consent_gate_inventory.md",
+      "severity": "medium",
+      "type": "missing_metadata"
+    },
+    {
+      "detail": "No YAML front matter",
       "path": "docs/spikes/FE-SPIKE-001-next-react-compat.md",
       "severity": "medium",
       "type": "missing_metadata"
@@ -45442,14 +45454,14 @@
   ],
   "summary": {
     "broken_local_link_count": 7,
-    "files_with_metadata": 654,
-    "files_with_owner": 622,
+    "files_with_metadata": 652,
+    "files_with_owner": 620,
     "files_with_source_of_truth": 101,
-    "finding_count": 1249,
+    "finding_count": 1251,
     "finding_counts_by_type": {
       "broken_local_links": 3,
       "duplicate_title": 85,
-      "missing_metadata": 1057,
+      "missing_metadata": 1059,
       "oversized_document": 47,
       "risky_or_stale_terms": 57
     },

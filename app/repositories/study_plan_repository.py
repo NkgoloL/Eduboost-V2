@@ -12,19 +12,8 @@ from typing import Any
 
 from sqlalchemy import select, Column, String, DateTime, Float, JSON, Text
 
-from app.core.database import AsyncSessionFactory, Base
-from app.models import SubjectMastery
-
-
-class StudyPlan(Base):
-    __tablename__ = "study_plan"
-    plan_id = Column(String, primary_key=True)
-    learner_id = Column(String, nullable=False)
-    week_start = Column(DateTime(timezone=True), nullable=False)
-    schedule = Column(JSON, nullable=False)
-    gap_ratio = Column(Float, nullable=False)
-    week_focus = Column(Text)
-    generated_by = Column(String)
+from app.core.database import AsyncSessionFactory
+from app.models import StudyPlan, SubjectMastery
 
 
 
@@ -44,7 +33,7 @@ class StudyPlanRepository:
         now = datetime.now(timezone.utc)
         async with AsyncSessionFactory() as session:
             plan = StudyPlan(
-                plan_id=str(plan_id),
+                id=str(plan_id),
                 learner_id=str(learner_id),
                 week_start=now,
                 schedule=schedule,
@@ -55,8 +44,9 @@ class StudyPlanRepository:
             session.add(plan)
             await session.commit()
             await session.refresh(plan)
+        resolved_plan_id = getattr(plan, "id", None) or getattr(plan, "plan_id", str(plan_id))
         return {
-            "plan_id": str(plan.plan_id),
+            "plan_id": str(resolved_plan_id),
             "learner_id": learner_id,
             "week_start": plan.week_start.isoformat(),
             "schedule": plan.schedule,
@@ -69,13 +59,14 @@ class StudyPlanRepository:
         """Fetch a single study plan by its UUID."""
         async with AsyncSessionFactory() as session:
             result = await session.execute(
-                select(StudyPlan).where(StudyPlan.plan_id == str(plan_id))
+                select(StudyPlan).where(StudyPlan.id == str(plan_id))
             )
             plan = result.scalar_one_or_none()
             if plan is None:
                 return None
+        resolved_plan_id = getattr(plan, "id", None) or getattr(plan, "plan_id", str(plan_id))
         return {
-            "plan_id": str(plan.plan_id),
+            "plan_id": str(resolved_plan_id),
             "learner_id": str(plan.learner_id),
             "week_start": plan.week_start.isoformat(),
             "schedule": plan.schedule,
@@ -96,7 +87,7 @@ class StudyPlanRepository:
             plans = result.scalars().all()
         return [
             {
-                "plan_id": str(p.plan_id),
+                "plan_id": str(getattr(p, "id", None) or getattr(p, "plan_id", "")),
                 "learner_id": str(p.learner_id),
                 "week_start": p.week_start.isoformat(),
                 "schedule": p.schedule,
