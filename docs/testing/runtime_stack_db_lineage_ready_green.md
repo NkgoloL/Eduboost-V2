@@ -1,3 +1,18 @@
+---
+title: "Runtime Stack, Database Lineage, Schema, and `/ready` Green Evidence"
+status: "active"
+owner: "quality"
+reviewers: ["quality", "engineering"]
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-08-26"
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-check"
+code_anchors: ["docs/testing/runtime_stack_db_lineage_ready_green.md"]
+---
+
 # Runtime Stack, Database Lineage, Schema, and `/ready` Green Evidence
 
 **PRD:** PRD-11.0R.RUNTIME-RESTORE.EXECUTION-5

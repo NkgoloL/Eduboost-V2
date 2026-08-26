@@ -6,6 +6,7 @@ import argparse
 import importlib
 import sys
 from pathlib import Path
+from typing import Any
 
 from fastapi import FastAPI
 from fastapi.routing import APIRoute
@@ -83,7 +84,10 @@ def load_app(spec: str) -> FastAPI:
 def _route_rows(app: FastAPI) -> list[RouteRow]:
     rows: list[RouteRow] = []
 
+    # 1. Direct operational and root routes on app
     for route in app.routes:
+        if type(route).__name__ == "_IncludedRouter":
+            continue
         path = getattr(route, "path", "")
         name = getattr(route, "name", "")
 
@@ -97,6 +101,28 @@ def _route_rows(app: FastAPI) -> list[RouteRow]:
         methods = ",".join(sorted(getattr(route, "methods", []) or []))
         endpoint = type(route).__name__
         rows.append((path, methods, name, "no", endpoint))
+
+    # 2. Inspect included routers registered under prefixes
+    import app.api_v2 as api_mod
+    prefixes = getattr(api_mod, "API_PREFIXES", ("/api/v2", "/v2"))
+    registry = getattr(api_mod, "ROUTER_REGISTRY", ())
+
+    for prefix in prefixes:
+        for router_name, router in registry:
+            router_prefix = getattr(router, "prefix", "")
+            for route in getattr(router, "routes", []):
+                sub_path = getattr(route, "path", "")
+                full_path = f"{prefix}{router_prefix}{sub_path}".rstrip("/") or "/"
+                name = getattr(route, "name", "")
+                if isinstance(route, APIRoute):
+                    methods = ",".join(sorted(route.methods or []))
+                    endpoint = f"{route.endpoint.__module__}.{route.endpoint.__name__}"
+                    include_in_schema = "yes" if route.include_in_schema else "no"
+                    rows.append((full_path, methods, name, include_in_schema, endpoint))
+                else:
+                    methods = ",".join(sorted(getattr(route, "methods", []) or []))
+                    endpoint = type(route).__name__
+                    rows.append((full_path, methods, name, "no", endpoint))
 
     return sorted(rows, key=lambda row: (row[0], row[1], row[2]))
 

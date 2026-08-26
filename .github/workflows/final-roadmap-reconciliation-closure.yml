@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12.3"
       - name: Verify final roadmap closure authority
         run: |
           PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_final_roadmap_reconciliation_closure.py --authority-only --json

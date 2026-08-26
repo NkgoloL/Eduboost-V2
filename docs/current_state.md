@@ -7,23 +7,24 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-16
+last_reviewed: 2026-08-25
 review_interval_days: 14
-evidence_command: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd1100r_runtime_restore_execution_7_coverage_static_security_green.py --json
-code_anchors: [app/api_v2.py, app/frontend/package.json, docs/roadmap/production_readiness/production_readiness_register.json]
+evidence_command: PYTHONPATH=. python3 scripts/true_state_remediation/execute_bundle.py --bundle B02 --phase verify --json
+code_anchors: [app/api_v2.py, app/frontend/package.json, docs/roadmap/production_readiness/true_state_remediation_register.json]
 ---
 
 # EduBoost Current State
 
-This file is the canonical current-state summary for EduBoost V2 after the reconciled RR roadmap, Knowledge Graph roadmap, PRD-0 through PRD-10 streams, and PRD-11 runtime restore executions up to Execution-6 were closed/recorded.
+This file is the canonical current-state summary for EduBoost V2 generated deterministically from single-source register state on 2026-08-25.
 
 It is intentionally conservative. It records what is true now and what remains unauthorised before production, deployment, public beta, billing, live learner traffic, or further production-readiness implementation work can proceed.
 
 ## Product identity
 
-EduBoost V2 is a South African Grade 4 Mathematics learning platform. Its product direction remains:
+EduBoost V2 is a South African Grade 4 Mathematics learning platform. Its active launch product scope is:
 
-- CAPS-aligned curriculum coverage.
+- **Launch-Active Scope**: South African Grade 4 Mathematics (CAPS-aligned).
+- **Planned / Inactive Scope**: Grades R–3 and Grades 5–7, and subjects other than Mathematics remain in planning and are not active for launch.
 - Diagnostic assessment and adaptive learner support.
 - Knowledge-graph-grounded learning-state modelling.
 - AI-assisted tutoring through controlled and grounded service boundaries.
@@ -38,47 +39,43 @@ The active technical direction is:
 
 - FastAPI V2 backend.
 - Next.js frontend under `app/frontend`.
-- PostgreSQL persistence with Alembic migrations.
-- Redis-backed sessions, jobs, or runtime support where configured.
-- Content Factory and curriculum tooling for controlled source ingestion and lesson material production.
-- Generated OpenAPI contract under `docs/openapi.json`.
-- Release and evidence automation under scripts, Makefile targets, and `docs/release-evidence/`.
-- Controlled runtime KG authority switch recorded through the KG activation and closure evidence stream.
+- PostgreSQL 16 persistence with pgvector and Alembic migrations.
+- Redis 7 backend for sessions, cache, and ARQ background workers.
+- Content Factory and curriculum tooling for controlled source ingestion.
+- Generated canonical OpenAPI contract under `docs/openapi.json` and `docs/openapi.yaml`.
+- Deterministic Route Inventory under `docs/route_inventory.md`.
+- True-State Remediation automation under `scripts/true_state_remediation/`.
 
-## Canonical closure state
-
-The current closed roadmap state is:
+## Canonical remediation state
 
 ```text
-RR roadmap/TODO register: closed
-Final RR roadmap reconciliation closure: valid
-KG roadmap: closed through KG-8
-KG-ACT-001 controlled runtime KG authority activation: valid
-KG roadmap closure report: valid
-PRD-0.0 through PRD-10 streams: closed
-Current authorised item: PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7
-Execution-1 through Execution-6 closure: valid
-New KG slice: not authorised
+Remediation program: EduBoost V2 True-State Remediation
+Active implementation bundle: B02 (Canonical Truth and Toolchain)
+Bundle B01 (Release Gate Recovery): verified and closed
+Bundle B02 (Canonical Truth and Toolchain): in_progress
+Feature freeze: active
+Controlled beta operational hold: active
 ```
 
-## Runtime KG authority state
+## Controlled beta semantics
 
-The controlled KG authority switch is recorded as active in governance evidence:
+Controlled-beta fields are distinct and independently enforced:
 
-```text
-runtime_kg_implementation_claimed: true
-runtime_kg_authority_switch_authorised: true
-authority_switch_executed: true
-```
+- **Governance Authorization**: Authorized under controlled remediation scope.
+- **Operational Safety**: Internal / staging verification only.
+- **Activation Hold**: `active` (live external traffic prohibited).
+- **Cohort Limits**: Staging cohort only (<50 test accounts).
+- **Kill-Switch State**: Enabled (`FEATURE_FLAG_MAINTENANCE_MODE=true` fails closed).
 
-This does **not** by itself authorise production release, public beta, live learner traffic, billing, deployment, or release tagging.
+## Governance & Reconciled Registers
 
-## Current production-readiness boundaries
+- Current-state refresh cadence recorded: true
+- Reconciled register rule: All roadmap items follow the RR-### register structure in `docs/roadmap/reconciliation/outstanding_work_register.md`.
+- Historical caveats: RR-003 fallback coverage baseline recorded 0.0; RR-006 evidence merged with non-required checks non-blocking; RR-010 beta outcome reporting outstanding; RR-016 operational drills outstanding.
 
-Current-state refresh cadence recorded: true
-RR-### governance rule: this file is refreshed against the outstanding_work_register.md cadence and remains the canonical current-state document for release governance.
+## Release authority boundaries (fail-closed)
 
-These remain unauthorised:
+These remain strictly unauthorized:
 
 ```text
 production_release_authorised: false
@@ -89,32 +86,6 @@ public_beta_live_traffic_authorised: false
 live_learner_traffic_authorised: false
 billing_launch_authorised: false
 live_payment_processing_authorised: false
-new_kg_slice_authorised: false
-prd1_implementation_authorised: false
 ```
 
-## Active production-readiness sequence
-
-The active production-readiness stream is governed by:
-
-- `docs/roadmap/production_readiness/production_readiness_register.json`
-- `docs/roadmap/production_readiness/production_readiness_boundary_contract.md`
-- `docs/roadmap/production_readiness/prd_1100r_runtime_restore_execution_7_coverage_static_security_green_record.json`
-
-All initial phases (PRD-0 through PRD-10) are completed. The active gate is PRD-11 (Runtime Restore), specifically Execution-7 (Coverage, Static Quality, and Security Gates green).
-
-## Known caveats carried forward
-
-The following caveats remain visible and must not be hidden by later status documents:
-
-- RR-003 is valid, but its fallback coverage baseline recorded `0.0` because full test collection had pre-existing blockers.
-- RR-006 is valid, but its evidence PR merged with only the required branch-protection check blocking; other non-required checks were red.
-- RR-016 is valid, but one captured git-state caveat was preserved for historical transparency.
-- KG-8 is valid, but one non-required GitHub Actions job failed because the runner called `pytest` directly and it was not on `PATH`.
-- PRD-0.0 introduced the production-readiness stream and blocked PRD-1 until PRD-0.10 closure.
-
-## Documentation truth boundary
-
-This file is not a production approval. It is a current-state navigation document. Release, deployment, billing, public beta, live learner traffic, or optimisation-execution decisions must be made through future PRD gates and evidence commands.
-
-**Current-state refresh recorded: PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7**
+**Generation timestamp: 2026-08-25T23:40:19.921428+00:00**

@@ -1,3 +1,18 @@
+---
+title: "Coverage, Frontend Quality, and Advisory Gate Contract"
+status: "active"
+owner: "quality"
+reviewers: ["quality", "engineering"]
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-08-26"
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-check"
+code_anchors: ["docs/testing/coverage_frontend_advisory_gate_contract.md"]
+---
+
 # Coverage, Frontend Quality, and Advisory Gate Contract
 
 **PRD:** PRD-11.0R.RUNTIME-RESTORE-5

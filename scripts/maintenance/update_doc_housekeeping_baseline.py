@@ -13,7 +13,7 @@ def main() -> int:
     parser.add_argument("--root", default=".")
     parser.add_argument("--inventory", default="docs/generated/documentation_inventory.json")
     parser.add_argument("--out", default="docs/documentation/housekeeping_ratchet_baseline.json")
-    parser.add_argument("--note", default="Stage 2 baseline captured after deterministic LFS-aware inventory adoption.")
+    parser.add_argument("--note", default="PRD-0.3 baseline captured after deterministic LFS-aware inventory adoption.")
     args = parser.parse_args()
     root = Path(args.root).resolve()
     inventory_path = root / args.inventory

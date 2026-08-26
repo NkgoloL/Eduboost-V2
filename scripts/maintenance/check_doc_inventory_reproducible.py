@@ -3,10 +3,15 @@ from __future__ import annotations
 
 import argparse
 import filecmp
-from scripts._subprocess import run
 import sys
 import tempfile
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts._subprocess import run
 
 
 OUTPUTS = [
@@ -29,7 +34,8 @@ def run_inventory(root: Path, outputs: list[str]) -> int:
         "--out-findings",
         outputs[2],
     ]
-    return run(cmd, cwd=root)
+    proc = run(cmd, cwd=root)
+    return proc.returncode
 
 
 def main() -> int:

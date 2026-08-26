@@ -4,9 +4,15 @@ import subprocess  # nosec B404 — subprocess constants support the controlled 
 import hashlib
 import os
 import re
-from scripts._subprocess import check_output, run
+import sys
 from dataclasses import dataclass
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts._subprocess import check_output, run
 from typing import Iterable
 
 FRONT_MATTER_RE = re.compile(r"\A---\s*\n(.*?)\n---\s*\n", re.DOTALL)

@@ -7,13 +7,13 @@
 - Canonical runtime: `app.api_v2:app`
 - Application title: `EduBoost SA V2`
 - Application version: `1.0.0-rc1`
-- Total route entries: `83`
+- Total route entries: `459`
 
 ## Contract Checks
 
 - Legacy route prefixes present in canonical runtime: `no`
 - Missing operational routes: `none`
-- Missing V2 router fragments: `/api/v2/auth, /api/v2/learners, /api/v2/lessons, /api/v2/study-plans, /api/v2/diagnostics, /api/v2/gamification, /api/v2/onboarding, /api/v2/parents, /api/v2/billing, /api/v2/consent, /api/v2/popia, /api/v2/jobs, /api/v2/system, /v2/auth, /v2/learners, /v2/lessons, /v2/study-plans, /v2/diagnostics, /v2/gamification, /v2/onboarding, /v2/parents, /v2/billing, /v2/consent, /v2/popia, /v2/jobs, /v2/system`
+- Missing V2 router fragments: `none`
 
 ## Required Operational Routes
 
@@ -32,32 +32,32 @@
 
 | Prefix | Fragment | Status |
 | --- | --- | --- |
-| `/api/v2` | `/auth` | missing |
-| `/api/v2` | `/learners` | missing |
-| `/api/v2` | `/lessons` | missing |
-| `/api/v2` | `/study-plans` | missing |
-| `/api/v2` | `/diagnostics` | missing |
-| `/api/v2` | `/gamification` | missing |
-| `/api/v2` | `/onboarding` | missing |
-| `/api/v2` | `/parents` | missing |
-| `/api/v2` | `/billing` | missing |
-| `/api/v2` | `/consent` | missing |
-| `/api/v2` | `/popia` | missing |
-| `/api/v2` | `/jobs` | missing |
-| `/api/v2` | `/system` | missing |
-| `/v2` | `/auth` | missing |
-| `/v2` | `/learners` | missing |
-| `/v2` | `/lessons` | missing |
-| `/v2` | `/study-plans` | missing |
-| `/v2` | `/diagnostics` | missing |
-| `/v2` | `/gamification` | missing |
-| `/v2` | `/onboarding` | missing |
-| `/v2` | `/parents` | missing |
-| `/v2` | `/billing` | missing |
-| `/v2` | `/consent` | missing |
-| `/v2` | `/popia` | missing |
-| `/v2` | `/jobs` | missing |
-| `/v2` | `/system` | missing |
+| `/api/v2` | `/auth` | present |
+| `/api/v2` | `/learners` | present |
+| `/api/v2` | `/lessons` | present |
+| `/api/v2` | `/study-plans` | present |
+| `/api/v2` | `/diagnostics` | present |
+| `/api/v2` | `/gamification` | present |
+| `/api/v2` | `/onboarding` | present |
+| `/api/v2` | `/parents` | present |
+| `/api/v2` | `/billing` | present |
+| `/api/v2` | `/consent` | present |
+| `/api/v2` | `/popia` | present |
+| `/api/v2` | `/jobs` | present |
+| `/api/v2` | `/system` | present |
+| `/v2` | `/auth` | present |
+| `/v2` | `/learners` | present |
+| `/v2` | `/lessons` | present |
+| `/v2` | `/study-plans` | present |
+| `/v2` | `/diagnostics` | present |
+| `/v2` | `/gamification` | present |
+| `/v2` | `/onboarding` | present |
+| `/v2` | `/parents` | present |
+| `/v2` | `/billing` | present |
+| `/v2` | `/consent` | present |
+| `/v2` | `/popia` | present |
+| `/v2` | `/jobs` | present |
+| `/v2` | `/system` | present |
 
 ## Legacy Exclusion
 
@@ -76,81 +76,233 @@ The canonical runtime is app.api_v2:app; no compatibility API entrypoint is reta
 
 | Path | Methods | Name | In OpenAPI | Endpoint |
 | --- | --- | --- | --- | --- |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
-| `` | `-` | `-` | no | `_IncludedRouter` |
 | `/` | `GET` | `root` | yes | `app.api_v2.root` |
 | `/__dev/slow_query` | `GET` | `dev_slow_query` | yes | `app.api_v2.dev_slow_query` |
+| `/api/v2/admin/ai-operations/admin/ai-operations/budgets/tenants/{tenant_id}` | `GET` | `get_tenant_budget` | yes | `app.api_v2_routers.ai_operations.get_tenant_budget` |
+| `/api/v2/admin/ai-operations/admin/ai-operations/budgets/users/{user_id}` | `GET` | `get_user_budget` | yes | `app.api_v2_routers.ai_operations.get_user_budget` |
+| `/api/v2/admin/ai-operations/admin/ai-operations/providers/health` | `GET` | `provider_health` | yes | `app.api_v2_routers.ai_operations.provider_health` |
+| `/api/v2/admin/ai-operations/admin/ai-operations/reservations` | `GET` | `list_reservations` | yes | `app.api_v2_routers.ai_operations.list_reservations` |
+| `/api/v2/admin/ai-operations/admin/ai-operations/reservations/{operation_id}/cancel` | `POST` | `cancel_reservation` | yes | `app.api_v2_routers.ai_operations.cancel_reservation` |
+| `/api/v2/admin/ai-operations/admin/ai-operations/usage` | `GET` | `list_usage` | yes | `app.api_v2_routers.ai_operations.list_usage` |
+| `/api/v2/admin/consent/admin/consent/trigger-renewal-reminders` | `POST` | `trigger_renewal_reminders` | yes | `app.api_v2_routers.consent_renewal.trigger_renewal_reminders` |
+| `/api/v2/admin/content-factory/admin/content-factory/artifacts` | `GET` | `list_artifacts` | yes | `app.api_v2_routers.content_factory.list_artifacts` |
+| `/api/v2/admin/content-factory/admin/content-factory/artifacts/{artifact_id}` | `GET` | `get_artifact` | yes | `app.api_v2_routers.content_factory.get_artifact` |
+| `/api/v2/admin/content-factory/admin/content-factory/artifacts/{artifact_id}/provenance` | `GET` | `get_artifact_provenance` | yes | `app.api_v2_routers.content_factory.get_artifact_provenance` |
+| `/api/v2/admin/content-factory/admin/content-factory/artifacts/{artifact_id}/quarantine` | `POST` | `quarantine_artifact` | yes | `app.api_v2_routers.content_factory.quarantine_artifact` |
+| `/api/v2/admin/content-factory/admin/content-factory/artifacts/{artifact_id}/reject` | `POST` | `reject_artifact` | yes | `app.api_v2_routers.content_factory.reject_artifact` |
+| `/api/v2/admin/content-factory/admin/content-factory/artifacts/{artifact_id}/review-bundle` | `GET` | `get_artifact_review_bundle` | yes | `app.api_v2_routers.content_factory.get_artifact_review_bundle` |
+| `/api/v2/admin/content-factory/admin/content-factory/artifacts/{artifact_id}/submit-review` | `POST` | `submit_artifact_for_review` | yes | `app.api_v2_routers.content_factory.submit_artifact_for_review` |
+| `/api/v2/admin/content-factory/admin/content-factory/etl/status` | `GET` | `etl_status` | yes | `app.api_v2_routers.content_factory.etl_status` |
+| `/api/v2/admin/content-factory/admin/content-factory/full-generation/plan` | `POST` | `plan_full_generation` | yes | `app.api_v2_routers.content_factory.plan_full_generation` |
+| `/api/v2/admin/content-factory/admin/content-factory/full-generation/runs` | `GET` | `list_full_generation_runs` | yes | `app.api_v2_routers.content_factory.list_full_generation_runs` |
+| `/api/v2/admin/content-factory/admin/content-factory/full-generation/runs/{run_id}` | `GET` | `get_full_generation_run` | yes | `app.api_v2_routers.content_factory.get_full_generation_run` |
+| `/api/v2/admin/content-factory/admin/content-factory/full-generation/runs/{run_id}/cancel` | `POST` | `cancel_full_generation_run` | yes | `app.api_v2_routers.content_factory.cancel_full_generation_run` |
+| `/api/v2/admin/content-factory/admin/content-factory/full-generation/runs/{run_id}/report` | `GET` | `get_full_generation_run_report` | yes | `app.api_v2_routers.content_factory.get_full_generation_run_report` |
+| `/api/v2/admin/content-factory/admin/content-factory/full-generation/runs/{run_id}/resume` | `POST` | `resume_full_generation_run` | yes | `app.api_v2_routers.content_factory.resume_full_generation_run` |
+| `/api/v2/admin/content-factory/admin/content-factory/full-generation/start` | `POST` | `start_full_generation` | yes | `app.api_v2_routers.content_factory.start_full_generation` |
+| `/api/v2/admin/content-factory/admin/content-factory/health` | `GET` | `content_factory_health` | yes | `app.api_v2_routers.content_factory.content_factory_health` |
+| `/api/v2/admin/content-factory/admin/content-factory/production-preview/scopes/{scope_id}` | `GET` | `get_production_preview` | yes | `app.api_v2_routers.content_factory.get_production_preview` |
+| `/api/v2/admin/content-factory/admin/content-factory/production-preview/scopes/{scope_id}/caps/{caps_ref}` | `GET` | `get_production_preview_by_caps_ref` | yes | `app.api_v2_routers.content_factory.get_production_preview_by_caps_ref` |
+| `/api/v2/admin/content-factory/admin/content-factory/promotion-events` | `GET` | `list_promotion_events` | yes | `app.api_v2_routers.content_factory.list_promotion_events` |
+| `/api/v2/admin/content-factory/admin/content-factory/promotion-events/{promotion_event_id}` | `GET` | `get_promotion_event` | yes | `app.api_v2_routers.content_factory.get_promotion_event` |
+| `/api/v2/admin/content-factory/admin/content-factory/promotion-events/{promotion_event_id}/items` | `GET` | `get_promotion_event_items` | yes | `app.api_v2_routers.content_factory.get_promotion_event_items` |
+| `/api/v2/admin/content-factory/admin/content-factory/promotion-events/{promotion_event_id}/rollback` | `POST` | `rollback_promotion_event` | yes | `app.api_v2_routers.content_factory.rollback_promotion_event` |
+| `/api/v2/admin/content-factory/admin/content-factory/promotion-events/{promotion_event_id}/verify` | `POST` | `verify_promotion_event` | yes | `app.api_v2_routers.content_factory.verify_promotion_event` |
+| `/api/v2/admin/content-factory/admin/content-factory/provenance/{artifact_id}` | `GET` | `get_artifact_provenance` | yes | `app.api_v2_routers.content_factory.get_artifact_provenance` |
+| `/api/v2/admin/content-factory/admin/content-factory/reports/{scope_id}` | `GET` | `get_content_factory_report` | yes | `app.api_v2_routers.content_factory.get_content_factory_report` |
+| `/api/v2/admin/content-factory/admin/content-factory/review-assignments` | `GET` | `list_review_assignments` | yes | `app.api_v2_routers.content_factory.list_review_assignments` |
+| `/api/v2/admin/content-factory/admin/content-factory/review-assignments` | `POST` | `assign_reviewer` | yes | `app.api_v2_routers.content_factory.assign_reviewer` |
+| `/api/v2/admin/content-factory/admin/content-factory/review-assignments/bulk` | `POST` | `bulk_assign_reviewer` | yes | `app.api_v2_routers.content_factory.bulk_assign_reviewer` |
+| `/api/v2/admin/content-factory/admin/content-factory/review-queue` | `GET` | `get_review_queue` | yes | `app.api_v2_routers.content_factory.get_review_queue` |
+| `/api/v2/admin/content-factory/admin/content-factory/review-summary` | `GET` | `get_review_summary` | yes | `app.api_v2_routers.content_factory.get_review_summary` |
+| `/api/v2/admin/content-factory/admin/content-factory/review/bulk-approve` | `POST` | `bulk_approve_review` | yes | `app.api_v2_routers.content_factory.bulk_approve_review` |
+| `/api/v2/admin/content-factory/admin/content-factory/review/bulk-quarantine` | `POST` | `bulk_quarantine_review` | yes | `app.api_v2_routers.content_factory.bulk_quarantine_review` |
+| `/api/v2/admin/content-factory/admin/content-factory/review/bulk-reject` | `POST` | `bulk_reject_review` | yes | `app.api_v2_routers.content_factory.bulk_reject_review` |
+| `/api/v2/admin/content-factory/admin/content-factory/reviewers/{reviewer_id}/workload` | `GET` | `get_reviewer_workload` | yes | `app.api_v2_routers.content_factory.get_reviewer_workload` |
+| `/api/v2/admin/content-factory/admin/content-factory/runs` | `GET` | `list_generation_runs` | yes | `app.api_v2_routers.content_factory.list_generation_runs` |
+| `/api/v2/admin/content-factory/admin/content-factory/runs` | `POST` | `create_generation_run` | yes | `app.api_v2_routers.content_factory.create_generation_run` |
+| `/api/v2/admin/content-factory/admin/content-factory/runs/{run_id}` | `GET` | `get_generation_run` | yes | `app.api_v2_routers.content_factory.get_generation_run` |
+| `/api/v2/admin/content-factory/admin/content-factory/runs/{run_id}/cancel` | `POST` | `cancel_generation_run` | yes | `app.api_v2_routers.content_factory.cancel_generation_run` |
+| `/api/v2/admin/content-factory/admin/content-factory/runs/{run_id}/execute` | `POST` | `execute_generation_run` | yes | `app.api_v2_routers.content_factory.execute_generation_run` |
+| `/api/v2/admin/content-factory/admin/content-factory/runs/{run_id}/execution-report` | `GET` | `get_generation_execution_report` | yes | `app.api_v2_routers.content_factory.get_generation_execution_report` |
+| `/api/v2/admin/content-factory/admin/content-factory/runs/{run_id}/plan-missing` | `POST` | `plan_missing_generation_tasks` | yes | `app.api_v2_routers.content_factory.plan_missing_generation_tasks` |
+| `/api/v2/admin/content-factory/admin/content-factory/runs/{run_id}/retry-failed` | `POST` | `retry_failed_generation_tasks` | yes | `app.api_v2_routers.content_factory.retry_failed_generation_tasks` |
+| `/api/v2/admin/content-factory/admin/content-factory/runs/{run_id}/tasks` | `GET` | `get_generation_run_tasks` | yes | `app.api_v2_routers.content_factory.get_generation_run_tasks` |
+| `/api/v2/admin/content-factory/admin/content-factory/scopes` | `GET` | `list_content_scopes` | yes | `app.api_v2_routers.content_factory.list_content_scopes` |
+| `/api/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}` | `GET` | `get_content_scope` | yes | `app.api_v2_routers.content_factory.get_content_scope` |
+| `/api/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/coverage` | `GET` | `get_content_scope_coverage` | yes | `app.api_v2_routers.content_factory.get_content_scope_coverage` |
+| `/api/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/coverage/{caps_ref}` | `GET` | `get_content_caps_ref_coverage` | yes | `app.api_v2_routers.content_factory.get_content_caps_ref_coverage` |
+| `/api/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/dry-run-promotion` | `POST` | `dry_run_promotion` | yes | `app.api_v2_routers.content_factory.dry_run_promotion` |
+| `/api/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/dry-run-seed` | `POST` | `dry_run_scope_seed` | yes | `app.api_v2_routers.content_factory.dry_run_scope_seed` |
+| `/api/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/production-gate` | `GET` | `get_production_gate` | yes | `app.api_v2_routers.content_factory.get_production_gate` |
+| `/api/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/production-read-verification` | `GET` | `verify_scope_production` | yes | `app.api_v2_routers.content_factory.verify_scope_production` |
+| `/api/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/promote-production` | `POST` | `promote_production` | yes | `app.api_v2_routers.content_factory.promote_production` |
+| `/api/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/seed-staging` | `POST` | `seed_scope_staging` | yes | `app.api_v2_routers.content_factory.seed_scope_staging` |
+| `/api/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/staging-read-verification` | `GET` | `verify_scope_staging` | yes | `app.api_v2_routers.content_factory.verify_scope_staging` |
+| `/api/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/staging-readiness` | `GET` | `get_scope_staging_readiness` | yes | `app.api_v2_routers.content_factory.get_scope_staging_readiness` |
+| `/api/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/staging-verification` | `POST` | `run_scope_staging_verification` | yes | `app.api_v2_routers.content_factory.run_scope_staging_verification` |
+| `/api/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/targets` | `GET` | `get_content_scope_targets` | yes | `app.api_v2_routers.content_factory.get_content_scope_targets` |
+| `/api/v2/admin/content-factory/admin/content-factory/seed-runs` | `GET` | `list_seed_runs` | yes | `app.api_v2_routers.content_factory.list_seed_runs` |
+| `/api/v2/admin/content-factory/admin/content-factory/seed-runs/{seed_run_id}` | `GET` | `get_seed_run` | yes | `app.api_v2_routers.content_factory.get_seed_run` |
+| `/api/v2/admin/content-factory/admin/content-factory/seed-runs/{seed_run_id}/items` | `GET` | `get_seed_run_items` | yes | `app.api_v2_routers.content_factory.get_seed_run_items` |
+| `/api/v2/admin/content-factory/admin/content-factory/seed-runs/{seed_run_id}/rollback` | `POST` | `rollback_seed_run` | yes | `app.api_v2_routers.content_factory.rollback_seed_run` |
+| `/api/v2/admin/content-factory/admin/content-factory/seed-runs/{seed_run_id}/verify` | `POST` | `verify_seed_run` | yes | `app.api_v2_routers.content_factory.verify_seed_run` |
+| `/api/v2/admin/content-factory/admin/content-factory/staging-preview/scopes/{scope_id}` | `GET` | `get_staging_preview` | yes | `app.api_v2_routers.content_factory.get_staging_preview` |
+| `/api/v2/admin/content-factory/admin/content-factory/staging-preview/scopes/{scope_id}/caps/{caps_ref}` | `GET` | `get_staging_preview_by_caps_ref` | yes | `app.api_v2_routers.content_factory.get_staging_preview_by_caps_ref` |
+| `/api/v2/admin/content-factory/admin/content-factory/staging-verification/all-scopes` | `POST` | `run_all_scope_staging_verification` | yes | `app.api_v2_routers.content_factory.run_all_scope_staging_verification` |
+| `/api/v2/admin/content-factory/admin/content-factory/staging-verification/runs` | `GET` | `list_staging_verification_runs` | yes | `app.api_v2_routers.content_factory.list_staging_verification_runs` |
+| `/api/v2/admin/content-factory/admin/content-factory/staging-verification/runs/{run_id}` | `GET` | `get_staging_verification_run` | yes | `app.api_v2_routers.content_factory.get_staging_verification_run` |
+| `/api/v2/admin/content-factory/admin/content-factory/tasks/{task_id}` | `GET` | `get_generation_task` | yes | `app.api_v2_routers.content_factory.get_generation_task` |
+| `/api/v2/admin/content-factory/admin/content-factory/tasks/{task_id}/execute` | `POST` | `execute_generation_task` | yes | `app.api_v2_routers.content_factory.execute_generation_task` |
+| `/api/v2/admin/content-factory/admin/content-factory/validate-artifact` | `POST` | `validate_artifact_payload` | yes | `app.api_v2_routers.content_factory.validate_artifact_payload` |
+| `/api/v2/admin/curriculum-expansion/admin/curriculum-expansion/coverage/snapshots` | `POST` | `capture_snapshots` | yes | `app.api_v2_routers.curriculum_expansion.capture_snapshots` |
+| `/api/v2/admin/curriculum-expansion/admin/curriculum-expansion/coverage/{scope_id}` | `GET` | `get_scope_coverage` | yes | `app.api_v2_routers.curriculum_expansion.get_scope_coverage` |
+| `/api/v2/admin/curriculum-expansion/admin/curriculum-expansion/plans` | `POST` | `create_expansion_plan` | yes | `app.api_v2_routers.curriculum_expansion.create_expansion_plan` |
+| `/api/v2/admin/curriculum-expansion/admin/curriculum-expansion/training-manifests` | `POST` | `create_training_manifest` | yes | `app.api_v2_routers.curriculum_expansion.create_training_manifest` |
+| `/api/v2/admin/curriculum-expansion/admin/curriculum-expansion/training-manifests/{manifest_id}` | `GET` | `get_training_manifest` | yes | `app.api_v2_routers.curriculum_expansion.get_training_manifest` |
+| `/api/v2/admin/curriculum-expansion/admin/curriculum-expansion/training-manifests/{manifest_id}/decision` | `POST` | `decide_training_manifest` | yes | `app.api_v2_routers.curriculum_expansion.decide_training_manifest` |
+| `/api/v2/admin/curriculum-expansion/admin/curriculum-expansion/training-manifests/{manifest_id}/export` | `POST` | `export_training_manifest` | yes | `app.api_v2_routers.curriculum_expansion.export_training_manifest` |
+| `/api/v2/admin/etl/admin/etl/datasets` | `GET` | `list_etl_datasets` | yes | `app.api_v2_routers.admin_etl.list_etl_datasets` |
+| `/api/v2/admin/etl/admin/etl/documents` | `GET` | `list_etl_documents` | yes | `app.api_v2_routers.admin_etl.list_etl_documents` |
+| `/api/v2/admin/etl/admin/etl/documents/{document_id}` | `GET` | `get_etl_document` | yes | `app.api_v2_routers.admin_etl.get_etl_document` |
+| `/api/v2/admin/etl/admin/etl/documents/{document_id}/audit` | `GET` | `get_etl_document_audit` | yes | `app.api_v2_routers.admin_etl.get_etl_document_audit` |
+| `/api/v2/admin/etl/admin/etl/documents/{document_id}/chunks` | `GET` | `get_etl_document_chunks` | yes | `app.api_v2_routers.admin_etl.get_etl_document_chunks` |
+| `/api/v2/admin/etl/admin/etl/metrics` | `GET` | `get_etl_metrics` | yes | `app.api_v2_routers.admin_etl.get_etl_metrics` |
+| `/api/v2/admin/etl/admin/etl/quality/{document_id}` | `GET` | `get_etl_quality` | yes | `app.api_v2_routers.admin_etl.get_etl_quality` |
+| `/api/v2/admin/etl/admin/etl/review-queue` | `GET` | `get_etl_review_queue` | yes | `app.api_v2_routers.admin_etl.get_etl_review_queue` |
+| `/api/v2/admin/etl/admin/etl/search` | `GET` | `search_etl` | yes | `app.api_v2_routers.admin_etl.search_etl` |
+| `/api/v2/admin/etl/admin/etl/status` | `GET` | `etl_admin_status` | yes | `app.api_v2_routers.admin_etl.etl_admin_status` |
+| `/api/v2/admin/generation/admin/generation/runs` | `POST` | `start_generation_run` | yes | `app.api_v2_routers.generation.start_generation_run` |
+| `/api/v2/admin/generation/admin/generation/runs/{run_id}` | `GET` | `get_generation_run` | yes | `app.api_v2_routers.generation.get_generation_run` |
+| `/api/v2/admin/generation/admin/generation/runs/{run_id}/cancel` | `POST` | `cancel_generation_run` | yes | `app.api_v2_routers.generation.cancel_generation_run` |
+| `/api/v2/admin/generation/admin/generation/runs/{run_id}/tasks` | `GET` | `list_run_tasks` | yes | `app.api_v2_routers.generation.list_run_tasks` |
+| `/api/v2/admin/irt-quality/admin/irt-quality/items/{item_id}` | `GET` | `get_item_quality` | yes | `app.api_v2_routers.irt_quality.get_item_quality` |
+| `/api/v2/admin/irt-quality/admin/irt-quality/items/{item_id}/override` | `POST` | `set_manual_override` | yes | `app.api_v2_routers.irt_quality.set_manual_override` |
+| `/api/v2/admin/irt-quality/admin/irt-quality/items/{item_id}/override/clear` | `POST` | `clear_manual_override` | yes | `app.api_v2_routers.irt_quality.clear_manual_override` |
+| `/api/v2/admin/irt-quality/admin/irt-quality/runs` | `POST` | `create_calibration_run` | yes | `app.api_v2_routers.irt_quality.create_calibration_run` |
+| `/api/v2/admin/irt-quality/admin/irt-quality/runs/{run_id}` | `GET` | `get_calibration_run` | yes | `app.api_v2_routers.irt_quality.get_calibration_run` |
+| `/api/v2/assessments/assessments` | `GET` | `list_assessments` | yes | `app.api_v2_routers.assessments.list_assessments` |
+| `/api/v2/assessments/assessments/{assessment_id}/attempt` | `POST` | `submit_attempt` | yes | `app.api_v2_routers.assessments.submit_attempt` |
+| `/api/v2/audit/audit` | `GET` | `get_audit_feed` | yes | `app.api_v2_routers.audit.get_audit_feed` |
+| `/api/v2/audit/audit/feed` | `GET` | `get_audit_feed_alias` | yes | `app.api_v2_routers.audit.get_audit_feed_alias` |
+| `/api/v2/auth/auth/dev-session` | `POST` | `create_dev_session` | yes | `app.api_v2_routers.auth.create_dev_session` |
+| `/api/v2/auth/auth/forgot-password` | `POST` | `forgot_password` | yes | `app.api_v2_routers.auth_extended.forgot_password` |
+| `/api/v2/auth/auth/login` | `POST` | `login` | yes | `app.api_v2_routers.auth.login` |
+| `/api/v2/auth/auth/logout` | `POST` | `logout` | yes | `app.api_v2_routers.auth.logout` |
+| `/api/v2/auth/auth/me` | `GET` | `me` | yes | `app.api_v2_routers.auth.me` |
+| `/api/v2/auth/auth/onboarding` | `GET` | `get_onboarding` | yes | `app.api_v2_routers.auth_extended.get_onboarding` |
+| `/api/v2/auth/auth/onboarding/profile` | `PATCH` | `update_learner_profile` | yes | `app.api_v2_routers.auth_extended.update_learner_profile` |
+| `/api/v2/auth/auth/onboarding/step` | `PATCH` | `update_onboarding_step` | yes | `app.api_v2_routers.auth_extended.update_onboarding_step` |
+| `/api/v2/auth/auth/privacy` | `GET` | `get_privacy_settings` | yes | `app.api_v2_routers.auth_extended.get_privacy_settings` |
+| `/api/v2/auth/auth/privacy` | `PATCH` | `update_privacy_settings` | yes | `app.api_v2_routers.auth_extended.update_privacy_settings` |
+| `/api/v2/auth/auth/privacy/request-deletion` | `POST` | `request_account_deletion` | yes | `app.api_v2_routers.auth_extended.request_account_deletion` |
+| `/api/v2/auth/auth/privacy/request-export` | `POST` | `request_data_export` | yes | `app.api_v2_routers.auth_extended.request_data_export` |
+| `/api/v2/auth/auth/refresh` | `POST` | `refresh` | yes | `app.api_v2_routers.auth.refresh` |
+| `/api/v2/auth/auth/register` | `POST` | `register` | yes | `app.api_v2_routers.auth.register` |
+| `/api/v2/auth/auth/reset-password` | `POST` | `reset_password` | yes | `app.api_v2_routers.auth_extended.reset_password` |
+| `/api/v2/auth/auth/revoke-all` | `POST` | `revoke_all_tokens` | yes | `app.api_v2_routers.auth.revoke_all_tokens` |
+| `/api/v2/auth/auth/send-verification` | `POST` | `send_verification` | yes | `app.api_v2_routers.auth_extended.send_verification` |
+| `/api/v2/auth/auth/sessions` | `GET` | `list_sessions` | yes | `app.api_v2_routers.auth.list_sessions` |
+| `/api/v2/auth/auth/verify-email` | `GET` | `verify_email` | yes | `app.api_v2_routers.auth_extended.verify_email` |
+| `/api/v2/billing/billing/checkout` | `POST` | `create_checkout` | yes | `app.api_v2_routers.billing.create_checkout` |
+| `/api/v2/billing/billing/create-checkout-session` | `POST` | `create_checkout` | yes | `app.api_v2_routers.billing.create_checkout` |
+| `/api/v2/billing/billing/webhook` | `POST` | `stripe_webhook` | yes | `app.api_v2_routers.billing.stripe_webhook` |
+| `/api/v2/commercial-launch/commercial-launch/readiness` | `GET` | `get_commercial_launch_readiness` | yes | `app.api_v2_routers.commercial_launch.get_commercial_launch_readiness` |
+| `/api/v2/commercial-launch/commercial-launch/runtime-audit-remediation` | `GET` | `get_commercial_runtime_audit_remediation` | yes | `app.api_v2_routers.commercial_launch.get_commercial_runtime_audit_remediation` |
+| `/api/v2/consent/consent/grant` | `POST` | `grant_consent` | yes | `app.api_v2_routers.consent.grant_consent` |
+| `/api/v2/consent/consent/revoke` | `POST` | `revoke_consent` | yes | `app.api_v2_routers.consent.revoke_consent` |
+| `/api/v2/consent/consent/status/{learner_id}` | `GET` | `consent_status` | yes | `app.api_v2_routers.consent.consent_status` |
+| `/api/v2/content-quality/content-quality/grade4-mathematics/final-acceptance` | `GET` | `get_grade4_maths_content_quality_final_acceptance` | yes | `app.api_v2_routers.content_quality.get_grade4_maths_content_quality_final_acceptance` |
+| `/api/v2/content-quality/content-quality/grade4-mathematics/readiness` | `GET` | `get_grade4_maths_content_quality_readiness` | yes | `app.api_v2_routers.content_quality.get_grade4_maths_content_quality_readiness` |
+| `/api/v2/content-review/content-review/artifacts/{artifact_id}/answer-key-verifications` | `POST` | `record_answer_key_verification` | yes | `app.api_v2_routers.content_review.record_answer_key_verification` |
+| `/api/v2/content-review/content-review/artifacts/{artifact_id}/assignments` | `POST` | `assign_reviewers` | yes | `app.api_v2_routers.content_review.assign_reviewers` |
+| `/api/v2/content-review/content-review/artifacts/{artifact_id}/decisions` | `POST` | `submit_review_decision` | yes | `app.api_v2_routers.content_review.submit_review_decision` |
+| `/api/v2/content-review/content-review/artifacts/{artifact_id}/history` | `GET` | `get_review_history` | yes | `app.api_v2_routers.content_review.get_review_history` |
+| `/api/v2/content-review/content-review/artifacts/{artifact_id}/publish` | `POST` | `publish_artifact` | yes | `app.api_v2_routers.content_review.publish_artifact` |
+| `/api/v2/content-review/content-review/artifacts/{artifact_id}/quarantine` | `POST` | `quarantine_artifact` | yes | `app.api_v2_routers.content_review.quarantine_artifact` |
+| `/api/v2/content-review/content-review/artifacts/{artifact_id}/revisions` | `POST` | `create_artifact_revision` | yes | `app.api_v2_routers.content_review.create_artifact_revision` |
+| `/api/v2/content-review/content-review/assignments/stale` | `GET` | `list_stale_assignments` | yes | `app.api_v2_routers.content_review.list_stale_assignments` |
+| `/api/v2/content-review/content-review/assignments/{assignment_id}/accept` | `POST` | `accept_assignment` | yes | `app.api_v2_routers.content_review.accept_assignment` |
+| `/api/v2/content-review/content-review/assignments/{assignment_id}/reassign` | `POST` | `reassign_review` | yes | `app.api_v2_routers.content_review.reassign_review` |
+| `/api/v2/controlled-beta/controlled-beta/final-authorisation` | `GET` | `get_controlled_beta_final_authorisation` | yes | `app.api_v2_routers.controlled_beta.get_controlled_beta_final_authorisation` |
+| `/api/v2/controlled-beta/controlled-beta/preflight` | `GET` | `get_controlled_beta_preflight` | yes | `app.api_v2_routers.controlled_beta.get_controlled_beta_preflight` |
+| `/api/v2/diagnostics` | `-` | `-` | no | `_IncludedRouter` |
+| `/api/v2/diagnostics/diagnostics/coverage` | `GET` | `get_item_bank_coverage` | yes | `app.api_v2_routers.diagnostics.get_item_bank_coverage` |
+| `/api/v2/diagnostics/diagnostics/item-bank/items/{item_id}` | `GET` | `get_item_bank_item` | yes | `app.api_v2_routers.diagnostics.get_item_bank_item` |
+| `/api/v2/diagnostics/diagnostics/item-bank/items/{item_id}/review` | `POST` | `review_item_bank_item` | yes | `app.api_v2_routers.diagnostics.review_item_bank_item` |
+| `/api/v2/diagnostics/diagnostics/items/{learner_id}` | `GET` | `get_diagnostic_items` | yes | `app.api_v2_routers.diagnostics.get_diagnostic_items` |
+| `/api/v2/diagnostics/diagnostics/sessions` | `POST` | `start_diagnostic_session` | yes | `app.api_v2_routers.diagnostics.start_diagnostic_session` |
+| `/api/v2/diagnostics/diagnostics/sessions/{session_id}/next-item` | `GET` | `diagnostic_next_item` | yes | `app.api_v2_routers.diagnostics.diagnostic_next_item` |
+| `/api/v2/diagnostics/diagnostics/sessions/{session_id}/recover` | `GET` | `recover_diagnostic_session` | yes | `app.api_v2_routers.diagnostics.recover_diagnostic_session` |
+| `/api/v2/diagnostics/diagnostics/sessions/{session_id}/respond` | `POST` | `diagnostic_respond` | yes | `app.api_v2_routers.diagnostics.diagnostic_respond` |
+| `/api/v2/diagnostics/diagnostics/submit` | `POST` | `submit_diagnostic` | yes | `app.api_v2_routers.diagnostics.submit_diagnostic` |
+| `/api/v2/gamification/gamification/award-xp` | `POST` | `award_xp` | yes | `app.api_v2_routers.gamification.award_xp` |
+| `/api/v2/gamification/gamification/leaderboard` | `GET` | `get_leaderboard` | yes | `app.api_v2_routers.gamification.get_leaderboard` |
+| `/api/v2/gamification/gamification/profile/{learner_id}` | `GET` | `get_profile` | yes | `app.api_v2_routers.gamification.get_profile` |
 | `/api/v2/health/deep` | `GET` | `ready` | yes | `app.api_v2.ready` |
+| `/api/v2/jobs/jobs/{job_id}` | `GET` | `get_job_status` | yes | `app.api_v2_routers.jobs.get_job_status` |
+| `/api/v2/learner/content/learner/content/scopes/{scope_id}/caps/{caps_ref}/diagnostic-items` | `GET` | `get_diagnostic_items_by_caps_ref` | yes | `app.api_v2_routers.learner_content.get_diagnostic_items_by_caps_ref` |
+| `/api/v2/learner/content/learner/content/scopes/{scope_id}/caps/{caps_ref}/lessons` | `GET` | `get_lessons_by_caps_ref` | yes | `app.api_v2_routers.learner_content.get_lessons_by_caps_ref` |
+| `/api/v2/learner/content/learner/content/scopes/{scope_id}/diagnostic-items` | `GET` | `get_diagnostic_items` | yes | `app.api_v2_routers.learner_content.get_diagnostic_items` |
+| `/api/v2/learner/content/learner/content/scopes/{scope_id}/lessons` | `GET` | `get_lessons` | yes | `app.api_v2_routers.learner_content.get_lessons` |
+| `/api/v2/learner/content/learner/content/scopes/{scope_id}/summary` | `GET` | `get_scope_summary` | yes | `app.api_v2_routers.learner_content.get_scope_summary` |
+| `/api/v2/learners/learners` | `POST` | `create_learner` | yes | `app.api_v2_routers.learners.create_learner` |
+| `/api/v2/learners/learners/{learner_id}` | `DELETE` | `request_erasure` | yes | `app.api_v2_routers.learners.request_erasure` |
+| `/api/v2/learners/learners/{learner_id}` | `GET` | `get_learner` | yes | `app.api_v2_routers.learners.get_learner` |
+| `/api/v2/learners/learners/{learner_id}/mastery` | `GET` | `get_mastery` | yes | `app.api_v2_routers.learners.get_mastery` |
+| `/api/v2/learners/learners/{learner_id}/mastery/summary` | `GET` | `get_mastery_summary` | yes | `app.api_v2_routers.learners.get_mastery_summary` |
+| `/api/v2/learners/learners/{learner_id}/mastery/{caps_ref}` | `GET` | `get_topic_mastery` | yes | `app.api_v2_routers.learners.get_topic_mastery` |
+| `/api/v2/lessons` | `-` | `-` | no | `_IncludedRouter` |
+| `/api/v2/lessons` | `-` | `-` | no | `_IncludedRouter` |
+| `/api/v2/lessons/lessons` | `POST` | `generate_lesson` | yes | `app.api_v2_routers.lessons.generate_lesson` |
+| `/api/v2/lessons/lessons/generate` | `POST` | `generate_lesson` | yes | `app.api_v2_routers.lessons.generate_lesson` |
+| `/api/v2/lessons/lessons/generate/stream` | `POST` | `generate_lesson_stream` | yes | `app.api_v2_routers.lessons.generate_lesson_stream` |
+| `/api/v2/lessons/lessons/sync` | `POST` | `sync_lessons` | yes | `app.api_v2_routers.lessons.sync_lessons` |
+| `/api/v2/lessons/lessons/{lesson_id}` | `GET` | `get_lesson` | yes | `app.api_v2_routers.lessons.get_lesson` |
+| `/api/v2/lessons/lessons/{lesson_id}/complete` | `POST` | `complete_lesson` | yes | `app.api_v2_routers.lessons.complete_lesson` |
+| `/api/v2/observability-sre/observability-sre/final-assurance` | `GET` | `get_observability_sre_final_assurance` | yes | `app.api_v2_routers.observability_sre.get_observability_sre_final_assurance` |
+| `/api/v2/observability-sre/observability-sre/readiness` | `GET` | `get_observability_sre_readiness` | yes | `app.api_v2_routers.observability_sre.get_observability_sre_readiness` |
+| `/api/v2/onboarding/onboarding/archetype` | `POST` | `submit_onboarding` | yes | `app.api_v2_routers.onboarding.submit_onboarding` |
+| `/api/v2/onboarding/onboarding/questions` | `GET` | `get_onboarding_questions` | yes | `app.api_v2_routers.onboarding.get_onboarding_questions` |
+| `/api/v2/onboarding/onboarding/submit` | `POST` | `submit_onboarding` | yes | `app.api_v2_routers.onboarding.submit_onboarding` |
+| `/api/v2/parents/parents/dashboard` | `GET` | `get_parent_dashboard` | yes | `app.api_v2_routers.parents.get_parent_dashboard` |
+| `/api/v2/parents/parents/learners/{learner_id}` | `DELETE` | `request_erasure` | yes | `app.api_v2_routers.parents.request_erasure` |
+| `/api/v2/parents/parents/learners/{learner_id}/progress` | `GET` | `get_learner_progress` | yes | `app.api_v2_routers.parents.get_learner_progress` |
+| `/api/v2/parents/parents/{guardian_id}/dashboard` | `GET` | `get_parent_trust_dashboard` | yes | `app.api_v2_routers.parents.get_parent_trust_dashboard` |
+| `/api/v2/parents/parents/{guardian_id}/export` | `GET` | `export_parent_access_bundle` | yes | `app.api_v2_routers.parents.export_parent_access_bundle` |
+| `/api/v2/performance-scale-cost/performance-scale-cost/final-assurance` | `GET` | `get_performance_scale_cost_final_assurance` | yes | `app.api_v2_routers.performance_scale_cost.get_performance_scale_cost_final_assurance` |
+| `/api/v2/performance-scale-cost/performance-scale-cost/readiness` | `GET` | `get_performance_scale_cost_readiness` | yes | `app.api_v2_routers.performance_scale_cost.get_performance_scale_cost_readiness` |
+| `/api/v2/popia/popia/consent/deny` | `POST` | `deny_consent` | yes | `app.api_v2_routers.popia.deny_consent` |
+| `/api/v2/popia/popia/consent/grant` | `POST` | `grant_consent` | yes | `app.api_v2_routers.popia.grant_consent` |
+| `/api/v2/popia/popia/consent/renew` | `POST` | `renew_consent` | yes | `app.api_v2_routers.popia.renew_consent` |
+| `/api/v2/popia/popia/consent/withdraw` | `POST` | `withdraw_consent` | yes | `app.api_v2_routers.popia.withdraw_consent` |
+| `/api/v2/popia/popia/correction` | `POST` | `create_correction_request` | yes | `app.api_v2_routers.popia.create_correction_request` |
+| `/api/v2/popia/popia/erasure` | `POST` | `create_erasure_request` | yes | `app.api_v2_routers.popia.create_erasure_request` |
+| `/api/v2/popia/popia/erasure/{learner_id}/cancel` | `POST` | `cancel_erasure` | yes | `app.api_v2_routers.popia.cancel_erasure` |
+| `/api/v2/popia/popia/erasure/{learner_id}/status` | `GET` | `erasure_status` | yes | `app.api_v2_routers.popia.erasure_status` |
+| `/api/v2/popia/popia/exports` | `POST` | `create_export_request` | yes | `app.api_v2_routers.popia.create_export_request` |
+| `/api/v2/popia/popia/restriction` | `POST` | `create_restriction_request` | yes | `app.api_v2_routers.popia.create_restriction_request` |
+| `/api/v2/practice/practice/sessions` | `POST` | `create_practice_session` | yes | `app.modules.practice.router.create_practice_session` |
+| `/api/v2/practice/practice/sessions/{session_id}/next-item` | `GET` | `next_practice_item` | yes | `app.modules.practice.router.next_practice_item` |
+| `/api/v2/practice/practice/sessions/{session_id}/respond` | `POST` | `respond_practice` | yes | `app.modules.practice.router.respond_practice` |
+| `/api/v2/privacy-operations/privacy-operations/live-data/final-assurance` | `GET` | `get_popia_live_data_operations_final_assurance` | yes | `app.api_v2_routers.privacy_operations.get_popia_live_data_operations_final_assurance` |
+| `/api/v2/privacy-operations/privacy-operations/live-data/readiness` | `GET` | `get_popia_live_data_operations_readiness` | yes | `app.api_v2_routers.privacy_operations.get_popia_live_data_operations_readiness` |
+| `/api/v2/production-release/production-release/preflight` | `GET` | `get_production_release_preflight` | yes | `app.api_v2_routers.production_release.get_production_release_preflight` |
+| `/api/v2/production-release/production-release/true-state-runtime-baseline` | `GET` | `get_true_state_runtime_baseline` | yes | `app.api_v2_routers.production_release.get_true_state_runtime_baseline` |
+| `/api/v2/security-assurance/security-assurance/final-assurance` | `GET` | `get_security_final_assurance` | yes | `app.api_v2_routers.security_assurance.get_security_final_assurance` |
+| `/api/v2/security-assurance/security-assurance/readiness` | `GET` | `get_security_assurance_readiness` | yes | `app.api_v2_routers.security_assurance.get_security_assurance_readiness` |
+| `/api/v2/study-plans/study-plans/generate/{learner_id}` | `POST` | `generate_study_plan` | yes | `app.api_v2_routers.study_plans.generate_study_plan` |
+| `/api/v2/study-plans/study-plans/{learner_id}` | `POST` | `generate_study_plan` | yes | `app.api_v2_routers.study_plans.generate_study_plan` |
+| `/api/v2/system/system/capabilities` | `GET` | `get_capabilities` | yes | `app.api_v2_routers.system.get_capabilities` |
+| `/api/v2/system/system/health` | `GET` | `get_health` | yes | `app.api_v2_routers.system.get_health` |
+| `/api/v2/system/system/pillars` | `GET` | `get_pillars` | yes | `app.api_v2_routers.system.get_pillars` |
+| `/api/v2/system/system/schema-status` | `GET` | `get_schema_status` | yes | `app.api_v2_routers.system.get_schema_status` |
+| `/api/v2/tutor/tutor/sessions` | `POST` | `create_tutor_session` | yes | `app.api_v2_routers.tutor.create_tutor_session` |
+| `/api/v2/tutor/tutor/sessions/{session_id}` | `GET` | `get_tutor_session` | yes | `app.api_v2_routers.tutor.get_tutor_session` |
+| `/api/v2/tutor/tutor/sessions/{session_id}/cancel` | `POST` | `cancel_tutor_session` | yes | `app.api_v2_routers.tutor.cancel_tutor_session` |
+| `/api/v2/tutor/tutor/sessions/{session_id}/messages` | `POST` | `ask_tutor` | yes | `app.api_v2_routers.tutor.ask_tutor` |
+| `/api/v2/tutor/tutor/sessions/{session_id}/messages/stream` | `POST` | `stream_tutor_reply` | yes | `app.api_v2_routers.tutor.stream_tutor_reply` |
+| `/api/v2/vertical-journey/vertical-journey/learners/{learner_id}` | `GET` | `get_learner_vertical_journey` | yes | `app.api_v2_routers.vertical_journey.get_learner_vertical_journey` |
 | `/docs` | `GET,HEAD` | `swagger_ui_html` | no | `Route` |
 | `/docs/oauth2-redirect` | `GET,HEAD` | `swagger_ui_redirect` | no | `Route` |
 | `/health` | `GET` | `health` | yes | `app.api_v2.health` |
@@ -158,4 +310,228 @@ The canonical runtime is app.api_v2:app; no compatibility API entrypoint is reta
 | `/openapi.json` | `GET,HEAD` | `openapi` | no | `Route` |
 | `/ready` | `GET` | `ready` | yes | `app.api_v2.ready` |
 | `/redoc` | `GET,HEAD` | `redoc_html` | no | `Route` |
+| `/v2/admin/ai-operations/admin/ai-operations/budgets/tenants/{tenant_id}` | `GET` | `get_tenant_budget` | yes | `app.api_v2_routers.ai_operations.get_tenant_budget` |
+| `/v2/admin/ai-operations/admin/ai-operations/budgets/users/{user_id}` | `GET` | `get_user_budget` | yes | `app.api_v2_routers.ai_operations.get_user_budget` |
+| `/v2/admin/ai-operations/admin/ai-operations/providers/health` | `GET` | `provider_health` | yes | `app.api_v2_routers.ai_operations.provider_health` |
+| `/v2/admin/ai-operations/admin/ai-operations/reservations` | `GET` | `list_reservations` | yes | `app.api_v2_routers.ai_operations.list_reservations` |
+| `/v2/admin/ai-operations/admin/ai-operations/reservations/{operation_id}/cancel` | `POST` | `cancel_reservation` | yes | `app.api_v2_routers.ai_operations.cancel_reservation` |
+| `/v2/admin/ai-operations/admin/ai-operations/usage` | `GET` | `list_usage` | yes | `app.api_v2_routers.ai_operations.list_usage` |
+| `/v2/admin/consent/admin/consent/trigger-renewal-reminders` | `POST` | `trigger_renewal_reminders` | yes | `app.api_v2_routers.consent_renewal.trigger_renewal_reminders` |
+| `/v2/admin/content-factory/admin/content-factory/artifacts` | `GET` | `list_artifacts` | yes | `app.api_v2_routers.content_factory.list_artifacts` |
+| `/v2/admin/content-factory/admin/content-factory/artifacts/{artifact_id}` | `GET` | `get_artifact` | yes | `app.api_v2_routers.content_factory.get_artifact` |
+| `/v2/admin/content-factory/admin/content-factory/artifacts/{artifact_id}/provenance` | `GET` | `get_artifact_provenance` | yes | `app.api_v2_routers.content_factory.get_artifact_provenance` |
+| `/v2/admin/content-factory/admin/content-factory/artifacts/{artifact_id}/quarantine` | `POST` | `quarantine_artifact` | yes | `app.api_v2_routers.content_factory.quarantine_artifact` |
+| `/v2/admin/content-factory/admin/content-factory/artifacts/{artifact_id}/reject` | `POST` | `reject_artifact` | yes | `app.api_v2_routers.content_factory.reject_artifact` |
+| `/v2/admin/content-factory/admin/content-factory/artifacts/{artifact_id}/review-bundle` | `GET` | `get_artifact_review_bundle` | yes | `app.api_v2_routers.content_factory.get_artifact_review_bundle` |
+| `/v2/admin/content-factory/admin/content-factory/artifacts/{artifact_id}/submit-review` | `POST` | `submit_artifact_for_review` | yes | `app.api_v2_routers.content_factory.submit_artifact_for_review` |
+| `/v2/admin/content-factory/admin/content-factory/etl/status` | `GET` | `etl_status` | yes | `app.api_v2_routers.content_factory.etl_status` |
+| `/v2/admin/content-factory/admin/content-factory/full-generation/plan` | `POST` | `plan_full_generation` | yes | `app.api_v2_routers.content_factory.plan_full_generation` |
+| `/v2/admin/content-factory/admin/content-factory/full-generation/runs` | `GET` | `list_full_generation_runs` | yes | `app.api_v2_routers.content_factory.list_full_generation_runs` |
+| `/v2/admin/content-factory/admin/content-factory/full-generation/runs/{run_id}` | `GET` | `get_full_generation_run` | yes | `app.api_v2_routers.content_factory.get_full_generation_run` |
+| `/v2/admin/content-factory/admin/content-factory/full-generation/runs/{run_id}/cancel` | `POST` | `cancel_full_generation_run` | yes | `app.api_v2_routers.content_factory.cancel_full_generation_run` |
+| `/v2/admin/content-factory/admin/content-factory/full-generation/runs/{run_id}/report` | `GET` | `get_full_generation_run_report` | yes | `app.api_v2_routers.content_factory.get_full_generation_run_report` |
+| `/v2/admin/content-factory/admin/content-factory/full-generation/runs/{run_id}/resume` | `POST` | `resume_full_generation_run` | yes | `app.api_v2_routers.content_factory.resume_full_generation_run` |
+| `/v2/admin/content-factory/admin/content-factory/full-generation/start` | `POST` | `start_full_generation` | yes | `app.api_v2_routers.content_factory.start_full_generation` |
+| `/v2/admin/content-factory/admin/content-factory/health` | `GET` | `content_factory_health` | yes | `app.api_v2_routers.content_factory.content_factory_health` |
+| `/v2/admin/content-factory/admin/content-factory/production-preview/scopes/{scope_id}` | `GET` | `get_production_preview` | yes | `app.api_v2_routers.content_factory.get_production_preview` |
+| `/v2/admin/content-factory/admin/content-factory/production-preview/scopes/{scope_id}/caps/{caps_ref}` | `GET` | `get_production_preview_by_caps_ref` | yes | `app.api_v2_routers.content_factory.get_production_preview_by_caps_ref` |
+| `/v2/admin/content-factory/admin/content-factory/promotion-events` | `GET` | `list_promotion_events` | yes | `app.api_v2_routers.content_factory.list_promotion_events` |
+| `/v2/admin/content-factory/admin/content-factory/promotion-events/{promotion_event_id}` | `GET` | `get_promotion_event` | yes | `app.api_v2_routers.content_factory.get_promotion_event` |
+| `/v2/admin/content-factory/admin/content-factory/promotion-events/{promotion_event_id}/items` | `GET` | `get_promotion_event_items` | yes | `app.api_v2_routers.content_factory.get_promotion_event_items` |
+| `/v2/admin/content-factory/admin/content-factory/promotion-events/{promotion_event_id}/rollback` | `POST` | `rollback_promotion_event` | yes | `app.api_v2_routers.content_factory.rollback_promotion_event` |
+| `/v2/admin/content-factory/admin/content-factory/promotion-events/{promotion_event_id}/verify` | `POST` | `verify_promotion_event` | yes | `app.api_v2_routers.content_factory.verify_promotion_event` |
+| `/v2/admin/content-factory/admin/content-factory/provenance/{artifact_id}` | `GET` | `get_artifact_provenance` | yes | `app.api_v2_routers.content_factory.get_artifact_provenance` |
+| `/v2/admin/content-factory/admin/content-factory/reports/{scope_id}` | `GET` | `get_content_factory_report` | yes | `app.api_v2_routers.content_factory.get_content_factory_report` |
+| `/v2/admin/content-factory/admin/content-factory/review-assignments` | `GET` | `list_review_assignments` | yes | `app.api_v2_routers.content_factory.list_review_assignments` |
+| `/v2/admin/content-factory/admin/content-factory/review-assignments` | `POST` | `assign_reviewer` | yes | `app.api_v2_routers.content_factory.assign_reviewer` |
+| `/v2/admin/content-factory/admin/content-factory/review-assignments/bulk` | `POST` | `bulk_assign_reviewer` | yes | `app.api_v2_routers.content_factory.bulk_assign_reviewer` |
+| `/v2/admin/content-factory/admin/content-factory/review-queue` | `GET` | `get_review_queue` | yes | `app.api_v2_routers.content_factory.get_review_queue` |
+| `/v2/admin/content-factory/admin/content-factory/review-summary` | `GET` | `get_review_summary` | yes | `app.api_v2_routers.content_factory.get_review_summary` |
+| `/v2/admin/content-factory/admin/content-factory/review/bulk-approve` | `POST` | `bulk_approve_review` | yes | `app.api_v2_routers.content_factory.bulk_approve_review` |
+| `/v2/admin/content-factory/admin/content-factory/review/bulk-quarantine` | `POST` | `bulk_quarantine_review` | yes | `app.api_v2_routers.content_factory.bulk_quarantine_review` |
+| `/v2/admin/content-factory/admin/content-factory/review/bulk-reject` | `POST` | `bulk_reject_review` | yes | `app.api_v2_routers.content_factory.bulk_reject_review` |
+| `/v2/admin/content-factory/admin/content-factory/reviewers/{reviewer_id}/workload` | `GET` | `get_reviewer_workload` | yes | `app.api_v2_routers.content_factory.get_reviewer_workload` |
+| `/v2/admin/content-factory/admin/content-factory/runs` | `GET` | `list_generation_runs` | yes | `app.api_v2_routers.content_factory.list_generation_runs` |
+| `/v2/admin/content-factory/admin/content-factory/runs` | `POST` | `create_generation_run` | yes | `app.api_v2_routers.content_factory.create_generation_run` |
+| `/v2/admin/content-factory/admin/content-factory/runs/{run_id}` | `GET` | `get_generation_run` | yes | `app.api_v2_routers.content_factory.get_generation_run` |
+| `/v2/admin/content-factory/admin/content-factory/runs/{run_id}/cancel` | `POST` | `cancel_generation_run` | yes | `app.api_v2_routers.content_factory.cancel_generation_run` |
+| `/v2/admin/content-factory/admin/content-factory/runs/{run_id}/execute` | `POST` | `execute_generation_run` | yes | `app.api_v2_routers.content_factory.execute_generation_run` |
+| `/v2/admin/content-factory/admin/content-factory/runs/{run_id}/execution-report` | `GET` | `get_generation_execution_report` | yes | `app.api_v2_routers.content_factory.get_generation_execution_report` |
+| `/v2/admin/content-factory/admin/content-factory/runs/{run_id}/plan-missing` | `POST` | `plan_missing_generation_tasks` | yes | `app.api_v2_routers.content_factory.plan_missing_generation_tasks` |
+| `/v2/admin/content-factory/admin/content-factory/runs/{run_id}/retry-failed` | `POST` | `retry_failed_generation_tasks` | yes | `app.api_v2_routers.content_factory.retry_failed_generation_tasks` |
+| `/v2/admin/content-factory/admin/content-factory/runs/{run_id}/tasks` | `GET` | `get_generation_run_tasks` | yes | `app.api_v2_routers.content_factory.get_generation_run_tasks` |
+| `/v2/admin/content-factory/admin/content-factory/scopes` | `GET` | `list_content_scopes` | yes | `app.api_v2_routers.content_factory.list_content_scopes` |
+| `/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}` | `GET` | `get_content_scope` | yes | `app.api_v2_routers.content_factory.get_content_scope` |
+| `/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/coverage` | `GET` | `get_content_scope_coverage` | yes | `app.api_v2_routers.content_factory.get_content_scope_coverage` |
+| `/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/coverage/{caps_ref}` | `GET` | `get_content_caps_ref_coverage` | yes | `app.api_v2_routers.content_factory.get_content_caps_ref_coverage` |
+| `/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/dry-run-promotion` | `POST` | `dry_run_promotion` | yes | `app.api_v2_routers.content_factory.dry_run_promotion` |
+| `/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/dry-run-seed` | `POST` | `dry_run_scope_seed` | yes | `app.api_v2_routers.content_factory.dry_run_scope_seed` |
+| `/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/production-gate` | `GET` | `get_production_gate` | yes | `app.api_v2_routers.content_factory.get_production_gate` |
+| `/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/production-read-verification` | `GET` | `verify_scope_production` | yes | `app.api_v2_routers.content_factory.verify_scope_production` |
+| `/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/promote-production` | `POST` | `promote_production` | yes | `app.api_v2_routers.content_factory.promote_production` |
+| `/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/seed-staging` | `POST` | `seed_scope_staging` | yes | `app.api_v2_routers.content_factory.seed_scope_staging` |
+| `/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/staging-read-verification` | `GET` | `verify_scope_staging` | yes | `app.api_v2_routers.content_factory.verify_scope_staging` |
+| `/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/staging-readiness` | `GET` | `get_scope_staging_readiness` | yes | `app.api_v2_routers.content_factory.get_scope_staging_readiness` |
+| `/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/staging-verification` | `POST` | `run_scope_staging_verification` | yes | `app.api_v2_routers.content_factory.run_scope_staging_verification` |
+| `/v2/admin/content-factory/admin/content-factory/scopes/{scope_id}/targets` | `GET` | `get_content_scope_targets` | yes | `app.api_v2_routers.content_factory.get_content_scope_targets` |
+| `/v2/admin/content-factory/admin/content-factory/seed-runs` | `GET` | `list_seed_runs` | yes | `app.api_v2_routers.content_factory.list_seed_runs` |
+| `/v2/admin/content-factory/admin/content-factory/seed-runs/{seed_run_id}` | `GET` | `get_seed_run` | yes | `app.api_v2_routers.content_factory.get_seed_run` |
+| `/v2/admin/content-factory/admin/content-factory/seed-runs/{seed_run_id}/items` | `GET` | `get_seed_run_items` | yes | `app.api_v2_routers.content_factory.get_seed_run_items` |
+| `/v2/admin/content-factory/admin/content-factory/seed-runs/{seed_run_id}/rollback` | `POST` | `rollback_seed_run` | yes | `app.api_v2_routers.content_factory.rollback_seed_run` |
+| `/v2/admin/content-factory/admin/content-factory/seed-runs/{seed_run_id}/verify` | `POST` | `verify_seed_run` | yes | `app.api_v2_routers.content_factory.verify_seed_run` |
+| `/v2/admin/content-factory/admin/content-factory/staging-preview/scopes/{scope_id}` | `GET` | `get_staging_preview` | yes | `app.api_v2_routers.content_factory.get_staging_preview` |
+| `/v2/admin/content-factory/admin/content-factory/staging-preview/scopes/{scope_id}/caps/{caps_ref}` | `GET` | `get_staging_preview_by_caps_ref` | yes | `app.api_v2_routers.content_factory.get_staging_preview_by_caps_ref` |
+| `/v2/admin/content-factory/admin/content-factory/staging-verification/all-scopes` | `POST` | `run_all_scope_staging_verification` | yes | `app.api_v2_routers.content_factory.run_all_scope_staging_verification` |
+| `/v2/admin/content-factory/admin/content-factory/staging-verification/runs` | `GET` | `list_staging_verification_runs` | yes | `app.api_v2_routers.content_factory.list_staging_verification_runs` |
+| `/v2/admin/content-factory/admin/content-factory/staging-verification/runs/{run_id}` | `GET` | `get_staging_verification_run` | yes | `app.api_v2_routers.content_factory.get_staging_verification_run` |
+| `/v2/admin/content-factory/admin/content-factory/tasks/{task_id}` | `GET` | `get_generation_task` | yes | `app.api_v2_routers.content_factory.get_generation_task` |
+| `/v2/admin/content-factory/admin/content-factory/tasks/{task_id}/execute` | `POST` | `execute_generation_task` | yes | `app.api_v2_routers.content_factory.execute_generation_task` |
+| `/v2/admin/content-factory/admin/content-factory/validate-artifact` | `POST` | `validate_artifact_payload` | yes | `app.api_v2_routers.content_factory.validate_artifact_payload` |
+| `/v2/admin/curriculum-expansion/admin/curriculum-expansion/coverage/snapshots` | `POST` | `capture_snapshots` | yes | `app.api_v2_routers.curriculum_expansion.capture_snapshots` |
+| `/v2/admin/curriculum-expansion/admin/curriculum-expansion/coverage/{scope_id}` | `GET` | `get_scope_coverage` | yes | `app.api_v2_routers.curriculum_expansion.get_scope_coverage` |
+| `/v2/admin/curriculum-expansion/admin/curriculum-expansion/plans` | `POST` | `create_expansion_plan` | yes | `app.api_v2_routers.curriculum_expansion.create_expansion_plan` |
+| `/v2/admin/curriculum-expansion/admin/curriculum-expansion/training-manifests` | `POST` | `create_training_manifest` | yes | `app.api_v2_routers.curriculum_expansion.create_training_manifest` |
+| `/v2/admin/curriculum-expansion/admin/curriculum-expansion/training-manifests/{manifest_id}` | `GET` | `get_training_manifest` | yes | `app.api_v2_routers.curriculum_expansion.get_training_manifest` |
+| `/v2/admin/curriculum-expansion/admin/curriculum-expansion/training-manifests/{manifest_id}/decision` | `POST` | `decide_training_manifest` | yes | `app.api_v2_routers.curriculum_expansion.decide_training_manifest` |
+| `/v2/admin/curriculum-expansion/admin/curriculum-expansion/training-manifests/{manifest_id}/export` | `POST` | `export_training_manifest` | yes | `app.api_v2_routers.curriculum_expansion.export_training_manifest` |
+| `/v2/admin/etl/admin/etl/datasets` | `GET` | `list_etl_datasets` | yes | `app.api_v2_routers.admin_etl.list_etl_datasets` |
+| `/v2/admin/etl/admin/etl/documents` | `GET` | `list_etl_documents` | yes | `app.api_v2_routers.admin_etl.list_etl_documents` |
+| `/v2/admin/etl/admin/etl/documents/{document_id}` | `GET` | `get_etl_document` | yes | `app.api_v2_routers.admin_etl.get_etl_document` |
+| `/v2/admin/etl/admin/etl/documents/{document_id}/audit` | `GET` | `get_etl_document_audit` | yes | `app.api_v2_routers.admin_etl.get_etl_document_audit` |
+| `/v2/admin/etl/admin/etl/documents/{document_id}/chunks` | `GET` | `get_etl_document_chunks` | yes | `app.api_v2_routers.admin_etl.get_etl_document_chunks` |
+| `/v2/admin/etl/admin/etl/metrics` | `GET` | `get_etl_metrics` | yes | `app.api_v2_routers.admin_etl.get_etl_metrics` |
+| `/v2/admin/etl/admin/etl/quality/{document_id}` | `GET` | `get_etl_quality` | yes | `app.api_v2_routers.admin_etl.get_etl_quality` |
+| `/v2/admin/etl/admin/etl/review-queue` | `GET` | `get_etl_review_queue` | yes | `app.api_v2_routers.admin_etl.get_etl_review_queue` |
+| `/v2/admin/etl/admin/etl/search` | `GET` | `search_etl` | yes | `app.api_v2_routers.admin_etl.search_etl` |
+| `/v2/admin/etl/admin/etl/status` | `GET` | `etl_admin_status` | yes | `app.api_v2_routers.admin_etl.etl_admin_status` |
+| `/v2/admin/generation/admin/generation/runs` | `POST` | `start_generation_run` | yes | `app.api_v2_routers.generation.start_generation_run` |
+| `/v2/admin/generation/admin/generation/runs/{run_id}` | `GET` | `get_generation_run` | yes | `app.api_v2_routers.generation.get_generation_run` |
+| `/v2/admin/generation/admin/generation/runs/{run_id}/cancel` | `POST` | `cancel_generation_run` | yes | `app.api_v2_routers.generation.cancel_generation_run` |
+| `/v2/admin/generation/admin/generation/runs/{run_id}/tasks` | `GET` | `list_run_tasks` | yes | `app.api_v2_routers.generation.list_run_tasks` |
+| `/v2/admin/irt-quality/admin/irt-quality/items/{item_id}` | `GET` | `get_item_quality` | yes | `app.api_v2_routers.irt_quality.get_item_quality` |
+| `/v2/admin/irt-quality/admin/irt-quality/items/{item_id}/override` | `POST` | `set_manual_override` | yes | `app.api_v2_routers.irt_quality.set_manual_override` |
+| `/v2/admin/irt-quality/admin/irt-quality/items/{item_id}/override/clear` | `POST` | `clear_manual_override` | yes | `app.api_v2_routers.irt_quality.clear_manual_override` |
+| `/v2/admin/irt-quality/admin/irt-quality/runs` | `POST` | `create_calibration_run` | yes | `app.api_v2_routers.irt_quality.create_calibration_run` |
+| `/v2/admin/irt-quality/admin/irt-quality/runs/{run_id}` | `GET` | `get_calibration_run` | yes | `app.api_v2_routers.irt_quality.get_calibration_run` |
+| `/v2/assessments/assessments` | `GET` | `list_assessments` | yes | `app.api_v2_routers.assessments.list_assessments` |
+| `/v2/assessments/assessments/{assessment_id}/attempt` | `POST` | `submit_attempt` | yes | `app.api_v2_routers.assessments.submit_attempt` |
+| `/v2/audit/audit` | `GET` | `get_audit_feed` | yes | `app.api_v2_routers.audit.get_audit_feed` |
+| `/v2/audit/audit/feed` | `GET` | `get_audit_feed_alias` | yes | `app.api_v2_routers.audit.get_audit_feed_alias` |
+| `/v2/auth/auth/dev-session` | `POST` | `create_dev_session` | yes | `app.api_v2_routers.auth.create_dev_session` |
+| `/v2/auth/auth/forgot-password` | `POST` | `forgot_password` | yes | `app.api_v2_routers.auth_extended.forgot_password` |
+| `/v2/auth/auth/login` | `POST` | `login` | yes | `app.api_v2_routers.auth.login` |
+| `/v2/auth/auth/logout` | `POST` | `logout` | yes | `app.api_v2_routers.auth.logout` |
+| `/v2/auth/auth/me` | `GET` | `me` | yes | `app.api_v2_routers.auth.me` |
+| `/v2/auth/auth/onboarding` | `GET` | `get_onboarding` | yes | `app.api_v2_routers.auth_extended.get_onboarding` |
+| `/v2/auth/auth/onboarding/profile` | `PATCH` | `update_learner_profile` | yes | `app.api_v2_routers.auth_extended.update_learner_profile` |
+| `/v2/auth/auth/onboarding/step` | `PATCH` | `update_onboarding_step` | yes | `app.api_v2_routers.auth_extended.update_onboarding_step` |
+| `/v2/auth/auth/privacy` | `GET` | `get_privacy_settings` | yes | `app.api_v2_routers.auth_extended.get_privacy_settings` |
+| `/v2/auth/auth/privacy` | `PATCH` | `update_privacy_settings` | yes | `app.api_v2_routers.auth_extended.update_privacy_settings` |
+| `/v2/auth/auth/privacy/request-deletion` | `POST` | `request_account_deletion` | yes | `app.api_v2_routers.auth_extended.request_account_deletion` |
+| `/v2/auth/auth/privacy/request-export` | `POST` | `request_data_export` | yes | `app.api_v2_routers.auth_extended.request_data_export` |
+| `/v2/auth/auth/refresh` | `POST` | `refresh` | yes | `app.api_v2_routers.auth.refresh` |
+| `/v2/auth/auth/register` | `POST` | `register` | yes | `app.api_v2_routers.auth.register` |
+| `/v2/auth/auth/reset-password` | `POST` | `reset_password` | yes | `app.api_v2_routers.auth_extended.reset_password` |
+| `/v2/auth/auth/revoke-all` | `POST` | `revoke_all_tokens` | yes | `app.api_v2_routers.auth.revoke_all_tokens` |
+| `/v2/auth/auth/send-verification` | `POST` | `send_verification` | yes | `app.api_v2_routers.auth_extended.send_verification` |
+| `/v2/auth/auth/sessions` | `GET` | `list_sessions` | yes | `app.api_v2_routers.auth.list_sessions` |
+| `/v2/auth/auth/verify-email` | `GET` | `verify_email` | yes | `app.api_v2_routers.auth_extended.verify_email` |
+| `/v2/billing/billing/checkout` | `POST` | `create_checkout` | yes | `app.api_v2_routers.billing.create_checkout` |
+| `/v2/billing/billing/create-checkout-session` | `POST` | `create_checkout` | yes | `app.api_v2_routers.billing.create_checkout` |
+| `/v2/billing/billing/webhook` | `POST` | `stripe_webhook` | yes | `app.api_v2_routers.billing.stripe_webhook` |
+| `/v2/commercial-launch/commercial-launch/readiness` | `GET` | `get_commercial_launch_readiness` | yes | `app.api_v2_routers.commercial_launch.get_commercial_launch_readiness` |
+| `/v2/commercial-launch/commercial-launch/runtime-audit-remediation` | `GET` | `get_commercial_runtime_audit_remediation` | yes | `app.api_v2_routers.commercial_launch.get_commercial_runtime_audit_remediation` |
+| `/v2/consent/consent/grant` | `POST` | `grant_consent` | yes | `app.api_v2_routers.consent.grant_consent` |
+| `/v2/consent/consent/revoke` | `POST` | `revoke_consent` | yes | `app.api_v2_routers.consent.revoke_consent` |
+| `/v2/consent/consent/status/{learner_id}` | `GET` | `consent_status` | yes | `app.api_v2_routers.consent.consent_status` |
+| `/v2/content-quality/content-quality/grade4-mathematics/final-acceptance` | `GET` | `get_grade4_maths_content_quality_final_acceptance` | yes | `app.api_v2_routers.content_quality.get_grade4_maths_content_quality_final_acceptance` |
+| `/v2/content-quality/content-quality/grade4-mathematics/readiness` | `GET` | `get_grade4_maths_content_quality_readiness` | yes | `app.api_v2_routers.content_quality.get_grade4_maths_content_quality_readiness` |
+| `/v2/content-review/content-review/artifacts/{artifact_id}/answer-key-verifications` | `POST` | `record_answer_key_verification` | yes | `app.api_v2_routers.content_review.record_answer_key_verification` |
+| `/v2/content-review/content-review/artifacts/{artifact_id}/assignments` | `POST` | `assign_reviewers` | yes | `app.api_v2_routers.content_review.assign_reviewers` |
+| `/v2/content-review/content-review/artifacts/{artifact_id}/decisions` | `POST` | `submit_review_decision` | yes | `app.api_v2_routers.content_review.submit_review_decision` |
+| `/v2/content-review/content-review/artifacts/{artifact_id}/history` | `GET` | `get_review_history` | yes | `app.api_v2_routers.content_review.get_review_history` |
+| `/v2/content-review/content-review/artifacts/{artifact_id}/publish` | `POST` | `publish_artifact` | yes | `app.api_v2_routers.content_review.publish_artifact` |
+| `/v2/content-review/content-review/artifacts/{artifact_id}/quarantine` | `POST` | `quarantine_artifact` | yes | `app.api_v2_routers.content_review.quarantine_artifact` |
+| `/v2/content-review/content-review/artifacts/{artifact_id}/revisions` | `POST` | `create_artifact_revision` | yes | `app.api_v2_routers.content_review.create_artifact_revision` |
+| `/v2/content-review/content-review/assignments/stale` | `GET` | `list_stale_assignments` | yes | `app.api_v2_routers.content_review.list_stale_assignments` |
+| `/v2/content-review/content-review/assignments/{assignment_id}/accept` | `POST` | `accept_assignment` | yes | `app.api_v2_routers.content_review.accept_assignment` |
+| `/v2/content-review/content-review/assignments/{assignment_id}/reassign` | `POST` | `reassign_review` | yes | `app.api_v2_routers.content_review.reassign_review` |
+| `/v2/controlled-beta/controlled-beta/final-authorisation` | `GET` | `get_controlled_beta_final_authorisation` | yes | `app.api_v2_routers.controlled_beta.get_controlled_beta_final_authorisation` |
+| `/v2/controlled-beta/controlled-beta/preflight` | `GET` | `get_controlled_beta_preflight` | yes | `app.api_v2_routers.controlled_beta.get_controlled_beta_preflight` |
+| `/v2/diagnostics` | `-` | `-` | no | `_IncludedRouter` |
+| `/v2/diagnostics/diagnostics/coverage` | `GET` | `get_item_bank_coverage` | yes | `app.api_v2_routers.diagnostics.get_item_bank_coverage` |
+| `/v2/diagnostics/diagnostics/item-bank/items/{item_id}` | `GET` | `get_item_bank_item` | yes | `app.api_v2_routers.diagnostics.get_item_bank_item` |
+| `/v2/diagnostics/diagnostics/item-bank/items/{item_id}/review` | `POST` | `review_item_bank_item` | yes | `app.api_v2_routers.diagnostics.review_item_bank_item` |
+| `/v2/diagnostics/diagnostics/items/{learner_id}` | `GET` | `get_diagnostic_items` | yes | `app.api_v2_routers.diagnostics.get_diagnostic_items` |
+| `/v2/diagnostics/diagnostics/sessions` | `POST` | `start_diagnostic_session` | yes | `app.api_v2_routers.diagnostics.start_diagnostic_session` |
+| `/v2/diagnostics/diagnostics/sessions/{session_id}/next-item` | `GET` | `diagnostic_next_item` | yes | `app.api_v2_routers.diagnostics.diagnostic_next_item` |
+| `/v2/diagnostics/diagnostics/sessions/{session_id}/recover` | `GET` | `recover_diagnostic_session` | yes | `app.api_v2_routers.diagnostics.recover_diagnostic_session` |
+| `/v2/diagnostics/diagnostics/sessions/{session_id}/respond` | `POST` | `diagnostic_respond` | yes | `app.api_v2_routers.diagnostics.diagnostic_respond` |
+| `/v2/diagnostics/diagnostics/submit` | `POST` | `submit_diagnostic` | yes | `app.api_v2_routers.diagnostics.submit_diagnostic` |
+| `/v2/gamification/gamification/award-xp` | `POST` | `award_xp` | yes | `app.api_v2_routers.gamification.award_xp` |
+| `/v2/gamification/gamification/leaderboard` | `GET` | `get_leaderboard` | yes | `app.api_v2_routers.gamification.get_leaderboard` |
+| `/v2/gamification/gamification/profile/{learner_id}` | `GET` | `get_profile` | yes | `app.api_v2_routers.gamification.get_profile` |
 | `/v2/health/deep` | `GET` | `ready` | yes | `app.api_v2.ready` |
+| `/v2/jobs/jobs/{job_id}` | `GET` | `get_job_status` | yes | `app.api_v2_routers.jobs.get_job_status` |
+| `/v2/learner/content/learner/content/scopes/{scope_id}/caps/{caps_ref}/diagnostic-items` | `GET` | `get_diagnostic_items_by_caps_ref` | yes | `app.api_v2_routers.learner_content.get_diagnostic_items_by_caps_ref` |
+| `/v2/learner/content/learner/content/scopes/{scope_id}/caps/{caps_ref}/lessons` | `GET` | `get_lessons_by_caps_ref` | yes | `app.api_v2_routers.learner_content.get_lessons_by_caps_ref` |
+| `/v2/learner/content/learner/content/scopes/{scope_id}/diagnostic-items` | `GET` | `get_diagnostic_items` | yes | `app.api_v2_routers.learner_content.get_diagnostic_items` |
+| `/v2/learner/content/learner/content/scopes/{scope_id}/lessons` | `GET` | `get_lessons` | yes | `app.api_v2_routers.learner_content.get_lessons` |
+| `/v2/learner/content/learner/content/scopes/{scope_id}/summary` | `GET` | `get_scope_summary` | yes | `app.api_v2_routers.learner_content.get_scope_summary` |
+| `/v2/learners/learners` | `POST` | `create_learner` | yes | `app.api_v2_routers.learners.create_learner` |
+| `/v2/learners/learners/{learner_id}` | `DELETE` | `request_erasure` | yes | `app.api_v2_routers.learners.request_erasure` |
+| `/v2/learners/learners/{learner_id}` | `GET` | `get_learner` | yes | `app.api_v2_routers.learners.get_learner` |
+| `/v2/learners/learners/{learner_id}/mastery` | `GET` | `get_mastery` | yes | `app.api_v2_routers.learners.get_mastery` |
+| `/v2/learners/learners/{learner_id}/mastery/summary` | `GET` | `get_mastery_summary` | yes | `app.api_v2_routers.learners.get_mastery_summary` |
+| `/v2/learners/learners/{learner_id}/mastery/{caps_ref}` | `GET` | `get_topic_mastery` | yes | `app.api_v2_routers.learners.get_topic_mastery` |
+| `/v2/lessons` | `-` | `-` | no | `_IncludedRouter` |
+| `/v2/lessons` | `-` | `-` | no | `_IncludedRouter` |
+| `/v2/lessons/lessons` | `POST` | `generate_lesson` | yes | `app.api_v2_routers.lessons.generate_lesson` |
+| `/v2/lessons/lessons/generate` | `POST` | `generate_lesson` | yes | `app.api_v2_routers.lessons.generate_lesson` |
+| `/v2/lessons/lessons/generate/stream` | `POST` | `generate_lesson_stream` | yes | `app.api_v2_routers.lessons.generate_lesson_stream` |
+| `/v2/lessons/lessons/sync` | `POST` | `sync_lessons` | yes | `app.api_v2_routers.lessons.sync_lessons` |
+| `/v2/lessons/lessons/{lesson_id}` | `GET` | `get_lesson` | yes | `app.api_v2_routers.lessons.get_lesson` |
+| `/v2/lessons/lessons/{lesson_id}/complete` | `POST` | `complete_lesson` | yes | `app.api_v2_routers.lessons.complete_lesson` |
+| `/v2/observability-sre/observability-sre/final-assurance` | `GET` | `get_observability_sre_final_assurance` | yes | `app.api_v2_routers.observability_sre.get_observability_sre_final_assurance` |
+| `/v2/observability-sre/observability-sre/readiness` | `GET` | `get_observability_sre_readiness` | yes | `app.api_v2_routers.observability_sre.get_observability_sre_readiness` |
+| `/v2/onboarding/onboarding/archetype` | `POST` | `submit_onboarding` | yes | `app.api_v2_routers.onboarding.submit_onboarding` |
+| `/v2/onboarding/onboarding/questions` | `GET` | `get_onboarding_questions` | yes | `app.api_v2_routers.onboarding.get_onboarding_questions` |
+| `/v2/onboarding/onboarding/submit` | `POST` | `submit_onboarding` | yes | `app.api_v2_routers.onboarding.submit_onboarding` |
+| `/v2/parents/parents/dashboard` | `GET` | `get_parent_dashboard` | yes | `app.api_v2_routers.parents.get_parent_dashboard` |
+| `/v2/parents/parents/learners/{learner_id}` | `DELETE` | `request_erasure` | yes | `app.api_v2_routers.parents.request_erasure` |
+| `/v2/parents/parents/learners/{learner_id}/progress` | `GET` | `get_learner_progress` | yes | `app.api_v2_routers.parents.get_learner_progress` |
+| `/v2/parents/parents/{guardian_id}/dashboard` | `GET` | `get_parent_trust_dashboard` | yes | `app.api_v2_routers.parents.get_parent_trust_dashboard` |
+| `/v2/parents/parents/{guardian_id}/export` | `GET` | `export_parent_access_bundle` | yes | `app.api_v2_routers.parents.export_parent_access_bundle` |
+| `/v2/performance-scale-cost/performance-scale-cost/final-assurance` | `GET` | `get_performance_scale_cost_final_assurance` | yes | `app.api_v2_routers.performance_scale_cost.get_performance_scale_cost_final_assurance` |
+| `/v2/performance-scale-cost/performance-scale-cost/readiness` | `GET` | `get_performance_scale_cost_readiness` | yes | `app.api_v2_routers.performance_scale_cost.get_performance_scale_cost_readiness` |
+| `/v2/popia/popia/consent/deny` | `POST` | `deny_consent` | yes | `app.api_v2_routers.popia.deny_consent` |
+| `/v2/popia/popia/consent/grant` | `POST` | `grant_consent` | yes | `app.api_v2_routers.popia.grant_consent` |
+| `/v2/popia/popia/consent/renew` | `POST` | `renew_consent` | yes | `app.api_v2_routers.popia.renew_consent` |
+| `/v2/popia/popia/consent/withdraw` | `POST` | `withdraw_consent` | yes | `app.api_v2_routers.popia.withdraw_consent` |
+| `/v2/popia/popia/correction` | `POST` | `create_correction_request` | yes | `app.api_v2_routers.popia.create_correction_request` |
+| `/v2/popia/popia/erasure` | `POST` | `create_erasure_request` | yes | `app.api_v2_routers.popia.create_erasure_request` |
+| `/v2/popia/popia/erasure/{learner_id}/cancel` | `POST` | `cancel_erasure` | yes | `app.api_v2_routers.popia.cancel_erasure` |
+| `/v2/popia/popia/erasure/{learner_id}/status` | `GET` | `erasure_status` | yes | `app.api_v2_routers.popia.erasure_status` |
+| `/v2/popia/popia/exports` | `POST` | `create_export_request` | yes | `app.api_v2_routers.popia.create_export_request` |
+| `/v2/popia/popia/restriction` | `POST` | `create_restriction_request` | yes | `app.api_v2_routers.popia.create_restriction_request` |
+| `/v2/practice/practice/sessions` | `POST` | `create_practice_session` | yes | `app.modules.practice.router.create_practice_session` |
+| `/v2/practice/practice/sessions/{session_id}/next-item` | `GET` | `next_practice_item` | yes | `app.modules.practice.router.next_practice_item` |
+| `/v2/practice/practice/sessions/{session_id}/respond` | `POST` | `respond_practice` | yes | `app.modules.practice.router.respond_practice` |
+| `/v2/privacy-operations/privacy-operations/live-data/final-assurance` | `GET` | `get_popia_live_data_operations_final_assurance` | yes | `app.api_v2_routers.privacy_operations.get_popia_live_data_operations_final_assurance` |
+| `/v2/privacy-operations/privacy-operations/live-data/readiness` | `GET` | `get_popia_live_data_operations_readiness` | yes | `app.api_v2_routers.privacy_operations.get_popia_live_data_operations_readiness` |
+| `/v2/production-release/production-release/preflight` | `GET` | `get_production_release_preflight` | yes | `app.api_v2_routers.production_release.get_production_release_preflight` |
+| `/v2/production-release/production-release/true-state-runtime-baseline` | `GET` | `get_true_state_runtime_baseline` | yes | `app.api_v2_routers.production_release.get_true_state_runtime_baseline` |
+| `/v2/security-assurance/security-assurance/final-assurance` | `GET` | `get_security_final_assurance` | yes | `app.api_v2_routers.security_assurance.get_security_final_assurance` |
+| `/v2/security-assurance/security-assurance/readiness` | `GET` | `get_security_assurance_readiness` | yes | `app.api_v2_routers.security_assurance.get_security_assurance_readiness` |
+| `/v2/study-plans/study-plans/generate/{learner_id}` | `POST` | `generate_study_plan` | yes | `app.api_v2_routers.study_plans.generate_study_plan` |
+| `/v2/study-plans/study-plans/{learner_id}` | `POST` | `generate_study_plan` | yes | `app.api_v2_routers.study_plans.generate_study_plan` |
+| `/v2/system/system/capabilities` | `GET` | `get_capabilities` | yes | `app.api_v2_routers.system.get_capabilities` |
+| `/v2/system/system/health` | `GET` | `get_health` | yes | `app.api_v2_routers.system.get_health` |
+| `/v2/system/system/pillars` | `GET` | `get_pillars` | yes | `app.api_v2_routers.system.get_pillars` |
+| `/v2/system/system/schema-status` | `GET` | `get_schema_status` | yes | `app.api_v2_routers.system.get_schema_status` |
+| `/v2/tutor/tutor/sessions` | `POST` | `create_tutor_session` | yes | `app.api_v2_routers.tutor.create_tutor_session` |
+| `/v2/tutor/tutor/sessions/{session_id}` | `GET` | `get_tutor_session` | yes | `app.api_v2_routers.tutor.get_tutor_session` |
+| `/v2/tutor/tutor/sessions/{session_id}/cancel` | `POST` | `cancel_tutor_session` | yes | `app.api_v2_routers.tutor.cancel_tutor_session` |
+| `/v2/tutor/tutor/sessions/{session_id}/messages` | `POST` | `ask_tutor` | yes | `app.api_v2_routers.tutor.ask_tutor` |
+| `/v2/tutor/tutor/sessions/{session_id}/messages/stream` | `POST` | `stream_tutor_reply` | yes | `app.api_v2_routers.tutor.stream_tutor_reply` |
+| `/v2/vertical-journey/vertical-journey/learners/{learner_id}` | `GET` | `get_learner_vertical_journey` | yes | `app.api_v2_routers.vertical_journey.get_learner_vertical_journey` |

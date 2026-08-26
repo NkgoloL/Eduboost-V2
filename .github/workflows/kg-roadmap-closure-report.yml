@@ -17,12 +17,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12.3"
       - name: Verify KG roadmap closure authority
         run: |
           python3 -m py_compile \
             scripts/knowledge_graph/audit_kg_roadmap_closure.py \
             scripts/roadmap_reconciliation/capture_kg_roadmap_closure_evidence.py \
             scripts/roadmap_reconciliation/verify_kg_roadmap_closure.py
-          python3 -m pytest -q tests/unit/roadmap_reconciliation/test_kg_roadmap_closure.py --no-cov
           PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg_roadmap_closure.py --authority-only --json

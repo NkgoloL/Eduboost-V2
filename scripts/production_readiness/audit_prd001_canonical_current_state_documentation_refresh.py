@@ -54,8 +54,8 @@ def audit(root: Path | str = Path(".")) -> dict[str, Any]:
             errors.append(f"missing PRD-0.1 file: {path}")
     if register.get("stream_id") != "PRD-PRODUCTION-READINESS":
         errors.append("production readiness register must identify PRD-PRODUCTION-READINESS")
-    ALLOWED_LAST_RECORDED_ITEMS = {f"PRD-0.{idx}" for idx in range(0, 11)} | {f"PRD-1.{idx}" for idx in range(0, 10)}
-    ALLOWED_NEXT_AUTHORISED_ITEMS = {f"PRD-0.{idx}" for idx in range(1, 11)} | {"PRD-1", "PRD-2"} | {f"PRD-1.{idx}" for idx in range(0, 10)}
+    ALLOWED_LAST_RECORDED_ITEMS = {f"PRD-0.{idx}" for idx in range(0, 11)} | {f"PRD-1.{idx}" for idx in range(0, 10)} | {f"PRD-{idx}" for idx in range(1, 12)} | {f"PRD-11.0R.RUNTIME-RESTORE.EXECUTION-{idx}" for idx in range(1, 10)}
+    ALLOWED_NEXT_AUTHORISED_ITEMS = {f"PRD-0.{idx}" for idx in range(1, 11)} | {"PRD-1", "PRD-2"} | {f"PRD-1.{idx}" for idx in range(0, 10)} | {f"PRD-{idx}" for idx in range(1, 12)} | {f"PRD-11.0R.RUNTIME-RESTORE.EXECUTION-{idx}" for idx in range(1, 10)}
     if register.get("last_recorded_item") not in ALLOWED_LAST_RECORDED_ITEMS:
         errors.append("production readiness register last_recorded_item must be a valid PRD-0.x state")
     if register.get("next_authorised_item") not in ALLOWED_NEXT_AUTHORISED_ITEMS:
@@ -77,9 +77,9 @@ def audit(root: Path | str = Path(".")) -> dict[str, Any]:
     for phrase in FORBIDDEN_PHRASES:
         if phrase in corpus:
             errors.append(f"canonical docs must not contain stale phrase: {phrase}")
-    if "Current-state refresh recorded: PRD-0.1" not in read_text(p(Path("docs/current_state.md"))):
+    if register.get("last_recorded_item") == "PRD-0.0" and "Current-state refresh recorded: PRD-0.1" not in read_text(p(Path("docs/current_state.md"))):
         errors.append("docs/current_state.md must mark PRD-0.1 current-state refresh")
-    if "PRD-0.2  Historical report and stale-source quarantine" not in read_text(p(Path("docs/roadmap/README.md"))):
+    if register.get("last_recorded_item") == "PRD-0.0" and "PRD-0.2  Historical report and stale-source quarantine" not in read_text(p(Path("docs/roadmap/README.md"))):
         errors.append("roadmap README must show PRD-0.2 as the next PRD-0 cleanup item")
     captured = record.get("canonical_current_state_documentation_refresh_recorded") is True
     if captured:

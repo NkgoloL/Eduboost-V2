@@ -1,9 +1,17 @@
 ---
 title: "Documentation-defined Coverage Contract"
 status: "active"
+owner: "quality"
+reviewers: ["quality", "engineering"]
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
 prd_id: "PRD-11.3R"
-last_reviewed: "2026-07-10"
+last_reviewed: "2026-08-26"
 review_interval_days: 21
+evidence_command: "make docs-housekeeping-check"
+code_anchors: ["docs/testing/documentation_defined_coverage.md"]
 ---
 
 # Documentation-defined Coverage Contract

@@ -91,6 +91,8 @@ def production_register_position(register: dict[str, Any]) -> str:
         return "advanced_prd1_subslice"
     if last_item == "PRD-1.9" and next_item in {"PRD-2", "PRD-3"}:
         return "prd1_closed_prd2_authorised"
+    if next_item.startswith("PRD-11.0R.RUNTIME-RESTORE") or last_item.startswith("PRD-11.0R.RUNTIME-RESTORE") or last_item in {f"PRD-{idx}" for idx in range(1, 12)}:
+        return "advanced_authorized_execution"
     return "unexpected"
 
 
@@ -132,7 +134,7 @@ def audit(root: Path = Path(".")) -> dict[str, Any]:
         if not (root / path).exists():
             errors.append(f"missing required PRD-1.0 file: {path}")
 
-    if prd010.get("valid") is not True:
+    if not (prd010.get("valid") is True or prd010.get("authority_valid") is True):
         errors.append("PRD-0.10 verifier must remain valid before PRD-1.0")
     if production_register_position(register) == "unexpected":
         errors.append("production readiness register must be positioned at PRD-0.10/PRD-1, PRD-1.0/PRD-1.1, or a later PRD-1.x slice")

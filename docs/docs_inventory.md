@@ -1,9 +1,9 @@
 # Documentation Inventory
 
-Generated at: `2026-08-03T14:17:26Z`
-Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
+Generated at: `2026-08-26T09:04:54Z`
+Commit: `174a67aab63626f837a79b86763022cca5a7b7bb`
 
-- Documents: `2811`
+- Documents: `2883`
 - Generated docs: `4`
 
 ## Categories
@@ -11,9 +11,9 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | Category | Count |
 |---|---:|
 | `adr` | 58 |
-| `api` | 9 |
+| `api` | 10 |
 | `architecture` | 44 |
-| `general` | 2098 |
+| `general` | 2169 |
 | `release` | 492 |
 | `security` | 110 |
 
@@ -94,7 +94,7 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/ai/ai_output_schema_contract.md` | `general` | AI Output Schema Contract | 1236 | False |
 | `docs/ai/ai_prompt_input_contract.md` | `general` | AI Prompt Input Contract | 1340 | False |
 | `docs/ai/ai_prompt_secret_leakage_guard.md` | `general` | AI Prompt Secret Leakage Guard | 1101 | False |
-| `docs/ai/ai_prompt_surface_inventory.md` | `general` | AI Prompt Surface Inventory | 34630 | False |
+| `docs/ai/ai_prompt_surface_inventory.md` | `general` | AI Prompt Surface Inventory | 34987 | False |
 | `docs/ai/ai_refusal_regression_fixtures.md` | `general` | AI Refusal Regression Fixtures | 874 | False |
 | `docs/ai/ai_safety_boundary_contract.md` | `general` | AI Safety Boundary Contract | 1274 | False |
 | `docs/ai/ai_safety_evidence_index.md` | `general` | AI Safety Evidence Index | 1724 | False |
@@ -138,13 +138,13 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/architecture/architecture_decisions.md` | `architecture` | Architecture Decisions Index | 1185 | False |
 | `docs/architecture/architecture_diagram.md` | `architecture` | EduBoost SA V2 — Architecture Diagram | 4379 | False |
 | `docs/architecture/auth_boundary_debt_report.json` | `architecture` | Auth Boundary Debt Report | 453 | False |
-| `docs/architecture/auth_boundary_debt_report.md` | `architecture` | Auth Boundary Debt Report | 433 | False |
+| `docs/architecture/auth_boundary_debt_report.md` | `architecture` | Auth Boundary Debt Report | 789 | False |
 | `docs/architecture/auth_lifecycle_extraction_report.json` | `architecture` | Auth Lifecycle Extraction Report | 438 | False |
 | `docs/architecture/auth_lifecycle_extraction_report.md` | `architecture` | Auth Lifecycle Extraction Report | 973 | False |
 | `docs/architecture/auth_service_extraction_followup.json` | `architecture` | Auth Service Extraction Followup | 371 | False |
-| `docs/architecture/auth_service_extraction_followup.md` | `architecture` | Auth Service Extraction Follow-up | 369 | False |
+| `docs/architecture/auth_service_extraction_followup.md` | `architecture` | Auth Service Extraction Follow-up | 740 | False |
 | `docs/architecture/auth_service_extraction_report.json` | `architecture` | Auth Service Extraction Report | 1417 | False |
-| `docs/architecture/auth_service_extraction_report.md` | `architecture` | Auth Service Extraction Report | 538 | False |
+| `docs/architecture/auth_service_extraction_report.md` | `architecture` | Auth Service Extraction Report | 904 | False |
 | `docs/architecture/auth_service_ownership_report.json` | `architecture` | Auth Service Ownership Report | 522 | False |
 | `docs/architecture/auth_service_ownership_report.md` | `architecture` | Auth Service Ownership Report | 903 | False |
 | `docs/architecture/boundary_debt_queue.md` | `architecture` | Boundary Debt Queue | 1029 | False |
@@ -152,30 +152,30 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/architecture/db_live_only_table_ownership.yml` | `architecture` | Db Live Only Table Ownership | 1566 | False |
 | `docs/architecture/diagnostic_item_bank_canonicality.yml` | `architecture` | Diagnostic Item Bank Canonicality | 1289 | False |
 | `docs/architecture/import_boundaries.md` | `architecture` | Import Boundaries | 2701 | False |
-| `docs/architecture/import_linter_availability.md` | `architecture` | Import-Linter Availability | 122 | False |
-| `docs/architecture/import_linter_contract_run.md` | `architecture` | Import-Linter Contract Run | 1130 | False |
+| `docs/architecture/import_linter_availability.md` | `architecture` | Import-Linter Availability | 480 | False |
+| `docs/architecture/import_linter_contract_run.md` | `architecture` | Import-Linter Contract Run | 1488 | False |
 | `docs/architecture/knowledge_graph_data_model.md` | `architecture` | Knowledge Graph Data Model | 5617 | False |
 | `docs/architecture/knowledge_graph_learning_state_architecture.md` | `architecture` | Knowledge Graph Learning-State Architecture | 6381 | False |
 | `docs/architecture/knowledge_graph_transition_plan.md` | `architecture` | Knowledge Graph Transition Plan | 5284 | False |
 | `docs/architecture/legacy_learner_access_guard_report.json` | `architecture` | Legacy Learner Access Guard Report | 234 | False |
 | `docs/architecture/legacy_learner_access_guard_report.md` | `architecture` | Legacy Learner Access Guard Report | 651 | False |
 | `docs/architecture/metaphor_glossary.md` | `architecture` | Metaphor → Domain Name Glossary | 1567 | False |
-| `docs/architecture/metaphor_layer_inventory_baseline.json` | `architecture` | Metaphor Layer Inventory Baseline | 34916 | False |
+| `docs/architecture/metaphor_layer_inventory_baseline.json` | `architecture` | Metaphor Layer Inventory Baseline | 17267 | False |
 | `docs/architecture/router_repository_boundary_inventory.md` | `architecture` | Router Repository Boundary Inventory | 742 | False |
 | `docs/architecture/router_repository_boundary_matrix.json` | `architecture` | Router Repository Boundary Matrix | 8279 | False |
-| `docs/architecture/router_repository_boundary_matrix.md` | `architecture` | Router Repository Boundary Matrix | 3257 | False |
+| `docs/architecture/router_repository_boundary_matrix.md` | `architecture` | Router Repository Boundary Matrix | 3629 | False |
 | `docs/architecture/router_service_dependency_map.json` | `architecture` | Router Service Dependency Map | 14972 | False |
-| `docs/architecture/router_service_dependency_map.md` | `architecture` | Router Service Dependency Map | 7511 | False |
-| `docs/architecture/router_thinness_baseline.json` | `architecture` | Router Thinness Baseline | 28163 | False |
+| `docs/architecture/router_service_dependency_map.md` | `architecture` | Router Service Dependency Map | 7875 | False |
+| `docs/architecture/router_thinness_baseline.json` | `architecture` | Router Thinness Baseline | 28287 | False |
 | `docs/architecture/service_boundary_classification_policy.md` | `architecture` | Service Boundary Classification Policy | 1489 | False |
 | `docs/architecture/service_boundary_inventory.json` | `architecture` | Service Boundary Inventory | 29912 | False |
-| `docs/architecture/service_boundary_inventory.md` | `architecture` | Service Boundary Inventory | 17572 | False |
+| `docs/architecture/service_boundary_inventory.md` | `architecture` | Service Boundary Inventory | 17930 | False |
 | `docs/architecture/service_family_map.json` | `architecture` | Service Family Map | 141007 | False |
-| `docs/architecture/service_family_map.md` | `architecture` | Service Family Map | 38376 | False |
-| `docs/architecture/transaction_boundary_inventory.json` | `architecture` | Transaction Boundary Inventory | 105251 | False |
-| `docs/architecture/transaction_boundary_inventory.md` | `architecture` | Transaction Boundary Inventory | 47175 | False |
-| `docs/architecture/tx_route_wiring_inventory.json` | `architecture` | Tx Route Wiring Inventory | 9748 | False |
-| `docs/architecture/tx_route_wiring_inventory.md` | `architecture` | Transaction Route Wiring Inventory | 4890 | False |
+| `docs/architecture/service_family_map.md` | `architecture` | Service Family Map | 38718 | False |
+| `docs/architecture/transaction_boundary_inventory.json` | `architecture` | Transaction Boundary Inventory | 118607 | False |
+| `docs/architecture/transaction_boundary_inventory.md` | `architecture` | Transaction Boundary Inventory | 52992 | False |
+| `docs/architecture/tx_route_wiring_inventory.json` | `architecture` | Tx Route Wiring Inventory | 10040 | False |
+| `docs/architecture/tx_route_wiring_inventory.md` | `architecture` | Transaction Route Wiring Inventory | 5005 | False |
 | `docs/architecture.md` | `general` | Architecture | 1189 | False |
 | `docs/archive/EduBoost_Technical_Status_Report.md` | `general` | EduBoost V2 — Comprehensive Technical Status Report | 24010 | False |
 | `docs/archive/INTEGRATION_COMPLETE.md` | `general` | EduBoost V2 PR Integration Complete ✅ | 11273 | False |
@@ -383,7 +383,7 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/content_factory/staging_verification.md` | `general` | Content Factory Staging Verification | 1959 | False |
 | `docs/content_factory_overnight_batch_pipeline.md` | `general` | Content Factory Full Generation System: Overnight Batch Pipeline — Complete Trace Text | 49878 | False |
 | `docs/coverage-improvement-handover.md` | `general` | Code Coverage Improvement Handover | 6677 | False |
-| `docs/current_state.md` | `general` | EduBoost Current State | 5373 | False |
+| `docs/current_state.md` | `general` | EduBoost Current State | 3534 | False |
 | `docs/curriculum/StudyMaterialExpansionPlan.md` | `general` | Study Material Expansion Implementation Plan | 25111 | False |
 | `docs/curriculum/TOPIC_MAP_REVIEW_CHECKLIST.md` | `general` | Topic Map Review Checklist | 11534 | False |
 | `docs/curriculum/caps_topic_map.md` | `general` | CAPS Topic Map MVP | 1539 | False |
@@ -440,7 +440,7 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/documentation/documentation_housekeeping_policy.md` | `general` | Documentation Housekeeping Policy | 2835 | False |
 | `docs/documentation/documentation_inventory_contract.md` | `general` | Documentation Inventory Contract | 1115 | False |
 | `docs/documentation/documentation_review_gate_contract.md` | `general` | Documentation Review Gate Contract | 1017 | False |
-| `docs/documentation/housekeeping_ratchet_baseline.json` | `general` | Housekeeping Ratchet Baseline | 666 | False |
+| `docs/documentation/housekeeping_ratchet_baseline.json` | `general` | Housekeeping Ratchet Baseline | 667 | False |
 | `docs/documentation/migration_manifests/20260622T193052Z.json` | `general` | 20260622T193052Z | 6527 | False |
 | `docs/documentation/production_claim_boundary_policy.md` | `general` | Production Claim Boundary Policy | 1171 | False |
 | `docs/documentation/release_notes_discipline_contract.md` | `general` | Release Notes Discipline Contract | 1015 | False |
@@ -553,7 +553,7 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/frontend/accessibility_pwa_e2e_evidence.md` | `general` | Accessibility, PWA, And E2E Evidence | 712 | False |
 | `docs/frontend/frontend_accessibility_contract.md` | `general` | Frontend Accessibility Contract | 1473 | False |
 | `docs/frontend/frontend_accessibility_static_scan.md` | `general` | Frontend Accessibility Static Scan | 1012 | False |
-| `docs/frontend/frontend_api_client_inventory.md` | `general` | Frontend API Client Inventory | 595 | False |
+| `docs/frontend/frontend_api_client_inventory.md` | `general` | Frontend API Client Inventory | 962 | False |
 | `docs/frontend/frontend_auth_consent_denial_contract.md` | `general` | Frontend Auth Consent Denial Contract | 1617 | False |
 | `docs/frontend/frontend_build_test_lint_contract.md` | `general` | Frontend Build Test Lint Contract | 1479 | False |
 | `docs/frontend/frontend_e2e_environment_contract.md` | `general` | Frontend E2E Environment Contract | 1264 | False |
@@ -561,8 +561,8 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/frontend/frontend_e2e_runtime_commands.md` | `general` | Frontend E2E Runtime Commands | 1205 | False |
 | `docs/frontend/frontend_evidence_index.md` | `general` | Frontend Evidence Index | 1990 | False |
 | `docs/frontend/frontend_journey_evidence.md` | `general` | Frontend Journey Evidence | 676 | False |
-| `docs/frontend/frontend_route_inventory.md` | `general` | Frontend Route Inventory | 49471 | False |
-| `docs/frontend/frontend_runtime_inventory.md` | `general` | Frontend Runtime Inventory | 656 | False |
+| `docs/frontend/frontend_route_inventory.md` | `general` | Frontend Route Inventory | 49828 | False |
+| `docs/frontend/frontend_runtime_inventory.md` | `general` | Frontend Runtime Inventory | 1017 | False |
 | `docs/frontend/frontend_verification_evidence_2026-05-11.md` | `general` | Frontend Verification Evidence | 2375 | False |
 | `docs/frontend/learner_vertical_journey_contract.md` | `general` | Learner Vertical Journey Contract | 1494 | False |
 | `docs/frontend/parent_vertical_journey_contract.md` | `general` | Parent Vertical Journey Contract | 1655 | False |
@@ -585,6 +585,8 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/frontend/production_teacher_admin_scope_contract.md` | `general` | Production Teacher/Admin Scope Contract | 1246 | False |
 | `docs/frontend/spike_report_template.md` | `general` | Frontend Spike Report Template | 1375 | False |
 | `docs/frontend/task_metadata_template.md` | `general` | Frontend Task Metadata Template | 1582 | False |
+| `docs/generated/README.md` | `general` | Generated Documentation Inventory and Findings | 995 | False |
+| `docs/generated/documentation_inventory.json` | `general` | Documentation Inventory | 1406711 | False |
 | `docs/governance/rr009_adr_index_completion.md` | `general` | RR-009 ADR Index Completion | 650 | False |
 | `docs/governance/rr009_branch_protection_release_docs.md` | `general` | RR-009 Branch Protection Release Documentation | 891 | False |
 | `docs/governance/rr009_current_state_refresh_cadence.md` | `general` | RR-009 Current State Refresh Cadence | 1038 | False |
@@ -701,7 +703,8 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/observability/runbooks/notification_dead_letter_spike.md` | `general` | Runbook: notification_dead_letter_spike | 1047 | False |
 | `docs/observability/runbooks/privacy_export_failure.md` | `general` | Runbook: privacy_export_failure | 1023 | False |
 | `docs/observability/telemetry_privacy_retention_contract.md` | `general` | Telemetry Privacy and Retention Contract | 1237 | False |
-| `docs/openapi.json` | `api` | Openapi | 769789 | False |
+| `docs/openapi.json` | `api` | Openapi | 783123 | False |
+| `docs/openapi.yaml` | `api` | Openapi | 527295 | False |
 | `docs/openapi_pr003.json` | `api` | Openapi Pr003 | 125292 | False |
 | `docs/openapi_pr004.json` | `api` | Openapi Pr004 | 132996 | False |
 | `docs/operations/CLUSTER_D_CLOSURE.md` | `general` | Cluster D CI/Deployment/Environment Closure | 1252 | False |
@@ -871,7 +874,7 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/operations/release_owner_execution_guardrail.md` | `general` | Release Owner Execution Guardrail | 1946 | False |
 | `docs/operations/release_owner_post_closeout_decision_record.md` | `general` | Release Owner Post-Closeout Decision Record | 1668 | False |
 | `docs/operations/release_record_closure_ledger.md` | `general` | Release Record Closure Ledger | 1903 | False |
-| `docs/operations/release_state_snapshot.md` | `general` | Release State Snapshot | 5100 | False |
+| `docs/operations/release_state_snapshot.md` | `general` | Release State Snapshot | 12196 | False |
 | `docs/operations/render_frontend_backend_connectivity_report.md` | `general` | Render Frontend/Backend Connectivity Report | 4826 | False |
 | `docs/operations/reviewer_decision_capture_template.md` | `general` | Reviewer Decision Capture Template | 1964 | False |
 | `docs/operations/runbooks/consent_sla_breach.md` | `general` | Runbook: Consent/Erasure SLA Breach | 4228 | False |
@@ -1023,9 +1026,9 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/release/approval_evidence_status.md` | `release` | Approval Evidence Status | 1296 | False |
 | `docs/release/arq_consent_job_repair_report.md` | `release` | ARQ Consent Job Repair Report | 340 | False |
 | `docs/release/arq_dependency_worker_import_repair_report.md` | `release` | ARQ Dependency and Worker Import Repair Report | 520 | False |
-| `docs/release/audit_baseline_refresh_status.json` | `release` | Audit Baseline Refresh Status | 6557 | False |
-| `docs/release/audit_baseline_refresh_status.md` | `release` | Audit Baseline Refresh Status | 3619 | False |
-| `docs/release/audit_callsite_inventory.md` | `release` | Audit Call-Site Inventory | 887247 | False |
+| `docs/release/audit_baseline_refresh_status.json` | `release` | Audit Baseline Refresh Status | 6600 | False |
+| `docs/release/audit_baseline_refresh_status.md` | `release` | Audit Baseline Refresh Status | 3635 | False |
+| `docs/release/audit_callsite_inventory.md` | `release` | Audit Call-Site Inventory | 887064 | False |
 | `docs/release/audit_callsite_migration_slice_002.md` | `release` | Audit Call-Site Migration Slice 002 | 482 | False |
 | `docs/release/audit_candidate_execution_ledger.md` | `release` | Audit Candidate Execution Ledger | 451 | False |
 | `docs/release/audit_canonicalization_implementation_checklist.md` | `release` | Audit Canonicalization Implementation Checklist | 957 | False |
@@ -1039,8 +1042,8 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/release/auth_db_lifecycle_proof_report.json` | `release` | Auth Db Lifecycle Proof Report | 706 | False |
 | `docs/release/auth_db_lifecycle_proof_report.md` | `release` | Auth DB Lifecycle Proof Report | 842 | False |
 | `docs/release/auth_forward_ref_repair_report.md` | `release` | Auth Forward-Reference Repair Report | 301 | False |
-| `docs/release/auth_http_success_scope_report.json` | `release` | Auth Http Success Scope Report | 649 | False |
-| `docs/release/auth_http_success_scope_report.md` | `release` | Auth HTTP Success Scope Report | 820 | False |
+| `docs/release/auth_http_success_scope_report.json` | `release` | Auth Http Success Scope Report | 2161 | False |
+| `docs/release/auth_http_success_scope_report.md` | `release` | Auth HTTP Success Scope Report | 1318 | False |
 | `docs/release/auth_lifecycle_http_proof_status.json` | `release` | Auth Lifecycle Http Proof Status | 2190 | False |
 | `docs/release/auth_lifecycle_http_proof_status.md` | `release` | Auth Lifecycle HTTP Route Proof Status | 1192 | False |
 | `docs/release/auth_lifecycle_method_extraction_repair_report.md` | `release` | Auth Lifecycle Method Extraction Repair Report | 580 | False |
@@ -1087,7 +1090,7 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/release/backend_consolidation_terminal_report.md` | `release` | Backend Consolidation Terminal Report | 9626 | False |
 | `docs/release/backend_data_retention_approval_update.md` | `release` | Backend Data Retention Approval Update | 402 | False |
 | `docs/release/backend_data_retention_decision_checklist.md` | `release` | Backend Data Retention Decision Checklist | 1404 | False |
-| `docs/release/backend_deletion_candidate_inventory.md` | `release` | Backend Deletion Candidate Inventory | 117536311 | False |
+| `docs/release/backend_deletion_candidate_inventory.md` | `release` | Backend Deletion Candidate Inventory | 115275603 | False |
 | `docs/release/backend_first_wiring_candidate_registry.md` | `release` | Backend First Wiring Candidate Registry | 372 | False |
 | `docs/release/backend_first_wiring_candidates_report.md` | `release` | Backend First Wiring Candidates Report | 6313 | False |
 | `docs/release/backend_implementation_371_375_report.md` | `release` | Backend Implementation 371-375 Report | 4088 | False |
@@ -1136,13 +1139,13 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/release/ci_authority_status.json` | `release` | Ci Authority Status | 5707 | False |
 | `docs/release/ci_authority_status.md` | `release` | CI Authority Status | 5494 | False |
 | `docs/release/ci_evidence.json` | `release` | Ci Evidence | 196 | False |
-| `docs/release/ci_evidence.md` | `release` | CI Authority Evidence | 731 | False |
-| `docs/release/ci_evidence_status.json` | `release` | Ci Evidence Status | 538 | False |
-| `docs/release/ci_evidence_status.md` | `release` | CI Evidence Status | 980 | False |
+| `docs/release/ci_evidence.md` | `release` | CI Authority Evidence | 800 | False |
+| `docs/release/ci_evidence_status.json` | `release` | Ci Evidence Status | 796 | False |
+| `docs/release/ci_evidence_status.md` | `release` | CI Evidence Status | 1199 | False |
 | `docs/release/ci_run_evidence_status.json` | `release` | Ci Run Evidence Status | 766 | False |
 | `docs/release/ci_run_evidence_status.md` | `release` | CI Run Evidence Status | 801 | False |
 | `docs/release/ci_workflow_consolidation.md` | `release` | EduBoost V2 CI Workflow Consolidation Plan | 1293 | False |
-| `docs/release/consent_callsite_inventory.md` | `release` | Consent Call-Site Inventory | 82553 | False |
+| `docs/release/consent_callsite_inventory.md` | `release` | Consent Call-Site Inventory | 82077 | False |
 | `docs/release/consent_candidate_execution_ledger.md` | `release` | Consent Candidate Execution Ledger | 428 | False |
 | `docs/release/consent_runtime_compatibility_slice_001.md` | `release` | Consent Runtime Compatibility Slice 001 | 640 | False |
 | `docs/release/consent_runtime_integration_target_map.md` | `release` | Consent Runtime Integration Target Map | 365 | False |
@@ -1166,10 +1169,10 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/release/deep_readiness_route_contract_slice_002.md` | `release` | Deep Readiness Route Contract Slice 002 | 431 | False |
 | `docs/release/deep_readiness_route_implementation_gate.md` | `release` | Deep Readiness Route Implementation Gate | 353 | False |
 | `docs/release/deep_readiness_runtime_integration_target_map.md` | `release` | Deep-Readiness Runtime Integration Target Map | 371 | False |
-| `docs/release/diag_deep_health_runtime_status.json` | `release` | Diag Deep Health Runtime Status | 1241 | False |
-| `docs/release/diag_deep_health_runtime_status.md` | `release` | Diagnostic Deep Health Runtime Evidence Status | 1591 | False |
-| `docs/release/diagnostic_item_bank_canonicality_status.json` | `release` | Diagnostic Item Bank Canonicality Status | 77441 | False |
-| `docs/release/diagnostic_item_bank_canonicality_status.md` | `release` | Diagnostic Item-Bank Policy Status | 4443 | False |
+| `docs/release/diag_deep_health_runtime_status.json` | `release` | Diag Deep Health Runtime Status | 1246 | False |
+| `docs/release/diag_deep_health_runtime_status.md` | `release` | Diagnostic Deep Health Runtime Evidence Status | 1596 | False |
+| `docs/release/diagnostic_item_bank_canonicality_status.json` | `release` | Diagnostic Item Bank Canonicality Status | 74502 | False |
+| `docs/release/diagnostic_item_bank_canonicality_status.md` | `release` | Diagnostic Item-Bank Policy Status | 4311 | False |
 | `docs/release/diagnostic_score_live_audit_status.json` | `release` | Diagnostic Score Live Audit Status | 6070 | False |
 | `docs/release/diagnostic_score_live_audit_status.md` | `release` | Diagnostic Score Live Audit Status | 3632 | False |
 | `docs/release/diagnostics_data_integrity_repair_report.md` | `release` | Diagnostics Data Integrity Repair Report | 355 | False |
@@ -1192,7 +1195,7 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/release/eduboost-v2-technical-audit-2026-06-02.md` | `release` | EduBoost V2 Technical Audit | 20636 | False |
 | `docs/release/evidence_attachment_runbook.md` | `release` | Evidence Attachment Runbook | 5177 | False |
 | `docs/release/evidence_attachment_runbook_manifest.json` | `release` | Evidence Attachment Runbook Manifest | 4984 | False |
-| `docs/release/evidence_status_registry.yml` | `release` | EduBoost V2 Evidence Status Registry | 34303 | False |
+| `docs/release/evidence_status_registry.yml` | `release` | EduBoost V2 Evidence Status Registry | 34414 | False |
 | `docs/release/external_approval_status.json` | `release` | External Approval Status | 3030 | False |
 | `docs/release/external_approval_status.md` | `release` | External Approval Status | 1584 | False |
 | `docs/release/external_approvals/content_approval.md` | `release` | Educator/content release approval | 522 | False |
@@ -1768,6 +1771,7 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-6-final-true-state-baseline-handoff/audit_before.json` | `general` | Audit Before | 1503 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-6-final-true-state-baseline-handoff/final_true_state_baseline_contract.json` | `general` | Final True State Baseline Contract | 5318 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-6-final-true-state-baseline-handoff/final_true_state_baseline_snapshot.json` | `general` | Final True State Baseline Snapshot | 11611 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-6-final-true-state-baseline-handoff/raw-20260817/summary.json` | `general` | Summary | 18754 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-6-final-true-state-baseline-handoff/summary.json` | `general` | Summary | 1308 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-1-runtime-command-frontend-generated-contracts/audit_after.json` | `general` | Audit After | 1787 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-1-runtime-command-frontend-generated-contracts/audit_before.json` | `general` | Audit Before | 1787 | False |
@@ -1777,7 +1781,17 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-2-generated-contract-frontend-quality/audit_before.json` | `general` | Audit Before | 1742 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-2-generated-contract-frontend-quality/generated_contract_frontend_quality_contract.json` | `general` | Generated Contract Frontend Quality Contract | 6400 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-2-generated-contract-frontend-quality/generated_frontend_gate_results.json` | `general` | Generated Frontend Gate Results | 2803 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-2-generated-contract-frontend-quality/raw-20260817/summary.json` | `general` | Summary | 21968 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-2-generated-contract-frontend-quality/summary.json` | `general` | Summary | 598 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/frontend-build.json` | `general` | Frontend Build | 2505 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/frontend-lint.json` | `general` | Frontend Lint | 8475 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/frontend-quality-release.json` | `general` | Frontend Quality Release | 19921 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/frontend-typecheck.json` | `general` | Frontend Typecheck | 520 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/frontend-vitest.json` | `general` | Frontend Vitest | 20061 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/generated-contract-readonly-check.json` | `general` | Generated Contract Readonly Check | 1045 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/openapi-regenerate.json` | `general` | Openapi Regenerate | 691 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/route-inventory-regenerate.json` | `general` | Route Inventory Regenerate | 722 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/summary.json` | `general` | Summary | 54704 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/record.json` | `general` | Record | 1421 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/summary.json` | `general` | Summary | 2279 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/command-results/frontend-build-side-effect-check.json` | `general` | Frontend Build Side Effect Check | 437 | False |
@@ -1787,6 +1801,12 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/command-results/route-inventory-regenerate.json` | `general` | Route Inventory Regenerate | 499 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/command-results/summary.json` | `general` | Summary | 11564 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/green_run_summary.json` | `general` | Green Run Summary | 11564 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/raw-20260816/frontend-build-side-effect-check.json` | `general` | Frontend Build Side Effect Check | 437 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/raw-20260816/frontend-release-quality.json` | `general` | Frontend Release Quality | 20111 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/raw-20260816/generated-contract-readonly-check.json` | `general` | Generated Contract Readonly Check | 1063 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/raw-20260816/openapi-regenerate.json` | `general` | Openapi Regenerate | 695 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/raw-20260816/route-inventory-regenerate.json` | `general` | Route Inventory Regenerate | 734 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/raw-20260816/summary.json` | `general` | Summary | 23743 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/summary.json` | `general` | Summary | 12309 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-5-runtime-stack-db-lineage-ready-green/command-results/alembic-upgrade-head.json` | `general` | Alembic Upgrade Head | 523 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-5-runtime-stack-db-lineage-ready-green/command-results/compose-contract.json` | `general` | Compose Contract | 5938 | False |
@@ -1798,6 +1818,8 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-5-runtime-stack-db-lineage-ready-green/summary.json` | `general` | Summary | 19365 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-6-product-critical-flow-green/flow_summary.json` | `general` | Flow Summary | 9790 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-6-product-critical-flow-green/summary.json` | `general` | Summary | 2266 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-7-coverage-static-security-green/coverage-static-security-summary.json` | `general` | Coverage Static Security Summary | 34650 | False |
+| `docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-7-coverage-static-security-green/summary.json` | `general` | Summary | 35346 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-true-state-runtime-baseline-restoration/audit_after.json` | `general` | Audit After | 1442 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-true-state-runtime-baseline-restoration/audit_before.json` | `general` | Audit Before | 1163 | False |
 | `docs/release-evidence/production-readiness/prd-1100r-true-state-runtime-baseline-restoration/operational_hold.json` | `general` | Operational Hold | 1979 | False |
@@ -2178,30 +2200,77 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/release-evidence/technical-audit/remote-ci-branch-integration/raw/remote_ci_branch_integration_verification.json` | `general` | Remote Ci Branch Integration Verification | 2333 | False |
 | `docs/release-evidence/technical-audit/remote-ci-branch-integration/raw/remote_ci_status.json` | `general` | Remote Ci Status | 212 | False |
 | `docs/release-evidence/technical-audit/remote-ci-branch-integration/raw/workflow_inventory.json` | `general` | Workflow Inventory | 9589 | False |
-| `docs/release-evidence/true-state-remediation/b01/apply/capture_baseline.json` | `general` | Capture Baseline | 614 | False |
+| `docs/release-evidence/true-state-remediation/b01/apply/capture_baseline.json` | `general` | Capture Baseline | 615 | False |
 | `docs/release-evidence/true-state-remediation/b01/apply/release_gates.json` | `general` | Release Gates | 613 | False |
-| `docs/release-evidence/true-state-remediation/b01/baseline_manifest.json` | `general` | Baseline Manifest | 11513 | False |
-| `docs/release-evidence/true-state-remediation/b01/commands/bandit.json` | `general` | Bandit | 565 | False |
-| `docs/release-evidence/true-state-remediation/b01/commands/command_summary.json` | `general` | Command Summary | 9130 | False |
-| `docs/release-evidence/true-state-remediation/b01/commands/compileall.json` | `general` | Compileall | 566 | False |
-| `docs/release-evidence/true-state-remediation/b01/commands/execution7_gate_suite.json` | `general` | Execution7 Gate Suite | 650 | False |
-| `docs/release-evidence/true-state-remediation/b01/commands/execution7_verifier.json` | `general` | Execution7 Verifier | 637 | False |
+| `docs/release-evidence/true-state-remediation/b01/baseline_manifest.json` | `general` | Baseline Manifest | 4728 | False |
+| `docs/release-evidence/true-state-remediation/b01/commands/bandit.json` | `general` | Bandit | 572 | False |
+| `docs/release-evidence/true-state-remediation/b01/commands/command_summary.json` | `general` | Command Summary | 9460 | False |
+| `docs/release-evidence/true-state-remediation/b01/commands/compileall.json` | `general` | Compileall | 573 | False |
+| `docs/release-evidence/true-state-remediation/b01/commands/execution7_gate_suite.json` | `general` | Execution7 Gate Suite | 663 | False |
+| `docs/release-evidence/true-state-remediation/b01/commands/execution7_verifier.json` | `general` | Execution7 Verifier | 643 | False |
 | `docs/release-evidence/true-state-remediation/b01/commands/frontend_audit.json` | `general` | Frontend Audit | 449 | False |
 | `docs/release-evidence/true-state-remediation/b01/commands/frontend_quality.json` | `general` | Frontend Quality | 458 | False |
-| `docs/release-evidence/true-state-remediation/b01/commands/mcp_stub_isolation.json` | `general` | Mcp Stub Isolation | 593 | False |
-| `docs/release-evidence/true-state-remediation/b01/commands/mypy.json` | `general` | Mypy | 501 | False |
-| `docs/release-evidence/true-state-remediation/b01/commands/pip_audit_base.json` | `general` | Pip Audit Base | 849 | False |
-| `docs/release-evidence/true-state-remediation/b01/commands/pip_audit_dev.json` | `general` | Pip Audit Dev | 542 | False |
-| `docs/release-evidence/true-state-remediation/b01/commands/product_gate.json` | `general` | Product Gate | 536 | False |
-| `docs/release-evidence/true-state-remediation/b01/commands/product_runtime_gate.json` | `general` | Product Runtime Gate | 548 | False |
-| `docs/release-evidence/true-state-remediation/b01/commands/ruff.json` | `general` | Ruff | 528 | False |
-| `docs/release-evidence/true-state-remediation/b01/commands/test_collection.json` | `general` | Test Collection | 535 | False |
-| `docs/release-evidence/true-state-remediation/b01/environment_manifest.json` | `general` | Environment Manifest | 6220 | False |
-| `docs/release-evidence/true-state-remediation/b01/implementation_state.json` | `general` | Implementation State | 16996 | False |
-| `docs/release-evidence/true-state-remediation/b01/manual/tsr-0-7.json` | `general` | Tsr 0 7 | 559 | False |
-| `docs/release-evidence/true-state-remediation/b01/manual/tsr-0.7-responsibility-matrix.md` | `general` | EduBoost V2 — TSR-0.7 Responsibility Matrix | 712 | False |
-| `docs/release-evidence/true-state-remediation/b01/manual/tsr-1-11.json` | `general` | Tsr 1 11 | 506 | False |
-| `docs/release-evidence/true-state-remediation/b01/verification.json` | `general` | Verification | 11878 | False |
+| `docs/release-evidence/true-state-remediation/b01/commands/mcp_stub_isolation.json` | `general` | Mcp Stub Isolation | 600 | False |
+| `docs/release-evidence/true-state-remediation/b01/commands/mypy.json` | `general` | Mypy | 508 | False |
+| `docs/release-evidence/true-state-remediation/b01/commands/pip_audit_base.json` | `general` | Pip Audit Base | 551 | False |
+| `docs/release-evidence/true-state-remediation/b01/commands/pip_audit_dev.json` | `general` | Pip Audit Dev | 549 | False |
+| `docs/release-evidence/true-state-remediation/b01/commands/pre_coverage_commit.json` | `general` | Pre Coverage Commit | 502 | False |
+| `docs/release-evidence/true-state-remediation/b01/commands/pre_coverage_git_commit.json` | `general` | Pre Coverage Git Commit | 559 | False |
+| `docs/release-evidence/true-state-remediation/b01/commands/product_gate.json` | `general` | Product Gate | 543 | False |
+| `docs/release-evidence/true-state-remediation/b01/commands/product_runtime_gate.json` | `general` | Product Runtime Gate | 555 | False |
+| `docs/release-evidence/true-state-remediation/b01/commands/ruff.json` | `general` | Ruff | 534 | False |
+| `docs/release-evidence/true-state-remediation/b01/commands/test_collection.json` | `general` | Test Collection | 542 | False |
+| `docs/release-evidence/true-state-remediation/b01/environment_manifest.json` | `general` | Environment Manifest | 2306 | False |
+| `docs/release-evidence/true-state-remediation/b01/implementation_state.json` | `general` | Implementation State | 16223 | False |
+| `docs/release-evidence/true-state-remediation/b01/manual/execution-8-gov-01.json` | `general` | Execution 8 Gov 01 | 997 | False |
+| `docs/release-evidence/true-state-remediation/b01/manual/execution-8-gov-02.json` | `general` | Execution 8 Gov 02 | 993 | False |
+| `docs/release-evidence/true-state-remediation/b01/manual/execution-8-gov-03.json` | `general` | Execution 8 Gov 03 | 995 | False |
+| `docs/release-evidence/true-state-remediation/b01/manual/execution-8-gov-04.json` | `general` | Execution 8 Gov 04 | 1012 | False |
+| `docs/release-evidence/true-state-remediation/b01/manual/execution-8-gov-05.json` | `general` | Execution 8 Gov 05 | 1009 | False |
+| `docs/release-evidence/true-state-remediation/b01/manual/execution-8-gov-06.json` | `general` | Execution 8 Gov 06 | 1018 | False |
+| `docs/release-evidence/true-state-remediation/b01/manual/prd-11-0r-runtime-restore-6.json` | `general` | Prd 11 0R Runtime Restore 6 | 713 | False |
+| `docs/release-evidence/true-state-remediation/b01/manual/prd-11-0r-runtime-restore-execution-2.json` | `general` | Prd 11 0R Runtime Restore Execution 2 | 735 | False |
+| `docs/release-evidence/true-state-remediation/b01/manual/prd-11-0r-runtime-restore-execution-3.json` | `general` | Prd 11 0R Runtime Restore Execution 3 | 737 | False |
+| `docs/release-evidence/true-state-remediation/b01/manual/prd-11-0r-runtime-restore-execution-4.json` | `general` | Prd 11 0R Runtime Restore Execution 4 | 764 | False |
+| `docs/release-evidence/true-state-remediation/b01/manual/tsr-0-7.json` | `general` | Tsr 0 7 | 605 | False |
+| `docs/release-evidence/true-state-remediation/b01/manual/tsr-0.7-responsibility-matrix.md` | `general` | TSR-0.7 Governance Responsibility Matrix | 2170 | False |
+| `docs/release-evidence/true-state-remediation/b01/manual/tsr-1-11.json` | `general` | Tsr 1 11 | 620 | False |
+| `docs/release-evidence/true-state-remediation/b01/manual/tsr-1.11-rescan.json` | `general` | Tsr 1.11 Rescan | 0 | False |
+| `docs/release-evidence/true-state-remediation/b01/manual/tsr-1.11-secret-baseline-review.md` | `general` | TSR-1.11 Secret Baseline Audit & Disposition Register | 3728 | False |
+| `docs/release-evidence/true-state-remediation/b01/manual/tsr-manual-verification.json` | `general` | Tsr Manual Verification | 16870 | False |
+| `docs/release-evidence/true-state-remediation/b01/verification.json` | `general` | Verification | 12236 | False |
+| `docs/release-evidence/true-state-remediation/b02/apply/generate_docs.json` | `general` | Generate Docs | 542 | False |
+| `docs/release-evidence/true-state-remediation/b02/apply/generate_openapi.json` | `general` | Generate Openapi | 563 | False |
+| `docs/release-evidence/true-state-remediation/b02/apply/generate_routes.json` | `general` | Generate Routes | 529 | False |
+| `docs/release-evidence/true-state-remediation/b02/apply/generate_sboms.json` | `general` | Generate Sboms | 538 | False |
+| `docs/release-evidence/true-state-remediation/b02/environment_manifest.json` | `general` | Environment Manifest | 2875 | False |
+| `docs/release-evidence/true-state-remediation/b02/implementation_state.json` | `general` | Implementation State | 5382 | False |
+| `docs/release-evidence/true-state-remediation/b02/manual/tsr-2-11.json` | `general` | Tsr 2 11 | 639 | False |
+| `docs/release-evidence/true-state-remediation/b02/manual/tsr-2-3.json` | `general` | Tsr 2 3 | 636 | False |
+| `docs/release-evidence/true-state-remediation/b02/manual/tsr-2-9.json` | `general` | Tsr 2 9 | 637 | False |
+| `docs/release-evidence/true-state-remediation/b02/manual/tsr-2.11-project-version-metadata.md` | `general` | TSR-2.11 Project Version Authority | 327 | False |
+| `docs/release-evidence/true-state-remediation/b02/manual/tsr-2.3-product-scope-authority.md` | `general` | TSR-2.3 Product Scope Authority | 419 | False |
+| `docs/release-evidence/true-state-remediation/b02/manual/tsr-2.9-immutable-archive-policy.md` | `general` | TSR-2.9 Immutable Archive Policy | 398 | False |
+| `docs/release-evidence/true-state-remediation/b02/manual/tsr-3-1.json` | `general` | Tsr 3 1 | 642 | False |
+| `docs/release-evidence/true-state-remediation/b02/manual/tsr-3-10.json` | `general` | Tsr 3 10 | 628 | False |
+| `docs/release-evidence/true-state-remediation/b02/manual/tsr-3-11.json` | `general` | Tsr 3 11 | 639 | False |
+| `docs/release-evidence/true-state-remediation/b02/manual/tsr-3-3.json` | `general` | Tsr 3 3 | 638 | False |
+| `docs/release-evidence/true-state-remediation/b02/manual/tsr-3-7.json` | `general` | Tsr 3 7 | 648 | False |
+| `docs/release-evidence/true-state-remediation/b02/manual/tsr-3.1-frontend-compatibility-matrix.md` | `general` | TSR-3.1 Supported Frontend Compatibility Matrix | 331 | False |
+| `docs/release-evidence/true-state-remediation/b02/manual/tsr-3.10-release-sboms.md` | `general` | TSR-3.10 Release SBOM Governance | 325 | False |
+| `docs/release-evidence/true-state-remediation/b02/manual/tsr-3.11-dependency-update-policy.md` | `general` | TSR-3.11 Dependency Update & Renovation Policy | 345 | False |
+| `docs/release-evidence/true-state-remediation/b02/manual/tsr-3.3-root-package-architecture.md` | `general` | TSR-3.3 Root Package Architecture Decision | 338 | False |
+| `docs/release-evidence/true-state-remediation/b02/manual/tsr-3.7-celery-worker-architecture-decision.md` | `general` | TSR-3.7 Celery Retirement and ARQ Worker Architecture | 348 | False |
+| `docs/release-evidence/true-state-remediation/b02/sbom/sbom-backend.cdx.json` | `general` | Sbom Backend.Cdx | 16594 | False |
+| `docs/release-evidence/true-state-remediation/b02/sbom/sbom-frontend.cdx.json` | `general` | Sbom Frontend.Cdx | 5204 | False |
+| `docs/release-evidence/true-state-remediation/b02/verification.json` | `general` | Verification | 2300 | False |
+| `docs/release-evidence/true-state-remediation/execution8-governance-refresh/coverage_contract.json` | `general` | Coverage Contract | 12119 | False |
+| `docs/release-evidence/true-state-remediation/execution8-governance-refresh/coverage_frontend_advisory_gate_contract.json` | `general` | Coverage Frontend Advisory Gate Contract | 8041 | False |
+| `docs/release-evidence/true-state-remediation/execution8-governance-refresh/product_gate_execution_contract.json` | `general` | Product Gate Execution Contract | 7612 | False |
+| `docs/release-evidence/true-state-remediation/execution8-governance-refresh/product_runtime_test_gate_contract.json` | `general` | Product Runtime Test Gate Contract | 13769 | False |
+| `docs/release-evidence/true-state-remediation/execution8-governance-refresh/script_taxonomy.json` | `general` | Script Taxonomy | 6505 | False |
+| `docs/release-evidence/true-state-remediation/execution8-governance-refresh/summary.json` | `general` | Summary | 5244 | False |
+| `docs/release-evidence/true-state-remediation/execution8-governance-refresh/test_suite_taxonomy.json` | `general` | Test Suite Taxonomy | 4169 | False |
 | `docs/release_blockers/external_manual_dependency_register.md` | `general` | External Manual Dependency Register | 941 | False |
 | `docs/release_blockers/final_go_no_go_checklist.md` | `general` | Final Go/No-Go Checklist | 717 | False |
 | `docs/release_blockers/final_launch_boundary_statement.md` | `general` | Final Launch Boundary Statement | 669 | False |
@@ -2417,6 +2486,7 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/roadmap/knowledge_graph/kg_roadmap_closure_report.md` | `general` | KG Roadmap Closure Report | 2266 | False |
 | `docs/roadmap/knowledge_graph/kg_roadmap_register.json` | `general` | Kg Roadmap Register | 2123 | False |
 | `docs/roadmap/knowledge_graph_pivot_roadmap.md` | `general` | Knowledge Graph Pivot Roadmap | 5987 | False |
+| `docs/roadmap/known-issues.md` | `general` | Known Issues and Follow-up Remediation | 1428 | False |
 | `docs/roadmap/post_530_north_star_execution_board.md` | `general` | Post-530 North-Star Execution Board | 494 | False |
 | `docs/roadmap/post_baseline_risk_register.md` | `general` | Post-Baseline Risk Register | 451 | False |
 | `docs/roadmap/post_baseline_roadmap_architecture_contract.md` | `general` | Post-Baseline Roadmap Architecture Contract | 3102 | False |
@@ -2428,8 +2498,8 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/roadmap/production_readiness/branch_release_naming_reconciliation_plan.md` | `general` | Branch/release naming reconciliation plan | 765 | False |
 | `docs/roadmap/production_readiness/budgeted_terminal_isolation_contract.json` | `general` | Budgeted Terminal Isolation Contract | 872 | False |
 | `docs/roadmap/production_readiness/coverage_baseline_stabilisation_contract.json` | `general` | Coverage Baseline Stabilisation Contract | 2042 | False |
-| `docs/roadmap/production_readiness/coverage_contract.json` | `general` | Coverage Contract | 10972 | False |
-| `docs/roadmap/production_readiness/coverage_frontend_advisory_gate_contract.json` | `general` | Coverage Frontend Advisory Gate Contract | 7103 | False |
+| `docs/roadmap/production_readiness/coverage_contract.json` | `general` | Coverage Contract | 11204 | False |
+| `docs/roadmap/production_readiness/coverage_frontend_advisory_gate_contract.json` | `general` | Coverage Frontend Advisory Gate Contract | 7368 | False |
 | `docs/roadmap/production_readiness/coverage_static_security_green_contract.json` | `general` | Coverage Static Security Green Contract | 6065 | False |
 | `docs/roadmap/production_readiness/current_state_documentation_truth_map.json` | `general` | Current State Documentation Truth Map | 1313 | False |
 | `docs/roadmap/production_readiness/documentation_housekeeping_ratchet_refresh_plan.md` | `general` | Documentation Housekeeping Ratchet Refresh Plan | 1106 | False |
@@ -2437,7 +2507,7 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/roadmap/production_readiness/generated_artifact_canonicalisation_inventory.json` | `general` | Generated Artifact Canonicalisation Inventory | 62586 | False |
 | `docs/roadmap/production_readiness/generated_contract_frontend_quality_execution_contract.json` | `general` | Generated Contract Frontend Quality Execution Contract | 6400 | False |
 | `docs/roadmap/production_readiness/generated_contract_frontend_quality_green_evidence_contract.json` | `general` | Generated Contract Frontend Quality Green Evidence Contract | 4348 | False |
-| `docs/roadmap/production_readiness/generated_contract_frontend_quality_green_run_contract.json` | `general` | Generated Contract Frontend Quality Green Run Contract | 7228 | False |
+| `docs/roadmap/production_readiness/generated_contract_frontend_quality_green_run_contract.json` | `general` | Generated Contract Frontend Quality Green Run Contract | 7235 | False |
 | `docs/roadmap/production_readiness/openapi_generated_artifact_canonicalisation.schema.md` | `general` | OpenAPI Generated Artifact Canonicalisation Schema | 1205 | False |
 | `docs/roadmap/production_readiness/openapi_generated_artifact_canonicalisation_plan.md` | `general` | OpenAPI and Generated Artifact Canonicalisation Plan | 1441 | False |
 | `docs/roadmap/production_readiness/prd0_closure_evidence_handoff.json` | `general` | Prd0 Closure Evidence Handoff | 2305 | False |
@@ -2448,7 +2518,8 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/roadmap/production_readiness/prd10_controlled_beta_live_traffic_preflight_foundation.json` | `general` | Prd10 Controlled Beta Live Traffic Preflight Foundation | 1759 | False |
 | `docs/roadmap/production_readiness/prd10_controlled_beta_register.json` | `general` | Prd10 Controlled Beta Register | 1375 | False |
 | `docs/roadmap/production_readiness/prd11_coverage_alignment_documentation_defined_closure.json` | `general` | Prd11 Coverage Alignment Documentation Defined Closure | 3707 | False |
-| `docs/roadmap/production_readiness/prd11_production_release_register.json` | `general` | Prd11 Production Release Register | 9718 | False |
+| `docs/roadmap/production_readiness/prd11_execution_evidence_integrity_decision.md` | `general` | PRD-11.00R execution evidence-integrity decision | 1416 | False |
+| `docs/roadmap/production_readiness/prd11_production_release_register.json` | `general` | Prd11 Production Release Register | 9713 | False |
 | `docs/roadmap/production_readiness/prd11_runtime_restore_1_runtime_stack_db_lineage_readiness.json` | `general` | Prd11 Runtime Restore 1 Runtime Stack Db Lineage Readiness | 893 | False |
 | `docs/roadmap/production_readiness/prd11_runtime_restore_2_disposable_stack_schema_lineage.json` | `general` | Prd11 Runtime Restore 2 Disposable Stack Schema Lineage | 1009 | False |
 | `docs/roadmap/production_readiness/prd11_runtime_restore_3_product_runtime_test_gate_repair.json` | `general` | Prd11 Runtime Restore 3 Product Runtime Test Gate Repair | 999 | False |
@@ -2461,6 +2532,7 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/roadmap/production_readiness/prd11_runtime_restore_execution_4_frontend_quality_defect_repair_generated_contract_green_evidence.json` | `general` | Prd11 Runtime Restore Execution 4 Frontend Quality Defect Repair Generated Contract Green Evidence | 12309 | False |
 | `docs/roadmap/production_readiness/prd11_runtime_restore_execution_5_runtime_stack_db_lineage_ready_green.json` | `general` | Prd11 Runtime Restore Execution 5 Runtime Stack Db Lineage Ready Green | 19365 | False |
 | `docs/roadmap/production_readiness/prd11_runtime_restore_execution_6_product_critical_flow_green.json` | `general` | Prd11 Runtime Restore Execution 6 Product Critical Flow Green | 2266 | False |
+| `docs/roadmap/production_readiness/prd11_runtime_restore_execution_7_coverage_static_security_green.json` | `general` | Prd11 Runtime Restore Execution 7 Coverage Static Security Green | 35346 | False |
 | `docs/roadmap/production_readiness/prd11_script_taxonomy_functional_overhaul.json` | `general` | Prd11 Script Taxonomy Functional Overhaul | 3304 | False |
 | `docs/roadmap/production_readiness/prd11_test_suite_taxonomy_behavioral_gate_overhaul.json` | `general` | Prd11 Test Suite Taxonomy Behavioral Gate Overhaul | 2548 | False |
 | `docs/roadmap/production_readiness/prd11_true_state_runtime_baseline_restoration.json` | `general` | Prd11 True State Runtime Baseline Restoration | 4023 | False |
@@ -2547,7 +2619,7 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/roadmap/production_readiness/prd_1100r_runtime_restore_execution_4_frontend_quality_defect_repair_generated_contract_green_evidence_record.json` | `general` | Prd 1100R Runtime Restore Execution 4 Frontend Quality Defect Repair Generated Contract Green Evidence Record | 13171 | False |
 | `docs/roadmap/production_readiness/prd_1100r_runtime_restore_execution_5_runtime_stack_db_lineage_ready_green_record.json` | `general` | Prd 1100R Runtime Restore Execution 5 Runtime Stack Db Lineage Ready Green Record | 20363 | False |
 | `docs/roadmap/production_readiness/prd_1100r_runtime_restore_execution_6_product_critical_flow_green_record.json` | `general` | Prd 1100R Runtime Restore Execution 6 Product Critical Flow Green Record | 12082 | False |
-| `docs/roadmap/production_readiness/prd_1100r_runtime_restore_execution_7_coverage_static_security_green_record.json` | `general` | Prd 1100R Runtime Restore Execution 7 Coverage Static Security Green Record | 1532 | False |
+| `docs/roadmap/production_readiness/prd_1100r_runtime_restore_execution_7_coverage_static_security_green_record.json` | `general` | Prd 1100R Runtime Restore Execution 7 Coverage Static Security Green Record | 36865 | False |
 | `docs/roadmap/production_readiness/prd_1100r_true_state_runtime_baseline_restoration_record.json` | `general` | Prd 1100R True State Runtime Baseline Restoration Record | 7248 | False |
 | `docs/roadmap/production_readiness/prd_1101r_test_suite_taxonomy_behavioral_gate_overhaul_record.json` | `general` | Prd 1101R Test Suite Taxonomy Behavioral Gate Overhaul Record | 4416 | False |
 | `docs/roadmap/production_readiness/prd_1102r_script_taxonomy_functional_overhaul_record.json` | `general` | Prd 1102R Script Taxonomy Functional Overhaul Record | 5566 | False |
@@ -2571,15 +2643,15 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/roadmap/production_readiness/prd_900_904_billing_commercial_launch_readiness_foundation_record.json` | `general` | Prd 900 904 Billing Commercial Launch Readiness Foundation Record | 6723 | False |
 | `docs/roadmap/production_readiness/prd_905_909_commercial_runtime_audit_remediation_handoff_record.json` | `general` | Prd 905 909 Commercial Runtime Audit Remediation Handoff Record | 2385 | False |
 | `docs/roadmap/production_readiness/product_critical_flow_green_contract.json` | `general` | Product Critical Flow Green Contract | 4173 | False |
-| `docs/roadmap/production_readiness/product_gate_execution_contract.json` | `general` | Product Gate Execution Contract | 6752 | False |
-| `docs/roadmap/production_readiness/product_runtime_test_gate_contract.json` | `general` | Product Runtime Test Gate Contract | 12627 | False |
+| `docs/roadmap/production_readiness/product_gate_execution_contract.json` | `general` | Product Gate Execution Contract | 7017 | False |
+| `docs/roadmap/production_readiness/product_runtime_test_gate_contract.json` | `general` | Product Runtime Test Gate Contract | 12892 | False |
 | `docs/roadmap/production_readiness/production_readiness_boundary_contract.md` | `general` | Production Readiness Boundary Contract | 1237 | False |
-| `docs/roadmap/production_readiness/production_readiness_register.json` | `general` | Production Readiness Register | 18665 | False |
+| `docs/roadmap/production_readiness/production_readiness_register.json` | `general` | Production Readiness Register | 18660 | False |
 | `docs/roadmap/production_readiness/repository_hygiene_generated_local_artifact_audit.json` | `general` | Repository Hygiene Generated Local Artifact Audit | 13804 | False |
 | `docs/roadmap/production_readiness/repository_hygiene_generated_local_artifact_audit.schema.md` | `general` | Repository hygiene generated/local artifact audit schema | 1350 | False |
 | `docs/roadmap/production_readiness/repository_hygiene_generated_local_artifact_audit_plan.md` | `general` | Repository hygiene and generated/local artifact audit plan | 1091 | False |
 | `docs/roadmap/production_readiness/runtime_stack_db_lineage_ready_green_contract.json` | `general` | Runtime Stack Db Lineage Ready Green Contract | 1573 | False |
-| `docs/roadmap/production_readiness/script_taxonomy.json` | `general` | Script Taxonomy | 5790 | False |
+| `docs/roadmap/production_readiness/script_taxonomy.json` | `general` | Script Taxonomy | 6022 | False |
 | `docs/roadmap/production_readiness/targeted_baseline_reconciliation_apply_report.json` | `general` | Targeted Baseline Reconciliation Apply Report | 5697 | False |
 | `docs/roadmap/production_readiness/targeted_baseline_reconciliation_contract.json` | `general` | Targeted Baseline Reconciliation Contract | 672 | False |
 | `docs/roadmap/production_readiness/test_dependency_bootstrap_baseline.json` | `general` | Test Dependency Bootstrap Baseline | 8896 | False |
@@ -2588,9 +2660,9 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/roadmap/production_readiness/test_failure_collection_stabilisation.schema.md` | `general` | PRD-0.5 Test Failure Collection Stabilisation Register Schema | 758 | False |
 | `docs/roadmap/production_readiness/test_failure_collection_stabilisation_plan.md` | `general` | PRD-0.5 Test Failure and Collection Stabilisation Plan | 1244 | False |
 | `docs/roadmap/production_readiness/test_failure_collection_stabilisation_register.json` | `general` | Test Failure Collection Stabilisation Register | 14194 | False |
-| `docs/roadmap/production_readiness/test_suite_taxonomy.json` | `general` | Test Suite Taxonomy | 3510 | False |
+| `docs/roadmap/production_readiness/test_suite_taxonomy.json` | `general` | Test Suite Taxonomy | 3742 | False |
 | `docs/roadmap/production_readiness/third_party_content_licensing_register.json` | `general` | Third Party Content Licensing Register | 363 | False |
-| `docs/roadmap/production_readiness/true_state_remediation_register.json` | `general` | True State Remediation Register | 90068 | False |
+| `docs/roadmap/production_readiness/true_state_remediation_register.json` | `general` | True State Remediation Register | 92648 | False |
 | `docs/roadmap/production_readiness/unit_shard_stabilisation_contract.json` | `general` | Unit Shard Stabilisation Contract | 2123 | False |
 | `docs/roadmap/production_readiness/workflow_command_hygiene_ci_inventory.json` | `general` | Workflow Command Hygiene Ci Inventory | 41475 | False |
 | `docs/roadmap/production_readiness/workflow_command_hygiene_ci_inventory.schema.md` | `general` | PRD-0.6 Workflow Command Hygiene and CI Inventory Schema | 539 | False |
@@ -2663,7 +2735,7 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/roadmap_domains/domain_12_notifications-communication_execution_report.md` | `general` | Domain 12 Notifications Communication Execution Report | 2342 | False |
 | `docs/roadmap_domains/domain_13_infrastructure-devops_execution_report.md` | `general` | Domain 13 Infrastructure Devops Execution Report | 2238 | False |
 | `docs/roadmap_domains/domain_14_legal-privacy-documentation_execution_report.md` | `general` | Domain 14 Legal Privacy Documentation Execution Report | 2321 | False |
-| `docs/route_inventory.md` | `general` | EduBoost V2 Route Inventory | 6309 | False |
+| `docs/route_inventory.md` | `general` | EduBoost V2 Route Inventory | 74076 | False |
 | `docs/runbooks/ai_operations_and_budgets.md` | `general` | AI Operations and Budget Runbook | 2417 | False |
 | `docs/runbooks/content_review_governance.md` | `general` | Content Review Governance Runbook | 2403 | False |
 | `docs/runbooks/curriculum_expansion_and_training_governance.md` | `general` | Curriculum Expansion and Training Dataset Governance Runbook | 2623 | False |
@@ -2671,7 +2743,7 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/runbooks/learner_tutor.md` | `general` | Learner Tutor Operations Runbook | 1705 | False |
 | `docs/safety/content_policy.md` | `general` | Content Safety Policy | 9178 | False |
 | `docs/secrets.md` | `general` | Secrets Management (starter guidance) | 1111 | False |
-| `docs/security/PHASE2_AUTHORIZATION_CLOSURE.md` | `security` | Phase 2 Authorization Closure Report | 2521 | False |
+| `docs/security/PHASE2_AUTHORIZATION_CLOSURE.md` | `security` | Phase 2 Authorization Closure Report | 2788 | False |
 | `docs/security/POPIA_CONSENT_AUDIT_BASELINE.md` | `security` | POPIA Consent and Audit Baseline | 3766 | False |
 | `docs/security/POPIA_CONSENT_GATE_CLOSURE.md` | `security` | POPIA Consent Gate Closure Report | 2894 | False |
 | `docs/security/README.md` | `security` | Security Documentation | 624 | False |
@@ -2683,7 +2755,7 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/security/assessment_list_auth_boundary.md` | `security` | Assessment List Authentication Boundary | 769 | False |
 | `docs/security/audit_event_contracts.md` | `security` | Audit Event Contracts | 921 | False |
 | `docs/security/auth_boundary_evidence.md` | `security` | Auth Boundary Evidence | 2029 | False |
-| `docs/security/auth_hardening_status.md` | `security` | Auth Hardening Status | 524 | False |
+| `docs/security/auth_hardening_status.md` | `security` | Auth Hardening Status | 506 | False |
 | `docs/security/auth_session_policy.md` | `security` | Auth, session, and RBAC policy baseline | 3248 | False |
 | `docs/security/authorization_dependencies.md` | `security` | Authorization Dependency Adapter | 7831 | False |
 | `docs/security/consent_dependency_adapter.md` | `security` | POPIA Consent Dependency Adapter | 1055 | False |
@@ -2693,9 +2765,9 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/security/consent_renewal_admin_auth_boundary.md` | `security` | Consent Renewal Admin Authorization Boundary | 923 | False |
 | `docs/security/consent_revoke_authorization_wiring.md` | `security` | Consent Revoke Authorization Wiring | 917 | False |
 | `docs/security/consent_status_authorization_wiring.md` | `security` | Consent Status Authorization Wiring | 899 | False |
-| `docs/security/dependency_constraints_snapshot.md` | `security` | Dependency Constraints Snapshot | 632 | False |
-| `docs/security/dependency_pin_report.json` | `security` | Dependency Pin Report | 128720 | False |
-| `docs/security/dependency_pin_report.md` | `security` | Dependency Pin Report | 288 | False |
+| `docs/security/dependency_constraints_snapshot.md` | `security` | Dependency Constraints Snapshot | 614 | False |
+| `docs/security/dependency_pin_report.json` | `security` | Dependency Pin Report | 127246 | False |
+| `docs/security/dependency_pin_report.md` | `security` | Dependency Pin Report | 539 | False |
 | `docs/security/dev_only_endpoint_exposure.md` | `security` | Dev-Only Endpoint Exposure Guard | 920 | False |
 | `docs/security/dev_session_environment_gate.md` | `security` | Dev Session Environment Gate | 946 | False |
 | `docs/security/diagnostic_items_authorization_wiring.md` | `security` | Diagnostic Items Authorization Wiring | 1217 | False |
@@ -2710,11 +2782,11 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/security/gamification_consent_gate.md` | `security` | Gamification Consent Gate | 760 | False |
 | `docs/security/gamification_profile_authorization_wiring.md` | `security` | Gamification Profile Authorization Wiring | 974 | False |
 | `docs/security/jwt_pyjwt_migration_report.json` | `security` | Jwt Pyjwt Migration Report | 606 | False |
-| `docs/security/jwt_pyjwt_migration_report.md` | `security` | JWT PyJWT Migration Report | 438 | False |
+| `docs/security/jwt_pyjwt_migration_report.md` | `security` | JWT PyJWT Migration Report | 792 | False |
 | `docs/security/jwt_rotation_introspection.json` | `security` | Jwt Rotation Introspection | 638 | False |
-| `docs/security/jwt_rotation_introspection.md` | `security` | JWT Rotation Introspection | 343 | False |
+| `docs/security/jwt_rotation_introspection.md` | `security` | JWT Rotation Introspection | 697 | False |
 | `docs/security/jwt_rotation_plan.md` | `security` | JWT Rotation Plan | 1159 | False |
-| `docs/security/jwt_rotation_repair_report.md` | `security` | JWT Rotation Repair Report | 255 | False |
+| `docs/security/jwt_rotation_repair_report.md` | `security` | JWT Rotation Repair Report | 609 | False |
 | `docs/security/jwt_secret_resolution_policy.md` | `security` | JWT Secret Resolution Policy | 906 | False |
 | `docs/security/knowledge_graph_privacy_and_popia_contract.md` | `security` | Knowledge Graph Privacy and POPIA Contract | 3638 | False |
 | `docs/security/learner_authz_ci.md` | `security` | Learner Authorization Coverage CI | 723 | False |
@@ -2748,11 +2820,11 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/security/popia_consent_audit_ci.md` | `security` | POPIA Consent Audit CI | 1001 | False |
 | `docs/security/popia_consent_audit_evidence_check.md` | `security` | POPIA Consent Audit Evidence Check | 1273 | False |
 | `docs/security/popia_consent_boundary_check.md` | `security` | POPIA Consent Boundary Check | 924 | False |
-| `docs/security/popia_consent_boundary_matrix.md` | `security` | POPIA Consent Boundary Matrix | 24353 | False |
+| `docs/security/popia_consent_boundary_matrix.md` | `security` | POPIA Consent Boundary Matrix | 26520 | False |
 | `docs/security/popia_consent_closure_check.md` | `security` | POPIA Consent Closure Check | 1056 | False |
 | `docs/security/popia_consent_closure_ci.md` | `security` | POPIA Consent Closure CI | 699 | False |
 | `docs/security/popia_consent_gate_check.md` | `security` | POPIA Consent Gate Check | 1477 | False |
-| `docs/security/popia_consent_gate_inventory.md` | `security` | POPIA Consent Gate Inventory | 21052 | False |
+| `docs/security/popia_consent_gate_inventory.md` | `security` | POPIA Consent Gate Inventory | 21025 | False |
 | `docs/security/popia_correction_request_authorization_wiring.md` | `security` | POPIA Correction Request Authorization Wiring | 995 | False |
 | `docs/security/popia_data_export_authorization_wiring.md` | `security` | POPIA Data Export Authorization Wiring | 1197 | False |
 | `docs/security/popia_data_rights_consent_boundary.md` | `security` | POPIA Data-Rights Consent Boundary | 1347 | False |
@@ -2802,33 +2874,33 @@ Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
 | `docs/telemetry/rr012_slo_dashboard_validation.template.md` | `general` | Rr012 Slo Dashboard Validation.Template | 781 | False |
 | `docs/testing/README.md` | `general` | Backend testing | 1478 | False |
 | `docs/testing/beta_release_quality_gate_checklist.md` | `general` | Beta Release Quality Gate Checklist | 879 | False |
-| `docs/testing/coverage_baseline_stabilisation.md` | `general` | Execution-7 Coverage Baseline Stabilisation | 3825 | False |
-| `docs/testing/coverage_frontend_advisory_gate_contract.md` | `general` | Coverage, Frontend Quality, and Advisory Gate Contract | 1370 | False |
+| `docs/testing/coverage_baseline_stabilisation.md` | `general` | Execution-7 Coverage Baseline Stabilisation | 4207 | False |
+| `docs/testing/coverage_frontend_advisory_gate_contract.md` | `general` | Coverage, Frontend Quality, and Advisory Gate Contract | 1772 | False |
 | `docs/testing/coverage_quality_threshold_contract.md` | `general` | Coverage Quality Threshold Contract | 1710 | False |
-| `docs/testing/coverage_static_security_green_execution.md` | `general` | Coverage, Static Quality, Dependency Security, and Secret Baseline Green Execution | 1203 | False |
+| `docs/testing/coverage_static_security_green_execution.md` | `general` | Coverage, Static Quality, Dependency Security, and Secret Baseline Green Execution | 1633 | False |
 | `docs/testing/defect_triage_release_blocker_contract.md` | `general` | Defect Triage and Release Blocker Contract | 998 | False |
-| `docs/testing/documentation_defined_coverage.md` | `general` | Documentation-defined Coverage Contract | 1536 | False |
-| `docs/testing/final_true_state_baseline_handoff_contract.md` | `general` | Final True-State Baseline Handoff Contract | 1063 | False |
-| `docs/testing/generated_contract_frontend_quality_execution.md` | `general` | Generated Contract Regeneration and Frontend Quality Execution Contract | 1436 | False |
-| `docs/testing/generated_contract_frontend_quality_green_evidence.md` | `general` | Generated Contract and Frontend Quality Green Evidence | 1671 | False |
-| `docs/testing/generated_contract_frontend_quality_green_run.md` | `general` | Generated Contract and Frontend Quality Green Run Contract | 1114 | False |
+| `docs/testing/documentation_defined_coverage.md` | `general` | Documentation-defined Coverage Contract | 1785 | False |
+| `docs/testing/final_true_state_baseline_handoff_contract.md` | `general` | Final True-State Baseline Handoff Contract | 1455 | False |
+| `docs/testing/generated_contract_frontend_quality_execution.md` | `general` | Generated Contract Regeneration and Frontend Quality Execution Contract | 1860 | False |
+| `docs/testing/generated_contract_frontend_quality_green_evidence.md` | `general` | Generated Contract and Frontend Quality Green Evidence | 2083 | False |
+| `docs/testing/generated_contract_frontend_quality_green_run.md` | `general` | Generated Contract and Frontend Quality Green Run Contract | 1525 | False |
 | `docs/testing/knowledge_graph_verification_plan.md` | `general` | Knowledge Graph Verification Plan | 3697 | False |
 | `docs/testing/known_issues_release_register.md` | `general` | Known Issues Release Register | 1031 | False |
 | `docs/testing/pr002r_evidence_check.md` | `general` | PR-002R Evidence Check | 1555 | False |
-| `docs/testing/product_critical_flow_green_execution.md` | `general` | Product Critical Flow Green Execution Contract | 1451 | False |
-| `docs/testing/product_gate_execution_contract.md` | `general` | Product Gate Execution and Critical Flow Repair Contract | 1369 | False |
-| `docs/testing/product_runtime_test_gate_contract.md` | `general` | Product and Runtime Test Gate Contract | 1230 | False |
+| `docs/testing/product_critical_flow_green_execution.md` | `general` | Product Critical Flow Green Execution Contract | 1842 | False |
+| `docs/testing/product_gate_execution_contract.md` | `general` | Product Gate Execution and Critical Flow Repair Contract | 1764 | False |
+| `docs/testing/product_runtime_test_gate_contract.md` | `general` | Product and Runtime Test Gate Contract | 1610 | False |
 | `docs/testing/production_release_quality_gate_checklist.md` | `general` | Production Release Quality Gate Checklist | 964 | False |
 | `docs/testing/pytest_import_path.md` | `general` | Pytest Import Path Policy | 1938 | False |
 | `docs/testing/quality_gate_waiver_policy.md` | `general` | Quality Gate Waiver Policy | 1095 | False |
 | `docs/testing/release_evidence_bundle_contract.md` | `general` | Release Evidence Bundle Contract | 1067 | False |
-| `docs/testing/runtime_stack_db_lineage_ready_green.md` | `general` | Runtime Stack, Database Lineage, Schema, and `/ready` Green Evidence | 987 | False |
-| `docs/testing/script_taxonomy.md` | `general` | PRD-11.2R Script Taxonomy and Functional Overhaul | 1656 | False |
-| `docs/testing/targeted_baseline_reconciliation.md` | `general` | Execution-7 Targeted Baseline Reconciliation | 659 | False |
+| `docs/testing/runtime_stack_db_lineage_ready_green.md` | `general` | Runtime Stack, Database Lineage, Schema, and `/ready` Green Evidence | 1399 | False |
+| `docs/testing/script_taxonomy.md` | `general` | PRD-11.2R Script Taxonomy and Functional Overhaul | 2028 | False |
+| `docs/testing/targeted_baseline_reconciliation.md` | `general` | Execution-7 Targeted Baseline Reconciliation | 1043 | False |
 | `docs/testing/test_strategy_matrix_contract.md` | `general` | Test Strategy Matrix Contract | 1163 | False |
-| `docs/testing/test_suite_taxonomy.md` | `general` | EduBoost Test Suite Taxonomy | 1133 | False |
+| `docs/testing/test_suite_taxonomy.md` | `general` | EduBoost Test Suite Taxonomy | 1488 | False |
 | `docs/testing/testing_release_evidence_architecture_contract.md` | `general` | Testing Release Evidence Architecture Contract | 1335 | False |
-| `docs/testing/unit_shard_stabilisation.md` | `general` | Execution-7 Unit-Shard Stabilisation | 3548 | False |
+| `docs/testing/unit_shard_stabilisation.md` | `general` | Execution-7 Unit-Shard Stabilisation | 3916 | False |
 | `docs/todos/README.md` | `general` | Archived documentation redirect | 770 | False |
 | `docs/v2_handoff.md` | `general` | V2 Handoff Guide for Less Capable Agents | 906 | False |
 | `docs/v2_migration.md` | `general` | V2 Migration Guide | 2282 | False |

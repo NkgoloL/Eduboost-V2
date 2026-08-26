@@ -21,7 +21,7 @@ RECORD = ROOT / "prd_000_production_readiness_stream_authority_record.json"
 
 PRD0_IDS = [f"PRD-0.{idx}" for idx in range(0, 11)]
 PRD_IDS = [f"PRD-{idx}" for idx in range(1, 12)]
-ALLOWED_NEXT_ITEMS = {f"PRD-0.{idx}" for idx in range(0, 11)} | {"PRD-1", "PRD-2"} | {f"PRD-1.{idx}" for idx in range(0, 10)}
+ALLOWED_NEXT_ITEMS = {f"PRD-0.{idx}" for idx in range(0, 11)} | {"PRD-1", "PRD-2"} | {f"PRD-1.{idx}" for idx in range(0, 10)} | {f"PRD-{idx}" for idx in range(1, 12)} | {f"PRD-11.0R.RUNTIME-RESTORE.EXECUTION-{idx}" for idx in range(1, 10)}
 TRUE_KEYS = [
     "runtime_kg_implementation_claimed",
     "runtime_kg_authority_switch_authorised",

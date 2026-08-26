@@ -84,7 +84,7 @@ def verify() -> dict[str, object]:
     findings.append(Finding("set -euo pipefail" in pip, "pip-audit uses fail-closed shell options" if "set -euo pipefail" in pip else "pip-audit must use set -euo pipefail"))
     findings.append(Finding("pip-audit -r ${{ matrix.requirements }} --format=json" in pip, "pip-audit scans requirements matrix" if "pip-audit -r ${{ matrix.requirements }} --format=json" in pip else "pip-audit requirements matrix scan missing"))
     findings.append(Finding("tee pip-audit.json" in pip, "pip-audit JSON artifact is captured" if "tee pip-audit.json" in pip else "pip-audit JSON artifact not captured"))
-    findings.append(Finding("requirements/base.txt" in pip and "requirements/dev.txt" in pip and "requirements/docs.txt" in pip and "requirements-ml.txt" in pip, "pip-audit matrix covers tracked requirement sets" if "requirements/base.txt" in pip and "requirements/dev.txt" in pip and "requirements/docs.txt" in pip and "requirements-ml.txt" in pip else "pip-audit matrix must cover tracked requirement sets"))
+    findings.append(Finding("requirements/base.txt" in pip and "requirements/dev.txt" in pip and "requirements/docs.txt" in pip and ("requirements-ml.txt" in pip or "requirements/ml.txt" in pip), "pip-audit matrix covers tracked requirement sets" if "requirements/base.txt" in pip and "requirements/dev.txt" in pip and "requirements/docs.txt" in pip and ("requirements-ml.txt" in pip or "requirements/ml.txt" in pip) else "pip-audit matrix must cover tracked requirement sets"))
 
     pnpm = _section(text, "pnpm-audit")
     findings.append(Finding("set -euo pipefail" in pnpm, "pnpm-audit uses fail-closed shell options" if "set -euo pipefail" in pnpm else "pnpm-audit must use set -euo pipefail"))

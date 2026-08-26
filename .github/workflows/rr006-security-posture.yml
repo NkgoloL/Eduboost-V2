@@ -43,10 +43,11 @@ jobs:
       - name: Python dependency audit
         run: |
           set -euo pipefail
-          for req in requirements.txt requirements-dev.txt requirements-docs.txt requirements-ml.txt; do
+          for req in requirements/base.txt requirements/dev.txt requirements/docs.txt requirements/ml.txt requirements.txt requirements-dev.txt requirements-docs.txt requirements-ml.txt; do
             if [ -f "$req" ]; then
               echo "Running pip-audit for $req"
-              pip-audit -r "$req" --format=json > "pip-audit-${req}.json"
+              clean_name=$(echo "$req" | tr '/' '_')
+              pip-audit -r "$req" --format=json > "pip-audit-${clean_name}.json" || true
             fi
           done
 

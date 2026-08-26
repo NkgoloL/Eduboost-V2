@@ -1,5 +1,5 @@
 {
-  "description": "Known active-code metaphor terminology references. This refreshed baseline is a merge-unblocker for RR-010, but it does not close the underlying metaphor-naming debt. The CI gate fails only for references not listed here, so this baseline must still shrink as naming is moved to canonical domain language.",
+  "description": "Known active-code metaphor terminology references. The CI gate fails only for references not listed here, so this baseline must shrink as naming is moved to canonical domain language.",
   "references": [
     {
       "file": "alembic/versions/_deprecated/0001_five_pillar_schema.py",
@@ -62,12 +62,6 @@
       "text": "from app.services.fourth_estate import FourthEstateService"
     },
     {
-      "file": "app/api_v2_routers/learners.py",
-      "line": 18,
-      "term": "fourth_estate",
-      "text": "from app.services.fourth_estate import FourthEstateService"
-    },
-    {
       "file": "app/api_v2_routers/onboarding.py",
       "line": 13,
       "term": "ether",
@@ -81,55 +75,19 @@
     },
     {
       "file": "app/api_v2_routers/parents.py",
-      "line": 24,
+      "line": 22,
       "term": "executive",
       "text": "from app.services.executive import ExecutiveService"
     },
     {
-      "file": "app/api_v2_routers/parents.py",
-      "line": 25,
-      "term": "fourth_estate",
-      "text": "from app.services.fourth_estate import FourthEstateService"
-    },
-    {
-      "file": "app/api_v2_routers/test_services.py",
-      "line": 130,
-      "term": "ether",
-      "text": "# \u2500\u2500 Ether Service Tests \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
-    },
-    {
-      "file": "app/api_v2_routers/test_services.py",
-      "line": 3,
-      "term": "ether",
-      "text": "Covers: IRT engine, Judiciary schema validation, Ether archetype classification."
-    },
-    {
-      "file": "app/api_v2_routers/test_services.py",
-      "line": 3,
-      "term": "judiciary",
-      "text": "Covers: IRT engine, Judiciary schema validation, Ether archetype classification."
-    },
-    {
-      "file": "app/api_v2_routers/test_services.py",
-      "line": 85,
-      "term": "judiciary",
-      "text": "# \u2500\u2500 Judiciary Tests \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
-    },
-    {
-      "file": "app/api_v2_routers/test_services.py",
-      "line": 9,
-      "term": "judiciary",
-      "text": "from app.services.judiciary import ConstitutionalViolation, PolicyService"
-    },
-    {
       "file": "app/core/health.py",
-      "line": 163,
+      "line": 152,
       "term": "judiciary",
       "text": "        from app.core.judiciary import JudiciaryService"
     },
     {
       "file": "app/core/health.py",
-      "line": 203,
+      "line": 193,
       "term": "judiciary",
       "text": "        \"judiciary\": await check_judiciary(),"
     },
@@ -177,7 +135,7 @@
     },
     {
       "file": "app/domain/schemas.py",
-      "line": 134,
+      "line": 135,
       "term": "ether",
       "text": "# \u2500\u2500 Onboarding (Ether cold-start) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
     },
@@ -207,13 +165,13 @@
     },
     {
       "file": "app/modules/lessons/service.py",
-      "line": 134,
+      "line": 139,
       "term": "ether",
       "text": "        # 3. Call AI Service (Executive/Ether)"
     },
     {
       "file": "app/modules/lessons/service.py",
-      "line": 134,
+      "line": 139,
       "term": "executive",
       "text": "        # 3. Call AI Service (Executive/Ether)"
     },
@@ -398,540 +356,6 @@
       "text": "                \"judiciary\": {\"status\": \"ok\"},"
     },
     {
-      "file": "tests/legacy/integration/test_five_pillar_pipeline.py",
-      "line": 201,
-      "term": "fourth_estate",
-      "text": "        from app.api.fourth_estate import get_fourth_estate"
-    },
-    {
-      "file": "tests/legacy/integration/test_five_pillar_pipeline.py",
-      "line": 202,
-      "term": "fourth_estate",
-      "text": "        import app.api.fourth_estate as femod"
-    },
-    {
-      "file": "tests/legacy/integration/test_five_pillar_pipeline.py",
-      "line": 218,
-      "term": "fourth_estate",
-      "text": "        from app.api.fourth_estate import get_fourth_estate"
-    },
-    {
-      "file": "tests/legacy/integration/test_five_pillar_pipeline.py",
-      "line": 219,
-      "term": "fourth_estate",
-      "text": "        import app.api.fourth_estate as femod"
-    },
-    {
-      "file": "tests/legacy/integration/test_five_pillar_pipeline.py",
-      "line": 3,
-      "term": "ether",
-      "text": "Tests the full Orchestrator flow: Legislature \u2192 Executive \u2192 Judiciary \u2192 Fourth Estate \u2192 Ether."
-    },
-    {
-      "file": "tests/legacy/integration/test_five_pillar_pipeline.py",
-      "line": 3,
-      "term": "executive",
-      "text": "Tests the full Orchestrator flow: Legislature \u2192 Executive \u2192 Judiciary \u2192 Fourth Estate \u2192 Ether."
-    },
-    {
-      "file": "tests/legacy/integration/test_five_pillar_pipeline.py",
-      "line": 3,
-      "term": "judiciary",
-      "text": "Tests the full Orchestrator flow: Legislature \u2192 Executive \u2192 Judiciary \u2192 Fourth Estate \u2192 Ether."
-    },
-    {
-      "file": "tests/legacy/integration/test_five_pillar_pipeline.py",
-      "line": 74,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.client import JudiciaryClient"
-    },
-    {
-      "file": "tests/legacy/integration/test_five_pillar_pipeline.py",
-      "line": 75,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.base import JudiciaryStampRef, WorkerAgent"
-    },
-    {
-      "file": "tests/legacy/integration/test_five_pillar_pipeline.py",
-      "line": 90,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.client import JudiciaryClient"
-    },
-    {
-      "file": "tests/legacy/integration/test_five_pillar_pipeline.py",
-      "line": 91,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.base import JudiciaryStampRef"
-    },
-    {
-      "file": "tests/legacy/integration/test_lesson_api.py",
-      "line": 16,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.client import JudiciaryClient"
-    },
-    {
-      "file": "tests/legacy/integration/test_lesson_api.py",
-      "line": 17,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.base import JudiciaryStampRef, WorkerAgent"
-    },
-    {
-      "file": "tests/legacy/integration/test_parent_portal_integration.py",
-      "line": 27,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.client import JudiciaryClient"
-    },
-    {
-      "file": "tests/legacy/integration/test_parent_portal_integration.py",
-      "line": 28,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.base import JudiciaryStampRef, WorkerAgent"
-    },
-    {
-      "file": "tests/legacy/integration/test_study_plan_integration.py",
-      "line": 24,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.client import JudiciaryClient"
-    },
-    {
-      "file": "tests/legacy/integration/test_study_plan_integration.py",
-      "line": 25,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.base import JudiciaryStampRef, WorkerAgent"
-    },
-    {
-      "file": "tests/legacy/unit/test_constitutional_schema.py",
-      "line": 191,
-      "term": "executive",
-      "text": "            pillar=\"EXECUTIVE\","
-    },
-    {
-      "file": "tests/legacy/unit/test_constitutional_schema.py",
-      "line": 200,
-      "term": "judiciary",
-      "text": "            pillar=\"JUDICIARY\","
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 103,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.compliance import scrub_pii"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 127,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.compliance import assert_pii_clean"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 132,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.compliance import assert_pii_clean"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 147,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.base import JudiciaryStampRef, WorkerAgent"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 169,
-      "term": "judiciary",
-      "text": "        with patch(\"app.api.judiciary.client.JudiciaryClient\") as MockClient:"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 180,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.base import ("
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 202,
-      "term": "judiciary",
-      "text": "        with patch(\"app.api.judiciary.client.JudiciaryClient\") as MockClient:"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 211,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.base import UnauthorizedExecutionError, WorkerAgent"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 250,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.models import ExecutiveActionIn"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 264,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.service import PolicyService"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 273,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.service import PolicyService"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 27,
-      "term": "judiciary",
-      "text": "    from app.api.judiciary.models import ConstitutionalRule, ScopeModel"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 281,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.service import PolicyService"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 294,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.compliance import ConsentGate"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 304,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.compliance import ConsentGate"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 315,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.compliance import ConsentGate"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 331,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.state_machine import SessionOrchestrator, SessionState"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 353,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.state_machine import InvalidTransitionError, SessionOrchestrator, SessionState"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 363,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.state_machine import ("
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 379,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.engine import IRTEngine"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 395,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.engine import IRTItem"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 39,
-      "term": "judiciary",
-      "text": "    from app.api.judiciary.base import ExecutiveAction"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 406,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.engine import IRTEngine, IRTItem"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 413,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.engine import IRTEngine, IRTItem"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 421,
-      "term": "ether",
-      "text": "# ETHER: Profile build and decay"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 425,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.profiler import EtherProfiler"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 442,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.models import LearnerEtherProfile"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 443,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.profiler import EtherProfiler"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 456,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.models import LearnerEtherProfile"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 457,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.profiler import EtherProfiler"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 58,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.models import ConstitutionalRule, ScopeModel"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 76,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.models import ConstitutionalRule, ScopeModel"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 87,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.models import ConstitutionalRuleORM, _block_update"
-    },
-    {
-      "file": "tests/legacy/unit/test_five_pillars.py",
-      "line": 93,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.models import _block_delete, ConstitutionalRuleORM"
-    },
-    {
-      "file": "tests/legacy/unit/test_fourth_estate.py",
-      "line": 12,
-      "term": "fourth_estate",
-      "text": "from app.api.fourth_estate import FourthEstate, get_fourth_estate"
-    },
-    {
-      "file": "tests/legacy/unit/test_fourth_estate.py",
-      "line": 165,
-      "term": "judiciary",
-      "text": "                pillar=\"JUDICIARY\","
-    },
-    {
-      "file": "tests/legacy/unit/test_fourth_estate.py",
-      "line": 178,
-      "term": "executive",
-      "text": "                pillar=\"EXECUTIVE\","
-    },
-    {
-      "file": "tests/legacy/unit/test_fourth_estate.py",
-      "line": 219,
-      "term": "fourth_estate",
-      "text": "        import app.api.fourth_estate as femod"
-    },
-    {
-      "file": "tests/legacy/unit/test_fourth_estate.py",
-      "line": 48,
-      "term": "executive",
-      "text": "            pillar=\"EXECUTIVE\","
-    },
-    {
-      "file": "tests/legacy/unit/test_fourth_estate.py",
-      "line": 58,
-      "term": "judiciary",
-      "text": "            pillar=\"JUDICIARY\","
-    },
-    {
-      "file": "tests/legacy/unit/test_fourth_estate.py",
-      "line": 73,
-      "term": "executive",
-      "text": "        assert events[0].pillar == \"EXECUTIVE\""
-    },
-    {
-      "file": "tests/legacy/unit/test_fourth_estate_circuit_breaker.py",
-      "line": 14,
-      "term": "executive",
-      "text": "        pillar=\"EXECUTIVE\","
-    },
-    {
-      "file": "tests/legacy/unit/test_fourth_estate_circuit_breaker.py",
-      "line": 3,
-      "term": "fourth_estate",
-      "text": "from app.api.fourth_estate import FourthEstate"
-    },
-    {
-      "file": "tests/legacy/unit/test_fourth_estate_circuit_breaker.py",
-      "line": 46,
-      "term": "fourth_estate",
-      "text": "    with patch(\"app.api.fourth_estate.logger\") as mock_logger:"
-    },
-    {
-      "file": "tests/legacy/unit/test_fourth_estate_circuit_breaker.py",
-      "line": 74,
-      "term": "executive",
-      "text": "        pillar=\"EXECUTIVE\","
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 100,
-      "term": "judiciary",
-      "text": "        j = Judiciary(use_llm_review=False)"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 114,
-      "term": "judiciary",
-      "text": "        j = Judiciary(use_llm_review=False)"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 11,
-      "term": "judiciary",
-      "text": "from app.api.judiciary import Judiciary, get_judiciary"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 11,
-      "term": "judiciary",
-      "text": "from app.api.judiciary import Judiciary, get_judiciary"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 129,
-      "term": "judiciary",
-      "text": "        j = Judiciary(use_llm_review=False)"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 146,
-      "term": "judiciary",
-      "text": "        j = Judiciary(use_llm_review=False)"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 165,
-      "term": "judiciary",
-      "text": "        j = Judiciary(use_llm_review=False)"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 178,
-      "term": "judiciary",
-      "text": "        j = Judiciary(use_llm_review=False)"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 194,
-      "term": "judiciary",
-      "text": "        j = Judiciary(use_llm_review=False)"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 201,
-      "term": "judiciary",
-      "text": "        j = Judiciary(use_llm_review=False)"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 208,
-      "term": "judiciary",
-      "text": "        j = Judiciary(use_llm_review=False)"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 215,
-      "term": "judiciary",
-      "text": "        j = Judiciary(use_llm_review=False)"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 223,
-      "term": "judiciary",
-      "text": "        j = Judiciary(use_llm_review=False)"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 234,
-      "term": "judiciary",
-      "text": "        import app.api.judiciary as jmod"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 241,
-      "term": "judiciary",
-      "text": "        j = Judiciary(use_llm_review=False)"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 2,
-      "term": "judiciary",
-      "text": "Unit tests for the Judiciary (Pillar 3)."
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 45,
-      "term": "judiciary",
-      "text": "        j = Judiciary(use_llm_review=False)"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 56,
-      "term": "judiciary",
-      "text": "        j = Judiciary(use_llm_review=False)"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 67,
-      "term": "judiciary",
-      "text": "        j = Judiciary(use_llm_review=False)"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 77,
-      "term": "judiciary",
-      "text": "        j = Judiciary(use_llm_review=False)"
-    },
-    {
-      "file": "tests/legacy/unit/test_judiciary.py",
-      "line": 87,
-      "term": "judiciary",
-      "text": "        j = Judiciary(use_llm_review=False)"
-    },
-    {
-      "file": "tests/legacy/unit/test_profiler.py",
-      "line": 2,
-      "term": "ether",
-      "text": "Unit tests for the Ether Profiler (Pillar 5)."
-    },
-    {
-      "file": "tests/legacy/unit/test_study_plan_service.py",
-      "line": 104,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.base import ConsentViolationError"
-    },
-    {
-      "file": "tests/legacy/unit/test_study_plan_service.py",
-      "line": 47,
-      "term": "judiciary",
-      "text": "        from app.api.judiciary.base import JudiciaryStampRef"
-    },
-    {
-      "file": "tests/legacy/unit/test_study_plan_service.py",
-      "line": 51,
-      "term": "judiciary",
-      "text": "             patch(\"app.api.judiciary.base.WorkerAgent._stamp_gate\", new_callable=AsyncMock) as mock_gate:"
-    },
-    {
       "file": "tests/test_ready_endpoint.py",
       "line": 12,
       "term": "judiciary",
@@ -951,7 +375,7 @@
     },
     {
       "file": "tests/unit/audit_remediation/test_backend_fast_phase02e.py",
-      "line": 16,
+      "line": 15,
       "term": "ether",
       "text": "    source = (ROOT / \"app/api_v2_routers/ether.py\").read_text(encoding=\"utf-8\")"
     },
@@ -966,6 +390,36 @@
       "line": 7,
       "term": "fourth_estate",
       "text": "    module = importlib.import_module(\"app.services.fourth_estate\")"
+    },
+    {
+      "file": "tests/unit/test_honest_coverage_runtime_health.py",
+      "line": 106,
+      "term": "judiciary",
+      "text": "    assert ((\"judiciary\", \"optional\"), 1) in calls"
+    },
+    {
+      "file": "tests/unit/test_legacy_api_services.py",
+      "line": 130,
+      "term": "ether",
+      "text": "# \u2500\u2500 Ether Service Tests \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
+    },
+    {
+      "file": "tests/unit/test_legacy_api_services.py",
+      "line": 3,
+      "term": "ether",
+      "text": "Covers: IRT engine, Judiciary schema validation, Ether archetype classification."
+    },
+    {
+      "file": "tests/unit/test_legacy_api_services.py",
+      "line": 3,
+      "term": "judiciary",
+      "text": "Covers: IRT engine, Judiciary schema validation, Ether archetype classification."
+    },
+    {
+      "file": "tests/unit/test_legacy_api_services.py",
+      "line": 85,
+      "term": "judiciary",
+      "text": "# \u2500\u2500 Judiciary Tests \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"
     },
     {
       "file": "tests/unit/test_operational_auth_boundaries.py",

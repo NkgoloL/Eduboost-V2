@@ -30,6 +30,7 @@ def test_prd007_canonicalise_reports_openapi_counts() -> None:
 
 
 def test_prd007_generated_artifact_inventory_records_mirrors() -> None:
+    canonicalise(ROOT, write=True)
     inventory = generated_artifact_inventory(ROOT, captured_at="2026-07-07T00:00:00+00:00")
     assert inventory["schema_version"] == "prd-openapi-generated-artifact-canonicalisation/v1"
     assert inventory["canonical_openapi_path"] == "docs/openapi.json"

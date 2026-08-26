@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 PYTHON ?= python3
+export PYTHONPATH := .:$(PYTHONPATH)
 
 include Makefile.arch
 
