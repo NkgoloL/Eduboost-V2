@@ -67,6 +67,12 @@ Controlled-beta fields are distinct and independently enforced:
 - **Cohort Limits**: Staging cohort only (<50 test accounts).
 - **Kill-Switch State**: Enabled (`FEATURE_FLAG_MAINTENANCE_MODE=true` fails closed).
 
+## Governance & Reconciled Registers
+
+- Current-state refresh cadence recorded: true
+- Reconciled register rule: All roadmap items follow the RR-### register structure in `docs/roadmap/reconciliation/outstanding_work_register.md`.
+- Historical caveats: RR-003 fallback coverage baseline recorded 0.0; RR-006 evidence merged with non-required checks non-blocking; RR-010 beta outcome reporting outstanding; RR-016 operational drills outstanding.
+
 ## Release authority boundaries (fail-closed)
 
 These remain strictly unauthorized:

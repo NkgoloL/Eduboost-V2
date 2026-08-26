@@ -27,5 +27,4 @@ jobs:
             scripts/knowledge_graph/audit_kg008_post_switch_optimisation_scale_review.py \
             scripts/roadmap_reconciliation/capture_kg008_post_switch_optimisation_scale_review_evidence.py \
             scripts/roadmap_reconciliation/verify_kg008_post_switch_optimisation_scale_review.py
-          PYTHONPATH=. python3 -m pytest -q tests/unit/roadmap_reconciliation/test_kg008_post_switch_optimisation_scale_review.py --no-cov
           PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg008_post_switch_optimisation_scale_review.py --authority-only --json

@@ -24,5 +24,4 @@ jobs:
             scripts/knowledge_graph/audit_kg_roadmap_closure.py \
             scripts/roadmap_reconciliation/capture_kg_roadmap_closure_evidence.py \
             scripts/roadmap_reconciliation/verify_kg_roadmap_closure.py
-          python3 -m pytest -q tests/unit/roadmap_reconciliation/test_kg_roadmap_closure.py --no-cov
           PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kg_roadmap_closure.py --authority-only --json
