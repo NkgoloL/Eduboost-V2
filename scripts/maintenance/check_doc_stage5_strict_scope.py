@@ -14,7 +14,8 @@ def main() -> int:
         if idx + 1 < len(args):
             root = Path(args[idx + 1]).resolve()
     command = [sys.executable, str(root / "scripts/maintenance/check_doc_stage3_strict_scope.py"), "--root", str(root), "--scope", "docs/documentation/stage_5_strict_scope.json"]
-    return run(command)
+    proc = run(command)
+    return proc.returncode
 
 
 if __name__ == "__main__":

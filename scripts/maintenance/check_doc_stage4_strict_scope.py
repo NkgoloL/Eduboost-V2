@@ -21,7 +21,8 @@ def main() -> int:
         "--scope",
         "docs/documentation/stage_4_strict_scope.json",
     ]
-    return run(command)
+    proc = run(command)
+    return proc.returncode
 
 
 if __name__ == "__main__":

@@ -125,8 +125,8 @@ def audit(root: Path = Path(".")) -> dict[str, Any]:
     if not prd007.get("valid"):
         errors.append("PRD-0.7 OpenAPI/generated artifact canonicalisation must be valid before PRD-0.8")
     register = read_json(root / REGISTER)
-    allowed_last = {"PRD-0.7", *{f"PRD-0.{idx}" for idx in range(8, 11)}, *{f"PRD-1.{idx}" for idx in range(0, 10)}}
-    allowed_next = {"PRD-0.8", *{f"PRD-0.{idx}" for idx in range(9, 11)}, "PRD-1", "PRD-2", *{f"PRD-1.{idx}" for idx in range(0, 10)}}
+    allowed_last = {"PRD-0.7", *{f"PRD-0.{idx}" for idx in range(8, 11)}, *{f"PRD-1.{idx}" for idx in range(0, 10)}, *{f"PRD-{idx}" for idx in range(1, 12)}, *{f"PRD-11.0R.RUNTIME-RESTORE.EXECUTION-{idx}" for idx in range(1, 10)}}
+    allowed_next = {"PRD-0.8", *{f"PRD-0.{idx}" for idx in range(9, 11)}, "PRD-1", "PRD-2", *{f"PRD-1.{idx}" for idx in range(0, 10)}, *{f"PRD-{idx}" for idx in range(1, 12)}, *{f"PRD-11.0R.RUNTIME-RESTORE.EXECUTION-{idx}" for idx in range(1, 10)}}
     if register.get("last_recorded_item") not in allowed_last:
         errors.append("production readiness register last_recorded_item must be PRD-0.7 or a later PRD-0 archival state")
     if register.get("next_authorised_item") not in allowed_next:

@@ -1,0 +1,57 @@
+{
+  "checks": {
+    "boundaries": {
+      "failures": [],
+      "inspected": [
+        "docs/roadmap/production_readiness/production_readiness_register.json",
+        "docs/roadmap/production_readiness/prd11_production_release_register.json",
+        "docs/roadmap/production_readiness/true_state_remediation_register.json"
+      ],
+      "valid": true
+    },
+    "current_state_docs": {
+      "path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/current_state.md",
+      "valid": true
+    },
+    "hygiene": {
+      "status_porcelain": "M .github/workflows/docs.yml\n M .github/workflows/final-roadmap-reconciliation-closure.yml\n M .github/workflows/kg-roadmap-closure-report.yml\n M .github/workflows/kg001-caps-graph-foundation.yml\n M .github/workflows/kg002-target-graph-generation.yml\n M .github/workflows/kg003-learner-graph-shadow-mode.yml\n M .github/workflows/kg004-gap-engine-intervention-planner.yml\n M .github/workflows/kg005-graph-grounded-lesson-assessment-generation.yml\n M .github/workflows/kg006-tutor-study-plan-gamification-parent-alignment.yml\n M .github/workflows/kg007-authority-switch-legacy-cleanup.yml\n M .github/workflows/kg008-post-switch-optimisation-scale-review.yml\n M .github/workflows/kgact001-controlled-runtime-kg-authority-activation.yml\n M .github/workflows/prd000-production-readiness-stream-authority.yml\n M .github/workflows/prd002-historical-report-stale-source-quarantine.yml\n M .github/workflows/prd003-documentation-housekeeping-ratchet-refresh.yml\n M .github/workflows/prd005-test-failure-collection-stabilisation-register.yml\n M .github/workflows/prd006-workflow-command-hygiene-ci-inventory.yml\n M .github/workflows/prd100-ci-release-gate-stream-authority.yml\n M .github/workflows/prd101-ci-inventory-authority.yml\n M .github/workflows/rr007-product-quality-gates.yml\n M .github/workflows/rr008-operational-readiness.yml\n M .github/workflows/rr009-governance-process.yml\n M .github/workflows/rr010-beta-outcome-reporting.yml\n M .github/workflows/rr011-live-billing-provider-integration.yml\n M .github/workflows/rr012-production-telemetry-dashboard.yml\n M .github/workflows/rr013-advanced-mastery-model-research.yml\n M .github/workflows/rr014-public-beta-expansion.yml\n M .github/workflows/rr015-external-approvals.yml\n M .github/workflows/rr016-operational-drills.yml\n M .github/workflows/rr017-release-safety-controls.yml\n M .github/workflows/rr018-trustworthy-beta-product-quality.yml\n M .github/workflows/technical-audit-hosted-ci.yml\n M Makefile\n M docs/ai/ai_prompt_surface_inventory.md\n M docs/architecture/auth_boundary_debt_report.md\n M docs/architecture/auth_service_extraction_followup.md\n M docs/architecture/auth_service_extraction_report.md\n M docs/architecture/import_linter_availability.md\n M docs/architecture/import_linter_contract_run.md\n M docs/architecture/metaphor_layer_inventory_baseline.json\n M docs/architecture/router_repository_boundary_matrix.md\n M docs/architecture/router_service_dependency_map.md\n M docs/architecture/router_thinness_baseline.json\n M docs/architecture/service_boundary_inventory.md\n M docs/architecture/service_family_map.md\n M docs/architecture/transaction_boundary_inventory.md\n M docs/architecture/tx_route_wiring_inventory.md\n M docs/docs_gap_report.md\n M docs/docs_generation_plan.md\n M docs/docs_inventory.json\n M docs/docs_inventory.md\n M docs/documentation/housekeeping_ratchet_baseline.json\n M docs/frontend/frontend_api_client_inventory.md\n M docs/frontend/frontend_route_inventory.md\n M docs/frontend/frontend_runtime_inventory.md\n M docs/release-evidence/true-state-remediation/b02/verification.json\n M docs/roadmap/production_readiness/production_readiness_register.json\n M docs/roadmap/production_readiness/true_state_remediation_register.json\n M docs/security/PHASE2_AUTHORIZATION_CLOSURE.md\n M docs/security/auth_hardening_status.md\n M docs/security/dependency_constraints_snapshot.md\n M docs/security/dependency_pin_report.md\n M docs/security/jwt_pyjwt_migration_report.md\n M docs/security/jwt_rotation_introspection.md\n M docs/security/jwt_rotation_repair_report.md\n M docs/security/popia_consent_boundary_matrix.md\n M docs/security/popia_consent_gate_inventory.md\n M docs/testing/coverage_baseline_stabilisation.md\n M docs/testing/coverage_frontend_advisory_gate_contract.md\n M docs/testing/coverage_static_security_green_execution.md\n M docs/testing/documentation_defined_coverage.md\n M docs/testing/final_true_state_baseline_handoff_contract.md\n M docs/testing/generated_contract_frontend_quality_execution.md\n M docs/testing/generated_contract_frontend_quality_green_evidence.md\n M docs/testing/generated_contract_frontend_quality_green_run.md\n M docs/testing/product_critical_flow_green_execution.md\n M docs/testing/product_gate_execution_contract.md\n M docs/testing/product_runtime_test_gate_contract.md\n M docs/testing/runtime_stack_db_lineage_ready_green.md\n M docs/testing/script_taxonomy.md\n M docs/testing/targeted_baseline_reconciliation.md\n M docs/testing/test_suite_taxonomy.md\n M docs/testing/unit_shard_stabilisation.md\n M scripts/maintenance/check_doc_inventory_reproducible.py\n M scripts/maintenance/check_doc_stage4_strict_scope.py\n M scripts/maintenance/check_doc_stage5_strict_scope.py\n M scripts/maintenance/doc_utils.py\n M scripts/maintenance/update_doc_housekeeping_baseline.py\n M scripts/production_readiness/audit_prd000_production_readiness_stream_authority.py\n M scripts/production_readiness/audit_prd001_canonical_current_state_documentation_refresh.py\n M scripts/production_readiness/audit_prd002_historical_report_stale_source_quarantine.py\n M scripts/production_readiness/audit_prd003_documentation_housekeeping_ratchet_refresh.py\n M scripts/production_readiness/audit_prd004_test_dependency_bootstrap_baseline.py\n M scripts/production_readiness/audit_prd005_test_failure_collection_stabilisation_register.py\n M scripts/production_readiness/audit_prd006_workflow_command_hygiene_ci_inventory.py\n M scripts/production_readiness/audit_prd007_openapi_generated_artifact_canonicalisation.py\n M scripts/production_readiness/audit_prd008_branch_release_naming_reconciliation.py\n M tests/unit/roadmap_reconciliation/test_prd007_openapi_generated_artifact_canonicalisation.py",
+      "stray_untracked": [],
+      "valid": true
+    },
+    "manual": {
+      "invalid": [],
+      "missing": [],
+      "valid": true
+    },
+    "openapi_canonical": {
+      "json_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/openapi.json",
+      "valid": true,
+      "yaml_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/openapi.yaml"
+    },
+    "register": {
+      "errors": [],
+      "release_boundaries": {
+        "failures": [],
+        "inspected": [
+          "docs/roadmap/production_readiness/production_readiness_register.json",
+          "docs/roadmap/production_readiness/prd11_production_release_register.json",
+          "docs/roadmap/production_readiness/true_state_remediation_register.json"
+        ],
+        "valid": true
+      },
+      "task_count": 174,
+      "valid": true
+    },
+    "route_inventory": {
+      "path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/route_inventory.md",
+      "valid": true
+    },
+    "sboms": {
+      "backend_sbom": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release-evidence/true-state-remediation/b02/sbom/sbom-backend.cdx.json",
+      "frontend_sbom": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release-evidence/true-state-remediation/b02/sbom/sbom-frontend.cdx.json",
+      "valid": true
+    }
+  },
+  "valid": true,
+  "verified_at": "2026-08-26T09:58:12.862160+00:00"
+}

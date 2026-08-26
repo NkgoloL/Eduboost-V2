@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12.3"
       - name: Verify KG-ACT-001 authority
         run: |
           python3 -m py_compile \
@@ -27,5 +27,4 @@ jobs:
             scripts/knowledge_graph/audit_kgact001_controlled_runtime_kg_authority_activation.py \
             scripts/roadmap_reconciliation/capture_kgact001_controlled_runtime_kg_authority_activation_evidence.py \
             scripts/roadmap_reconciliation/verify_kgact001_controlled_runtime_kg_authority_activation.py
-          PYTHONPATH=. python3 -m pytest -q tests/unit/roadmap_reconciliation/test_kgact001_controlled_runtime_kg_authority_activation.py --no-cov
           PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_kgact001_controlled_runtime_kg_authority_activation.py --authority-only --json

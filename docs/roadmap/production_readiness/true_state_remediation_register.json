@@ -25,7 +25,7 @@
         "TSR-2",
         "TSR-3"
       ],
-      "status": "authorised",
+      "status": "verified",
       "title": "Canonical Truth and Toolchain"
     },
     {
@@ -34,7 +34,7 @@
         "TSR-4",
         "TSR-5"
       ],
-      "status": "identified",
+      "status": "authorised",
       "title": "CI and Test Authority"
     },
     {
@@ -103,7 +103,7 @@
       "status": "verified",
       "target_gate": "RG-0",
       "title": "Create `true_state_remediation_register.json` containing every finding in the audit",
-      "updated_at": "2026-08-25T22:08:41.941528+00:00"
+      "updated_at": "2026-08-25T23:14:24.841234+00:00"
     },
     {
       "acceptance_criteria": "Branch, commit, worktree status, submodules, source archive digest, lockfile digests, migration head, and OpenAPI digest are recorded.",
@@ -120,7 +120,7 @@
       "status": "verified",
       "target_gate": "RG-0",
       "title": "Record exact canonical source state",
-      "updated_at": "2026-08-25T22:08:41.941547+00:00"
+      "updated_at": "2026-08-25T23:14:24.841255+00:00"
     },
     {
       "acceptance_criteria": "Python, pip, OS, Node, pnpm, Docker, Postgres/pgvector, Redis, browser, and relevant native-library versions are machine-readable.",
@@ -137,7 +137,7 @@
       "status": "verified",
       "target_gate": "RG-0",
       "title": "Capture canonical environment identity",
-      "updated_at": "2026-08-25T22:08:41.941550+00:00"
+      "updated_at": "2026-08-25T23:14:24.841259+00:00"
     },
     {
       "acceptance_criteria": "Backend and frontend install from locked inputs; undeclared/manual dependencies are not required.",
@@ -154,7 +154,7 @@
       "status": "verified",
       "target_gate": "RG-0",
       "title": "Reproduce clean dependency installs without using prior caches",
-      "updated_at": "2026-08-25T22:08:41.941552+00:00"
+      "updated_at": "2026-08-25T23:14:24.841261+00:00"
     },
     {
       "acceptance_criteria": "Coverage, collection, Ruff, mypy, Bandit, pip-audit, pnpm audit, secrets, frontend quality, product/runtime, route, schema, and migration checks have raw outputs.",
@@ -171,7 +171,7 @@
       "status": "verified",
       "target_gate": "RG-0",
       "title": "Capture the complete starting failure profile",
-      "updated_at": "2026-08-25T22:08:41.941554+00:00"
+      "updated_at": "2026-08-25T23:14:24.841262+00:00"
     },
     {
       "acceptance_criteria": "Pull requests outside remediation/safety/reliability require an explicit exception; no release flag changes are allowed.",
@@ -188,7 +188,7 @@
       "status": "verified",
       "target_gate": "RG-0",
       "title": "Enforce temporary feature freeze",
-      "updated_at": "2026-08-25T22:08:41.941555+00:00"
+      "updated_at": "2026-08-25T23:14:24.841264+00:00"
     },
     {
       "acceptance_criteria": "Engineering, release, evidence, security, privacy, curriculum, and operations responsibilities are named; self-review conflicts are disclosed.",
@@ -205,7 +205,7 @@
       "status": "verified",
       "target_gate": "RG-0",
       "title": "Define owners and independence controls",
-      "updated_at": "2026-08-25T22:08:41.941557+00:00"
+      "updated_at": "2026-08-25T23:14:24.841265+00:00"
     },
     {
       "acceptance_criteria": "Missing finding IDs, duplicate authorities, impossible status transitions, stale evidence pointers, or unauthorised release flags fail closed.",
@@ -222,7 +222,7 @@
       "status": "verified",
       "target_gate": "RG-0",
       "title": "Add roadmap/register schema validation",
-      "updated_at": "2026-08-25T22:08:41.941558+00:00"
+      "updated_at": "2026-08-25T23:14:24.841268+00:00"
     },
     {
       "acceptance_criteria": "Stub tests explicitly prevent real backend import, assert `FASTMCP_BACKEND == \"test-stub\"`, and pass whether or not the real MCP package is installed.",
@@ -239,7 +239,7 @@
       "status": "verified",
       "target_gate": "RG-1",
       "title": "Repair MCP startup-test isolation",
-      "updated_at": "2026-08-25T22:08:41.941560+00:00"
+      "updated_at": "2026-08-25T23:14:24.841270+00:00"
     },
     {
       "acceptance_criteria": "With the stub flag unset and the real dependency installed, the real backend path is exercised and verified independently.",
@@ -256,7 +256,7 @@
       "status": "verified",
       "target_gate": "RG-1",
       "title": "Preserve real-backend startup coverage",
-      "updated_at": "2026-08-25T22:08:41.941561+00:00"
+      "updated_at": "2026-08-25T23:14:24.841272+00:00"
     },
     {
       "acceptance_criteria": "Zero unexpected collection errors; required dependencies are declared in the correct profile; skips and xfails are explicit.",
@@ -273,7 +273,7 @@
       "status": "verified",
       "target_gate": "RG-1",
       "title": "Stabilize test collection in the canonical environment",
-      "updated_at": "2026-08-25T22:08:41.941562+00:00"
+      "updated_at": "2026-08-25T23:14:24.841274+00:00"
     },
     {
       "acceptance_criteria": "All shards terminate, no unresolved timeout leaves remain, combined line coverage meets or exceeds 70%, and missing-line data is published.",
@@ -290,7 +290,7 @@
       "status": "verified",
       "target_gate": "RG-1",
       "title": "Complete bounded, sharded coverage execution",
-      "updated_at": "2026-08-25T22:08:41.941564+00:00"
+      "updated_at": "2026-08-25T23:14:24.841277+00:00"
     },
     {
       "acceptance_criteria": "New coverage primarily targets authorization, consent, payments-disabled paths, learner state, data export/erasure, migration, and failure handling.",
@@ -307,7 +307,7 @@
       "status": "verified",
       "target_gate": "RG-1",
       "title": "Add risk-based tests rather than superficial line padding",
-      "updated_at": "2026-08-25T22:08:41.941565+00:00"
+      "updated_at": "2026-08-25T23:14:24.841279+00:00"
     },
     {
       "acceptance_criteria": "`python3 -m ruff check app tests` exits zero; no blanket ignores are introduced.",
@@ -324,7 +324,7 @@
       "status": "verified",
       "target_gate": "RG-1",
       "title": "Close Ruff findings in `app` and `tests`",
-      "updated_at": "2026-08-25T22:08:41.941567+00:00"
+      "updated_at": "2026-08-25T23:14:24.841281+00:00"
     },
     {
       "acceptance_criteria": "`python3 -m mypy app` exits zero under the committed configuration; CI no longer uses `continue-on-error` for the release job.",
@@ -341,7 +341,7 @@
       "status": "verified",
       "target_gate": "RG-1",
       "title": "Close mypy findings in `app`",
-      "updated_at": "2026-08-25T22:08:41.941568+00:00"
+      "updated_at": "2026-08-25T23:14:24.841283+00:00"
     },
     {
       "acceptance_criteria": "No unreviewed high findings; medium findings are fixed or narrowly accepted with owner and expiry; no blanket `# nosec`.",
@@ -358,7 +358,7 @@
       "status": "verified",
       "target_gate": "RG-1",
       "title": "Close Bandit findings",
-      "updated_at": "2026-08-25T22:08:41.941569+00:00"
+      "updated_at": "2026-08-25T23:14:24.841286+00:00"
     },
     {
       "acceptance_criteria": "Base and development requirements have no unaccepted known vulnerabilities; exceptions are time-boxed and approved.",
@@ -375,7 +375,7 @@
       "status": "verified",
       "target_gate": "RG-1",
       "title": "Close Python dependency findings",
-      "updated_at": "2026-08-25T22:08:41.941571+00:00"
+      "updated_at": "2026-08-25T23:14:24.841288+00:00"
     },
     {
       "acceptance_criteria": "Production dependency audit is green under the approved policy after dependency alignment; high/critical issues are zero or independently accepted.",
@@ -392,7 +392,7 @@
       "status": "verified",
       "target_gate": "RG-1",
       "title": "Close frontend production dependency findings",
-      "updated_at": "2026-08-25T22:08:41.941572+00:00"
+      "updated_at": "2026-08-25T23:14:24.841290+00:00"
     },
     {
       "acceptance_criteria": "Every detected candidate is human-reviewed; real secrets are rotated and removed from history where necessary; baseline regeneration alone is insufficient.",
@@ -409,7 +409,7 @@
       "status": "verified",
       "target_gate": "RG-1",
       "title": "Review the secret baseline",
-      "updated_at": "2026-08-25T22:08:41.941574+00:00"
+      "updated_at": "2026-08-25T23:14:24.841292+00:00"
     },
     {
       "acceptance_criteria": "Every gate is run independently from the exact merged source; command, exit code, duration, environment, artifact hash, warnings, skips, and failures are retained.",
@@ -426,7 +426,7 @@
       "status": "verified",
       "target_gate": "RG-1",
       "title": "Capture independent Execution-7 evidence",
-      "updated_at": "2026-08-25T22:08:41.941575+00:00"
+      "updated_at": "2026-08-25T23:14:24.841295+00:00"
     },
     {
       "acceptance_criteria": "Previously green critical product, runtime stack, frontend, schema, generated-contract, and database-lineage gates remain green.",
@@ -443,7 +443,7 @@
       "status": "verified",
       "target_gate": "RG-1",
       "title": "Re-run product/runtime regression gates",
-      "updated_at": "2026-08-25T22:08:41.941577+00:00"
+      "updated_at": "2026-08-25T23:14:24.841297+00:00"
     },
     {
       "acceptance_criteria": "Ruff, mypy, Bandit, vulnerabilities, secret candidates, coverage gaps, timeouts, and test collection deltas are quantified.",
@@ -460,306 +460,375 @@
       "status": "verified",
       "target_gate": "RG-1",
       "title": "Publish a debt delta",
-      "updated_at": "2026-08-25T22:08:41.941578+00:00"
+      "updated_at": "2026-08-25T23:14:24.841300+00:00"
     },
     {
       "acceptance_criteria": "Top-level status, current truth, active item, closed predecessors, and release flags are derived from one canonical state object and cannot disagree.",
       "bundle_id": "B02",
       "deliverable": "Register schema and generator",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.1",
       "owner_role": "release",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Repair production-register summary derivation"
+      "title": "Repair production-register summary derivation",
+      "updated_at": "2026-08-26T09:58:12.857679+00:00"
     },
     {
       "acceptance_criteria": "Both pages identify PRD-11 Execution-7/its successor correctly, show the operational hold, and include generation source/time.",
       "bundle_id": "B02",
       "deliverable": "Generator for `README.md` status and `docs/current_state.md`",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.2",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Generate current-state documentation"
+      "title": "Generate current-state documentation",
+      "updated_at": "2026-08-26T09:58:12.857702+00:00"
     },
     {
       "acceptance_criteria": "Grade 4 Mathematics is marked launch-active; Grade R\u20137 and other subjects are clearly planned, review-only, or inactive.",
       "bundle_id": "B02",
       "deliverable": "Product-scope authority",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.3",
       "owner_role": "evidence",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Correct product-scope statements"
+      "title": "Correct product-scope statements",
+      "updated_at": "2026-08-26T09:58:12.857705+00:00"
     },
     {
       "acceptance_criteria": "Governance authorization, operational safety, activation hold, cohort limits, and kill-switch state are distinct fields.",
       "bundle_id": "B02",
       "deliverable": "Current-state wording and status schema",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.4",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Clarify controlled-beta semantics"
+      "title": "Clarify controlled-beta semantics",
+      "updated_at": "2026-08-26T09:58:12.857706+00:00"
     },
     {
       "acceptance_criteria": "`docs/openapi.json` or a newly designated single location is authoritative; stale root artifacts are removed or atomically regenerated.",
       "bundle_id": "B02",
       "deliverable": "Generation policy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.5",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Establish one canonical OpenAPI artifact"
+      "title": "Establish one canonical OpenAPI artifact",
+      "updated_at": "2026-08-26T09:58:12.857708+00:00"
     },
     {
       "acceptance_criteria": "JSON and YAML contain the same paths, operations, schemas, metadata, and hash-equivalent normalized form.",
       "bundle_id": "B02",
       "deliverable": "Atomic generator",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.6",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Generate JSON/YAML formats from one in-memory schema"
+      "title": "Generate JSON/YAML formats from one in-memory schema",
+      "updated_at": "2026-08-26T09:58:12.857709+00:00"
     },
     {
       "acceptance_criteria": "Router registry, canonical prefix, OpenAPI paths, frontend client inventory, and SDK inputs agree; the 22-path drift cannot recur.",
       "bundle_id": "B02",
       "deliverable": "Contract verifier",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.7",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Add route/OpenAPI/client consistency verification"
+      "title": "Add route/OpenAPI/client consistency verification",
+      "updated_at": "2026-08-26T09:58:12.857711+00:00"
     },
     {
       "acceptance_criteria": "Default navigation exposes current state, architecture, setup, domains, operations, security/privacy, current roadmap, and archive entry only.",
       "bundle_id": "B02",
       "deliverable": "Current-doc index and archive index",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.8",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Reorganize documentation navigation"
+      "title": "Reorganize documentation navigation",
+      "updated_at": "2026-08-26T09:58:12.857712+00:00"
     },
     {
       "acceptance_criteria": "Historical records remain available and hashed but are marked non-authoritative and excluded from normal current-state navigation.",
       "bundle_id": "B02",
       "deliverable": "Immutable archive policy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.9",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Quarantine historical evidence from ordinary search/navigation"
+      "title": "Quarantine historical evidence from ordinary search/navigation",
+      "updated_at": "2026-08-26T09:58:12.857713+00:00"
     },
     {
       "acceptance_criteria": "A current-state page that disagrees with the register or exceeds the defined freshness threshold fails CI.",
       "bundle_id": "B02",
       "deliverable": "Documentation verifier",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.10",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Add freshness and contradiction checks"
+      "title": "Add freshness and contradiction checks",
+      "updated_at": "2026-08-26T09:58:12.857715+00:00"
     },
     {
       "acceptance_criteria": "Package version, release-candidate status, Python support, active API version, and product scope derive from one source.",
       "bundle_id": "B02",
       "deliverable": "Version authority",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-2.11",
       "owner_role": "evidence",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2A",
-      "title": "Standardize project/version metadata"
+      "title": "Standardize project/version metadata",
+      "updated_at": "2026-08-26T09:58:12.857716+00:00"
     },
     {
       "acceptance_criteria": "Next.js, React, React DOM, `eslint-config-next`, bundle analyzer, TypeScript, Node, and pnpm use an intentionally supported combination.",
       "bundle_id": "B02",
       "deliverable": "ADR and pinned manifest",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.1",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Decide and document the supported frontend compatibility matrix"
+      "title": "Decide and document the supported frontend compatibility matrix",
+      "updated_at": "2026-08-26T09:58:12.857718+00:00"
     },
     {
       "acceptance_criteria": "Clean frozen install succeeds without incompatible peer assumptions; type-check, lint, unit, E2E, build, and production audit pass.",
       "bundle_id": "B02",
       "deliverable": "Updated manifest/lock",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.2",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Align frontend packages and regenerate lockfiles"
+      "title": "Align frontend packages and regenerate lockfiles",
+      "updated_at": "2026-08-26T09:58:12.857719+00:00"
     },
     {
       "acceptance_criteria": "Either a formal pnpm workspace is committed or root E2E tooling is isolated with explicit lockfile ownership.",
       "bundle_id": "B02",
       "deliverable": "Workspace ADR",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.3",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Decide root-package architecture"
+      "title": "Decide root-package architecture",
+      "updated_at": "2026-08-26T09:58:12.857720+00:00"
     },
     {
       "acceptance_criteria": "Local, CI, Docker, and release jobs use the same supported Node and pnpm versions.",
       "bundle_id": "B02",
       "deliverable": "Toolchain file and Corepack config",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.4",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Enforce one Node/pnpm policy"
+      "title": "Enforce one Node/pnpm policy",
+      "updated_at": "2026-08-26T09:58:12.857722+00:00"
     },
     {
       "acceptance_criteria": "Pin production/development to 3.12.3 or define a tested support matrix; `pyproject.toml`, docs, CI, images, and deployment agree.",
       "bundle_id": "B02",
       "deliverable": "Python runtime policy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.5",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Resolve Python support inconsistency"
+      "title": "Resolve Python support inconsistency",
+      "updated_at": "2026-08-26T09:58:12.857723+00:00"
     },
     {
       "acceptance_criteria": "API runtime, worker, ETL/content, ML research, docs, and dev/test profiles are separate and independently auditable.",
       "bundle_id": "B02",
       "deliverable": "Requirements/lock structure",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.6",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Split Python dependencies by deployable profile"
+      "title": "Split Python dependencies by deployable profile",
+      "updated_at": "2026-08-26T09:58:12.857724+00:00"
     },
     {
       "acceptance_criteria": "Unused packages and stale Celery TODOs are removed, or an active worker architecture and tests are documented.",
       "bundle_id": "B02",
       "deliverable": "Dependency and architecture decision",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.7",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Remove or justify Celery/Flower"
+      "title": "Remove or justify Celery/Flower",
+      "updated_at": "2026-08-26T09:58:12.857726+00:00"
     },
     {
       "acceptance_criteria": "Production API image excludes GPU/transformer research stacks unless required by measured runtime behavior.",
       "bundle_id": "B02",
       "deliverable": "Lean image build",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.8",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Keep research/ML dependencies out of API images"
+      "title": "Keep research/ML dependencies out of API images",
+      "updated_at": "2026-08-26T09:58:12.857727+00:00"
     },
     {
       "acceptance_criteria": "Compose, CI, staging, migration tests, and production IaC use one supported version line or an explicit compatibility matrix.",
       "bundle_id": "B02",
       "deliverable": "Runtime matrix",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.9",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Standardize Postgres/pgvector and Redis versions"
+      "title": "Standardize Postgres/pgvector and Redis versions",
+      "updated_at": "2026-08-26T09:58:12.857729+00:00"
     },
     {
       "acceptance_criteria": "Backend and frontend release artifacts have reproducible SBOMs linked to source and image digests.",
       "bundle_id": "B02",
       "deliverable": "CycloneDX/SPDX artifacts",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.10",
       "owner_role": "release",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Produce SBOMs for release images"
+      "title": "Produce SBOMs for release images",
+      "updated_at": "2026-08-26T09:58:12.857731+00:00"
     },
     {
       "acceptance_criteria": "Update cadence, compatibility tests, vulnerability SLAs, lockfile ownership, and emergency-patch process are defined.",
       "bundle_id": "B02",
       "deliverable": "Renovation policy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.11",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Add dependency-update policy"
+      "title": "Add dependency-update policy",
+      "updated_at": "2026-08-26T09:58:12.857732+00:00"
     },
     {
       "acceptance_criteria": "API image size, install duration, package count, and vulnerability surface are recorded and materially reduced.",
       "bundle_id": "B02",
       "deliverable": "Before/after metrics",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b02"
+      ],
       "id": "TSR-3.12",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2B",
-      "title": "Measure image/install reductions"
+      "title": "Measure image/install reductions",
+      "updated_at": "2026-08-26T09:58:12.857733+00:00"
     },
     {
       "acceptance_criteria": "Each workflow has purpose, trigger, branches, commands, tool versions, required/advisory status, replacement, and retirement decision.",
@@ -2439,5 +2508,5 @@
       "title": "Lift feature freeze only after RG-6"
     }
   ],
-  "updated_at": "2026-08-25T22:08:41.944236+00:00"
+  "updated_at": "2026-08-26T09:58:12.860307+00:00"
 }

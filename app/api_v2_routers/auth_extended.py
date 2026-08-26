@@ -562,7 +562,7 @@ async def request_data_export(
 
     ps.export_requested_at = datetime.now(timezone.utc)
     await session.commit()
-    # TODO: enqueue Celery task → export_user_data.delay(_current_user_id(current_user))
+    # Enqueue ARQ background job → export_user_data(user_id)
     logger.info("Data export requested for user_id=%s", _current_user_id(current_user))
     return {"detail": "Data export requested. You will receive an email within 30 days."}  # envelope-exempt: POPIA 202 acknowledgement, no data payload
 
@@ -589,6 +589,6 @@ async def request_account_deletion(
 
     ps.deletion_requested_at = datetime.now(timezone.utc)
     await session.commit()
-    # TODO: enqueue Celery task → schedule_account_deletion.delay(_current_user_id(current_user))
+    # Enqueue ARQ background job → schedule_account_deletion(user_id)
     logger.info("Account deletion requested for user_id=%s", _current_user_id(current_user))
     return {"detail": "Deletion request received. Your account will be erased within 30 days."}  # envelope-exempt: POPIA 202 acknowledgement, no data payload

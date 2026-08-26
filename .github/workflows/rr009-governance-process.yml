@@ -21,6 +21,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12.3'
       - name: Verify RR-009 governance process reconciliation
         run: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr009_governance_process.py --authority-only --json

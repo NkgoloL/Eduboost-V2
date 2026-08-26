@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12.3'
       - name: Compile RR-016 scripts
         run: |
           python3 -m py_compile             scripts/operations_drills/audit_rr016_operational_drills.py             scripts/roadmap_reconciliation/capture_rr016_operational_drills_evidence.py             scripts/roadmap_reconciliation/verify_rr016_operational_drills.py

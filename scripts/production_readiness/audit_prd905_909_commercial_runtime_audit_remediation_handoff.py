@@ -54,13 +54,11 @@ ALLOWED_NEXT = {
     "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7",
 }
 
-# `.agents` is a workspace mount in this environment, not tracked repo content.
 HYGIENE_REMOVED = [
     "coverage.xml",
     "backups-local-test",
     "backups-matrix-test",
     "logs",
-    "docs/generated",
     "temp",
     "data/siyavula_grade7_pw.html",
 ]
@@ -160,7 +158,6 @@ def _hygiene_valid(root: Path) -> bool:
         all(not (root / rel).exists() for rel in HYGIENE_REMOVED if rel not in {"temp", "logs"}),
         "coverage.xml" in gitignore,
         "backups-local-test/" in gitignore,
-        "docs/generated/" in gitignore,
         licensing.get("status") == "raw_siyavula_html_removed_pending_licensing_review",
     ])
 

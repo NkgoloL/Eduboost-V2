@@ -1,3 +1,18 @@
+---
+title: "JWT PyJWT Migration Report"
+status: "active"
+owner: "engineering"
+reviewers: ["engineering"]
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-08-26"
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-check"
+code_anchors: ["docs/security/jwt_pyjwt_migration_report.md"]
+---
+
 # JWT PyJWT Migration Report
 
 PRD-10.0-10.4 removes the runtime dependency on `python-jose` and places

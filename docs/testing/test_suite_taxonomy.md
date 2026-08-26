@@ -1,3 +1,18 @@
+---
+title: "EduBoost Test Suite Taxonomy"
+status: "active"
+owner: "quality"
+reviewers: ["quality", "engineering"]
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-08-26"
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-check"
+code_anchors: ["docs/testing/test_suite_taxonomy.md"]
+---
+
 # EduBoost Test Suite Taxonomy
 
 This document defines the four test classes used by PRD-11.1R and later.

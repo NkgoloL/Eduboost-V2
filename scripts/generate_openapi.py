@@ -19,7 +19,8 @@ from fastapi import FastAPI
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_APP = "app.api_v2:app"
-DEFAULT_OUTPUT = REPO_ROOT / "docs" / "openapi.json"
+DEFAULT_JSON_OUTPUT = REPO_ROOT / "docs" / "openapi.json"
+DEFAULT_YAML_OUTPUT = REPO_ROOT / "docs" / "openapi.yaml"
 
 
 def _ensure_repo_root_on_path() -> None:
@@ -43,10 +44,17 @@ def load_app(spec: str) -> FastAPI:
     return app
 
 
-def render_openapi(app: FastAPI) -> str:
+def render_openapi_json(app: FastAPI) -> str:
     """Render deterministic OpenAPI JSON with a trailing newline."""
     schema: dict[str, Any] = app.openapi()
     return json.dumps(schema, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+
+
+def render_openapi_yaml(app: FastAPI) -> str:
+    """Render deterministic OpenAPI YAML with a trailing newline."""
+    import yaml
+    schema: dict[str, Any] = app.openapi()
+    return yaml.dump(schema, sort_keys=False, allow_unicode=True)
 
 
 def write_openapi(output_path: Path, content: str) -> None:
@@ -71,6 +79,10 @@ def check_openapi(output_path: Path, content: str) -> bool:
     return True
 
 
+def render_openapi(app: FastAPI) -> str:
+    return render_openapi_json(app)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -81,13 +93,19 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output",
         type=Path,
-        default=DEFAULT_OUTPUT,
-        help=f"Output JSON path. Default: {DEFAULT_OUTPUT.relative_to(REPO_ROOT)}",
+        default=DEFAULT_JSON_OUTPUT,
+        help=f"Output JSON path. Default: {DEFAULT_JSON_OUTPUT.relative_to(REPO_ROOT)}",
+    )
+    parser.add_argument(
+        "--yaml-output",
+        type=Path,
+        default=DEFAULT_YAML_OUTPUT,
+        help=f"Output YAML path. Default: {DEFAULT_YAML_OUTPUT.relative_to(REPO_ROOT)}",
     )
     parser.add_argument(
         "--check",
         action="store_true",
-        help="Verify the output file is current without modifying it.",
+        help="Verify the output files are current without modifying them.",
     )
     return parser.parse_args()
 
@@ -102,16 +120,21 @@ def _display_path(path: Path) -> str:
 
 def main() -> int:
     args = parse_args()
-    output_path = args.output if args.output.is_absolute() else REPO_ROOT / args.output
+    json_path = args.output if args.output.is_absolute() else REPO_ROOT / args.output
+    yaml_path = args.yaml_output if args.yaml_output.is_absolute() else REPO_ROOT / args.yaml_output
 
     app = load_app(args.app)
-    content = render_openapi(app)
+    json_content = render_openapi_json(app)
+    yaml_content = render_openapi_yaml(app)
 
     if args.check:
-        return 0 if check_openapi(output_path, content) else 1
+        json_ok = check_openapi(json_path, json_content)
+        yaml_ok = check_openapi(yaml_path, yaml_content)
+        return 0 if (json_ok and yaml_ok) else 1
 
-    write_openapi(output_path, content)
-    print(f"Wrote OpenAPI schema to {_display_path(output_path)}")
+    write_openapi(json_path, json_content)
+    write_openapi(yaml_path, yaml_content)
+    print(f"Wrote OpenAPI schema to {_display_path(json_path)} and {_display_path(yaml_path)}")
     return 0
 
 
