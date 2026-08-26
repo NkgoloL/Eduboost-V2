@@ -1,3 +1,18 @@
+---
+title: "Generated Contract Regeneration and Frontend Quality Execution Contract"
+status: "active"
+owner: "quality"
+reviewers: ["quality", "engineering"]
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-08-26"
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-check"
+code_anchors: ["docs/testing/generated_contract_frontend_quality_execution.md"]
+---
+
 # Generated Contract Regeneration and Frontend Quality Execution Contract
 
 **PRD:** PRD-11.0R.RUNTIME-RESTORE.EXECUTION-2

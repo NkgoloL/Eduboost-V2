@@ -66,8 +66,8 @@ def audit(root: Path | str = Path(".")) -> dict[str, Any]:
         if boundaries.get(key) is not False:
             errors.append(f"register boundary must keep false: {key}")
 
-    allowed_last = {f"PRD-0.{idx}" for idx in range(2, 11)} | {f"PRD-1.{idx}" for idx in range(0, 10)}
-    allowed_next = {f"PRD-0.{idx}" for idx in range(3, 11)} | {"PRD-1", "PRD-2"} | {f"PRD-1.{idx}" for idx in range(0, 10)}
+    allowed_last = {f"PRD-0.{idx}" for idx in range(2, 11)} | {f"PRD-1.{idx}" for idx in range(0, 10)} | {f"PRD-{idx}" for idx in range(1, 12)} | {f"PRD-11.0R.RUNTIME-RESTORE.EXECUTION-{idx}" for idx in range(1, 10)}
+    allowed_next = {f"PRD-0.{idx}" for idx in range(3, 11)} | {"PRD-1", "PRD-2"} | {f"PRD-1.{idx}" for idx in range(0, 10)} | {f"PRD-{idx}" for idx in range(1, 12)} | {f"PRD-11.0R.RUNTIME-RESTORE.EXECUTION-{idx}" for idx in range(1, 10)}
     if register.get("last_recorded_item") not in allowed_last:
         errors.append("production readiness register last_recorded_item must be PRD-0.2 or a later PRD-0 archival state")
     if register.get("next_authorised_item") not in allowed_next:

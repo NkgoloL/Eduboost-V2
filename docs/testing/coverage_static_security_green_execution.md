@@ -1,3 +1,18 @@
+---
+title: "Coverage, Static Quality, Dependency Security, and Secret Baseline Green Execution"
+status: "active"
+owner: "quality"
+reviewers: ["quality", "engineering"]
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-08-26"
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-check"
+code_anchors: ["docs/testing/coverage_static_security_green_execution.md"]
+---
+
 # Coverage, Static Quality, Dependency Security, and Secret Baseline Green Execution
 
 **PRD:** `PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7`  

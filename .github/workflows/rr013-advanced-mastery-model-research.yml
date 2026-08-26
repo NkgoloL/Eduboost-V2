@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12.3'
       - name: Compile RR-013 scripts
         run: |
           python3 -m py_compile             scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py             scripts/roadmap_reconciliation/capture_rr013_advanced_mastery_model_research_evidence.py             scripts/roadmap_reconciliation/verify_rr013_advanced_mastery_model_research.py

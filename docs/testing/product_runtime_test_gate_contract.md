@@ -1,3 +1,18 @@
+---
+title: "Product and Runtime Test Gate Contract"
+status: "active"
+owner: "quality"
+reviewers: ["quality", "engineering"]
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-08-26"
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-check"
+code_anchors: ["docs/testing/product_runtime_test_gate_contract.md"]
+---
+
 # Product and Runtime Test Gate Contract
 
 **PRD:** `PRD-11.0R.RUNTIME-RESTORE-3`

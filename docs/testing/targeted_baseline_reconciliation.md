@@ -1,3 +1,18 @@
+---
+title: "Execution-7 Targeted Baseline Reconciliation"
+status: "active"
+owner: "quality"
+reviewers: ["quality", "engineering"]
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-08-26"
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-check"
+code_anchors: ["docs/testing/targeted_baseline_reconciliation.md"]
+---
+
 # Execution-7 Targeted Baseline Reconciliation
 
 This remediation slice addresses the deterministic root causes isolated by the

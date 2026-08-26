@@ -28,7 +28,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12.3"
       - name: Compile KG-4 scripts
         run: |
           python3 -m py_compile             app/domain/knowledge_graph_gap_engine.py             scripts/knowledge_graph/build_kg004_gap_engine_intervention_planner.py             scripts/knowledge_graph/audit_kg004_gap_engine_intervention_planner.py             scripts/roadmap_reconciliation/capture_kg004_gap_engine_intervention_planner_evidence.py             scripts/roadmap_reconciliation/verify_kg004_gap_engine_intervention_planner.py

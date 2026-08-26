@@ -1,3 +1,18 @@
+---
+title: "PRD-11.2R Script Taxonomy and Functional Overhaul"
+status: "active"
+owner: "quality"
+reviewers: ["quality", "engineering"]
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-08-26"
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-check"
+code_anchors: ["docs/testing/script_taxonomy.md"]
+---
+
 # PRD-11.2R Script Taxonomy and Functional Overhaul
 
 PRD-11.2R groups repository scripts by both evidence domain and functional role so that scripts are no longer treated as interchangeable helpers.
