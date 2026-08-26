@@ -1,14 +1,12 @@
-#!/usr/bin/env python3
-"""Run the full Cluster C POPIA consent/audit closure suite."""
-from __future__ import annotations
-
-from scripts._subprocess import run
 import sys
 from dataclasses import dataclass
 from pathlib import Path
 
-
 REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from scripts._subprocess import run
 
 COMMANDS = (
     ("generate consent inventory", [sys.executable, "scripts/generate_consent_gate_inventory.py"]),
