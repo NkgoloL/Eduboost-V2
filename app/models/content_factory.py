@@ -577,7 +577,7 @@ class ContentStagingSeedItem(Base):
     __tablename__ = "content_staging_seed_items"
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, server_default=func.gen_random_uuid())
-    seed_run_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("content_seed_runs.run_id"), nullable=False)
+    seed_run_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("content_seed_runs.seed_run_id"), nullable=False)
     artifact_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("content_generation_artifacts.artifact_id"), nullable=False)
     scope_id: Mapped[str] = mapped_column(String(80), nullable=False)
     caps_ref: Mapped[str | None] = mapped_column(String(80), nullable=True)
@@ -604,7 +604,7 @@ class ContentStagingArtifact(Base):
     payload_json: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)
     source_artifact_hash: Mapped[str] = mapped_column(String(64), nullable=False)
     staging_status: Mapped[str] = mapped_column(String(40), nullable=False, server_default="pending")
-    created_by_seed_run_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("content_seed_runs.run_id"), nullable=True)
+    created_by_seed_run_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("content_seed_runs.seed_run_id"), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now(), onupdate=func.now())
 
