@@ -1,0 +1,43 @@
+{
+  "checks": {
+    "boundaries": {
+      "failures": [],
+      "inspected": [
+        "docs/roadmap/production_readiness/production_readiness_register.json",
+        "docs/roadmap/production_readiness/prd11_production_release_register.json",
+        "docs/roadmap/production_readiness/true_state_remediation_register.json"
+      ],
+      "valid": true
+    },
+    "ci_inventory": {
+      "doc_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/ci_workflow_inventory.md",
+      "json_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release-evidence/true-state-remediation/b03/ci/ci_workflow_inventory.json",
+      "valid": true
+    },
+    "manual": {
+      "invalid": [],
+      "missing": [],
+      "valid": true
+    },
+    "pytest_taxonomy": {
+      "path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/pytest.ini",
+      "valid": true
+    },
+    "register": {
+      "errors": [],
+      "release_boundaries": {
+        "failures": [],
+        "inspected": [
+          "docs/roadmap/production_readiness/production_readiness_register.json",
+          "docs/roadmap/production_readiness/prd11_production_release_register.json",
+          "docs/roadmap/production_readiness/true_state_remediation_register.json"
+        ],
+        "valid": true
+      },
+      "task_count": 174,
+      "valid": true
+    }
+  },
+  "valid": true,
+  "verified_at": "2026-08-26T08:08:40.690901+00:00"
+}
