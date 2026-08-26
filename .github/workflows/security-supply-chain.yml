@@ -1,0 +1,74 @@
+name: Security & Supply Chain
+
+on:
+  pull_request:
+    branches: [master, main]
+  push:
+    branches: [master]
+  schedule:
+    - cron: '0 4 * * *'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  bandit-static-security:
+    name: Bandit Python Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+          cache: 'pip'
+      - name: Install dependencies
+        run: pip install bandit
+      - name: Bandit Scan
+        run: python3 -m bandit -r app scripts -ll -q
+
+  pip-audit-dependencies:
+    name: Python pip-audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+          cache: 'pip'
+      - name: Install dependencies
+        run: pip install pip-audit
+      - name: Audit Base & Dev Requirements
+        run: pip-audit -r requirements/base.txt -r requirements/dev.txt
+
+  pnpm-audit-dependencies:
+    name: Frontend pnpm audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.14.4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      - name: Audit Production Dependencies
+        working-directory: app/frontend
+        run: pnpm audit --prod
+
+  secrets-baseline-check:
+    name: Detect-Secrets Baseline Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+          cache: 'pip'
+      - name: Install detect-secrets
+        run: pip install detect-secrets
+      - name: Verify Secret Baseline
+        run: detect-secrets-hook --baseline .secrets.baseline app scripts .github

@@ -34,7 +34,7 @@
         "TSR-4",
         "TSR-5"
       ],
-      "status": "authorised",
+      "status": "verified",
       "title": "CI and Test Authority"
     },
     {
@@ -43,7 +43,7 @@
         "TSR-6",
         "TSR-7"
       ],
-      "status": "identified",
+      "status": "authorised",
       "title": "Architecture and Data Integrity"
     },
     {
@@ -835,325 +835,400 @@
       "bundle_id": "B03",
       "deliverable": "Workflow inventory",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-4.1",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Inventory all 86 workflows"
+      "title": "Inventory all 86 workflows",
+      "updated_at": "2026-08-26T15:07:13.109748+00:00"
     },
     {
       "acceptance_criteria": "Every branch-protection check maps to one canonical job and command; duplicate names are prohibited.",
       "bundle_id": "B03",
       "deliverable": "CI authority document and JSON map",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-4.2",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Define required-check authority"
+      "title": "Define required-check authority",
+      "updated_at": "2026-08-26T15:07:13.109762+00:00"
     },
     {
       "acceptance_criteria": "Required PR and release signals are complete; redundant workflows are disabled and moved outside `.github/workflows`.",
       "bundle_id": "B03",
       "deliverable": "Canonical workflows",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-4.3",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Implement the six-workflow target graph"
+      "title": "Implement the six-workflow target graph",
+      "updated_at": "2026-08-26T15:07:13.109764+00:00"
     },
     {
       "acceptance_criteria": "mypy, security, dependency, secret, migration, and generated-contract gates fail closed where designated.",
       "bundle_id": "B03",
       "deliverable": "Strict required jobs",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-4.4",
       "owner_role": "release",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Remove release-critical `continue-on-error`"
+      "title": "Remove release-critical `continue-on-error`",
+      "updated_at": "2026-08-26T15:07:13.109766+00:00"
     },
     {
       "acceptance_criteria": "setup-python, Node, Postgres/pgvector, Redis, pnpm, and action major versions are consistent.",
       "bundle_id": "B03",
       "deliverable": "Shared environment/action policy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-4.5",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Standardize tool/action/service versions"
+      "title": "Standardize tool/action/service versions",
+      "updated_at": "2026-08-26T15:07:13.109767+00:00"
     },
     {
       "acceptance_criteria": "Canonical branch naming is used; historical `main`, `develop`, and obsolete release-branch triggers are removed or justified.",
       "bundle_id": "B03",
       "deliverable": "Trigger policy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-4.6",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Standardize branch triggers"
+      "title": "Standardize branch triggers",
+      "updated_at": "2026-08-26T15:07:13.109769+00:00"
     },
     {
       "acceptance_criteria": "Local and CI execution invoke the same command implementations, not divergent inline shell logic.",
       "bundle_id": "B03",
       "deliverable": "Command authority",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-4.7",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Centralize commands in repository scripts/Make targets"
+      "title": "Centralize commands in repository scripts/Make targets",
+      "updated_at": "2026-08-26T15:07:13.109771+00:00"
     },
     {
       "acceptance_criteria": "Product failures are visible in fast feedback; governance tests remain strict but separately reported.",
       "bundle_id": "B03",
       "deliverable": "Job taxonomy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-4.8",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Separate ordinary product checks from governance/evidence checks"
+      "title": "Separate ordinary product checks from governance/evidence checks",
+      "updated_at": "2026-08-26T15:07:13.109772+00:00"
     },
     {
       "acceptance_criteria": "Stale runs cancel safely; caches are keyed to lockfiles; raw evidence retention and sensitivity are defined.",
       "bundle_id": "B03",
       "deliverable": "Workflow controls",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-4.9",
       "owner_role": "privacy",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Add concurrency, cache, and artifact-retention policy"
+      "title": "Add concurrency, cache, and artifact-retention policy",
+      "updated_at": "2026-08-26T15:07:13.109774+00:00"
     },
     {
       "acceptance_criteria": "Required check list exactly matches canonical jobs; direct pushes and stale approvals are governed.",
       "bundle_id": "B03",
       "deliverable": "Hosted configuration evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-4.10",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Reconcile branch protection"
+      "title": "Reconcile branch protection",
+      "updated_at": "2026-08-26T15:07:13.109775+00:00"
     },
     {
       "acceptance_criteria": "Historical workflow source remains retrievable but cannot execute accidentally.",
       "bundle_id": "B03",
       "deliverable": "Archive index",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-4.11",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Archive superseded workflows"
+      "title": "Archive superseded workflows",
+      "updated_at": "2026-08-26T15:07:13.109777+00:00"
     },
     {
       "acceptance_criteria": "A clean merge commit runs all required checks successfully; evidence includes run IDs, commit SHA, and artifact hashes.",
       "bundle_id": "B03",
       "deliverable": "Hosted CI evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-4.12",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Prove post-merge authority from exact source"
+      "title": "Prove post-merge authority from exact source",
+      "updated_at": "2026-08-26T15:07:13.109778+00:00"
     },
     {
       "acceptance_criteria": "Median duration, failure categories, flake rate, queue time, and monthly compute use are monitored.",
       "bundle_id": "B03",
       "deliverable": "CI metrics",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-4.13",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Track CI health and cost"
+      "title": "Track CI health and cost",
+      "updated_at": "2026-08-26T15:07:13.109780+00:00"
     },
     {
       "acceptance_criteria": "Tests are classified as product-unit, product-integration, runtime-stack, architecture-static, governance-contract, or release-evidence.",
       "bundle_id": "B03",
       "deliverable": "Marker and path policy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-5.1",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Enforce test taxonomy"
+      "title": "Enforce test taxonomy",
+      "updated_at": "2026-08-26T15:07:13.109782+00:00"
     },
     {
       "acceptance_criteria": "The same test set runs locally and in PR CI; no hidden environment-based inclusion.",
       "bundle_id": "B03",
       "deliverable": "Fast-suite manifest",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-5.2",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Make fast PR test selection deterministic"
+      "title": "Make fast PR test selection deterministic",
+      "updated_at": "2026-08-26T15:07:13.109783+00:00"
     },
     {
       "acceptance_criteria": "Product pass/failure counts and governance pass/failure counts are independently visible.",
       "bundle_id": "B03",
       "deliverable": "CI reporting",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-5.3",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Separate governance tests from product unit counts"
+      "title": "Separate governance tests from product unit counts",
+      "updated_at": "2026-08-26T15:07:13.109785+00:00"
     },
     {
       "acceptance_criteria": "Optional integrations are forced explicitly in unit tests; real backends have dedicated integration tests.",
       "bundle_id": "B03",
       "deliverable": "Isolation fixtures",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-5.4",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Eliminate environment-sensitive backend selection"
+      "title": "Eliminate environment-sensitive backend selection",
+      "updated_at": "2026-08-26T15:07:13.109786+00:00"
     },
     {
       "acceptance_criteria": "Retries cannot conceal first-attempt failures; quarantines have owners, expiry, and reproduction evidence.",
       "bundle_id": "B03",
       "deliverable": "Flake register and detector",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-5.5",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Establish flake policy"
+      "title": "Establish flake policy",
+      "updated_at": "2026-08-26T15:07:13.109788+00:00"
     },
     {
       "acceptance_criteria": "Database, auth, learner, guardian, consent, curriculum, and provider fixtures are reusable and deterministic.",
       "bundle_id": "B03",
       "deliverable": "Shared test support",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-5.6",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Standardize factories and fixtures"
+      "title": "Standardize factories and fixtures",
+      "updated_at": "2026-08-26T15:07:13.109789+00:00"
     },
     {
       "acceptance_criteria": "Global threshold is supplemented by stricter targets for authorization, privacy, payments, migration, and learner-state calculations.",
       "bundle_id": "B03",
       "deliverable": "Coverage policy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-5.7",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Add risk-based coverage thresholds"
+      "title": "Add risk-based coverage thresholds",
+      "updated_at": "2026-08-26T15:07:13.109791+00:00"
     },
     {
       "acceptance_criteria": "Critical authorization/consent/mastery branches demonstrate that tests fail when behavior is altered.",
       "bundle_id": "B03",
       "deliverable": "Mutation reports",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-5.8",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Introduce mutation testing on high-risk modules"
+      "title": "Introduce mutation testing on high-risk modules",
+      "updated_at": "2026-08-26T15:07:13.109792+00:00"
     },
     {
       "acceptance_criteria": "Every shard has a budget; terminal timeout leaves are classified and cannot be ignored.",
       "bundle_id": "B03",
       "deliverable": "Timeout/budget policy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-5.9",
       "owner_role": "operations",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Bound slow and hanging tests"
+      "title": "Bound slow and hanging tests",
+      "updated_at": "2026-08-26T15:07:13.109794+00:00"
     },
     {
       "acceptance_criteria": "Full collection and selected suites pass from an empty cache/container, eliminating audit-host ambiguity.",
       "bundle_id": "B03",
       "deliverable": "Reproduction workflow",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-5.10",
       "owner_role": "release",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Validate tests from a disposable dependency-complete environment"
+      "title": "Validate tests from a disposable dependency-complete environment",
+      "updated_at": "2026-08-26T15:07:13.109795+00:00"
     },
     {
       "acceptance_criteria": "Repeated text-presence tests are replaced by generated schemas and a small number of semantic verifiers.",
       "bundle_id": "B03",
       "deliverable": "Shared schema/verifier library",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-5.11",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Reduce duplicated governance test logic"
+      "title": "Reduce duplicated governance test logic",
+      "updated_at": "2026-08-26T15:07:13.109797+00:00"
     },
     {
       "acceptance_criteria": "Collection time, run duration, flake rate, skip/xfail age, coverage by domain, and failure recurrence are tracked.",
       "bundle_id": "B03",
       "deliverable": "Dashboard/report",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b03"
+      ],
       "id": "TSR-5.12",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-2",
-      "title": "Publish test-suite health metrics"
+      "title": "Publish test-suite health metrics",
+      "updated_at": "2026-08-26T15:07:13.109798+00:00"
     },
     {
       "acceptance_criteria": "Every import-linter exception, oversized module, legacy alias, duplicate implementation, broad exception hotspot, TODO, `pass`, and coverage exclusion has an owner and retirement target.",
@@ -2508,5 +2583,5 @@
       "title": "Lift feature freeze only after RG-6"
     }
   ],
-  "updated_at": "2026-08-26T09:58:12.860307+00:00"
+  "updated_at": "2026-08-26T15:07:13.111968+00:00"
 }

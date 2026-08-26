@@ -1,0 +1,95 @@
+name: Product Runtime & Integration
+
+on:
+  pull_request:
+    branches: [master, main]
+  push:
+    branches: [master]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  runtime-services-integration:
+    name: Disposable PostgreSQL & Redis Integration
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: eduboost_test
+          POSTGRES_PASSWORD: test_password
+          POSTGRES_DB: eduboost_test_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements/base.txt -r requirements/dev.txt
+      - name: Run Alembic Upgrade Head
+        env:
+          DATABASE_URL: postgresql://eduboost_test:test_password@localhost:5432/eduboost_test_db
+        run: python3 -m alembic upgrade head
+      - name: Run Runtime Integration Test Suite
+        env:
+          DATABASE_URL: postgresql://eduboost_test:test_password@localhost:5432/eduboost_test_db
+          REDIS_URL: redis://localhost:6379/0
+        run: PYTHONPATH=. python3 -m pytest tests/integration/ -m "product_integration or runtime_stack" -q
+
+  migration-dryrun:
+    name: Alembic Migration Reversibility & Clean Down
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: eduboost_test
+          POSTGRES_PASSWORD: test_password
+          POSTGRES_DB: eduboost_test_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements/base.txt -r requirements/dev.txt
+      - name: Test Migration Lineage & Dry Run
+        env:
+          DATABASE_URL: postgresql://eduboost_test:test_password@localhost:5432/eduboost_test_db
+        run: |
+          python3 -m alembic upgrade head
+          python3 -m alembic check

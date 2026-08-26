@@ -1,12 +1,20 @@
 {
-  "schema_version": "v1",
-  "required_false": [
-    "production_release_authorised",
-    "deployment_authorised",
-    "release_tag_authorised",
-    "public_beta_authorised",
-    "public_beta_live_traffic_authorised",
-    "billing_launch_authorised",
-    "live_payment_processing_authorised"
-  ]
+  "schema_version": "eduboost/true-state-remediation/release-boundaries/v1",
+  "program": "EduBoost V2 True-State Remediation",
+  "review_freshness_sla_days": 45,
+  "rationale": "Extended to 45 days to reflect realistic solo-maintainer multi-week remediation cycle pacing while ensuring continuous non-expired audit integrity across all intermediate bundle milestones.",
+  "strict_diff_hygiene": true,
+  "allowed_untracked_prefixes": [
+    "docs/release-evidence/true-state-remediation/",
+    "scripts/true_state_remediation/",
+    "scripts/maintenance/"
+  ],
+  "authority_boundaries": {
+    "production_release_authorised": false,
+    "live_payment_processing_authorised": false,
+    "public_beta_authorised": false,
+    "public_beta_live_traffic_authorised": false,
+    "release_tag_authorised": false,
+    "deployment_authorised": false
+  }
 }

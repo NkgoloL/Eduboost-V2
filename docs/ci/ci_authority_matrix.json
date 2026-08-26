@@ -1,0 +1,1620 @@
+{
+  "archived_workflow_count": 84,
+  "canonical_workflow_count": 6,
+  "generated_at": "2026-08-26T15:07:12.938656+00:00",
+  "required_branch_protection_checks": {
+    "frontend-e2e": {
+      "jobs": [
+        "frontend-typecheck-and-lint",
+        "frontend-build",
+        "playwright-e2e"
+      ],
+      "workflow": "frontend-e2e.yml"
+    },
+    "pr-core": {
+      "jobs": [
+        "compile-and-lint",
+        "mypy-typecheck",
+        "fast-unit-tests",
+        "route-contract-audit"
+      ],
+      "workflow": "pr-core.yml"
+    },
+    "product-runtime": {
+      "jobs": [
+        "runtime-services-integration",
+        "migration-dryrun"
+      ],
+      "workflow": "product-runtime.yml"
+    },
+    "security-supply-chain": {
+      "jobs": [
+        "bandit-static-security",
+        "pip-audit-dependencies",
+        "pnpm-audit-dependencies",
+        "secrets-baseline-check"
+      ],
+      "workflow": "security-supply-chain.yml"
+    }
+  },
+  "schema_version": "eduboost/ci/authority-matrix/v1",
+  "total_workflows_tracked": 90,
+  "workflows": {
+    "api-envelope-error-contract.yml": {
+      "current_location": "archive/github_workflows/api-envelope-error-contract.yml",
+      "file": "api-envelope-error-contract.yml",
+      "job_count": 1,
+      "jobs": [
+        "api-envelope-error-contract-check"
+      ],
+      "name": "API Envelope Error Contract",
+      "purpose": "Superseded audit/milestone workflow (API Envelope Error Contract) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "architecture-gates.yml": {
+      "current_location": "archive/github_workflows/architecture-gates.yml",
+      "file": "architecture-gates.yml",
+      "job_count": 3,
+      "jobs": [
+        "lint-imports",
+        "audit-routers",
+        "metaphor-check"
+      ],
+      "name": "Architecture Gates",
+      "purpose": "Superseded audit/milestone workflow (Architecture Gates) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "audit-write-runtime-evidence.yml": {
+      "current_location": "archive/github_workflows/audit-write-runtime-evidence.yml",
+      "file": "audit-write-runtime-evidence.yml",
+      "job_count": 1,
+      "jobs": [
+        "audit-write-runtime-evidence"
+      ],
+      "name": "audit-write-runtime-evidence",
+      "purpose": "Superseded audit/milestone workflow (audit-write-runtime-evidence) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "auth-boundary.yml": {
+      "current_location": "archive/github_workflows/auth-boundary.yml",
+      "file": "auth-boundary.yml",
+      "job_count": 1,
+      "jobs": [
+        "auth-boundary-check"
+      ],
+      "name": "Auth Boundary",
+      "purpose": "Superseded audit/milestone workflow (Auth Boundary) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "auth-refresh-db-proof.yml": {
+      "current_location": "archive/github_workflows/auth-refresh-db-proof.yml",
+      "file": "auth-refresh-db-proof.yml",
+      "job_count": 1,
+      "jobs": [
+        "auth-refresh-db-proof"
+      ],
+      "name": "Auth Refresh DB Proof",
+      "purpose": "Superseded audit/milestone workflow (Auth Refresh DB Proof) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "backend-consolidation.yml": {
+      "current_location": "archive/github_workflows/backend-consolidation.yml",
+      "file": "backend-consolidation.yml",
+      "job_count": 1,
+      "jobs": [
+        "backend-consolidation-evidence"
+      ],
+      "name": "Backend Consolidation Evidence",
+      "purpose": "Superseded audit/milestone workflow (Backend Consolidation Evidence) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "backend-nightly-coverage.yml": {
+      "current_location": "archive/github_workflows/backend-nightly-coverage.yml",
+      "file": "backend-nightly-coverage.yml",
+      "job_count": 1,
+      "jobs": [
+        "nightly-backend-coverage"
+      ],
+      "name": "Backend Nightly Coverage",
+      "purpose": "Superseded audit/milestone workflow (Backend Nightly Coverage) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "beta-release-approval.yml": {
+      "current_location": "archive/github_workflows/beta-release-approval.yml",
+      "file": "beta-release-approval.yml",
+      "job_count": 1,
+      "jobs": [
+        "beta-release-approval"
+      ],
+      "name": "Beta Release Approval",
+      "purpose": "Superseded audit/milestone workflow (Beta Release Approval) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "caps-source-topic-map.yml": {
+      "current_location": "archive/github_workflows/caps-source-topic-map.yml",
+      "file": "caps-source-topic-map.yml",
+      "job_count": 1,
+      "jobs": [
+        "caps-source-topic-map-gates"
+      ],
+      "name": "CAPS Source And Topic Map Gates",
+      "purpose": "Superseded audit/milestone workflow (CAPS Source And Topic Map Gates) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "ci-cd.yml": {
+      "current_location": "archive/github_workflows/ci-cd.yml",
+      "file": "ci-cd.yml",
+      "job_count": 17,
+      "jobs": [
+        "lint",
+        "schema-drift",
+        "docs-quality",
+        "docs",
+        "unit-tests",
+        "integration-tests",
+        "backend-coverage",
+        "v2-smoke",
+        "frontend",
+        "e2e",
+        "alembic-drift",
+        "content-factory-migrations",
+        "content-factory-unit-tests",
+        "popia-tests",
+        "image-scan",
+        "secrets-scan",
+        "production-promote"
+      ],
+      "name": "EduBoost CI/CD",
+      "purpose": "Superseded audit/milestone workflow (EduBoost CI/CD) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "ci-core.yml": {
+      "current_location": "archive/github_workflows/ci-core.yml",
+      "file": "ci-core.yml",
+      "job_count": 1,
+      "jobs": [
+        "core"
+      ],
+      "name": "CI Core",
+      "purpose": "Superseded audit/milestone workflow (CI Core) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "ci_diagnostics_assessment.yml": {
+      "current_location": "archive/github_workflows/ci_diagnostics_assessment.yml",
+      "file": "ci_diagnostics_assessment.yml",
+      "job_count": 1,
+      "jobs": [
+        "diagnostics-assessment"
+      ],
+      "name": "Diagnostics Assessment Quality",
+      "purpose": "Superseded audit/milestone workflow (Diagnostics Assessment Quality) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "ci_lesson_quality.yml": {
+      "current_location": "archive/github_workflows/ci_lesson_quality.yml",
+      "file": "ci_lesson_quality.yml",
+      "job_count": 6,
+      "jobs": [
+        "lesson-threshold-check",
+        "lesson-integrity-check",
+        "lesson-regression-suite",
+        "lesson-golden-tests",
+        "lesson-e2e",
+        "lesson-perf-test"
+      ],
+      "name": "AI Lesson Quality",
+      "purpose": "Superseded audit/milestone workflow (AI Lesson Quality) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "cluster-d-ci.yml": {
+      "current_location": "archive/github_workflows/cluster-d-ci.yml",
+      "file": "cluster-d-ci.yml",
+      "job_count": 1,
+      "jobs": [
+        "cluster-d-ci"
+      ],
+      "name": "Cluster D CI Deployment Evidence",
+      "purpose": "Superseded audit/milestone workflow (Cluster D CI Deployment Evidence) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "cluster-e-data-resilience.yml": {
+      "current_location": "archive/github_workflows/cluster-e-data-resilience.yml",
+      "file": "cluster-e-data-resilience.yml",
+      "job_count": 1,
+      "jobs": [
+        "cluster-e-data-resilience"
+      ],
+      "name": "Cluster E Data Resilience Evidence",
+      "purpose": "Superseded audit/milestone workflow (Cluster E Data Resilience Evidence) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "cluster-f-ai-safety.yml": {
+      "current_location": "archive/github_workflows/cluster-f-ai-safety.yml",
+      "file": "cluster-f-ai-safety.yml",
+      "job_count": 1,
+      "jobs": [
+        "cluster-f-ai-safety"
+      ],
+      "name": "Cluster F AI Safety Evidence",
+      "purpose": "Superseded audit/milestone workflow (Cluster F AI Safety Evidence) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "cluster-g-frontend.yml": {
+      "current_location": "archive/github_workflows/cluster-g-frontend.yml",
+      "file": "cluster-g-frontend.yml",
+      "job_count": 1,
+      "jobs": [
+        "cluster-g-frontend"
+      ],
+      "name": "Cluster G Frontend Journey Evidence",
+      "purpose": "Superseded audit/milestone workflow (Cluster G Frontend Journey Evidence) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "cluster-h-release-readiness.yml": {
+      "current_location": "archive/github_workflows/cluster-h-release-readiness.yml",
+      "file": "cluster-h-release-readiness.yml",
+      "job_count": 1,
+      "jobs": [
+        "cluster-h-release-readiness"
+      ],
+      "name": "Cluster H Release Readiness",
+      "purpose": "Superseded audit/milestone workflow (Cluster H Release Readiness) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "db-backup-dryrun.yml": {
+      "current_location": "archive/github_workflows/db-backup-dryrun.yml",
+      "file": "db-backup-dryrun.yml",
+      "job_count": 1,
+      "jobs": [
+        "backup-dry-run"
+      ],
+      "name": "DB Backup Dry-Run",
+      "purpose": "Superseded audit/milestone workflow (DB Backup Dry-Run) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "db-backup-matrix.yml": {
+      "current_location": "archive/github_workflows/db-backup-matrix.yml",
+      "file": "db-backup-matrix.yml",
+      "job_count": 1,
+      "jobs": [
+        "backup-matrix"
+      ],
+      "name": "DB Backup Matrix",
+      "purpose": "Superseded audit/milestone workflow (DB Backup Matrix) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "db-backup-restore-rollback-evidence.yml": {
+      "current_location": "archive/github_workflows/db-backup-restore-rollback-evidence.yml",
+      "file": "db-backup-restore-rollback-evidence.yml",
+      "job_count": 1,
+      "jobs": [
+        "db-backup-restore-rollback-evidence"
+      ],
+      "name": "db-backup-restore-rollback-evidence",
+      "purpose": "Superseded audit/milestone workflow (db-backup-restore-rollback-evidence) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "dependency-scan.yml": {
+      "current_location": "archive/github_workflows/dependency-scan.yml",
+      "file": "dependency-scan.yml",
+      "job_count": 4,
+      "jobs": [
+        "pip-audit",
+        "pnpm-audit",
+        "dependency-review",
+        "summary"
+      ],
+      "name": "Dependency Scan",
+      "purpose": "Superseded audit/milestone workflow (Dependency Scan) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "deploy-frontend.yml": {
+      "current_location": "archive/github_workflows/deploy-frontend.yml",
+      "file": "deploy-frontend.yml",
+      "job_count": 1,
+      "jobs": [
+        "build-and-deploy"
+      ],
+      "name": "Deploy Frontend to Staging",
+      "purpose": "Superseded audit/milestone workflow (Deploy Frontend to Staging) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "diag-score-live-audit.yml": {
+      "current_location": "archive/github_workflows/diag-score-live-audit.yml",
+      "file": "diag-score-live-audit.yml",
+      "job_count": 1,
+      "jobs": [
+        "diag-score-live-audit"
+      ],
+      "name": "diag-score-live-audit",
+      "purpose": "Superseded audit/milestone workflow (diag-score-live-audit) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "docs.yml": {
+      "current_location": "archive/github_workflows/docs.yml",
+      "file": "docs.yml",
+      "job_count": 1,
+      "jobs": [
+        "build-and-deploy"
+      ],
+      "name": "Build and Deploy Docs",
+      "purpose": "Superseded audit/milestone workflow (Build and Deploy Docs) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "documentation-governance.yml": {
+      "current_location": "archive/github_workflows/documentation-governance.yml",
+      "file": "documentation-governance.yml",
+      "job_count": 1,
+      "jobs": [
+        "docs-housekeeping"
+      ],
+      "name": "Documentation Governance",
+      "purpose": "Superseded audit/milestone workflow (Documentation Governance) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "e2e.yml": {
+      "current_location": "archive/github_workflows/e2e.yml",
+      "file": "e2e.yml",
+      "job_count": 1,
+      "jobs": [
+        "e2e-tests"
+      ],
+      "name": "E2E Tests",
+      "purpose": "Superseded audit/milestone workflow (E2E Tests) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "final-roadmap-reconciliation-closure.yml": {
+      "current_location": "archive/github_workflows/final-roadmap-reconciliation-closure.yml",
+      "file": "final-roadmap-reconciliation-closure.yml",
+      "job_count": 1,
+      "jobs": [
+        "verify-final-roadmap-closure"
+      ],
+      "name": "Final Roadmap Reconciliation Closure",
+      "purpose": "Superseded audit/milestone workflow (Final Roadmap Reconciliation Closure) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "frontend-e2e.yml": {
+      "current_location": ".github/workflows/frontend-e2e.yml",
+      "file": "frontend-e2e.yml",
+      "job_count": 3,
+      "jobs": [
+        "frontend-typecheck-and-lint",
+        "frontend-build",
+        "playwright-e2e"
+      ],
+      "name": "Frontend Quality & E2E",
+      "purpose": "Frozen Next.js install, type-check, lint, production build, Playwright and accessibility checks",
+      "replacement_target": "Consolidates frontend builds, audits, and E2E journeys",
+      "required_for_pr": true,
+      "retirement_decision": "Retained as canonical workflow #3",
+      "status": "canonical",
+      "triggers": [
+        "pull_request",
+        "push:master"
+      ]
+    },
+    "item_bank_ci.yml": {
+      "current_location": "archive/github_workflows/item_bank_ci.yml",
+      "file": "item_bank_ci.yml",
+      "job_count": 3,
+      "jobs": [
+        "validate-item-bank",
+        "coverage-assertion",
+        "performance-gate"
+      ],
+      "name": "Item Bank CI Gates",
+      "purpose": "Superseded audit/milestone workflow (Item Bank CI Gates) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "jwt-secret-rotation-evidence.yml": {
+      "current_location": "archive/github_workflows/jwt-secret-rotation-evidence.yml",
+      "file": "jwt-secret-rotation-evidence.yml",
+      "job_count": 1,
+      "jobs": [
+        "jwt-secret-rotation-evidence"
+      ],
+      "name": "jwt-secret-rotation-evidence",
+      "purpose": "Superseded audit/milestone workflow (jwt-secret-rotation-evidence) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "kg-roadmap-closure-report.yml": {
+      "current_location": "archive/github_workflows/kg-roadmap-closure-report.yml",
+      "file": "kg-roadmap-closure-report.yml",
+      "job_count": 1,
+      "jobs": [
+        "kg-roadmap-closure-check"
+      ],
+      "name": "KG Roadmap Closure Report",
+      "purpose": "Superseded audit/milestone workflow (KG Roadmap Closure Report) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "kg000-formal-kg-roadmap-approval.yml": {
+      "current_location": "archive/github_workflows/kg000-formal-kg-roadmap-approval.yml",
+      "file": "kg000-formal-kg-roadmap-approval.yml",
+      "job_count": 1,
+      "jobs": [
+        "kg000-formal-roadmap-approval"
+      ],
+      "name": "KG-0 Formal KG Roadmap Approval",
+      "purpose": "Superseded audit/milestone workflow (KG-0 Formal KG Roadmap Approval) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "kg001-caps-graph-foundation.yml": {
+      "current_location": "archive/github_workflows/kg001-caps-graph-foundation.yml",
+      "file": "kg001-caps-graph-foundation.yml",
+      "job_count": 1,
+      "jobs": [
+        "kg001"
+      ],
+      "name": "KG-1 CAPS Graph Foundation",
+      "purpose": "Superseded audit/milestone workflow (KG-1 CAPS Graph Foundation) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "kg002-target-graph-generation.yml": {
+      "current_location": "archive/github_workflows/kg002-target-graph-generation.yml",
+      "file": "kg002-target-graph-generation.yml",
+      "job_count": 1,
+      "jobs": [
+        "verify-kg002"
+      ],
+      "name": "KG-2 Target Graph Generation",
+      "purpose": "Superseded audit/milestone workflow (KG-2 Target Graph Generation) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "kg003-learner-graph-shadow-mode.yml": {
+      "current_location": "archive/github_workflows/kg003-learner-graph-shadow-mode.yml",
+      "file": "kg003-learner-graph-shadow-mode.yml",
+      "job_count": 1,
+      "jobs": [
+        "verify-kg003"
+      ],
+      "name": "KG-3 Learner Graph Shadow Mode",
+      "purpose": "Superseded audit/milestone workflow (KG-3 Learner Graph Shadow Mode) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "kg004-gap-engine-intervention-planner.yml": {
+      "current_location": "archive/github_workflows/kg004-gap-engine-intervention-planner.yml",
+      "file": "kg004-gap-engine-intervention-planner.yml",
+      "job_count": 1,
+      "jobs": [
+        "kg004-check"
+      ],
+      "name": "KG-4 Gap Engine and Intervention Planner",
+      "purpose": "Superseded audit/milestone workflow (KG-4 Gap Engine and Intervention Planner) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "kg005-graph-grounded-lesson-assessment-generation.yml": {
+      "current_location": "archive/github_workflows/kg005-graph-grounded-lesson-assessment-generation.yml",
+      "file": "kg005-graph-grounded-lesson-assessment-generation.yml",
+      "job_count": 1,
+      "jobs": [
+        "kg005-check"
+      ],
+      "name": "KG-5 Graph-Grounded Lesson and Assessment Generation",
+      "purpose": "Superseded audit/milestone workflow (KG-5 Graph-Grounded Lesson and Assessment Generation) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "kg006-tutor-study-plan-gamification-parent-alignment.yml": {
+      "current_location": "archive/github_workflows/kg006-tutor-study-plan-gamification-parent-alignment.yml",
+      "file": "kg006-tutor-study-plan-gamification-parent-alignment.yml",
+      "job_count": 1,
+      "jobs": [
+        "kg006-check"
+      ],
+      "name": "KG-6 Tutor Study Plan Gamification Parent Alignment",
+      "purpose": "Superseded audit/milestone workflow (KG-6 Tutor Study Plan Gamification Parent Alignment) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "kg007-authority-switch-legacy-cleanup.yml": {
+      "current_location": "archive/github_workflows/kg007-authority-switch-legacy-cleanup.yml",
+      "file": "kg007-authority-switch-legacy-cleanup.yml",
+      "job_count": 1,
+      "jobs": [
+        "kg007-check"
+      ],
+      "name": "KG-7 Authority Switch Legacy Cleanup",
+      "purpose": "Superseded audit/milestone workflow (KG-7 Authority Switch Legacy Cleanup) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "kg008-post-switch-optimisation-scale-review.yml": {
+      "current_location": "archive/github_workflows/kg008-post-switch-optimisation-scale-review.yml",
+      "file": "kg008-post-switch-optimisation-scale-review.yml",
+      "job_count": 1,
+      "jobs": [
+        "kg008-check"
+      ],
+      "name": "KG-8 Post-Switch Optimisation and Scale Review",
+      "purpose": "Superseded audit/milestone workflow (KG-8 Post-Switch Optimisation and Scale Review) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "kgact001-controlled-runtime-kg-authority-activation.yml": {
+      "current_location": "archive/github_workflows/kgact001-controlled-runtime-kg-authority-activation.yml",
+      "file": "kgact001-controlled-runtime-kg-authority-activation.yml",
+      "job_count": 1,
+      "jobs": [
+        "kgact001-check"
+      ],
+      "name": "KG-ACT-001 Controlled Runtime KG Authority Activation",
+      "purpose": "Superseded audit/milestone workflow (KG-ACT-001 Controlled Runtime KG Authority Activation) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "learner-authz-coverage.yml": {
+      "current_location": "archive/github_workflows/learner-authz-coverage.yml",
+      "file": "learner-authz-coverage.yml",
+      "job_count": 1,
+      "jobs": [
+        "learner-authz-coverage"
+      ],
+      "name": "Learner Authorization Coverage",
+      "purpose": "Superseded audit/milestone workflow (Learner Authorization Coverage) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "learning-evidence.yml": {
+      "current_location": "archive/github_workflows/learning-evidence.yml",
+      "file": "learning-evidence.yml",
+      "job_count": 1,
+      "jobs": [
+        "learning-evidence-check"
+      ],
+      "name": "Learning Evidence",
+      "purpose": "Superseded audit/milestone workflow (Learning Evidence) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "lighthouse.yml": {
+      "current_location": "archive/github_workflows/lighthouse.yml",
+      "file": "lighthouse.yml",
+      "job_count": 1,
+      "jobs": [
+        "lighthouse"
+      ],
+      "name": "Lighthouse Staging Audit",
+      "purpose": "Superseded audit/milestone workflow (Lighthouse Staging Audit) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "migration_check.yml": {
+      "current_location": "archive/github_workflows/migration_check.yml",
+      "file": "migration_check.yml",
+      "job_count": 1,
+      "jobs": [
+        "migration-check"
+      ],
+      "name": "Migration & Schema Check",
+      "purpose": "Superseded audit/milestone workflow (Migration & Schema Check) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "observability_check.yml": {
+      "current_location": "archive/github_workflows/observability_check.yml",
+      "file": "observability_check.yml",
+      "job_count": 1,
+      "jobs": [
+        "observability-check"
+      ],
+      "name": "Observability Config Check",
+      "purpose": "Superseded audit/milestone workflow (Observability Config Check) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "openapi-contract.yml": {
+      "current_location": "archive/github_workflows/openapi-contract.yml",
+      "file": "openapi-contract.yml",
+      "job_count": 1,
+      "jobs": [
+        "openapi-contract"
+      ],
+      "name": "openapi-contract",
+      "purpose": "Superseded audit/milestone workflow (openapi-contract) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "openapi-drift.yml": {
+      "current_location": "archive/github_workflows/openapi-drift.yml",
+      "file": "openapi-drift.yml",
+      "job_count": 1,
+      "jobs": [
+        "openapi-check"
+      ],
+      "name": "OpenAPI Drift",
+      "purpose": "Superseded audit/milestone workflow (OpenAPI Drift) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "operations-drills.yml": {
+      "current_location": ".github/workflows/operations-drills.yml",
+      "file": "operations-drills.yml",
+      "job_count": 1,
+      "jobs": [
+        "db-backup-dryrun-drill"
+      ],
+      "name": "Operations & Resilience Drills",
+      "purpose": "Database backup/restore dry runs, rollback tests, resilience verification, and incident drills",
+      "replacement_target": "Consolidates operational and resilience drill suites",
+      "required_for_pr": false,
+      "retirement_decision": "Retained as canonical workflow #6",
+      "status": "canonical",
+      "triggers": [
+        "workflow_dispatch",
+        "schedule:weekly"
+      ]
+    },
+    "persistence-resilience.yml": {
+      "current_location": "archive/github_workflows/persistence-resilience.yml",
+      "file": "persistence-resilience.yml",
+      "job_count": 1,
+      "jobs": [
+        "persistence-resilience-check"
+      ],
+      "name": "Persistence Resilience",
+      "purpose": "Superseded audit/milestone workflow (Persistence Resilience) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "popia-consent-audit.yml": {
+      "current_location": "archive/github_workflows/popia-consent-audit.yml",
+      "file": "popia-consent-audit.yml",
+      "job_count": 1,
+      "jobs": [
+        "popia-consent-audit"
+      ],
+      "name": "POPIA Consent Audit",
+      "purpose": "Superseded audit/milestone workflow (POPIA Consent Audit) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "pr-core.yml": {
+      "current_location": ".github/workflows/pr-core.yml",
+      "file": "pr-core.yml",
+      "job_count": 4,
+      "jobs": [
+        "compile-and-lint",
+        "mypy-typecheck",
+        "fast-unit-tests",
+        "route-contract-audit"
+      ],
+      "name": "PR Core Quality Gates",
+      "purpose": "Compile, fast product unit tests, Ruff, mypy, architecture gates, route & OpenAPI checks",
+      "replacement_target": "Consolidates all PR static/unit/compile checks",
+      "required_for_pr": true,
+      "retirement_decision": "Retained as canonical workflow #1",
+      "status": "canonical",
+      "triggers": [
+        "pull_request",
+        "push:master"
+      ]
+    },
+    "prd000-production-readiness-stream-authority.yml": {
+      "current_location": "archive/github_workflows/prd000-production-readiness-stream-authority.yml",
+      "file": "prd000-production-readiness-stream-authority.yml",
+      "job_count": 1,
+      "jobs": [
+        "prd000-authority-check"
+      ],
+      "name": "PRD-0.0 Production Readiness Stream Authority",
+      "purpose": "Superseded audit/milestone workflow (PRD-0.0 Production Readiness Stream Authority) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "prd001-canonical-current-state-documentation-refresh.yml": {
+      "current_location": "archive/github_workflows/prd001-canonical-current-state-documentation-refresh.yml",
+      "file": "prd001-canonical-current-state-documentation-refresh.yml",
+      "job_count": 1,
+      "jobs": [
+        "verify-prd001"
+      ],
+      "name": "PRD-0.1 Canonical Current-State Documentation Refresh",
+      "purpose": "Superseded audit/milestone workflow (PRD-0.1 Canonical Current-State Documentation Refresh) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "prd002-historical-report-stale-source-quarantine.yml": {
+      "current_location": "archive/github_workflows/prd002-historical-report-stale-source-quarantine.yml",
+      "file": "prd002-historical-report-stale-source-quarantine.yml",
+      "job_count": 1,
+      "jobs": [
+        "verify-prd002"
+      ],
+      "name": "PRD-0.2 Historical Report Stale Source Quarantine",
+      "purpose": "Superseded audit/milestone workflow (PRD-0.2 Historical Report Stale Source Quarantine) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "prd003-documentation-housekeeping-ratchet-refresh.yml": {
+      "current_location": "archive/github_workflows/prd003-documentation-housekeeping-ratchet-refresh.yml",
+      "file": "prd003-documentation-housekeeping-ratchet-refresh.yml",
+      "job_count": 1,
+      "jobs": [
+        "verify-prd003"
+      ],
+      "name": "PRD-0.3 Documentation Housekeeping Ratchet Refresh",
+      "purpose": "Superseded audit/milestone workflow (PRD-0.3 Documentation Housekeeping Ratchet Refresh) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "prd004-test-dependency-bootstrap-baseline.yml": {
+      "current_location": "archive/github_workflows/prd004-test-dependency-bootstrap-baseline.yml",
+      "file": "prd004-test-dependency-bootstrap-baseline.yml",
+      "job_count": 1,
+      "jobs": [
+        "verify-prd004"
+      ],
+      "name": "PRD-0.4 test dependency bootstrap baseline",
+      "purpose": "Superseded audit/milestone workflow (PRD-0.4 test dependency bootstrap baseline) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "prd005-test-failure-collection-stabilisation-register.yml": {
+      "current_location": "archive/github_workflows/prd005-test-failure-collection-stabilisation-register.yml",
+      "file": "prd005-test-failure-collection-stabilisation-register.yml",
+      "job_count": 1,
+      "jobs": [
+        "verify-prd005"
+      ],
+      "name": "PRD-0.5 Test Failure Collection Stabilisation Register",
+      "purpose": "Superseded audit/milestone workflow (PRD-0.5 Test Failure Collection Stabilisation Register) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "prd006-workflow-command-hygiene-ci-inventory.yml": {
+      "current_location": "archive/github_workflows/prd006-workflow-command-hygiene-ci-inventory.yml",
+      "file": "prd006-workflow-command-hygiene-ci-inventory.yml",
+      "job_count": 1,
+      "jobs": [
+        "verify-prd006"
+      ],
+      "name": "PRD-0.6 Workflow Command Hygiene CI Inventory",
+      "purpose": "Superseded audit/milestone workflow (PRD-0.6 Workflow Command Hygiene CI Inventory) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "prd007-openapi-generated-artifact-canonicalisation.yml": {
+      "current_location": "archive/github_workflows/prd007-openapi-generated-artifact-canonicalisation.yml",
+      "file": "prd007-openapi-generated-artifact-canonicalisation.yml",
+      "job_count": 1,
+      "jobs": [
+        "prd007-openapi-generated-artifact-canonicalisation"
+      ],
+      "name": "PRD-0.7 OpenAPI Generated Artifact Canonicalisation",
+      "purpose": "Superseded audit/milestone workflow (PRD-0.7 OpenAPI Generated Artifact Canonicalisation) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "prd008-branch-release-naming-reconciliation.yml": {
+      "current_location": "archive/github_workflows/prd008-branch-release-naming-reconciliation.yml",
+      "file": "prd008-branch-release-naming-reconciliation.yml",
+      "job_count": 1,
+      "jobs": [
+        "prd008-branch-release-naming-reconciliation"
+      ],
+      "name": "PRD-0.8 Branch Release Naming Reconciliation",
+      "purpose": "Superseded audit/milestone workflow (PRD-0.8 Branch Release Naming Reconciliation) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "prd009-repository-hygiene-generated-local-artifact-audit.yml": {
+      "current_location": "archive/github_workflows/prd009-repository-hygiene-generated-local-artifact-audit.yml",
+      "file": "prd009-repository-hygiene-generated-local-artifact-audit.yml",
+      "job_count": 1,
+      "jobs": [
+        "prd009-repository-hygiene-generated-local-artifact-audit"
+      ],
+      "name": "PRD-0.9 Repository Hygiene Generated Local Artifact Audit",
+      "purpose": "Superseded audit/milestone workflow (PRD-0.9 Repository Hygiene Generated Local Artifact Audit) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "prd010-prd0-closure-evidence-handoff.yml": {
+      "current_location": "archive/github_workflows/prd010-prd0-closure-evidence-handoff.yml",
+      "file": "prd010-prd0-closure-evidence-handoff.yml",
+      "job_count": 1,
+      "jobs": [
+        "prd010-prd0-closure-evidence-handoff"
+      ],
+      "name": "PRD-0.10 PRD-0 Closure Evidence Handoff",
+      "purpose": "Superseded audit/milestone workflow (PRD-0.10 PRD-0 Closure Evidence Handoff) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "prd100-ci-release-gate-stream-authority.yml": {
+      "current_location": "archive/github_workflows/prd100-ci-release-gate-stream-authority.yml",
+      "file": "prd100-ci-release-gate-stream-authority.yml",
+      "job_count": 1,
+      "jobs": [
+        "prd100-authority"
+      ],
+      "name": "PRD-1.0 CI Release Gate Stream Authority",
+      "purpose": "Superseded audit/milestone workflow (PRD-1.0 CI Release Gate Stream Authority) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "prd101-ci-inventory-authority.yml": {
+      "current_location": "archive/github_workflows/prd101-ci-inventory-authority.yml",
+      "file": "prd101-ci-inventory-authority.yml",
+      "job_count": 1,
+      "jobs": [
+        "prd101-authority"
+      ],
+      "name": "PRD-1.1 CI Inventory Authority",
+      "purpose": "Superseded audit/milestone workflow (PRD-1.1 CI Inventory Authority) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "privacy-boundary.yml": {
+      "current_location": "archive/github_workflows/privacy-boundary.yml",
+      "file": "privacy-boundary.yml",
+      "job_count": 4,
+      "jobs": [
+        "popia-consent-gate-check",
+        "popia-audit-contracts",
+        "popia-consent-lifecycle",
+        "popia-dsr-tests"
+      ],
+      "name": "Privacy Boundary & Consent Gate Check",
+      "purpose": "Superseded audit/milestone workflow (Privacy Boundary & Consent Gate Check) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "product-runtime.yml": {
+      "current_location": ".github/workflows/product-runtime.yml",
+      "file": "product-runtime.yml",
+      "job_count": 2,
+      "jobs": [
+        "runtime-services-integration",
+        "migration-dryrun"
+      ],
+      "name": "Product Runtime & Integration",
+      "purpose": "Product integration tests, disposable Postgres/pgvector/Redis runtime services, migrations, and critical learner journeys",
+      "replacement_target": "Consolidates all backend runtime and DB integration checks",
+      "required_for_pr": true,
+      "retirement_decision": "Retained as canonical workflow #2",
+      "status": "canonical",
+      "triggers": [
+        "pull_request",
+        "push:master"
+      ]
+    },
+    "release-evidence.yml": {
+      "current_location": ".github/workflows/release-evidence.yml",
+      "file": "release-evidence.yml",
+      "job_count": 1,
+      "jobs": [
+        "generate-release-evidence"
+      ],
+      "name": "Release Evidence Collection",
+      "purpose": "Exact-commit immutable release candidate evidence generation and hash verification",
+      "replacement_target": "Consolidates release-candidate evidence collection",
+      "required_for_pr": false,
+      "retirement_decision": "Retained as canonical workflow #5",
+      "status": "canonical",
+      "triggers": [
+        "workflow_dispatch"
+      ]
+    },
+    "release.yml": {
+      "current_location": "archive/github_workflows/release.yml",
+      "file": "release.yml",
+      "job_count": 1,
+      "jobs": [
+        "release"
+      ],
+      "name": "Release",
+      "purpose": "Superseded audit/milestone workflow (Release) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "repo-state.yml": {
+      "current_location": "archive/github_workflows/repo-state.yml",
+      "file": "repo-state.yml",
+      "job_count": 1,
+      "jobs": [
+        "verify-repo-state"
+      ],
+      "name": "Repo State",
+      "purpose": "Superseded audit/milestone workflow (Repo State) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "rr003-release-authority.yml": {
+      "current_location": "archive/github_workflows/rr003-release-authority.yml",
+      "file": "rr003-release-authority.yml",
+      "job_count": 1,
+      "jobs": [
+        "rr003-release-authority"
+      ],
+      "name": "RR-003 Release Authority",
+      "purpose": "Superseded audit/milestone workflow (RR-003 Release Authority) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "rr006-security-posture.yml": {
+      "current_location": "archive/github_workflows/rr006-security-posture.yml",
+      "file": "rr006-security-posture.yml",
+      "job_count": 1,
+      "jobs": [
+        "rr006-security-posture"
+      ],
+      "name": "RR-006 Security Posture",
+      "purpose": "Superseded audit/milestone workflow (RR-006 Security Posture) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "rr007-product-quality-gates.yml": {
+      "current_location": "archive/github_workflows/rr007-product-quality-gates.yml",
+      "file": "rr007-product-quality-gates.yml",
+      "job_count": 1,
+      "jobs": [
+        "product-quality-gates"
+      ],
+      "name": "RR-007 Product Quality Gates",
+      "purpose": "Superseded audit/milestone workflow (RR-007 Product Quality Gates) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "rr008-operational-readiness.yml": {
+      "current_location": "archive/github_workflows/rr008-operational-readiness.yml",
+      "file": "rr008-operational-readiness.yml",
+      "job_count": 1,
+      "jobs": [
+        "rr008-operational-readiness"
+      ],
+      "name": "RR-008 Operational Readiness",
+      "purpose": "Superseded audit/milestone workflow (RR-008 Operational Readiness) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "rr009-governance-process.yml": {
+      "current_location": "archive/github_workflows/rr009-governance-process.yml",
+      "file": "rr009-governance-process.yml",
+      "job_count": 1,
+      "jobs": [
+        "rr009-governance-process"
+      ],
+      "name": "RR-009 Governance Process",
+      "purpose": "Superseded audit/milestone workflow (RR-009 Governance Process) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "rr010-beta-outcome-reporting.yml": {
+      "current_location": "archive/github_workflows/rr010-beta-outcome-reporting.yml",
+      "file": "rr010-beta-outcome-reporting.yml",
+      "job_count": 1,
+      "jobs": [
+        "rr010-beta-outcome-reporting"
+      ],
+      "name": "RR-010 Beta Outcome Reporting",
+      "purpose": "Superseded audit/milestone workflow (RR-010 Beta Outcome Reporting) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "rr011-live-billing-provider-integration.yml": {
+      "current_location": "archive/github_workflows/rr011-live-billing-provider-integration.yml",
+      "file": "rr011-live-billing-provider-integration.yml",
+      "job_count": 1,
+      "jobs": [
+        "rr011-live-billing-provider-integration"
+      ],
+      "name": "RR-011 Live Billing Provider Integration",
+      "purpose": "Superseded audit/milestone workflow (RR-011 Live Billing Provider Integration) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "rr012-production-telemetry-dashboard.yml": {
+      "current_location": "archive/github_workflows/rr012-production-telemetry-dashboard.yml",
+      "file": "rr012-production-telemetry-dashboard.yml",
+      "job_count": 1,
+      "jobs": [
+        "rr012-production-telemetry-dashboard"
+      ],
+      "name": "RR-012 Production Telemetry Dashboard",
+      "purpose": "Superseded audit/milestone workflow (RR-012 Production Telemetry Dashboard) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "rr013-advanced-mastery-model-research.yml": {
+      "current_location": "archive/github_workflows/rr013-advanced-mastery-model-research.yml",
+      "file": "rr013-advanced-mastery-model-research.yml",
+      "job_count": 1,
+      "jobs": [
+        "rr013-advanced-mastery-model-research"
+      ],
+      "name": "RR-013 Advanced Mastery Model Research",
+      "purpose": "Superseded audit/milestone workflow (RR-013 Advanced Mastery Model Research) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "rr014-public-beta-expansion.yml": {
+      "current_location": "archive/github_workflows/rr014-public-beta-expansion.yml",
+      "file": "rr014-public-beta-expansion.yml",
+      "job_count": 1,
+      "jobs": [
+        "rr014-public-beta-expansion"
+      ],
+      "name": "RR-014 Public Beta Expansion",
+      "purpose": "Superseded audit/milestone workflow (RR-014 Public Beta Expansion) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "rr015-external-approvals.yml": {
+      "current_location": "archive/github_workflows/rr015-external-approvals.yml",
+      "file": "rr015-external-approvals.yml",
+      "job_count": 1,
+      "jobs": [
+        "rr015-external-approvals"
+      ],
+      "name": "RR-015 External Approvals",
+      "purpose": "Superseded audit/milestone workflow (RR-015 External Approvals) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "rr016-operational-drills.yml": {
+      "current_location": "archive/github_workflows/rr016-operational-drills.yml",
+      "file": "rr016-operational-drills.yml",
+      "job_count": 1,
+      "jobs": [
+        "rr016-operational-drills"
+      ],
+      "name": "RR-016 Operational Drills",
+      "purpose": "Superseded audit/milestone workflow (RR-016 Operational Drills) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "rr017-release-safety-controls.yml": {
+      "current_location": "archive/github_workflows/rr017-release-safety-controls.yml",
+      "file": "rr017-release-safety-controls.yml",
+      "job_count": 1,
+      "jobs": [
+        "rr017-release-safety-controls"
+      ],
+      "name": "RR-017 Release Safety Controls",
+      "purpose": "Superseded audit/milestone workflow (RR-017 Release Safety Controls) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "rr018-trustworthy-beta-product-quality.yml": {
+      "current_location": "archive/github_workflows/rr018-trustworthy-beta-product-quality.yml",
+      "file": "rr018-trustworthy-beta-product-quality.yml",
+      "job_count": 1,
+      "jobs": [
+        "rr018-trustworthy-beta-product-quality"
+      ],
+      "name": "RR-018 Trustworthy Beta Product Quality",
+      "purpose": "Superseded audit/milestone workflow (RR-018 Trustworthy Beta Product Quality) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "runtime-contract.yml": {
+      "current_location": "archive/github_workflows/runtime-contract.yml",
+      "file": "runtime-contract.yml",
+      "job_count": 1,
+      "jobs": [
+        "runtime-check"
+      ],
+      "name": "Runtime Contract",
+      "purpose": "Superseded audit/milestone workflow (Runtime Contract) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "secrets-scan.yml": {
+      "current_location": "archive/github_workflows/secrets-scan.yml",
+      "file": "secrets-scan.yml",
+      "job_count": 1,
+      "jobs": [
+        "detect-secrets"
+      ],
+      "name": "Secrets Scan",
+      "purpose": "Superseded audit/milestone workflow (Secrets Scan) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "security-supply-chain.yml": {
+      "current_location": ".github/workflows/security-supply-chain.yml",
+      "file": "security-supply-chain.yml",
+      "job_count": 4,
+      "jobs": [
+        "bandit-static-security",
+        "pip-audit-dependencies",
+        "pnpm-audit-dependencies",
+        "secrets-baseline-check"
+      ],
+      "name": "Security & Supply Chain",
+      "purpose": "Bandit, pip-audit, pnpm audit, secret scan baseline, CycloneDX SBOM generation, container vulnerability checks",
+      "replacement_target": "Consolidates security scanners, dependency audits, and SBOMs",
+      "required_for_pr": true,
+      "retirement_decision": "Retained as canonical workflow #4",
+      "status": "canonical",
+      "triggers": [
+        "pull_request",
+        "push:master",
+        "schedule:daily"
+      ]
+    },
+    "staging-smoke.yml": {
+      "current_location": "archive/github_workflows/staging-smoke.yml",
+      "file": "staging-smoke.yml",
+      "job_count": 1,
+      "jobs": [
+        "staging-smoke"
+      ],
+      "name": "Staging Smoke",
+      "purpose": "Superseded audit/milestone workflow (Staging Smoke) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    },
+    "technical-audit-hosted-ci.yml": {
+      "current_location": "archive/github_workflows/technical-audit-hosted-ci.yml",
+      "file": "technical-audit-hosted-ci.yml",
+      "job_count": 1,
+      "jobs": [
+        "verify"
+      ],
+      "name": "EduBoost Hosted CI Authority",
+      "purpose": "Superseded audit/milestone workflow (EduBoost Hosted CI Authority) consolidated into canonical graph",
+      "replacement_target": "pr-core.yml / product-runtime.yml / security-supply-chain.yml",
+      "required_for_pr": false,
+      "retirement_decision": "Archived to archive/github_workflows/ to prevent uncoordinated CI triggers",
+      "status": "superseded_archived",
+      "triggers": [
+        "None"
+      ]
+    }
+  }
+}
