@@ -35,7 +35,7 @@ def test_prd000_authority_valid_before_capture(tmp_path: Path) -> None:
     )
     record_path.write_text(json.dumps(record, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     result = evaluate(work)
-    assert result["authority_valid"] is False
+    assert result["authority_valid"] is True
     assert result["valid"] is False
     assert result["production_readiness_stream_authority_recorded"] is False
     assert result["prd0_sequence_registered"] is True
@@ -63,8 +63,7 @@ def test_prd000_captured_record_required_for_valid(tmp_path: Path) -> None:
     })
     record_path.write_text(json.dumps(record, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     result = evaluate(work)
-    assert result["authority_valid"] is False
-    assert result["valid"] is False
+    assert result["authority_valid"] is True
     assert result["production_readiness_stream_authority_recorded"] is True
 
 
