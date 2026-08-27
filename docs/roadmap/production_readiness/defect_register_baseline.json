@@ -1,0 +1,37 @@
+{
+  "schema_version": "eduboost/governance/defect-register/v1",
+  "program_phase": "TSR_B07_STABILIZATION",
+  "created_at": "2026-08-27T17:20:00Z",
+  "sla_targets": {
+    "SEV1_CRITICAL": {
+      "response_time_minutes": 15,
+      "resolution_time_hours": 4,
+      "mandatory_regression_test": true,
+      "requires_hotfix_release": true
+    },
+    "SEV2_HIGH": {
+      "response_time_minutes": 60,
+      "resolution_time_hours": 24,
+      "mandatory_regression_test": true,
+      "requires_hotfix_release": true
+    },
+    "SEV3_MEDIUM": {
+      "response_time_minutes": 240,
+      "resolution_time_days": 7,
+      "mandatory_regression_test": false,
+      "requires_hotfix_release": false
+    },
+    "SEV4_LOW": {
+      "response_time_minutes": 1440,
+      "resolution_time_days": 30,
+      "mandatory_regression_test": false,
+      "requires_hotfix_release": false
+    }
+  },
+  "open_defects": [],
+  "closed_defects": [],
+  "verification_policy": {
+    "zero_tolerance_sev1_sev2": true,
+    "all_defects_require_sha_bound_evidence": true
+  }
+}

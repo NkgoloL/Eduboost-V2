@@ -1,0 +1,70 @@
+{
+  "checks": {
+    "boundaries": {
+      "failures": [],
+      "inspected": [
+        "docs/roadmap/production_readiness/production_readiness_register.json",
+        "docs/roadmap/production_readiness/prd11_production_release_register.json",
+        "docs/roadmap/production_readiness/true_state_remediation_register.json"
+      ],
+      "valid": true
+    },
+    "engineering_proofs": {
+      "digests": {
+        "app/core/pii_sanitizer.py": "59e521543d1d222fc11cd74cd3049b4e1c06656cd9435d8e24cc3bff5a53a73f",
+        "app/middleware/api_deprecation.py": "2b9148fcf5f54cd29d79ed522efb5d25ecca23de857ab8c9be4b83cea5ef949e",
+        "app/services/ai_budget_guard.py": "d58e8fd6a3737ae150bc48893da92d0a5ea727022fb70fea315f1353bbbd067f",
+        "app/services/billing_guard.py": "74b2c8e42e4d8f8f7a5c02171a954e46badd9fe75b01865c6a262006dd91fada",
+        "app/services/mastery_engine.py": "e79a9cc3acb85a4373b0759980ee3acb51e48469a88695364c66ae90c0207b3d",
+        "app/services/popia_dsr_service.py": "73efe5aa5998f23d30bb3c5adee421b61da403a71b7715eb1211d75decfe7b33",
+        "docs/architecture/technical_debt_ratchets.json": "b2df292c9bb5283f9b6ba244e06488698e6163315c9bf7db492bd9b25601ee9e",
+        "docs/curriculum/post_launch_educational_limitations_memo.md": "2798f9381ea4dea497b92d17f2283b6061bf5df5d5d4c96f5bd126a9581680f7",
+        "docs/infrastructure/cost_and_capacity_model.md": "9213a5dc33f20798dacee69089bb03fe5ce6897bb4e0fa8f0ebc4e1e481d0597",
+        "docs/operations/access_and_evidence_custody_report.md": "20ef53aa798091a5fa356311008e1566ae67a60d2d6c2ffd74f9ed1cd4634e54",
+        "docs/operations/operational_handover_runbook.md": "76abec3b37da6179092298360248e7c9d829267642f44e2ef5ce21ce3e6d2fa0",
+        "docs/operations/stabilization_dashboard_spec.md": "d65bbd794ff91c939ded61c7e7d26a724725f2ffd220aef083b08c1ff6d9a0c3",
+        "docs/release/pilot_monitoring_spec.md": "e70823056d54a7b7d5657f0de0bbebe891eeb2824e2787a167d35624eb6e6de1",
+        "docs/release/pilot_stop_rollback_criteria.md": "115b44db0841d5ad60c5b8fb299980795d4404e367f35a8a1b4d463401a11f4c",
+        "docs/release/post_deployment_verification_runbook.md": "57382b53f019efe5e2787435b0e2e287716236caf1ff879915566e2a08afe63d",
+        "docs/release/post_remediation_formal_review.md": "10f09b75e386db927ed0fbf6339ee3c06147e4e51663423a5e11a1f98c5ea0ce",
+        "docs/releases/true_state_release_statement.md": "b2b19e530c33ab5d89b1162049c8c2e5c663c1d0e45f74f4fb9c158e0b0fa9bb",
+        "docs/roadmap/production_readiness/defect_register_baseline.json": "86bdf7e4a624c32512a8d8b252e5f6adab2fc229c21d17cf12519a11883d0c5d",
+        "scripts/true_state_remediation/check_router_repo_isolation.py": "3099c62ce4a3b44fb98fddc83b29b771ddbaca0a9d7498263bbdef43610c5770",
+        "tests/integration/test_audit_immutability.py": "c1290fe54263c25022a8ed78638b6a4e35e0afa19c52d0c368068e11f1267688",
+        "tests/integration/test_billing_lock_enforcement.py": "14d1b391389be994fa0b9335dc09a9f212c88c6e1f43efb055927f8cf0aaf51c",
+        "tests/integration/test_disaster_recovery_drill.py": "1fa0aac3939411b0393d51d8234cabf4c1db1a0126a7e87921acaa2d6af006fb",
+        "tests/integration/test_popia_dsr_automation.py": "7dbf6f5ff8bb2eb4016c96911e57b111ee2f9f9098634f139240210f64d7ba02"
+      },
+      "missing": [],
+      "total_required": 23,
+      "valid": true,
+      "verified_count": 23
+    },
+    "hygiene": {
+      "status_porcelain": "M docs/roadmap/production_readiness/true_state_remediation_register.json\n M scripts/true_state_remediation/execute_bundle.py\n?? docs/architecture/technical_debt_ratchets.json\n?? docs/curriculum/post_launch_educational_limitations_memo.md\n?? docs/infrastructure/\n?? docs/operations/access_and_evidence_custody_report.md\n?? docs/operations/operational_handover_runbook.md\n?? docs/operations/stabilization_dashboard_spec.md\n?? docs/release-evidence/true-state-remediation/b07/\n?? docs/release/pilot_monitoring_spec.md\n?? docs/release/pilot_stop_rollback_criteria.md\n?? docs/release/post_deployment_verification_runbook.md\n?? docs/release/post_remediation_formal_review.md\n?? docs/releases/\n?? docs/roadmap/production_readiness/defect_register_baseline.json\n?? scripts/maintenance/generate_release_statement.py\n?? scripts/true_state_remediation/bundles/bundle_07.py\n?? scripts/true_state_remediation/verify_final_program.py\n?? tests/unit/test_true_state_final_program.py",
+      "stray_untracked": [],
+      "valid": true
+    },
+    "manual": {
+      "invalid": [],
+      "missing": [],
+      "valid": true
+    },
+    "register": {
+      "errors": [],
+      "release_boundaries": {
+        "failures": [],
+        "inspected": [
+          "docs/roadmap/production_readiness/production_readiness_register.json",
+          "docs/roadmap/production_readiness/prd11_production_release_register.json",
+          "docs/roadmap/production_readiness/true_state_remediation_register.json"
+        ],
+        "valid": true
+      },
+      "task_count": 174,
+      "valid": true
+    }
+  },
+  "valid": true,
+  "verified_at": "2026-08-27T18:12:07.135560+00:00"
+}
