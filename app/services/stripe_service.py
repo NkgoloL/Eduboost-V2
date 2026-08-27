@@ -8,6 +8,6 @@ from app.core.stripe_client import StripeService as _StripeService
 
 
 class StripeService(_StripeService):
-	def __init__(self, db: AsyncSession) -> None:
-		require_optional_capability("billing")
-		super().__init__(db)
+    def __init__(self, db: AsyncSession) -> None:
+        require_optional_capability("billing")
+        super().__init__(db)

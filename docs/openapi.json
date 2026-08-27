@@ -51,7 +51,6 @@
             "type": "string"
           },
           "summary": {
-            "additionalProperties": true,
             "title": "Summary",
             "type": "object"
           }
@@ -75,7 +74,6 @@
             "type": "string"
           },
           "details": {
-            "additionalProperties": true,
             "title": "Details",
             "type": "object"
           },
@@ -223,7 +221,6 @@
           "data": {
             "anyOf": [
               {
-                "additionalProperties": true,
                 "type": "object"
               },
               {
@@ -339,25 +336,21 @@
       "ArtifactReviewBundleResponse": {
         "properties": {
           "artifact": {
-            "additionalProperties": true,
             "title": "Artifact",
             "type": "object"
           },
           "generation_metadata": {
-            "additionalProperties": true,
             "title": "Generation Metadata",
             "type": "object"
           },
           "prior_review_events": {
             "items": {
-              "additionalProperties": true,
               "type": "object"
             },
             "title": "Prior Review Events",
             "type": "array"
           },
           "provenance": {
-            "additionalProperties": true,
             "title": "Provenance",
             "type": "object"
           },
@@ -366,7 +359,6 @@
           },
           "similar_artifacts": {
             "items": {
-              "additionalProperties": true,
               "type": "object"
             },
             "title": "Similar Artifacts",
@@ -374,7 +366,6 @@
           },
           "sources": {
             "items": {
-              "additionalProperties": true,
               "type": "object"
             },
             "title": "Sources",
@@ -383,7 +374,6 @@
           "validation_report": {
             "anyOf": [
               {
-                "additionalProperties": true,
                 "type": "object"
               },
               {
@@ -430,7 +420,6 @@
         "additionalProperties": false,
         "properties": {
           "artifact_json": {
-            "additionalProperties": true,
             "title": "Artifact Json",
             "type": "object"
           },
@@ -541,7 +530,6 @@
             "type": "string"
           },
           "metadata": {
-            "additionalProperties": true,
             "title": "Metadata",
             "type": "object"
           },
@@ -679,7 +667,6 @@
             "type": "string"
           },
           "used_cost_usd": {
-            "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
             "title": "Used Cost Usd",
             "type": "string"
           },
@@ -933,9 +920,6 @@
             "additionalProperties": {
               "$ref": "#/components/schemas/CoverageLayerCounts"
             },
-            "propertyNames": {
-              "$ref": "#/components/schemas/ContentLayer-Output"
-            },
             "title": "Layers",
             "type": "object"
           },
@@ -1064,7 +1048,11 @@
             "type": "string"
           },
           "state": {
-            "$ref": "#/components/schemas/ConsentState",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ConsentState"
+              }
+            ],
             "default": "pending"
           },
           "updated_at": {
@@ -1251,7 +1239,6 @@
             "title": "Source Hash"
           },
           "source_metadata": {
-            "additionalProperties": true,
             "title": "Source Metadata",
             "type": "object"
           },
@@ -1349,7 +1336,6 @@
       "ContentArtifactValidationRequest": {
         "properties": {
           "artifact_json": {
-            "additionalProperties": true,
             "title": "Artifact Json",
             "type": "object"
           },
@@ -1392,7 +1378,6 @@
       "ContentArtifactValidationResponse": {
         "properties": {
           "checks": {
-            "additionalProperties": true,
             "title": "Checks",
             "type": "object"
           },
@@ -1511,7 +1496,6 @@
             "title": "Status"
           },
           "summary": {
-            "additionalProperties": true,
             "title": "Summary",
             "type": "object"
           }
@@ -1575,7 +1559,6 @@
       "ContentFactoryReportResponse": {
         "properties": {
           "coverage": {
-            "additionalProperties": true,
             "title": "Coverage",
             "type": "object"
           },
@@ -1710,7 +1693,6 @@
             "type": "string"
           },
           "summary": {
-            "additionalProperties": true,
             "title": "Summary",
             "type": "object"
           },
@@ -1745,7 +1727,6 @@
           },
           "missing": {
             "items": {
-              "additionalProperties": true,
               "type": "object"
             },
             "title": "Missing",
@@ -1758,7 +1739,6 @@
           },
           "skipped": {
             "items": {
-              "additionalProperties": true,
               "type": "object"
             },
             "title": "Skipped",
@@ -1834,7 +1814,6 @@
             "type": "string"
           },
           "run_metadata": {
-            "additionalProperties": true,
             "title": "Run Metadata",
             "type": "object"
           },
@@ -2134,7 +2113,6 @@
             "type": "string"
           },
           "summary": {
-            "additionalProperties": true,
             "title": "Summary",
             "type": "object"
           }
@@ -2149,7 +2127,6 @@
       "CorrectionRequestLegacyBody": {
         "properties": {
           "fields": {
-            "additionalProperties": true,
             "title": "Fields",
             "type": "object"
           },
@@ -2447,14 +2424,12 @@
           },
           "ranked_gaps": {
             "items": {
-              "additionalProperties": true,
               "type": "object"
             },
             "title": "Ranked Gaps",
             "type": "array"
           },
           "runtime_kg_projection": {
-            "additionalProperties": true,
             "title": "Runtime Kg Projection",
             "type": "object"
           },
@@ -2742,7 +2717,6 @@
             "type": "boolean"
           },
           "plan": {
-            "additionalProperties": true,
             "title": "Plan",
             "type": "object"
           },
@@ -3068,7 +3042,6 @@
             "type": "string"
           },
           "summary": {
-            "additionalProperties": true,
             "title": "Summary",
             "type": "object"
           }
@@ -3118,7 +3091,6 @@
           "error": {
             "anyOf": [
               {
-                "additionalProperties": true,
                 "type": "object"
               },
               {
@@ -3136,7 +3108,6 @@
             "type": "string"
           },
           "payload": {
-            "additionalProperties": true,
             "title": "Payload",
             "type": "object"
           },
@@ -3283,7 +3254,6 @@
         "type": "object"
       },
       "LearnerDiagnosticItem": {
-        "description": "Learner-facing diagnostic item.",
         "properties": {
           "artifact_id": {
             "title": "Artifact Id",
@@ -3320,7 +3290,6 @@
             "type": "string"
           },
           "payload": {
-            "additionalProperties": true,
             "title": "Payload",
             "type": "object"
           },
@@ -3383,7 +3352,6 @@
         "type": "object"
       },
       "LearnerLesson": {
-        "description": "Learner-facing lesson.",
         "properties": {
           "artifact_id": {
             "title": "Artifact Id",
@@ -3420,7 +3388,6 @@
             "type": "string"
           },
           "payload": {
-            "additionalProperties": true,
             "title": "Payload",
             "type": "object"
           },
@@ -3549,7 +3516,6 @@
         "type": "object"
       },
       "LearnerScopeContentSummary": {
-        "description": "Summary of learner-visible content for a scope.",
         "properties": {
           "diagnostic_items_count": {
             "title": "Diagnostic Items Count",
@@ -3746,7 +3712,6 @@
             "type": "string"
           },
           "metadata": {
-            "additionalProperties": true,
             "title": "Metadata",
             "type": "object"
           },
@@ -4320,7 +4285,6 @@
             "type": "array"
           },
           "coverage_summary": {
-            "additionalProperties": true,
             "title": "Coverage Summary",
             "type": "object"
           },
@@ -4329,7 +4293,6 @@
             "type": "string"
           },
           "staging_summary": {
-            "additionalProperties": true,
             "title": "Staging Summary",
             "type": "object"
           },
@@ -4394,7 +4357,6 @@
           },
           "skipped": {
             "items": {
-              "additionalProperties": true,
               "type": "object"
             },
             "title": "Skipped",
@@ -5491,7 +5453,6 @@
             "type": "string"
           },
           "rubric_results": {
-            "additionalProperties": true,
             "title": "Rubric Results",
             "type": "object"
           },
@@ -5577,7 +5538,6 @@
             "title": "Reason Code"
           },
           "rubric_results": {
-            "additionalProperties": true,
             "title": "Rubric Results",
             "type": "object"
           }
@@ -5969,7 +5929,6 @@
             "type": "string"
           },
           "run_metadata": {
-            "additionalProperties": true,
             "title": "Run Metadata",
             "type": "object"
           },
@@ -6138,7 +6097,11 @@
             "title": "Seeded Staging"
           },
           "severity": {
-            "$ref": "#/components/schemas/BlockerSeverity",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BlockerSeverity"
+              }
+            ],
             "default": "blocking"
           },
           "validation_failed": {
@@ -6195,9 +6158,6 @@
           "layers": {
             "additionalProperties": {
               "$ref": "#/components/schemas/ScopeCoverageLayerSummary"
-            },
-            "propertyNames": {
-              "$ref": "#/components/schemas/ContentLayer-Output"
             },
             "title": "Layers",
             "type": "object"
@@ -6329,7 +6289,6 @@
             "$ref": "#/components/schemas/StagingReadinessStatus"
           },
           "summary": {
-            "additionalProperties": true,
             "title": "Summary",
             "type": "object"
           }
@@ -6933,7 +6892,6 @@
           "cost_metadata": {
             "anyOf": [
               {
-                "additionalProperties": true,
                 "type": "object"
               },
               {
@@ -7022,7 +6980,6 @@
           "token_usage": {
             "anyOf": [
               {
-                "additionalProperties": true,
                 "type": "object"
               },
               {
@@ -7312,6 +7269,9 @@
           },
           "status": {
             "const": "cancelled",
+            "enum": [
+              "cancelled"
+            ],
             "title": "Status",
             "type": "string"
           }
@@ -7549,7 +7509,6 @@
             "type": "string"
           },
           "estimated_cost_usd": {
-            "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
             "title": "Estimated Cost Usd",
             "type": "string"
           },
@@ -7615,13 +7574,6 @@
       },
       "ValidationError": {
         "properties": {
-          "ctx": {
-            "title": "Context",
-            "type": "object"
-          },
-          "input": {
-            "title": "Input"
-          },
           "loc": {
             "items": {
               "anyOf": [
@@ -8383,6 +8335,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Quarantine Artifact",
@@ -8439,6 +8394,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -8535,6 +8493,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -8813,7 +8774,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "additionalProperties": true,
                 "title": "Request",
                 "type": "object"
               }
@@ -9121,7 +9081,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Promotion Event Items Api V2 Admin Content Factory Promotion Events  Promotion Event Id  Items Get",
                   "type": "object"
                 }
@@ -9201,6 +9160,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Rollback Promotion Event",
@@ -9247,6 +9209,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -9462,6 +9427,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Assign Reviewer",
@@ -9506,6 +9474,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -9765,6 +9736,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Bulk Approve Review",
@@ -9811,6 +9785,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Bulk Quarantine Review",
@@ -9855,6 +9832,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -10006,6 +9986,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Create Generation Run",
@@ -10102,6 +10085,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Cancel Generation Run",
@@ -10166,6 +10152,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -10264,6 +10253,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Plan Missing Generation Tasks",
@@ -10314,6 +10306,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -10652,6 +10647,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Dry Run Promotion",
@@ -10697,6 +10695,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -10895,6 +10896,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Promote Production",
@@ -10950,6 +10954,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -11151,6 +11158,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -11435,6 +11445,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Rollback Seed Run",
@@ -11481,6 +11494,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -11690,6 +11706,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Run All Scope Staging Verification",
@@ -11864,6 +11883,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Execute Generation Task",
@@ -11937,7 +11959,6 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Capture Snapshots Api V2 Admin Curriculum Expansion Coverage Snapshots Post",
@@ -11988,7 +12009,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Scope Coverage Api V2 Admin Curriculum Expansion Coverage  Scope Id  Get",
                   "type": "object"
                 }
@@ -12283,7 +12303,6 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response List Etl Datasets Api V2 Admin Etl Datasets Get",
@@ -12314,7 +12333,6 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response List Etl Documents Api V2 Admin Etl Documents Get",
@@ -12355,7 +12373,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Etl Document Api V2 Admin Etl Documents  Document Id  Get",
                   "type": "object"
                 }
@@ -12405,7 +12422,6 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Get Etl Document Audit Api V2 Admin Etl Documents  Document Id  Audit Get",
@@ -12457,7 +12473,6 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Get Etl Document Chunks Api V2 Admin Etl Documents  Document Id  Chunks Get",
@@ -12497,7 +12512,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Etl Metrics Api V2 Admin Etl Metrics Get",
                   "type": "object"
                 }
@@ -12536,7 +12550,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Etl Quality Api V2 Admin Etl Quality  Document Id  Get",
                   "type": "object"
                 }
@@ -12575,7 +12588,6 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Get Etl Review Queue Api V2 Admin Etl Review Queue Get",
@@ -12617,7 +12629,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Search Etl Api V2 Admin Etl Search Get",
                   "type": "object"
                 }
@@ -12788,7 +12799,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Cancel Generation Run Api V2 Admin Generation Runs  Run Id  Cancel Post",
                   "type": "object"
                 }
@@ -14128,7 +14138,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Commercial Launch Readiness Api V2 Commercial Launch Readiness Get",
                   "type": "object"
                 }
@@ -14181,7 +14190,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Grant Consent Api V2 Consent Grant Post",
                   "type": "object"
                 }
@@ -14229,7 +14237,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Revoke Consent Api V2 Consent Revoke Post",
                   "type": "object"
                 }
@@ -14279,7 +14286,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Consent Status Api V2 Consent Status  Learner Id  Get",
                   "type": "object"
                 }
@@ -14318,7 +14324,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Grade4 Maths Content Quality Final Acceptance Api V2 Content Quality Grade4 Mathematics Final Acceptance Get",
                   "type": "object"
                 }
@@ -14342,7 +14347,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Grade4 Maths Content Quality Readiness Api V2 Content Quality Grade4 Mathematics Readiness Get",
                   "type": "object"
                 }
@@ -14932,7 +14936,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Controlled Beta Final Authorisation Api V2 Controlled Beta Final Authorisation Get",
                   "type": "object"
                 }
@@ -14956,7 +14959,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Controlled Beta Preflight Api V2 Controlled Beta Preflight Get",
                   "type": "object"
                 }
@@ -16865,7 +16867,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Observability Sre Final Assurance Api V2 Observability Sre Final Assurance Get",
                   "type": "object"
                 }
@@ -16889,7 +16890,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Observability Sre Readiness Api V2 Observability Sre Readiness Get",
                   "type": "object"
                 }
@@ -17066,7 +17066,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Request Erasure Api V2 Parents Learners  Learner Id  Delete",
                   "type": "object"
                 }
@@ -17115,7 +17114,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Learner Progress Api V2 Parents Learners  Learner Id  Progress Get",
                   "type": "object"
                 }
@@ -17246,7 +17244,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Performance Scale Cost Final Assurance Api V2 Performance Scale Cost Final Assurance Get",
                   "type": "object"
                 }
@@ -17270,7 +17267,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Performance Scale Cost Readiness Api V2 Performance Scale Cost Readiness Get",
                   "type": "object"
                 }
@@ -17908,7 +17904,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Popia Live Data Operations Final Assurance Api V2 Privacy Operations Live Data Final Assurance Get",
                   "type": "object"
                 }
@@ -17932,7 +17927,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Popia Live Data Operations Readiness Api V2 Privacy Operations Live Data Readiness Get",
                   "type": "object"
                 }
@@ -17956,7 +17950,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Production Release Preflight Api V2 Production Release Preflight Get",
                   "type": "object"
                 }
@@ -17980,7 +17973,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get True State Runtime Baseline Api V2 Production Release True State Runtime Baseline Get",
                   "type": "object"
                 }
@@ -18004,7 +17996,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Security Final Assurance Api V2 Security Assurance Final Assurance Get",
                   "type": "object"
                 }
@@ -18028,7 +18019,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Security Assurance Readiness Api V2 Security Assurance Readiness Get",
                   "type": "object"
                 }
@@ -18509,7 +18499,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Learner Vertical Journey Api V2 Vertical Journey Learners  Learner Id  Get",
                   "type": "object"
                 }
@@ -19189,6 +19178,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Quarantine Artifact",
@@ -19245,6 +19237,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -19341,6 +19336,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -19619,7 +19617,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "additionalProperties": true,
                 "title": "Request",
                 "type": "object"
               }
@@ -19927,7 +19924,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Promotion Event Items V2 Admin Content Factory Promotion Events  Promotion Event Id  Items Get",
                   "type": "object"
                 }
@@ -20007,6 +20003,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Rollback Promotion Event",
@@ -20053,6 +20052,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -20268,6 +20270,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Assign Reviewer",
@@ -20312,6 +20317,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -20571,6 +20579,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Bulk Approve Review",
@@ -20617,6 +20628,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Bulk Quarantine Review",
@@ -20661,6 +20675,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -20812,6 +20829,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Create Generation Run",
@@ -20908,6 +20928,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Cancel Generation Run",
@@ -20972,6 +20995,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -21070,6 +21096,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Plan Missing Generation Tasks",
@@ -21120,6 +21149,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -21458,6 +21490,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Dry Run Promotion",
@@ -21503,6 +21538,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -21701,6 +21739,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Promote Production",
@@ -21756,6 +21797,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -21957,6 +22001,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -22241,6 +22288,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Rollback Seed Run",
@@ -22287,6 +22337,9 @@
           }
         },
         "security": [
+          {
+            "HTTPBearer": []
+          },
           {
             "HTTPBearer": []
           }
@@ -22496,6 +22549,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Run All Scope Staging Verification",
@@ -22670,6 +22726,9 @@
         "security": [
           {
             "HTTPBearer": []
+          },
+          {
+            "HTTPBearer": []
           }
         ],
         "summary": "Execute Generation Task",
@@ -22743,7 +22802,6 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Capture Snapshots V2 Admin Curriculum Expansion Coverage Snapshots Post",
@@ -22794,7 +22852,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Scope Coverage V2 Admin Curriculum Expansion Coverage  Scope Id  Get",
                   "type": "object"
                 }
@@ -23089,7 +23146,6 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response List Etl Datasets V2 Admin Etl Datasets Get",
@@ -23120,7 +23176,6 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response List Etl Documents V2 Admin Etl Documents Get",
@@ -23161,7 +23216,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Etl Document V2 Admin Etl Documents  Document Id  Get",
                   "type": "object"
                 }
@@ -23211,7 +23265,6 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Get Etl Document Audit V2 Admin Etl Documents  Document Id  Audit Get",
@@ -23263,7 +23316,6 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Get Etl Document Chunks V2 Admin Etl Documents  Document Id  Chunks Get",
@@ -23303,7 +23355,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Etl Metrics V2 Admin Etl Metrics Get",
                   "type": "object"
                 }
@@ -23342,7 +23393,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Etl Quality V2 Admin Etl Quality  Document Id  Get",
                   "type": "object"
                 }
@@ -23381,7 +23431,6 @@
               "application/json": {
                 "schema": {
                   "items": {
-                    "additionalProperties": true,
                     "type": "object"
                   },
                   "title": "Response Get Etl Review Queue V2 Admin Etl Review Queue Get",
@@ -23423,7 +23472,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Search Etl V2 Admin Etl Search Get",
                   "type": "object"
                 }
@@ -23594,7 +23642,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Cancel Generation Run V2 Admin Generation Runs  Run Id  Cancel Post",
                   "type": "object"
                 }
@@ -24934,7 +24981,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Commercial Launch Readiness V2 Commercial Launch Readiness Get",
                   "type": "object"
                 }
@@ -24987,7 +25033,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Grant Consent V2 Consent Grant Post",
                   "type": "object"
                 }
@@ -25035,7 +25080,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Revoke Consent V2 Consent Revoke Post",
                   "type": "object"
                 }
@@ -25085,7 +25129,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Consent Status V2 Consent Status  Learner Id  Get",
                   "type": "object"
                 }
@@ -25124,7 +25167,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Grade4 Maths Content Quality Final Acceptance V2 Content Quality Grade4 Mathematics Final Acceptance Get",
                   "type": "object"
                 }
@@ -25148,7 +25190,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Grade4 Maths Content Quality Readiness V2 Content Quality Grade4 Mathematics Readiness Get",
                   "type": "object"
                 }
@@ -25738,7 +25779,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Controlled Beta Final Authorisation V2 Controlled Beta Final Authorisation Get",
                   "type": "object"
                 }
@@ -25762,7 +25802,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Controlled Beta Preflight V2 Controlled Beta Preflight Get",
                   "type": "object"
                 }
@@ -27671,7 +27710,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Observability Sre Final Assurance V2 Observability Sre Final Assurance Get",
                   "type": "object"
                 }
@@ -27695,7 +27733,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Observability Sre Readiness V2 Observability Sre Readiness Get",
                   "type": "object"
                 }
@@ -27872,7 +27909,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Request Erasure V2 Parents Learners  Learner Id  Delete",
                   "type": "object"
                 }
@@ -27921,7 +27957,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Learner Progress V2 Parents Learners  Learner Id  Progress Get",
                   "type": "object"
                 }
@@ -28052,7 +28087,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Performance Scale Cost Final Assurance V2 Performance Scale Cost Final Assurance Get",
                   "type": "object"
                 }
@@ -28076,7 +28110,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Performance Scale Cost Readiness V2 Performance Scale Cost Readiness Get",
                   "type": "object"
                 }
@@ -28714,7 +28747,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Popia Live Data Operations Final Assurance V2 Privacy Operations Live Data Final Assurance Get",
                   "type": "object"
                 }
@@ -28738,7 +28770,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Popia Live Data Operations Readiness V2 Privacy Operations Live Data Readiness Get",
                   "type": "object"
                 }
@@ -28762,7 +28793,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Production Release Preflight V2 Production Release Preflight Get",
                   "type": "object"
                 }
@@ -28786,7 +28816,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get True State Runtime Baseline V2 Production Release True State Runtime Baseline Get",
                   "type": "object"
                 }
@@ -28810,7 +28839,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Security Final Assurance V2 Security Assurance Final Assurance Get",
                   "type": "object"
                 }
@@ -28834,7 +28862,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Security Assurance Readiness V2 Security Assurance Readiness Get",
                   "type": "object"
                 }
@@ -29315,7 +29342,6 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "additionalProperties": true,
                   "title": "Response Get Learner Vertical Journey V2 Vertical Journey Learners  Learner Id  Get",
                   "type": "object"
                 }

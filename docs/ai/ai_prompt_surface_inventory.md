@@ -1,18 +1,3 @@
----
-title: "AI Prompt Surface Inventory"
-status: "active"
-owner: "quality"
-reviewers: ["quality", "engineering"]
-audience: "developer"
-source_of_truth: false
-supersedes: []
-superseded_by: null
-last_reviewed: "2026-08-26"
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-check"
-code_anchors: ["docs/ai/ai_prompt_surface_inventory.md"]
----
-
 # AI Prompt Surface Inventory
 
 ## Purpose
@@ -44,7 +29,6 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/api_v2_routers/learner_content.py` | `diagnostic` |
 | `app/api_v2_routers/lessons.py` | `llm, generate_lesson` |
 | `app/api_v2_routers/performance_scale_cost.py` | `llm` |
-| `app/api_v2_routers/test_services.py` | `prompt, diagnostic` |
 | `app/api_v2_routers/vertical_journey.py` | `diagnostic` |
 | `app/core/analytics.py` | `diagnostic` |
 | `app/core/authorization.py` | `generate_lesson, diagnostic` |
@@ -241,6 +225,9 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/services/study_plan_updater.py` | `diagnostic, remediation` |
 | `app/services/system_service_v2.py` | `diagnostic` |
 | `app/services/tutor_safety.py` | `prompt` |
+| `scripts/advisory_suites/generated_contract_frontend_green_run.py` | `remediation` |
+| `scripts/advisory_suites/generated_contract_frontend_quality_green_evidence.py` | `remediation` |
+| `scripts/advisory_suites/generated_frontend_quality_gate.py` | `remediation` |
 | `scripts/assign_irt_params.py` | `diagnostic` |
 | `scripts/audit_baseline_refresh.py` | `llm` |
 | `scripts/audit_remediation/backend_fast_failure_report.py` | `prompt, llm, diagnostic, remediation` |
@@ -407,6 +394,10 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/maintenance/apply_doc_stage5_cleanup.py` | `llm, diagnostic` |
 | `scripts/maintenance/apply_execution7_targeted_baseline_reconciliation.py` | `remediation` |
 | `scripts/maintenance/audit_todo_backlog.py` | `prompt, llm, diagnostic, remediation` |
+| `scripts/maintenance/generate_ci_authority_inventory.py` | `remediation` |
+| `scripts/maintenance/generate_current_state_docs.py` | `diagnostic, remediation` |
+| `scripts/maintenance/generate_release_sboms.py` | `remediation` |
+| `scripts/maintenance/generate_test_health_metrics.py` | `remediation` |
 | `scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py` | `diagnostic` |
 | `scripts/merge_lora.py` | `llm` |
 | `scripts/operations_readiness/audit_rr008_operational_readiness.py` | `llm` |
@@ -444,6 +435,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/repair_arq_dependency_worker_import.py` | `diagnostic` |
 | `scripts/repair_diagnostics_data_integrity.py` | `diagnostic` |
 | `scripts/repair_runtime_blockers_after_followup_audit.py` | `diagnostic` |
+| `scripts/roadmap_reconciliation/capture_execution8_governance_refresh.py` | `remediation` |
 | `scripts/roadmap_reconciliation/capture_kg005_graph_grounded_lesson_assessment_generation_evidence.py` | `llm` |
 | `scripts/roadmap_reconciliation/capture_kg008_post_switch_optimisation_scale_review_evidence.py` | `llm` |
 | `scripts/roadmap_reconciliation/capture_kgact001_controlled_runtime_kg_authority_activation_evidence.py` | `llm` |
@@ -470,6 +462,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/route_tx_impl_plan.py` | `diagnostic` |
 | `scripts/route_tx_popia_slice.py` | `llm` |
 | `scripts/route_tx_slice_rollup.py` | `diagnostic` |
+| `scripts/runtime/final_true_state_baseline.py` | `remediation` |
 | `scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py` | `diagnostic` |
 | `scripts/runtime_readiness/verify_backend_backed_seeded_e2e.py` | `diagnostic` |
 | `scripts/seed_irt_items.py` | `diagnostic` |
@@ -497,11 +490,14 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/transaction_rollback_rollup.py` | `diagnostic` |
 | `scripts/true_state_remediation/__init__.py` | `remediation` |
 | `scripts/true_state_remediation/bundles/bundle_01.py` | `remediation` |
+| `scripts/true_state_remediation/bundles/bundle_02.py` | `remediation` |
+| `scripts/true_state_remediation/bundles/bundle_03.py` | `remediation` |
 | `scripts/true_state_remediation/capture_baseline.py` | `remediation` |
 | `scripts/true_state_remediation/check_feature_freeze.py` | `remediation` |
 | `scripts/true_state_remediation/core.py` | `remediation` |
 | `scripts/true_state_remediation/execute_bundle.py` | `remediation` |
 | `scripts/true_state_remediation/record_manual_evidence.py` | `remediation` |
+| `scripts/true_state_remediation/record_review.py` | `remediation` |
 | `scripts/true_state_remediation/run_release_gates.py` | `remediation` |
 | `scripts/tx_route_wiring_inventory.py` | `diagnostic` |
 | `scripts/validate_ai_output_fixtures.py` | `prompt, diagnostic, remediation` |

@@ -10,7 +10,7 @@ import uuid
 from datetime import datetime, timezone
 from typing import Any
 
-from sqlalchemy import select, Column, String, DateTime, Float, JSON, Text
+from sqlalchemy import select
 
 from app.core.database import AsyncSessionFactory
 from app.models import StudyPlan, SubjectMastery

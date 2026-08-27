@@ -3,6 +3,7 @@
 from __future__ import annotations
 import argparse, json
 import subprocess  # nosec B404 -- only .DEVNULL constant used here
+from scripts._subprocess import check_output
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any

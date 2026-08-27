@@ -128,12 +128,12 @@ findings:
     severity: P1
     gate: 5
     owner: legal
-    implementation_batch: code_1791_1830
+    implementation_batch: code_1991_2030
     proof_status: external-blocked
-    proof_command: make external-approval-release-check after approval metadata is attached
+    proof_command: make approval-evidence-release-check
     evidence_file: docs/release/external_approvals/legal_approval.md
     last_verified_commit: null
-    closure_blocker: external approval sign-off metadata required
+    closure_blocker: approval metadata and evidence URL required
     blocks_beta: true
     external_dependency: true
   - id: SEC-001
@@ -141,12 +141,12 @@ findings:
     severity: P1
     gate: 5
     owner: security
-    implementation_batch: code_1791_1830
+    implementation_batch: code_1991_2030
     proof_status: external-blocked
-    proof_command: make external-approval-release-check after approval metadata is attached
+    proof_command: make approval-evidence-release-check
     evidence_file: docs/release/external_approvals/security_approval.md
     last_verified_commit: null
-    closure_blocker: external approval sign-off metadata required
+    closure_blocker: approval metadata and evidence URL required
     blocks_beta: true
     external_dependency: true
   - id: CONTENT-001
@@ -154,12 +154,12 @@ findings:
     severity: P1
     gate: 5
     owner: content
-    implementation_batch: code_1791_1830
+    implementation_batch: code_1991_2030
     proof_status: external-blocked
-    proof_command: make external-approval-release-check after approval metadata is attached
+    proof_command: make approval-evidence-release-check
     evidence_file: docs/release/external_approvals/content_approval.md
     last_verified_commit: null
-    closure_blocker: external approval sign-off metadata required
+    closure_blocker: approval metadata and evidence URL required
     blocks_beta: true
     external_dependency: true
   - id: LESSON-AUTH-001
@@ -396,7 +396,7 @@ findings:
     proof_status: runtime-passing
     proof_command: make backend-implementation-1991-2030-full-check
     evidence_file: docs/release/approval_evidence_status.md
-    last_verified_commit: 66323711cba9ebc39919f32491c707aeb92e5e58
+    last_verified_commit: bf2941f2e463570c8f64484edb6ec7bfa70f2ffb
     closure_blocker: scaffold only; individual approvals remain external-blocked until accepted metadata is attached
     blocks_beta: false
     external_dependency: false

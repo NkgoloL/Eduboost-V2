@@ -7,7 +7,7 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-08-26
+last_reviewed: 2026-08-27
 review_interval_days: 45
 evidence_command: PYTHONPATH=. python3 scripts/true_state_remediation/execute_bundle.py --bundle B03 --phase verify --json
 code_anchors: [app/api_v2.py, app/frontend/package.json, docs/roadmap/production_readiness/true_state_remediation_register.json]
@@ -15,7 +15,7 @@ code_anchors: [app/api_v2.py, app/frontend/package.json, docs/roadmap/production
 
 # EduBoost Current State
 
-This file is the canonical current-state summary for EduBoost V2 generated deterministically from single-source register state on 2026-08-26.
+This file is the canonical current-state summary for EduBoost V2 generated deterministically from single-source register state on 2026-08-27.
 
 It is intentionally conservative. It records what is true now and what remains unauthorised before production, deployment, public beta, billing, live learner traffic, or further production-readiness implementation work can proceed.
 
@@ -82,4 +82,4 @@ billing_launch_authorised: false
 live_payment_processing_authorised: false
 ```
 
-**Generation timestamp: 2026-08-26T15:49:40.310219+00:00**
+**Generation timestamp: 2026-08-27T12:12:33.786710+00:00**

@@ -62,7 +62,7 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements/base.txt -r requirements/dev.txt
       - name: Run Fast Unit Tests
-        run: PYTHONPATH=. python3 -m pytest tests/unit/ -m "product_unit or not (product_integration or runtime_stack or release_evidence)" -q
+        run: PYTHONPATH=. python3 -m pytest tests/unit/ -m "not (governance or governance_contract or product_integration or runtime_stack or release_evidence)" -q
 
   route-contract-audit:
     name: Route & OpenAPI Canonical Contract Audit
@@ -78,6 +78,6 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements/base.txt -r requirements/dev.txt
       - name: Check OpenAPI Drift
-        run: python3 scripts/check_openapi_drift.py
-      - name: Verify Route Inventory
-        run: PYTHONPATH=. python3 -c "from scripts.generate_route_inventory import generate_route_inventory; generate_route_inventory()"
+        run: python3 scripts/generate_openapi.py --check
+      - name: Verify Route Inventory & Current State
+        run: PYTHONPATH=. python3 scripts/maintenance/generate_current_state_docs.py

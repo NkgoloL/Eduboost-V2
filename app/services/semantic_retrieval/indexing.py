@@ -231,8 +231,8 @@ class RetrievalIndexingService:
         params: dict[str, Any] = {"document_id": document_id}
         params.update(dict(zip(names, current_chunk_ids)))
         await session.execute(
-            text(  # nosec B608 — placeholders are generated from validated bind names
-                f"""
+            text(
+                f"""  # nosec B608 — placeholders are generated from validated bind names
                 DELETE FROM retrieval_source_chunks
                 WHERE document_id = :document_id
                   AND chunk_id NOT IN ({placeholders})
@@ -292,8 +292,8 @@ class RetrievalIndexingService:
         }
         embedding_sql = "CAST(:embedding AS vector)" if vector is not None else "NULL"
         await session.execute(
-            text(  # nosec B608 — embedding_sql is a fixed SQL fragment selected by vector presence
-                f"""
+            text(
+                f"""  # nosec B608 — embedding_sql is a fixed SQL fragment selected by vector presence
                 INSERT INTO retrieval_source_chunks (
                     chunk_id, document_id, document_version_id, chunk_index,
                     content, heading, section_path, page_start, page_end,

@@ -271,7 +271,7 @@ def build_front_matter(rel: str, title: str, existing: dict[str, object] | None)
         for key, value in existing.items():
             if key in data and value is not None and value != "" and key not in {"title", "evidence_command", "code_anchors", "last_reviewed"}:
                 data[key] = value
-    lines = [f"---"]
+    lines = ["---"]
     for key in REQUIRED_METADATA_FIELDS:
         lines.append(f"{key}: {format_value(data[key])}")
     lines.append("---")

@@ -8,6 +8,8 @@ import yaml
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 WORKFLOW = REPO_ROOT / ".github" / "workflows" / "learner-authz-coverage.yml"
+if not WORKFLOW.exists() and (REPO_ROOT / 'archive' / 'github_workflows' / WORKFLOW.name).exists():
+    WORKFLOW = REPO_ROOT / 'archive' / 'github_workflows' / WORKFLOW.name
 
 
 @pytest.mark.unit

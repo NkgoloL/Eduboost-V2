@@ -1,7 +1,7 @@
 {
   "bundle_id": "B03",
   "environment": {
-    "captured_at": "2026-08-26T15:49:40.371389+00:00",
+    "captured_at": "2026-08-27T12:12:34.006963+00:00",
     "docker": {
       "available": true,
       "exit_code": 0,
@@ -16,8 +16,8 @@
       "available": true,
       "branch": "codex/tsr-b03-caps-mathematics-truth",
       "clean": false,
-      "commit": "3d017d79d584850bb12e25aaf382f614df8a48fe",
-      "status_porcelain": "M docs/ci/ci_authority_matrix.json\n M docs/ci/ci_workflow_inventory.md\n M docs/current_state.md\n M docs/release-evidence/true-state-remediation/b03/apply/generate_ci_authority.json\n M docs/release-evidence/true-state-remediation/b03/apply/generate_current_state.json\n M docs/release-evidence/true-state-remediation/b03/apply/generate_test_health_metrics.json\n M docs/release-evidence/true-state-remediation/b03/environment_manifest.json\n M docs/release-evidence/true-state-remediation/b03/implementation_state.json\n M docs/release-evidence/true-state-remediation/b03/verification.json\n M docs/roadmap/production_readiness/true_state_remediation_register.json\n M docs/testing/test_health_metrics.json",
+      "commit": "bf2941f2e463570c8f64484edb6ec7bfa70f2ffb",
+      "status_porcelain": "M .github/workflows/pr-core.yml\n M README.md\n M app/repositories/study_plan_repository.py\n M app/services/semantic_retrieval/indexing.py\n M app/services/semantic_retrieval/repository.py\n M app/services/stripe_service.py\n M docs/ai/ai_prompt_surface_inventory.md\n M docs/architecture/import_linter_contract_run.md\n M docs/architecture/router_service_dependency_map.json\n M docs/architecture/router_service_dependency_map.md\n M docs/architecture/service_family_map.json\n M docs/architecture/service_family_map.md\n M docs/current_state.md\n M docs/openapi.json\n M docs/openapi.yaml\n M docs/release-evidence/true-state-remediation/b03/implementation_state.json\n M docs/release-evidence/true-state-remediation/b03/verification.json\n M docs/release/approval_evidence_status.json\n M docs/release/approval_evidence_status.md\n M docs/release/evidence_status_registry.yml\n M docs/release/final_beta_gate_refresh.json\n M docs/release/final_beta_gate_refresh.md\n M docs/release/release_go_no_go_status.json\n M docs/release/release_go_no_go_status.md\n M docs/roadmap/production_readiness/prd1_required_checks_workflow_release_gate_convergence.json\n M docs/roadmap/production_readiness/prd_102_104_required_checks_workflow_release_gate_convergence_record.json\n M docs/roadmap/production_readiness/true_state_remediation_register.json\n M pyproject.toml\n M scripts/_subprocess.py\n M scripts/maintenance/apply_doc_stage5_cleanup.py\n M scripts/production_readiness/audit_prd101_ci_inventory_authority.py\n M scripts/roadmap_reconciliation/capture_kg000_formal_kg_roadmap_approval_evidence.py\n M tests/unit/roadmap_reconciliation/test_rr003_coverage_ci_route_authority.py\n M tests/unit/roadmap_reconciliation/test_rr006_security_posture_deepening.py\n M tests/unit/test_ci_auth_refresh_db_proof_workflow.py\n M tests/unit/test_cluster_d_ci_evidence.py\n M tests/unit/test_cluster_d_closure_ci_contract.py\n M tests/unit/test_cluster_d_runtime_gates_evidence.py\n M tests/unit/test_cluster_e_backup_restore_commands_evidence.py\n M tests/unit/test_cluster_e_backup_restore_evidence_records.py\n M tests/unit/test_cluster_e_closure_ci_contract.py\n M tests/unit/test_cluster_e_data_resilience_evidence.py\n M tests/unit/test_cluster_e_integrity_evidence.py\n M tests/unit/test_cluster_e_restore_readiness_evidence.py\n M tests/unit/test_cluster_f_ai_safety_evidence.py\n M tests/unit/test_cluster_f_fixture_validation_evidence.py\n M tests/unit/test_cluster_f_prompt_diagnostic_evidence.py\n M tests/unit/test_cluster_f_prompt_refusal_evidence.py\n M tests/unit/test_cluster_f_provider_output_evidence.py\n M tests/unit/test_cluster_f_secret_fixture_coverage_evidence.py\n M tests/unit/test_cluster_g_accessibility_evidence.py\n M tests/unit/test_cluster_g_api_fixture_evidence.py\n M tests/unit/test_cluster_g_build_e2e_workflow_evidence.py\n M tests/unit/test_cluster_g_e2e_runtime_evidence.py\n M tests/unit/test_cluster_g_frontend_evidence.py\n M tests/unit/test_cluster_g_mocked_playwright_evidence.py\n M tests/unit/test_cluster_g_parent_denial_evidence.py\n M tests/unit/test_cluster_g_playwright_evidence.py\n M tests/unit/test_cluster_g_runtime_mock_evidence.py\n M tests/unit/test_cluster_h_acceptance_memo_record_closure_continuity_wiring.py\n M tests/unit/test_cluster_h_acceptance_packet_handoff_freeze_access_policy_wiring.py\n M tests/unit/test_cluster_h_archival_lock_pr_ready_toc_wiring.py\n M tests/unit/test_cluster_h_archive_accession_custody_retrieval_wiring.py\n M tests/unit/test_cluster_h_audit_attestation_rollup_wiring.py\n M tests/unit/test_cluster_h_bundle_approval_closure.py\n M tests/unit/test_cluster_h_closure_manifest_branch_handoff_reviewer_decision_wiring.py\n M tests/unit/test_cluster_h_communications_monitoring_support_wiring.py\n M tests/unit/test_cluster_h_execution_guardrail_closeout_checksum_wiring.py\n M tests/unit/test_cluster_h_execution_pr_verification_wiring.py\n M tests/unit/test_cluster_h_feedback_issues_acceptance_wiring.py\n M tests/unit/test_cluster_h_final_project_closure_wiring.py\n M tests/unit/test_cluster_h_freeze_change_operator_packet_wiring.py\n M tests/unit/test_cluster_h_governance_seal_terminal_closure_wiring.py\n M tests/unit/test_cluster_h_ledger_variance_maintenance_wiring.py\n M tests/unit/test_cluster_h_merge_signoff_post_closeout_noop_wiring.py\n M tests/unit/test_cluster_h_operational_release_controls.py\n M tests/unit/test_cluster_h_operator_brief_terminal_review_sealed_access_wiring.py\n M tests/unit/test_cluster_h_outcome_retrospective_archive_wiring.py\n M tests/unit/test_cluster_h_post_merge_governance_wiring.py\n M tests/unit/test_cluster_h_post_terminal_handoff_archive_audit_wiring.py\n M tests/unit/test_cluster_h_readiness_rollup_freeze_merge_summary_wiring.py\n M tests/unit/test_cluster_h_release_hygiene_closeout.py\n M tests/unit/test_cluster_h_release_readiness.py\n M tests/unit/test_cluster_h_reviewer_closeout_audit_handoff_terminal_pr_index_wiring.py\n M tests/unit/test_cluster_h_reviewer_disposition_terminal_seal_pr_handoff_wiring.py\n M tests/unit/test_cluster_h_reviewer_pack_merge_control_retention_wiring.py\n M tests/unit/test_cluster_h_sealed_package_audit_review_terminal_handoff_wiring.py\n M tests/unit/test_cluster_h_state_consistency_merge_wiring.py\n M tests/unit/test_learner_authz_ci_contract.py\n M tests/unit/test_popia_ci_closure_contract.py\n M tests/unit/test_popia_consent_audit_ci_contract.py\n M tests/unit/test_popia_consent_closure_ci_contract.py",
       "submodules": ""
     },
     "input_digests": {
@@ -25,7 +25,7 @@
       "app/frontend/package.json": "b3f4759545ee3b259bc89eb12d815a6c25da2d310f4e55801e9fc14afae69471",
       "package.json": "0f1b96117bd811f6fb46fb8f06f4f63729d1a5dfc501efa556f26f59495403f9",
       "pnpm-lock.yaml": "9e280652ecab533b5542e225a4ed06488a5c155ec4fc79498b2e8f36dbd9c665",
-      "pyproject.toml": "4a311fe480f62f17fbcef1eeeaae27c6963ac9047e7577abddae07cb6213f4f2",
+      "pyproject.toml": "a82e029276e64b8077bcf2af2ac960ce54f45f32902f2e64a23904e7f9f73fd4",
       "requirements/base.txt": "bc83e83ef52fab7072af7c777936d6730d9fff9a048bf7d664eb79bb09441c8d",
       "requirements/dev.txt": "a19156e19770a629b5ebfda8ba70d0b684589733f7b008d0f08059315610f18a",
       "requirements/docs.txt": "baf122c71989e7fa24a8cb8726dc492bf5eb1542f191921f6ab21f4a7354e04c",
@@ -35,18 +35,17 @@
     "node": {
       "available": true,
       "exit_code": 0,
-      "version": "v26.0.0"
+      "version": "v22.23.2"
     },
     "pip": {
       "available": true,
       "exit_code": 0,
-      "version": "pip 26.2.1 from /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/lib/python3.12/site-packages/pip (python 3.12)"
+      "version": "pip 24.0 from /usr/lib/python3/dist-packages/pip (python 3.12)"
     },
     "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
     "pnpm": {
-      "available": true,
-      "exit_code": 0,
-      "version": "9.14.4"
+      "available": false,
+      "error": "[Errno 2] No such file or directory: 'pnpm'"
     },
     "postgres_client": {
       "available": true,
@@ -54,7 +53,7 @@
       "version": "psql (PostgreSQL) 18.6 (Ubuntu 18.6-1.pgdg24.04+2)"
     },
     "python": {
-      "executable": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python",
+      "executable": "/usr/bin/python3",
       "version": "3.12.3"
     },
     "redis_client": {
@@ -62,15 +61,8 @@
       "error": "[Errno 2] No such file or directory: 'redis-cli'"
     }
   },
-  "phase": "all",
+  "phase": "verify",
   "phases": {
-    "apply": {
-      "valid": true
-    },
-    "prepare": {
-      "environment_manifest": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release-evidence/true-state-remediation/b03/environment_manifest.json",
-      "valid": true
-    },
     "verify": {
       "checks": {
         "boundaries": {
@@ -104,16 +96,16 @@
           "valid": true
         },
         "ci_authority_matrix": {
-          "inventory_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/ci/ci_workflow_inventory.md",
-          "matrix_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/ci/ci_authority_matrix.json",
+          "inventory_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/ci/ci_workflow_inventory.md",
+          "matrix_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/ci/ci_authority_matrix.json",
           "valid": true
         },
         "flake_policy": {
-          "path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/testing/flake_policy_and_quarantine_register.md",
+          "path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/testing/flake_policy_and_quarantine_register.md",
           "valid": true
         },
         "hygiene": {
-          "status_porcelain": "M docs/ci/ci_authority_matrix.json\n M docs/ci/ci_workflow_inventory.md\n M docs/current_state.md\n M docs/release-evidence/true-state-remediation/b03/apply/generate_ci_authority.json\n M docs/release-evidence/true-state-remediation/b03/apply/generate_current_state.json\n M docs/release-evidence/true-state-remediation/b03/apply/generate_test_health_metrics.json\n M docs/release-evidence/true-state-remediation/b03/environment_manifest.json\n M docs/release-evidence/true-state-remediation/b03/implementation_state.json\n M docs/release-evidence/true-state-remediation/b03/verification.json\n M docs/roadmap/production_readiness/true_state_remediation_register.json\n M docs/testing/test_health_metrics.json",
+          "status_porcelain": "M .github/workflows/pr-core.yml\n M README.md\n M app/repositories/study_plan_repository.py\n M app/services/semantic_retrieval/indexing.py\n M app/services/semantic_retrieval/repository.py\n M app/services/stripe_service.py\n M docs/ai/ai_prompt_surface_inventory.md\n M docs/architecture/import_linter_contract_run.md\n M docs/architecture/router_service_dependency_map.json\n M docs/architecture/router_service_dependency_map.md\n M docs/architecture/service_family_map.json\n M docs/architecture/service_family_map.md\n M docs/current_state.md\n M docs/openapi.json\n M docs/openapi.yaml\n M docs/release-evidence/true-state-remediation/b03/implementation_state.json\n M docs/release-evidence/true-state-remediation/b03/verification.json\n M docs/release/approval_evidence_status.json\n M docs/release/approval_evidence_status.md\n M docs/release/evidence_status_registry.yml\n M docs/release/final_beta_gate_refresh.json\n M docs/release/final_beta_gate_refresh.md\n M docs/release/release_go_no_go_status.json\n M docs/release/release_go_no_go_status.md\n M docs/roadmap/production_readiness/prd1_required_checks_workflow_release_gate_convergence.json\n M docs/roadmap/production_readiness/prd_102_104_required_checks_workflow_release_gate_convergence_record.json\n M docs/roadmap/production_readiness/true_state_remediation_register.json\n M pyproject.toml\n M scripts/_subprocess.py\n M scripts/maintenance/apply_doc_stage5_cleanup.py\n M scripts/production_readiness/audit_prd101_ci_inventory_authority.py\n M scripts/roadmap_reconciliation/capture_kg000_formal_kg_roadmap_approval_evidence.py\n M tests/unit/roadmap_reconciliation/test_rr003_coverage_ci_route_authority.py\n M tests/unit/roadmap_reconciliation/test_rr006_security_posture_deepening.py\n M tests/unit/test_ci_auth_refresh_db_proof_workflow.py\n M tests/unit/test_cluster_d_ci_evidence.py\n M tests/unit/test_cluster_d_closure_ci_contract.py\n M tests/unit/test_cluster_d_runtime_gates_evidence.py\n M tests/unit/test_cluster_e_backup_restore_commands_evidence.py\n M tests/unit/test_cluster_e_backup_restore_evidence_records.py\n M tests/unit/test_cluster_e_closure_ci_contract.py\n M tests/unit/test_cluster_e_data_resilience_evidence.py\n M tests/unit/test_cluster_e_integrity_evidence.py\n M tests/unit/test_cluster_e_restore_readiness_evidence.py\n M tests/unit/test_cluster_f_ai_safety_evidence.py\n M tests/unit/test_cluster_f_fixture_validation_evidence.py\n M tests/unit/test_cluster_f_prompt_diagnostic_evidence.py\n M tests/unit/test_cluster_f_prompt_refusal_evidence.py\n M tests/unit/test_cluster_f_provider_output_evidence.py\n M tests/unit/test_cluster_f_secret_fixture_coverage_evidence.py\n M tests/unit/test_cluster_g_accessibility_evidence.py\n M tests/unit/test_cluster_g_api_fixture_evidence.py\n M tests/unit/test_cluster_g_build_e2e_workflow_evidence.py\n M tests/unit/test_cluster_g_e2e_runtime_evidence.py\n M tests/unit/test_cluster_g_frontend_evidence.py\n M tests/unit/test_cluster_g_mocked_playwright_evidence.py\n M tests/unit/test_cluster_g_parent_denial_evidence.py\n M tests/unit/test_cluster_g_playwright_evidence.py\n M tests/unit/test_cluster_g_runtime_mock_evidence.py\n M tests/unit/test_cluster_h_acceptance_memo_record_closure_continuity_wiring.py\n M tests/unit/test_cluster_h_acceptance_packet_handoff_freeze_access_policy_wiring.py\n M tests/unit/test_cluster_h_archival_lock_pr_ready_toc_wiring.py\n M tests/unit/test_cluster_h_archive_accession_custody_retrieval_wiring.py\n M tests/unit/test_cluster_h_audit_attestation_rollup_wiring.py\n M tests/unit/test_cluster_h_bundle_approval_closure.py\n M tests/unit/test_cluster_h_closure_manifest_branch_handoff_reviewer_decision_wiring.py\n M tests/unit/test_cluster_h_communications_monitoring_support_wiring.py\n M tests/unit/test_cluster_h_execution_guardrail_closeout_checksum_wiring.py\n M tests/unit/test_cluster_h_execution_pr_verification_wiring.py\n M tests/unit/test_cluster_h_feedback_issues_acceptance_wiring.py\n M tests/unit/test_cluster_h_final_project_closure_wiring.py\n M tests/unit/test_cluster_h_freeze_change_operator_packet_wiring.py\n M tests/unit/test_cluster_h_governance_seal_terminal_closure_wiring.py\n M tests/unit/test_cluster_h_ledger_variance_maintenance_wiring.py\n M tests/unit/test_cluster_h_merge_signoff_post_closeout_noop_wiring.py\n M tests/unit/test_cluster_h_operational_release_controls.py\n M tests/unit/test_cluster_h_operator_brief_terminal_review_sealed_access_wiring.py\n M tests/unit/test_cluster_h_outcome_retrospective_archive_wiring.py\n M tests/unit/test_cluster_h_post_merge_governance_wiring.py\n M tests/unit/test_cluster_h_post_terminal_handoff_archive_audit_wiring.py\n M tests/unit/test_cluster_h_readiness_rollup_freeze_merge_summary_wiring.py\n M tests/unit/test_cluster_h_release_hygiene_closeout.py\n M tests/unit/test_cluster_h_release_readiness.py\n M tests/unit/test_cluster_h_reviewer_closeout_audit_handoff_terminal_pr_index_wiring.py\n M tests/unit/test_cluster_h_reviewer_disposition_terminal_seal_pr_handoff_wiring.py\n M tests/unit/test_cluster_h_reviewer_pack_merge_control_retention_wiring.py\n M tests/unit/test_cluster_h_sealed_package_audit_review_terminal_handoff_wiring.py\n M tests/unit/test_cluster_h_state_consistency_merge_wiring.py\n M tests/unit/test_learner_authz_ci_contract.py\n M tests/unit/test_popia_ci_closure_contract.py\n M tests/unit/test_popia_consent_audit_ci_contract.py\n M tests/unit/test_popia_consent_closure_ci_contract.py",
           "stray_untracked": [],
           "valid": true
         },
@@ -137,23 +129,23 @@
           "valid": true
         },
         "risk_coverage_thresholds": {
-          "path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/testing/risk_based_coverage_thresholds.md",
+          "path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/testing/risk_based_coverage_thresholds.md",
           "valid": true
         },
         "test_health_metrics": {
-          "path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/testing/test_health_metrics.json",
+          "path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/testing/test_health_metrics.json",
           "valid": true
         },
         "test_taxonomy": {
-          "doc_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/testing/test_taxonomy_and_fast_suite_manifest.md",
-          "module_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/tests/taxonomy.py",
+          "doc_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/testing/test_taxonomy_and_fast_suite_manifest.md",
+          "module_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/tests/taxonomy.py",
           "valid": true
         }
       },
       "valid": true
     }
   },
-  "recorded_at": "2026-08-26T15:49:41.183194+00:00",
+  "recorded_at": "2026-08-27T12:12:35.458134+00:00",
   "schema_version": "eduboost/true-state-remediation/bundle-state/v1",
   "skip_heavy": false,
   "valid": true
