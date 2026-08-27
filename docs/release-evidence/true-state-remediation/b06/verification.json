@@ -1,0 +1,50 @@
+{
+  "checks": {
+    "boundaries": {
+      "failures": [],
+      "inspected": [
+        "docs/roadmap/production_readiness/production_readiness_register.json",
+        "docs/roadmap/production_readiness/prd11_production_release_register.json",
+        "docs/roadmap/production_readiness/true_state_remediation_register.json"
+      ],
+      "valid": true
+    },
+    "engineering_proofs": {
+      "ai_budget": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/app/services/ai_budget_guard.py",
+      "api_deprecation": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/app/middleware/api_deprecation.py",
+      "billing_guard": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/app/services/billing_guard.py",
+      "test_ai_budget": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/tests/unit/test_ai_budget_guard.py",
+      "test_api_deprecation": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/tests/unit/test_api_deprecation_middleware.py",
+      "test_billing_lock": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/tests/integration/test_billing_lock_enforcement.py",
+      "test_circuit_breaker": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/tests/unit/test_resilience_circuit_breaker.py",
+      "test_dr_drill": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/tests/integration/test_disaster_recovery_drill.py",
+      "valid": true
+    },
+    "hygiene": {
+      "status_porcelain": "M docs/roadmap/production_readiness/true_state_remediation_register.json\n?? app/middleware/api_deprecation.py\n?? app/services/ai_budget_guard.py\n?? app/services/billing_guard.py\n?? docs/operations/billing_lock_commercial_attestation.md\n?? docs/operations/dr_and_resilience_attestation.md\n?? docs/release-evidence/true-state-remediation/b06/\n?? scripts/true_state_remediation/bundles/bundle_06.py\n?? tests/integration/test_billing_lock_enforcement.py\n?? tests/integration/test_disaster_recovery_drill.py\n?? tests/unit/test_ai_budget_guard.py\n?? tests/unit/test_api_deprecation_middleware.py\n?? tests/unit/test_resilience_circuit_breaker.py",
+      "stray_untracked": [],
+      "valid": true
+    },
+    "manual": {
+      "invalid": [],
+      "missing": [],
+      "valid": true
+    },
+    "register": {
+      "errors": [],
+      "release_boundaries": {
+        "failures": [],
+        "inspected": [
+          "docs/roadmap/production_readiness/production_readiness_register.json",
+          "docs/roadmap/production_readiness/prd11_production_release_register.json",
+          "docs/roadmap/production_readiness/true_state_remediation_register.json"
+        ],
+        "valid": true
+      },
+      "task_count": 174,
+      "valid": true
+    }
+  },
+  "valid": true,
+  "verified_at": "2026-08-27T09:30:08.053840+00:00"
+}

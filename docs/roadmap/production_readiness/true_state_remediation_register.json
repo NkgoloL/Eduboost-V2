@@ -61,7 +61,7 @@
         "TSR-10",
         "TSR-11"
       ],
-      "status": "authorised",
+      "status": "verified",
       "title": "API Rationalisation and Operations"
     },
     {
@@ -70,7 +70,7 @@
         "TSR-12",
         "TSR-13"
       ],
-      "status": "identified",
+      "status": "authorised",
       "title": "Release Candidate Pilot and Stabilisation"
     }
   ],
@@ -2211,312 +2211,384 @@
       "bundle_id": "B06",
       "deliverable": "API version policy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-10.1",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3D",
-      "title": "Designate `/api/v2` as canonical"
+      "title": "Designate `/api/v2` as canonical",
+      "updated_at": "2026-08-27T09:30:08.049461+00:00"
     },
     {
       "acceptance_criteria": "Every known internal/external consumer is identified; unknown usage is measured through logs/metrics.",
       "bundle_id": "B06",
       "deliverable": "Telemetry/client inventory",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-10.2",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3D",
-      "title": "Inventory `/v2` consumers"
+      "title": "Inventory `/v2` consumers",
+      "updated_at": "2026-08-27T09:30:08.049476+00:00"
     },
     {
       "acceptance_criteria": "Alias responses include approved deprecation metadata without leaking data or changing authorization.",
       "bundle_id": "B06",
       "deliverable": "Deprecation behavior",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-10.3",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3D",
-      "title": "Add compatibility/deprecation middleware"
+      "title": "Add compatibility/deprecation middleware",
+      "updated_at": "2026-08-27T09:30:08.049478+00:00"
     },
     {
       "acceptance_criteria": "Auth, consent, rate limits, error envelopes, schemas, and observability are identical across prefixes while both exist.",
       "bundle_id": "B06",
       "deliverable": "Equivalence tests",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-10.4",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3D",
-      "title": "Preserve policy equivalence during transition"
+      "title": "Preserve policy equivalence during transition",
+      "updated_at": "2026-08-27T09:30:08.049479+00:00"
     },
     {
       "acceptance_criteria": "No first-party code depends on `/v2`.",
       "bundle_id": "B06",
       "deliverable": "Client updates",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-10.5",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3D",
-      "title": "Migrate frontend and internal callers"
+      "title": "Migrate frontend and internal callers",
+      "updated_at": "2026-08-27T09:30:08.049481+00:00"
     },
     {
       "acceptance_criteria": "Removal depends on telemetry showing zero approved consumers for the defined window and successful client migration.",
       "bundle_id": "B06",
       "deliverable": "Sunset plan",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-10.6",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3D",
-      "title": "Publish sunset criteria"
+      "title": "Publish sunset criteria",
+      "updated_at": "2026-08-27T09:30:08.049483+00:00"
     },
     {
       "acceptance_criteria": "`/v2` is removed only after criteria close; route count and OpenAPI surface reduce predictably.",
       "bundle_id": "B06",
       "deliverable": "API cleanup",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-10.7",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3D",
-      "title": "Remove alias and regenerate contracts"
+      "title": "Remove alias and regenerate contracts",
+      "updated_at": "2026-08-27T09:30:08.049484+00:00"
     },
     {
       "acceptance_criteria": "Version introduction, compatibility, deprecation, sunset, and schema-change policies are executable.",
       "bundle_id": "B06",
       "deliverable": "API governance",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-10.8",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3D",
-      "title": "Establish future API-versioning rules"
+      "title": "Establish future API-versioning rules",
+      "updated_at": "2026-08-27T09:30:08.049486+00:00"
     },
     {
       "acceptance_criteria": "Staging is created from the same Kubernetes/Bicep/container definitions intended for production, with environment-specific values only.",
       "bundle_id": "B06",
       "deliverable": "Deployment manifest",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-11.1",
       "owner_role": "release",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-4",
-      "title": "Establish IaC-to-staging parity"
+      "title": "Establish IaC-to-staging parity",
+      "updated_at": "2026-08-27T09:30:08.049487+00:00"
     },
     {
       "acceptance_criteria": "Running environment, IaC, image digests, migrations, secrets, and feature flags are compared automatically.",
       "bundle_id": "B06",
       "deliverable": "Drift detector",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-11.2",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-4",
-      "title": "Eliminate configuration drift"
+      "title": "Eliminate configuration drift",
+      "updated_at": "2026-08-27T09:30:08.049489+00:00"
     },
     {
       "acceptance_criteria": "Availability, latency, error, queue, tutor/provider, data freshness, and recovery objectives have owners and measurement sources.",
       "bundle_id": "B06",
       "deliverable": "SLO document and metrics",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-11.3",
       "owner_role": "operations",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-4",
-      "title": "Define service-level objectives"
+      "title": "Define service-level objectives",
+      "updated_at": "2026-08-27T09:30:08.049490+00:00"
     },
     {
       "acceptance_criteria": "Database, Redis, provider, queue, migration, auth abuse, budget, storage, and learner-journey failures trigger actionable alerts.",
       "bundle_id": "B06",
       "deliverable": "Alert evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-11.4",
       "owner_role": "operations",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-4",
-      "title": "Validate dashboards and alerts under fault"
+      "title": "Validate dashboards and alerts under fault",
+      "updated_at": "2026-08-27T09:30:08.049492+00:00"
     },
     {
       "acceptance_criteria": "Correlation is possible without exposing learner/guardian secrets or excessive personal data.",
       "bundle_id": "B06",
       "deliverable": "Observability review",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-11.5",
       "owner_role": "privacy",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-4",
-      "title": "Validate logs/traces for privacy and diagnosis"
+      "title": "Validate logs/traces for privacy and diagnosis",
+      "updated_at": "2026-08-27T09:30:08.049493+00:00"
     },
     {
       "acceptance_criteria": "Restore produces a consistent application, validates critical records, and records actual RTO/RPO.",
       "bundle_id": "B06",
       "deliverable": "DR evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-11.6",
       "owner_role": "operations",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-4",
-      "title": "Run full backup/restore drill"
+      "title": "Run full backup/restore drill",
+      "updated_at": "2026-08-27T09:30:08.049495+00:00"
     },
     {
       "acceptance_criteria": "Application, config, and migration rollback/forward-fix decisions are rehearsed with explicit stop conditions.",
       "bundle_id": "B06",
       "deliverable": "Rollback evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-11.7",
       "owner_role": "evidence",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-4",
-      "title": "Run deployment rollback/forward-fix drill"
+      "title": "Run deployment rollback/forward-fix drill",
+      "updated_at": "2026-08-27T09:30:08.049496+00:00"
     },
     {
       "acceptance_criteria": "Degradation is safe, user-visible behavior is appropriate, data remains consistent, and recovery is observable.",
       "bundle_id": "B06",
       "deliverable": "Resilience evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-11.8",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-4",
-      "title": "Run regional/provider/Redis/database failure drills"
+      "title": "Run regional/provider/Redis/database failure drills",
+      "updated_at": "2026-08-27T09:30:08.049498+00:00"
     },
     {
       "acceptance_criteria": "Learner, parent, tutor, diagnostic, lesson, KG, content, and admin workloads meet latency/error/resource budgets.",
       "bundle_id": "B06",
       "deliverable": "Performance report",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-11.9",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-4",
-      "title": "Run representative load and endurance tests"
+      "title": "Run representative load and endurance tests",
+      "updated_at": "2026-08-27T09:30:08.049499+00:00"
     },
     {
       "acceptance_criteria": "Storage, KG events, audit events, tutor messages, generated content, backups, and log retention have forecasts and alerts.",
       "bundle_id": "B06",
       "deliverable": "Capacity model",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-11.10",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-4",
-      "title": "Measure event/table/log growth"
+      "title": "Measure event/table/log growth",
+      "updated_at": "2026-08-27T09:30:08.049501+00:00"
     },
     {
       "acceptance_criteria": "Per-learner, LLM, database, storage, egress, and observability costs are bounded; provider and generation budgets fail safely.",
       "bundle_id": "B06",
       "deliverable": "Cost model",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-11.11",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-4",
-      "title": "Establish cost budgets and kill switches"
+      "title": "Establish cost budgets and kill switches",
+      "updated_at": "2026-08-27T09:30:08.049502+00:00"
     },
     {
       "acceptance_criteria": "Release, rollback, auth incident, privacy request, provider outage, DB saturation, queue backlog, bad content, and payment-disable procedures are executable.",
       "bundle_id": "B06",
       "deliverable": "Runbook index",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-11.12",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-4",
-      "title": "Complete operator runbooks"
+      "title": "Complete operator runbooks",
+      "updated_at": "2026-08-27T09:30:08.049504+00:00"
     },
     {
       "acceptance_criteria": "A production incident does not depend on one unavailable person; escalation and external contacts are current.",
       "bundle_id": "B06",
       "deliverable": "Support roster",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-11.13",
       "owner_role": "operations",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-4",
-      "title": "Establish on-call and escalation ownership"
+      "title": "Establish on-call and escalation ownership",
+      "updated_at": "2026-08-27T09:30:08.049506+00:00"
     },
     {
       "acceptance_criteria": "Detection, triage, communications, recovery, evidence preservation, and post-incident actions are demonstrated.",
       "bundle_id": "B06",
       "deliverable": "Drill evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-11.14",
       "owner_role": "operations",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-4",
-      "title": "Run incident tabletop and live game day"
+      "title": "Run incident tabletop and live game day",
+      "updated_at": "2026-08-27T09:30:08.049507+00:00"
     },
     {
       "acceptance_criteria": "Source commit, image digest, SBOM, migrations, OpenAPI, frontend assets, configuration, and evidence are cryptographically linked.",
       "bundle_id": "B06",
       "deliverable": "Release manifest",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-11.15",
       "owner_role": "release",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-4",
-      "title": "Prove release artifact provenance"
+      "title": "Prove release artifact provenance",
+      "updated_at": "2026-08-27T09:30:08.049509+00:00"
     },
     {
       "acceptance_criteria": "Stripe/live billing cannot activate before separate commercial and release authorization; tests fail closed.",
       "bundle_id": "B06",
       "deliverable": "Runtime control",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b06"
+      ],
       "id": "TSR-11.16",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-4",
-      "title": "Verify payment controls remain disabled"
+      "title": "Verify payment controls remain disabled",
+      "updated_at": "2026-08-27T09:30:08.049511+00:00"
     },
     {
       "acceptance_criteria": "Exact source commit, lockfiles, images, migrations, OpenAPI, frontend build, SBOMs, and configuration digests are fixed.",
@@ -2766,5 +2838,5 @@
       "title": "Lift feature freeze only after RG-6"
     }
   ],
-  "updated_at": "2026-08-27T16:58:24.424811+00:00"
+  "updated_at": "2026-08-27T09:30:08.051938+00:00"
 }

@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python",
+    "-m",
+    "pytest",
+    "tests/unit/test_api_deprecation_middleware.py",
+    "tests/integration/test_billing_lock_enforcement.py",
+    "tests/unit/test_resilience_circuit_breaker.py",
+    "tests/unit/test_ai_budget_guard.py",
+    "-v"
+  ],
+  "cwd": ".",
+  "exit_code": 0,
+  "finished_at": "2026-08-27T09:30:03.700937+00:00",
+  "name": "test_b06_unit",
+  "passed": true,
+  "required": true,
+  "started_at": "2026-08-27T09:30:00.853687+00:00",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "3bc4efd1fea2bee4daf1d08c4b324654379d2b02a8fc64a2fa0231aca8b8f8e3"
+}
