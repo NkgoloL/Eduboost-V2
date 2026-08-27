@@ -32,7 +32,7 @@ class PracticeService:
         gap_topics: list[str],
         theta: float = 0.0,
     ) -> tuple[str, int]:
-        items = []
+        items: list[Any] = []
         for caps_ref in gap_topics:
             items.extend(await self.item_repo.list_by_caps_ref(caps_ref, limit=100))
         selected = self.generator.select_items(items, gap_topics=gap_topics, theta=theta, per_gap=5)
@@ -40,7 +40,7 @@ class PracticeService:
         session = await self.session_repo.create(
             learner_id=learner_id,
             owner_subject=owner_subject,
-            items=[str(i.item_id) for i in selected],
+            items=[str(getattr(i, "item_id", i)) for i in selected],
             gap_topics=gap_topics,
             theta=theta,
         )
