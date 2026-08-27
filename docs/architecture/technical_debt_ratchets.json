@@ -1,0 +1,36 @@
+{
+  "schema_version": "eduboost/architecture/debt-ratchets/v1",
+  "program_phase": "TSR_B07_BASELINE",
+  "ratchets": {
+    "module_size_ceiling_lines": {
+      "target": 500,
+      "enforced_by": "scripts/maintenance/check_module_limits.py",
+      "strictness": "monotonic_non_increasing"
+    },
+    "router_repo_direct_imports": {
+      "current": 0,
+      "maximum_allowed": 0,
+      "enforced_by": "scripts/true_state_remediation/check_router_repo_isolation.py",
+      "strictness": "zero_tolerance"
+    },
+    "legacy_quarantine_violations": {
+      "current": 0,
+      "maximum_allowed": 0,
+      "enforced_by": "importlinter",
+      "strictness": "zero_tolerance"
+    },
+    "test_coverage_floor_percent": {
+      "current": 80.0,
+      "target": 90.0,
+      "enforced_by": "pytest --cov-fail-under",
+      "strictness": "monotonic_non_decreasing"
+    },
+    "unpinned_dependencies": {
+      "current": 0,
+      "maximum_allowed": 0,
+      "enforced_by": "scripts/audit_remediation/verify_dependency_scan_enforcement.py",
+      "strictness": "zero_tolerance"
+    }
+  },
+  "updated_at": "2026-08-27T17:20:00Z"
+}

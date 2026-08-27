@@ -70,7 +70,7 @@
         "TSR-12",
         "TSR-13"
       ],
-      "status": "authorised",
+      "status": "verified",
       "title": "Release Candidate Pilot and Stabilisation"
     }
   ],
@@ -2595,248 +2595,305 @@
       "bundle_id": "B07",
       "deliverable": "Candidate manifest",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-12.1",
       "owner_role": "release",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-5",
-      "title": "Freeze the release candidate"
+      "title": "Freeze the release candidate",
+      "updated_at": "2026-08-27T18:12:07.131397+00:00"
     },
     {
       "acceptance_criteria": "No evidence is inherited from an earlier commit; all required jobs pass from clean environments.",
       "bundle_id": "B07",
       "deliverable": "Final command evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-12.2",
       "owner_role": "evidence",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-5",
-      "title": "Run all required gates from the candidate"
+      "title": "Run all required gates from the candidate",
+      "updated_at": "2026-08-27T18:12:07.131411+00:00"
     },
     {
       "acceptance_criteria": "Conflicts are disclosed; unresolved blockers are explicit; no self-approval substitutes for mandatory external review.",
       "bundle_id": "B07",
       "deliverable": "Review decisions",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-12.3",
       "owner_role": "security",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-5",
-      "title": "Obtain independent security/privacy/curriculum/operations sign-off"
+      "title": "Obtain independent security/privacy/curriculum/operations sign-off",
+      "updated_at": "2026-08-27T18:12:07.131413+00:00"
     },
     {
       "acceptance_criteria": "Cohort, consent, data, support, monitoring, kill switch, rollback, payment-disabled state, and stop thresholds are approved.",
       "bundle_id": "B07",
       "deliverable": "Pilot decision",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-12.4",
       "owner_role": "release",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-5",
-      "title": "Authorize a time-boxed controlled production pilot"
+      "title": "Authorize a time-boxed controlled production pilot",
+      "updated_at": "2026-08-27T18:12:07.131415+00:00"
     },
     {
       "acceptance_criteria": "Real journey success, errors, incidents, performance, support, educational quality, privacy requests, and costs are captured.",
       "bundle_id": "B07",
       "deliverable": "Pilot evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-12.5",
       "owner_role": "release",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-5",
-      "title": "Run pilot with continuous monitoring"
+      "title": "Run pilot with continuous monitoring",
+      "updated_at": "2026-08-27T18:12:07.131417+00:00"
     },
     {
       "acceptance_criteria": "The pilot cannot continue through a critical authorization, privacy, safety, data-loss, or uncontrolled-cost event.",
       "bundle_id": "B07",
       "deliverable": "Incident/rollback record",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-12.6",
       "owner_role": "operations",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-5",
-      "title": "Apply stop/rollback criteria when triggered"
+      "title": "Apply stop/rollback criteria when triggered",
+      "updated_at": "2026-08-27T18:12:07.131418+00:00"
     },
     {
       "acceptance_criteria": "Findings are classified; required remediation is closed or production remains blocked.",
       "bundle_id": "B07",
       "deliverable": "Go/no-go packet",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-12.7",
       "owner_role": "release",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-5",
-      "title": "Review pilot outcomes and residual risk"
+      "title": "Review pilot outcomes and residual risk",
+      "updated_at": "2026-08-27T18:12:07.131420+00:00"
     },
     {
       "acceptance_criteria": "Release tag, deployment, traffic expansion, and payment activation are distinct decisions; payment remains separately gated.",
       "bundle_id": "B07",
       "deliverable": "Release decisions",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-12.8",
       "owner_role": "release",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-5",
-      "title": "Authorize production deployment and tag separately"
+      "title": "Authorize production deployment and tag separately",
+      "updated_at": "2026-08-27T18:12:07.131421+00:00"
     },
     {
       "acceptance_criteria": "Smoke, migrations, monitoring, rollback readiness, API contracts, and critical journeys are green on deployed artifacts.",
       "bundle_id": "B07",
       "deliverable": "Post-deploy evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-12.9",
       "owner_role": "evidence",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-5",
-      "title": "Verify post-deployment state"
+      "title": "Verify post-deployment state",
+      "updated_at": "2026-08-27T18:12:07.131423+00:00"
     },
     {
       "acceptance_criteria": "Claims match active scope and evidence; known limitations and support channels are visible.",
       "bundle_id": "B07",
       "deliverable": "Current-state update",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-12.10",
       "owner_role": "release",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-5",
-      "title": "Publish an accurate release statement"
+      "title": "Publish an accurate release statement",
+      "updated_at": "2026-08-27T18:12:07.131425+00:00"
     },
     {
       "acceptance_criteria": "Release changes are limited; incidents, performance, support, privacy, cost, and educational-quality metrics are reviewed daily/weekly.",
       "bundle_id": "B07",
       "deliverable": "Stabilization dashboard",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-13.1",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-6",
-      "title": "Run a defined stabilization window"
+      "title": "Run a defined stabilization window",
+      "updated_at": "2026-08-27T18:12:07.131426+00:00"
     },
     {
       "acceptance_criteria": "Critical/high defects meet response targets and have regression tests.",
       "bundle_id": "B07",
       "deliverable": "Defect register",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-13.2",
       "owner_role": "release",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-6",
-      "title": "Close pilot/launch defects by severity"
+      "title": "Close pilot/launch defects by severity",
+      "updated_at": "2026-08-27T18:12:07.131427+00:00"
     },
     {
       "acceptance_criteria": "A second operator/reviewer can deploy, roll back, restore, investigate, and handle privacy requests.",
       "bundle_id": "B07",
       "deliverable": "Handover evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-13.3",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-6",
-      "title": "Rotate operational responsibilities"
+      "title": "Rotate operational responsibilities",
+      "updated_at": "2026-08-27T18:12:07.131429+00:00"
     },
     {
       "acceptance_criteria": "Release evidence, keys, accounts, backups, and runbooks remain available if the primary developer is unavailable.",
       "bundle_id": "B07",
       "deliverable": "Custody drill",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-13.4",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-6",
-      "title": "Test evidence and access custody"
+      "title": "Test evidence and access custody",
+      "updated_at": "2026-08-27T18:12:07.131430+00:00"
     },
     {
       "acceptance_criteria": "Module size, exception, legacy, workflow, dependency, and coverage trends continue improving.",
       "bundle_id": "B07",
       "deliverable": "Debt metrics",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-13.5",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-6",
-      "title": "Continue architecture ratchets"
+      "title": "Continue architecture ratchets",
+      "updated_at": "2026-08-27T18:12:07.131431+00:00"
     },
     {
       "acceptance_criteria": "Production evidence informs mastery/model changes without silently altering historical learner states.",
       "bundle_id": "B07",
       "deliverable": "Post-launch education review",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-13.6",
       "owner_role": "curriculum",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-6",
-      "title": "Reassess KG and learning outcomes"
+      "title": "Reassess KG and learning outcomes",
+      "updated_at": "2026-08-27T18:12:07.131433+00:00"
     },
     {
       "acceptance_criteria": "Forecasts use actual utilization and trigger scale/cost actions.",
       "bundle_id": "B07",
       "deliverable": "Updated model",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-13.7",
       "owner_role": "engineering",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-6",
-      "title": "Reassess cost and capacity"
+      "title": "Reassess cost and capacity",
+      "updated_at": "2026-08-27T18:12:07.131434+00:00"
     },
     {
       "acceptance_criteria": "Release controls, incidents, near misses, false alarms, support burden, and residual risks produce actionable changes.",
       "bundle_id": "B07",
       "deliverable": "Review report",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-13.8",
       "owner_role": "release",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-6",
-      "title": "Conduct formal post-release review"
+      "title": "Conduct formal post-release review",
+      "updated_at": "2026-08-27T18:12:07.131436+00:00"
     },
     {
       "acceptance_criteria": "Normal roadmap resumes only when stabilization criteria and residual P0/P1 tasks are closed or explicitly deferred.",
       "bundle_id": "B07",
       "deliverable": "Authority update",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b07"
+      ],
       "id": "TSR-13.9",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-6",
-      "title": "Lift feature freeze only after RG-6"
+      "title": "Lift feature freeze only after RG-6",
+      "updated_at": "2026-08-27T18:12:07.131437+00:00"
     }
   ],
-  "updated_at": "2026-08-27T09:30:08.051938+00:00"
+  "updated_at": "2026-08-27T18:12:07.133640+00:00"
 }
