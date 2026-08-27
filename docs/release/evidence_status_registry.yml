@@ -128,12 +128,12 @@ findings:
     severity: P1
     gate: 5
     owner: legal
-    implementation_batch: code_1991_2030
+    implementation_batch: code_1791_1830
     proof_status: external-blocked
-    proof_command: make approval-evidence-release-check
+    proof_command: make external-approval-release-check after approval metadata is attached
     evidence_file: docs/release/external_approvals/legal_approval.md
     last_verified_commit: null
-    closure_blocker: approval metadata and evidence URL required
+    closure_blocker: external approval sign-off metadata required
     blocks_beta: true
     external_dependency: true
   - id: SEC-001
@@ -141,12 +141,12 @@ findings:
     severity: P1
     gate: 5
     owner: security
-    implementation_batch: code_1991_2030
+    implementation_batch: code_1791_1830
     proof_status: external-blocked
-    proof_command: make approval-evidence-release-check
+    proof_command: make external-approval-release-check after approval metadata is attached
     evidence_file: docs/release/external_approvals/security_approval.md
     last_verified_commit: null
-    closure_blocker: approval metadata and evidence URL required
+    closure_blocker: external approval sign-off metadata required
     blocks_beta: true
     external_dependency: true
   - id: CONTENT-001
@@ -154,12 +154,12 @@ findings:
     severity: P1
     gate: 5
     owner: content
-    implementation_batch: code_1991_2030
+    implementation_batch: code_1791_1830
     proof_status: external-blocked
-    proof_command: make approval-evidence-release-check
+    proof_command: make external-approval-release-check after approval metadata is attached
     evidence_file: docs/release/external_approvals/content_approval.md
     last_verified_commit: null
-    closure_blocker: approval metadata and evidence URL required
+    closure_blocker: external approval sign-off metadata required
     blocks_beta: true
     external_dependency: true
   - id: LESSON-AUTH-001
@@ -331,7 +331,7 @@ findings:
     proof_status: runtime-passing
     proof_command: make backend-implementation-1791-1830-full-check
     evidence_file: docs/release/external_approval_status.md
-    last_verified_commit: 66323711cba9ebc39919f32491c707aeb92e5e58
+    last_verified_commit: 96a44fcb30032631891f43b86faab0e8f45288a3
     closure_blocker: required external approval items remain external-blocked until signed off
     blocks_beta: true
     external_dependency: true
@@ -539,7 +539,7 @@ findings:
     proof_status: runtime-passing
     proof_command: make backend-implementation-2431-2470-full-check
     evidence_file: docs/release/production_frontend_deployment_status.md
-    last_verified_commit: 88840fc52a05c694c6d313e57bc8cba4bcda4c63
+    last_verified_commit: 96a44fcb30032631891f43b86faab0e8f45288a3
     closure_blocker: config only; real staging deployment/browser smoke still required
     blocks_beta: false
     external_dependency: false
@@ -552,7 +552,7 @@ findings:
     proof_status: runtime-passing
     proof_command: make backend-implementation-2471-2510-full-check
     evidence_file: docs/release/production_frontend_runtime_status.md
-    last_verified_commit: 88840fc52a05c694c6d313e57bc8cba4bcda4c63
+    last_verified_commit: 96a44fcb30032631891f43b86faab0e8f45288a3
     closure_blocker: local preflight only unless runtime evidence is accepted
     blocks_beta: false
     external_dependency: false
@@ -640,11 +640,11 @@ findings:
     gate: 3
     owner: platform
     implementation_batch: code_2751_2790
-    proof_status: runtime-passing
+    proof_status: not-proven
     proof_command: make backend-implementation-2751-2790-full-check
     evidence_file: docs/release/ci_auth_refresh_db_proof_workflow_status.md
-    last_verified_commit: 66323711cba9ebc39919f32491c707aeb92e5e58
-    closure_blocker: none; real workflow run URL still required for release evidence
+    last_verified_commit: null
+    closure_blocker: workflow exists; workflow_dispatch enabled; postgres service configured; proof DSN configured; integration proof test executed; evidence attach executed; evidence release check executed; concrete run URL uses github.run_id; commit SHA uses github.sha; artifact upload configured; real workflow run URL still required for release evidence
     blocks_beta: false
     external_dependency: false
   - id: POPIA-001R

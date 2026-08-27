@@ -1,56 +1,56 @@
 {
-  "generated_at": "2026-08-01T21:01:55Z",
-  "current_commit": "66323711cba9ebc39919f32491c707aeb92e5e58",
-  "status": "ci-auth-refresh-db-proof-workflow-configured",
+  "generated_at": "2026-08-27T16:20:39Z",
+  "current_commit": "96a44fcb30032631891f43b86faab0e8f45288a3",
+  "status": "ci-auth-refresh-db-proof-workflow-not-proven",
   "checks": [
     {
       "name": "workflow exists",
-      "passed": true,
+      "passed": false,
       "detail": ".github/workflows/auth-refresh-db-proof.yml"
     },
     {
       "name": "workflow_dispatch enabled",
-      "passed": true,
+      "passed": false,
       "detail": "manual run supported"
     },
     {
       "name": "postgres service configured",
-      "passed": true,
+      "passed": false,
       "detail": "disposable Postgres service"
     },
     {
       "name": "proof DSN configured",
-      "passed": true,
+      "passed": false,
       "detail": "local service DSN"
     },
     {
       "name": "integration proof test executed",
-      "passed": true,
+      "passed": false,
       "detail": "DB proof test path"
     },
     {
       "name": "evidence attach executed",
-      "passed": true,
+      "passed": false,
       "detail": "evidence attach target"
     },
     {
       "name": "evidence release check executed",
-      "passed": true,
+      "passed": false,
       "detail": "release evidence target"
     },
     {
       "name": "concrete run URL uses github.run_id",
-      "passed": true,
+      "passed": false,
       "detail": "numeric run id at runtime"
     },
     {
       "name": "commit SHA uses github.sha",
-      "passed": true,
+      "passed": false,
       "detail": "concrete commit SHA"
     },
     {
       "name": "artifact upload configured",
-      "passed": true,
+      "passed": false,
       "detail": "proof artifacts uploaded"
     },
     {
@@ -64,5 +64,16 @@
       "detail": "no REAL_* evidence placeholder"
     }
   ],
-  "blockers": []
+  "blockers": [
+    "workflow exists",
+    "workflow_dispatch enabled",
+    "postgres service configured",
+    "proof DSN configured",
+    "integration proof test executed",
+    "evidence attach executed",
+    "evidence release check executed",
+    "concrete run URL uses github.run_id",
+    "commit SHA uses github.sha",
+    "artifact upload configured"
+  ]
 }

@@ -1,13 +1,13 @@
 # Backend Runtime Wiring Preflight Report
 
-Generated at: `2026-08-01T21:01:55Z`
+Generated at: `2026-08-27T16:20:30Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| runtime wiring preflight | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_runtime_wiring_preflight.py` |
-| implementation 371-375 | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_implementation_371_375.py` |
-| implementation progress | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_consolidation_progress_report.py` |
-| schema drift disposable proof dry-run | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/run_disposable_schema_drift_proof.py --database-url postgresql+asyncpg://real_user:real_password@localhost:5432/eduboost_test --dry-run` |
+| runtime wiring preflight | 0 | `/usr/bin/python3 scripts/check_backend_runtime_wiring_preflight.py` |
+| implementation 371-375 | 0 | `/usr/bin/python3 scripts/check_backend_implementation_371_375.py` |
+| implementation progress | 0 | `/usr/bin/python3 scripts/generate_backend_consolidation_progress_report.py` |
+| schema drift disposable proof dry-run | 0 | `/usr/bin/python3 scripts/run_disposable_schema_drift_proof.py --database-url postgresql+asyncpg://real_user:real_password@localhost:5432/eduboost_test --dry-run` |
 
 ## Boundary
 
@@ -15,13 +15,11 @@ This report does not approve runtime wiring or destructive changes.
 
 ## runtime wiring preflight
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_runtime_wiring_preflight.py`
+Command: `/usr/bin/python3 scripts/check_backend_runtime_wiring_preflight.py`
 
 Return code: `0`
 
 ```text
-/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/modules/consent/service.py:27: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
-  from app.core.exceptions import ConsentExpiredError, ConsentRequiredError
 Backend runtime wiring preflight check
 - PASS [audit] audit adapter-ready candidate produces canonical payload: {'candidate': 'consent_audit_events', 'payload_keys': ['action', 'actor_id', 'payload', 'resource_id', 'resource_type']}
 - PASS [consent] consent runtime normalization and constructor probes are stable: {'importable_surfaces': 3, 'missing_surfaces': 0, 'required_parameter_total': 3}
@@ -39,13 +37,11 @@ Backend runtime wiring preflight check
 
 ## implementation 371-375
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_implementation_371_375.py`
+Command: `/usr/bin/python3 scripts/check_backend_implementation_371_375.py`
 
 Return code: `0`
 
 ```text
-/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/modules/consent/service.py:27: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
-  from app.core.exceptions import ConsentExpiredError, ConsentRequiredError
 Backend implementation 371-375 check
 - PASS audit migration allowed candidates: ('consent_audit_events', 'popia_data_rights_audit')
 - PASS audit migration event maps learner to resource
@@ -62,30 +58,30 @@ Backend implementation 371-375 check
 
 ## implementation progress
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_consolidation_progress_report.py`
+Command: `/usr/bin/python3 scripts/generate_backend_consolidation_progress_report.py`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/backend_consolidation_progress_report.md
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2/docs/release/backend_consolidation_progress_report.md
 ```
 
 ## schema drift disposable proof dry-run
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/run_disposable_schema_drift_proof.py --database-url postgresql+asyncpg://real_user:real_password@localhost:5432/eduboost_test --dry-run`
+Command: `/usr/bin/python3 scripts/run_disposable_schema_drift_proof.py --database-url postgresql+asyncpg://real_user:real_password@localhost:5432/eduboost_test --dry-run`
 
 Return code: `0`
 
 ```text
 {
-  "captured_at": "2026-08-01T21:01:55Z",
+  "captured_at": "2026-08-27T16:20:30Z",
   "database_url_redacted": "postgresql+asyncpg://real_user:***@localhost:5432/eduboost_test",
   "dry_run": true,
   "passed": true,
   "results": [
     {
       "command": [
-        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "/usr/bin/python3",
         "scripts/capture_migration_evidence.py"
       ],
       "name": "migration_evidence_capture",
@@ -95,7 +91,7 @@ Return code: `0`
     },
     {
       "command": [
-        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "/usr/bin/python3",
         "scripts/capture_migration_evidence.py",
         "--validate",
         "--require-pass"
@@ -107,7 +103,7 @@ Return code: `0`
     },
     {
       "command": [
-        "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+        "/usr/bin/python3",
         "scripts/compare_orm_tables_to_database.py",
         "--require-db",
         "--fail-on-drift"

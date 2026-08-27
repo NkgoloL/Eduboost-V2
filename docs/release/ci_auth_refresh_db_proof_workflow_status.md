@@ -1,28 +1,37 @@
 # CI Auth Refresh DB Proof Workflow Status
 
-Generated at: `2026-08-01T21:01:55Z`
-Commit: `66323711cba9ebc39919f32491c707aeb92e5e58`
+Generated at: `2026-08-27T16:20:39Z`
+Commit: `96a44fcb30032631891f43b86faab0e8f45288a3`
 
-**Status:** `ci-auth-refresh-db-proof-workflow-configured`
+**Status:** `ci-auth-refresh-db-proof-workflow-not-proven`
 
 | Check | Passed | Detail |
 |---|---:|---|
-| `workflow exists` | True | .github/workflows/auth-refresh-db-proof.yml |
-| `workflow_dispatch enabled` | True | manual run supported |
-| `postgres service configured` | True | disposable Postgres service |
-| `proof DSN configured` | True | local service DSN |
-| `integration proof test executed` | True | DB proof test path |
-| `evidence attach executed` | True | evidence attach target |
-| `evidence release check executed` | True | release evidence target |
-| `concrete run URL uses github.run_id` | True | numeric run id at runtime |
-| `commit SHA uses github.sha` | True | concrete commit SHA |
-| `artifact upload configured` | True | proof artifacts uploaded |
+| `workflow exists` | False | .github/workflows/auth-refresh-db-proof.yml |
+| `workflow_dispatch enabled` | False | manual run supported |
+| `postgres service configured` | False | disposable Postgres service |
+| `proof DSN configured` | False | local service DSN |
+| `integration proof test executed` | False | DB proof test path |
+| `evidence attach executed` | False | evidence attach target |
+| `evidence release check executed` | False | release evidence target |
+| `concrete run URL uses github.run_id` | False | numeric run id at runtime |
+| `commit SHA uses github.sha` | False | concrete commit SHA |
+| `artifact upload configured` | False | proof artifacts uploaded |
 | `no placeholder REAL_RUN_ID` | True | placeholder rejected |
 | `no symbolic REAL_DSN` | True | no REAL_* evidence placeholder |
 
 ## Blockers
 
-- None
+- workflow exists
+- workflow_dispatch enabled
+- postgres service configured
+- proof DSN configured
+- integration proof test executed
+- evidence attach executed
+- evidence release check executed
+- concrete run URL uses github.run_id
+- commit SHA uses github.sha
+- artifact upload configured
 
 ## No false-closure rules
 

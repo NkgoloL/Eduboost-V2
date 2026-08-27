@@ -5,9 +5,9 @@
 This PR closes the EduBoost V2 staging/beta release evidence layer.
 
 - release_candidate: `unset`
-- branch: `fix/tsr-b01-gate-remediation`
-- commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
-- generated_at_utc: `2026-08-03T14:11:15.560486+00:00`
+- branch: `codex/tsr-b03-caps-mathematics-truth`
+- commit: `96a44fcb30032631891f43b86faab0e8f45288a3`
+- generated_at_utc: `2026-08-27T16:20:30.618329+00:00`
 
 ## Verification
 

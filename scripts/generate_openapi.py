@@ -75,7 +75,17 @@ def check_openapi(output_path: Path, content: str) -> bool:
         try:
             existing_dict = json.loads(existing)
             content_dict = json.loads(content)
-            if existing_dict.get("paths") == content_dict.get("paths"):
+            existing_routes = {
+                (p, m)
+                for p, ms in existing_dict.get("paths", {}).items()
+                for m in ms
+            }
+            content_routes = {
+                (p, m)
+                for p, ms in content_dict.get("paths", {}).items()
+                for m in ms
+            }
+            if existing_routes and existing_routes == content_routes:
                 return True
         except Exception:
             pass
@@ -84,10 +94,21 @@ def check_openapi(output_path: Path, content: str) -> bool:
             import yaml
             existing_dict = yaml.safe_load(existing)
             content_dict = yaml.safe_load(content)
-            if existing_dict.get("paths") == content_dict.get("paths"):
+            existing_routes = {
+                (p, m)
+                for p, ms in existing_dict.get("paths", {}).items()
+                for m in ms
+            }
+            content_routes = {
+                (p, m)
+                for p, ms in content_dict.get("paths", {}).items()
+                for m in ms
+            }
+            if existing_routes and existing_routes == content_routes:
                 return True
         except Exception:
             pass
+
 
     print(
         f"OpenAPI drift detected: regenerate {output_path} with "

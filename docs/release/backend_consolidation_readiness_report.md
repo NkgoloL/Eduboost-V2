@@ -1,6 +1,6 @@
 # Backend Consolidation Readiness Report
 
-Generated at: `2026-08-27T16:16:06Z`
+Generated at: `2026-08-27T16:19:10Z`
 
 | Check | Return code | Command |
 |---|---:|---|
@@ -40,7 +40,7 @@ Command: `/usr/bin/python3 scripts/generate_backend_deletion_candidate_inventory
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2/docs/release/backend_deletion_candidate_inventory.md (353251 candidate row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2/docs/release/backend_deletion_candidate_inventory.md (358201 candidate row(s))
 ```
 
 ## no-op guard
