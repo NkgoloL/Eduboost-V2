@@ -1244,7 +1244,7 @@
       "status": "verified",
       "target_gate": "RG-3A",
       "title": "Create an architectural-debt register",
-      "updated_at": "2026-08-26T17:57:39.350937+00:00"
+      "updated_at": "2026-08-27T16:58:24.422422+00:00"
     },
     {
       "acceptance_criteria": "Generation, review, staging, promotion, and production-read paths delegate to typed services; route modules no longer import repositories directly.",
@@ -1260,7 +1260,7 @@
       "status": "verified",
       "target_gate": "RG-3A",
       "title": "Split `content_factory.py` by capability",
-      "updated_at": "2026-08-26T17:57:39.350950+00:00"
+      "updated_at": "2026-08-27T16:58:24.422451+00:00"
     },
     {
       "acceptance_criteria": "`etl_pipeline.py`, `_v2.py`, and `_v3_additions.py` are merged, wrapped, or retired under one supported interface with migration tests.",
@@ -1276,7 +1276,7 @@
       "status": "verified",
       "target_gate": "RG-3A",
       "title": "Consolidate ETL implementations",
-      "updated_at": "2026-08-26T17:57:39.350952+00:00"
+      "updated_at": "2026-08-27T16:58:24.422454+00:00"
     },
     {
       "acceptance_criteria": "Export, erasure, consent, retention, and audit flows have explicit boundaries and transaction ownership.",
@@ -1292,7 +1292,7 @@
       "status": "verified",
       "target_gate": "RG-3A",
       "title": "Decompose POPIA orchestration",
-      "updated_at": "2026-08-26T17:57:39.350954+00:00"
+      "updated_at": "2026-08-27T16:58:24.422456+00:00"
     },
     {
       "acceptance_criteria": "Graph load, mapping, review, versioning, and publication logic are independently testable.",
@@ -1308,7 +1308,7 @@
       "status": "verified",
       "target_gate": "RG-3A",
       "title": "Decompose curriculum graph and content-review orchestration",
-      "updated_at": "2026-08-26T17:57:39.350955+00:00"
+      "updated_at": "2026-08-27T16:58:24.422458+00:00"
     },
     {
       "acceptance_criteria": "Provider calls, budget reservations, persistence, review, and retries use explicit state transitions.",
@@ -1324,7 +1324,7 @@
       "status": "verified",
       "target_gate": "RG-3A",
       "title": "Decompose batch/content generation",
-      "updated_at": "2026-08-26T17:57:39.350957+00:00"
+      "updated_at": "2026-08-27T16:58:24.422460+00:00"
     },
     {
       "acceptance_criteria": "The exception list trends to zero; any remaining exception has a documented expiry.",
@@ -1340,7 +1340,7 @@
       "status": "verified",
       "target_gate": "RG-3A",
       "title": "Remove direct router-to-repository exceptions",
-      "updated_at": "2026-08-26T17:57:39.350959+00:00"
+      "updated_at": "2026-08-27T16:58:24.422462+00:00"
     },
     {
       "acceptance_criteria": "Integration boundaries classify retryable, client, provider, persistence, policy, and internal failures; unexpected exceptions propagate to observability.",
@@ -1356,7 +1356,7 @@
       "status": "verified",
       "target_gate": "RG-3A",
       "title": "Replace broad exception hotspots",
-      "updated_at": "2026-08-26T17:57:39.350960+00:00"
+      "updated_at": "2026-08-27T16:58:24.422464+00:00"
     },
     {
       "acceptance_criteria": "Health, provider, job, and persistence failures return the intended status and metric, not silent 200 responses.",
@@ -1372,7 +1372,7 @@
       "status": "verified",
       "target_gate": "RG-3A",
       "title": "Prevent degraded failures from returning success",
-      "updated_at": "2026-08-26T17:57:39.350962+00:00"
+      "updated_at": "2026-08-27T16:58:24.422465+00:00"
     },
     {
       "acceptance_criteria": "`app/core/authorization.py`, `app/security/authorization.py`, and `app/security/object_authorization.py` have one authoritative implementation.",
@@ -1388,7 +1388,7 @@
       "status": "verified",
       "target_gate": "RG-3A",
       "title": "Consolidate authorization modules",
-      "updated_at": "2026-08-26T17:57:39.350963+00:00"
+      "updated_at": "2026-08-27T16:58:24.422467+00:00"
     },
     {
       "acceptance_criteria": "Guardian/teacher relationship helpers no longer remain ambiguous placeholders; tests cover every policy path.",
@@ -1404,7 +1404,7 @@
       "status": "verified",
       "target_gate": "RG-3A",
       "title": "Resolve fail-closed placeholders",
-      "updated_at": "2026-08-26T17:57:39.350965+00:00"
+      "updated_at": "2026-08-27T16:58:24.422468+00:00"
     },
     {
       "acceptance_criteria": "Production imports from legacy code are zero or explicitly permitted by a temporary compatibility adapter.",
@@ -1420,7 +1420,7 @@
       "status": "verified",
       "target_gate": "RG-3A",
       "title": "Inventory and quarantine `app/legacy`",
-      "updated_at": "2026-08-26T17:57:39.350967+00:00"
+      "updated_at": "2026-08-27T16:58:24.422470+00:00"
     },
     {
       "acceptance_criteria": "Usage inventory proves no supported caller depends on the removed alias; deprecation is tested where external.",
@@ -1436,7 +1436,7 @@
       "status": "verified",
       "target_gate": "RG-3A",
       "title": "Remove obsolete aliases and compatibility shims",
-      "updated_at": "2026-08-26T17:57:39.350968+00:00"
+      "updated_at": "2026-08-27T16:58:24.422471+00:00"
     },
     {
       "acceptance_criteria": "New modules/functions cannot exceed approved limits; existing hotspots have ratcheting ceilings rather than blanket exemptions.",
@@ -1452,7 +1452,7 @@
       "status": "verified",
       "target_gate": "RG-3A",
       "title": "Set gradual complexity budgets",
-      "updated_at": "2026-08-26T17:57:39.350969+00:00"
+      "updated_at": "2026-08-27T16:58:24.422473+00:00"
     },
     {
       "acceptance_criteria": "Each item is implemented, removed, or narrowly justified with an expiry and test rationale.",
@@ -1468,7 +1468,7 @@
       "status": "verified",
       "target_gate": "RG-3A",
       "title": "Resolve `pass`, TODO/HACK, and `pragma: no cover` debt",
-      "updated_at": "2026-08-26T17:57:39.350971+00:00"
+      "updated_at": "2026-08-27T16:58:24.422474+00:00"
     },
     {
       "acceptance_criteria": "Each domain exposes supported services/events/contracts and prohibits cross-domain internal imports.",
@@ -1484,7 +1484,7 @@
       "status": "verified",
       "target_gate": "RG-3A",
       "title": "Establish domain ownership and public interfaces",
-      "updated_at": "2026-08-26T17:57:39.350972+00:00"
+      "updated_at": "2026-08-27T16:58:24.422476+00:00"
     },
     {
       "acceptance_criteria": "Module size, function length, exception count, type errors, import exceptions, and coverage improve without behavior regression.",
@@ -1500,7 +1500,7 @@
       "status": "verified",
       "target_gate": "RG-3A",
       "title": "Re-measure complexity after each domain slice",
-      "updated_at": "2026-08-26T17:57:39.350973+00:00"
+      "updated_at": "2026-08-27T16:58:24.422478+00:00"
     },
     {
       "acceptance_criteria": "Every table has business purpose, owner, personal-data class, lawful basis, retention, export, erasure, encryption, backup, and isolation treatment.",
@@ -1516,7 +1516,7 @@
       "status": "verified",
       "target_gate": "RG-3B",
       "title": "Build a table/field data inventory",
-      "updated_at": "2026-08-26T17:57:39.350975+00:00"
+      "updated_at": "2026-08-27T16:58:24.422479+00:00"
     },
     {
       "acceptance_criteria": "Primary DB, Redis, object storage, analytics, audit, KG events, generated content, logs, and backups are linked.",
@@ -1532,7 +1532,7 @@
       "status": "verified",
       "target_gate": "RG-3B",
       "title": "Map data lineage across derived stores",
-      "updated_at": "2026-08-26T17:57:39.350977+00:00"
+      "updated_at": "2026-08-27T16:58:24.422481+00:00"
     },
     {
       "acceptance_criteria": "Alembic upgrades a clean supported database to the single head and schema/model drift is zero.",
@@ -1548,7 +1548,7 @@
       "status": "verified",
       "target_gate": "RG-3B",
       "title": "Prove empty-database bootstrap",
-      "updated_at": "2026-08-26T17:57:39.350979+00:00"
+      "updated_at": "2026-08-27T16:58:24.422483+00:00"
     },
     {
       "acceptance_criteria": "Realistic prior schema/data upgrades without loss; duration and locks are measured.",
@@ -1564,7 +1564,7 @@
       "status": "verified",
       "target_gate": "RG-3B",
       "title": "Prove upgrade from the last supported release state",
-      "updated_at": "2026-08-26T17:57:39.350980+00:00"
+      "updated_at": "2026-08-27T16:58:24.422485+00:00"
     },
     {
       "acceptance_criteria": "Large representative datasets migrate inside the approved maintenance/zero-downtime strategy.",
@@ -1580,7 +1580,7 @@
       "status": "verified",
       "target_gate": "RG-3B",
       "title": "Prove production-like migration performance",
-      "updated_at": "2026-08-26T17:57:39.350982+00:00"
+      "updated_at": "2026-08-27T16:58:24.422487+00:00"
     },
     {
       "acceptance_criteria": "Each migration class identifies rollback feasibility, backup requirement, forward-fix path, and stop condition.",
@@ -1596,7 +1596,7 @@
       "status": "verified",
       "target_gate": "RG-3B",
       "title": "Define rollback versus forward-fix policy",
-      "updated_at": "2026-08-26T17:57:39.350983+00:00"
+      "updated_at": "2026-08-27T16:58:24.422488+00:00"
     },
     {
       "acceptance_criteria": "ORM metadata, Alembic head, live schema, and generated schema artifacts agree.",
@@ -1612,7 +1612,7 @@
       "status": "verified",
       "target_gate": "RG-3B",
       "title": "Add schema/model/generated-contract drift checks",
-      "updated_at": "2026-08-26T17:57:39.350985+00:00"
+      "updated_at": "2026-08-27T16:58:24.422490+00:00"
     },
     {
       "acceptance_criteria": "Read queries do not commit; commands explicitly own commit/rollback; audit writes and domain writes have documented atomicity.",
@@ -1628,7 +1628,7 @@
       "status": "verified",
       "target_gate": "RG-3B",
       "title": "Replace implicit request-wide transaction ownership",
-      "updated_at": "2026-08-26T17:57:39.350986+00:00"
+      "updated_at": "2026-08-27T16:58:24.422492+00:00"
     },
     {
       "acceptance_criteria": "Cross-learner, cross-guardian, and unauthorized object access fail at service/query boundaries.",
@@ -1644,7 +1644,7 @@
       "status": "verified",
       "target_gate": "RG-3B",
       "title": "Test tenant/object isolation at persistence boundaries",
-      "updated_at": "2026-08-26T17:57:39.350988+00:00"
+      "updated_at": "2026-08-27T16:58:24.422493+00:00"
     },
     {
       "acceptance_criteria": "Mutation prevention is effective under the deployed database role model and survives migrations/restores.",
@@ -1660,7 +1660,7 @@
       "status": "verified",
       "target_gate": "RG-3B",
       "title": "Validate audit immutability controls",
-      "updated_at": "2026-08-26T17:57:39.350989+00:00"
+      "updated_at": "2026-08-27T16:58:24.422494+00:00"
     },
     {
       "acceptance_criteria": "Unused tables are retired through safe migrations or assigned active owners.",
@@ -1676,7 +1676,7 @@
       "status": "verified",
       "target_gate": "RG-3B",
       "title": "Identify obsolete/redundant tables",
-      "updated_at": "2026-08-26T17:57:39.350991+00:00"
+      "updated_at": "2026-08-27T16:58:24.422496+00:00"
     },
     {
       "acceptance_criteria": "Retention, encryption, access, restore, and legally defensible erasure treatment are explicit.",
@@ -1692,7 +1692,7 @@
       "status": "verified",
       "target_gate": "RG-3B",
       "title": "Align backup handling with retention and erasure",
-      "updated_at": "2026-08-26T17:57:39.350992+00:00"
+      "updated_at": "2026-08-27T16:58:24.422497+00:00"
     },
     {
       "acceptance_criteria": "Critical learner, parent, KG, consent, lesson, and reporting queries have plans and latency budgets on representative data.",
@@ -1708,7 +1708,7 @@
       "status": "verified",
       "target_gate": "RG-3B",
       "title": "Measure query/index health",
-      "updated_at": "2026-08-26T17:57:39.350993+00:00"
+      "updated_at": "2026-08-27T16:58:24.422499+00:00"
     },
     {
       "acceptance_criteria": "Every protected route/service calls the same object-policy layer; duplicates are removed or adapters only.",
@@ -2673,5 +2673,5 @@
       "title": "Lift feature freeze only after RG-6"
     }
   ],
-  "updated_at": "2026-08-26T17:57:39.353217+00:00"
+  "updated_at": "2026-08-27T16:58:24.424811+00:00"
 }
