@@ -2,20 +2,37 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-08-03T14:20:16.610011+00:00`
-- branch: `fix/tsr-b01-gate-remediation`
-- commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
+- generated_at_utc: `2026-08-26T17:00:23.904762+00:00`
+- branch: `codex/tsr-b04-architecture-and-data-integrity`
+- commit: `107d58c62d28a0d0a7a094f69894809af40f8db0`
 - release_candidate: `unset`
 
 ## Working Tree Status
 
 ```text
-M .agent.md
- T .bandit
- M .secrets.baseline
+M .importlinter
+ M app/api_v2_routers/consent.py
+ M app/api_v2_routers/content_factory.py
+ M app/api_v2_routers/gamification.py
+ M app/api_v2_routers/learners.py
+ M app/api_v2_routers/onboarding.py
+ M app/api_v2_routers/parents.py
+ M app/models/__init__.py
+ M app/models/content_factory.py
+ M app/models/diagnostic_item.py
+ M app/models/runtime_kg.py
+ M app/modules/diagnostics/bias_review_router.py
+ M app/modules/diagnostics/item_bank_service.py
+ M app/modules/lessons/lesson_coverage_router.py
+ M app/modules/lessons/lesson_review_router.py
+ M app/modules/practice/router.py
+ M app/services/content_coverage_service.py
+ M app/services/gamification_service_v2.py
+ M app/services/learner_service.py
  M docs/ai/ai_prompt_surface_inventory.md
  M docs/architecture/auth_boundary_debt_report.json
  M docs/architecture/auth_boundary_debt_report.md
+ M docs/architecture/auth_service_extraction_followup.md
  M docs/architecture/auth_service_extraction_report.json
  M docs/architecture/auth_service_extraction_report.md
  M docs/architecture/import_linter_availability.md
@@ -45,28 +62,6 @@ M .agent.md
  M docs/operations/release_candidate_tag_manifest.md
  M docs/operations/release_evidence_manifest.md
  M docs/operations/staging_smoke_evidence_manifest.md
- M docs/release-evidence/true-state-remediation/b01/apply/capture_baseline.json
- M docs/release-evidence/true-state-remediation/b01/apply/release_gates.json
- M docs/release-evidence/true-state-remediation/b01/baseline_manifest.json
- M docs/release-evidence/true-state-remediation/b01/commands/bandit.json
- M docs/release-evidence/true-state-remediation/b01/commands/command_summary.json
- M docs/release-evidence/true-state-remediation/b01/commands/compileall.json
- M docs/release-evidence/true-state-remediation/b01/commands/execution7_gate_suite.json
- M docs/release-evidence/true-state-remediation/b01/commands/execution7_verifier.json
- M docs/release-evidence/true-state-remediation/b01/commands/frontend_audit.json
- M docs/release-evidence/true-state-remediation/b01/commands/frontend_quality.json
- M docs/release-evidence/true-state-remediation/b01/commands/mcp_stub_isolation.json
- M docs/release-evidence/true-state-remediation/b01/commands/mypy.json
- M docs/release-evidence/true-state-remediation/b01/commands/pip_audit_base.json
- M docs/release-evidence/true-state-remediation/b01/commands/pip_audit_dev.json
- M docs/release-evidence/true-state-remediation/b01/commands/product_gate.json
- M docs/release-evidence/true-state-remediation/b01/commands/product_runtime_gate.json
- M docs/release-evidence/true-state-remediation/b01/commands/ruff.json
- M docs/release-evidence/true-state-remediation/b01/commands/test_collection.json
- M docs/release-evidence/true-state-remediation/b01/environment_manifest.json
- M docs/release-evidence/true-state-remediation/b01/implementation_state.json
- M docs/release-evidence/true-state-remediation/b01/manual/tsr-0-7.json
- M docs/release-evidence/true-state-remediation/b01/manual/tsr-1-11.json
  M docs/release/alertmanager_drill_evidence.json
  M docs/release/approval_evidence_status.json
  M docs/release/approval_evidence_status.md
@@ -168,55 +163,21 @@ M .agent.md
  M docs/release/staging_smoke_final_evidence.json
  M docs/release/staging_smoke_final_evidence.md
  M docs/roadmap/production_readiness/prd1_required_checks_workflow_release_gate_convergence.json
- M docs/roadmap/production_readiness/true_state_remediation_register.json
+ M docs/roadmap/production_readiness/prd_102_104_required_checks_workflow_release_gate_convergence_record.json
  M docs/security/PHASE2_AUTHORIZATION_CLOSURE.md
  M docs/security/dependency_pin_report.json
  M docs/security/dependency_pin_report.md
  M docs/security/jwt_rotation_introspection.json
  M docs/security/jwt_rotation_introspection.md
  M docs/security/jwt_rotation_repair_report.md
- M docs/security/popia_consent_boundary_matrix.md
- M docs/security/popia_consent_gate_inventory.md
- M scripts/audit_remediation/run_frontend_tooling_authority.py
- M scripts/db_backup_restore_rollback_evidence.py
- M scripts/integrate_patch.py
- M scripts/runtime_readiness/capture_backend_backed_e2e_evidence.py
- M scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py
- M scripts/runtime_readiness/capture_controlled_beta_readiness_evidence.py
- M scripts/runtime_readiness/capture_live_stack_readiness_evidence.py
- M scripts/technical_audit/capture_branch_protection_evidence.py
- M scripts/technical_audit/capture_hosted_ci_evidence.py
- M scripts/technical_audit/capture_post_merge_baseline_evidence.py
- M scripts/technical_audit/capture_release_readiness_evidence.py
- M scripts/technical_audit/capture_technical_audit_closure_evidence.py
- M scripts/verify_phase02r_gate2r2.py
- M scripts/verify_phase02r_gate2r3.py
- M scripts/verify_phase0_or_equivalent_baseline.py
- M tests/unit/test_coverage_expansion_ai_ops.py
- M tests/unit/test_coverage_expansion_answer_key_verifier.py
- M tests/unit/test_coverage_expansion_batch_learner.py
- M tests/unit/test_coverage_expansion_content_factory_svc.py
- M tests/unit/test_coverage_expansion_core_modules.py
- M tests/unit/test_coverage_expansion_curriculum.py
- M tests/unit/test_coverage_expansion_dsr.py
- M tests/unit/test_coverage_expansion_etl_v3.py
- M tests/unit/test_coverage_expansion_irt_quality.py
- M tests/unit/test_coverage_expansion_irt_seed.py
- M tests/unit/test_coverage_expansion_launch_seed.py
- M tests/unit/test_coverage_expansion_lessons_modules.py
- M tests/unit/test_coverage_expansion_pii_sweep.py
- M tests/unit/test_coverage_expansion_prompt_payloads.py
- M tests/unit/test_coverage_expansion_safety.py
- M tests/unit/test_coverage_expansion_security_schemas.py
- M tests/unit/test_coverage_expansion_source_context.py
- M tests/unit/test_coverage_expansion_validator_pii.py
-?? .tsr/backups/b01/20260803T131949Z/
-?? .tsr/backups/b01/20260803T135622Z/
-?? docs/release-evidence/true-state-remediation/b01/verification.json
-?? git_history.txt
-?? llm_context_pack/
-?? pack_codebase.sh
-?? scripts/.bandit
+ M scripts/production_readiness/audit_prd101_ci_inventory_authority.py
+ M tests/integration/test_audit_immutability.py
+?? app/modules/lessons/lesson_review_service.py
+?? app/modules/practice/service.py
+?? openapi.json
+?? openapi.yaml
+?? scripts/true_state_remediation/bundles/bundle_04.py
+?? scripts/true_state_remediation/check_router_repo_isolation.py
 ```
 
 ## State Artifacts

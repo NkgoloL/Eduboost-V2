@@ -1,12 +1,12 @@
 # Backend First Wiring Candidates Report
 
-Generated at: `2026-08-27T16:19:33Z`
+Generated at: `2026-08-26T17:25:44Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| first wiring candidates | 0 | `/usr/bin/python3 scripts/check_backend_first_wiring_candidates.py` |
-| runtime wiring cases | 0 | `/usr/bin/python3 scripts/check_backend_runtime_wiring_cases.py` |
-| runtime wiring preflight | 0 | `/usr/bin/python3 scripts/check_backend_runtime_wiring_preflight.py` |
+| first wiring candidates | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_backend_first_wiring_candidates.py` |
+| runtime wiring cases | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_backend_runtime_wiring_cases.py` |
+| runtime wiring preflight | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_backend_runtime_wiring_preflight.py` |
 
 ## Boundary
 
@@ -14,7 +14,7 @@ This report proves first wiring candidates only; it does not approve route rewir
 
 ## first wiring candidates
 
-Command: `/usr/bin/python3 scripts/check_backend_first_wiring_candidates.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_backend_first_wiring_candidates.py`
 
 Return code: `0`
 
@@ -34,7 +34,7 @@ Backend first wiring candidate check
 
 ## runtime wiring cases
 
-Command: `/usr/bin/python3 scripts/check_backend_runtime_wiring_cases.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_backend_runtime_wiring_cases.py`
 
 Return code: `0`
 
@@ -58,11 +58,13 @@ Backend runtime wiring fixture case check
 
 ## runtime wiring preflight
 
-Command: `/usr/bin/python3 scripts/check_backend_runtime_wiring_preflight.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_backend_runtime_wiring_preflight.py`
 
 Return code: `0`
 
 ```text
+/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/app/modules/consent/service.py:27: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+  from app.core.exceptions import ConsentExpiredError, ConsentRequiredError
 Backend runtime wiring preflight check
 - PASS [audit] audit adapter-ready candidate produces canonical payload: {'candidate': 'consent_audit_events', 'payload_keys': ['action', 'actor_id', 'payload', 'resource_id', 'resource_type']}
 - PASS [consent] consent runtime normalization and constructor probes are stable: {'importable_surfaces': 3, 'missing_surfaces': 0, 'required_parameter_total': 3}

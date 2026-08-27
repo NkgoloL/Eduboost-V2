@@ -1,7 +1,7 @@
 # Diagnostic Item-Bank Policy Status
 
-Generated at: `2026-08-27T16:21:30Z`
-Commit: `96a44fcb30032631891f43b86faab0e8f45288a3`
+Generated at: `2026-08-26T17:21:25Z`
+Commit: `107d58c62d28a0d0a7a094f69894809af40f8db0`
 
 **Status:** `diagnostic-item-bank-policy-accepted`
 **Policy:** `docs/architecture/diagnostic_item_bank_canonicality.yml`
@@ -27,16 +27,16 @@ Commit: `96a44fcb30032631891f43b86faab0e8f45288a3`
 
 | Path | Line | Excerpt |
 |---|---:|---|
-| `app/api_v2_routers/content_factory.py` | 1077 | `diagnostic_items = await service.get_diagnostic_items(session, scope_id=scope_id, caps_ref=caps_ref)` |
-| `app/api_v2_routers/content_factory.py` | 1079 | `return {"diagnostic_items": diagnostic_items, "lessons": lessons}` |
-| `app/api_v2_routers/content_factory.py` | 1100 | `run_metadata={"layers": ["diagnostic_items", "lessons", "assessment_blueprints", "study_plan_templates"]},` |
+| `app/api_v2_routers/content_factory.py` | 1075 | `diagnostic_items = await service.get_diagnostic_items(session, scope_id=scope_id, caps_ref=caps_ref)` |
+| `app/api_v2_routers/content_factory.py` | 1077 | `return {"diagnostic_items": diagnostic_items, "lessons": lessons}` |
+| `app/api_v2_routers/content_factory.py` | 1098 | `run_metadata={"layers": ["diagnostic_items", "lessons", "assessment_blueprints", "study_plan_templates"]},` |
 | `app/core/runtime_readiness.py` | 23 | `"diagnostic_items",` |
 | `app/core/runtime_readiness.py` | 37 | `"diagnostic_items": (` |
 | `app/domain/content_coverage.py` | 11 | `DIAGNOSTIC_ITEMS = "diagnostic_items"` |
 | `app/domain/curriculum_expansion_schemas.py` | 17 | `layers: list[str] = Field(default_factory=lambda: ["diagnostic_items", "lessons"], min_length=1, max_length=8)` |
 | `app/models/content_factory.py` | 59 | `DIAGNOSTIC_ITEMS = "diagnostic_items"` |
-| `app/models/diagnostic_item.py` | 111 | `ORM representation of the diagnostic_items table.` |
-| `app/models/diagnostic_item.py` | 117 | `__tablename__ = "diagnostic_items"` |
+| `app/models/diagnostic_item.py` | 112 | `ORM representation of the diagnostic_items table.` |
+| `app/models/diagnostic_item.py` | 118 | `__tablename__ = "diagnostic_items"` |
 | `app/models/irt_quality.py` | 48 | `ForeignKey("diagnostic_items.item_id", ondelete="RESTRICT"), nullable=False` |
 | `app/models/item_exposure.py` | 58 | `ForeignKey("diagnostic_items.item_id", ondelete="RESTRICT"),` |
 | `app/services/content_answer_key_verification.py` | 112 | `if layer != "diagnostic_items" and artifact_type != "diagnostic_item":` |

@@ -1,13 +1,26 @@
 from __future__ import annotations
 
 from typing import Any
+from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.repositories.gamification_repository import GamificationRepository
+from app.repositories.repositories import LearnerRepository, LessonRepository
 from app.services.audit_service import AuditService
 
 
 class GamificationServiceV2:
-    def __init__(self, repository: Any | None = None) -> None:
-        self.repository = repository or _EmptyGamificationRepository()
+    def __init__(self, repository: Any | None = None, session: AsyncSession | None = None) -> None:
+        self.session = session
+        if repository is not None:
+            self.repository = repository
+        elif session is not None:
+            self.repository = GamificationRepository(session)
+        else:
+            self.repository = _EmptyGamificationRepository()
+
+    @classmethod
+    def from_session(cls, session: AsyncSession) -> GamificationServiceV2:
+        return cls(session=session)
 
     async def get_profile(self, learner_id: str) -> dict:
         learner, badge_rows = await self.repository.get_profile_rows(learner_id)
@@ -31,6 +44,14 @@ class GamificationServiceV2:
             "level": level,
             "badges": badges,
         }
+
+    async def award_xp(self, learner_id: str, xp_amount: int, lesson_id: str | None = None) -> None:
+        if self.session is None:
+            return
+        learner_repo = LearnerRepository(self.session)
+        await learner_repo.add_xp(learner_id, xp_amount)
+        if lesson_id:
+            await LessonRepository(self.session).mark_completed(lesson_id)
 
     async def leaderboard(self, limit: int = 10) -> list[dict]:
         rows = await self.repository.get_leaderboard_rows(limit=limit)

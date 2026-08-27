@@ -9,7 +9,7 @@ from app.core.database import get_db
 from app.api_v2_deps.auth import AuthContext, require_auth_context
 from app.core.security import get_current_user  # noqa: F401
 from app.domain.schemas import OnboardingResult, OnboardingSubmit
-from app.repositories.repositories import LearnerRepository
+from app.services.learner_service import LearnerService
 from app.services.ether import EtherService
 from app.security.dependencies import require_active_consent_for_current_user, require_learner_write_for_current_user
 
@@ -29,21 +29,19 @@ async def submit_onboarding(
     db: AsyncSession = Depends(get_db),
     current_user: AuthContext = Depends(require_auth_context),
 ):
-    learner_repo = LearnerRepository(db)
-    learner = await learner_repo.get_by_id(body.learner_id)
+    learner_svc = LearnerService(db)
+    learner = await learner_svc.get_learner_summary(body.learner_id)
     if not learner:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Learner not found")
     require_learner_write_for_current_user(current_user, body.learner_id)
     await require_active_consent_for_current_user(db, current_user, body.learner_id)
 
     answers_raw = [{"question_id": a.question_id, "answer": a.answer} for a in body.answers]
-    archetype, description, probabilities = _ether.classify_archetype(answers_raw)
-
-    await learner_repo.update_archetype(body.learner_id, archetype.value)
+    res = await learner_svc.process_onboarding(body.learner_id, answers_raw)
 
     return OnboardingResult(
-        learner_id=body.learner_id,
-        archetype=archetype.value,
-        description=description,
-        probabilities=probabilities,
+        learner_id=res["learner_id"],
+        archetype=res["archetype"],
+        description=res["description"],
+        probabilities=res["probabilities"],
     )

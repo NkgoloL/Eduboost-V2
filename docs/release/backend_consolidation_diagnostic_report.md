@@ -1,14 +1,14 @@
 # Backend Consolidation Diagnostic Report
 
-Generated at: `2026-08-27T16:18:24Z`
+Generated at: `2026-08-26T17:24:45Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| backend dragons | 0 | `/usr/bin/python3 scripts/check_backend_consolidation_dragons.py` |
-| audit inventory | 0 | `/usr/bin/python3 scripts/generate_audit_callsite_inventory.py --fail-empty` |
-| consent inventory | 0 | `/usr/bin/python3 scripts/generate_consent_callsite_inventory.py --fail-empty` |
-| health readiness contract | 0 | `/usr/bin/python3 scripts/check_health_readiness_contract.py` |
-| schema drift contract | 0 | `/usr/bin/python3 scripts/check_schema_drift_contract.py` |
+| backend dragons | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_backend_consolidation_dragons.py` |
+| audit inventory | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/generate_audit_callsite_inventory.py --fail-empty` |
+| consent inventory | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/generate_consent_callsite_inventory.py --fail-empty` |
+| health readiness contract | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_health_readiness_contract.py` |
+| schema drift contract | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_schema_drift_contract.py` |
 
 ## Interpretation
 
@@ -19,7 +19,7 @@ Generated at: `2026-08-27T16:18:24Z`
 
 ## backend dragons
 
-Command: `/usr/bin/python3 scripts/check_backend_consolidation_dragons.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_backend_consolidation_dragons.py`
 
 Return code: `0`
 
@@ -39,7 +39,7 @@ Backend consolidation dragon diagnostic
   - scripts/audit_write_flow_command.py
   - scripts/check_auth_service_extraction.py
   - ... 9 more file(s)
-- audit_events: 151 match(es)
+- audit_events: 154 match(es)
   - alembic/versions/0006_v2_audit_events.py
   - alembic/versions/20260507_1200_popia_consent_audit_hardening.py
   - alembic/versions/20260507_1330_database_integrity_constraints.py
@@ -125,27 +125,27 @@ Backend consolidation dragon diagnostic
 
 ## audit inventory
 
-Command: `/usr/bin/python3 scripts/generate_audit_callsite_inventory.py --fail-empty`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/generate_audit_callsite_inventory.py --fail-empty`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2/docs/release/audit_callsite_inventory.md (6046 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release/audit_callsite_inventory.md (6056 row(s))
 ```
 
 ## consent inventory
 
-Command: `/usr/bin/python3 scripts/generate_consent_callsite_inventory.py --fail-empty`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/generate_consent_callsite_inventory.py --fail-empty`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2/docs/release/consent_callsite_inventory.md (596 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release/consent_callsite_inventory.md (596 row(s))
 ```
 
 ## health readiness contract
 
-Command: `/usr/bin/python3 scripts/check_health_readiness_contract.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_health_readiness_contract.py`
 
 Return code: `0`
 
@@ -169,7 +169,7 @@ Health/readiness diagnostic contract check
 
 ## schema drift contract
 
-Command: `/usr/bin/python3 scripts/check_schema_drift_contract.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_schema_drift_contract.py`
 
 Return code: `0`
 
@@ -249,6 +249,7 @@ ORM tables
 - irt_items
 - item_exposures
 - knowledge_gaps
+- learner_kg_node_states
 - learner_profiles
 - lesson_bank
 - lesson_feedback
@@ -263,6 +264,10 @@ ORM tables
 - retrieval_source_chunks
 - retrieval_source_documents
 - rlhf_exports
+- runtime_kg_edges
+- runtime_kg_events
+- runtime_kg_graph_loads
+- runtime_kg_nodes
 - secure_tokens
 - spaced_review_schedule
 - stripe_webhook_events

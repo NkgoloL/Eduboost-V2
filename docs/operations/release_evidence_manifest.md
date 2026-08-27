@@ -1,8 +1,8 @@
 # Release Evidence Manifest
 
-Generated: `2026-08-03T14:11:36Z`
-Branch: `fix/tsr-b01-gate-remediation`
-Commit: `a55336c4112d0b994acb6a75e1db57e20e4fe381`
+Generated: `2026-08-26T16:55:17Z`
+Branch: `codex/tsr-b04-architecture-and-data-integrity`
+Commit: `107d58c62d28a0d0a7a094f69894809af40f8db0`
 
 ## Required Evidence Commands
 

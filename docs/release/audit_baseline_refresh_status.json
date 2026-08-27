@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-27T16:14:11Z",
-  "current_commit": "f9f438cd98c77483dc75f1233ecd34ff9d209f3c",
-  "current_branch": "codex/tsr-b03-caps-mathematics-truth",
+  "generated_at": "2026-08-26T17:19:34Z",
+  "current_commit": "107d58c62d28a0d0a7a094f69894809af40f8db0",
+  "current_branch": "codex/tsr-b04-architecture-and-data-integrity",
   "status": "audit-baseline-refresh-current",
   "beta_decision": "NO-GO",
   "beta_blocker_count": 10,
@@ -19,7 +19,7 @@
     {
       "command": "python3 scripts/docs_inventory.py --write",
       "return_code": 0,
-      "output_excerpt": "Wrote docs/docs_inventory.json\nWrote docs/docs_inventory.md\nWrote docs/docs_gap_report.md\nWrote docs/docs_generation_plan.md\nDocuments: 2929\n"
+      "output_excerpt": "Wrote docs/docs_inventory.json\nWrote docs/docs_inventory.md\nWrote docs/docs_gap_report.md\nWrote docs/docs_generation_plan.md\nDocuments: 2905\n"
     }
   ],
   "surfaces": [
@@ -29,7 +29,7 @@
       "exists": true,
       "status": "NO-GO",
       "decision": "NO-GO",
-      "commit": "f9f438cd98c77483dc75f1233ecd34ff9d209f3c",
+      "commit": "107d58c62d28a0d0a7a094f69894809af40f8db0",
       "stale": false
     },
     {
@@ -38,7 +38,7 @@
       "exists": true,
       "status": "NO-GO",
       "decision": "NO-GO",
-      "commit": "f9f438cd98c77483dc75f1233ecd34ff9d209f3c",
+      "commit": "107d58c62d28a0d0a7a094f69894809af40f8db0",
       "stale": false
     },
     {
@@ -47,8 +47,8 @@
       "exists": true,
       "status": "ci-evidence-not-accepted",
       "decision": "",
-      "commit": "b33e49720860a084e7a7c42ead1b620cb859e64f",
-      "stale": true
+      "commit": "107d58c62d28a0d0a7a094f69894809af40f8db0",
+      "stale": false
     },
     {
       "name": "ci_run_evidence",
@@ -56,8 +56,8 @@
       "exists": true,
       "status": "external-blocked",
       "decision": "",
-      "commit": "66323711cba9ebc39919f32491c707aeb92e5e58",
-      "stale": true
+      "commit": "107d58c62d28a0d0a7a094f69894809af40f8db0",
+      "stale": false
     },
     {
       "name": "external_approval",
@@ -65,8 +65,8 @@
       "exists": true,
       "status": "external-blocked",
       "decision": "",
-      "commit": "66323711cba9ebc39919f32491c707aeb92e5e58",
-      "stale": true
+      "commit": "107d58c62d28a0d0a7a094f69894809af40f8db0",
+      "stale": false
     },
     {
       "name": "approval_evidence",
@@ -74,8 +74,8 @@
       "exists": true,
       "status": "external-blocked",
       "decision": "",
-      "commit": "bf2941f2e463570c8f64484edb6ec7bfa70f2ffb",
-      "stale": true
+      "commit": "107d58c62d28a0d0a7a094f69894809af40f8db0",
+      "stale": false
     },
     {
       "name": "staging_smoke_evidence",
@@ -83,8 +83,8 @@
       "exists": true,
       "status": "staging-smoke-evidence-not-accepted",
       "decision": "",
-      "commit": "a70b57616bb29572fcb57961b91a3f68f0c66329",
-      "stale": true
+      "commit": "107d58c62d28a0d0a7a094f69894809af40f8db0",
+      "stale": false
     },
     {
       "name": "staging_acceptance",
@@ -92,8 +92,8 @@
       "exists": true,
       "status": "external-blocked",
       "decision": "",
-      "commit": "a70b57616bb29572fcb57961b91a3f68f0c66329",
-      "stale": true
+      "commit": "107d58c62d28a0d0a7a094f69894809af40f8db0",
+      "stale": false
     },
     {
       "name": "auth_refresh_db_evidence",
@@ -101,8 +101,8 @@
       "exists": true,
       "status": "auth-refresh-db-evidence-accepted",
       "decision": "",
-      "commit": "66323711cba9ebc39919f32491c707aeb92e5e58",
-      "stale": true
+      "commit": "107d58c62d28a0d0a7a094f69894809af40f8db0",
+      "stale": false
     },
     {
       "name": "popia_response_contract_no_skip",
@@ -110,8 +110,8 @@
       "exists": true,
       "status": "popia-response-contract-no-skip-passing",
       "decision": "",
-      "commit": "88840fc52a05c694c6d313e57bc8cba4bcda4c63",
-      "stale": true
+      "commit": "107d58c62d28a0d0a7a094f69894809af40f8db0",
+      "stale": false
     },
     {
       "name": "diag_deep_health_runtime",
@@ -119,8 +119,8 @@
       "exists": true,
       "status": "diag-deep-health-runtime-not-accepted",
       "decision": "",
-      "commit": "a70b57616bb29572fcb57961b91a3f68f0c66329",
-      "stale": true
+      "commit": "107d58c62d28a0d0a7a094f69894809af40f8db0",
+      "stale": false
     },
     {
       "name": "live_db_transaction_evidence",
@@ -128,8 +128,8 @@
       "exists": true,
       "status": "external-blocked",
       "decision": "",
-      "commit": "a70b57616bb29572fcb57961b91a3f68f0c66329",
-      "stale": true
+      "commit": "107d58c62d28a0d0a7a094f69894809af40f8db0",
+      "stale": false
     },
     {
       "name": "beta_blocker_burndown",
@@ -137,8 +137,8 @@
       "exists": true,
       "status": "",
       "decision": "",
-      "commit": "66323711cba9ebc39919f32491c707aeb92e5e58",
-      "stale": true
+      "commit": "107d58c62d28a0d0a7a094f69894809af40f8db0",
+      "stale": false
     },
     {
       "name": "docs_inventory",
@@ -146,7 +146,7 @@
       "exists": true,
       "status": "",
       "decision": "",
-      "commit": "f9f438cd98c77483dc75f1233ecd34ff9d209f3c",
+      "commit": "107d58c62d28a0d0a7a094f69894809af40f8db0",
       "stale": false
     }
   ],

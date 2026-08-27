@@ -590,6 +590,7 @@ class ContentStagingSeedItem(Base):
     seed_payload_hash: Mapped[str | None] = mapped_column(String(64), nullable=True)
     rollback_payload_json: Mapped[dict[str, Any] | None] = mapped_column(JSONB, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now(), onupdate=func.now())
 
 
 class ContentStagingArtifact(Base):
@@ -602,7 +603,7 @@ class ContentStagingArtifact(Base):
     layer: Mapped[str] = mapped_column(String(40), nullable=False)
     artifact_type: Mapped[str] = mapped_column(String(40), nullable=False)
     payload_json: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)
-    source_artifact_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    source_artifact_hash: Mapped[str | None] = mapped_column(String(64), nullable=True)
     staging_status: Mapped[str] = mapped_column(String(40), nullable=False, server_default="pending")
     created_by_seed_run_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("content_seed_runs.seed_run_id"), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
@@ -620,7 +621,7 @@ class ContentProductionArtifact(Base):
     layer: Mapped[str] = mapped_column(String(40), nullable=False)
     artifact_type: Mapped[str] = mapped_column(String(40), nullable=False)
     payload_json: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)
-    source_artifact_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    source_artifact_hash: Mapped[str | None] = mapped_column(String(64), nullable=True)
     production_status: Mapped[str] = mapped_column(String(40), nullable=False, server_default="active")
     created_by_promotion_event_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("content_promotion_events.promotion_event_id"), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())

@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 from app.domain.content_coverage import ContentLayer
 from app.modules.diagnostics.item_bank_service import DEFAULT_CONTENT_SCOPE_ID
 from app.modules.lessons.caps_topic_map_service import CAPSTopicMapService, get_caps_topic_map_service
-from app.repositories.lesson_repository import LessonRepository, get_lesson_repository
+from app.modules.lessons.lesson_review_service import LessonReviewService, get_lesson_review_service
 from app.services.content_scope_registry import ContentScopeRegistry
 
 router = APIRouter(tags=["lesson-coverage"])
@@ -125,7 +125,7 @@ async def get_lesson_coverage(
     grade: int | None = Query(None, ge=1, le=12),
     subject: str | None = None,
     scope_id: str = Query(DEFAULT_CONTENT_SCOPE_ID, min_length=1),
-    repo: LessonRepository = Depends(get_lesson_repository),
+    service: LessonReviewService = Depends(get_lesson_review_service),
     caps_service: CAPSTopicMapService = Depends(get_caps_topic_map_service),
 ) -> CoverageResponse:
     per_ref: list[CapsRefCoverage] = []
@@ -134,7 +134,7 @@ async def get_lesson_coverage(
     quality_scores: list[float] = []
 
     for row in _topic_rows(caps_service, grade, subject):
-        lessons = await repo.list_by_caps_ref(row["caps_ref"], include_all_statuses=True)
+        lessons = await service.list_by_caps_ref(row["caps_ref"], include_all_statuses=True)
         approved = sum(1 for lesson in lessons if lesson.review_status == "approved")
         pending = sum(1 for lesson in lessons if lesson.review_status in {"ai_generated", "human_reviewed"})
         rejected = sum(1 for lesson in lessons if lesson.review_status == "rejected")

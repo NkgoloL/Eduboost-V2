@@ -1,0 +1,59 @@
+{
+  "checks": {
+    "architecture_artifacts": {
+      "authorization_matrix": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/architecture/authorization_consolidation_matrix.md",
+      "complexity_budgets": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/architecture/complexity_budgets_and_dispositions.md",
+      "content_factory_decomposition": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/architecture/content_factory_capability_decomposition.md",
+      "debt_register": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/architecture/architectural_debt_register.json",
+      "etl_matrix": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/architecture/etl_consolidation_matrix.md",
+      "legacy_quarantine": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/architecture/legacy_quarantine_boundary.md",
+      "popia_boundaries": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/architecture/popia_orchestration_boundaries.md",
+      "valid": true
+    },
+    "boundaries": {
+      "failures": [],
+      "inspected": [
+        "docs/roadmap/production_readiness/production_readiness_register.json",
+        "docs/roadmap/production_readiness/prd11_production_release_register.json",
+        "docs/roadmap/production_readiness/true_state_remediation_register.json"
+      ],
+      "valid": true
+    },
+    "data_governance_artifacts": {
+      "audit_immutability_doc": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/data/audit_immutability_verification.md",
+      "audit_immutability_test": "/home/nkgolol/Dev/SandBox/Eduboost-V2/tests/integration/test_audit_immutability.py",
+      "backup_policy": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/data/backup_retention_and_erasure_policy.md",
+      "data_inventory": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/data/table_field_data_inventory.json",
+      "data_lineage": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/data/data_lineage_map.md",
+      "migration_policy": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/data/migration_rollback_and_forward_fix_policy.md",
+      "transaction_policy": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/data/transaction_ownership_and_isolation_policy.md",
+      "valid": true
+    },
+    "hygiene": {
+      "status_porcelain": "",
+      "stray_untracked": [],
+      "valid": true
+    },
+    "manual": {
+      "invalid": [],
+      "missing": [],
+      "valid": true
+    },
+    "register": {
+      "errors": [],
+      "release_boundaries": {
+        "failures": [],
+        "inspected": [
+          "docs/roadmap/production_readiness/production_readiness_register.json",
+          "docs/roadmap/production_readiness/prd11_production_release_register.json",
+          "docs/roadmap/production_readiness/true_state_remediation_register.json"
+        ],
+        "valid": true
+      },
+      "task_count": 174,
+      "valid": true
+    }
+  },
+  "valid": true,
+  "verified_at": "2026-08-27T16:58:24.426443+00:00"
+}

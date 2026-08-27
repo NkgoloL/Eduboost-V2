@@ -1,6 +1,6 @@
 # Auth HTTP Success Scope Report
 
-Generated at: `2026-08-27T16:14:34Z`
+Generated at: `2026-08-26T17:19:31Z`
 
 **Status:** controlled_dependency_override_success_scope_proof
 
@@ -16,14 +16,6 @@ Generated at: `2026-08-27T16:14:34Z`
 
 | Path | Methods | Endpoint | Response model |
 |---|---|---|---|
-| `/api/v2/auth/register` | POST | `register` | `TokenResponse` |
-| `/api/v2/auth/login` | POST | `login` | `TokenResponse` |
-| `/api/v2/auth/dev-session` | POST | `create_dev_session` | `-` |
-| `/api/v2/auth/refresh` | POST | `refresh` | `TokenResponse` |
-| `/v2/auth/register` | POST | `register` | `TokenResponse` |
-| `/v2/auth/login` | POST | `login` | `TokenResponse` |
-| `/v2/auth/dev-session` | POST | `create_dev_session` | `-` |
-| `/v2/auth/refresh` | POST | `refresh` | `TokenResponse` |
 | `/__dev/slow_query` | GET | `dev_slow_query` | `-` |
 
 ## Boundary

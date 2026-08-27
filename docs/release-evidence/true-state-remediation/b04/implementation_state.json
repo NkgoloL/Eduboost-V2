@@ -1,0 +1,129 @@
+{
+  "bundle_id": "B04",
+  "environment": {
+    "captured_at": "2026-08-27T16:58:24.427052+00:00",
+    "docker": {
+      "available": true,
+      "exit_code": 0,
+      "version": "Docker version 29.7.2, build a7dcaa6"
+    },
+    "docker_compose": {
+      "available": true,
+      "exit_code": 0,
+      "version": "Docker Compose version v5.5.0"
+    },
+    "git": {
+      "available": true,
+      "branch": "codex/tsr-b04-architecture-and-data-integrity",
+      "clean": false,
+      "commit": "60c2b368f2e280cda059689de6988fce53b68bbd",
+      "status_porcelain": "M docs/release-evidence/true-state-remediation/b04/verification.json\n M docs/roadmap/production_readiness/true_state_remediation_register.json",
+      "submodules": ""
+    },
+    "input_digests": {
+      ".python-version": "fa682ae9d943f5c8076e68335c9ba3ab4d063ad035c07ac6928653dd4ac50af7",
+      "app/frontend/package.json": "b3f4759545ee3b259bc89eb12d815a6c25da2d310f4e55801e9fc14afae69471",
+      "package.json": "0f1b96117bd811f6fb46fb8f06f4f63729d1a5dfc501efa556f26f59495403f9",
+      "pnpm-lock.yaml": "9e280652ecab533b5542e225a4ed06488a5c155ec4fc79498b2e8f36dbd9c665",
+      "pyproject.toml": "a82e029276e64b8077bcf2af2ac960ce54f45f32902f2e64a23904e7f9f73fd4",
+      "requirements/base.txt": "bc83e83ef52fab7072af7c777936d6730d9fff9a048bf7d664eb79bb09441c8d",
+      "requirements/dev.txt": "a19156e19770a629b5ebfda8ba70d0b684589733f7b008d0f08059315610f18a",
+      "requirements/docs.txt": "baf122c71989e7fa24a8cb8726dc492bf5eb1542f191921f6ab21f4a7354e04c",
+      "requirements/ml.txt": "2ad806623ae7a2639f3e43f4836bb502bf56100667901751756dc82df574b34c"
+    },
+    "machine": "x86_64",
+    "node": {
+      "available": true,
+      "exit_code": 0,
+      "version": "v22.23.2"
+    },
+    "pip": {
+      "available": true,
+      "exit_code": 0,
+      "version": "pip 24.0 from /usr/lib/python3/dist-packages/pip (python 3.12)"
+    },
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pnpm": {
+      "available": false,
+      "error": "[Errno 2] No such file or directory: 'pnpm'"
+    },
+    "postgres_client": {
+      "available": true,
+      "exit_code": 0,
+      "version": "psql (PostgreSQL) 18.6 (Ubuntu 18.6-1.pgdg24.04+2)"
+    },
+    "python": {
+      "executable": "/usr/bin/python3",
+      "version": "3.12.3"
+    },
+    "redis_client": {
+      "available": false,
+      "error": "[Errno 2] No such file or directory: 'redis-cli'"
+    }
+  },
+  "phase": "verify",
+  "phases": {
+    "verify": {
+      "checks": {
+        "architecture_artifacts": {
+          "authorization_matrix": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/architecture/authorization_consolidation_matrix.md",
+          "complexity_budgets": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/architecture/complexity_budgets_and_dispositions.md",
+          "content_factory_decomposition": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/architecture/content_factory_capability_decomposition.md",
+          "debt_register": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/architecture/architectural_debt_register.json",
+          "etl_matrix": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/architecture/etl_consolidation_matrix.md",
+          "legacy_quarantine": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/architecture/legacy_quarantine_boundary.md",
+          "popia_boundaries": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/architecture/popia_orchestration_boundaries.md",
+          "valid": true
+        },
+        "boundaries": {
+          "failures": [],
+          "inspected": [
+            "docs/roadmap/production_readiness/production_readiness_register.json",
+            "docs/roadmap/production_readiness/prd11_production_release_register.json",
+            "docs/roadmap/production_readiness/true_state_remediation_register.json"
+          ],
+          "valid": true
+        },
+        "data_governance_artifacts": {
+          "audit_immutability_doc": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/data/audit_immutability_verification.md",
+          "audit_immutability_test": "/home/nkgolol/Dev/SandBox/Eduboost-V2/tests/integration/test_audit_immutability.py",
+          "backup_policy": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/data/backup_retention_and_erasure_policy.md",
+          "data_inventory": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/data/table_field_data_inventory.json",
+          "data_lineage": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/data/data_lineage_map.md",
+          "migration_policy": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/data/migration_rollback_and_forward_fix_policy.md",
+          "transaction_policy": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/data/transaction_ownership_and_isolation_policy.md",
+          "valid": true
+        },
+        "hygiene": {
+          "status_porcelain": "",
+          "stray_untracked": [],
+          "valid": true
+        },
+        "manual": {
+          "invalid": [],
+          "missing": [],
+          "valid": true
+        },
+        "register": {
+          "errors": [],
+          "release_boundaries": {
+            "failures": [],
+            "inspected": [
+              "docs/roadmap/production_readiness/production_readiness_register.json",
+              "docs/roadmap/production_readiness/prd11_production_release_register.json",
+              "docs/roadmap/production_readiness/true_state_remediation_register.json"
+            ],
+            "valid": true
+          },
+          "task_count": 174,
+          "valid": true
+        }
+      },
+      "valid": true
+    }
+  },
+  "recorded_at": "2026-08-27T16:58:25.560287+00:00",
+  "schema_version": "eduboost/true-state-remediation/bundle-state/v1",
+  "skip_heavy": false,
+  "valid": true
+}

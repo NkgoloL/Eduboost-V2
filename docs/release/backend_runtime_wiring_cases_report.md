@@ -1,12 +1,12 @@
 # Backend Runtime Wiring Cases Report
 
-Generated at: `2026-08-27T16:20:19Z`
+Generated at: `2026-08-26T17:19:58Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| runtime wiring cases | 0 | `/usr/bin/python3 scripts/check_backend_runtime_wiring_cases.py` |
-| runtime wiring preflight | 0 | `/usr/bin/python3 scripts/check_backend_runtime_wiring_preflight.py` |
-| implementation 376-382 | 0 | `/usr/bin/python3 scripts/generate_backend_runtime_wiring_preflight_report.py` |
+| runtime wiring cases | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_backend_runtime_wiring_cases.py` |
+| runtime wiring preflight | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_backend_runtime_wiring_preflight.py` |
+| implementation 376-382 | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/generate_backend_runtime_wiring_preflight_report.py` |
 
 ## Boundary
 
@@ -14,7 +14,7 @@ This report proves fixture-backed runtime wiring readiness only.
 
 ## runtime wiring cases
 
-Command: `/usr/bin/python3 scripts/check_backend_runtime_wiring_cases.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_backend_runtime_wiring_cases.py`
 
 Return code: `0`
 
@@ -38,11 +38,13 @@ Backend runtime wiring fixture case check
 
 ## runtime wiring preflight
 
-Command: `/usr/bin/python3 scripts/check_backend_runtime_wiring_preflight.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/check_backend_runtime_wiring_preflight.py`
 
 Return code: `0`
 
 ```text
+/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/app/modules/consent/service.py:27: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+  from app.core.exceptions import ConsentExpiredError, ConsentRequiredError
 Backend runtime wiring preflight check
 - PASS [audit] audit adapter-ready candidate produces canonical payload: {'candidate': 'consent_audit_events', 'payload_keys': ['action', 'actor_id', 'payload', 'resource_id', 'resource_type']}
 - PASS [consent] consent runtime normalization and constructor probes are stable: {'importable_surfaces': 3, 'missing_surfaces': 0, 'required_parameter_total': 3}
@@ -60,10 +62,10 @@ Backend runtime wiring preflight check
 
 ## implementation 376-382
 
-Command: `/usr/bin/python3 scripts/generate_backend_runtime_wiring_preflight_report.py`
+Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python scripts/generate_backend_runtime_wiring_preflight_report.py`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2/docs/release/backend_runtime_wiring_preflight_report.md
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release/backend_runtime_wiring_preflight_report.md
 ```

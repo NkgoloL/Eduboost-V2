@@ -1,66 +1,102 @@
-import pytest
+"""Integration test verifying database-level immutability triggers and rules for audit tables.
+
+This test asserts that:
+1. INSERT into `audit_events` succeeds.
+2. UPDATE against `audit_events` fails closed (PostgreSQL trigger/rule blocks modification).
+3. DELETE against `audit_events` fails closed (PostgreSQL trigger/rule blocks modification).
+4. Direct raw SQL DML statements cannot alter historical audit records.
+"""
+from __future__ import annotations
+
+import os
 import uuid
-import json
+import pytest
+import pytest_asyncio
+from datetime import datetime, timezone
 from sqlalchemy import text
-from app.core.database import AsyncSessionLocal
-from app.models import AuditEvent
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
+from sqlalchemy.orm import sessionmaker
+
+DEFAULT_TEST_DB_URL = os.environ.get(
+    "DATABASE_URL",
+    "postgresql+asyncpg://postgres:postgres@127.0.0.1:54322/postgres"
+)
+if DEFAULT_TEST_DB_URL.startswith("postgresql://"):
+    DEFAULT_TEST_DB_URL = DEFAULT_TEST_DB_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
+
 
 @pytest.mark.asyncio
-@pytest.mark.integration
-async def test_audit_events_are_immutable():
-    """
-    Verify that audit_events cannot be updated or deleted due to DB rules.
-    This is a critical POPIA compliance requirement.
-    """
-    event_id = uuid.uuid4()
-    actor_id = uuid.uuid4()
+async def test_audit_events_immutability_fail_closed():
+    """Verify that audit_events rejects UPDATE and DELETE operations."""
+    engine = create_async_engine(DEFAULT_TEST_DB_URL, echo=False)
+    async_session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
-    async with AsyncSessionLocal() as db:
-        # 1. Insert an audit event using ORM (to handle defaults)
-        event = AuditEvent(
-            id=event_id,
-            event_type="TEST_IMMUTABILITY",
-            actor_id=actor_id,
-            payload={"key": "original"},
-            event_hash="0" * 64,  # Dummy hash
-            hmac_signature="0" * 64  # Dummy signature
+    async with async_session() as session:
+        # 1. Insert a test audit record
+        event_id = uuid.uuid4()
+        actor_id = uuid.uuid4()
+        resource_id = uuid.uuid4()
+        test_hash = "0" * 64
+        test_sig = "a" * 64
+
+        insert_stmt = text("""
+            INSERT INTO audit_events (id, event_type, actor_id, resource_id, payload, event_hash, hmac_signature, created_at)
+            VALUES (:id, :event_type, :actor_id, :resource_id, CAST(:payload AS jsonb), :event_hash, :hmac_signature, :created_at)
+        """)
+        await session.execute(
+            insert_stmt,
+            {
+                "id": event_id,
+                "event_type": "security.test.immutability",
+                "actor_id": actor_id,
+                "resource_id": resource_id,
+                "payload": '{"test": true, "reason": "immutability_verification"}',
+                "event_hash": test_hash,
+                "hmac_signature": test_sig,
+                "created_at": datetime.now(timezone.utc),
+            }
         )
-        db.add(event)
-        await db.commit()
+        await session.commit()
 
-        # 2. Attempt to UPDATE the event using raw SQL (to bypass ORM checks)
-        await db.execute(
-            text(
-                "UPDATE audit_events SET payload = '{\"key\": \"tampered\"}' "
-                "WHERE id = :id"
-            ),
-            {"id": event_id}
-        )
-        await db.commit()
+        # 2. Verify record exists
+        select_stmt = text("SELECT id, event_type FROM audit_events WHERE id = :id")
+        result = await session.execute(select_stmt, {"id": event_id})
+        row = result.first()
+        assert row is not None, "Audit event must be inserted successfully"
+        assert row[1] == "security.test.immutability"
 
-        # Verify it remains unchanged
-        result = await db.execute(
-            text("SELECT payload FROM audit_events WHERE id = :id"),
-            {"id": event_id}
-        )
-        payload = result.scalar()
+        # 3. Assert UPDATE fails or affects 0 rows (trigger exception or RULE DO INSTEAD NOTHING)
+        update_stmt = text("""
+            UPDATE audit_events 
+            SET event_type = 'tampered.event.type' 
+            WHERE id = :id
+        """)
+        
+        # Either the trigger raises an exception OR the PostgreSQL rule converts it to INSTEAD NOTHING
+        try:
+            update_result = await session.execute(update_stmt, {"id": event_id})
+            await session.commit()
+            # If no exception, rule suppressed it -> verify data is untampered
+            verify_result = await session.execute(select_stmt, {"id": event_id})
+            unmodified_row = verify_result.first()
+            assert unmodified_row[1] == "security.test.immutability", "Audit record must not be modified by UPDATE"
+        except Exception as exc:
+            # Trigger raised exception -> verify exception mentions immutability
+            await session.rollback()
+            assert "append-only" in str(exc).lower() or "forbidden" in str(exc).lower() or "immutable" in str(exc).lower()
 
-        payload_data = json.loads(payload) if isinstance(payload, str) else payload
+        # 4. Assert DELETE fails or affects 0 rows
+        delete_stmt = text("DELETE FROM audit_events WHERE id = :id")
+        try:
+            delete_result = await session.execute(delete_stmt, {"id": event_id})
+            await session.commit()
+            # If no exception, rule suppressed it -> verify data is STILL present
+            verify_result = await session.execute(select_stmt, {"id": event_id})
+            persisted_row = verify_result.first()
+            assert persisted_row is not None, "Audit record must not be deleted by DELETE"
+            assert persisted_row[1] == "security.test.immutability"
+        except Exception as exc:
+            await session.rollback()
+            assert "append-only" in str(exc).lower() or "forbidden" in str(exc).lower() or "immutable" in str(exc).lower()
 
-        # The rule 'audit_events_no_update' should make this a no-op
-        assert payload_data["key"] == "original", f"Audit event was tampered with! Found: {payload_data}"
-
-        # 3. Attempt to DELETE the event
-        await db.execute(
-            text("DELETE FROM audit_events WHERE id = :id"),
-            {"id": event_id}
-        )
-        await db.commit()
-
-        # Verify it still exists
-        result = await db.execute(
-            text("SELECT COUNT(*) FROM audit_events WHERE id = :id"),
-            {"id": event_id}
-        )
-        count = result.scalar()
-        assert count == 1, "Audit event was deleted!"
+    await engine.dispose()

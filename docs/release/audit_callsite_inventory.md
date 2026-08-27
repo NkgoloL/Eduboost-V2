@@ -121,7 +121,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/api_v2_routers/content_review.py` | 329 | audit_record_call | `result = await service.record(` |
 | `app/api_v2_routers/diagnostics.py` | 67 | audit_append_call | `payload.append({"key": key, "label": label})` |
 | `app/api_v2_routers/diagnostics.py` | 69 | audit_append_call | `payload.append({"key": fallback_key, "label": str(option)})` |
-| `app/api_v2_routers/gamification.py` | 63 | audit_record_call | `await FourthEstateService(db).record(` |
+| `app/api_v2_routers/gamification.py` | 60 | audit_record_call | `await FourthEstateService(db).record(` |
 | `app/api_v2_routers/parents.py` | 75 | audit_append_call | `dashboard_learners.append(` |
 | `app/api_v2_routers/parents.py` | 155 | audit_append_call | `response_learners.append(` |
 | `app/api_v2_routers/parents.py` | 202 | audit_append_call | `exports.append(` |
@@ -314,6 +314,25 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/domain/knowledge_graph_target.py` | 328 | audit_append_call | `errors.append(f"target edge has orphan endpoint: {edge.get('target_edge_id')}")` |
 | `app/domain/knowledge_graph_target.py` | 330 | audit_append_call | `errors.append(f"target edge missing provenance: {edge.get('target_edge_id')}")` |
 | `app/domain/knowledge_graph_target.py` | 334 | audit_append_call | `errors.append(f"boundary flag must be false: {key}")` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 46 | audit_append_call | `input.append(value)` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 48 | audit_append_call | `known.key.append(value)` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 49 | audit_append_call | `known.value.append(index)` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 70 | audit_append_call | `parsed.append(tmp)` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 71 | audit_append_call | `lazy.append([output, key])` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 81 | audit_append_call | `output.append(_relate(known, input, val))` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 112 | audit_append_call | `wrapped.append(_wrap(value))` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 117 | audit_append_call | `input.append(value.value)` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 119 | audit_append_call | `input.append(value)` |
+| `app/frontend/node_modules/.pnpm/flatted@3.4.2/node_modules/flatted/python/flatted.py` | 142 | audit_append_call | `output.append(_transform(known, input, input[i]))` |
+| `app/frontend/node_modules/.pnpm/jsdom@29.1.1/node_modules/jsdom/README.md` | 69 | audit_append_call | `<script>document.getElementById("content").append(document.createElement("hr"));</script>` |
+| `app/frontend/node_modules/.pnpm/jsdom@29.1.1/node_modules/jsdom/README.md` | 81 | audit_append_call | `<script>document.getElementById("content").append(document.createElement("hr"));</script>` |
+| `app/frontend/node_modules/.pnpm/jsdom@29.1.1/node_modules/jsdom/README.md` | 99 | audit_append_call | `<script>document.getElementById("content").append(document.createElement("hr"));</script>` |
+| `app/frontend/node_modules/.pnpm/jsdom@29.1.1/node_modules/jsdom/README.md` | 103 | audit_append_call | `dom.window.eval('document.getElementById("content").append(document.createElement("p"));');` |
+| `app/frontend/node_modules/.pnpm/magic-string@0.30.21/node_modules/magic-string/README.md` | 52 | audit_append_call | `s.prepend('var ').append(';'); // most methods are chainable` |
+| `app/frontend/node_modules/.pnpm/magic-string@0.30.21/node_modules/magic-string/README.md` | 101 | audit_append_call | `### s.append( content )` |
+| `app/frontend/node_modules/.pnpm/magic-string@0.30.21/node_modules/magic-string/README.md` | 296 | audit_append_call | `.append('}());');` |
+| `app/frontend/node_modules/.pnpm/postcss-selector-parser@6.1.2/node_modules/postcss-selector-parser/API.md` | 520 | audit_append_call | `### `container.prepend(node)` & `container.append(node)`` |
+| `app/frontend/node_modules/.pnpm/postcss-selector-parser@6.1.2/node_modules/postcss-selector-parser/API.md` | 527 | audit_append_call | `selector.append(id);` |
 | `app/models/__init__.py` | 325 | audit_events_table | `__tablename__ = "audit_events"` |
 | `app/models/__init__.py` | 755 | audit_log_identifier | `class AuditLog(Base):` |
 | `app/models/__init__.py` | 756 | audit_logs_table | `__tablename__ = "audit_logs"` |
@@ -1546,7 +1565,9 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `app/services/irt_quality_service.py` | 446 | audit_append_call | `observations.append(` |
 | `app/services/job_dependency_factory.py` | 56 | audit_repository | `audit_repo_cls = _import_symbol("app.repositories.audit_repository.AuditRepository") or _import_symbol("app.repositories.repositories.AuditRepository")` |
 | `app/services/jwt_keyring.py` | 167 | audit_append_call | `keys.append(JWTKey(kid=kid, secret=secret, algorithm=algorithm, status=status))` |
-| `app/services/learner_service.py` | 76 | audit_record_call | `await audit.record(` |
+| `app/services/learner_service.py` | 116 | audit_append_call | `groups[row.caps_ref.split('.')[1] if '.' in row.caps_ref else 'unknown'].append(row)` |
+| `app/services/learner_service.py` | 120 | audit_append_call | `summaries.append({"subject_code": key, "topic_count": len(values), "average_mastery": round(avg, 4)})` |
+| `app/services/learner_service.py` | 151 | audit_record_call | `await audit.record(` |
 | `app/services/lesson_authorization.py` | 185 | audit_append_call | `found.append(item)` |
 | `app/services/lesson_authorization.py` | 198 | audit_append_call | `found.append(item)` |
 | `app/services/lesson_context_builder.py` | 216 | audit_append_call | `parts.append(f"({subtopic})")` |
@@ -3823,25 +3844,6 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/maintenance/generate_ci_authority_inventory.py` | 160 | audit_append_call | `md_lines.append(f"\| `{w_name}` \| {w_info.get('name', 'N/A')} \| {w_info.get('job_count', 0)} \| `{w_info.get('replacement_target', 'Canonical Graph')}` \|")` |
 | `scripts/maintenance/generate_release_sboms.py` | 30 | audit_append_call | `backend_components.append({` |
 | `scripts/maintenance/generate_release_sboms.py` | 62 | audit_append_call | `frontend_components.append({` |
-| `scripts/maintenance/verify_codemaps.py` | 98 | audit_append_call | `errors.append(f"missing required codemap artifact: {required}")` |
-| `scripts/maintenance/verify_codemaps.py` | 103 | audit_append_call | `errors.append(f"missing canonical codemap: {name}")` |
-| `scripts/maintenance/verify_codemaps.py` | 108 | audit_append_call | `errors.append(f"{name}: no traces")` |
-| `scripts/maintenance/verify_codemaps.py` | 111 | audit_append_call | `errors.append(f"{name}: missing required token {token}")` |
-| `scripts/maintenance/verify_codemaps.py` | 113 | audit_append_call | `errors.append(f"{name}: contains absolute source path")` |
-| `scripts/maintenance/verify_codemaps.py` | 116 | audit_append_call | `errors.append(f"{name}: no parsable Path:LineNumber references")` |
-| `scripts/maintenance/verify_codemaps.py` | 120 | audit_append_call | `errors.append(f"{name}: absolute reference {relative}")` |
-| `scripts/maintenance/verify_codemaps.py` | 124 | audit_append_call | `errors.append(f"{name}: missing source reference {relative}")` |
-| `scripts/maintenance/verify_codemaps.py` | 129 | audit_append_call | `errors.append(f"{name}: line {line_no} outside {relative} (1..{max(total,1)})")` |
-| `scripts/maintenance/verify_codemaps.py` | 135 | audit_append_call | `errors.append(f"duplicate primary assignments: {duplicate_paths[:20]}")` |
-| `scripts/maintenance/verify_codemaps.py` | 141 | audit_append_call | `errors.append("manifest assignment with empty path")` |
-| `scripts/maintenance/verify_codemaps.py` | 144 | audit_append_call | `errors.append(f"{relative}: unknown owner {owner}")` |
-| `scripts/maintenance/verify_codemaps.py` | 147 | audit_append_call | `errors.append(f"manifest path missing: {relative}")` |
-| `scripts/maintenance/verify_codemaps.py` | 155 | audit_append_call | `errors.append(f"unassigned maintained files ({len(missing_assignments)}): {missing_assignments[:30]}")` |
-| `scripts/maintenance/verify_codemaps.py` | 157 | audit_append_call | `errors.append(f"stale manifest paths ({len(stale_assignments)}): {stale_assignments[:30]}")` |
-| `scripts/maintenance/verify_codemaps.py` | 161 | audit_append_call | `errors.append("manifest summary does not declare zero unassigned files")` |
-| `scripts/maintenance/verify_codemaps.py` | 163 | audit_append_call | `errors.append("manifest summary does not declare zero duplicate primary assignments")` |
-| `scripts/maintenance/verify_codemaps.py` | 165 | audit_append_call | `errors.append("manifest inventoried_files does not match assignment count")` |
-| `scripts/maintenance/verify_codemaps.py` | 170 | audit_append_call | `errors.append(` |
 | `scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py` | 144 | audit_append_call | `errors.append(f"missing RR-013 authority file: {rel}")` |
 | `scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py` | 150 | audit_append_call | `errors.append(f"missing existing mastery-model evidence anchor: {rel}")` |
 | `scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py` | 154 | audit_append_call | `errors.append(f"RR-013 manifest JSON invalid: {manifest['__json_error__']}")` |
@@ -5562,8 +5564,13 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/transaction_boundary_inventory.py` | 199 | audit_append_call | `lines.append(` |
 | `scripts/transaction_rollback_rollup.py` | 73 | audit_append_call | `proofs.append(` |
 | `scripts/transaction_rollback_rollup.py` | 116 | audit_append_call | `lines.append(` |
+| `scripts/true_state_remediation/bundles/bundle_04.py` | 43 | audit_append_call | `errors.append({"step": "ast_isolation", "details": ast_check.stdout.strip()})` |
+| `scripts/true_state_remediation/bundles/bundle_04.py` | 50 | audit_append_call | `errors.append({"step": "import_linter", "details": linter_check.stdout.strip()})` |
+| `scripts/true_state_remediation/bundles/bundle_04.py` | 69 | audit_append_call | `unauthorized_mutations.append(file_path)` |
 | `scripts/true_state_remediation/capture_baseline.py` | 16 | audit_append_call | `if r: revisions.append(r.group(1))` |
 | `scripts/true_state_remediation/capture_baseline.py` | 17 | audit_append_call | `if d: parents.append(d.group(1))` |
+| `scripts/true_state_remediation/check_router_repo_isolation.py` | 28 | audit_append_call | `violations.append(f"{path.name}: L{node.lineno} imports {alias.name}")` |
+| `scripts/true_state_remediation/check_router_repo_isolation.py` | 31 | audit_append_call | `violations.append(f"{path.name}: L{node.lineno} imports from {node.module}")` |
 | `scripts/true_state_remediation/core.py` | 191 | audit_append_call | `results.append(result)` |
 | `scripts/true_state_remediation/core.py` | 217 | audit_append_call | `inspected.append(str(path.relative_to(root)))` |
 | `scripts/true_state_remediation/core.py` | 220 | audit_append_call | `containers.append(data["authority_boundaries"])` |
@@ -5867,11 +5874,14 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `tests/integration/conftest.py` | 68 | audit_append_call | `self._queue.append(("incr", (key,)))` |
 | `tests/integration/conftest.py` | 79 | audit_append_call | `self._queue.append(("expire", (key, seconds)))` |
 | `tests/integration/test_assessment_production_path.py` | 32 | audit_append_call | `self.submit_calls.append(` |
-| `tests/integration/test_audit_immutability.py` | 12 | audit_events_table | `Verify that audit_events cannot be updated or deleted due to DB rules.` |
-| `tests/integration/test_audit_immutability.py` | 34 | audit_events_table | `"UPDATE audit_events SET payload = '{\"key\": \"tampered\"}' "` |
-| `tests/integration/test_audit_immutability.py` | 43 | audit_events_table | `text("SELECT payload FROM audit_events WHERE id = :id"),` |
-| `tests/integration/test_audit_immutability.py` | 55 | audit_events_table | `text("DELETE FROM audit_events WHERE id = :id"),` |
-| `tests/integration/test_audit_immutability.py` | 62 | audit_events_table | `text("SELECT COUNT(*) FROM audit_events WHERE id = :id"),` |
+| `tests/integration/test_audit_immutability.py` | 4 | audit_events_table | `1. INSERT into `audit_events` succeeds.` |
+| `tests/integration/test_audit_immutability.py` | 5 | audit_events_table | `2. UPDATE against `audit_events` fails closed (PostgreSQL trigger/rule blocks modification).` |
+| `tests/integration/test_audit_immutability.py` | 6 | audit_events_table | `3. DELETE against `audit_events` fails closed (PostgreSQL trigger/rule blocks modification).` |
+| `tests/integration/test_audit_immutability.py` | 30 | audit_events_table | `"""Verify that audit_events rejects UPDATE and DELETE operations."""` |
+| `tests/integration/test_audit_immutability.py` | 43 | audit_events_table | `INSERT INTO audit_events (id, event_type, actor_id, resource_id, payload, event_hash, hmac_signature, created_at)` |
+| `tests/integration/test_audit_immutability.py` | 62 | audit_events_table | `select_stmt = text("SELECT id, event_type FROM audit_events WHERE id = :id")` |
+| `tests/integration/test_audit_immutability.py` | 70 | audit_events_table | `UPDATE audit_events` |
+| `tests/integration/test_audit_immutability.py` | 89 | audit_events_table | `delete_stmt = text("DELETE FROM audit_events WHERE id = :id")` |
 | `tests/integration/test_auth_lifecycle_http_success_scope.py` | 174 | audit_append_call | `routes.append((combined, route))` |
 | `tests/integration/test_auth_lifecycle_http_success_scope.py` | 204 | audit_append_call | `self.calls.append(("register", kwargs))` |
 | `tests/integration/test_auth_lifecycle_http_success_scope.py` | 212 | audit_append_call | `self.calls.append(("login", kwargs))` |

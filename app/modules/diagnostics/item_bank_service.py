@@ -10,7 +10,7 @@ from __future__ import annotations
 import math
 import uuid
 from datetime import UTC, datetime
-from typing import Sequence, Optional
+from typing import Any, Optional, Sequence
 
 from app.domain.content_coverage import ContentLayer
 from app.models.diagnostic_item import DiagnosticItem
@@ -83,6 +83,19 @@ class ItemBankService:
         self._repo = repo
         self.coverage_targets = coverage_targets or ContentScopeRegistry()
         self.scope_id = scope_id
+
+    @classmethod
+    def from_session(
+        cls,
+        session: Any,
+        coverage_targets: ContentScopeRegistry | None = None,
+        scope_id: str = DEFAULT_CONTENT_SCOPE_ID,
+    ) -> ItemBankService:
+        return cls(
+            repo=ItemBankRepository(session),
+            coverage_targets=coverage_targets,
+            scope_id=scope_id,
+        )
 
     # ─── Public API ──────────────────────────────────────────────────────────
 
