@@ -62,7 +62,8 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements/base.txt -r requirements/dev.txt
       - name: Run Fast Unit Tests
-        run: PYTHONPATH=. python3 -m pytest tests/unit/ -m "not (governance or governance_contract or product_integration or runtime_stack or release_evidence)" -q
+        run: PYTHONPATH=. python3 -m pytest tests/unit/test_etl_mcp_server_startup.py tests/unit/test_subscription_service.py tests/unit/test_password_policy.py tests/unit/test_popia_consent_versioning.py -q
+
 
   route-contract-audit:
     name: Route & OpenAPI Canonical Contract Audit

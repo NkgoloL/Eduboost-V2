@@ -844,7 +844,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Inventory all 86 workflows",
-      "updated_at": "2026-08-27T12:12:33.999525+00:00"
+      "updated_at": "2026-08-27T16:14:53.049051+00:00"
     },
     {
       "acceptance_criteria": "Every branch-protection check maps to one canonical job and command; duplicate names are prohibited.",
@@ -860,7 +860,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Define required-check authority",
-      "updated_at": "2026-08-27T12:12:33.999558+00:00"
+      "updated_at": "2026-08-27T16:14:53.049084+00:00"
     },
     {
       "acceptance_criteria": "Required PR and release signals are complete; redundant workflows are disabled and moved outside `.github/workflows`.",
@@ -876,7 +876,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Implement the six-workflow target graph",
-      "updated_at": "2026-08-27T12:12:33.999565+00:00"
+      "updated_at": "2026-08-27T16:14:53.049090+00:00"
     },
     {
       "acceptance_criteria": "mypy, security, dependency, secret, migration, and generated-contract gates fail closed where designated.",
@@ -892,7 +892,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Remove release-critical `continue-on-error`",
-      "updated_at": "2026-08-27T12:12:33.999569+00:00"
+      "updated_at": "2026-08-27T16:14:53.049095+00:00"
     },
     {
       "acceptance_criteria": "setup-python, Node, Postgres/pgvector, Redis, pnpm, and action major versions are consistent.",
@@ -908,7 +908,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Standardize tool/action/service versions",
-      "updated_at": "2026-08-27T12:12:33.999574+00:00"
+      "updated_at": "2026-08-27T16:14:53.049099+00:00"
     },
     {
       "acceptance_criteria": "Canonical branch naming is used; historical `main`, `develop`, and obsolete release-branch triggers are removed or justified.",
@@ -924,7 +924,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Standardize branch triggers",
-      "updated_at": "2026-08-27T12:12:33.999578+00:00"
+      "updated_at": "2026-08-27T16:14:53.049103+00:00"
     },
     {
       "acceptance_criteria": "Local and CI execution invoke the same command implementations, not divergent inline shell logic.",
@@ -940,7 +940,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Centralize commands in repository scripts/Make targets",
-      "updated_at": "2026-08-27T12:12:33.999582+00:00"
+      "updated_at": "2026-08-27T16:14:53.049107+00:00"
     },
     {
       "acceptance_criteria": "Product failures are visible in fast feedback; governance tests remain strict but separately reported.",
@@ -956,7 +956,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Separate ordinary product checks from governance/evidence checks",
-      "updated_at": "2026-08-27T12:12:33.999586+00:00"
+      "updated_at": "2026-08-27T16:14:53.049111+00:00"
     },
     {
       "acceptance_criteria": "Stale runs cancel safely; caches are keyed to lockfiles; raw evidence retention and sensitivity are defined.",
@@ -972,7 +972,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Add concurrency, cache, and artifact-retention policy",
-      "updated_at": "2026-08-27T12:12:33.999590+00:00"
+      "updated_at": "2026-08-27T16:14:53.049115+00:00"
     },
     {
       "acceptance_criteria": "Required check list exactly matches canonical jobs; direct pushes and stale approvals are governed.",
@@ -988,7 +988,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Reconcile branch protection",
-      "updated_at": "2026-08-27T12:12:33.999594+00:00"
+      "updated_at": "2026-08-27T16:14:53.049119+00:00"
     },
     {
       "acceptance_criteria": "Historical workflow source remains retrievable but cannot execute accidentally.",
@@ -1004,7 +1004,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Archive superseded workflows",
-      "updated_at": "2026-08-27T12:12:33.999599+00:00"
+      "updated_at": "2026-08-27T16:14:53.049123+00:00"
     },
     {
       "acceptance_criteria": "A clean merge commit runs all required checks successfully; evidence includes run IDs, commit SHA, and artifact hashes.",
@@ -1020,7 +1020,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Prove post-merge authority from exact source",
-      "updated_at": "2026-08-27T12:12:33.999604+00:00"
+      "updated_at": "2026-08-27T16:14:53.049128+00:00"
     },
     {
       "acceptance_criteria": "Median duration, failure categories, flake rate, queue time, and monthly compute use are monitored.",
@@ -1036,7 +1036,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Track CI health and cost",
-      "updated_at": "2026-08-27T12:12:33.999608+00:00"
+      "updated_at": "2026-08-27T16:14:53.049131+00:00"
     },
     {
       "acceptance_criteria": "Tests are classified as product-unit, product-integration, runtime-stack, architecture-static, governance-contract, or release-evidence.",
@@ -1052,7 +1052,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Enforce test taxonomy",
-      "updated_at": "2026-08-27T12:12:33.999612+00:00"
+      "updated_at": "2026-08-27T16:14:53.049135+00:00"
     },
     {
       "acceptance_criteria": "The same test set runs locally and in PR CI; no hidden environment-based inclusion.",
@@ -1068,7 +1068,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Make fast PR test selection deterministic",
-      "updated_at": "2026-08-27T12:12:33.999616+00:00"
+      "updated_at": "2026-08-27T16:14:53.049138+00:00"
     },
     {
       "acceptance_criteria": "Product pass/failure counts and governance pass/failure counts are independently visible.",
@@ -1084,7 +1084,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Separate governance tests from product unit counts",
-      "updated_at": "2026-08-27T12:12:33.999619+00:00"
+      "updated_at": "2026-08-27T16:14:53.049142+00:00"
     },
     {
       "acceptance_criteria": "Optional integrations are forced explicitly in unit tests; real backends have dedicated integration tests.",
@@ -1100,7 +1100,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Eliminate environment-sensitive backend selection",
-      "updated_at": "2026-08-27T12:12:33.999623+00:00"
+      "updated_at": "2026-08-27T16:14:53.049146+00:00"
     },
     {
       "acceptance_criteria": "Retries cannot conceal first-attempt failures; quarantines have owners, expiry, and reproduction evidence.",
@@ -1116,7 +1116,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Establish flake policy",
-      "updated_at": "2026-08-27T12:12:33.999627+00:00"
+      "updated_at": "2026-08-27T16:14:53.049149+00:00"
     },
     {
       "acceptance_criteria": "Database, auth, learner, guardian, consent, curriculum, and provider fixtures are reusable and deterministic.",
@@ -1132,7 +1132,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Standardize factories and fixtures",
-      "updated_at": "2026-08-27T12:12:33.999631+00:00"
+      "updated_at": "2026-08-27T16:14:53.049152+00:00"
     },
     {
       "acceptance_criteria": "Global threshold is supplemented by stricter targets for authorization, privacy, payments, migration, and learner-state calculations.",
@@ -1148,7 +1148,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Add risk-based coverage thresholds",
-      "updated_at": "2026-08-27T12:12:33.999636+00:00"
+      "updated_at": "2026-08-27T16:14:53.049157+00:00"
     },
     {
       "acceptance_criteria": "Critical authorization/consent/mastery branches demonstrate that tests fail when behavior is altered.",
@@ -1164,7 +1164,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Introduce mutation testing on high-risk modules",
-      "updated_at": "2026-08-27T12:12:33.999640+00:00"
+      "updated_at": "2026-08-27T16:14:53.049162+00:00"
     },
     {
       "acceptance_criteria": "Every shard has a budget; terminal timeout leaves are classified and cannot be ignored.",
@@ -1180,7 +1180,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Bound slow and hanging tests",
-      "updated_at": "2026-08-27T12:12:33.999644+00:00"
+      "updated_at": "2026-08-27T16:14:53.049166+00:00"
     },
     {
       "acceptance_criteria": "Full collection and selected suites pass from an empty cache/container, eliminating audit-host ambiguity.",
@@ -1196,7 +1196,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Validate tests from a disposable dependency-complete environment",
-      "updated_at": "2026-08-27T12:12:33.999648+00:00"
+      "updated_at": "2026-08-27T16:14:53.049170+00:00"
     },
     {
       "acceptance_criteria": "Repeated text-presence tests are replaced by generated schemas and a small number of semantic verifiers.",
@@ -1212,7 +1212,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Reduce duplicated governance test logic",
-      "updated_at": "2026-08-27T12:12:33.999652+00:00"
+      "updated_at": "2026-08-27T16:14:53.049174+00:00"
     },
     {
       "acceptance_criteria": "Collection time, run duration, flake rate, skip/xfail age, coverage by domain, and failure recurrence are tracked.",
@@ -1228,7 +1228,7 @@
       "status": "verified",
       "target_gate": "RG-2",
       "title": "Publish test-suite health metrics",
-      "updated_at": "2026-08-27T12:12:33.999656+00:00"
+      "updated_at": "2026-08-27T16:14:53.049177+00:00"
     },
     {
       "acceptance_criteria": "Every import-linter exception, oversized module, legacy alias, duplicate implementation, broad exception hotspot, TODO, `pass`, and coverage exclusion has an owner and retirement target.",
@@ -2583,5 +2583,5 @@
       "title": "Lift feature freeze only after RG-6"
     }
   ],
-  "updated_at": "2026-08-27T12:12:34.003774+00:00"
+  "updated_at": "2026-08-27T16:14:53.053780+00:00"
 }

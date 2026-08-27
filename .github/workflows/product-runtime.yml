@@ -58,7 +58,7 @@ jobs:
         env:
           DATABASE_URL: postgresql://eduboost_test:test_password@localhost:5432/eduboost_test_db
           REDIS_URL: redis://localhost:6379/0
-        run: PYTHONPATH=. python3 -m pytest tests/integration/ -m "product_integration or runtime_stack" -q
+        run: PYTHONPATH=. python3 -m pytest tests/integration/ -q
 
   migration-dryrun:
     name: Alembic Migration Reversibility & Clean Down
@@ -87,9 +87,10 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r requirements/base.txt -r requirements/dev.txt
-      - name: Test Migration Lineage & Dry Run
+      - name: Test Migration Lineage & Reversibility Dry Run
         env:
           DATABASE_URL: postgresql://eduboost_test:test_password@localhost:5432/eduboost_test_db
         run: |
           python3 -m alembic upgrade head
-          python3 -m alembic check
+          python3 -m alembic downgrade -1
+          python3 -m alembic upgrade head

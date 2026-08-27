@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-27T02:18:55Z",
-  "current_commit": "88840fc52a05c694c6d313e57bc8cba4bcda4c63",
-  "current_branch": "feature/atlas-phase-02r-gate-2r1-remediation",
+  "generated_at": "2026-08-27T16:14:11Z",
+  "current_commit": "f9f438cd98c77483dc75f1233ecd34ff9d209f3c",
+  "current_branch": "codex/tsr-b03-caps-mathematics-truth",
   "status": "audit-baseline-refresh-current",
   "beta_decision": "NO-GO",
   "beta_blocker_count": 10,
@@ -9,7 +9,7 @@
     {
       "command": "make final-gate-refresh",
       "return_code": 0,
-      "output_excerpt": "make[1]: Entering directory '/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1'\nPYTHONPATH=. python3 -c \"from scripts.final_gate_refresh import write_refresh; r = write_refresh(); print(r.beta_decision)\"\nNO-GO\nmake[1]: Leaving directory '/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1'\n"
+      "output_excerpt": "Makefile:3492: warning: overriding recipe for target 'test-governance'\nMakefile:98: warning: ignoring old recipe for target 'test-governance'\nPYTHONPATH=. python3 -c \"from scripts.final_gate_refresh import write_refresh; r = write_refresh(); print(r.beta_decision)\"\nNO-GO\n"
     },
     {
       "command": "write release_go_no_go_status from final_beta_gate_refresh",
@@ -19,7 +19,7 @@
     {
       "command": "python3 scripts/docs_inventory.py --write",
       "return_code": 0,
-      "output_excerpt": "Wrote docs/docs_inventory.json\nWrote docs/docs_inventory.md\nWrote docs/docs_gap_report.md\nWrote docs/docs_generation_plan.md\nDocuments: 1688\n"
+      "output_excerpt": "Wrote docs/docs_inventory.json\nWrote docs/docs_inventory.md\nWrote docs/docs_gap_report.md\nWrote docs/docs_generation_plan.md\nDocuments: 2929\n"
     }
   ],
   "surfaces": [
@@ -29,7 +29,7 @@
       "exists": true,
       "status": "NO-GO",
       "decision": "NO-GO",
-      "commit": "88840fc52a05c694c6d313e57bc8cba4bcda4c63",
+      "commit": "f9f438cd98c77483dc75f1233ecd34ff9d209f3c",
       "stale": false
     },
     {
@@ -38,7 +38,7 @@
       "exists": true,
       "status": "NO-GO",
       "decision": "NO-GO",
-      "commit": "88840fc52a05c694c6d313e57bc8cba4bcda4c63",
+      "commit": "f9f438cd98c77483dc75f1233ecd34ff9d209f3c",
       "stale": false
     },
     {
@@ -56,7 +56,7 @@
       "exists": true,
       "status": "external-blocked",
       "decision": "",
-      "commit": "b33e49720860a084e7a7c42ead1b620cb859e64f",
+      "commit": "66323711cba9ebc39919f32491c707aeb92e5e58",
       "stale": true
     },
     {
@@ -65,8 +65,8 @@
       "exists": true,
       "status": "external-blocked",
       "decision": "",
-      "commit": "88840fc52a05c694c6d313e57bc8cba4bcda4c63",
-      "stale": false
+      "commit": "66323711cba9ebc39919f32491c707aeb92e5e58",
+      "stale": true
     },
     {
       "name": "approval_evidence",
@@ -74,7 +74,7 @@
       "exists": true,
       "status": "external-blocked",
       "decision": "",
-      "commit": "b33e49720860a084e7a7c42ead1b620cb859e64f",
+      "commit": "bf2941f2e463570c8f64484edb6ec7bfa70f2ffb",
       "stale": true
     },
     {
@@ -101,7 +101,7 @@
       "exists": true,
       "status": "auth-refresh-db-evidence-accepted",
       "decision": "",
-      "commit": "b33e49720860a084e7a7c42ead1b620cb859e64f",
+      "commit": "66323711cba9ebc39919f32491c707aeb92e5e58",
       "stale": true
     },
     {
@@ -110,7 +110,7 @@
       "exists": true,
       "status": "popia-response-contract-no-skip-passing",
       "decision": "",
-      "commit": "525c272bb294365a86c6dcee10211cb11604cc43",
+      "commit": "88840fc52a05c694c6d313e57bc8cba4bcda4c63",
       "stale": true
     },
     {
@@ -137,7 +137,7 @@
       "exists": true,
       "status": "",
       "decision": "",
-      "commit": "b33e49720860a084e7a7c42ead1b620cb859e64f",
+      "commit": "66323711cba9ebc39919f32491c707aeb92e5e58",
       "stale": true
     },
     {
@@ -146,7 +146,7 @@
       "exists": true,
       "status": "",
       "decision": "",
-      "commit": "88840fc52a05c694c6d313e57bc8cba4bcda4c63",
+      "commit": "f9f438cd98c77483dc75f1233ecd34ff9d209f3c",
       "stale": false
     }
   ],
