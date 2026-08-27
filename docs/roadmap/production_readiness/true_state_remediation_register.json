@@ -52,7 +52,7 @@
         "TSR-8",
         "TSR-9"
       ],
-      "status": "authorised",
+      "status": "verified",
       "title": "Security Privacy and Educational Validity"
     },
     {
@@ -61,7 +61,7 @@
         "TSR-10",
         "TSR-11"
       ],
-      "status": "identified",
+      "status": "authorised",
       "title": "API Rationalisation and Operations"
     },
     {
@@ -1715,403 +1715,496 @@
       "bundle_id": "B05",
       "deliverable": "Policy engine and route migration",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-8.1",
       "owner_role": "engineering",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3",
-      "title": "Make one authorization engine authoritative"
+      "title": "Make one authorization engine authoritative",
+      "updated_at": "2026-08-26T19:33:08.232203+00:00"
     },
     {
       "acceptance_criteria": "Every role/object/action combination has allow/deny expectations, including negative and revoked-consent paths.",
       "bundle_id": "B05",
       "deliverable": "Machine-readable matrix and tests",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-8.2",
       "owner_role": "privacy",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3",
-      "title": "Complete learner/guardian/teacher/admin policy matrix"
+      "title": "Complete learner/guardian/teacher/admin policy matrix",
+      "updated_at": "2026-08-26T19:33:08.232230+00:00"
     },
     {
       "acceptance_criteria": "Password, MFA where applicable, refresh rotation, revocation, session expiry, account recovery, rate limits, and device/logout paths are tested.",
       "bundle_id": "B05",
       "deliverable": "Security test evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-8.3",
       "owner_role": "security",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3",
-      "title": "Validate authentication lifecycle"
+      "title": "Validate authentication lifecycle",
+      "updated_at": "2026-08-26T19:33:08.232233+00:00"
     },
     {
       "acceptance_criteria": "Production starts only with approved secret sources; rotation and rollback are rehearsed; no secret appears in logs/artifacts.",
       "bundle_id": "B05",
       "deliverable": "Key Vault/secret evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-8.4",
       "owner_role": "security",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3",
-      "title": "Prove secret management and rotation"
+      "title": "Prove secret management and rotation",
+      "updated_at": "2026-08-26T19:33:08.232235+00:00"
     },
     {
       "acceptance_criteria": "A subject export includes all legally required primary and derived data with provenance and readable format.",
       "bundle_id": "B05",
       "deliverable": "Export evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-8.5",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3",
-      "title": "Perform live-schema export completeness test"
+      "title": "Perform live-schema export completeness test",
+      "updated_at": "2026-08-26T19:33:08.232236+00:00"
     },
     {
       "acceptance_criteria": "Primary, derived, cache, object, analytics, search, KG, and generated-data paths are erased or legally retained with explicit reason.",
       "bundle_id": "B05",
       "deliverable": "Erasure evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-8.6",
       "owner_role": "privacy",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3",
-      "title": "Perform full erasure cascade test"
+      "title": "Perform full erasure cascade test",
+      "updated_at": "2026-08-26T19:33:08.232238+00:00"
     },
     {
       "acceptance_criteria": "Backup retention, restore-time re-erasure, encryption-key retirement, and audit evidence are defined and tested.",
       "bundle_id": "B05",
       "deliverable": "Legal/technical policy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-8.7",
       "owner_role": "privacy",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3",
-      "title": "Define backup-erasure treatment"
+      "title": "Define backup-erasure treatment",
+      "updated_at": "2026-08-26T19:33:08.232240+00:00"
     },
     {
       "acceptance_criteria": "Expired data is removed/anonymized on schedule; dry-run and production-safe modes are auditable.",
       "bundle_id": "B05",
       "deliverable": "Retention jobs and tests",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-8.8",
       "owner_role": "privacy",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3",
-      "title": "Enforce retention automatically"
+      "title": "Enforce retention automatically",
+      "updated_at": "2026-08-26T19:33:08.232241+00:00"
     },
     {
       "acceptance_criteria": "Guardian authority, consent version, withdrawal, age/learner linkage, and disputed-access paths are enforced.",
       "bundle_id": "B05",
       "deliverable": "Verification flow and tests",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-8.9",
       "owner_role": "privacy",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3",
-      "title": "Strengthen guardian verification and minor-data handling"
+      "title": "Strengthen guardian verification and minor-data handling",
+      "updated_at": "2026-08-26T19:33:08.232243+00:00"
     },
     {
       "acceptance_criteria": "Every external provider has purpose, data categories, location, contract/DPA status, retention, and exit process.",
       "bundle_id": "B05",
       "deliverable": "Register and agreements",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-8.10",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3",
-      "title": "Complete processor/subprocessor governance"
+      "title": "Complete processor/subprocessor governance",
+      "updated_at": "2026-08-26T19:33:08.232244+00:00"
     },
     {
       "acceptance_criteria": "Auth, parent portal, tutor/LLM, content generation, content promotion, billing/webhooks, exports, erasure, KG, and admin operations are covered.",
       "bundle_id": "B05",
       "deliverable": "Threat models",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-8.11",
       "owner_role": "security",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3",
-      "title": "Run threat modelling for high-risk surfaces"
+      "title": "Run threat modelling for high-risk surfaces",
+      "updated_at": "2026-08-26T19:33:08.232246+00:00"
     },
     {
       "acceptance_criteria": "Security/privacy incident classification, containment, evidence preservation, notification decision, and communication are rehearsed.",
       "bundle_id": "B05",
       "deliverable": "Tabletop evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-8.12",
       "owner_role": "operations",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3",
-      "title": "Prove incident response and notification"
+      "title": "Prove incident response and notification",
+      "updated_at": "2026-08-26T19:33:08.232248+00:00"
     },
     {
       "acceptance_criteria": "Production admin, database, cloud, evidence, and release permissions are least-privilege and periodically reviewed.",
       "bundle_id": "B05",
       "deliverable": "Access review record",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-8.13",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3",
-      "title": "Establish access review and separation of duties"
+      "title": "Establish access review and separation of duties",
+      "updated_at": "2026-08-26T19:33:08.232249+00:00"
     },
     {
       "acceptance_criteria": "Penetration testing/code review covers public attack surface and high-risk workflows; critical/high findings are closed before public production.",
       "bundle_id": "B05",
       "deliverable": "External report and remediation",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-8.14",
       "owner_role": "security",
       "priority": "P0",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3",
-      "title": "Commission independent security review"
+      "title": "Commission independent security review",
+      "updated_at": "2026-08-26T19:33:08.232251+00:00"
     },
     {
       "acceptance_criteria": "Release images are vulnerability-scanned, signed, linked to SBOMs, and traceable to source.",
       "bundle_id": "B05",
       "deliverable": "Signed artifacts/provenance",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-8.15",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3",
-      "title": "Add supply-chain and artifact integrity controls"
+      "title": "Add supply-chain and artifact integrity controls",
+      "updated_at": "2026-08-26T19:33:08.232253+00:00"
     },
     {
       "acceptance_criteria": "Prompt injection, data leakage, unsafe content, hallucinated curriculum claims, provider failure, and cost-abuse controls are tested.",
       "bundle_id": "B05",
       "deliverable": "Safety evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-8.16",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3",
-      "title": "Validate LLM/content safety boundaries"
+      "title": "Validate LLM/content safety boundaries",
+      "updated_at": "2026-08-26T19:33:08.232255+00:00"
     },
     {
       "acceptance_criteria": "Severity-based remediation targets, emergency patching, exception expiry, and disclosure channels are operational.",
       "bundle_id": "B05",
       "deliverable": "Operating policy",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-8.17",
       "owner_role": "security",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3",
-      "title": "Establish vulnerability-management SLA"
+      "title": "Establish vulnerability-management SLA",
+      "updated_at": "2026-08-26T19:33:08.232256+00:00"
     },
     {
       "acceptance_criteria": "`authoritative`, `inferred`, `tentative`, `stale`, and `superseded` mastery/evidence states are explicit.",
       "bundle_id": "B05",
       "deliverable": "API/domain model",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-9.1",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3C",
-      "title": "Define learner-state semantics"
+      "title": "Define learner-state semantics",
+      "updated_at": "2026-08-26T19:33:08.232258+00:00"
     },
     {
       "acceptance_criteria": "Every learner-state result records algorithm version, graph version, evidence window, confidence, and provenance.",
       "bundle_id": "B05",
       "deliverable": "Model/version registry",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-9.2",
       "owner_role": "curriculum",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3C",
-      "title": "Version the mastery algorithm"
+      "title": "Version the mastery algorithm",
+      "updated_at": "2026-08-26T19:33:08.232259+00:00"
     },
     {
       "acceptance_criteria": "Learner states can be mapped, recomputed, invalidated, or preserved across curriculum graph revisions with audit history.",
       "bundle_id": "B05",
       "deliverable": "Migration service and tests",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-9.3",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3C",
-      "title": "Define graph-revision migration policy"
+      "title": "Define graph-revision migration policy",
+      "updated_at": "2026-08-26T19:33:08.232262+00:00"
     },
     {
       "acceptance_criteria": "Coverage, correctness, reviewer agreement, unresolved ambiguity, and source provenance meet approved thresholds.",
       "bundle_id": "B05",
       "deliverable": "Reviewed sample and metrics",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-9.4",
       "owner_role": "curriculum",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3C",
-      "title": "Validate CAPS node/edge/source mapping quality"
+      "title": "Validate CAPS node/edge/source mapping quality",
+      "updated_at": "2026-08-26T19:33:08.232263+00:00"
     },
     {
       "acceptance_criteria": "Prerequisite edges and assessment/grade-critical nodes require independent curriculum review.",
       "bundle_id": "B05",
       "deliverable": "Review workflow",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-9.5",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3C",
-      "title": "Introduce double review for high-impact mappings"
+      "title": "Introduce double review for high-impact mappings",
+      "updated_at": "2026-08-26T19:33:08.232265+00:00"
     },
     {
       "acceptance_criteria": "Correlation, bias, calibration, false-gap, and false-mastery rates are measured on consented data.",
       "bundle_id": "B05",
       "deliverable": "Validation study",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-9.6",
       "owner_role": "curriculum",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3C",
-      "title": "Calibrate mastery against diagnostics/IRT and teacher judgment"
+      "title": "Calibrate mastery against diagnostics/IRT and teacher judgment",
+      "updated_at": "2026-08-26T19:33:08.232267+00:00"
     },
     {
       "acceptance_criteria": "The current formula is validated for limited use, improved, or explicitly treated as tentative; unsupported precision claims are prohibited.",
       "bundle_id": "B05",
       "deliverable": "Model decision",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-9.7",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3C",
-      "title": "Replace or bound the simple correctness\u00d7confidence model"
+      "title": "Replace or bound the simple correctness\u00d7confidence model",
+      "updated_at": "2026-08-26T19:33:08.232268+00:00"
     },
     {
       "acceptance_criteria": "Mastery movement, retention, intervention effectiveness, and subgroup fairness are measured over time.",
       "bundle_id": "B05",
       "deliverable": "Controlled study",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-9.8",
       "owner_role": "curriculum",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3C",
-      "title": "Validate longitudinal learning impact"
+      "title": "Validate longitudinal learning impact",
+      "updated_at": "2026-08-26T19:33:08.232270+00:00"
     },
     {
       "acceptance_criteria": "Representative graph/data volumes meet latency, throughput, event-growth, and cost budgets.",
       "bundle_id": "B05",
       "deliverable": "Performance evidence",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-9.9",
       "owner_role": "evidence",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3C",
-      "title": "Load-test graph traversal and projection refresh"
+      "title": "Load-test graph traversal and projection refresh",
+      "updated_at": "2026-08-26T19:33:08.232271+00:00"
     },
     {
       "acceptance_criteria": "New graph/model versions can run in shadow, compare outputs, and roll back without corrupting learner state.",
       "bundle_id": "B05",
       "deliverable": "Operational controls",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-9.10",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3C",
-      "title": "Add graph update rollback and shadow mode"
+      "title": "Add graph update rollback and shadow mode",
+      "updated_at": "2026-08-26T19:33:08.232273+00:00"
     },
     {
       "acceptance_criteria": "Tutor, parent, and learner experiences distinguish estimates from verified outcomes and avoid deterministic labeling.",
       "bundle_id": "B05",
       "deliverable": "UX/API contract",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-9.11",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3C",
-      "title": "Expose uncertainty safely to product surfaces"
+      "title": "Expose uncertainty safely to product surfaces",
+      "updated_at": "2026-08-26T19:33:08.232274+00:00"
     },
     {
       "acceptance_criteria": "Performance and intervention recommendations are reviewed across available learner groups without using inappropriate sensitive inference.",
       "bundle_id": "B05",
       "deliverable": "Fairness report",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-9.12",
       "owner_role": "engineering",
       "priority": "P1",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3C",
-      "title": "Validate bias and fairness"
+      "title": "Validate bias and fairness",
+      "updated_at": "2026-08-26T19:33:08.232276+00:00"
     },
     {
       "acceptance_criteria": "Marketing/product claims identify evidence level and cannot describe the KG as mature adaptive intelligence without validation.",
       "bundle_id": "B05",
       "deliverable": "Claim register",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-9.13",
       "owner_role": "curriculum",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3C",
-      "title": "Establish educational-claim governance"
+      "title": "Establish educational-claim governance",
+      "updated_at": "2026-08-26T19:33:08.232278+00:00"
     },
     {
       "acceptance_criteria": "Drift, orphan nodes, version mismatches, low-confidence states, and intervention anomalies are detectable.",
       "bundle_id": "B05",
       "deliverable": "Metrics and alerts",
       "dependencies": [],
-      "evidence": [],
+      "evidence": [
+        "docs/release-evidence/true-state-remediation/b05"
+      ],
       "id": "TSR-9.14",
       "owner_role": "operations",
       "priority": "P2",
-      "status": "identified",
+      "status": "verified",
       "target_gate": "RG-3C",
-      "title": "Create ongoing mapping/model quality monitoring"
+      "title": "Create ongoing mapping/model quality monitoring",
+      "updated_at": "2026-08-26T19:33:08.232279+00:00"
     },
     {
       "acceptance_criteria": "Documentation, OpenAPI, frontend, SDKs, monitoring, and examples use one prefix.",

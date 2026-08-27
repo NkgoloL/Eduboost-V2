@@ -1,0 +1,50 @@
+{
+  "checks": {
+    "boundaries": {
+      "failures": [],
+      "inspected": [
+        "docs/roadmap/production_readiness/production_readiness_register.json",
+        "docs/roadmap/production_readiness/prd11_production_release_register.json",
+        "docs/roadmap/production_readiness/true_state_remediation_register.json"
+      ],
+      "valid": true
+    },
+    "engineering_proofs": {
+      "dsr_service": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/app/services/popia_dsr_service.py",
+      "mastery_engine": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/app/services/mastery_engine.py",
+      "pii_sanitizer": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/app/core/pii_sanitizer.py",
+      "test_dsr": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/tests/integration/test_popia_dsr_automation.py",
+      "test_graph": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/tests/integration/test_curriculum_graph_migration.py",
+      "test_isolation": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/tests/unit/test_security_object_isolation.py",
+      "test_mastery": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/tests/unit/test_mastery_semantics.py",
+      "test_pii": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/tests/unit/test_pii_sanitization.py",
+      "valid": true
+    },
+    "hygiene": {
+      "status_porcelain": "M docs/roadmap/production_readiness/true_state_remediation_register.json\n?? app/core/pii_sanitizer.py\n?? app/services/mastery_engine.py\n?? app/services/popia_dsr_service.py\n?? docs/curriculum/pedagogical_validity_review.md\n?? docs/privacy/popia_legal_architecture_review.md\n?? docs/release-evidence/true-state-remediation/b05/\n?? scripts/true_state_remediation/bundles/bundle_05.py\n?? tests/integration/test_curriculum_graph_migration.py\n?? tests/integration/test_popia_dsr_automation.py\n?? tests/unit/test_mastery_semantics.py\n?? tests/unit/test_pii_sanitization.py\n?? tests/unit/test_security_object_isolation.py",
+      "stray_untracked": [],
+      "valid": true
+    },
+    "manual": {
+      "invalid": [],
+      "missing": [],
+      "valid": true
+    },
+    "register": {
+      "errors": [],
+      "release_boundaries": {
+        "failures": [],
+        "inspected": [
+          "docs/roadmap/production_readiness/production_readiness_register.json",
+          "docs/roadmap/production_readiness/prd11_production_release_register.json",
+          "docs/roadmap/production_readiness/true_state_remediation_register.json"
+        ],
+        "valid": true
+      },
+      "task_count": 174,
+      "valid": true
+    }
+  },
+  "valid": true,
+  "verified_at": "2026-08-26T19:33:08.237355+00:00"
+}

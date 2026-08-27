@@ -1,0 +1,128 @@
+{
+  "bundle_id": "B05",
+  "environment": {
+    "captured_at": "2026-08-26T19:33:08.237932+00:00",
+    "docker": {
+      "available": true,
+      "exit_code": 0,
+      "version": "Docker version 29.7.2, build a7dcaa6"
+    },
+    "docker_compose": {
+      "available": true,
+      "exit_code": 0,
+      "version": "Docker Compose version v5.5.0"
+    },
+    "git": {
+      "available": true,
+      "branch": "codex/tsr-b05-security-privacy-and-educational-validity",
+      "clean": false,
+      "commit": "1d82ca1f35191771c1ee795fe6fd929e7ae9efdd",
+      "status_porcelain": "M docs/roadmap/production_readiness/true_state_remediation_register.json\n?? app/core/pii_sanitizer.py\n?? app/services/mastery_engine.py\n?? app/services/popia_dsr_service.py\n?? docs/curriculum/pedagogical_validity_review.md\n?? docs/privacy/popia_legal_architecture_review.md\n?? docs/release-evidence/true-state-remediation/b05/\n?? scripts/true_state_remediation/bundles/bundle_05.py\n?? tests/integration/test_curriculum_graph_migration.py\n?? tests/integration/test_popia_dsr_automation.py\n?? tests/unit/test_mastery_semantics.py\n?? tests/unit/test_pii_sanitization.py\n?? tests/unit/test_security_object_isolation.py",
+      "submodules": ""
+    },
+    "input_digests": {
+      ".python-version": "fa682ae9d943f5c8076e68335c9ba3ab4d063ad035c07ac6928653dd4ac50af7",
+      "app/frontend/package.json": "b3f4759545ee3b259bc89eb12d815a6c25da2d310f4e55801e9fc14afae69471",
+      "package.json": "0f1b96117bd811f6fb46fb8f06f4f63729d1a5dfc501efa556f26f59495403f9",
+      "pnpm-lock.yaml": "9e280652ecab533b5542e225a4ed06488a5c155ec4fc79498b2e8f36dbd9c665",
+      "pyproject.toml": "4a311fe480f62f17fbcef1eeeaae27c6963ac9047e7577abddae07cb6213f4f2",
+      "requirements/base.txt": "bc83e83ef52fab7072af7c777936d6730d9fff9a048bf7d664eb79bb09441c8d",
+      "requirements/dev.txt": "a19156e19770a629b5ebfda8ba70d0b684589733f7b008d0f08059315610f18a",
+      "requirements/docs.txt": "baf122c71989e7fa24a8cb8726dc492bf5eb1542f191921f6ab21f4a7354e04c",
+      "requirements/ml.txt": "2ad806623ae7a2639f3e43f4836bb502bf56100667901751756dc82df574b34c"
+    },
+    "machine": "x86_64",
+    "node": {
+      "available": true,
+      "exit_code": 0,
+      "version": "v26.0.0"
+    },
+    "pip": {
+      "available": true,
+      "exit_code": 0,
+      "version": "pip 26.2.1 from /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/lib/python3.12/site-packages/pip (python 3.12)"
+    },
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pnpm": {
+      "available": true,
+      "exit_code": 0,
+      "version": "9.14.4"
+    },
+    "postgres_client": {
+      "available": true,
+      "exit_code": 0,
+      "version": "psql (PostgreSQL) 18.6 (Ubuntu 18.6-1.pgdg24.04+2)"
+    },
+    "python": {
+      "executable": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python",
+      "version": "3.12.3"
+    },
+    "redis_client": {
+      "available": false,
+      "error": "[Errno 2] No such file or directory: 'redis-cli'"
+    }
+  },
+  "phase": "all",
+  "phases": {
+    "apply": {
+      "valid": true
+    },
+    "prepare": {
+      "environment_manifest": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release-evidence/true-state-remediation/b05/environment_manifest.json",
+      "valid": true
+    },
+    "verify": {
+      "checks": {
+        "boundaries": {
+          "failures": [],
+          "inspected": [
+            "docs/roadmap/production_readiness/production_readiness_register.json",
+            "docs/roadmap/production_readiness/prd11_production_release_register.json",
+            "docs/roadmap/production_readiness/true_state_remediation_register.json"
+          ],
+          "valid": true
+        },
+        "engineering_proofs": {
+          "dsr_service": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/app/services/popia_dsr_service.py",
+          "mastery_engine": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/app/services/mastery_engine.py",
+          "pii_sanitizer": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/app/core/pii_sanitizer.py",
+          "test_dsr": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/tests/integration/test_popia_dsr_automation.py",
+          "test_graph": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/tests/integration/test_curriculum_graph_migration.py",
+          "test_isolation": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/tests/unit/test_security_object_isolation.py",
+          "test_mastery": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/tests/unit/test_mastery_semantics.py",
+          "test_pii": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/tests/unit/test_pii_sanitization.py",
+          "valid": true
+        },
+        "hygiene": {
+          "status_porcelain": "M docs/roadmap/production_readiness/true_state_remediation_register.json\n?? app/core/pii_sanitizer.py\n?? app/services/mastery_engine.py\n?? app/services/popia_dsr_service.py\n?? docs/curriculum/pedagogical_validity_review.md\n?? docs/privacy/popia_legal_architecture_review.md\n?? docs/release-evidence/true-state-remediation/b05/\n?? scripts/true_state_remediation/bundles/bundle_05.py\n?? tests/integration/test_curriculum_graph_migration.py\n?? tests/integration/test_popia_dsr_automation.py\n?? tests/unit/test_mastery_semantics.py\n?? tests/unit/test_pii_sanitization.py\n?? tests/unit/test_security_object_isolation.py",
+          "stray_untracked": [],
+          "valid": true
+        },
+        "manual": {
+          "invalid": [],
+          "missing": [],
+          "valid": true
+        },
+        "register": {
+          "errors": [],
+          "release_boundaries": {
+            "failures": [],
+            "inspected": [
+              "docs/roadmap/production_readiness/production_readiness_register.json",
+              "docs/roadmap/production_readiness/prd11_production_release_register.json",
+              "docs/roadmap/production_readiness/true_state_remediation_register.json"
+            ],
+            "valid": true
+          },
+          "task_count": 174,
+          "valid": true
+        }
+      },
+      "valid": true
+    }
+  },
+  "recorded_at": "2026-08-26T19:33:09.011055+00:00",
+  "schema_version": "eduboost/true-state-remediation/bundle-state/v1",
+  "skip_heavy": false,
+  "valid": true
+}
