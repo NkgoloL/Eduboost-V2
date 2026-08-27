@@ -151,7 +151,7 @@ def main() -> int:
     if args.json:
         print(json.dumps(res, indent=2, sort_keys=True))
     else:
-        print(f"=== EduBoost V2 True-State Remediation Whole-Program Verification ===")
+        print("=== EduBoost V2 True-State Remediation Whole-Program Verification ===")
         print(f"Overall Valid: {res['valid']}")
         print(f"Bundle Chain: {'PASS' if res['checks']['bundle_chain']['valid'] else 'FAIL'}")
         print(f"Engineering Proofs: {'PASS' if res['checks']['engineering_proofs']['valid'] else 'FAIL'}")
