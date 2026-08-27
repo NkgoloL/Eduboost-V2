@@ -14,7 +14,7 @@ aiosignal==1.4.0
     # via aiohttp
 aiosqlite==0.22.1
     # via -r requirements/dev.in
-alembic==1.13.1
+alembic==1.19.1
     # via -r requirements/base.in
 annotated-doc==0.0.5
     # via
@@ -22,53 +22,55 @@ annotated-doc==0.0.5
     #   typer
 annotated-types==0.8.0
     # via pydantic
-anthropic==0.95.0
+anthropic==1.0.0
     # via -r requirements/base.in
 anyio==4.14.2
     # via
     #   anthropic
     #   groq
     #   httpx
+    #   httpx2
     #   mcp
     #   openai
     #   sse-starlette
     #   starlette
     #   watchfiles
-arq==0.26.1
+arq==0.28.0
     # via
     #   -r requirements/base.in
     #   -r requirements/dev.in
-asyncpg==0.29.0
+ast-serialize==0.8.0
+    # via mypy
+asyncpg==0.31.0
     # via -r requirements/base.in
 attrs==26.1.0
     # via
     #   aiohttp
-    #   hypothesis
     #   jsonschema
     #   referencing
 azure-core==1.41.0
     # via
     #   azure-identity
     #   azure-keyvault-secrets
-azure-identity==1.16.1
+azure-identity==1.25.3
     # via -r requirements/base.in
-azure-keyvault-secrets==4.8.0
+azure-keyvault-secrets==4.11.1
     # via -r requirements/base.in
-babel==2.15.0
+babel==2.18.0
     # via -r requirements/base.in
 backoff==2.2.1
     # via posthog
 bcrypt==5.0.0
     # via passlib
-beautifulsoup4==4.12.3
+beautifulsoup4==4.15.0
     # via
     #   -r requirements/base.in
     #   -r requirements/dev.in
 bleach==6.4.0
     # via -r requirements/base.in
-boto3==1.34.110
+boto3==1.43.78
     # via -r requirements/base.in
-botocore==1.34.162
+botocore==1.43.81
     # via
     #   boto3
     #   s3transfer
@@ -102,6 +104,7 @@ cryptography==50.0.0
     #   azure-identity
     #   msal
     #   pyjwt
+    #   sendgrid
 deprecated==1.3.1
     # via limits
 detect-secrets==1.5.0
@@ -110,9 +113,7 @@ distlib==0.4.3
     # via virtualenv
 distro==1.9.0
     # via
-    #   anthropic
     #   groq
-    #   openai
     #   posthog
 dnspython==2.8.0
     # via email-validator
@@ -122,16 +123,15 @@ email-validator==2.3.0
     # via pydantic
 execnet==2.1.2
     # via pytest-xdist
-factory-boy==3.3.0
+factory-boy==3.3.3
     # via -r requirements/dev.in
-faker==25.2.0
+faker==40.37.0
     # via
     #   -r requirements/dev.in
     #   factory-boy
 fastapi==0.141.1
     # via
     #   -r requirements/base.in
-    #   prometheus-fastapi-instrumentator
     #   sentry-sdk
 filelock==3.32.2
     # via
@@ -141,7 +141,7 @@ frozenlist==1.8.0
     # via
     #   aiohttp
     #   aiosignal
-greenlet==3.2.4
+greenlet==3.5.5
     # via
     #   -r requirements/base.in
     #   -r requirements/dev.in
@@ -149,42 +149,46 @@ greenlet==3.2.4
     #   sqlalchemy
 grimp==3.15
     # via import-linter
-groq==1.4.0
+groq==1.6.0
     # via -r requirements/base.in
 h11==0.16.0
     # via
     #   httpcore
+    #   httpcore2
     #   uvicorn
-hiredis==2.3.2
+hiredis==3.4.1
     # via
     #   -r requirements/base.in
     #   redis
 httpcore==1.0.9
     # via httpx
+httpcore2==2.12.0
+    # via httpx2
 httptools==0.8.0
     # via uvicorn
-httpx==0.27.1
+httpx==0.28.1
     # via
     #   -r requirements/base.in
-    #   anthropic
     #   groq
+httpx2==2.12.0
+    # via
+    #   anthropic
     #   mcp
     #   openai
-httpx-sse==0.4.3
-    # via mcp
-hypothesis==6.102.1
+hypothesis==6.165.10
     # via -r requirements/dev.in
 identify==2.6.19
     # via pre-commit
-idna==3.15
+idna==3.19
     # via
     #   -r requirements/base.in
     #   anyio
     #   email-validator
     #   httpx
+    #   httpx2
     #   requests
     #   yarl
-import-linter==2.11
+import-linter==2.13
     # via -r requirements/dev.in
 iniconfig==2.3.0
     # via pytest
@@ -193,12 +197,14 @@ isodate==0.7.2
 jinja2==3.1.6
     # via -r requirements/base.in
 jiter==0.16.0
-    # via anthropic
+    # via
+    #   anthropic
+    #   openai
 jmespath==1.1.0
     # via
     #   boto3
     #   botocore
-joblib==1.4.2
+joblib==1.5.3
     # via
     #   -r requirements/base.in
     #   scikit-learn
@@ -206,6 +212,8 @@ jsonschema==4.26.0
     # via mcp
 jsonschema-specifications==2025.9.1
     # via jsonschema
+librt==0.15.0
+    # via mypy
 limits==5.8.0
     # via slowapi
 mako==1.3.12
@@ -216,10 +224,13 @@ markupsafe==3.0.3
     # via
     #   jinja2
     #   mako
-mcp[cli]==1.29.0
+    #   werkzeug
+mcp[cli]==2.0.0
     # via
     #   -r requirements/base.in
     #   -r requirements/dev.in
+mcp-types==2.0.0
+    # via mcp
 mdurl==0.1.2
     # via markdown-it-py
 msal==1.37.0
@@ -232,10 +243,12 @@ multidict==6.7.1
     # via
     #   aiohttp
     #   yarl
-mypy==1.10.0
+mypy==2.3.1
     # via -r requirements/dev.in
 mypy-extensions==1.1.0
     # via mypy
+narwhals==2.25.0
+    # via scikit-learn
 nodeenv==1.10.0
     # via pre-commit
 numpy==1.26.4
@@ -244,31 +257,35 @@ numpy==1.26.4
     #   pandas
     #   scikit-learn
     #   scipy
-openai==1.30.5
+openai==3.3.1
     # via -r requirements/base.in
+opentelemetry-api==1.44.0
+    # via mcp
 packaging==26.2
     # via
     #   build
     #   limits
     #   pytest
     #   wheel
-pandas==2.2.2
+pandas==3.0.5
     # via -r requirements/base.in
 passlib[bcrypt]==1.7.4
     # via -r requirements/base.in
-phonenumbers==8.13.37
+pathspec==1.1.1
+    # via mypy
+phonenumbers==9.0.37
     # via -r requirements/base.in
 pillow==12.3.0
     # via
     #   -r requirements/base.in
     #   reportlab
-pip-tools==7.5.3
+pip-tools==7.6.1
     # via -r requirements/dev.in
 platformdirs==4.11.0
     # via
     #   python-discovery
     #   virtualenv
-playwright==1.61.0
+playwright==1.62.0
     # via
     #   -r requirements/dev.in
     #   pytest-playwright
@@ -276,19 +293,19 @@ pluggy==1.6.0
     # via
     #   pytest
     #   pytest-cov
-posthog==7.14.0
+posthog==7.43.0
     # via -r requirements/base.in
-pre-commit==3.7.1
+pre-commit==4.6.2
     # via -r requirements/dev.in
 prometheus-client==0.26.0
     # via prometheus-fastapi-instrumentator
-prometheus-fastapi-instrumentator==6.1.0
+prometheus-fastapi-instrumentator==8.1.0
     # via -r requirements/base.in
 propcache==0.5.2
     # via
     #   aiohttp
     #   yarl
-psycopg2-binary==2.9.9
+psycopg2-binary==2.9.12
     # via -r requirements/base.in
 pycparser==3.0
     # via cffi
@@ -299,14 +316,13 @@ pydantic[email]==2.13.4
     #   fastapi
     #   groq
     #   mcp
+    #   mcp-types
     #   openai
     #   pydantic-settings
 pydantic-core==2.46.4
     # via pydantic
-pydantic-settings==2.5.2
-    # via
-    #   -r requirements/base.in
-    #   mcp
+pydantic-settings==2.15.0
+    # via -r requirements/base.in
 pyee==13.0.1
     # via playwright
 pygments==2.20.0
@@ -318,13 +334,13 @@ pyjwt[crypto]==2.13.0
     #   -r requirements/base.in
     #   mcp
     #   msal
-pypdf==6.15.0
+pypdf==6.16.2
     # via -r requirements/base.in
 pyproject-hooks==1.2.0
     # via
     #   build
     #   pip-tools
-pytest==9.0.3
+pytest==9.1.1
     # via
     #   -r requirements/dev.in
     #   pytest-asyncio
@@ -333,7 +349,7 @@ pytest==9.0.3
     #   pytest-mock
     #   pytest-playwright
     #   pytest-xdist
-pytest-asyncio==1.3.0
+pytest-asyncio==1.4.0
     # via -r requirements/dev.in
 pytest-base-url==2.1.0
     # via pytest-playwright
@@ -341,19 +357,18 @@ pytest-cov==7.1.0
     # via -r requirements/dev.in
 pytest-mock==3.15.1
     # via -r requirements/dev.in
-pytest-playwright==0.8.0
+pytest-playwright==0.9.0
     # via -r requirements/dev.in
-pytest-xdist==3.6.1
+pytest-xdist==3.8.0
     # via -r requirements/dev.in
-python-dateutil==2.9.0
+python-dateutil==2.9.0.post0
     # via
     #   -r requirements/base.in
     #   botocore
-    #   faker
     #   pandas
 python-discovery==1.5.0
     # via virtualenv
-python-dotenv==1.2.2
+python-dotenv==1.2.3
     # via
     #   -r requirements/base.in
     #   mcp
@@ -361,14 +376,12 @@ python-dotenv==1.2.2
     #   uvicorn
 python-http-client==3.3.7
     # via sendgrid
-python-multipart==0.0.31
+python-multipart==0.0.32
     # via
     #   -r requirements/base.in
     #   mcp
 python-slugify==8.0.4
     # via pytest-playwright
-pytz==2026.3.post1
-    # via pandas
 pyyaml==6.0.3
     # via
     #   detect-secrets
@@ -382,7 +395,7 @@ referencing==0.37.0
     # via
     #   jsonschema
     #   jsonschema-specifications
-reportlab==4.5.1
+reportlab==5.0.1
     # via -r requirements/base.in
 requests==2.34.2
     # via
@@ -400,61 +413,61 @@ rpds-py==2026.6.3
     # via
     #   jsonschema
     #   referencing
-ruff==0.4.8
+ruff==0.16.4
     # via -r requirements/dev.in
-s3transfer==0.10.4
+s3transfer==0.19.2
     # via boto3
-scikit-learn==1.5.0
+scikit-learn==1.9.0
     # via -r requirements/base.in
 scipy==1.13.1
     # via
     #   -r requirements/base.in
     #   scikit-learn
-sendgrid==6.11.0
+sendgrid==6.12.5
     # via -r requirements/base.in
-sentry-sdk[fastapi]==2.59.0
+sentry-sdk[fastapi]==2.68.1
     # via -r requirements/base.in
 shellingham==1.5.4
     # via typer
 six==1.17.0
     # via python-dateutil
-slowapi==0.1.9
+slowapi==0.1.10
     # via -r requirements/base.in
 sniffio==1.3.1
     # via
     #   anthropic
     #   groq
-    #   httpx
     #   openai
 sortedcontainers==2.4.0
     # via hypothesis
 soupsieve==2.9.1
     # via beautifulsoup4
-sqlalchemy==2.0.30
+sqlalchemy==2.0.52
     # via
     #   -r requirements/base.in
     #   alembic
 sse-starlette==3.4.6
     # via mcp
-starkbank-ecdsa==2.3.1
-    # via sendgrid
 starlette==1.3.1
     # via
     #   fastapi
     #   mcp
+    #   prometheus-fastapi-instrumentator
     #   sse-starlette
-stripe==9.8.0
+stripe==15.5.1
     # via -r requirements/base.in
-structlog==24.2.0
+structlog==26.1.0
     # via -r requirements/base.in
-tenacity==8.3.0
+tenacity==9.1.4
     # via -r requirements/base.in
 text-unidecode==1.3
     # via python-slugify
 threadpoolctl==3.6.0
     # via scikit-learn
-tqdm==4.70.0
-    # via openai
+truststore==0.10.4
+    # via
+    #   httpcore2
+    #   httpx2
 typer==0.27.0
     # via mcp
 typing-extensions==4.16.0
@@ -465,14 +478,19 @@ typing-extensions==4.16.0
     #   anthropic
     #   anyio
     #   azure-core
+    #   azure-identity
     #   azure-keyvault-secrets
+    #   beautifulsoup4
     #   fastapi
     #   groq
+    #   httpx2
     #   import-linter
     #   limits
     #   mcp
+    #   mcp-types
     #   mypy
     #   openai
+    #   opentelemetry-api
     #   posthog
     #   pydantic
     #   pydantic-core
@@ -488,8 +506,7 @@ typing-inspection==0.4.2
     #   fastapi
     #   mcp
     #   pydantic
-tzdata==2026.3
-    # via pandas
+    #   pydantic-settings
 ujson==5.13.0
     # via -r requirements/base.in
 urllib3==2.7.0
@@ -498,7 +515,7 @@ urllib3==2.7.0
     #   botocore
     #   requests
     #   sentry-sdk
-uvicorn[standard]==0.34.3
+uvicorn[standard]==0.52.4
     # via
     #   -r requirements/base.in
     #   mcp
@@ -512,6 +529,8 @@ webencodings==0.5.1
     # via bleach
 websockets==17.0
     # via uvicorn
+werkzeug==3.1.8
+    # via sendgrid
 wheel==0.47.0
     # via pip-tools
 wrapt==2.3.0
