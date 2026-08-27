@@ -71,7 +71,7 @@ def sanitize_payload(obj: Any) -> Any:
     Strings containing PII regex patterns are scrubbed.
     """
     if isinstance(obj, dict):
-        sanitized = {}
+        sanitized: dict[Any, Any] = {}
         for k, v in obj.items():
             k_lower = str(k).lower()
             if k_lower in SENSITIVE_PII_KEYS:
