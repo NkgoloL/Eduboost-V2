@@ -1,0 +1,62 @@
+{
+  "captured_at": "2026-08-27T09:29:59.606370+00:00",
+  "docker": {
+    "available": true,
+    "exit_code": 0,
+    "version": "Docker version 29.7.2, build a7dcaa6"
+  },
+  "docker_compose": {
+    "available": true,
+    "exit_code": 0,
+    "version": "Docker Compose version v5.5.0"
+  },
+  "git": {
+    "available": true,
+    "branch": "codex/tsr-b06-operations-resiliency-and-billing-integrity",
+    "clean": false,
+    "commit": "294e976dfa46f5c5188c65f674647b41aae7941c",
+    "status_porcelain": "M docs/roadmap/production_readiness/true_state_remediation_register.json\n?? app/middleware/api_deprecation.py\n?? app/services/ai_budget_guard.py\n?? app/services/billing_guard.py\n?? docs/operations/billing_lock_commercial_attestation.md\n?? docs/operations/dr_and_resilience_attestation.md\n?? docs/release-evidence/true-state-remediation/b06/\n?? scripts/true_state_remediation/bundles/bundle_06.py\n?? tests/integration/test_billing_lock_enforcement.py\n?? tests/integration/test_disaster_recovery_drill.py\n?? tests/unit/test_ai_budget_guard.py\n?? tests/unit/test_api_deprecation_middleware.py\n?? tests/unit/test_resilience_circuit_breaker.py",
+    "submodules": ""
+  },
+  "input_digests": {
+    ".python-version": "fa682ae9d943f5c8076e68335c9ba3ab4d063ad035c07ac6928653dd4ac50af7",
+    "app/frontend/package.json": "b3f4759545ee3b259bc89eb12d815a6c25da2d310f4e55801e9fc14afae69471",
+    "package.json": "0f1b96117bd811f6fb46fb8f06f4f63729d1a5dfc501efa556f26f59495403f9",
+    "pnpm-lock.yaml": "9e280652ecab533b5542e225a4ed06488a5c155ec4fc79498b2e8f36dbd9c665",
+    "pyproject.toml": "4a311fe480f62f17fbcef1eeeaae27c6963ac9047e7577abddae07cb6213f4f2",
+    "requirements/base.txt": "bc83e83ef52fab7072af7c777936d6730d9fff9a048bf7d664eb79bb09441c8d",
+    "requirements/dev.txt": "a19156e19770a629b5ebfda8ba70d0b684589733f7b008d0f08059315610f18a",
+    "requirements/docs.txt": "baf122c71989e7fa24a8cb8726dc492bf5eb1542f191921f6ab21f4a7354e04c",
+    "requirements/ml.txt": "2ad806623ae7a2639f3e43f4836bb502bf56100667901751756dc82df574b34c"
+  },
+  "machine": "x86_64",
+  "node": {
+    "available": true,
+    "exit_code": 0,
+    "version": "v26.0.0"
+  },
+  "pip": {
+    "available": true,
+    "exit_code": 0,
+    "version": "pip 26.2.1 from /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/lib/python3.12/site-packages/pip (python 3.12)"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "pnpm": {
+    "available": true,
+    "exit_code": 0,
+    "version": "9.14.4"
+  },
+  "postgres_client": {
+    "available": true,
+    "exit_code": 0,
+    "version": "psql (PostgreSQL) 18.6 (Ubuntu 18.6-1.pgdg24.04+2)"
+  },
+  "python": {
+    "executable": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bin/python",
+    "version": "3.12.3"
+  },
+  "redis_client": {
+    "available": false,
+    "error": "[Errno 2] No such file or directory: 'redis-cli'"
+  }
+}
