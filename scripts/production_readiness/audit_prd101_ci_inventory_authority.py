@@ -202,8 +202,6 @@ def production_register_position(register: dict[str, Any]) -> str:
         return "prd1_4_recorded_after_prd1_1"
     if last_item == "PRD-1.9" and next_item == "PRD-2":
         return "prd1_closed_after_prd1_1"
-    if str(next_item).startswith("PRD-11.0R.RUNTIME-RESTORE") or str(last_item).startswith("PRD-11.0R.RUNTIME-RESTORE") or str(last_item) in {f"PRD-{idx}" for idx in range(1, 12)}:
-        return "advanced_authorized_execution"
     return "unexpected"
 
 

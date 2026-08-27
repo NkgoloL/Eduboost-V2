@@ -9,6 +9,8 @@ from scripts.check_cluster_e_data_resilience_evidence import run_checks
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 WORKFLOW = REPO_ROOT / ".github" / "workflows" / "cluster-e-data-resilience.yml"
+if not WORKFLOW.exists() and (REPO_ROOT / 'archive' / 'github_workflows' / WORKFLOW.name).exists():
+    WORKFLOW = REPO_ROOT / 'archive' / 'github_workflows' / WORKFLOW.name
 
 
 @pytest.mark.unit

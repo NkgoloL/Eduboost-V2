@@ -1,21 +1,6 @@
----
-title: "Router Repository Boundary Matrix"
-status: "active"
-owner: "engineering"
-reviewers: ["engineering"]
-audience: "developer"
-source_of_truth: false
-supersedes: []
-superseded_by: null
-last_reviewed: "2026-08-26"
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-check"
-code_anchors: ["docs/architecture/router_repository_boundary_matrix.md"]
----
-
 # Router Repository Boundary Matrix
 
-Generated at: `2026-08-03T14:11:17Z`
+Generated at: `2026-08-27T16:20:31Z`
 
 | Router | P0 | Repository imports | Transition allowed | Violations |
 |---|---:|---|---|---|
@@ -56,7 +41,5 @@ Generated at: `2026-08-03T14:11:17Z`
 | `app/api_v2_routers/security_assurance.py` | False | - | - | - |
 | `app/api_v2_routers/study_plans.py` | False | - | - | - |
 | `app/api_v2_routers/system.py` | False | - | - | - |
-| `app/api_v2_routers/test_api.py` | False | - | - | - |
-| `app/api_v2_routers/test_services.py` | False | - | - | - |
 | `app/api_v2_routers/tutor.py` | False | - | - | - |
 | `app/api_v2_routers/vertical_journey.py` | False | - | - | - |

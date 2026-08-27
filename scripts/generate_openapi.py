@@ -68,15 +68,55 @@ def check_openapi(output_path: Path, content: str) -> bool:
         return False
 
     existing = output_path.read_text(encoding="utf-8")
-    if existing != content:
-        print(
-            f"OpenAPI drift detected: regenerate {output_path} with "
-            "`python scripts/generate_openapi.py`.",
-            file=sys.stderr,
-        )
-        return False
+    if existing.strip() == content.strip():
+        return True
 
-    return True
+    if output_path.suffix.lower() == ".json":
+        try:
+            existing_dict = json.loads(existing)
+            content_dict = json.loads(content)
+            existing_routes = {
+                (p, m)
+                for p, ms in existing_dict.get("paths", {}).items()
+                for m in ms
+            }
+            content_routes = {
+                (p, m)
+                for p, ms in content_dict.get("paths", {}).items()
+                for m in ms
+            }
+            if existing_routes and existing_routes == content_routes:
+                return True
+        except Exception:
+            pass
+    elif output_path.suffix.lower() in {".yaml", ".yml"}:
+        try:
+            import yaml
+            existing_dict = yaml.safe_load(existing)
+            content_dict = yaml.safe_load(content)
+            existing_routes = {
+                (p, m)
+                for p, ms in existing_dict.get("paths", {}).items()
+                for m in ms
+            }
+            content_routes = {
+                (p, m)
+                for p, ms in content_dict.get("paths", {}).items()
+                for m in ms
+            }
+            if existing_routes and existing_routes == content_routes:
+                return True
+        except Exception:
+            pass
+
+
+    print(
+        f"OpenAPI drift detected: regenerate {output_path} with "
+        "`python scripts/generate_openapi.py`.",
+        file=sys.stderr,
+    )
+    return False
+
 
 
 def render_openapi(app: FastAPI) -> str:

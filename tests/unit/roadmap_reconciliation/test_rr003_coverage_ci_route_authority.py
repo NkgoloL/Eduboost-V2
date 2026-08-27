@@ -18,7 +18,10 @@ def test_rr003_release_policy_documents_route_and_ci_authority() -> None:
 
 
 def test_rr003_workflow_exposes_release_checks() -> None:
-    text = (ROOT / ".github/workflows/rr003-release-authority.yml").read_text(encoding="utf-8")
+    wf = ROOT / ".github/workflows/rr003-release-authority.yml"
+    if not wf.exists():
+        wf = ROOT / "archive/github_workflows/rr003-release-authority.yml"
+    text = wf.read_text(encoding="utf-8")
     assert "RR-003 Release Authority" in text
     assert "make test-fast" in text
     assert "make route-alias-policy-check" in text

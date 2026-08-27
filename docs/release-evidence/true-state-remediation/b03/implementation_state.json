@@ -1,0 +1,152 @@
+{
+  "bundle_id": "B03",
+  "environment": {
+    "captured_at": "2026-08-27T16:45:06.741919+00:00",
+    "docker": {
+      "available": true,
+      "exit_code": 0,
+      "version": "Docker version 29.7.2, build a7dcaa6"
+    },
+    "docker_compose": {
+      "available": true,
+      "exit_code": 0,
+      "version": "Docker Compose version v5.5.0"
+    },
+    "git": {
+      "available": true,
+      "branch": "codex/tsr-b03-caps-mathematics-truth",
+      "clean": false,
+      "commit": "c8fe9b388832de45de7a1c7964975aec86a3e4fe",
+      "status_porcelain": "M .github/workflows/product-runtime.yml\n M docs/release-evidence/true-state-remediation/b03/verification.json\n M docs/roadmap/production_readiness/true_state_remediation_register.json",
+      "submodules": ""
+    },
+    "input_digests": {
+      ".python-version": "fa682ae9d943f5c8076e68335c9ba3ab4d063ad035c07ac6928653dd4ac50af7",
+      "app/frontend/package.json": "b3f4759545ee3b259bc89eb12d815a6c25da2d310f4e55801e9fc14afae69471",
+      "package.json": "0f1b96117bd811f6fb46fb8f06f4f63729d1a5dfc501efa556f26f59495403f9",
+      "pnpm-lock.yaml": "9e280652ecab533b5542e225a4ed06488a5c155ec4fc79498b2e8f36dbd9c665",
+      "pyproject.toml": "a82e029276e64b8077bcf2af2ac960ce54f45f32902f2e64a23904e7f9f73fd4",
+      "requirements/base.txt": "bc83e83ef52fab7072af7c777936d6730d9fff9a048bf7d664eb79bb09441c8d",
+      "requirements/dev.txt": "a19156e19770a629b5ebfda8ba70d0b684589733f7b008d0f08059315610f18a",
+      "requirements/docs.txt": "baf122c71989e7fa24a8cb8726dc492bf5eb1542f191921f6ab21f4a7354e04c",
+      "requirements/ml.txt": "2ad806623ae7a2639f3e43f4836bb502bf56100667901751756dc82df574b34c"
+    },
+    "machine": "x86_64",
+    "node": {
+      "available": true,
+      "exit_code": 0,
+      "version": "v22.23.2"
+    },
+    "pip": {
+      "available": true,
+      "exit_code": 0,
+      "version": "pip 24.0 from /usr/lib/python3/dist-packages/pip (python 3.12)"
+    },
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "pnpm": {
+      "available": false,
+      "error": "[Errno 2] No such file or directory: 'pnpm'"
+    },
+    "postgres_client": {
+      "available": true,
+      "exit_code": 0,
+      "version": "psql (PostgreSQL) 18.6 (Ubuntu 18.6-1.pgdg24.04+2)"
+    },
+    "python": {
+      "executable": "/usr/bin/python3",
+      "version": "3.12.3"
+    },
+    "redis_client": {
+      "available": false,
+      "error": "[Errno 2] No such file or directory: 'redis-cli'"
+    }
+  },
+  "phase": "verify",
+  "phases": {
+    "verify": {
+      "checks": {
+        "boundaries": {
+          "failures": [],
+          "inspected": [
+            "docs/roadmap/production_readiness/production_readiness_register.json",
+            "docs/roadmap/production_readiness/prd11_production_release_register.json",
+            "docs/roadmap/production_readiness/true_state_remediation_register.json"
+          ],
+          "valid": true
+        },
+        "canonical_workflows": {
+          "active_workflows": [
+            "frontend-e2e.yml",
+            "operations-drills.yml",
+            "pr-core.yml",
+            "product-runtime.yml",
+            "release-evidence.yml",
+            "security-supply-chain.yml"
+          ],
+          "expected_canonical": [
+            "frontend-e2e.yml",
+            "operations-drills.yml",
+            "pr-core.yml",
+            "product-runtime.yml",
+            "release-evidence.yml",
+            "security-supply-chain.yml"
+          ],
+          "missing": [],
+          "unexpected": [],
+          "valid": true
+        },
+        "ci_authority_matrix": {
+          "inventory_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/ci/ci_workflow_inventory.md",
+          "matrix_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/ci/ci_authority_matrix.json",
+          "valid": true
+        },
+        "flake_policy": {
+          "path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/testing/flake_policy_and_quarantine_register.md",
+          "valid": true
+        },
+        "hygiene": {
+          "status_porcelain": "M .github/workflows/product-runtime.yml",
+          "stray_untracked": [],
+          "valid": true
+        },
+        "manual": {
+          "invalid": [],
+          "missing": [],
+          "valid": true
+        },
+        "register": {
+          "errors": [],
+          "release_boundaries": {
+            "failures": [],
+            "inspected": [
+              "docs/roadmap/production_readiness/production_readiness_register.json",
+              "docs/roadmap/production_readiness/prd11_production_release_register.json",
+              "docs/roadmap/production_readiness/true_state_remediation_register.json"
+            ],
+            "valid": true
+          },
+          "task_count": 174,
+          "valid": true
+        },
+        "risk_coverage_thresholds": {
+          "path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/testing/risk_based_coverage_thresholds.md",
+          "valid": true
+        },
+        "test_health_metrics": {
+          "path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/testing/test_health_metrics.json",
+          "valid": true
+        },
+        "test_taxonomy": {
+          "doc_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/testing/test_taxonomy_and_fast_suite_manifest.md",
+          "module_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/tests/taxonomy.py",
+          "valid": true
+        }
+      },
+      "valid": true
+    }
+  },
+  "recorded_at": "2026-08-27T16:45:07.411257+00:00",
+  "schema_version": "eduboost/true-state-remediation/bundle-state/v1",
+  "skip_heavy": false,
+  "valid": true
+}

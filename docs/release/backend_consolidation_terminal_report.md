@@ -1,14 +1,14 @@
 # Backend Consolidation Terminal Report
 
-Generated at: `2026-08-01T21:01:47Z`
+Generated at: `2026-08-27T16:19:25Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| evidence manifest | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_consolidation_evidence_manifest.py` |
-| execution report | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_consolidation_execution_report.py` |
-| readiness report | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_consolidation_readiness_report.py` |
-| runtime probe report | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_runtime_probe_report.py` |
-| terminal packet check | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_terminal_packet.py` |
+| evidence manifest | 0 | `/usr/bin/python3 scripts/generate_backend_consolidation_evidence_manifest.py` |
+| execution report | 0 | `/usr/bin/python3 scripts/generate_backend_consolidation_execution_report.py` |
+| readiness report | 0 | `/usr/bin/python3 scripts/generate_backend_consolidation_readiness_report.py` |
+| runtime probe report | 0 | `/usr/bin/python3 scripts/generate_backend_runtime_probe_report.py` |
+| terminal packet check | 1 | `/usr/bin/python3 scripts/check_backend_consolidation_terminal_packet.py` |
 
 ## Boundary
 
@@ -16,53 +16,53 @@ This terminal report closes the diagnostic packet only. It does not approve dest
 
 ## evidence manifest
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_consolidation_evidence_manifest.py`
+Command: `/usr/bin/python3 scripts/generate_backend_consolidation_evidence_manifest.py`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/backend_consolidation_evidence_manifest.md (24 row(s), 0 missing)
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2/docs/release/backend_consolidation_evidence_manifest.md (24 row(s), 0 missing)
 ```
 
 ## execution report
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_consolidation_execution_report.py`
+Command: `/usr/bin/python3 scripts/generate_backend_consolidation_execution_report.py`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/backend_consolidation_execution_report.md
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2/docs/release/backend_consolidation_execution_report.md
 ```
 
 ## readiness report
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_consolidation_readiness_report.py`
+Command: `/usr/bin/python3 scripts/generate_backend_consolidation_readiness_report.py`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/backend_consolidation_readiness_report.md
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2/docs/release/backend_consolidation_readiness_report.md
 ```
 
 ## runtime probe report
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_runtime_probe_report.py`
+Command: `/usr/bin/python3 scripts/generate_backend_runtime_probe_report.py`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/backend_runtime_probe_report.md
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2/docs/release/backend_runtime_probe_report.md
 ```
 
 ## terminal packet check
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_terminal_packet.py`
+Command: `/usr/bin/python3 scripts/check_backend_consolidation_terminal_packet.py`
 
-Return code: `0`
+Return code: `1`
 
 ```text
 Backend consolidation terminal packet check
-- PASS [file] .github/workflows/backend-consolidation.yml: present
+- FAIL [file] .github/workflows/backend-consolidation.yml: missing
 - PASS [file] docs/release/backend_consolidation_terminal_packet.md: present
 - PASS [file] docs/release/backend_consolidation_evidence_manifest.md: present
 - PASS [file] scripts/generate_backend_consolidation_evidence_manifest.py: present
@@ -125,8 +125,6 @@ Backend consolidation release guard
 - PASS [report] diagnostic report present
 - PASS backend consolidation release guard
 
-/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/modules/consent/service.py:27: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
-  from app.core.exceptions import ConsentExpiredError, ConsentRequiredError
 Audit runtime compatibility surface
 - PASS [audit compat] AuditRepositoryCompatAdapter: present
 - PASS [audit compat] AuditEventInput: present
@@ -165,5 +163,6 @@ Deep-readiness fixture probe: 7 check(s)
 - PASS [readiness] audit_write_probe: mode=internal_only_disabled_by_default
 - PASS backend runtime probe fixtures
 
-- PASS backend consolidation terminal packet
+Failures:
+- missing .github/workflows/backend-consolidation.yml
 ```

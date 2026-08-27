@@ -7,15 +7,15 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-08-25
-review_interval_days: 14
-evidence_command: PYTHONPATH=. python3 scripts/true_state_remediation/execute_bundle.py --bundle B02 --phase verify --json
+last_reviewed: 2026-08-27
+review_interval_days: 45
+evidence_command: PYTHONPATH=. python3 scripts/true_state_remediation/execute_bundle.py --bundle B03 --phase verify --json
 code_anchors: [app/api_v2.py, app/frontend/package.json, docs/roadmap/production_readiness/true_state_remediation_register.json]
 ---
 
 # EduBoost Current State
 
-This file is the canonical current-state summary for EduBoost V2 generated deterministically from single-source register state on 2026-08-25.
+This file is the canonical current-state summary for EduBoost V2 generated deterministically from single-source register state on 2026-08-27.
 
 It is intentionally conservative. It records what is true now and what remains unauthorised before production, deployment, public beta, billing, live learner traffic, or further production-readiness implementation work can proceed.
 
@@ -50,7 +50,7 @@ The active technical direction is:
 
 ```text
 Remediation program: EduBoost V2 True-State Remediation
-Active implementation bundle: B02 (Canonical Truth and Toolchain)
+Active implementation bundle: B03 (CI Authority & Test-System Taxonomy Consolidation)
 Bundle B01 (Release Gate Recovery): verified and closed
 Bundle B02 (Canonical Truth and Toolchain): in_progress
 Feature freeze: active
@@ -67,12 +67,6 @@ Controlled-beta fields are distinct and independently enforced:
 - **Cohort Limits**: Staging cohort only (<50 test accounts).
 - **Kill-Switch State**: Enabled (`FEATURE_FLAG_MAINTENANCE_MODE=true` fails closed).
 
-## Governance & Reconciled Registers
-
-- Current-state refresh cadence recorded: true
-- Reconciled register rule: All roadmap items follow the RR-### register structure in `docs/roadmap/reconciliation/outstanding_work_register.md`.
-- Historical caveats: RR-003 fallback coverage baseline recorded 0.0; RR-006 evidence merged with non-required checks non-blocking; RR-010 beta outcome reporting outstanding; RR-016 operational drills outstanding.
-
 ## Release authority boundaries (fail-closed)
 
 These remain strictly unauthorized:
@@ -88,4 +82,4 @@ billing_launch_authorised: false
 live_payment_processing_authorised: false
 ```
 
-**Generation timestamp: 2026-08-25T23:40:19.921428+00:00**
+**Generation timestamp: 2026-08-27T12:12:33.786710+00:00**

@@ -11,6 +11,8 @@ from scripts.check_cluster_f_ai_safety_evidence import run_checks
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 WORKFLOW = REPO_ROOT / ".github" / "workflows" / "cluster-f-ai-safety.yml"
+if not WORKFLOW.exists() and (REPO_ROOT / 'archive' / 'github_workflows' / WORKFLOW.name).exists():
+    WORKFLOW = REPO_ROOT / 'archive' / 'github_workflows' / WORKFLOW.name
 
 
 @pytest.mark.unit

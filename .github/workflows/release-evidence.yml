@@ -1,0 +1,35 @@
+name: Release Evidence Collection
+
+on:
+  workflow_dispatch:
+    inputs:
+      candidate_tag:
+        description: 'Release Candidate Tag (e.g. v1.0.0-rc1)'
+        required: true
+        default: 'v1.0.0-rc1'
+
+permissions:
+  contents: read
+
+jobs:
+  generate-release-evidence:
+    name: Generate & Verify Immutable Release Evidence
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements/base.txt -r requirements/dev.txt
+      - name: Generate SBOMs
+        run: python3 scripts/maintenance/generate_release_sboms.py
+      - name: Generate Canonical Route & OpenAPI Inventory
+        run: |
+          python3 scripts/generate_openapi.py --output docs/openapi.json
+          python3 scripts/generate_route_inventory.py
+      - name: Generate CI Authority Inventory
+        run: python3 scripts/maintenance/generate_ci_authority_inventory.py

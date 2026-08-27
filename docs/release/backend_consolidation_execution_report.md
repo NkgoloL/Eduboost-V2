@@ -1,14 +1,14 @@
 # Backend Consolidation Execution Report
 
-Generated at: `2026-08-01T21:00:35Z`
+Generated at: `2026-08-27T16:18:16Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| execution packet | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_execution_packet.py` |
-| readiness report | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_consolidation_readiness_report.py` |
-| release guard | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_release_guard.py` |
-| no-op guard | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_noop_guard.py` |
-| runtime compatibility | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_runtime_compatibility.py` |
+| execution packet | 0 | `/usr/bin/python3 scripts/check_backend_consolidation_execution_packet.py` |
+| readiness report | 0 | `/usr/bin/python3 scripts/generate_backend_consolidation_readiness_report.py` |
+| release guard | 0 | `/usr/bin/python3 scripts/check_backend_consolidation_release_guard.py` |
+| no-op guard | 0 | `/usr/bin/python3 scripts/check_backend_consolidation_noop_guard.py` |
+| runtime compatibility | 0 | `/usr/bin/python3 scripts/check_backend_runtime_compatibility.py` |
 
 ## Boundary
 
@@ -16,7 +16,7 @@ This report sequences backend consolidation. It does not approve destructive cha
 
 ## execution packet
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_execution_packet.py`
+Command: `/usr/bin/python3 scripts/check_backend_consolidation_execution_packet.py`
 
 Return code: `0`
 
@@ -47,17 +47,17 @@ Backend consolidation execution packet check
 
 ## readiness report
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_backend_consolidation_readiness_report.py`
+Command: `/usr/bin/python3 scripts/generate_backend_consolidation_readiness_report.py`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/backend_consolidation_readiness_report.md
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2/docs/release/backend_consolidation_readiness_report.md
 ```
 
 ## release guard
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_release_guard.py`
+Command: `/usr/bin/python3 scripts/check_backend_consolidation_release_guard.py`
 
 Return code: `0`
 
@@ -84,7 +84,7 @@ Backend consolidation release guard
 
 ## no-op guard
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_noop_guard.py`
+Command: `/usr/bin/python3 scripts/check_backend_consolidation_noop_guard.py`
 
 Return code: `0`
 
@@ -105,13 +105,11 @@ Backend consolidation no-op/deletion guard
 
 ## runtime compatibility
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_runtime_compatibility.py`
+Command: `/usr/bin/python3 scripts/check_backend_runtime_compatibility.py`
 
 Return code: `0`
 
 ```text
-/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/app/modules/consent/service.py:27: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
-  from app.core.exceptions import ConsentExpiredError, ConsentRequiredError
 Audit runtime compatibility surface
 - PASS [audit compat] AuditRepositoryCompatAdapter: present
 - PASS [audit compat] AuditEventInput: present

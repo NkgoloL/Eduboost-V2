@@ -105,15 +105,17 @@ def run(
     except FileNotFoundError as exc:
         if missing_executable == "raise":
             raise
-        stderr: str | bytes = f"executable not found: {resolved[0]} ({exc})"
-        stdout: str | bytes = ""
+        err_msg = f"executable not found: {resolved[0]} ({exc})"
         if not text:
-            stderr = stderr.encode()
-            stdout = b""
-        result = subprocess.CompletedProcess(resolved, 127, stdout, stderr)
+            stderr_bytes = err_msg.encode("utf-8")
+            stdout_bytes = b""
+            if check:
+                raise subprocess.CalledProcessError(127, resolved, output=stdout_bytes, stderr=stderr_bytes)
+            return subprocess.CompletedProcess(resolved, 127, stdout_bytes, stderr_bytes)  # type: ignore[arg-type,return-value]
         if check:
-            raise subprocess.CalledProcessError(127, resolved, output=stdout, stderr=stderr)
-        return result
+            raise subprocess.CalledProcessError(127, resolved, output="", stderr=err_msg)
+        return subprocess.CompletedProcess(resolved, 127, "", err_msg)
+
 
 def run_shell(
     command: str,

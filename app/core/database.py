@@ -19,7 +19,17 @@ engine_kwargs = {
     "pool_pre_ping": True,
 }
 
-if settings.DATABASE_URL.startswith("postgresql"):
+_raw_url = settings.DATABASE_URL
+if _raw_url.startswith("postgresql://"):
+    async_db_url = "postgresql+asyncpg://" + _raw_url[len("postgresql://"):]
+elif _raw_url.startswith("postgres://"):
+    async_db_url = "postgresql+asyncpg://" + _raw_url[len("postgres://"):]
+elif _raw_url.startswith("sqlite://"):
+    async_db_url = "sqlite+aiosqlite://" + _raw_url[len("sqlite://"):]
+else:
+    async_db_url = _raw_url
+
+if async_db_url.startswith("postgresql"):
     engine_kwargs["connect_args"] = {
         "timeout": 5,
         "statement_cache_size": 0,
@@ -28,15 +38,16 @@ if settings.DATABASE_URL.startswith("postgresql"):
     }
 
 # PostgreSQL-specific settings
-if settings.DATABASE_URL.startswith("postgresql") and settings.APP_ENV in {"development", "test"}:
+if async_db_url.startswith("postgresql") and settings.APP_ENV in {"development", "test"}:
     engine_kwargs["poolclass"] = NullPool
-elif settings.DATABASE_URL.startswith("postgresql"):
+elif async_db_url.startswith("postgresql"):
     engine_kwargs.update({
         "pool_size": 10,
         "max_overflow": 20,
     })
 
-engine = create_async_engine(settings.DATABASE_URL, **engine_kwargs)
+engine = create_async_engine(async_db_url, **engine_kwargs)
+
 
 AsyncSessionLocal = async_sessionmaker(
     bind=engine,

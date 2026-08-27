@@ -9,6 +9,8 @@ from scripts.ci_auth_refresh_db_proof_workflow import build_status, write_status
 
 ROOT = Path(__file__).resolve().parents[2]
 WORKFLOW = ROOT / ".github/workflows/auth-refresh-db-proof.yml"
+if not WORKFLOW.exists() and (ROOT / 'archive' / 'github_workflows' / WORKFLOW.name).exists():
+    WORKFLOW = ROOT / 'archive' / 'github_workflows' / WORKFLOW.name
 
 
 def test_auth_refresh_db_proof_workflow_exists_and_uses_postgres_service():

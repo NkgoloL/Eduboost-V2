@@ -25,8 +25,8 @@ def generate_current_state(root: Path) -> dict[str, Any]:
     now_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
     # Current authority & active bundle
-    active_bundle = tsr_reg.get("current_bundle", "B02")
-    active_stream = "B02 (Canonical Truth and Toolchain)"
+    active_bundle = tsr_reg.get("current_bundle", "B03")
+    active_stream = "B03 (CI Authority & Test-System Taxonomy Consolidation)"
 
     # Generate docs/current_state.md
     current_state_md = f"""---
@@ -39,8 +39,8 @@ source_of_truth: true
 supersedes: []
 superseded_by: null
 last_reviewed: {now_date}
-review_interval_days: 14
-evidence_command: PYTHONPATH=. python3 scripts/true_state_remediation/execute_bundle.py --bundle B02 --phase verify --json
+review_interval_days: 45
+evidence_command: PYTHONPATH=. python3 scripts/true_state_remediation/execute_bundle.py --bundle B03 --phase verify --json
 code_anchors: [app/api_v2.py, app/frontend/package.json, docs/roadmap/production_readiness/true_state_remediation_register.json]
 ---
 

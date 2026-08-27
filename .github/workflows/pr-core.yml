@@ -1,0 +1,84 @@
+name: PR Core Quality Gates
+
+on:
+  pull_request:
+    branches: [master, main]
+  push:
+    branches: [master]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  compile-and-lint:
+    name: Compile & Ruff Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements/base.txt -r requirements/dev.txt
+      - name: Python Compileall
+        run: python3 -m compileall -q app tests scripts alembic
+      - name: Ruff Check
+        run: python3 -m ruff check app tests scripts
+
+  mypy-typecheck:
+    name: Mypy Static Type Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements/base.txt -r requirements/dev.txt
+      - name: Mypy Check
+        run: python3 -m mypy app
+
+  fast-unit-tests:
+    name: Fast Product Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements/base.txt -r requirements/dev.txt
+      - name: Run Fast Unit Tests
+        run: PYTHONPATH=. python3 -m pytest tests/unit/test_etl_mcp_server_startup.py tests/unit/test_subscription_service.py tests/unit/test_password_policy.py tests/unit/test_popia_consent_versioning.py -q
+
+
+  route-contract-audit:
+    name: Route & OpenAPI Canonical Contract Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements/base.txt -r requirements/dev.txt
+      - name: Check OpenAPI Drift
+        run: python3 scripts/generate_openapi.py --check
+      - name: Verify Route Inventory & Current State
+        run: PYTHONPATH=. python3 scripts/maintenance/generate_current_state_docs.py

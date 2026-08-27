@@ -1,14 +1,14 @@
 # Backend Consolidation Diagnostic Report
 
-Generated at: `2026-08-01T21:00:50Z`
+Generated at: `2026-08-27T16:18:24Z`
 
 | Check | Return code | Command |
 |---|---:|---|
-| backend dragons | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_dragons.py` |
-| audit inventory | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_audit_callsite_inventory.py --fail-empty` |
-| consent inventory | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_consent_callsite_inventory.py --fail-empty` |
-| health readiness contract | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_health_readiness_contract.py` |
-| schema drift contract | 0 | `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_schema_drift_contract.py` |
+| backend dragons | 0 | `/usr/bin/python3 scripts/check_backend_consolidation_dragons.py` |
+| audit inventory | 0 | `/usr/bin/python3 scripts/generate_audit_callsite_inventory.py --fail-empty` |
+| consent inventory | 0 | `/usr/bin/python3 scripts/generate_consent_callsite_inventory.py --fail-empty` |
+| health readiness contract | 0 | `/usr/bin/python3 scripts/check_health_readiness_contract.py` |
+| schema drift contract | 0 | `/usr/bin/python3 scripts/check_schema_drift_contract.py` |
 
 ## Interpretation
 
@@ -19,13 +19,13 @@ Generated at: `2026-08-01T21:00:50Z`
 
 ## backend dragons
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_backend_consolidation_dragons.py`
+Command: `/usr/bin/python3 scripts/check_backend_consolidation_dragons.py`
 
 Return code: `0`
 
 ```text
 Backend consolidation dragon diagnostic
-- audit_repository: 49 match(es)
+- audit_repository: 50 match(es)
   - app/core/audit.py
   - app/modules/consent/service.py
   - app/repositories/__init__.py
@@ -38,7 +38,7 @@ Backend consolidation dragon diagnostic
   - app/services/popia_service.py
   - scripts/audit_write_flow_command.py
   - scripts/check_auth_service_extraction.py
-  - ... 8 more file(s)
+  - ... 9 more file(s)
 - audit_events: 151 match(es)
   - alembic/versions/0006_v2_audit_events.py
   - alembic/versions/20260507_1200_popia_consent_audit_hardening.py
@@ -106,7 +106,7 @@ Backend consolidation dragon diagnostic
   - app/services/consent.py
   - app/services/consent_runtime_compatibility.py
   - ... 39 more file(s)
-- deep_health: 51 match(es)
+- deep_health: 52 match(es)
   - app/api_v2.py
   - app/core/health.py
   - scripts/check_backend_consolidation_dragons.py
@@ -119,33 +119,33 @@ Backend consolidation dragon diagnostic
   - scripts/runtime_readiness/capture_backend_backed_seeded_e2e_evidence.py
   - scripts/runtime_readiness/capture_live_stack_readiness_evidence.py
   - scripts/runtime_readiness/verify_backend_backed_e2e.py
-  - ... 8 more file(s)
+  - ... 9 more file(s)
 - PASS backend consolidation dragons documented and inventoried
 ```
 
 ## audit inventory
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_audit_callsite_inventory.py --fail-empty`
+Command: `/usr/bin/python3 scripts/generate_audit_callsite_inventory.py --fail-empty`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/audit_callsite_inventory.md (6029 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2/docs/release/audit_callsite_inventory.md (6046 row(s))
 ```
 
 ## consent inventory
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/generate_consent_callsite_inventory.py --fail-empty`
+Command: `/usr/bin/python3 scripts/generate_consent_callsite_inventory.py --fail-empty`
 
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/docs/release/consent_callsite_inventory.md (593 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2/docs/release/consent_callsite_inventory.md (596 row(s))
 ```
 
 ## health readiness contract
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_health_readiness_contract.py`
+Command: `/usr/bin/python3 scripts/check_health_readiness_contract.py`
 
 Return code: `0`
 
@@ -169,7 +169,7 @@ Health/readiness diagnostic contract check
 
 ## schema drift contract
 
-Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python scripts/check_schema_drift_contract.py`
+Command: `/usr/bin/python3 scripts/check_schema_drift_contract.py`
 
 Return code: `0`
 

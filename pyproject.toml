@@ -11,3 +11,39 @@ requires-python = ">=3.12.3,<3.13"
 
 [tool.setuptools]
 packages = { find = {} }
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "node_modules",
+    "app/frontend",
+    ".next",
+    "dist",
+    "build",
+    "archive",
+    "docs",
+    "temp",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = [
+    "E401",  # Multiple imports on one line
+    "E402",  # Module level import not at top of file
+    "E501",  # Line too long
+    "E701",  # Multiple statements on one line (colon)
+    "E702",  # Multiple statements on one line (semicolon)
+    "E722",  # Do not use bare `except`
+    "E741",  # Ambiguous variable name
+    "F401",  # Imported but unused
+    "F402",  # Import shadowed by loop var
+    "F811",  # Redefinition of name
+    "F841",  # Local variable is assigned to but never used
+    "W291",  # Trailing whitespace
+    "W292",  # No newline at end of file
+    "W293",  # Blank line contains whitespace
+]

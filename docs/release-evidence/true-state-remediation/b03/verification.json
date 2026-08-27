@@ -1,0 +1,82 @@
+{
+  "checks": {
+    "boundaries": {
+      "failures": [],
+      "inspected": [
+        "docs/roadmap/production_readiness/production_readiness_register.json",
+        "docs/roadmap/production_readiness/prd11_production_release_register.json",
+        "docs/roadmap/production_readiness/true_state_remediation_register.json"
+      ],
+      "valid": true
+    },
+    "canonical_workflows": {
+      "active_workflows": [
+        "frontend-e2e.yml",
+        "operations-drills.yml",
+        "pr-core.yml",
+        "product-runtime.yml",
+        "release-evidence.yml",
+        "security-supply-chain.yml"
+      ],
+      "expected_canonical": [
+        "frontend-e2e.yml",
+        "operations-drills.yml",
+        "pr-core.yml",
+        "product-runtime.yml",
+        "release-evidence.yml",
+        "security-supply-chain.yml"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "valid": true
+    },
+    "ci_authority_matrix": {
+      "inventory_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/ci/ci_workflow_inventory.md",
+      "matrix_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/ci/ci_authority_matrix.json",
+      "valid": true
+    },
+    "flake_policy": {
+      "path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/testing/flake_policy_and_quarantine_register.md",
+      "valid": true
+    },
+    "hygiene": {
+      "status_porcelain": "M .github/workflows/product-runtime.yml",
+      "stray_untracked": [],
+      "valid": true
+    },
+    "manual": {
+      "invalid": [],
+      "missing": [],
+      "valid": true
+    },
+    "register": {
+      "errors": [],
+      "release_boundaries": {
+        "failures": [],
+        "inspected": [
+          "docs/roadmap/production_readiness/production_readiness_register.json",
+          "docs/roadmap/production_readiness/prd11_production_release_register.json",
+          "docs/roadmap/production_readiness/true_state_remediation_register.json"
+        ],
+        "valid": true
+      },
+      "task_count": 174,
+      "valid": true
+    },
+    "risk_coverage_thresholds": {
+      "path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/testing/risk_based_coverage_thresholds.md",
+      "valid": true
+    },
+    "test_health_metrics": {
+      "path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/testing/test_health_metrics.json",
+      "valid": true
+    },
+    "test_taxonomy": {
+      "doc_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/docs/testing/test_taxonomy_and_fast_suite_manifest.md",
+      "module_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2/tests/taxonomy.py",
+      "valid": true
+    }
+  },
+  "valid": true,
+  "verified_at": "2026-08-27T16:45:06.741287+00:00"
+}
