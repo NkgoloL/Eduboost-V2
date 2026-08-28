@@ -14,7 +14,7 @@ from app.domain.consent import ConsentRecord, ConsentState
 
 
 class ConsentRepository:
-    def __init__(self, pool: asyncpg.Pool) -> None:
+    def __init__(self, pool: asyncpg.Pool | None = None) -> None:
         self._pool = pool
 
     async def get_active_for_learner(
