@@ -11,6 +11,7 @@ from app.modules.diagnostics.session_recovery_service import DiagnosticSessionSn
 from app.modules.diagnostics.termination_service import TerminationService
 from app.modules.progress.mastery_model import compute_mastery_score, label_for_score
 from app.services.diagnostic_scoring_snapshot import diagnostic_item_from_response, diagnostic_response_snapshot
+from app.services.mastery_engine import assert_no_authoritative_claims, MAX_CONFIDENCE_THRESHOLD
 
 
 @dataclass
@@ -97,6 +98,10 @@ class DiagnosticSessionService:
             raise ValueError("diagnostic session snapshot not found")
         score = compute_mastery_score(snap.theta, snap.se_estimate)
         label = label_for_score(score).value
+        # Educational invariant: assert no unvalidated authoritative claims
+        estimated_confidence = min(max(0.0, 1.0 - (snap.se_estimate / 2.0)), MAX_CONFIDENCE_THRESHOLD)
+        assert_no_authoritative_claims(state=label, confidence=estimated_confidence)
+
         if self.sessions:
             await self.sessions.update_session_state(str(session_id), "completed", theta_after=snap.theta, se_estimate=snap.se_estimate, items_served=snap.items_served, gap_topics=snap.gap_topics, misconception_tags=snap.misconception_tags, completed_at=datetime.now(timezone.utc))
         if self.mastery:

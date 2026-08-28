@@ -530,3 +530,52 @@ async def test_cancel_erasure_raises_on_no_active_request():
         await svc.cancel_erasure("learner-123", {"sub": "guardian-1"})
     assert exc.value.status_code == 409
     assert "No active erasure request" in exc.value.detail
+
+
+@pytest.mark.asyncio
+async def test_popia_dsr_service_cascade_executes_with_metrics():
+    """Verify POPIADSRService.execute_erasure_cascade executes cascade and measures tables/rows."""
+    from app.models import ErasureRequest
+    from app.services.popia_dsr_service import POPIADSRService
+
+    db = AsyncMock()
+    db.add = MagicMock()
+    db.commit = AsyncMock()
+    db.rollback = AsyncMock()
+    db.flush = AsyncMock()
+
+    req = ErasureRequest(
+        id="req-123",
+        learner_id="learner-456",
+        requester_id="guardian-789",
+        requester_role="guardian",
+        state="requested",
+    )
+    mock_res_req = MagicMock()
+    mock_res_req.scalar_one_or_none.return_value = req
+
+    mock_res_exec = MagicMock()
+    mock_res_exec.rowcount = 1
+
+    async def mock_execute(stmt):
+        if "erasure_request" in str(stmt).lower():
+            return mock_res_req
+        return mock_res_exec
+
+
+    db.execute = mock_execute
+
+    dsr = POPIADSRService(db)
+    result = await dsr.execute_erasure_cascade("req-123")
+
+    assert result["state"] == "executed"
+    assert result["tables_cascaded"] >= 10
+    assert req.state == "executed"
+    assert req.postflight_result["status"] == "success"
+    assert req.postflight_result["tables_cascaded"] >= 10
+    assert "diagnostic_sessions" in req.postflight_result["tables"]
+    assert "lessons" in req.postflight_result["tables"]
+    assert "assessment_attempts" in req.postflight_result["tables"]
+    assert "knowledge_gaps" in req.postflight_result["tables"]
+
+
