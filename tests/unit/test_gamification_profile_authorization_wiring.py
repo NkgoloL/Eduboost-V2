@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-
 import pytest
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -19,7 +18,7 @@ def test_gamification_profile_uses_phase2_read_authorization() -> None:
         maxsplit=1,
     )[0]
 
-    assert "learner = await LearnerRepository(db).get_by_id(learner_id)" in block
+    assert "learner = await LearnerService(db).get_learner_summary(learner_id)" in block
     assert "require_learner_read_for_current_user(current_user, learner)" in block
     assert block.index("require_learner_read_for_current_user") < block.index(
         "await require_active_consent_for_current_user(db, current_user, learner_id)"
