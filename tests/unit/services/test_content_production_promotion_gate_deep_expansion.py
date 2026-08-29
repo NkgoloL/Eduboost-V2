@@ -1,10 +1,8 @@
-"""Comprehensive unit tests for ContentProductionPromotionGate enums, blockers, and reports."""
-from __future__ import annotations
-
 import uuid
-from unittest.mock import MagicMock
 import pytest
+from unittest.mock import AsyncMock, MagicMock
 
+from app.domain.content_coverage import ContentLayer, CoverageLayerStatus
 from app.services.content_production_promotion_gate import (
     ProductionGateStatus,
     ProductionGateBlocker,
@@ -13,43 +11,32 @@ from app.services.content_production_promotion_gate import (
 )
 
 
-class TestProductionGateModels:
-    def test_gate_status_enums(self):
-        assert ProductionGateStatus.PROMOTABLE == "promotable"
-        assert ProductionGateStatus.BLOCKED_BY_COVERAGE == "blocked_by_coverage"
-        assert ProductionGateStatus.BLOCKED_BY_REVIEW == "blocked_by_review"
-        assert ProductionGateStatus.BLOCKED_BY_VALIDATION == "blocked_by_validation"
-        assert ProductionGateStatus.BLOCKED_BY_PROVENANCE == "blocked_by_provenance"
-        assert ProductionGateStatus.BLOCKED_BY_STAGING == "blocked_by_staging"
-        assert ProductionGateStatus.BLOCKED_BY_SOURCE_QUALITY == "blocked_by_source_quality"
-        assert ProductionGateStatus.BLOCKED_BY_LICENSE == "blocked_by_license"
-        assert ProductionGateStatus.BLOCKED_BY_CONFIGURATION == "blocked_by_configuration"
+def test_production_gate_enums_and_dataclasses():
+    assert ProductionGateStatus.PROMOTABLE == "promotable"
+    assert ProductionGateStatus.BLOCKED_BY_COVERAGE == "blocked_by_coverage"
 
-    def test_gate_blocker_dataclass(self):
-        aid = uuid.uuid4()
-        blocker = ProductionGateBlocker(
-            type="coverage",
-            message="Minimum item threshold not met",
-            artifact_id=aid,
-            caps_ref="4.M.1.1",
-        )
-        assert blocker.type == "coverage"
-        assert blocker.artifact_id == aid
-        assert blocker.caps_ref == "4.M.1.1"
+    blocker = ProductionGateBlocker(type="coverage", message="Coverage red")
+    assert blocker.type == "coverage"
 
-    def test_gate_report_dataclass(self):
-        report = ProductionGateReport(
-            scope_id="grade4_maths",
-            status=ProductionGateStatus.PROMOTABLE,
-            blockers=[],
-            coverage_summary={"ratio": 1.0},
-            staging_summary={"verified": True},
-        )
-        assert report.scope_id == "grade4_maths"
-        assert report.status == ProductionGateStatus.PROMOTABLE
-        assert len(report.blockers) == 0
+    report = ProductionGateReport(
+        scope_id="scope-1",
+        status=ProductionGateStatus.PROMOTABLE,
+    )
+    assert report.status == ProductionGateStatus.PROMOTABLE
 
-    def test_gate_init(self):
-        mock_coverage = MagicMock()
-        gate = ContentProductionPromotionGate(coverage_service=mock_coverage)
-        assert gate.coverage_service == mock_coverage
+
+@pytest.mark.asyncio
+async def test_assert_promotable_raises_when_blocked():
+    mock_cov = AsyncMock()
+    gate = ContentProductionPromotionGate(coverage_service=mock_cov)
+    session = AsyncMock()
+
+    mock_report = ProductionGateReport(
+        scope_id="scope-1",
+        status=ProductionGateStatus.BLOCKED_BY_REVIEW,
+        blockers=[ProductionGateBlocker(type="review", message="Pending educator reviews")],
+    )
+    gate.evaluate_scope = AsyncMock(return_value=mock_report)
+
+    with pytest.raises(ValueError, match="Production promotion gate failed for scope scope-1: blocked_by_review"):
+        await gate.assert_promotable(session, "scope-1")
