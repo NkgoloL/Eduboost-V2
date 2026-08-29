@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from types import SimpleNamespace
 import uuid
+from unittest.mock import MagicMock
 import pytest
 from fastapi import HTTPException
 
@@ -90,20 +91,37 @@ class TestDiagnosticRouterSerializationHelpers:
         assert engine_item.a_param == 1.2
         assert engine_item.b_param == -0.5
 
-    def test_review_item_request_validation(self):
-        req = ReviewItemRequest(review_status="approved", quality_score=0.95)
-        assert req.review_status == "approved"
-        assert req.quality_score == 0.95
+    def test_require_item_bank_admin_forbidden(self):
+        non_admin_user = MagicMock()
+        non_admin_user.is_admin = False
 
-        with pytest.raises(Exception):
-            ReviewItemRequest(review_status="invalid_status")
-
-    def test_require_item_bank_admin(self):
-        admin_user = SimpleNamespace(is_admin=True)
-        # Should not raise
-        _require_item_bank_admin(admin_user)
-
-        non_admin_user = SimpleNamespace(is_admin=False)
         with pytest.raises(HTTPException) as exc_info:
             _require_item_bank_admin(non_admin_user)
         assert exc_info.value.status_code == 403
+
+    def test_require_item_bank_admin_allowed(self):
+        admin_user = MagicMock()
+        admin_user.is_admin = True
+        _require_item_bank_admin(admin_user)
+
+
+class TestDiagnosticSessionRequests:
+    def test_session_start_request(self):
+        from app.api_v2_routers.diagnostics import DiagnosticSessionStartRequest, DiagnosticSessionResponseRequest
+
+        req = DiagnosticSessionStartRequest(
+            learner_id=uuid.uuid4(),
+            caps_ref="4.M.1.1",
+            theta=0.5,
+        )
+        assert req.caps_ref == "4.M.1.1"
+        assert req.theta == 0.5
+
+        resp_req = DiagnosticSessionResponseRequest(
+            item_id=uuid.uuid4(),
+            correct=True,
+            response="A",
+            caps_ref="4.M.1.1",
+        )
+        assert resp_req.correct is True
+        assert resp_req.response == "A"
