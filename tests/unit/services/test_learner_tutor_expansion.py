@@ -57,3 +57,44 @@ class TestLearnerTutorService:
         mock_db = AsyncMock()
         service = LearnerTutorService(db=mock_db)
         assert service.db == mock_db
+
+    @pytest.mark.asyncio
+    async def test_create_session_learner_or_lesson_not_found(self):
+        from fastapi import HTTPException
+        mock_db = AsyncMock()
+        mock_db.get.return_value = None
+        service = LearnerTutorService(db=mock_db)
+
+        with pytest.raises(HTTPException) as exc_info:
+            await service.create_session(
+                learner_id=str(uuid.uuid4()),
+                lesson_id=str(uuid.uuid4()),
+                actor_id="actor1",
+                language="en",
+            )
+        assert exc_info.value.status_code == 404
+
+    @pytest.mark.asyncio
+    async def test_create_session_existing_active(self):
+        mock_db = AsyncMock()
+        learner = MagicMock()
+        lesson = MagicMock()
+        lesson.learner_id = "learner-1"
+
+        async def get_side_effect(model, id_val):
+            return learner if "LearnerProfile" in str(model) else lesson
+
+        mock_db.get.side_effect = get_side_effect
+        existing_session = MagicMock(spec=TutorSession)
+        existing_session.status = "active"
+        mock_db.scalar.return_value = existing_session
+
+        service = LearnerTutorService(db=mock_db)
+        res = await service.create_session(
+            learner_id="learner-1",
+            lesson_id="lesson-1",
+            actor_id="actor1",
+            language="en",
+        )
+        assert res == existing_session
+
