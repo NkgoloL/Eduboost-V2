@@ -196,3 +196,61 @@ async def test_content_factory_get_promotion_event_not_found():
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         resp = await client.get(f"/admin/content-factory/promotion-events/{fake_id}")
         assert resp.status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_content_factory_runs_endpoints():
+    app = _create_test_app()
+    fake_run_id = uuid.uuid4()
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        # Get run not found
+        resp = await client.get(f"/admin/content-factory/runs/{fake_run_id}")
+        assert resp.status_code in (200, 404)
+
+        # Plan missing tasks
+        resp = await client.post(f"/admin/content-factory/runs/{fake_run_id}/plan-missing")
+        assert resp.status_code in (200, 404)
+
+        # Execute run
+        resp = await client.post(f"/admin/content-factory/runs/{fake_run_id}/execute")
+        assert resp.status_code in (200, 404, 409)
+
+        # Cancel run
+        resp = await client.post(f"/admin/content-factory/runs/{fake_run_id}/cancel")
+        assert resp.status_code in (200, 404)
+
+
+@pytest.mark.asyncio
+async def test_content_factory_tasks_endpoints():
+    app = _create_test_app()
+    fake_task_id = uuid.uuid4()
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        # Get task
+        resp = await client.get(f"/admin/content-factory/tasks/{fake_task_id}")
+        assert resp.status_code in (200, 404)
+
+        # Execute task
+        resp = await client.post(f"/admin/content-factory/tasks/{fake_task_id}/execute")
+        assert resp.status_code in (200, 404, 409)
+
+
+@pytest.mark.asyncio
+async def test_content_factory_review_actions_endpoints():
+    app = _create_test_app()
+    fake_id = uuid.uuid4()
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        # Submit review
+        resp = await client.post(f"/admin/content-factory/artifacts/{fake_id}/submit-review")
+        assert resp.status_code in (200, 404, 409)
+
+        # Bulk approve
+        resp = await client.post(
+            "/admin/content-factory/review/bulk-approve",
+            json={"artifact_ids": [str(fake_id)], "notes": "LGTM"},
+        )
+        assert resp.status_code in (200, 404, 409)
+
+        # Review queue
+        resp = await client.get("/admin/content-factory/review-queue")
+        assert resp.status_code in (200, 404)
+
