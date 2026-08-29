@@ -11,6 +11,10 @@ from httpx import ASGITransport, AsyncClient
 from app.api_v2_routers.content_factory import (
     router,
     get_content_factory_service,
+    get_content_artifact_lifecycle_service,
+    get_content_generation_run_service,
+    get_content_generation_planner,
+    get_content_generation_executor,
     get_staging_readiness_service,
     get_content_staging_seed_executor,
     get_production_promotion_gate,
@@ -200,57 +204,134 @@ async def test_content_factory_get_promotion_event_not_found():
 
 @pytest.mark.asyncio
 async def test_content_factory_runs_endpoints():
-    app = _create_test_app()
+    mock_run_service = AsyncMock()
+    mock_run_service.get_run.side_effect = LookupError("Run not found")
+    mock_run_service.cancel_run.side_effect = LookupError("Run not found")
+
+    mock_planner = AsyncMock()
+    mock_planner.plan_missing_for_run.side_effect = LookupError("Run not found")
+
+    mock_executor = AsyncMock()
+    mock_executor.execute_run.side_effect = LookupError("Run not found")
+
+    app = FastAPI()
+    app.include_router(router)
+
+    async def override_admin():
+        return AuthContext(
+            user_id=str(uuid.uuid4()),
+            role="admin",
+            email="admin@eduboost.co.za",
+            token_type="access",
+            raw_claims={"role": "admin", "permissions": ["admin:all"]},
+            jti=str(uuid.uuid4()),
+        )
+
+    app.dependency_overrides[require_admin] = override_admin
+    app.dependency_overrides[require_auth_context] = override_admin
+    app.dependency_overrides[get_db] = lambda: AsyncMock()
+    app.dependency_overrides[get_content_generation_run_service] = lambda: mock_run_service
+    app.dependency_overrides[get_content_generation_planner] = lambda: mock_planner
+    app.dependency_overrides[get_content_generation_executor] = lambda: mock_executor
+
     fake_run_id = uuid.uuid4()
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
-        # Get run not found
         resp = await client.get(f"/admin/content-factory/runs/{fake_run_id}")
-        assert resp.status_code in (200, 404)
+        assert resp.status_code == 404
 
-        # Plan missing tasks
         resp = await client.post(f"/admin/content-factory/runs/{fake_run_id}/plan-missing")
-        assert resp.status_code in (200, 404)
+        assert resp.status_code == 404
 
-        # Execute run
         resp = await client.post(f"/admin/content-factory/runs/{fake_run_id}/execute")
-        assert resp.status_code in (200, 404, 409)
+        assert resp.status_code == 404
 
-        # Cancel run
         resp = await client.post(f"/admin/content-factory/runs/{fake_run_id}/cancel")
-        assert resp.status_code in (200, 404)
+        assert resp.status_code == 404
 
 
 @pytest.mark.asyncio
 async def test_content_factory_tasks_endpoints():
-    app = _create_test_app()
+    mock_db = AsyncMock()
+    mock_db.get.return_value = None  # Task not found
+
+    mock_executor = AsyncMock()
+    mock_executor.execute_task.side_effect = LookupError("Task not found")
+
+    app = FastAPI()
+    app.include_router(router)
+
+    async def override_admin():
+        return AuthContext(
+            user_id=str(uuid.uuid4()),
+            role="admin",
+            email="admin@eduboost.co.za",
+            token_type="access",
+            raw_claims={"role": "admin", "permissions": ["admin:all"]},
+            jti=str(uuid.uuid4()),
+        )
+
+    app.dependency_overrides[require_admin] = override_admin
+    app.dependency_overrides[require_auth_context] = override_admin
+    app.dependency_overrides[get_db] = lambda: mock_db
+    app.dependency_overrides[get_content_generation_executor] = lambda: mock_executor
+
     fake_task_id = uuid.uuid4()
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
-        # Get task
         resp = await client.get(f"/admin/content-factory/tasks/{fake_task_id}")
-        assert resp.status_code in (200, 404)
+        assert resp.status_code == 404
 
-        # Execute task
         resp = await client.post(f"/admin/content-factory/tasks/{fake_task_id}/execute")
-        assert resp.status_code in (200, 404, 409)
+        assert resp.status_code == 404
 
 
 @pytest.mark.asyncio
 async def test_content_factory_review_actions_endpoints():
-    app = _create_test_app()
+    mock_lifecycle = AsyncMock()
+    mock_lifecycle.submit_for_review.side_effect = LookupError("Artifact not found")
+
+    mock_bulk = AsyncMock()
+    mock_bulk.bulk_approve.side_effect = ValueError("No valid artifacts to approve")
+
+    mock_queue = AsyncMock()
+    page_mock = MagicMock()
+    page_mock.items = []
+    page_mock.total = 0
+    page_mock.limit = 50
+    page_mock.offset = 0
+    mock_queue.list_queue.return_value = page_mock
+
+    app = FastAPI()
+    app.include_router(router)
+
+    async def override_admin():
+        return AuthContext(
+            user_id=str(uuid.uuid4()),
+            role="admin",
+            email="admin@eduboost.co.za",
+            token_type="access",
+            raw_claims={"role": "admin", "permissions": ["admin:all"]},
+            jti=str(uuid.uuid4()),
+        )
+
+    app.dependency_overrides[require_admin] = override_admin
+    app.dependency_overrides[require_auth_context] = override_admin
+    app.dependency_overrides[get_db] = lambda: AsyncMock()
+    app.dependency_overrides[get_content_artifact_lifecycle_service] = lambda: mock_lifecycle
+    app.dependency_overrides[get_content_bulk_review_service] = lambda: mock_bulk
+    app.dependency_overrides[get_content_review_queue_service] = lambda: mock_queue
+
     fake_id = uuid.uuid4()
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
-        # Submit review
         resp = await client.post(f"/admin/content-factory/artifacts/{fake_id}/submit-review")
-        assert resp.status_code in (200, 404, 409)
+        assert resp.status_code == 409
 
-        # Bulk approve
         resp = await client.post(
             "/admin/content-factory/review/bulk-approve",
             json={"artifact_ids": [str(fake_id)], "notes": "LGTM"},
         )
-        assert resp.status_code in (200, 404, 409)
+        assert resp.status_code == 409
 
-        # Review queue
         resp = await client.get("/admin/content-factory/review-queue")
-        assert resp.status_code in (200, 404)
+        assert resp.status_code == 200
+
 
