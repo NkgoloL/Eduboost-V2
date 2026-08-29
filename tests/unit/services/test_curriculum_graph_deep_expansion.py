@@ -1,70 +1,113 @@
-"""Comprehensive unit tests for Gate 2R.4 curriculum graph controls."""
-from __future__ import annotations
-
 import pytest
 
 from app.services.curriculum.graph import (
-    GraphNodeDraft,
+    Gate2R4ValidationError,
     MappingRejectedError,
     ReviewStatus,
     NodeStatus,
     EdgeType,
     LanguageAuthorityStatus,
     SupportType,
-    NODE_TYPES,
-    LEGACY_RELATIONSHIP_TYPES,
-    ALLOWED_LANGUAGES,
-    AUTHORITY_TIERS,
+    GraphNodeDraft,
+    MappingDraft,
+    CurriculumNodeVersion,
+    _canonical_json,
+    _sha256_json,
+    _coerce_review_status,
+    _coerce_language_status,
+    _coerce_edge_type,
 )
 
 
-class TestCurriculumGraphDraftValidation:
-    def test_node_draft_valid(self):
-        draft = GraphNodeDraft(
-            node_type="topic",
-            code="4.M.1.1",
-            label="Whole Numbers",
-            curriculum="CAPS",
-            grade=4,
-            subject="Mathematics",
-            language="en",
-        )
-        draft.validate()  # Should not raise
-
-    def test_node_draft_invalid_type(self):
-        draft = GraphNodeDraft(
-            node_type="invalid_type_xyz",
-            code="4.M.1.1",
-            label="Whole Numbers",
-        )
-        with pytest.raises(MappingRejectedError, match="invalid node_type"):
-            draft.validate()
-
-    def test_node_draft_invalid_language(self):
-        draft = GraphNodeDraft(
-            node_type="topic",
-            code="4.M.1.1",
-            label="Whole Numbers",
-            language="invalid_lang",
-        )
-        with pytest.raises(MappingRejectedError, match="invalid language"):
-            draft.validate()
+def test_enums_and_constants():
+    assert ReviewStatus.APPROVED == "approved"
+    assert NodeStatus.DRAFT == "draft"
+    assert EdgeType.PREREQUISITE_OF == "prerequisite_of"
+    assert LanguageAuthorityStatus.OFFICIAL_SOURCE == "official_source"
+    assert SupportType.DIRECT_SUPPORT == "direct_support"
 
 
-class TestCurriculumGraphEnumsAndConstants:
-    def test_review_status_enums(self):
-        assert ReviewStatus.PROPOSED.value == "proposed"
-        assert ReviewStatus.APPROVED.value == "approved"
-        assert ReviewStatus.REJECTED.value == "rejected"
+def test_graph_node_draft_validation():
+    draft = GraphNodeDraft(
+        node_type="learning_objective",
+        code="CAPS-G4-M-01",
+        label="Fractions addition",
+        grade=4,
+        language="en",
+    )
+    draft.validate()
 
-    def test_edge_types(self):
-        assert EdgeType.PREREQUISITE_OF.value == "prerequisite_of"
-        assert EdgeType.SUPPORTS.value == "supports"
-        assert EdgeType.ASSESSES.value == "assesses"
+    invalid_type = GraphNodeDraft(node_type="invalid_type", code="C", label="L")
+    with pytest.raises(MappingRejectedError, match="invalid node_type"):
+        invalid_type.validate()
 
-    def test_constants_membership(self):
-        assert "topic" in NODE_TYPES
-        assert "skill" in NODE_TYPES
-        assert "CONTAINS" in LEGACY_RELATIONSHIP_TYPES
-        assert "en" in ALLOWED_LANGUAGES
-        assert "tier_1" in AUTHORITY_TIERS
+    invalid_grade = GraphNodeDraft(node_type="topic", code="C", label="L", grade=15)
+    with pytest.raises(MappingRejectedError, match="grade must be between 0 and 12"):
+        invalid_grade.validate()
+
+
+def test_mapping_draft_validation():
+    mapping = MappingDraft(
+        chunk_version_id="chunk-v1",
+        node_id="node-1",
+        relationship_type="supports",
+        proposal_method="heuristic",
+        review_status="approved",
+        reviewed_by="teacher_1",
+        reviewed_at="2026-08-29T12:00:00Z",
+    )
+    mapping.validate_for_retrieval()
+
+    unapproved = MappingDraft(
+        chunk_version_id="chunk-v1",
+        node_id="node-1",
+        relationship_type="supports",
+        proposal_method="heuristic",
+        review_status="proposed",
+    )
+    with pytest.raises(MappingRejectedError, match="must be human-reviewed"):
+        unapproved.validate_for_retrieval()
+
+
+def test_curriculum_node_version_validation():
+    node = CurriculumNodeVersion(
+        curriculum_node_id="node-1",
+        curriculum_node_version_id="node-v1",
+        curriculum_code="CAPS",
+        grade=4,
+        subject_code="MATHS",
+        strand="Numbers",
+        term="1",
+        topic="Fractions",
+        subtopic=None,
+        skill="Addition",
+        learning_objective="Add fractions with common denominators",
+        assessment_statement=None,
+        language="en",
+    )
+    node.validate()
+
+    invalid_lang = CurriculumNodeVersion(
+        curriculum_node_id="node-1",
+        curriculum_node_version_id="node-v1",
+        curriculum_code="CAPS",
+        grade=4,
+        subject_code="MATHS",
+        strand="Numbers",
+        term="1",
+        topic="Fractions",
+        subtopic=None,
+        skill="Addition",
+        learning_objective="Add fractions with common denominators",
+        assessment_statement=None,
+        language="invalid_language",
+    )
+    with pytest.raises(Gate2R4ValidationError, match="invalid language"):
+        invalid_lang.validate()
+
+
+def test_coercion_helpers():
+    assert _coerce_review_status("approved") == ReviewStatus.APPROVED
+    assert _coerce_language_status("official_source") == LanguageAuthorityStatus.OFFICIAL_SOURCE
+    assert _coerce_edge_type("prerequisite_of") == EdgeType.PREREQUISITE_OF
+    assert len(_sha256_json({"a": 1})) == 64
