@@ -64,3 +64,39 @@ def test_multi_process_shared_budget_tracking():
     assert exc.value.status_code == 429
     assert "Daily AI budget exhausted" in exc.value.detail
 
+
+@pytest.mark.asyncio
+async def test_check_and_reserve_async_with_redis():
+    """Verify check_and_reserve_async coordinates atomically with Redis."""
+    from unittest.mock import AsyncMock
+
+    mock_redis = AsyncMock()
+    mock_redis.incrby.return_value = 1500
+    mock_redis.expire = AsyncMock()
+
+    guard = AIBudgetGuard(max_tokens_per_request=2000, daily_budget=5000, redis_client=mock_redis)
+    result = await guard.check_and_reserve_async(1500)
+
+    assert result == 1500
+    mock_redis.incrby.assert_awaited_once()
+    mock_redis.expire.assert_awaited_once()
+
+
+@pytest.mark.asyncio
+async def test_check_and_reserve_async_redis_exceeded_rolls_back():
+    """Verify exceeding daily budget in Redis rolls back counter with decrby."""
+    from unittest.mock import AsyncMock
+
+    mock_redis = AsyncMock()
+    mock_redis.incrby.return_value = 6000  # Exceeds 5000 daily budget
+    mock_redis.decrby = AsyncMock()
+
+    guard = AIBudgetGuard(max_tokens_per_request=2000, daily_budget=5000, redis_client=mock_redis)
+    with pytest.raises(HTTPException) as exc:
+        await guard.check_and_reserve_async(1500)
+
+    assert exc.value.status_code == 429
+    assert "Daily AI budget exhausted" in exc.value.detail
+    mock_redis.decrby.assert_awaited_once()
+
+

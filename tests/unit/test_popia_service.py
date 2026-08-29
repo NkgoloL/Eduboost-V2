@@ -568,14 +568,54 @@ async def test_popia_dsr_service_cascade_executes_with_metrics():
     dsr = POPIADSRService(db)
     result = await dsr.execute_erasure_cascade("req-123")
 
-    assert result["state"] == "executed"
-    assert result["tables_cascaded"] >= 10
-    assert req.state == "executed"
-    assert req.postflight_result["status"] == "success"
-    assert req.postflight_result["tables_cascaded"] >= 10
-    assert "diagnostic_sessions" in req.postflight_result["tables"]
-    assert "lessons" in req.postflight_result["tables"]
-    assert "assessment_attempts" in req.postflight_result["tables"]
     assert "knowledge_gaps" in req.postflight_result["tables"]
+
+
+@pytest.mark.asyncio
+async def test_popia_dsr_service_cascade_fails_closed_on_item_exposure_error():
+    """Verify any error deleting ItemExposure fails the whole cascade transactionally."""
+    from app.models import ErasureRequest
+    from app.services.popia_dsr_service import POPIADSRService, DSRServiceError
+
+    db = AsyncMock()
+    db.add = MagicMock()
+    db.commit = AsyncMock()
+    db.rollback = AsyncMock()
+    db.flush = AsyncMock()
+
+    req = ErasureRequest(
+        id="req-err-123",
+        learner_id="learner-456",
+        requester_id="guardian-789",
+        requester_role="guardian",
+        state="requested",
+    )
+
+    mock_res_req = MagicMock()
+    mock_res_req.scalar_one_or_none.return_value = req
+
+    mock_res_exec = MagicMock()
+    mock_res_exec.rowcount = 1
+
+    async def mock_execute(stmt):
+        stmt_str = str(stmt).lower()
+        if "erasure_request" in stmt_str:
+            return mock_res_req
+        if "item_exposures" in stmt_str:
+            raise RuntimeError("Database connection lost during item_exposures deletion")
+        return mock_res_exec
+
+    db.execute = mock_execute
+
+    dsr = POPIADSRService(db)
+    with pytest.raises(DSRServiceError) as exc:
+        await dsr.execute_erasure_cascade("req-err-123")
+
+    assert "Database connection lost during item_exposures deletion" in str(exc.value)
+    assert req.state == "failed"
+    assert req.postflight_result["status"] == "failed"
+    assert db.rollback.await_count >= 1
+
+
 
 

@@ -114,10 +114,20 @@ class AIBudgetGuard:
 _DEFAULT_GUARD: AIBudgetGuard | None = None
 
 
-def get_ai_budget_guard() -> AIBudgetGuard:
+def get_ai_budget_guard(redis_client: Any | None = None) -> AIBudgetGuard:
     """Retrieve the singleton AI budget guard for runtime requests."""
     global _DEFAULT_GUARD
     if _DEFAULT_GUARD is None:
-        _DEFAULT_GUARD = AIBudgetGuard()
+        client = redis_client
+        if client is None:
+            try:
+                from app.core.redis import get_redis
+                client = get_redis()
+            except Exception:
+                client = None
+        _DEFAULT_GUARD = AIBudgetGuard(redis_client=client)
+    elif redis_client is not None:
+        _DEFAULT_GUARD.redis_client = redis_client
     return _DEFAULT_GUARD
+
 

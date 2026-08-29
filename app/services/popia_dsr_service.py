@@ -144,7 +144,7 @@ class POPIADSRService:
             details["parental_consents"] = c_count
 
             # 3. Purge operational learning and assessment states
-            purge_models = [
+            purge_models: list[Any] = [
                 SubjectMastery,
                 TopicMastery,
                 MasterySnapshot,
@@ -161,6 +161,9 @@ class POPIADSRService:
                 purge_models.append(TutorSession)
             if LearnerKGNodeState is not None:
                 purge_models.append(LearnerKGNodeState)
+            if ItemExposure is not None:
+                purge_models.append(ItemExposure)
+
 
             for model in purge_models:
                 del_stmt = delete(model).where(model.learner_id == learner_id)
@@ -170,17 +173,6 @@ class POPIADSRService:
                 details[model.__tablename__] = count
                 total_rows_purged += count
 
-            # 4. Handle ItemExposure (anonymize learner_id or delete)
-            if ItemExposure is not None:
-                try:
-                    del_exp = delete(ItemExposure).where(ItemExposure.learner_id == learner_id)
-                    res_exp = await self.db.execute(del_exp)
-                    exp_count = res_exp.rowcount if res_exp.rowcount is not None and res_exp.rowcount >= 0 else 0
-                    tables_affected.append(ItemExposure.__tablename__)
-                    details[ItemExposure.__tablename__] = exp_count
-                    total_rows_purged += exp_count
-                except Exception:
-                    pass
 
             # 5. Invalidate all active tokens for learner
             del_token = delete(SecureToken).where(SecureToken.user_id == learner_id)

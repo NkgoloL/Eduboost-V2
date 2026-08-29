@@ -99,8 +99,9 @@ class DiagnosticSessionService:
         score = compute_mastery_score(snap.theta, snap.se_estimate)
         label = label_for_score(score).value
         # Educational invariant: assert no unvalidated authoritative claims
-        estimated_confidence = min(max(0.0, 1.0 - (snap.se_estimate / 2.0)), MAX_CONFIDENCE_THRESHOLD)
+        estimated_confidence = max(0.0, 1.0 - (snap.se_estimate / 2.0))
         assert_no_authoritative_claims(state=label, confidence=estimated_confidence)
+
 
         if self.sessions:
             await self.sessions.update_session_state(str(session_id), "completed", theta_after=snap.theta, se_estimate=snap.se_estimate, items_served=snap.items_served, gap_topics=snap.gap_topics, misconception_tags=snap.misconception_tags, completed_at=datetime.now(timezone.utc))

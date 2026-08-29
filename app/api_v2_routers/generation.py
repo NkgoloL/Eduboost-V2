@@ -108,9 +108,10 @@ async def start_generation_run(
     # 0. Enforce AI Token Budget and Emergency Cost Kill-Switch Guard (TSR-11.11)
     estimated_tokens = sum(spec.count * 1000 for spec in body.task_specs)
     guard = get_ai_budget_guard()
-    guard.check_and_reserve(estimated_tokens)
+    await guard.check_and_reserve_async(estimated_tokens)
 
     context_service = ContentGenerationSourceContextService()
+
 
     sources_by_caps_ref: dict[str, list[dict[str, Any]]] = {}
     for spec in body.task_specs:
