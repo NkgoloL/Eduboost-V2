@@ -37,16 +37,19 @@ from app.models import (
     TopicMastery,
 )
 
+TutorSession: Any
 try:
     from app.models.tutor import TutorSession
 except ImportError:  # pragma: no cover
     TutorSession = None
 
+LearnerKGNodeState: Any
 try:
     from app.models.runtime_kg import LearnerKGNodeState
 except ImportError:  # pragma: no cover
     LearnerKGNodeState = None
 
+ItemExposure: Any
 try:
     from app.models.item_exposure import ItemExposure
 except ImportError:  # pragma: no cover
