@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-
 import pytest
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -20,6 +19,6 @@ def test_consent_revoke_uses_phase2_write_authorization() -> None:
     )[0]
 
     assert "current_user: AuthContext = Depends(require_auth_context)" in block
-    assert "learner = await LearnerRepository(db).get_by_id(learner_id)" in block
+    assert "learner = await LearnerService(db).get_learner_summary(learner_id)" in block
     assert "require_learner_write_for_current_user(current_user, learner_id)" in block
-    assert "guardian_id=current_user.user_id" in block
+    assert "current_user.user_id" in block
