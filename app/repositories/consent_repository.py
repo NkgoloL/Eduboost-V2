@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import uuid
 from datetime import datetime, timezone
-from typing import Optional
+from typing import Any, Optional
 
 import asyncpg
 
@@ -15,7 +15,7 @@ from app.domain.consent import ConsentRecord, ConsentState
 
 class ConsentRepository:
     def __init__(self, pool: asyncpg.Pool | None = None) -> None:
-        self._pool = pool
+        self._pool: Any = pool
 
     async def get_active_for_learner(
         self, learner_id: uuid.UUID
