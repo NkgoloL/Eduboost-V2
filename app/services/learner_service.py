@@ -9,13 +9,14 @@ from app.repositories.knowledge_gap_repository import KnowledgeGapRepository
 from app.repositories.mastery_repository import MasteryRepository
 from app.services.consent import ConsentService
 from app.services.audit_service import AuditService
+from app.services.mastery_engine import assert_no_authoritative_claims
+from app.models import LearnerProfile
 
 
 class LearnerService:
-    def __init__(self, db: AsyncSession, repository: Any | None = None) -> None:
+    def __init__(self, db: AsyncSession) -> None:
         self.db = db
-        # Backward compatibility for tests that pass repository directly
-        self.repository = repository if repository else LearnerRepository(db)
+        self.repository = LearnerRepository(db)
 
     async def get_learner_summary(self, learner_id: str):
         return await self.repository.get_by_id(learner_id)
@@ -23,7 +24,7 @@ class LearnerService:
     async def list_by_guardian(self, guardian_id: str):
         return await self.repository.get_by_guardian(guardian_id)
 
-    async def create_learner(self, guardian_id: str, display_name: str, grade: int, language: str) -> Any:
+    async def create_learner(self, guardian_id: str, display_name: str, grade: int, language: str = "en") -> LearnerProfile:
         return await self.repository.create(
             guardian_id=guardian_id,
             display_name=display_name,
@@ -42,6 +43,9 @@ class LearnerService:
         mastery_repo = MasteryRepository(self.db)
         rows = await mastery_repo.list_topic_mastery_by_learner(learner_id)
         if rows:
+            for row in rows:
+                conf = None if row.theta_se is None else max(0.0, 1.0 - (row.theta_se / 2.0))
+                assert_no_authoritative_claims(state=row.mastery_label, confidence=conf)
             return {
                 "learner_id": learner_id,
                 "mastery": [

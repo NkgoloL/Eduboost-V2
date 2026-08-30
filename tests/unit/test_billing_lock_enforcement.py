@@ -1,10 +1,10 @@
-"""Integration test for Live Payment Fail-Closed Lock (TSR-11.16)."""
+"""Unit test for Live Payment Fail-Closed Lock (TSR-11.16)."""
 from __future__ import annotations
 
-import json
 from pathlib import Path
 import pytest
-from fastapi import HTTPException
+from fastapi import FastAPI, HTTPException
+from fastapi.testclient import TestClient
 
 from app.services.billing_guard import (
     assert_billing_authorized,
@@ -12,6 +12,9 @@ from app.services.billing_guard import (
     sanitize_billing_webhook,
     BillingLockError,
 )
+from app.api_v2_routers.billing import router as billing_router
+from app.api_v2_deps.auth import require_parent_or_admin, AuthContext, TokenType
+from app.models import UserRole
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
@@ -61,16 +64,9 @@ def test_missing_or_corrupted_register_fails_closed(tmp_path: Path):
 @pytest.mark.unit
 def test_http_billing_routes_fail_closed_in_live_app():
     """Verify live HTTP endpoints return 403 fail-closed when hit via FastAPI router."""
-    from fastapi import FastAPI
-    from fastapi.testclient import TestClient
-    from app.api_v2_routers.billing import router as billing_router
-    from app.api_v2_deps.auth import require_parent_or_admin, AuthContext, TokenType
-    from app.models import UserRole
-
     app = FastAPI()
     app.include_router(billing_router, prefix="/api/v2")
 
-    # Mock authentication to allow parent role
     parent_auth = AuthContext(
         user_id="guardian-test-uuid",
         roles=[UserRole.PARENT],
@@ -101,4 +97,3 @@ def test_http_billing_routes_fail_closed_in_live_app():
     )
     assert resp_webhook.status_code == 403
     assert resp_webhook.headers.get("X-Billing-Lock") == "LOCKED_FAIL_CLOSED"
-
