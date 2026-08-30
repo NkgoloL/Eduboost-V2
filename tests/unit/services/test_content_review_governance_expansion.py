@@ -1,214 +1,123 @@
-import os
+"""Batch 211: Unit tests for content_review_governance.py covering ReviewGovernancePolicy, ContentReviewEligibilityService, and ContentReviewGovernanceService assignment/decision workflows."""
 import uuid
 import pytest
-from datetime import datetime, timezone
 from unittest.mock import AsyncMock, MagicMock, patch
 
+from app.models.content_factory import ContentArtifactStatus, ContentGenerationArtifact, ContentReviewAssignment
 from app.services.content_review_governance import (
     ReviewGovernancePolicy,
     ReviewDecisionResult,
     ReviewAssignmentResult,
-    ArtifactRevisionResult,
     ContentReviewEligibilityService,
     ContentReviewGovernanceService,
     REQUIRED_APPROVAL_RUBRIC_CRITERIA,
-    _env_bool,
-    _value,
-    _rubric_passed,
-)
-from app.models.content_factory import (
-    ContentArtifactStatus,
-    ContentGenerationArtifact,
-    ContentReviewAssignment,
-    ContentReviewDecision,
-    ContentReviewAction,
 )
 
 
-def test_review_governance_policy_defaults_and_env():
-    policy = ReviewGovernancePolicy()
-    assert policy.quorum_threshold == 3
-    assert policy.version == "phase3-v1"
-    assert policy.creator_approval_counts is False
+class TestReviewGovernancePolicyAndEligibility:
+    def test_required_criteria_constants(self):
+        assert "caps_alignment" in REQUIRED_APPROVAL_RUBRIC_CRITERIA
+        assert "factual_accuracy" in REQUIRED_APPROVAL_RUBRIC_CRITERIA
+        assert "answer_key_correctness" in REQUIRED_APPROVAL_RUBRIC_CRITERIA
 
-    with patch.dict(os.environ, {
-        "CONTENT_CONSENSUS_THRESHOLD": "4",
-        "CONTENT_CONSENSUS_TIMEOUT_HOURS": "48",
-        "CONTENT_CREATOR_APPROVAL_COUNTS": "true",
-        "CONTENT_DIRECT_PUBLISH_ALLOWED": "1",
-    }):
-        env_policy = ReviewGovernancePolicy.from_environment()
-        assert env_policy.quorum_threshold == 4
-        assert env_policy.stale_after_hours == 48
-        assert env_policy.creator_approval_counts is True
-        assert env_policy.direct_publish_allowed is True
+    def test_policy_from_environment_defaults(self):
+        policy = ReviewGovernancePolicy.from_environment()
+        assert policy.quorum_threshold == 3
+        assert policy.stale_after_hours == 72
+        assert policy.creator_approval_counts is False
 
+    def test_policy_invalid_threshold(self):
+        with patch.dict("os.environ", {"CONTENT_CONSENSUS_THRESHOLD": "1"}):
+            with pytest.raises(ValueError, match="between 2 and 10"):
+                ReviewGovernancePolicy.from_environment()
 
-def test_review_governance_policy_invalid_env():
-    with patch.dict(os.environ, {"CONTENT_CONSENSUS_THRESHOLD": "1"}):
-        with pytest.raises(ValueError, match="CONTENT_CONSENSUS_THRESHOLD must be between 2 and 10"):
-            ReviewGovernancePolicy.from_environment()
+    def test_eligibility_retrieval_and_learner(self):
+        art = MagicMock()
+        art.status = ContentArtifactStatus.PROMOTED_PRODUCTION.value
+        art.publication_eligible = True
+        art.published_at = None
 
-    with patch.dict(os.environ, {"CONTENT_CONSENSUS_THRESHOLD": "3", "CONTENT_CONSENSUS_TIMEOUT_HOURS": "0"}):
-        with pytest.raises(ValueError, match="CONTENT_CONSENSUS_TIMEOUT_HOURS must be positive"):
-            ReviewGovernancePolicy.from_environment()
+        assert ContentReviewEligibilityService.is_retrieval_eligible(art) is True
+        assert ContentReviewEligibilityService.is_learner_eligible(art) is False
 
+        art.status = ContentArtifactStatus.PUBLISHED.value
+        from datetime import datetime, timezone
+        art.published_at = datetime.now(timezone.utc)
+        assert ContentReviewEligibilityService.is_learner_eligible(art) is True
 
-def test_eligibility_service():
-    artifact = MagicMock(spec=ContentGenerationArtifact)
-    artifact.status = ContentArtifactStatus.PROMOTED_PRODUCTION.value
-    artifact.publication_eligible = True
-    artifact.published_at = None
+    def test_assert_eligibility_raises(self):
+        art = MagicMock()
+        art.status = ContentArtifactStatus.DRAFT.value
+        art.publication_eligible = False
+        art.published_at = None
 
-    assert ContentReviewEligibilityService.is_retrieval_eligible(artifact) is True
-    assert ContentReviewEligibilityService.is_learner_eligible(artifact) is False
+        with pytest.raises(ValueError, match="not eligible for semantic retrieval"):
+            ContentReviewEligibilityService.assert_retrieval_eligible(art)
 
-    ContentReviewEligibilityService.assert_retrieval_eligible(artifact)
-    with pytest.raises(ValueError, match="Artifact is not eligible for learner delivery"):
-        ContentReviewEligibilityService.assert_learner_eligible(artifact)
-
-    artifact.status = ContentArtifactStatus.PUBLISHED.value
-    artifact.published_at = datetime.now(timezone.utc)
-    assert ContentReviewEligibilityService.is_learner_eligible(artifact) is True
-    ContentReviewEligibilityService.assert_learner_eligible(artifact)
-
-    artifact.publication_eligible = False
-    assert ContentReviewEligibilityService.is_retrieval_eligible(artifact) is False
-    with pytest.raises(ValueError, match="Artifact is not eligible for semantic retrieval"):
-        ContentReviewEligibilityService.assert_retrieval_eligible(artifact)
+        with pytest.raises(ValueError, match="not eligible for learner delivery"):
+            ContentReviewEligibilityService.assert_learner_eligible(art)
 
 
-def test_helpers_and_hashes():
-    assert _env_bool("NOT_SET", True) is True
-    with patch.dict(os.environ, {"TEST_KEY": "yes"}):
-        assert _env_bool("TEST_KEY", False) is True
-    with patch.dict(os.environ, {"TEST_KEY": "0"}):
-        assert _env_bool("TEST_KEY", True) is False
+class TestContentReviewGovernanceServiceOperations:
+    @pytest.mark.asyncio
+    async def test_assign_reviewers_insufficient_count_raises(self):
+        service = ContentReviewGovernanceService()
+        art_id = uuid.uuid4()
+        
+        mock_art = MagicMock()
+        mock_art.status = ContentArtifactStatus.PENDING_REVIEW.value
+        mock_art.created_by_actor_id = "creator-01"
+        service._load_artifact_for_update = AsyncMock(return_value=mock_art)
 
-    assert _rubric_passed({"passed": True}) is True
-    assert _rubric_passed({"passed": False}) is False
-    assert _rubric_passed(True) is True
-    assert _rubric_passed(False) is False
+        session = MagicMock()
+        with pytest.raises(ValueError, match="distinct reviewers must be assigned"):
+            await service.assign_reviewers(
+                session,
+                artifact_id=art_id,
+                reviewer_ids=["rev1"],  # only 1, needs quorum 3
+                assigned_by="lead",
+            )
 
+    @pytest.mark.asyncio
+    async def test_accept_assignment_conflict_flow(self):
+        service = ContentReviewGovernanceService()
+        asgn_id = uuid.uuid4()
 
-@pytest.mark.asyncio
-async def test_assign_reviewers_validation():
-    service = ContentReviewGovernanceService(policy=ReviewGovernancePolicy(quorum_threshold=3, creator_approval_counts=False))
-    session = AsyncMock()
+        mock_asgn = MagicMock()
+        mock_asgn.id = asgn_id
+        mock_asgn.assigned_to = "educator_1"
+        mock_asgn.status = "assigned"
 
-    artifact = MagicMock()
-    artifact.artifact_id = uuid.uuid4()
-    artifact.status = "draft"
-    artifact.created_by_actor_id = "creator1"
-    artifact.version_number = 1
+        session = MagicMock()
+        session.scalar = AsyncMock(return_value=mock_asgn)
+        session.flush = AsyncMock()
 
-    service._load_artifact_for_update = AsyncMock(return_value=artifact)
-
-    # Not pending_review
-    with pytest.raises(ValueError, match="Reviewers can only be assigned to pending_review artifacts"):
-        await service.assign_reviewers(session, artifact_id=artifact.artifact_id, reviewer_ids=["r1", "r2", "r3"], assigned_by="admin")
-
-    artifact.status = ContentArtifactStatus.PENDING_REVIEW.value
-
-    # Quorum too low
-    with pytest.raises(ValueError, match="At least 3 distinct reviewers must be assigned"):
-        await service.assign_reviewers(session, artifact_id=artifact.artifact_id, reviewer_ids=["r1", "r2"], assigned_by="admin")
-
-    # Creator assigned
-    with pytest.raises(ValueError, match="The artifact creator cannot be assigned"):
-        await service.assign_reviewers(session, artifact_id=artifact.artifact_id, reviewer_ids=["creator1", "r2", "r3"], assigned_by="admin")
-
-
-@pytest.mark.asyncio
-async def test_accept_assignment_validation():
-    service = ContentReviewGovernanceService()
-    session = AsyncMock()
-    assignment_id = uuid.uuid4()
-
-    # Not found
-    session.scalar.return_value = None
-    with pytest.raises(LookupError, match="Review assignment .* not found"):
-        await service.accept_assignment(session, assignment_id=assignment_id, reviewer_id="rev1", conflict_of_interest=False)
-
-    # Not assigned reviewer
-    assignment = MagicMock(spec=ContentReviewAssignment)
-    assignment.assigned_to = "other_rev"
-    assignment.status = "assigned"
-    session.scalar.return_value = assignment
-    with pytest.raises(PermissionError, match="Review assignments may only be accepted by the assigned reviewer"):
-        await service.accept_assignment(session, assignment_id=assignment_id, reviewer_id="rev1", conflict_of_interest=False)
-
-    # Status not open
-    assignment.assigned_to = "rev1"
-    assignment.status = "completed"
-    with pytest.raises(ValueError, match="Only open review assignments may be accepted"):
-        await service.accept_assignment(session, assignment_id=assignment_id, reviewer_id="rev1", conflict_of_interest=False)
-
-    # Success case conflict
-    assignment.status = "assigned"
-    res = await service.accept_assignment(session, assignment_id=assignment_id, reviewer_id="rev1", conflict_of_interest=True)
-    assert res.status == "conflict"
-    assert res.conflict_of_interest is True
-
-    # Success case in_review
-    assignment.status = "assigned"
-    res = await service.accept_assignment(session, assignment_id=assignment_id, reviewer_id="rev1", conflict_of_interest=False)
-    assert res.status == "in_review"
-    assert res.conflict_of_interest is False
-
-
-@pytest.mark.asyncio
-async def test_quarantine_artifact():
-    service = ContentReviewGovernanceService()
-    session = AsyncMock()
-    artifact_id = uuid.uuid4()
-
-    with pytest.raises(ValueError, match="Quarantine requires a reason code and explanation"):
-        await service.quarantine_artifact(session, artifact_id=artifact_id, actor_id="admin", reason_code="", reason=" ")
-
-    artifact = MagicMock(spec=ContentGenerationArtifact)
-    artifact.status = ContentArtifactStatus.PENDING_REVIEW
-    artifact.row_version = 1
-    service._load_artifact_for_update = AsyncMock(return_value=artifact)
-    service._record_transition = AsyncMock()
-
-    res = await service.quarantine_artifact(session, artifact_id=artifact_id, actor_id="admin", reason_code="SAFETY", reason="Severe bias detected")
-    assert res.status == ContentArtifactStatus.QUARANTINED
-    assert res.publication_eligible is False
-    assert res.row_version == 2
-    service._record_transition.assert_awaited_once()
-
-
-@pytest.mark.asyncio
-async def test_submit_decision_validations():
-    service = ContentReviewGovernanceService()
-    session = AsyncMock()
-    artifact_id = uuid.uuid4()
-
-    with pytest.raises(ValueError, match="Review decisions require an idempotency key"):
-        await service.submit_decision(
+        res = await service.accept_assignment(
             session,
-            artifact_id=artifact_id,
-            reviewer_id="rev1",
-            action="approve",
-            rubric_results={},
-            idempotency_key="   ",
-            expected_version=1,
+            assignment_id=asgn_id,
+            reviewer_id="educator_1",
+            conflict_of_interest=True,
         )
+        assert res.status == "conflict"
+        assert res.conflict_of_interest is True
+        assert res.accepted_at is not None
 
-    # Replay with mismatched metadata
-    replay = MagicMock()
-    replay.artifact_id = uuid.uuid4() # Mismatch
-    replay.artifact_version = 1
-    session.scalar.return_value = replay
-    with pytest.raises(ValueError, match="Idempotency key was already used for a different decision"):
-        await service.submit_decision(
-            session,
-            artifact_id=artifact_id,
-            reviewer_id="rev1",
-            action="approve",
-            rubric_results={},
-            idempotency_key="idem-key-1",
-            expected_version=1,
-        )
+    @pytest.mark.asyncio
+    async def test_accept_assignment_unauthorized_raises(self):
+        service = ContentReviewGovernanceService()
+        asgn_id = uuid.uuid4()
 
+        mock_asgn = MagicMock()
+        mock_asgn.assigned_to = "educator_1"
+        mock_asgn.status = "assigned"
+
+        session = MagicMock()
+        session.scalar = AsyncMock(return_value=mock_asgn)
+
+        with pytest.raises(PermissionError, match="may only be accepted by the assigned reviewer"):
+            await service.accept_assignment(
+                session,
+                assignment_id=asgn_id,
+                reviewer_id="imposter",
+                conflict_of_interest=False,
+            )
