@@ -58,9 +58,9 @@ class QuotaService:
         TTL is set to 86400s (24h) to auto-expire old keys.
         """
         limit = (
-            settings.daily_token_quota_premium
+            getattr(settings, "daily_token_quota_premium", getattr(settings, "TENANT_MONTHLY_TOKEN_LIMIT", 10000000))
             if tier == "premium"
-            else settings.daily_token_quota_free
+            else getattr(settings, "daily_token_quota_free", getattr(settings, "USER_DAILY_TOKEN_LIMIT", 50000))
         )
         key = self._quota_key(guardian_id)
 
@@ -136,7 +136,7 @@ class SemanticCacheService:
 
     async def get(self, cache_key: str) -> str | None:
         """Return cached lesson JSON string or None on miss."""
-        if not settings.semantic_cache_enabled:
+        if not getattr(settings, "semantic_cache_enabled", True):
             return None
         raw = await self._redis.get(cache_key)
         if raw:
@@ -146,7 +146,8 @@ class SemanticCacheService:
 
     async def set(self, cache_key: str, lesson_json: str) -> None:
         """Store lesson JSON with TTL."""
-        if not settings.semantic_cache_enabled:
+        if not getattr(settings, "semantic_cache_enabled", True):
             return
-        await self._redis.setex(cache_key, settings.redis_cache_ttl_seconds, lesson_json)
-        logger.debug("cache_stored", key=cache_key[:16], ttl=settings.redis_cache_ttl_seconds)
+        ttl = getattr(settings, "redis_cache_ttl_seconds", getattr(settings, "REDIS_CACHE_TTL_SECONDS", 3600))
+        await self._redis.setex(cache_key, ttl, lesson_json)
+        logger.debug("cache_stored", key=cache_key[:16], ttl=ttl)
