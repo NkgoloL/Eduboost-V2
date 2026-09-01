@@ -142,7 +142,7 @@ def parse_jwt_keyring(raw: str | None = None) -> list[JWTKey]:
             )
         ]
 
-    if raw_value.startswith("["):
+    if raw_value.startswith(("[", "{")):
         try:
             parsed = json.loads(raw_value)
         except json.JSONDecodeError as exc:

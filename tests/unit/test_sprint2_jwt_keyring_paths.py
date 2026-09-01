@@ -119,3 +119,54 @@ def test_is_placeholder_secret_handles_none(monkeypatch: pytest.MonkeyPatch):
     keyring = _reload(monkeypatch)
 
     assert keyring.is_placeholder_secret(None) is True
+    assert keyring.is_placeholder_secret("change_me_later") is True
+    assert keyring.is_placeholder_secret("placeholder_key") is True
+    assert keyring.is_placeholder_secret("super-strong-production-key-12345678") is False
+
+
+def test_production_environment_and_keyring_validation(monkeypatch: pytest.MonkeyPatch):
+    # 1. Environment checks
+    keyring = _reload(monkeypatch, ENVIRONMENT="production")
+    assert keyring.is_production_environment() is True
+
+    keyring = _reload(monkeypatch, ENVIRONMENT="live")
+    assert keyring.is_production_environment() is True
+
+    keyring = _reload(monkeypatch, ENVIRONMENT="development")
+    assert keyring.is_production_environment() is False
+
+    # 2. Production with placeholder secret fails closed
+    keyring = _reload(
+        monkeypatch,
+        ENVIRONMENT="production",
+        JWT_KEYRING="kid-1:dev-insecure-secret-change-me:HS256:current",
+    )
+    with pytest.raises(keyring.JWTKeyringError, match="Production environment cannot use placeholder JWT secrets"):
+        keyring.validate_jwt_keyring_environment()
+
+    # 3. Production with strong key passes
+    keyring = _reload(
+        monkeypatch,
+        ENVIRONMENT="production",
+        JWT_KEYRING="kid-prod:super-secure-production-secret-999:HS256:current",
+    )
+    keyring.validate_jwt_keyring_environment()
+
+
+def test_encode_and_decode_roundtrip(monkeypatch: pytest.MonkeyPatch):
+    keyring = _reload(
+        monkeypatch,
+        ENVIRONMENT="test",
+        JWT_KEYRING="kid-1:secure-key-1:HS256:current",
+    )
+    token = keyring.encode_jwt_with_keyring({"sub": "user-42", "role": "guardian"})
+    payload = keyring.decode_jwt_with_keyring(token)
+    assert payload["sub"] == "user-42"
+    assert payload["role"] == "guardian"
+
+
+def test_parse_json_non_list_raises(monkeypatch: pytest.MonkeyPatch):
+    keyring = _reload(monkeypatch)
+
+    with pytest.raises(keyring.JWTKeyringError, match="JSON must be a list"):
+        keyring.parse_jwt_keyring("{\"kid\": \"k1\", \"secret\": \"s1\"}")
