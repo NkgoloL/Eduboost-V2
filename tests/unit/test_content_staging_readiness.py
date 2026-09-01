@@ -152,3 +152,19 @@ async def test_verification_report_persists_blockers() -> None:
     scope_result = session.added[1]
     assert scope_result.blockers_json
     assert scope_result.created_by is None or scope_result.created_by == "admin-1"
+
+
+@pytest.mark.asyncio
+async def test_verify_scope_missing_scope_and_include_review_scopes() -> None:
+    service = ContentStagingReadinessService()
+    session = _Session()
+
+    # 1. Missing scope in registry -> BLOCKED_BY_MISSING_SCOPE
+    rep_missing = await service.verify_scope("non_existent_scope", session=session, actor_id="admin")
+    assert rep_missing.status == StagingReadinessStatus.BLOCKED_BY_MISSING_SCOPE
+    assert rep_missing.can_seed_staging is False
+    assert any(blocker.code == "missing_scope" for blocker in rep_missing.blockers)
+
+    # 2. verify_all_scopes with include_review_scopes=True
+    all_rep = await service.verify_all_scopes(session, include_review_scopes=True, persist=False)
+    assert len(all_rep.scopes) >= 1
