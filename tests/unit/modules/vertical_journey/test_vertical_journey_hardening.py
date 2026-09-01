@@ -58,3 +58,33 @@ def test_final_hardening_preserves_consent_blocker_and_next_actions():
     assert "diagnostic_completed" in report["incomplete_milestones"]
     assert report["recommended_next_actions"]
     assert report["consent_gate_clear"] is False
+
+
+def test_final_hardening_partial_visibility_flags():
+    # Snapshot missing POPIA export and erasure
+    snapshot = build_vertical_journey_snapshot(
+        VerticalJourneyInputs(
+            learner_id="learner-partial",
+            guardian_id="guardian-1",
+            learner_profile_created=True,
+            guardian_consent_active=True,
+            learner_onboarding_completed=True,
+            diagnostic_completed=True,
+            runtime_kg_gap_profile_available=True,
+            lesson_generated=True,
+            lesson_completed=True,
+            assessment_attempted=True,
+            mastery_updated=True,
+            study_plan_generated=True,
+            gamification_profile_available=True,
+            parent_progress_report_available=True,
+            popia_export_path_available=False,
+            popia_erasure_path_available=False,
+        )
+    )
+    report = build_vertical_journey_hardening_report(snapshot).to_payload()
+    assert report["accepted"] is False
+    assert report["popia_export_visible"] is False
+    assert report["popia_erasure_visible"] is False
+    assert "popia_export_path_available" in report["incomplete_milestones"]
+    assert "popia_erasure_path_available" in report["incomplete_milestones"]

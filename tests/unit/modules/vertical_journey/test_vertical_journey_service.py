@@ -69,3 +69,52 @@ def test_vertical_journey_snapshot_can_represent_complete_controlled_journey():
     assert payload["complete"] is True
     assert payload["completion_ratio"] == 1.0
     assert payload["current_milestone"] is None
+
+
+def test_vertical_journey_all_dependency_blockers():
+    # 1. learner_profile_created = False blocks everything else
+    snap_no_profile = build_vertical_journey_snapshot(
+        VerticalJourneyInputs(
+            learner_id="l-no-prof",
+            guardian_id=None,
+            learner_profile_created=False,
+            guardian_consent_active=True,
+        )
+    )
+    p1 = snap_no_profile.to_payload()
+    assert "learner_profile_missing" in p1["blocked_reasons"]
+    assert "guardian_context_missing" in p1["blocked_reasons"]
+
+    # 2. diagnostic_not_completed blocks kg_gap, lesson_generated, study_plan
+    snap_no_diag = build_vertical_journey_snapshot(
+        VerticalJourneyInputs(
+            learner_id="l-no-diag",
+            guardian_id="g-1",
+            learner_profile_created=True,
+            guardian_consent_active=True,
+            diagnostic_completed=False,
+            lesson_generated=False,
+        )
+    )
+    p2 = snap_no_diag.to_payload()
+    assert "diagnostic_not_completed" in p2["blocked_reasons"]
+
+    # 3. lesson_not_generated blocks lesson_completed, assessment_attempted, mastery_updated
+    snap_no_lesson = build_vertical_journey_snapshot(
+        VerticalJourneyInputs(
+            learner_id="l-no-lesson",
+            guardian_id="g-1",
+            learner_profile_created=True,
+            guardian_consent_active=True,
+            diagnostic_completed=True,
+            lesson_generated=False,
+        )
+    )
+    p3 = snap_no_lesson.to_payload()
+    assert "lesson_not_generated" in p3["blocked_reasons"]
+
+    # 4. Milestone to_payload
+    m = snap_no_lesson.milestones[0]
+    mp = m.to_payload()
+    assert mp["key"] == "learner_profile_created"
+    assert mp["complete"] is True
