@@ -46,3 +46,26 @@ def test_collector_fails_closed_without_runtime_dependencies(monkeypatch):
     assert "redis_readiness_dependency" in result["blockers"]
     assert result["checks"]["database_lineage_and_schema"]["status"] == "blocked"
     assert result["checks"]["redis_readiness_dependency"]["status"] == "blocked"
+
+
+def test_true_state_runtime_baseline_custom_parameters():
+    from app.modules.production_release.true_state_baseline import TrueStateRuntimeBaselineReport
+
+    report = TrueStateRuntimeBaselineReport(
+        accepted=True,
+        prd_id="PRD-11.0R-CUSTOM",
+        report_scope="custom_scope",
+        concern_categories=("cat1", "cat2"),
+        blockers=("custom_blocker",),
+        runtime_baseline_green=True,
+        runtime_baseline_status="green_custom",
+        controlled_beta_activation_operational_hold=False,
+        live_learner_traffic_operationally_safe=True,
+        production_release_evidence_blocked_until_runtime_baseline_green=False,
+        next_action="proceed_custom",
+    )
+    p = report.to_payload()
+    assert p["prd_id"] == "PRD-11.0R-CUSTOM"
+    assert p["concern_categories"] == ["cat1", "cat2"]
+    assert p["blockers"] == ["custom_blocker"]
+    assert p["runtime_baseline_green"] is True
