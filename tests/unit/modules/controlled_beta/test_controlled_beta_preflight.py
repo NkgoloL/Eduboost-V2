@@ -30,3 +30,26 @@ def test_controlled_beta_preflight_blocked_state_exposes_blocker():
     assert payload["accepted"] is False
     assert payload["beta_mode"] == "blocked"
     assert "controlled_beta_preflight_incomplete" in payload["blockers"]
+
+
+def test_controlled_beta_preflight_custom_parameters():
+    from app.modules.controlled_beta.preflight import ControlledBetaPreflightReport
+
+    report = ControlledBetaPreflightReport(
+        prd_id="PRD-10-TEST",
+        accepted=True,
+        controls=("ctrl1", "ctrl2"),
+        blockers=("test_blocker",),
+        beta_mode="custom_mode",
+        live_traffic_gate_state="active",
+        auth_token_regression_gate="gate_active",
+        cohort_gate="cohort_active",
+        kill_switch_state="ready",
+        support_go_no_go_state="ready",
+        prd10_final_handoff_authorised=True,
+    )
+    p = report.to_payload()
+    assert p["prd_id"] == "PRD-10-TEST"
+    assert p["controls"] == ["ctrl1", "ctrl2"]
+    assert p["blockers"] == ["test_blocker"]
+    assert p["prd10_final_handoff_authorised"] is True
