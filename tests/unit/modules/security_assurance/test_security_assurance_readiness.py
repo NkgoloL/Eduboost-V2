@@ -33,3 +33,48 @@ def test_security_evidence_controls_cover_expected_areas():
 
     assert {control.area for control in controls} == set(SECURITY_EVIDENCE_AREAS)
     assert all(control.ready for control in controls)
+
+
+def test_security_assurance_readiness_granular_blockers_and_actions():
+    from app.modules.security_assurance.readiness import (
+        SecurityAssuranceReadinessInputs,
+        SecurityAssuranceReadinessReport,
+        SecurityEvidenceControl,
+    )
+
+    # Control ready property when false
+    ctrl = SecurityEvidenceControl(area="test", owner_assigned=True, tool_or_method_defined=False)
+    assert ctrl.ready is False
+    assert ctrl.to_payload()["ready"] is False
+
+    # Blocked readiness report with each missing flag
+    inputs = SecurityAssuranceReadinessInputs(
+        dast_api_fuzzing_plan_defined=False,
+        dependency_scanning_plan_defined=False,
+        container_image_scanning_plan_defined=False,
+        sbom_generation_plan_defined=False,
+        secret_rotation_drill_defined=False,
+        rate_limit_abuse_testing_defined=False,
+        external_review_path_defined=False,
+        critical_endpoint_authz_tests_defined=False,
+        evidence_controls=(),
+    )
+    report = SecurityAssuranceReadinessReport(inputs=inputs)
+    assert report.ready is False
+    assert report.scanner_readiness_defined is False
+    assert report.operational_security_drills_defined is False
+    assert report.evidence_matrix_ready is False
+
+    blockers = report.blockers
+    assert "dast_api_fuzzing_plan_missing" in blockers
+    assert "dependency_scanning_plan_missing" in blockers
+    assert "container_image_scanning_plan_missing" in blockers
+    assert "sbom_generation_plan_missing" in blockers
+    assert "secret_rotation_drill_missing" in blockers
+    assert "rate_limit_abuse_testing_plan_missing" in blockers
+    assert "critical_endpoint_authz_tests_missing" in blockers
+    assert "external_review_path_missing" in blockers
+    assert "security_evidence_matrix_incomplete" in blockers
+
+    actions = report.recommended_next_actions
+    assert any(a.startswith("resolve_") for a in actions)
