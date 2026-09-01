@@ -47,6 +47,69 @@ class TestContentGenerationRunLock:
         assert res.acquired is True
         assert res.lock_holder == "worker-node-1"
 
+    @pytest.mark.asyncio
+    async def test_acquire_and_release_flows(self):
+        lock = ContentGenerationRunLock(ttl_minutes=60)
+        session = AsyncMock()
+        now = time.time()
+
+        # 1. Existing active lock held by someone else
+        active_run = MagicMock()
+        active_run.run_metadata = {
+            "full_generation_lock": {
+                "holder": "other_worker",
+                "lock_acquired_at": now,
+                "lock_expires_at": now + 3600,
+            }
+        }
+        mock_active_res = MagicMock()
+        mock_active_res.scalar_one_or_none.return_value = active_run
+        session.execute.return_value = mock_active_res
+
+        res_blocked = await lock.acquire(session, holder="my_worker")
+        assert res_blocked.acquired is False
+        assert res_blocked.error == "Lock already held"
+
+        # 2. Acquire when latest_run exists with stale lock
+        stale_run = MagicMock()
+        stale_run.run_metadata = {
+            "full_generation_lock": {
+                "holder": "stale_worker",
+                "lock_acquired_at": now - 7200,
+                "lock_expires_at": now - 3600,
+            }
+        }
+        mock_stale_res = MagicMock()
+        mock_stale_res.scalar_one_or_none.return_value = stale_run
+        session.execute.return_value = mock_stale_res
+
+        res_acquired = await lock.acquire(session, holder="my_worker")
+        assert res_acquired.acquired is True
+        assert res_acquired.lock_holder == "my_worker"
+        assert stale_run.run_metadata["full_generation_lock"]["holder"] == "my_worker"
+
+        # 3. Release lock matching holder
+        mock_release_res = MagicMock()
+        mock_release_res.scalar_one_or_none.return_value = stale_run
+        session.execute.return_value = mock_release_res
+
+        released = await lock.release(session, holder="my_worker")
+        assert released is True
+        assert stale_run.run_metadata["full_generation_lock"]["holder"] is None
+
+        # 4. Release lock wrong holder
+        released_wrong = await lock.release(session, holder="wrong_worker")
+        assert released_wrong is False
+
+        # 5. Acquire when no run exists (creates placeholder)
+        mock_empty_res = MagicMock()
+        mock_empty_res.scalar_one_or_none.return_value = None
+        session.execute.return_value = mock_empty_res
+
+        res_placeholder = await lock.acquire(session, holder="my_worker")
+        assert res_placeholder.acquired is True
+        session.add.assert_called()
+
 
 # ---------------------------------------------------------------------------
 # Staging Preview Dataclass & Service Tests
