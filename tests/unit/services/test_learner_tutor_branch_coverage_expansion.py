@@ -445,3 +445,205 @@ def test_learner_tutor_helpers():
     assert data["status"] == "active"
     assert len(data["messages"]) == 1
     assert data["messages"][0]["content"] == "Hint"
+
+
+# ---------------------------------------------------------------------------
+# Extra edge cases & remaining branch coverage
+# ---------------------------------------------------------------------------
+
+@pytest.mark.asyncio
+@pytest.mark.unit
+async def test_create_session_success_commit_and_integrity_error_reraise(service, mock_db):
+    mock_learner = MagicMock(spec=LearnerProfile, id="l-1")
+    mock_lesson = MagicMock(spec=Lesson, id="les-1", learner_id="l-1", subject="Math", topic="Fractions", content="text")
+
+    # 1. Normal success creation (commit & refresh)
+    mock_db.get.side_effect = [mock_learner, mock_lesson]
+    mock_db.scalar.return_value = None
+    mock_db.commit = AsyncMock()
+    mock_db.refresh = AsyncMock()
+
+    sess = await service.create_session(learner_id="l-1", lesson_id="les-1", actor_id="a-1", language="en")
+    assert sess is not None
+    assert sess.learner_id == "l-1"
+    mock_db.refresh.assert_called_once()
+
+    # 2. IntegrityError where existing is None -> reraises IntegrityError
+    mock_db.get.side_effect = [mock_learner, mock_lesson]
+    mock_db.scalar.side_effect = [None, None]
+    mock_db.commit.side_effect = IntegrityError("stmt", "params", Exception("unique"))
+    mock_db.rollback = AsyncMock()
+
+    with pytest.raises(IntegrityError):
+        await service.create_session(learner_id="l-1", lesson_id="les-1", actor_id="a-1", language="en")
+
+
+@pytest.mark.asyncio
+@pytest.mark.unit
+async def test_ask_context_unavailable_and_budget_exceptions(service, mock_db, mock_router, mock_budget):
+    session_id = uuid.uuid4()
+    mock_session = MagicMock(
+        spec=TutorSession,
+        session_id=session_id,
+        status="active",
+        language="en",
+        lesson_id="les-1",
+        learner_id="l-1",
+        context_hash="hash",
+    )
+
+    # 1. Lesson or learner is None -> 409 Context no longer available
+    mock_db.scalar.side_effect = [mock_session, None]
+    mock_db.get.side_effect = [None, None]
+
+    with patch("app.services.learner_tutor.prepare_tutor_input") as mock_prep:
+        mock_prep.return_value = MagicMock(text="q", content_hash="h1", blocked_reason=None, pii_redacted=False)
+        with pytest.raises(HTTPException) as exc:
+            await service.ask(session_id=session_id, question="q", client_message_id="m-1")
+        assert exc.value.status_code == 409
+        assert "no longer available" in exc.value.detail
+
+    # 2. Budget exceptions swallowed (assert_budget and record_usage)
+    mock_lesson = MagicMock(spec=Lesson, id="les-1", subject="Math", topic="Fractions", content="text", language="en")
+    c_hash = _context_hash(mock_lesson)
+    mock_session.context_hash = c_hash
+    mock_learner = MagicMock(spec=LearnerProfile, id="l-1", guardian_id="g-1", grade=4)
+
+    mock_db.scalar.side_effect = [mock_session, None]
+    mock_db.get.side_effect = [mock_lesson, mock_learner]
+    mock_budget.assert_budget.side_effect = RuntimeError("Redis down")
+    mock_budget.record_usage.side_effect = RuntimeError("Redis down")
+
+    service.ai_operations.reserve = AsyncMock()
+    service.ai_operations.finalize = AsyncMock()
+
+    res_gaps = MagicMock()
+    res_gaps.all.return_value = []
+    mock_db.execute.return_value = res_gaps
+
+    gen_res = GenerationResult(
+        text="Helpful hint",
+        provider="anthropic",
+        model="claude-sonnet-4",
+        usage=TokenUsage(prompt_tokens=50, completion_tokens=20, total_tokens=70),
+        latency_ms=120.0,
+    )
+    mock_router.generate = AsyncMock(return_value=gen_res)
+
+    with (
+        patch("app.services.learner_tutor.prepare_tutor_input") as mock_prep,
+        patch("app.services.learner_tutor.validate_tutor_output") as mock_val,
+    ):
+        mock_prep.return_value = MagicMock(text="q", content_hash="h1", blocked_reason=None, pii_redacted=False)
+        mock_val.return_value = MagicMock(text="Helpful hint", blocked_reason=None, pii_redacted=False, quality_score=0.9)
+        res = await service.ask(session_id=session_id, question="q", client_message_id="m-budget-err")
+        assert res["fallback"] is False
+        assert res["assistant"].content == "Helpful hint"
+
+
+@pytest.mark.asyncio
+@pytest.mark.unit
+async def test_ask_generic_provider_error_and_output_validation_rejection(service, mock_db, mock_router):
+    session_id = uuid.uuid4()
+    mock_lesson = MagicMock(spec=Lesson, id="les-1", subject="Math", topic="Fractions", content="text", language="en")
+    c_hash = _context_hash(mock_lesson)
+    mock_learner = MagicMock(spec=LearnerProfile, id="l-1", guardian_id="g-1", grade=4)
+
+    service.ai_operations.reserve = AsyncMock()
+    service.ai_operations.cancel = AsyncMock()
+
+    res_gaps = MagicMock()
+    res_gaps.all.return_value = []
+    mock_db.execute.return_value = res_gaps
+
+    # 1. Generic provider Exception
+    mock_session1 = MagicMock(
+        spec=TutorSession,
+        session_id=session_id,
+        status="active",
+        language="en",
+        lesson_id="les-1",
+        learner_id="l-1",
+        context_hash=c_hash,
+        escalation_count=0,
+        message_count=0,
+    )
+    mock_db.scalar.side_effect = [mock_session1, None]
+    mock_db.get.side_effect = [mock_lesson, mock_learner]
+    mock_router.generate = AsyncMock(side_effect=RuntimeError("Connection reset by peer"))
+
+    with patch("app.services.learner_tutor.prepare_tutor_input") as mock_prep:
+        mock_prep.return_value = MagicMock(text="question", content_hash="h1", blocked_reason=None, pii_redacted=False)
+        res_err = await service.ask(session_id=session_id, question="q", client_message_id="msg-err")
+        assert res_err["fallback"] is True
+        assert res_err["escalation"] is False
+        service.ai_operations.cancel.assert_called_with(f"tutor:{session_id}:msg-err", "provider_error")
+
+    # 2. Output validation blocked: low_quality (medium severity)
+    mock_session2 = MagicMock(
+        spec=TutorSession,
+        session_id=session_id,
+        status="active",
+        language="en",
+        lesson_id="les-1",
+        learner_id="l-1",
+        context_hash=c_hash,
+        escalation_count=0,
+        message_count=0,
+    )
+    mock_db.scalar.side_effect = [mock_session2, None]
+    mock_db.get.side_effect = [mock_lesson, mock_learner]
+    mock_router.generate = AsyncMock(return_value=GenerationResult(
+        text="Bad answer",
+        provider="anthropic",
+        model="claude-sonnet-4",
+        usage=TokenUsage(prompt_tokens=10, completion_tokens=5, total_tokens=15),
+        latency_ms=50.0,
+    ))
+
+    with (
+        patch("app.services.learner_tutor.prepare_tutor_input") as mock_prep,
+        patch("app.services.learner_tutor.validate_tutor_output") as mock_val,
+    ):
+        mock_prep.return_value = MagicMock(text="question", content_hash="h1", blocked_reason=None, pii_redacted=False)
+        mock_val.return_value = MagicMock(text="Bad answer", blocked_reason="low_quality", pii_redacted=False, quality_score=0.2)
+        res_low = await service.ask(session_id=session_id, question="q", client_message_id="msg-low")
+        assert res_low["fallback"] is True
+        assert res_low["escalation"] is True
+        assert mock_session2.status == "active"  # medium severity does not set status to 'escalated'
+        service.ai_operations.cancel.assert_called_with(f"tutor:{session_id}:msg-low", "output_low_quality")
+
+    # 3. Output validation blocked: dangerous content (high severity -> session status escalated)
+    mock_session3 = MagicMock(
+        spec=TutorSession,
+        session_id=session_id,
+        status="active",
+        language="en",
+        lesson_id="les-1",
+        learner_id="l-1",
+        context_hash=c_hash,
+        escalation_count=0,
+        message_count=0,
+    )
+    mock_db.scalar.side_effect = [mock_session3, None]
+    mock_db.get.side_effect = [mock_lesson, mock_learner]
+    mock_router.generate = AsyncMock(return_value=GenerationResult(
+        text="Dangerous answer",
+        provider="anthropic",
+        model="claude-sonnet-4",
+        usage=TokenUsage(prompt_tokens=10, completion_tokens=5, total_tokens=15),
+        latency_ms=50.0,
+    ))
+
+    with (
+        patch("app.services.learner_tutor.prepare_tutor_input") as mock_prep,
+        patch("app.services.learner_tutor.validate_tutor_output") as mock_val,
+    ):
+        mock_prep.return_value = MagicMock(text="question", content_hash="h1", blocked_reason=None, pii_redacted=False)
+        mock_val.return_value = MagicMock(text="Dangerous answer", blocked_reason="toxic", pii_redacted=False, quality_score=0.0)
+        res_tox = await service.ask(session_id=session_id, question="q", client_message_id="msg-tox")
+        assert res_tox["fallback"] is True
+        assert res_tox["escalation"] is True
+        assert mock_session3.status == "escalated"  # high severity sets status to 'escalated'
+        service.ai_operations.cancel.assert_called_with(f"tutor:{session_id}:msg-tox", "output_toxic")
+
