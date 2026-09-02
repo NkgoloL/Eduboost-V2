@@ -54,15 +54,18 @@ def test_auth_service_cleanup_checker_runs_local_mode():
 
 
 def test_auth_service_cleanup_registry_patcher_runs_directly():
+    env = {**os.environ, "PYTHONPATH": str(ROOT)}
     result = subprocess.run(
         [sys.executable, "scripts/patch_auth_service_cleanup_registry.py"],
         cwd=ROOT,
+        env=env,
         text=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         check=False,
     )
     assert result.returncode == 0, result.stdout
+
 
 
 def test_makefile_contains_auth_service_cleanup_targets():
