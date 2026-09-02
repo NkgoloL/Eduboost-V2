@@ -93,8 +93,10 @@ def derive_consent_state(
         except ValueError:
             persisted_state = None
 
+    state: ConsentState
     if persisted_state in {ConsentState.PENDING, ConsentState.DENIED}:
         state = persisted_state
+
         active = False
         reason = f"consent_{state.value}"
     elif revoked_at is not None or persisted_state == ConsentState.WITHDRAWN:
