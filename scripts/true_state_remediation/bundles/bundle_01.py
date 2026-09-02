@@ -25,14 +25,17 @@ def apply(*,root:Path,evidence_dir:Path,skip_heavy:bool):
 def verify(*,root:Path,evidence_dir:Path,skip_heavy:bool):
     checks={"register":verify_register(root),"boundaries":verify_false_release_boundaries(root)}
     baseline=evidence_dir/"baseline_manifest.json"; checks["baseline"]={"valid":baseline.exists()}
-    mcp=(root/"tests/unit/test_etl_mcp_server_startup.py").read_text(errors="ignore")
-    checks["mcp_isolation"]={"valid":"FASTMCP_BACKEND == \"test-stub\"" in mcp and "blocked_import" in mcp}
+    mcp = (root / "tests/unit/test_etl_mcp_server_startup.py").read_text(errors="ignore")
+    checks["mcp_isolation"] = {"valid": "FASTMCP_BACKEND == \"test-stub\"" in mcp and "blocked_import" in mcp}
+    checks["manual"] = require_manual_evidence(root, "B01", MANUAL)
+
     if skip_heavy:
-        valid=all(c.get("valid") for c in checks.values()); return {"valid":valid,"structural_only":True,"checks":checks}
-    summary=load_json(evidence_dir/"commands/command_summary.json",{})
-    checks["commands"]={"valid":summary.get("all_required_green") is True,"summary":summary}
-    checks["manual"]=require_manual_evidence(root,"B01",MANUAL)
-    valid=all(c.get("valid") for c in checks.values())
+        valid = all(c.get("valid") for c in checks.values())
+        return {"valid": valid, "structural_only": True, "checks": checks}
+    summary = load_json(evidence_dir / "commands/command_summary.json", {})
+    checks["commands"] = {"valid": summary.get("all_required_green") is True, "summary": summary}
+    valid = all(c.get("valid") for c in checks.values())
+
     if valid:
         update_task_status(root,TASKS,"verified",[str(evidence_dir.relative_to(root))])
         update_bundle_status(root,"B01","verified",next_bundle_status="authorised")

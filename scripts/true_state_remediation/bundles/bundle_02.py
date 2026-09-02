@@ -143,14 +143,15 @@ def verify(*, root: Path, evidence_dir: Path, skip_heavy: bool) -> dict[str, Any
         "frontend_sbom": str(frontend_sbom),
     }
 
+    # Check 6: Check manual evidence records for architecture/decision deliverables
+    checks["manual"] = require_manual_evidence(root, "B02", MANUAL)
+
     if skip_heavy:
         valid = all(c.get("valid") for c in checks.values())
         return {"valid": valid, "structural_only": True, "checks": checks}
 
-    # Check 6: Check manual evidence records for architecture/decision deliverables
-    checks["manual"] = require_manual_evidence(root, "B02", MANUAL)
-
     valid = all(c.get("valid") for c in checks.values())
+
     if valid:
         update_task_status(root, TASKS, "verified", [str(evidence_dir.relative_to(root))])
         update_bundle_status(root, "B02", "verified", next_bundle_status="authorised")

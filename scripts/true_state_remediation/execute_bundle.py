@@ -34,8 +34,15 @@ def main() -> int:
     module_name = f"scripts.true_state_remediation.bundles.bundle_{bundle_id[1:].lower()}"
     evidence = evidence_root(root, bundle_id)
     evidence.mkdir(parents=True, exist_ok=True)
-    result = {"bundle_id": bundle_id, "valid": False, "phase": args.phase, "skip_heavy": args.skip_heavy}
+    result = {
+        "bundle_id": bundle_id,
+        "valid": False,
+        "phase": args.phase,
+        "skip_heavy": args.skip_heavy,
+        "environment": environment_manifest(root),
+    }
     try:
+
         previous = verify_previous_bundle(root, bundle_id)
         if not previous["valid"]:
             raise BundleError(f"Previous bundle is not verified: {previous}")

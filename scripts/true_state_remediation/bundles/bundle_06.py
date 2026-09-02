@@ -114,11 +114,10 @@ def verify(*, root: Path, evidence_dir: Path, skip_heavy: bool) -> dict[str, Any
         if line.startswith("??") and not (
             line.startswith("?? docs/release-evidence/") or
             line.startswith("?? scripts/true_state_remediation/") or
-            line.startswith("?? docs/operations/") or
-            line.startswith("?? app/") or
-            line.startswith("?? tests/")
+            line.startswith("?? docs/operations/")
         )
     ]
+
     checks["hygiene"] = {
         "valid": git.get("available") is True and len(stray_untracked) == 0,
         "stray_untracked": stray_untracked,
