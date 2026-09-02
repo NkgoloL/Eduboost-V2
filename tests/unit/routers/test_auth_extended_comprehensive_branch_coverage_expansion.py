@@ -131,13 +131,16 @@ async def test_consume_token_invalid_or_expired_raises_400():
 
 @pytest.mark.unit
 def test_check_rate_limit_exceeded_raises_429():
+    from app.api_v2_routers.auth_extended import _reset_attempts
     ip = "192.168.1.100"
+    _reset_attempts.pop(ip, None)
     for _ in range(5):
         _check_rate_limit(ip)
 
     with pytest.raises(HTTPException) as exc:
         _check_rate_limit(ip)
     assert exc.value.status_code == 429
+
 
 
 # ---------------------------------------------------------------------------
