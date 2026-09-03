@@ -1136,8 +1136,9 @@ async def test_content_factory_additional_edge_cases_and_error_branches(monkeypa
 
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         # Caps ref coverage not found
-        resp = await client.get(f"/admin/content-factory/scopes/grade4_maths/caps/4.M.1.1/coverage")
+        resp = await client.get("/admin/content-factory/scopes/grade4_maths/caps/4.M.1.1/coverage")
         assert resp.status_code == 404
+
 
         # Validate artifact payload
         resp = await client.post(

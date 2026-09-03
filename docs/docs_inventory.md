@@ -1126,7 +1126,7 @@ Commit: `51487956b21470877d482128092c01595e92be39`
 | `docs/release/auth_token_claims_repair_report.md` | `release` | Auth Token Claims Repair Report | 502 | False |
 | `docs/release/backend_adapter_wiring_service_contract.md` | `release` | Backend Adapter Wiring Service Contract | 417 | False |
 | `docs/release/backend_consolidation_decision_record.md` | `release` | Backend Consolidation Decision Record | 1859 | False |
-| `docs/release/backend_consolidation_diagnostic_report.md` | `release` | Backend Consolidation Diagnostic Report | 10946 | False |
+| `docs/release/backend_consolidation_diagnostic_report.md` | `release` | Backend Consolidation Diagnostic Report | 10947 | False |
 | `docs/release/backend_consolidation_dragons.md` | `release` | Backend Consolidation Dragons | 2693 | False |
 | `docs/release/backend_consolidation_evidence_manifest.md` | `release` | Backend Consolidation Evidence Manifest | 3640 | False |
 | `docs/release/backend_consolidation_execution_packet.md` | `release` | Backend Consolidation Execution Packet | 1359 | False |
@@ -1196,7 +1196,7 @@ Commit: `51487956b21470877d482128092c01595e92be39`
 | `docs/release/ci_run_evidence_status.json` | `release` | Ci Run Evidence Status | 766 | False |
 | `docs/release/ci_run_evidence_status.md` | `release` | CI Run Evidence Status | 801 | False |
 | `docs/release/ci_workflow_consolidation.md` | `release` | EduBoost V2 CI Workflow Consolidation Plan | 1293 | False |
-| `docs/release/consent_callsite_inventory.md` | `release` | Consent Call-Site Inventory | 82555 | False |
+| `docs/release/consent_callsite_inventory.md` | `release` | Consent Call-Site Inventory | 85869 | False |
 | `docs/release/consent_candidate_execution_ledger.md` | `release` | Consent Candidate Execution Ledger | 428 | False |
 | `docs/release/consent_runtime_compatibility_slice_001.md` | `release` | Consent Runtime Compatibility Slice 001 | 640 | False |
 | `docs/release/consent_runtime_integration_target_map.md` | `release` | Consent Runtime Integration Target Map | 365 | False |

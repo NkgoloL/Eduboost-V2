@@ -1,17 +1,17 @@
 {
   "command": [
-    "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1/.venv/bin/python",
+    "/home/linuxbrew/.linuxbrew/opt/python@3.14/bin/python3.14",
     "scripts/true_state_remediation/capture_baseline.py",
     "--repo",
-    "/home/nkgolol/Dev/SandBox/Eduboost-V2-phase02r-gate2r1"
+    "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817"
   ],
   "cwd": ".",
-  "exit_code": 1,
-  "finished_at": "2026-07-20T08:43:10.207681+00:00",
+  "exit_code": 0,
+  "finished_at": "2026-09-02T13:47:07.718928+00:00",
   "name": "capture_baseline",
-  "passed": false,
+  "passed": true,
   "required": true,
-  "started_at": "2026-07-20T08:43:07.479898+00:00",
-  "stderr_sha256": "7c558d0cabe420d8adb1f70bf6e2d68a4829c04fd192f9d09479aafa1a92058e",
-  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  "started_at": "2026-09-02T13:47:06.290040+00:00",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "d634899c3ae139c4919d52f3e738c9b53c857e4a125dfb8cfa83e1e06eaa7b7c"
 }

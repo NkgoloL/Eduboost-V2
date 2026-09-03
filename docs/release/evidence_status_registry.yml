@@ -301,12 +301,12 @@ findings:
     severity: P1
     gate: 4
     owner: backend
-    implementation_batch: code_2191_2230
-    proof_status: not-proven
-    proof_command: make route-tx-slice-rollup-release-check
-    evidence_file: docs/release/route_transaction_slice_rollup.md
-    last_verified_commit: null
-    closure_blocker: local_gaps=1; live_db_gaps=3; inventory_unproven=15
+    implementation_batch: code_2031_2070
+    proof_status: runtime-passing
+    proof_command: make tx-route-impl-plan-check
+    evidence_file: docs/release/route_transaction_implementation_plan.md
+    last_verified_commit: d81bc05b230256f6c4ab39540ccb03ed4b52bcfd
+    closure_blocker: 15 production mutation route transaction wiring actions remain pending
     blocks_beta: false
     external_dependency: false
   - id: STAGING-001
@@ -427,7 +427,7 @@ findings:
     blocks_beta: false
     external_dependency: false
   - id: ROUTE-TX-POPIA-001
-    title: POPIA route transaction slice
+    title: POPIA route transaction live DB evidence
     severity: P1
     gate: 4
     owner: backend
@@ -453,16 +453,16 @@ findings:
     blocks_beta: false
     external_dependency: false
   - id: ROUTE-TX-DIAG-001
-    title: Diagnostics route transaction slice
+    title: Diagnostics route transaction live DB evidence
     severity: P1
     gate: 4
     owner: backend
-    implementation_batch: code_2151_2190
-    proof_status: not-proven
-    proof_command: make backend-implementation-2151-2190-full-check
-    evidence_file: docs/release/diagnostics_route_transaction_slice_report.md
+    implementation_batch: code_2231_2270
+    proof_status: external-blocked
+    proof_command: make route-tx-diagnostics-slice-release-check
+    evidence_file: docs/release/diagnostics_route_transaction_live_db_evidence.md
     last_verified_commit: null
-    closure_blocker: diagnostics route source delegation not proven; 1 gap actions remain
+    closure_blocker: live DB rollback evidence metadata required
     blocks_beta: false
     external_dependency: false
   - id: ROUTE-TX-ROLLUP-001
@@ -565,7 +565,7 @@ findings:
     proof_status: runtime-passing
     proof_command: make backend-implementation-2511-2550-full-check
     evidence_file: docs/release/auth_service_cleanup_status.md
-    last_verified_commit: 107d58c62d28a0d0a7a094f69894809af40f8db0
+    last_verified_commit: 689420a46ef961b11a3f1c8dcd6182ae8c478824
     closure_blocker: none
     blocks_beta: false
     external_dependency: false
