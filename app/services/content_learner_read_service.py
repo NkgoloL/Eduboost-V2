@@ -194,8 +194,9 @@ class ContentLearnerReadService:
                     grade=generation_artifact.grade,
                     subject_code=generation_artifact.subject_code,
                     language=generation_artifact.language or "en",
-                    title=generation_artifact.title,
+                    title=getattr(generation_artifact, "title", None) or (generation_artifact.artifact_json or {}).get("title"),
                     payload=production_artifact.payload_json,
+
                     source_artifact_hash=production_artifact.source_artifact_hash,
                     promotion_event_id=str(production_artifact.created_by_promotion_event_id)
                     if production_artifact.created_by_promotion_event_id
@@ -272,8 +273,9 @@ class ContentLearnerReadService:
                     grade=generation_artifact.grade,
                     subject_code=generation_artifact.subject_code,
                     language=generation_artifact.language or "en",
-                    title=generation_artifact.title,
+                    title=getattr(generation_artifact, "title", None) or (generation_artifact.artifact_json or {}).get("title"),
                     payload=production_artifact.payload_json,
+
                     source_artifact_hash=production_artifact.source_artifact_hash,
                     promotion_event_id=str(production_artifact.created_by_promotion_event_id)
                     if production_artifact.created_by_promotion_event_id
