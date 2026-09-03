@@ -387,7 +387,90 @@ async def test_content_review_governance_assignment_and_decisions():
     assert "decisions" in history
     assert "transitions" in history
 
-    # 8. Helpers
+    # 8. process_stale_assignments & list_stale_assignments
+    stale_asgn = ContentReviewAssignment(
+        id=uuid.uuid4(),
+        artifact_id=art_id,
+        artifact_version=1,
+        assigned_to="rev_stale",
+        status="assigned",
+        assigned_at=datetime.now(timezone.utc) - timedelta(hours=100),
+        due_by=None,
+    )
+    service.list_stale_assignments = AsyncMock(return_value=[stale_asgn])
+    stale_stats = await service.process_stale_assignments(session)
+    assert stale_stats["stale"] == 1
+    assert stale_stats["reminded"] == 1
+    assert stale_stats["escalated"] == 1
+
+    # 9. Rubric & Input Validation Error branches
+    with pytest.raises(ValueError, match="Review decisions require an idempotency key"):
+        await service.submit_decision(
+            session,
+            artifact_id=art_id,
+            reviewer_id="rev_1",
+            action=ContentReviewAction.APPROVE,
+            rubric_results={},
+            idempotency_key="   ",
+            expected_version=1,
+        )
+
+    with pytest.raises(ValueError, match="Approval rubric is incomplete"):
+        service._validate_decision_input(
+            action=ContentReviewAction.APPROVE,
+            rubric_results={"caps_alignment": True},
+            reason_code=None,
+        )
+
+    with pytest.raises(ValueError, match="Approval is blocked by rubric failures"):
+        service._validate_decision_input(
+            action=ContentReviewAction.APPROVE,
+            rubric_results={k: (False if k == "factual_accuracy" else True) for k in REQUIRED_APPROVAL_RUBRIC_CRITERIA},
+            reason_code=None,
+        )
+
+    with pytest.raises(ValueError, match="decisions require a reason code"):
+        service._validate_decision_input(
+            action=ContentReviewAction.REJECT,
+            rubric_results={},
+            reason_code=None,
+        )
+
+    # 10. Competency requirement error branches
+    mock_dec_no_sub = ContentReviewDecision(
+        decision_id=uuid.uuid4(),
+        artifact_id=art_id,
+        artifact_version=1,
+        reviewer_id="rev_x",
+        review_action=ContentReviewAction.APPROVE,
+        reviewer_competencies=["other_competency"],
+    )
+    with pytest.raises(ValueError, match="requires at least one subject/CAPS-competent"):
+        service._assert_approval_competencies(art, [mock_dec_no_sub])
+
+    art.language = "af"
+    mock_dec_sub = ContentReviewDecision(
+        decision_id=uuid.uuid4(),
+        artifact_id=art_id,
+        artifact_version=1,
+        reviewer_id="rev_x",
+        review_action=ContentReviewAction.APPROVE,
+        reviewer_competencies=["subject"],
+    )
+    with pytest.raises(ValueError, match="requires a language-competent reviewer"):
+        service._assert_approval_competencies(art, [mock_dec_sub])
+
+    # 11. Helpers & Source Payload
+    src = ContentArtifactSource(
+        source_document_id="doc_1",
+        source_chunk_id="chunk_1",
+        curriculum_mapping_id="map_1",
+        source_hash="shash_1",
+        source_quality_score=0.9,
+    )
+    src_payload = _source_payload(src)
+    assert src_payload["source_document_id"] == "doc_1"
+
     assert _rubric_passed(True) is True
     assert _rubric_passed(0.9) is True
     assert _rubric_passed(0.5) is False
@@ -395,4 +478,5 @@ async def test_content_review_governance_assignment_and_decisions():
     assert _rubric_passed({"result": "pass"}) is True
     assert _env_bool("NON_EXISTENT_VAR", True) is True
     assert _env_bool("NON_EXISTENT_VAR", False) is False
+
 
