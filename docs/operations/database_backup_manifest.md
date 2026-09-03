@@ -1,9 +1,9 @@
 # Database Backup Manifest
 
-Manifest ID: `dbcb92fb11bba3fa`
-Generated: `2026-08-26T16:58:56Z`
-Branch: `codex/tsr-b04-architecture-and-data-integrity`
-Commit: `107d58c62d28a0d0a7a094f69894809af40f8db0`
+Manifest ID: `cc422dd8acd3466c`
+Generated: `2026-08-29T09:37:19Z`
+Branch: `feature/coverage-target-90`
+Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
 
 ## Backup Metadata
 

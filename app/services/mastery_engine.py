@@ -140,10 +140,61 @@ class MasteryEngine:
             evidence_count=total_responses,
         )
 
-    def assert_no_authoritative_claims(self, estimate: MasteryEstimate) -> None:
+    def assert_no_authoritative_claims(
+        self,
+        estimate: MasteryEstimate | dict[str, Any] | float | str | None = None,
+        confidence: float | str | None = None,
+        state: MasteryStateEnum | str | None = None,
+    ) -> None:
         """Hard invariant guard: refuse to serialize or persist uncalibrated authoritative claims."""
-        if estimate.state == MasteryStateEnum.AUTHORITATIVE or estimate.confidence > self.max_confidence:
+        if estimate is None and confidence is None and state is None:
+            raise ValueError("assert_no_authoritative_claims requires at least one estimate, confidence, or state argument.")
+
+        raw_conf: Any = confidence
+        target_state: str | None = state.value if isinstance(state, MasteryStateEnum) else state
+
+        if isinstance(estimate, MasteryEstimate):
+            raw_conf = estimate.confidence
+            target_state = estimate.state.value
+        elif isinstance(estimate, dict):
+            raw_conf = estimate.get("confidence", confidence)
+            raw_st = estimate.get("state", target_state)
+            target_state = raw_st.value if isinstance(raw_st, MasteryStateEnum) else (str(raw_st) if raw_st is not None else None)
+        elif isinstance(estimate, (int, float)):
+            raw_conf = estimate
+        elif isinstance(estimate, str):
+            try:
+                raw_conf = float(estimate)
+            except ValueError:
+                target_state = estimate
+
+        if target_state is not None and target_state.strip().lower() == MasteryStateEnum.AUTHORITATIVE.value:
             raise MasteryBoundError(
-                f"Educational Claim Violation: Confidence {estimate.confidence} exceeds approved "
-                f"ceiling {self.max_confidence} or attempts unsupported 'authoritative' state."
+                f"Educational Claim Violation: State '{target_state}' attempts unsupported 'authoritative' state."
             )
+
+
+        if raw_conf is not None:
+            try:
+                numeric_conf = float(raw_conf)
+            except (ValueError, TypeError):
+                raise ValueError(f"Invalid confidence value: {raw_conf}")
+
+            if numeric_conf > (self.max_confidence + 1e-6):
+                raise MasteryBoundError(
+                    f"Educational Claim Violation: Confidence {numeric_conf} exceeds approved "
+                    f"ceiling {self.max_confidence}."
+                )
+
+
+def assert_no_authoritative_claims(
+    estimate: MasteryEstimate | dict[str, Any] | float | str | None = None,
+    confidence: float | str | None = None,
+    state: MasteryStateEnum | str | None = None,
+    max_confidence: float = MAX_CONFIDENCE_THRESHOLD,
+) -> None:
+    """Module-level invariant guard refusing to serialize or persist uncalibrated authoritative claims."""
+    engine = MasteryEngine(max_confidence=max_confidence)
+    engine.assert_no_authoritative_claims(estimate=estimate, confidence=confidence, state=state)
+
+

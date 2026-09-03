@@ -21,9 +21,10 @@ class APIDeprecationMiddleware(BaseHTTPMiddleware):
         # If a request enters via legacy /v2 path, inject deprecation headers
         if path.startswith("/v2/") or path == "/v2":
             canonical_path = path.replace("/v2", "/api/v2", 1)
-            response.headers["Deprecation"] = "@1730419200"  # Nov 1 2026 timestamp
+            response.headers["Deprecation"] = "@1793491200"  # Nov 1 2026 timestamp
             response.headers["Sunset"] = SUNSET_DATE
             response.headers["Link"] = f'<{canonical_path}>; rel="canonical"'
             response.headers["X-API-Canonical-Prefix"] = "/api/v2"
 
         return response
+

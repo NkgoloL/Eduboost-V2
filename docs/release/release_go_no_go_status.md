@@ -1,26 +1,48 @@
 # Release Go/No-Go Status
 
-Generated at: `2026-08-26T17:19:05Z`
-Commit: `107d58c62d28a0d0a7a094f69894809af40f8db0`
+Generated at: `2026-08-29T09:39:05Z`
+Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
 
-**Beta decision:** `NO-GO`
-**Beta blocker count:** `10`
+**Decision:** `NO-GO`
 
-## Remaining beta blockers
+| Metric | Count |
+|---|---:|
+| Beta blockers | 7 |
+| Engineering blockers | 1 |
+| CI blockers | 1 |
+| External blockers | 6 |
 
-- `JWT-001`
-- `ARQ-001`
-- `POPIA-001`
-- `CI-001`
-- `LEGAL-001`
-- `SEC-001`
-- `CONTENT-001`
-- `LESSON-AUTH-001`
-- `STAGING-001`
-- `EXT-GATE-001`
+## Beta-blocking findings
 
-## No false-closure rules
+| ID | Status | External | Eligible | Reason | Evidence |
+|---|---|---:|---:|---|---|
+| `ARQ-001` | `runtime-passing` | False | True | beta-blocking evidence is present | `docs/release/arq_dependency_worker_import_repair_report.md` |
+| `JWT-001` | `runtime-passing` | False | True | beta-blocking evidence is present | `docs/release/jwt_production_guard_repair_report.md` |
+| `CI-001` | `external-blocked` | True | False | remote CI run URL not attached | `docs/release/ci_evidence.md` |
+| `LESSON-AUTH-001` | `runtime-passing` | False | True | beta-blocking evidence is present | `docs/release/lesson_authorization_hardening_report.md` |
+| `POPIA-001` | `not-proven` | False | False | proof_status is not-proven | `docs/release/popia_response_contract_no_skip_status.md` |
+| `CONTENT-001` | `external-blocked` | True | False | external approval remains incomplete | `docs/release/external_approvals/content_approval.md` |
+| `EXT-GATE-001` | `runtime-passing` | True | False | external approval remains incomplete | `docs/release/external_approval_status.md` |
+| `LEGAL-001` | `external-blocked` | True | False | external approval remains incomplete | `docs/release/external_approvals/legal_approval.md` |
+| `SEC-001` | `external-blocked` | True | False | external approval remains incomplete | `docs/release/external_approvals/security_approval.md` |
+| `STAGING-001` | `external-blocked` | True | False | external approval remains incomplete | `docs/release/external_approvals/staging_acceptance.md` |
 
-- This status is derived from the current final beta gate refresh.
-- This status does not approve beta release by itself.
-- Stale external evidence must not be upgraded to accepted evidence.
+## Blockers
+
+- POPIA-001: proof_status is not-proven
+- CI-001: remote CI run URL not attached
+- LEGAL-001: external approval remains incomplete
+- SEC-001: external approval remains incomplete
+- CONTENT-001: external approval remains incomplete
+- STAGING-001: external approval remains incomplete
+- EXT-GATE-001: external approval remains incomplete
+
+## Required next actions
+
+- Attach a passing GitHub Actions run URL for CI-001.
+- Complete external approval files for legal, security, content, and staging gates.
+- Resolve remaining beta-blocking engineering evidence items.
+
+## Interpretation
+
+This report is release-owner decision support. It does not approve release by itself.

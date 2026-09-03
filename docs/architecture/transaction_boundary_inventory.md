@@ -1,9 +1,9 @@
 # Transaction Boundary Inventory
 
-Generated at: `2026-08-26T17:00:43Z`
+Generated at: `2026-08-29T09:39:37Z`
 
-Candidate count: `367`
-Critical candidate count: `60`
+Candidate count: `368`
+Critical candidate count: `61`
 
 Policy: Multi-write candidates remain not-proven until rollback/integration tests demonstrate atomicity.
 
@@ -375,6 +375,8 @@ Policy: Multi-write candidates remain not-proven until rollback/integration test
 | `app/services/pii_sweep.py` | `_check_phone_regex` | 185 | `single-mutation-candidate` | `-` | `add` | `-` |
 | `app/services/pii_sweep.py` | `_check_phone_lib` | 195 | `single-mutation-candidate` | `-` | `add` | `-` |
 | `app/services/pii_sweep.py` | `_check_salutation` | 209 | `single-mutation-candidate` | `-` | `add` | `-` |
+| `app/services/popia_dsr_service.py` | `initiate_erasure_request` | 44 | `multi-write-candidate-not-proven` | `-` | `add, execute, flush` | `-` |
+| `app/services/popia_dsr_service.py` | `execute_erasure_cascade` | 75 | `transaction-marker-present` | `popia_lifecycle` | `add, commit, delete, execute, update` | `transaction` |
 | `app/services/popia_service.py` | `_add` | 127 | `single-mutation-candidate` | `-` | `add` | `-` |
 | `app/services/popia_service.py` | `request_erasure` | 184 | `multi-write-candidate-not-proven` | `popia_lifecycle` | `flush` | `-` |
 | `app/services/popia_service.py` | `cancel_erasure` | 293 | `single-mutation-candidate` | `-` | `flush` | `-` |

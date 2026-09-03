@@ -1,8 +1,8 @@
 # CI Evidence Status
 
-Generated at: `2026-08-26T16:55:03Z`
-Commit: `107d58c62d28a0d0a7a094f69894809af40f8db0`
-Branch: `codex/tsr-b04-architecture-and-data-integrity`
+Generated at: `2026-08-29T09:33:02Z`
+Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
+Branch: `feature/coverage-target-90`
 
 **Status:** `ci-evidence-not-accepted`
 **Run ID:** ``
@@ -12,7 +12,7 @@ Branch: `codex/tsr-b04-architecture-and-data-integrity`
 **Conclusion:** ``
 **Head SHA:** ``
 **Verified by:** `unverified`
-**Date verified:** `2026-08-26`
+**Date verified:** `2026-08-29`
 
 ## Blockers
 
@@ -20,7 +20,7 @@ Branch: `codex/tsr-b04-architecture-and-data-integrity`
 - run ID is missing or non-numeric
 - GitHub Actions run status is missing, expected completed
 - GitHub Actions run conclusion is missing, expected success
-- GitHub Actions run SHA missing does not match current commit 107d58c62d28a0d0a7a094f69894809af40f8db0
+- GitHub Actions run SHA missing does not match current commit d81bc05b230256f6c4ab39540ccb03ed4b52bcfd
 - workflow name is missing
 
 ## No false-closure rules

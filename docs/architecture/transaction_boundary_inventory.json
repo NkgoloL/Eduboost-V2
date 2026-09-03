@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T17:00:43Z",
+  "generated_at": "2026-08-29T09:39:37Z",
   "scan_roots": [
     "app/api_v2_routers",
     "app/services",
@@ -4332,6 +4332,38 @@
       "status": "single-mutation-candidate"
     },
     {
+      "file": "app/services/popia_dsr_service.py",
+      "function": "initiate_erasure_request",
+      "lineno": 44,
+      "mutation_calls": [
+        "add",
+        "execute",
+        "flush"
+      ],
+      "transaction_markers": [],
+      "critical_areas": [],
+      "status": "multi-write-candidate-not-proven"
+    },
+    {
+      "file": "app/services/popia_dsr_service.py",
+      "function": "execute_erasure_cascade",
+      "lineno": 75,
+      "mutation_calls": [
+        "add",
+        "commit",
+        "delete",
+        "execute",
+        "update"
+      ],
+      "transaction_markers": [
+        "transaction"
+      ],
+      "critical_areas": [
+        "popia_lifecycle"
+      ],
+      "status": "transaction-marker-present"
+    },
+    {
       "file": "app/services/popia_service.py",
       "function": "_add",
       "lineno": 127,
@@ -4651,7 +4683,7 @@
       "status": "single-mutation-candidate"
     }
   ],
-  "candidate_count": 367,
-  "critical_candidate_count": 60,
+  "candidate_count": 368,
+  "critical_candidate_count": 61,
   "policy": "Multi-write candidates remain not-proven until rollback/integration tests demonstrate atomicity."
 }

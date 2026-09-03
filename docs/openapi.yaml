@@ -87,6 +87,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Get Scope Coverage Api V2 Admin Curriculum Expansion
                   Coverage  Scope Id  Get
         '422':
@@ -114,6 +115,7 @@ paths:
             application/json:
               schema:
                 items:
+                  additionalProperties: true
                   type: object
                 type: array
                 title: Response Capture Snapshots Api V2 Admin Curriculum Expansion
@@ -2368,6 +2370,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Cancel Generation Run Api V2 Admin Generation Runs  Run
                   Id  Cancel Post
         '422':
@@ -2536,6 +2539,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Get Learner Progress Api V2 Parents Learners  Learner
                   Id  Progress Get
         '422':
@@ -2574,6 +2578,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Request Erasure Api V2 Parents Learners  Learner Id  Delete
         '422':
           description: Validation Error
@@ -2615,6 +2620,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Get Learner Vertical Journey Api V2 Vertical Journey
                   Learners  Learner Id  Get
         '422':
@@ -2704,6 +2710,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Commercial Launch Readiness Api V2 Commercial
                   Launch Readiness Get
@@ -2744,6 +2751,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Controlled Beta Preflight Api V2 Controlled Beta
                   Preflight Get
@@ -2767,6 +2775,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Controlled Beta Final Authorisation Api V2 Controlled
                   Beta Final Authorisation Get
@@ -2788,6 +2797,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Grant Consent Api V2 Consent Grant Post
         '422':
@@ -2816,6 +2826,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Revoke Consent Api V2 Consent Revoke Post
         '422':
@@ -2849,6 +2860,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Consent Status Api V2 Consent Status  Learner Id  Get
         '422':
           description: Validation Error
@@ -3138,7 +3150,6 @@ paths:
       operationId: create_generation_run_api_v2_admin_content_factory_runs_post
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
       requestBody:
         required: true
         content:
@@ -3228,7 +3239,6 @@ paths:
       operationId: plan_missing_generation_tasks_api_v2_admin_content_factory_runs__run_id__plan_missing_post
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
       parameters:
       - name: run_id
         in: path
@@ -3257,7 +3267,6 @@ paths:
       summary: Execute Generation Run
       operationId: execute_generation_run_api_v2_admin_content_factory_runs__run_id__execute_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: run_id
@@ -3297,7 +3306,6 @@ paths:
       summary: Execute Generation Task
       operationId: execute_generation_task_api_v2_admin_content_factory_tasks__task_id__execute_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: task_id
@@ -3386,7 +3394,6 @@ paths:
       operationId: cancel_generation_run_api_v2_admin_content_factory_runs__run_id__cancel_post
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
       parameters:
       - name: run_id
         in: path
@@ -3415,7 +3422,6 @@ paths:
       summary: Retry Failed Generation Tasks
       operationId: retry_failed_generation_tasks_api_v2_admin_content_factory_runs__run_id__retry_failed_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: run_id
@@ -3579,7 +3585,6 @@ paths:
       operationId: submit_artifact_for_review_api_v2_admin_content_factory_artifacts__artifact_id__submit_review_post
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
       parameters:
       - name: artifact_id
         in: path
@@ -3608,7 +3613,6 @@ paths:
       summary: Reject Artifact
       operationId: reject_artifact_api_v2_admin_content_factory_artifacts__artifact_id__reject_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: artifact_id
@@ -3644,7 +3648,6 @@ paths:
       summary: Quarantine Artifact
       operationId: quarantine_artifact_api_v2_admin_content_factory_artifacts__artifact_id__quarantine_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: artifact_id
@@ -3827,7 +3830,6 @@ paths:
       operationId: assign_reviewer_api_v2_admin_content_factory_review_assignments_post
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
       requestBody:
         required: true
         content:
@@ -3915,7 +3917,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
   /api/v2/admin/content-factory/reviewers/{reviewer_id}/workload:
     get:
       tags:
@@ -3971,7 +3972,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
   /api/v2/admin/content-factory/review/bulk-reject:
     post:
       tags:
@@ -3998,7 +3998,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
   /api/v2/admin/content-factory/review/bulk-quarantine:
     post:
@@ -4027,7 +4026,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
   /api/v2/admin/content-factory/staging-verification/all-scopes:
     post:
       tags:
@@ -4035,7 +4033,6 @@ paths:
       summary: Run All Scope Staging Verification
       operationId: run_all_scope_staging_verification_api_v2_admin_content_factory_staging_verification_all_scopes_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: include_partial
@@ -4127,7 +4124,6 @@ paths:
       summary: Run Scope Staging Verification
       operationId: run_scope_staging_verification_api_v2_admin_content_factory_scopes__scope_id__staging_verification_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: scope_id
@@ -4227,7 +4223,6 @@ paths:
       operationId: dry_run_scope_seed_api_v2_admin_content_factory_scopes__scope_id__dry_run_seed_post
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
       parameters:
       - name: scope_id
         in: path
@@ -4255,7 +4250,6 @@ paths:
       summary: Seed Scope Staging
       operationId: seed_scope_staging_api_v2_admin_content_factory_scopes__scope_id__seed_staging_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: scope_id
@@ -4398,7 +4392,6 @@ paths:
       operationId: verify_seed_run_api_v2_admin_content_factory_seed_runs__seed_run_id__verify_post
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
       parameters:
       - name: seed_run_id
         in: path
@@ -4427,7 +4420,6 @@ paths:
       summary: Rollback Seed Run
       operationId: rollback_seed_run_api_v2_admin_content_factory_seed_runs__seed_run_id__rollback_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: seed_run_id
@@ -4530,7 +4522,6 @@ paths:
       operationId: dry_run_promotion_api_v2_admin_content_factory_scopes__scope_id__dry_run_promotion_post
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
       parameters:
       - name: scope_id
         in: path
@@ -4568,7 +4559,6 @@ paths:
       summary: Promote Production
       operationId: promote_production_api_v2_admin_content_factory_scopes__scope_id__promote_production_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: scope_id
@@ -4694,6 +4684,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Get Promotion Event Items Api V2 Admin Content Factory
                   Promotion Events  Promotion Event Id  Items Get
         '422':
@@ -4709,7 +4700,6 @@ paths:
       summary: Verify Promotion Event
       operationId: verify_promotion_event_api_v2_admin_content_factory_promotion_events__promotion_event_id__verify_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: promotion_event_id
@@ -4739,7 +4729,6 @@ paths:
       summary: Rollback Promotion Event
       operationId: rollback_promotion_event_api_v2_admin_content_factory_promotion_events__promotion_event_id__rollback_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: promotion_event_id
@@ -5004,6 +4993,7 @@ paths:
         content:
           application/json:
             schema:
+              additionalProperties: true
               type: object
               title: Request
         required: true
@@ -5511,6 +5501,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Grade4 Maths Content Quality Readiness Api V2
                   Content Quality Grade4 Mathematics Readiness Get
@@ -5534,6 +5525,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Grade4 Maths Content Quality Final Acceptance
                   Api V2 Content Quality Grade4 Mathematics Final Acceptance Get
@@ -5714,6 +5706,7 @@ paths:
             application/json:
               schema:
                 items:
+                  additionalProperties: true
                   type: object
                 type: array
                 title: Response List Etl Documents Api V2 Admin Etl Documents Get
@@ -5741,6 +5734,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Get Etl Document Api V2 Admin Etl Documents  Document
                   Id  Get
         '422':
@@ -5773,6 +5767,7 @@ paths:
                 type: array
                 items:
                   type: object
+                  additionalProperties: true
                 title: Response Get Etl Document Chunks Api V2 Admin Etl Documents  Document
                   Id  Chunks Get
         '422':
@@ -5805,6 +5800,7 @@ paths:
                 type: array
                 items:
                   type: object
+                  additionalProperties: true
                 title: Response Get Etl Document Audit Api V2 Admin Etl Documents  Document
                   Id  Audit Get
         '422':
@@ -5826,6 +5822,7 @@ paths:
             application/json:
               schema:
                 items:
+                  additionalProperties: true
                   type: object
                 type: array
                 title: Response Get Etl Review Queue Api V2 Admin Etl Review Queue
@@ -5854,6 +5851,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Get Etl Quality Api V2 Admin Etl Quality  Document
                   Id  Get
         '422':
@@ -5885,6 +5883,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Search Etl Api V2 Admin Etl Search Get
         '422':
           description: Validation Error
@@ -5905,6 +5904,7 @@ paths:
             application/json:
               schema:
                 items:
+                  additionalProperties: true
                   type: object
                 type: array
                 title: Response List Etl Datasets Api V2 Admin Etl Datasets Get
@@ -5922,6 +5922,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Etl Metrics Api V2 Admin Etl Metrics Get
       security:
@@ -6230,6 +6231,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Popia Live Data Operations Readiness Api V2 Privacy
                   Operations Live Data Readiness Get
@@ -6255,6 +6257,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Popia Live Data Operations Final Assurance Api
                   V2 Privacy Operations Live Data Final Assurance Get
@@ -6280,6 +6283,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Security Assurance Readiness Api V2 Security Assurance
                   Readiness Get
@@ -6307,6 +6311,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Security Final Assurance Api V2 Security Assurance
                   Final Assurance Get
@@ -6334,6 +6339,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Observability Sre Readiness Api V2 Observability
                   Sre Readiness Get
@@ -6361,6 +6367,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Observability Sre Final Assurance Api V2 Observability
                   Sre Final Assurance Get
@@ -6389,6 +6396,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Performance Scale Cost Readiness Api V2 Performance
                   Scale Cost Readiness Get
@@ -6417,6 +6425,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Performance Scale Cost Final Assurance Api V2
                   Performance Scale Cost Final Assurance Get
@@ -6444,6 +6453,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Production Release Preflight Api V2 Production
                   Release Preflight Get
@@ -6469,6 +6479,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get True State Runtime Baseline Api V2 Production
                   Release True State Runtime Baseline Get
@@ -6801,6 +6812,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Get Scope Coverage V2 Admin Curriculum Expansion Coverage  Scope
                   Id  Get
         '422':
@@ -6828,6 +6840,7 @@ paths:
             application/json:
               schema:
                 items:
+                  additionalProperties: true
                   type: object
                 type: array
                 title: Response Capture Snapshots V2 Admin Curriculum Expansion Coverage
@@ -9082,6 +9095,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Cancel Generation Run V2 Admin Generation Runs  Run
                   Id  Cancel Post
         '422':
@@ -9250,6 +9264,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Get Learner Progress V2 Parents Learners  Learner
                   Id  Progress Get
         '422':
@@ -9288,6 +9303,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Request Erasure V2 Parents Learners  Learner Id  Delete
         '422':
           description: Validation Error
@@ -9329,6 +9345,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Get Learner Vertical Journey V2 Vertical Journey Learners  Learner
                   Id  Get
         '422':
@@ -9418,6 +9435,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Commercial Launch Readiness V2 Commercial Launch
                   Readiness Get
@@ -9458,6 +9476,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Controlled Beta Preflight V2 Controlled Beta Preflight
                   Get
@@ -9481,6 +9500,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Controlled Beta Final Authorisation V2 Controlled
                   Beta Final Authorisation Get
@@ -9502,6 +9522,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Grant Consent V2 Consent Grant Post
         '422':
@@ -9530,6 +9551,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Revoke Consent V2 Consent Revoke Post
         '422':
@@ -9563,6 +9585,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Consent Status V2 Consent Status  Learner Id  Get
         '422':
           description: Validation Error
@@ -9852,7 +9875,6 @@ paths:
       operationId: create_generation_run_v2_admin_content_factory_runs_post
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
       requestBody:
         required: true
         content:
@@ -9942,7 +9964,6 @@ paths:
       operationId: plan_missing_generation_tasks_v2_admin_content_factory_runs__run_id__plan_missing_post
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
       parameters:
       - name: run_id
         in: path
@@ -9971,7 +9992,6 @@ paths:
       summary: Execute Generation Run
       operationId: execute_generation_run_v2_admin_content_factory_runs__run_id__execute_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: run_id
@@ -10011,7 +10031,6 @@ paths:
       summary: Execute Generation Task
       operationId: execute_generation_task_v2_admin_content_factory_tasks__task_id__execute_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: task_id
@@ -10100,7 +10119,6 @@ paths:
       operationId: cancel_generation_run_v2_admin_content_factory_runs__run_id__cancel_post
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
       parameters:
       - name: run_id
         in: path
@@ -10129,7 +10147,6 @@ paths:
       summary: Retry Failed Generation Tasks
       operationId: retry_failed_generation_tasks_v2_admin_content_factory_runs__run_id__retry_failed_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: run_id
@@ -10293,7 +10310,6 @@ paths:
       operationId: submit_artifact_for_review_v2_admin_content_factory_artifacts__artifact_id__submit_review_post
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
       parameters:
       - name: artifact_id
         in: path
@@ -10322,7 +10338,6 @@ paths:
       summary: Reject Artifact
       operationId: reject_artifact_v2_admin_content_factory_artifacts__artifact_id__reject_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: artifact_id
@@ -10358,7 +10373,6 @@ paths:
       summary: Quarantine Artifact
       operationId: quarantine_artifact_v2_admin_content_factory_artifacts__artifact_id__quarantine_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: artifact_id
@@ -10541,7 +10555,6 @@ paths:
       operationId: assign_reviewer_v2_admin_content_factory_review_assignments_post
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
       requestBody:
         required: true
         content:
@@ -10629,7 +10642,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
   /v2/admin/content-factory/reviewers/{reviewer_id}/workload:
     get:
       tags:
@@ -10685,7 +10697,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
   /v2/admin/content-factory/review/bulk-reject:
     post:
       tags:
@@ -10712,7 +10723,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
   /v2/admin/content-factory/review/bulk-quarantine:
     post:
@@ -10741,7 +10751,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
   /v2/admin/content-factory/staging-verification/all-scopes:
     post:
       tags:
@@ -10749,7 +10758,6 @@ paths:
       summary: Run All Scope Staging Verification
       operationId: run_all_scope_staging_verification_v2_admin_content_factory_staging_verification_all_scopes_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: include_partial
@@ -10841,7 +10849,6 @@ paths:
       summary: Run Scope Staging Verification
       operationId: run_scope_staging_verification_v2_admin_content_factory_scopes__scope_id__staging_verification_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: scope_id
@@ -10941,7 +10948,6 @@ paths:
       operationId: dry_run_scope_seed_v2_admin_content_factory_scopes__scope_id__dry_run_seed_post
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
       parameters:
       - name: scope_id
         in: path
@@ -10969,7 +10975,6 @@ paths:
       summary: Seed Scope Staging
       operationId: seed_scope_staging_v2_admin_content_factory_scopes__scope_id__seed_staging_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: scope_id
@@ -11112,7 +11117,6 @@ paths:
       operationId: verify_seed_run_v2_admin_content_factory_seed_runs__seed_run_id__verify_post
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
       parameters:
       - name: seed_run_id
         in: path
@@ -11141,7 +11145,6 @@ paths:
       summary: Rollback Seed Run
       operationId: rollback_seed_run_v2_admin_content_factory_seed_runs__seed_run_id__rollback_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: seed_run_id
@@ -11244,7 +11247,6 @@ paths:
       operationId: dry_run_promotion_v2_admin_content_factory_scopes__scope_id__dry_run_promotion_post
       security:
       - HTTPBearer: []
-      - HTTPBearer: []
       parameters:
       - name: scope_id
         in: path
@@ -11282,7 +11284,6 @@ paths:
       summary: Promote Production
       operationId: promote_production_v2_admin_content_factory_scopes__scope_id__promote_production_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: scope_id
@@ -11408,6 +11409,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Get Promotion Event Items V2 Admin Content Factory
                   Promotion Events  Promotion Event Id  Items Get
         '422':
@@ -11423,7 +11425,6 @@ paths:
       summary: Verify Promotion Event
       operationId: verify_promotion_event_v2_admin_content_factory_promotion_events__promotion_event_id__verify_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: promotion_event_id
@@ -11453,7 +11454,6 @@ paths:
       summary: Rollback Promotion Event
       operationId: rollback_promotion_event_v2_admin_content_factory_promotion_events__promotion_event_id__rollback_post
       security:
-      - HTTPBearer: []
       - HTTPBearer: []
       parameters:
       - name: promotion_event_id
@@ -11718,6 +11718,7 @@ paths:
         content:
           application/json:
             schema:
+              additionalProperties: true
               type: object
               title: Request
         required: true
@@ -12225,6 +12226,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Grade4 Maths Content Quality Readiness V2 Content
                   Quality Grade4 Mathematics Readiness Get
@@ -12248,6 +12250,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Grade4 Maths Content Quality Final Acceptance
                   V2 Content Quality Grade4 Mathematics Final Acceptance Get
@@ -12428,6 +12431,7 @@ paths:
             application/json:
               schema:
                 items:
+                  additionalProperties: true
                   type: object
                 type: array
                 title: Response List Etl Documents V2 Admin Etl Documents Get
@@ -12455,6 +12459,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Get Etl Document V2 Admin Etl Documents  Document
                   Id  Get
         '422':
@@ -12487,6 +12492,7 @@ paths:
                 type: array
                 items:
                   type: object
+                  additionalProperties: true
                 title: Response Get Etl Document Chunks V2 Admin Etl Documents  Document
                   Id  Chunks Get
         '422':
@@ -12519,6 +12525,7 @@ paths:
                 type: array
                 items:
                   type: object
+                  additionalProperties: true
                 title: Response Get Etl Document Audit V2 Admin Etl Documents  Document
                   Id  Audit Get
         '422':
@@ -12540,6 +12547,7 @@ paths:
             application/json:
               schema:
                 items:
+                  additionalProperties: true
                   type: object
                 type: array
                 title: Response Get Etl Review Queue V2 Admin Etl Review Queue Get
@@ -12567,6 +12575,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Get Etl Quality V2 Admin Etl Quality  Document Id  Get
         '422':
           description: Validation Error
@@ -12597,6 +12606,7 @@ paths:
             application/json:
               schema:
                 type: object
+                additionalProperties: true
                 title: Response Search Etl V2 Admin Etl Search Get
         '422':
           description: Validation Error
@@ -12617,6 +12627,7 @@ paths:
             application/json:
               schema:
                 items:
+                  additionalProperties: true
                   type: object
                 type: array
                 title: Response List Etl Datasets V2 Admin Etl Datasets Get
@@ -12634,6 +12645,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Etl Metrics V2 Admin Etl Metrics Get
       security:
@@ -12940,6 +12952,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Popia Live Data Operations Readiness V2 Privacy
                   Operations Live Data Readiness Get
@@ -12965,6 +12978,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Popia Live Data Operations Final Assurance V2
                   Privacy Operations Live Data Final Assurance Get
@@ -12990,6 +13004,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Security Assurance Readiness V2 Security Assurance
                   Readiness Get
@@ -13017,6 +13032,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Security Final Assurance V2 Security Assurance
                   Final Assurance Get
@@ -13044,6 +13060,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Observability Sre Readiness V2 Observability Sre
                   Readiness Get
@@ -13071,6 +13088,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Observability Sre Final Assurance V2 Observability
                   Sre Final Assurance Get
@@ -13099,6 +13117,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Performance Scale Cost Readiness V2 Performance
                   Scale Cost Readiness Get
@@ -13127,6 +13146,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Performance Scale Cost Final Assurance V2 Performance
                   Scale Cost Final Assurance Get
@@ -13154,6 +13174,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get Production Release Preflight V2 Production Release
                   Preflight Get
@@ -13179,6 +13200,7 @@ paths:
           content:
             application/json:
               schema:
+                additionalProperties: true
                 type: object
                 title: Response Get True State Runtime Baseline V2 Production Release
                   True State Runtime Baseline Get
@@ -13526,6 +13548,7 @@ components:
           type: array
           title: Scopes
         summary:
+          additionalProperties: true
           type: object
           title: Summary
         created_by:
@@ -13571,6 +13594,7 @@ components:
           minLength: 8
           title: Idempotency Key
         details:
+          additionalProperties: true
           type: object
           title: Details
         verifier_provider:
@@ -13653,7 +13677,8 @@ components:
       properties:
         data:
           anyOf:
-          - type: object
+          - additionalProperties: true
+            type: object
           - type: 'null'
           title: Data
         error:
@@ -13728,33 +13753,40 @@ components:
     ArtifactReviewBundleResponse:
       properties:
         artifact:
+          additionalProperties: true
           type: object
           title: Artifact
         validation_report:
           anyOf:
-          - type: object
+          - additionalProperties: true
+            type: object
           - type: 'null'
           title: Validation Report
         provenance:
+          additionalProperties: true
           type: object
           title: Provenance
         sources:
           items:
+            additionalProperties: true
             type: object
           type: array
           title: Sources
         review_risk:
           $ref: '#/components/schemas/ReviewRiskResponse'
         generation_metadata:
+          additionalProperties: true
           type: object
           title: Generation Metadata
         prior_review_events:
           items:
+            additionalProperties: true
             type: object
           type: array
           title: Prior Review Events
         similar_artifacts:
           items:
+            additionalProperties: true
             type: object
           type: array
           title: Similar Artifacts
@@ -13789,6 +13821,7 @@ components:
           minimum: 1.0
           title: Expected Version
         artifact_json:
+          additionalProperties: true
           type: object
           title: Artifact Json
         reason:
@@ -13868,6 +13901,7 @@ components:
           - type: 'null'
           title: Answer
         metadata:
+          additionalProperties: true
           type: object
           title: Metadata
       type: object
@@ -13954,6 +13988,7 @@ components:
           title: Remaining Tokens
         used_cost_usd:
           type: string
+          pattern: ^(?!^[-+.]*$)[+-]?0*\d*\.?\d*$
           title: Used Cost Usd
         alert_threshold_reached:
           type: boolean
@@ -14135,6 +14170,8 @@ components:
         layers:
           additionalProperties:
             $ref: '#/components/schemas/CoverageLayerCounts'
+          propertyNames:
+            $ref: '#/components/schemas/ContentLayer-Output'
           type: object
           title: Layers
       additionalProperties: false
@@ -14195,8 +14232,7 @@ components:
           type: string
           title: Privacy Notice Version
         state:
-          allOf:
-          - $ref: '#/components/schemas/ConsentState'
+          $ref: '#/components/schemas/ConsentState'
           default: pending
         granted_at:
           anyOf:
@@ -14346,6 +14382,7 @@ components:
           type: string
           title: Source Role
         source_metadata:
+          additionalProperties: true
           type: object
           title: Source Metadata
       type: object
@@ -14414,6 +14451,7 @@ components:
         artifact_type:
           $ref: '#/components/schemas/ContentArtifactType'
         artifact_json:
+          additionalProperties: true
           type: object
           title: Artifact Json
         caps_ref:
@@ -14443,6 +14481,7 @@ components:
           type: boolean
           title: Passed
         checks:
+          additionalProperties: true
           type: object
           title: Checks
         errors:
@@ -14505,6 +14544,7 @@ components:
           type: array
           title: Errors
         summary:
+          additionalProperties: true
           type: object
           title: Summary
       type: object
@@ -14557,6 +14597,7 @@ components:
           type: boolean
           title: Generation Enabled
         coverage:
+          additionalProperties: true
           type: object
           title: Coverage
         run_count:
@@ -14639,6 +14680,7 @@ components:
           type: array
           title: Errors
         summary:
+          additionalProperties: true
           type: object
           title: Summary
         provider:
@@ -14669,11 +14711,13 @@ components:
           title: Created Task Ids
         skipped:
           items:
+            additionalProperties: true
             type: object
           type: array
           title: Skipped
         missing:
           items:
+            additionalProperties: true
             type: object
           type: array
           title: Missing
@@ -14729,6 +14773,7 @@ components:
           - type: 'null'
           title: Requested By
         run_metadata:
+          additionalProperties: true
           type: object
           title: Run Metadata
       type: object
@@ -14909,6 +14954,7 @@ components:
           type: string
           title: Status
         summary:
+          additionalProperties: true
           type: object
           title: Summary
         created_by:
@@ -14938,6 +14984,7 @@ components:
           format: uuid
           title: Learner Id
         fields:
+          additionalProperties: true
           type: object
           title: Fields
         reason:
@@ -15156,10 +15203,12 @@ components:
           title: Grade Equivalent
         ranked_gaps:
           items:
+            additionalProperties: true
             type: object
           type: array
           title: Ranked Gaps
         runtime_kg_projection:
+          additionalProperties: true
           type: object
           title: Runtime Kg Projection
       type: object
@@ -15334,6 +15383,7 @@ components:
           type: boolean
           title: Dry Run
         plan:
+          additionalProperties: true
           type: object
           title: Plan
       additionalProperties: false
@@ -15533,6 +15583,7 @@ components:
           type: string
           title: Policy Version
         summary:
+          additionalProperties: true
           type: object
           title: Summary
         started_at:
@@ -15587,6 +15638,7 @@ components:
           title: Status
           default: queued
         payload:
+          additionalProperties: true
           type: object
           title: Payload
         result:
@@ -15596,7 +15648,8 @@ components:
           title: Result
         error:
           anyOf:
-          - type: object
+          - additionalProperties: true
+            type: object
           - type: 'null'
           title: Error
         created_at:
@@ -15733,6 +15786,7 @@ components:
           - type: 'null'
           title: Title
         payload:
+          additionalProperties: true
           type: object
           title: Payload
         source_artifact_hash:
@@ -15760,6 +15814,7 @@ components:
       - promotion_event_id
       - created_at
       title: LearnerDiagnosticItem
+      description: Learner-facing diagnostic item.
     LearnerLesson:
       properties:
         artifact_id:
@@ -15792,6 +15847,7 @@ components:
           - type: 'null'
           title: Title
         payload:
+          additionalProperties: true
           type: object
           title: Payload
         source_artifact_hash:
@@ -15819,6 +15875,7 @@ components:
       - promotion_event_id
       - created_at
       title: LearnerLesson
+      description: Learner-facing lesson.
     LearnerResponse:
       properties:
         id:
@@ -15894,6 +15951,7 @@ components:
       - total_artifacts_count
       - last_promotion_at
       title: LearnerScopeContentSummary
+      description: Summary of learner-visible content for a scope.
     LessonRequest:
       properties:
         learner_id:
@@ -16013,6 +16071,7 @@ components:
           - type: 'null'
           title: Completed At
         metadata:
+          additionalProperties: true
           type: object
           title: Metadata
       type: object
@@ -16388,9 +16447,11 @@ components:
           type: array
           title: Blockers
         coverage_summary:
+          additionalProperties: true
           type: object
           title: Coverage Summary
         staging_summary:
+          additionalProperties: true
           type: object
           title: Staging Summary
       type: object
@@ -16438,6 +16499,7 @@ components:
           title: Skipped Count
         skipped:
           items:
+            additionalProperties: true
             type: object
           type: array
           title: Skipped
@@ -17173,6 +17235,7 @@ components:
           type: string
           title: Rubric Version
         rubric_results:
+          additionalProperties: true
           type: object
           title: Rubric Results
         policy_version:
@@ -17213,6 +17276,7 @@ components:
           minimum: 1.0
           title: Expected Version
         rubric_results:
+          additionalProperties: true
           type: object
           title: Rubric Results
         idempotency_key:
@@ -17512,6 +17576,7 @@ components:
           - type: 'null'
           title: Provider
         run_metadata:
+          additionalProperties: true
           type: object
           title: Run Metadata
         created_at:
@@ -17551,8 +17616,7 @@ components:
           type: string
           title: Code
         severity:
-          allOf:
-          - $ref: '#/components/schemas/BlockerSeverity'
+          $ref: '#/components/schemas/BlockerSeverity'
           default: blocking
         layer:
           anyOf:
@@ -17655,6 +17719,8 @@ components:
         layers:
           additionalProperties:
             $ref: '#/components/schemas/ScopeCoverageLayerSummary'
+          propertyNames:
+            $ref: '#/components/schemas/ContentLayer-Output'
           type: object
           title: Layers
         per_caps_ref:
@@ -17745,6 +17811,7 @@ components:
           type: array
           title: Layers
         summary:
+          additionalProperties: true
           type: object
           title: Summary
       type: object
@@ -18174,12 +18241,14 @@ components:
           title: Prompt Version
         token_usage:
           anyOf:
-          - type: object
+          - additionalProperties: true
+            type: object
           - type: 'null'
           title: Token Usage
         cost_metadata:
           anyOf:
-          - type: object
+          - additionalProperties: true
+            type: object
           - type: 'null'
           title: Cost Metadata
         validation_failures:
@@ -18418,8 +18487,6 @@ components:
           title: Session Id
         status:
           type: string
-          enum:
-          - cancelled
           const: cancelled
           title: Status
       additionalProperties: false
@@ -18622,6 +18689,7 @@ components:
           title: Total Tokens
         estimated_cost_usd:
           type: string
+          pattern: ^(?!^[-+.]*$)[+-]?0*\d*\.?\d*$
           title: Estimated Cost Usd
         outcome:
           type: string
@@ -18662,6 +18730,11 @@ components:
         type:
           type: string
           title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
       type: object
       required:
       - loc
