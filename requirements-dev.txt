@@ -2,13 +2,13 @@
 -r requirements/dev.txt
 
 # Development tools explicitly requested:
-ruff==0.4.8
-mypy==1.10.0
-import-linter==2.11
+ruff==0.16.5
+mypy==2.3.1
+import-linter==2.14
 # ARQ worker dependency — ARQ-001 / code_1111_1150
-arq>=0.25.0
+arq>=0.28.0
 # Security vulnerability scanning
 pip-audit>=2.7.0
 
 # MCP SDK for local ETL FastMCP tooling.
-mcp[cli]>=1.0.0
+mcp[cli]>=2.1.1
