@@ -13,13 +13,16 @@ import argparse
 import json
 import os
 import re
-from scripts._subprocess import run
 import sys
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts._subprocess import run  # noqa: E402
 MAKEFILE = ROOT / "Makefile"
 
 REQUIRED_IMPORTS: dict[str, str] = {

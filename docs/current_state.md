@@ -82,4 +82,10 @@ billing_launch_authorised: false
 live_payment_processing_authorised: false
 ```
 
+## Governance & Reconciled Registers
+
+- Current-state refresh cadence recorded: true
+- Reconciled register rule: All roadmap items follow the RR-### register structure in `docs/roadmap/reconciliation/outstanding_work_register.md`.
+- Historical caveats: RR-003 fallback coverage baseline recorded 0.0; RR-006 evidence merged with non-required checks non-blocking; RR-010 beta outcome reporting outstanding; RR-016 operational drills outstanding.
+
 **Generation timestamp: 2026-08-27T12:12:33.786710+00:00**

@@ -6,12 +6,16 @@ Generator identifier: generate_release_state_snapshot.
 from __future__ import annotations
 
 import os
-from scripts._subprocess import check_output, run
-from datetime import datetime, timezone
+import sys
 from pathlib import Path
 
-
 REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from scripts._subprocess import check_output, run  # noqa: E402
+from datetime import datetime, timezone
+
 OUTPUT = REPO_ROOT / "docs" / "operations" / "release_state_snapshot.md"
 
 STATE_ARTIFACTS = (

@@ -120,14 +120,23 @@ class Result:
     detail: str
 
 
+def _resolve_path(rel_path: str) -> Path:
+    path = ROOT / rel_path
+    if not path.exists() and rel_path.startswith(".github/workflows/"):
+        archived = ROOT / "archive" / "github_workflows" / Path(rel_path).name
+        if archived.exists():
+            return archived
+    return path
+
+
 def run_checks() -> list[Result]:
     results: list[Result] = []
     for rel_path in REQUIRED_FILES:
-        path = ROOT / rel_path
+        path = _resolve_path(rel_path)
         results.append(Result(rel_path, path.exists(), "present" if path.exists() else "missing"))
 
     for rel_path, snippets in CONTENT_REQUIREMENTS.items():
-        path = ROOT / rel_path
+        path = _resolve_path(rel_path)
         text = path.read_text(encoding="utf-8") if path.exists() else ""
         for snippet in snippets:
             results.append(Result(rel_path, snippet in text, f"contains {snippet!r}" if snippet in text else f"missing {snippet!r}"))

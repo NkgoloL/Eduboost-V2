@@ -1,8 +1,8 @@
 # Release Evidence Manifest
 
-Generated: `2026-08-26T16:55:17Z`
-Branch: `codex/tsr-b04-architecture-and-data-integrity`
-Commit: `107d58c62d28a0d0a7a094f69894809af40f8db0`
+Generated: `2026-09-03T09:20:47Z`
+Branch: `fix/governance-verification-remediation`
+Commit: `51487956b21470877d482128092c01595e92be39`
 
 ## Required Evidence Commands
 

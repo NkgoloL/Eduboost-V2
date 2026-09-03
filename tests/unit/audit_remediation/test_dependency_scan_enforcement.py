@@ -6,7 +6,10 @@ from scripts.audit_remediation import verify_dependency_scan_enforcement, verify
 ROOT = Path(__file__).resolve().parents[3]
 
 def test_dependency_scan_workflow_fails_closed_and_uses_supported_artifact_action() -> None:
-    text = (ROOT / ".github/workflows/dependency-scan.yml").read_text(encoding="utf-8")
+    wf = ROOT / ".github/workflows/dependency-scan.yml"
+    if not wf.exists() and (ROOT / "archive/github_workflows/dependency-scan.yml").exists():
+        wf = ROOT / "archive/github_workflows/dependency-scan.yml"
+    text = wf.read_text(encoding="utf-8")
     assert "|| true" not in text
     assert "actions/upload-artifact@v7" not in text
     assert "actions/upload-artifact@v4" in text

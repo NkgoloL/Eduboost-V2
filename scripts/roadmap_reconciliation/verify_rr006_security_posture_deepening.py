@@ -39,6 +39,19 @@ REQUIRED_TRUE_KEYS = (
 )
 
 
+ARCHIVE = Path("archive/github_workflows")
+
+
+def _resolve_path(root: Path, rel: Path) -> Path:
+    """Return root/rel, falling back to archive if the file is absent."""
+    full = root / rel
+    if not full.exists() and str(rel).startswith(".github/workflows/"):
+        archived = root / ARCHIVE / rel.name
+        if archived.exists():
+            return archived
+    return full
+
+
 def _read(path: Path) -> str:
     return path.read_text(encoding="utf-8") if path.exists() else ""
 
@@ -71,8 +84,8 @@ def evaluate(root: Path | str = Path(".")) -> dict[str, Any]:
     py_audit_policy = _read(p(PY_AUDIT_POLICY))
     secrets_policy = _read(p(SECRETS_POLICY))
     precommit = _read(p(PRECOMMIT))
-    secrets_ci = _read(p(SECRETS_CI))
-    rr006_ci = _read(p(RR006_CI))
+    secrets_ci = _read(_resolve_path(root, SECRETS_CI))
+    rr006_ci = _read(_resolve_path(root, RR006_CI))
 
     checks = {
         "rr006_in_outstanding_register": RR_ID in register and "Security posture" in register,
@@ -93,8 +106,8 @@ def evaluate(root: Path | str = Path(".")) -> dict[str, Any]:
         "secrets_policy_exists": p(SECRETS_POLICY).exists(),
         "secrets_policy_mentions_detect_secrets": "detect-secrets" in secrets_policy,
         "precommit_detect_secrets": "detect-secrets" in precommit,
-        "ci_secrets_scan_exists": p(SECRETS_CI).exists() and "detect-secrets" in secrets_ci,
-        "rr006_ci_exists": p(RR006_CI).exists(),
+        "ci_secrets_scan_exists": _resolve_path(root, SECRETS_CI).exists() and "detect-secrets" in secrets_ci,
+        "rr006_ci_exists": _resolve_path(root, RR006_CI).exists(),
         "rr006_ci_runs_pip_audit": "pip-audit" in rr006_ci,
         "rr006_ci_runs_detect_secrets": "detect-secrets" in rr006_ci,
     }

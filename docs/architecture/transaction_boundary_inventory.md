@@ -1,15 +1,14 @@
 # Transaction Boundary Inventory
 
-Generated at: `2026-08-26T17:00:43Z`
+Generated at: `2026-09-03T09:24:15Z`
 
 Candidate count: `367`
-Critical candidate count: `60`
+Critical candidate count: `61`
 
 Policy: Multi-write candidates remain not-proven until rollback/integration tests demonstrate atomicity.
 
 | File | Function | Line | Status | Critical areas | Mutation calls | Transaction markers |
 |---|---|---:|---|---|---|---|
-| `app/api_v2_routers/0005_irt_seed.py` | `downgrade` | 225 | `single-mutation-candidate` | `-` | `execute` | `-` |
 | `app/api_v2_routers/ai_operations.py` | `cancel_reservation` | 86 | `single-mutation-candidate` | `-` | `commit` | `-` |
 | `app/api_v2_routers/auth_extended.py` | `_invalidate_existing_tokens` | 193 | `single-mutation-candidate` | `-` | `execute` | `-` |
 | `app/api_v2_routers/auth_extended.py` | `_create_secure_token` | 211 | `multi-write-candidate-not-proven` | `-` | `add, flush` | `-` |
@@ -255,10 +254,10 @@ Policy: Multi-write candidates remain not-proven until rollback/integration test
 | `app/services/curriculum/graph.py` | `add_source_chunk` | 514 | `single-mutation-candidate` | `-` | `add` | `-` |
 | `app/services/curriculum/object_storage.py` | `sha256_file` | 60 | `single-mutation-candidate` | `-` | `update` | `-` |
 | `app/services/curriculum/tutor_grounding.py` | `render_tutor_provenance_for_audience` | 526 | `multi-write-candidate-not-proven` | `lesson_completion` | `update` | `-` |
-| `app/services/curriculum_expansion.py` | `capture_snapshot` | 263 | `multi-write-candidate-not-proven` | `-` | `add, flush` | `-` |
-| `app/services/curriculum_expansion.py` | `build_expansion_plan` | 280 | `multi-write-candidate-not-proven` | `-` | `add, flush` | `-` |
-| `app/services/curriculum_expansion.py` | `create_manifest` | 340 | `multi-write-candidate-not-proven` | `-` | `add, flush` | `-` |
-| `app/services/curriculum_expansion.py` | `export_manifest` | 450 | `single-mutation-candidate` | `-` | `execute` | `-` |
+| `app/services/curriculum_expansion.py` | `capture_snapshot` | 264 | `multi-write-candidate-not-proven` | `-` | `add, flush` | `-` |
+| `app/services/curriculum_expansion.py` | `build_expansion_plan` | 281 | `multi-write-candidate-not-proven` | `-` | `add, flush` | `-` |
+| `app/services/curriculum_expansion.py` | `create_manifest` | 341 | `multi-write-candidate-not-proven` | `-` | `add, flush` | `-` |
+| `app/services/curriculum_expansion.py` | `export_manifest` | 451 | `single-mutation-candidate` | `-` | `execute` | `-` |
 | `app/services/data_subject_rights_service.py` | `create_export_request` | 55 | `single-mutation-candidate` | `-` | `execute` | `-` |
 | `app/services/data_subject_rights_service.py` | `build_and_complete_export` | 89 | `single-mutation-candidate` | `-` | `execute` | `-` |
 | `app/services/data_subject_rights_service.py` | `create_erasure_request` | 137 | `single-mutation-candidate` | `-` | `execute` | `-` |
@@ -375,6 +374,8 @@ Policy: Multi-write candidates remain not-proven until rollback/integration test
 | `app/services/pii_sweep.py` | `_check_phone_regex` | 185 | `single-mutation-candidate` | `-` | `add` | `-` |
 | `app/services/pii_sweep.py` | `_check_phone_lib` | 195 | `single-mutation-candidate` | `-` | `add` | `-` |
 | `app/services/pii_sweep.py` | `_check_salutation` | 209 | `single-mutation-candidate` | `-` | `add` | `-` |
+| `app/services/popia_dsr_service.py` | `initiate_erasure_request` | 44 | `multi-write-candidate-not-proven` | `-` | `add, execute, flush` | `-` |
+| `app/services/popia_dsr_service.py` | `execute_erasure_cascade` | 75 | `transaction-marker-present` | `popia_lifecycle` | `add, commit, delete, execute, update` | `transaction` |
 | `app/services/popia_service.py` | `_add` | 127 | `single-mutation-candidate` | `-` | `add` | `-` |
 | `app/services/popia_service.py` | `request_erasure` | 184 | `multi-write-candidate-not-proven` | `popia_lifecycle` | `flush` | `-` |
 | `app/services/popia_service.py` | `cancel_erasure` | 293 | `single-mutation-candidate` | `-` | `flush` | `-` |

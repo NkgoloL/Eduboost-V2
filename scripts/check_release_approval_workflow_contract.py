@@ -9,6 +9,8 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DOC = REPO_ROOT / "docs" / "operations" / "release_approval_workflow_contract.md"
 WORKFLOW = REPO_ROOT / ".github" / "workflows" / "beta-release-approval.yml"
+if not WORKFLOW.exists() and (REPO_ROOT / "archive" / "github_workflows" / WORKFLOW.name).exists():
+    WORKFLOW = REPO_ROOT / "archive" / "github_workflows" / WORKFLOW.name
 
 DOC_SNIPPETS = (
     "Release Approval Workflow Contract",

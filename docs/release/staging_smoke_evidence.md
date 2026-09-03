@@ -1,8 +1,8 @@
 # Staging Smoke Evidence Status
 
-Generated at: `2026-08-26T17:00:31Z`
-Commit: `107d58c62d28a0d0a7a094f69894809af40f8db0`
-Branch: `codex/tsr-b04-architecture-and-data-integrity`
+Generated at: `2026-09-03T09:24:08Z`
+Commit: `51487956b21470877d482128092c01595e92be39`
+Branch: `fix/governance-verification-remediation`
 
 **Status:** `staging-smoke-evidence-not-accepted`
 <!-- Status: pending runtime execution -->
@@ -19,7 +19,7 @@ Branch: `codex/tsr-b04-architecture-and-data-integrity`
 **API result:** ``
 **Frontend result:** `not-recorded`
 **Verified by:** `unverified`
-**Date verified:** `2026-08-26`
+**Date verified:** `2026-09-03`
 
 ## Required Runtime Smoke Coverage
 
@@ -38,7 +38,7 @@ TODO before acceptance:
 - run ID is missing or non-numeric
 - GitHub Actions run status is missing, expected completed
 - GitHub Actions run conclusion is missing, expected success
-- GitHub Actions run SHA missing does not match current commit 107d58c62d28a0d0a7a094f69894809af40f8db0
+- GitHub Actions run SHA missing does not match current commit 51487956b21470877d482128092c01595e92be39
 - workflow name is missing
 - staging base URL is missing, non-HTTPS, localhost/example, or placeholder
 - staging smoke test command is missing or placeholder

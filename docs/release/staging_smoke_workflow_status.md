@@ -1,26 +1,22 @@
 # Staging Smoke Workflow Status
 
-Generated at: `2026-08-26T17:00:37Z`
-Commit: `107d58c62d28a0d0a7a094f69894809af40f8db0`
+Generated at: `2026-09-03T09:24:09Z`
+Commit: `51487956b21470877d482128092c01595e92be39`
 
-**Status:** `staging-smoke-workflow-not-configured`
+**Status:** `staging-smoke-workflow-configured`
 
 | Check | Passed |
 |---|---:|
-| Workflow exists | False |
+| Workflow exists | True |
 | Probe exists | True |
-| workflow_dispatch | False |
-| STAGING_SMOKE_BASE_URL secret reference | False |
-| Probe step | False |
-| Artifact upload | False |
+| workflow_dispatch | True |
+| STAGING_SMOKE_BASE_URL secret reference | True |
+| Probe step | True |
+| Artifact upload | True |
 
 ## Blockers
 
-- workflow file missing
-- workflow_dispatch missing
-- STAGING_SMOKE_BASE_URL secret reference missing
-- staging smoke probe step missing
-- artifact upload missing
+- None
 
 ## No false-closure rules
 

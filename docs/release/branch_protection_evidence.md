@@ -10,7 +10,7 @@
 | Admin enforced | False |
 | Bypass disabled | False |
 | Evidence URL/path | PENDING |
-| Captured at | 2026-08-26T16:54:43Z |
+| Captured at | 2026-09-03T09:20:38Z |
 
 ## Usage
 

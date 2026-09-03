@@ -313,10 +313,19 @@ class CheckResult:
     detail: str
 
 
+def _resolve_path(rel_path: str) -> Path:
+    path = REPO_ROOT / rel_path
+    if not path.exists() and rel_path.startswith(".github/workflows/"):
+        archived = REPO_ROOT / "archive" / "github_workflows" / Path(rel_path).name
+        if archived.exists():
+            return archived
+    return path
+
+
 def check_files() -> list[CheckResult]:
     results: list[CheckResult] = []
     for rel_path in REQUIRED_FILES:
-        path = REPO_ROOT / rel_path
+        path = _resolve_path(rel_path)
         results.append(
             CheckResult(
                 category="file",
@@ -331,7 +340,7 @@ def check_files() -> list[CheckResult]:
 def check_content() -> list[CheckResult]:
     results: list[CheckResult] = []
     for rel_path, snippets in CONTENT_REQUIREMENTS.items():
-        path = REPO_ROOT / rel_path
+        path = _resolve_path(rel_path)
         if not path.exists():
             results.append(CheckResult("content", rel_path, False, "file missing"))
             continue

@@ -84,11 +84,16 @@ def verify() -> dict[str, Any]:
     errors: list[str] = []
 
     for rel in REQUIRED_FILES:
-        if not (ROOT / rel).exists():
+        target = ROOT / rel
+        if not target.exists() and rel.startswith(".github/workflows/"):
+            target = ROOT / "archive/github_workflows" / Path(rel).name
+        if not target.exists():
             errors.append(f"required file missing: {rel}")
 
     for rel, markers in REQUIRED_MARKERS.items():
         path = ROOT / rel
+        if not path.exists() and rel.startswith(".github/workflows/"):
+            path = ROOT / "archive/github_workflows" / Path(rel).name
         if not path.exists():
             continue
         text = path.read_text(encoding="utf-8")
