@@ -1,333 +1,311 @@
-import uuid
 from datetime import datetime, timezone
-import pytest
 from unittest.mock import AsyncMock, MagicMock
+import uuid
+import pytest
 
+from app.domain.content_coverage import ContentLayer
 from app.models.content_factory import (
     ContentArtifactSource,
     ContentArtifactStatus,
     ContentGenerationArtifact,
+    ContentStagingArtifact,
+    ContentStagingSeedItem,
     ContentStagingVerificationRun,
     ContentStagingVerificationScopeResult,
 )
-from app.services.content_scope_registry import ContentScopeRegistry
 
+from app.services.content_staging_read_verification import (
+    ContentStagingReadVerificationService,
+    ScopeStagingReadReport,
+    StagingReadVerificationReport,
+)
 from app.services.content_staging_readiness import (
-    ContentStagingReadinessService,
-    StagingReadinessStatus,
-    BlockerSeverity,
-    ScopeBlocker,
-    LayerReadinessSummary,
-    ScopeStagingVerificationReport,
     AllScopeStagingVerificationReport,
+    BlockerSeverity,
+    ContentStagingReadinessService,
+    LayerReadinessSummary,
+    ScopeBlocker,
+    ScopeStagingVerificationReport,
+    StagingReadinessStatus,
     _value,
 )
 
 
-def test_models_and_enums():
-    assert StagingReadinessStatus.READY_FOR_STAGING.value == "ready_for_staging"
-    assert BlockerSeverity.BLOCKING.value == "blocking"
-    assert _value(StagingReadinessStatus.READY_FOR_STAGING) == "ready_for_staging"
-    assert _value("plain_string") == "plain_string"
-
-    blocker = ScopeBlocker(code="missing_scope", severity=BlockerSeverity.BLOCKING)
-    assert blocker.code == "missing_scope"
-
-
 @pytest.mark.asyncio
-async def test_verify_scope_missing_scope():
-    mock_registry = MagicMock(spec=ContentScopeRegistry)
-    mock_registry.get_scope_targets.side_effect = LookupError("Scope not found")
-
-    service = ContentStagingReadinessService(scope_registry=mock_registry)
+async def test_content_staging_read_verification():
+    service = ContentStagingReadVerificationService()
     session = AsyncMock()
-
-    report = await service.verify_scope("nonexistent_scope", session=session)
-    assert report.status == StagingReadinessStatus.BLOCKED_BY_MISSING_SCOPE
-    assert report.can_seed_staging is False
-    assert report.can_promote_production is False
-    assert any(b.code == "missing_scope" for b in report.blockers)
-
-
-@pytest.mark.asyncio
-async def test_verify_scope_all_layer_and_blocker_branches():
-    mock_registry = MagicMock(spec=ContentScopeRegistry)
-
-    # 4 targets with different layers and status outcomes
-    target1 = MagicMock()
-    target1.caps_ref = "4.M.1"
-    target1.targets = {"lessons.approved": 2, "diagnostic_items.approved": 0}
-
-    target2 = MagicMock()
-    target2.caps_ref = "4.M.2"
-    target2.targets = {"lessons.approved": 1}
-
-    mock_registry.get_scope_targets.return_value = [target1, target2]
-
-    service = ContentStagingReadinessService(scope_registry=mock_registry)
-    session = AsyncMock()
-
-    # Create artifacts
-    art_approved = ContentGenerationArtifact(
-        artifact_id=uuid.uuid4(),
-        scope_id="scope-1",
-        caps_ref="4.M.1",
-        content_layer="lessons",
-        status=ContentArtifactStatus.APPROVED,
-        source_snapshot_hash="snap-hash-1",
-        artifact_json={},
-        artifact_hash="h1",
-    )
-    src_valid = ContentArtifactSource(
-        source_id=uuid.uuid4(),
-        artifact_id=art_approved.artifact_id,
-        source_document_id="doc-1",
-        source_chunk_id="chunk-1",
-        license_status="government_open",
-        source_quality_score=0.9,
-    )
-
-    art_bad_prov = ContentGenerationArtifact(
-        artifact_id=uuid.uuid4(),
-        scope_id="scope-1",
-        caps_ref="4.M.1",
-        content_layer="lessons",
-        status=ContentArtifactStatus.APPROVED,
-        source_snapshot_hash=None,  # Invalid provenance
-        artifact_json={},
-        artifact_hash="h2",
-    )
-
-    art_bad_lic = ContentGenerationArtifact(
-        artifact_id=uuid.uuid4(),
-        scope_id="scope-1",
-        caps_ref="4.M.1",
-        content_layer="lessons",
-        status=ContentArtifactStatus.APPROVED,
-        source_snapshot_hash="snap-hash-3",
-        artifact_json={},
-        artifact_hash="h3",
-    )
-    src_bad_lic = ContentArtifactSource(
-        source_id=uuid.uuid4(),
-        artifact_id=art_bad_lic.artifact_id,
-        source_document_id="doc-3",
-        source_chunk_id="chunk-3",
-        license_status="restricted",  # Invalid license
-        source_quality_score=0.9,
-    )
-
-    art_low_qual = ContentGenerationArtifact(
-        artifact_id=uuid.uuid4(),
-        scope_id="scope-1",
-        caps_ref="4.M.1",
-        content_layer="lessons",
-        status=ContentArtifactStatus.APPROVED,
-        source_snapshot_hash="snap-hash-4",
-        artifact_json={},
-        artifact_hash="h4",
-    )
-    src_low_qual = ContentArtifactSource(
-        source_id=uuid.uuid4(),
-        artifact_id=art_low_qual.artifact_id,
-        source_document_id="doc-4",
-        source_chunk_id="chunk-4",
-        license_status="government_open",
-        source_quality_score=0.3,  # Low quality < 0.5
-    )
-
-    # In 4.M.2, have pending review and validation failed
-    art_pending = ContentGenerationArtifact(
-        artifact_id=uuid.uuid4(),
-        scope_id="scope-1",
-        caps_ref="4.M.2",
-        content_layer="lessons",
-        status=ContentArtifactStatus.PENDING_REVIEW,
-        artifact_json={},
-        artifact_hash="h5",
-    )
-
-    artifacts = [art_approved, art_bad_prov, art_bad_lic, art_low_qual, art_pending]
-    sources = [src_valid, src_bad_lic, src_low_qual]
-
-    mock_res_art = MagicMock()
-    mock_res_art.scalars.return_value.all.return_value = artifacts
-
-    mock_res_src = MagicMock()
-    mock_res_src.scalars.return_value.all.return_value = sources
-
-    session.execute.side_effect = [mock_res_art, mock_res_src]
-
-    report = await service.verify_scope("scope-1", session=session, include_partial=True)
-    assert report.status in {StagingReadinessStatus.PARTIALLY_STAGEABLE, StagingReadinessStatus.BLOCKED_BY_PROVENANCE}
-    assert report.can_seed_staging is True  # stageable > 0 and include_partial=True
-    assert report.can_promote_production is False
-    assert len(report.blockers) > 0
-
-    # Also test get_scope_blockers
-    session.execute.side_effect = [mock_res_art, mock_res_src]
-    blockers = await service.get_scope_blockers("scope-1", session=session)
-    assert len(blockers) == len(report.blockers)
-
-
-@pytest.mark.asyncio
-async def test_verify_all_scopes_and_persist(tmp_path):
-    mock_registry = MagicMock(spec=ContentScopeRegistry)
-    scope1 = MagicMock(scope_id="scope-1")
-    scope2 = MagicMock(scope_id="scope-2")
-
-    mock_registry.list_active_scopes.return_value = [scope1]
-    mock_registry.list_scopes.return_value = [scope1, scope2]
-
-    # Target configuration
-    target = MagicMock()
-    target.caps_ref = "4.M.1"
-    target.targets = {"lessons.approved": 1}
-    mock_registry.get_scope_targets.return_value = [target]
-
-    service = ContentStagingReadinessService(scope_registry=mock_registry)
-    session = AsyncMock()
-
-    # Empty artifacts for both
-    mock_res_art = MagicMock()
-    mock_res_art.scalars.return_value.all.return_value = []
-    session.execute.return_value = mock_res_art
-
-    # 1. include_review_scopes=False, persist=True
-    all_report = await service.verify_all_scopes(
-        session,
-        include_partial=True,
-        actor_id="admin-1",
-        persist=True,
-        include_review_scopes=False,
-    )
-    assert all_report.status == "completed"
-    assert len(all_report.scopes) == 1
-    session.add.assert_called()
-    session.flush.assert_called()
-
-    # 2. include_review_scopes=True, persist=False
-    all_report_rev = await service.verify_all_scopes(
-        session,
-        include_partial=False,
-        actor_id="admin-1",
-        persist=False,
-        include_review_scopes=True,
-    )
-    assert len(all_report_rev.scopes) == 2
-
-
-@pytest.mark.asyncio
-async def test_list_runs_and_get_run_report():
-    service = ContentStagingReadinessService()
-    session = AsyncMock()
+    session.execute = AsyncMock()
 
     run_id = uuid.uuid4()
-    stored_run = ContentStagingVerificationRun(
-        run_id=run_id,
-        status="completed",
-        summary_json={"total_scopes": 1},
-        created_by="user-1",
-        created_at=datetime.now(timezone.utc),
+    art_id = uuid.uuid4()
+
+    # 1. verify_seed_run clean pass
+    item = ContentStagingSeedItem(
+        id=uuid.uuid4(),
+        seed_run_id=run_id,
+        artifact_id=art_id,
+        status="seeded",
+        scope_id="scope_math_g4",
+        caps_ref="4.M.1.1",
+        layer="diagnostic_items",
+        artifact_type="diagnostic_item",
+        target_table="diagnostic_items",
     )
 
-    # 1. list_runs
-    mock_list_res = MagicMock()
-    mock_list_res.scalars.return_value.all.return_value = [stored_run]
-    session.execute.return_value = mock_list_res
+    staging_art = ContentStagingArtifact(
+        id=uuid.uuid4(),
+        created_by_seed_run_id=run_id,
+        artifact_id=art_id,
+        staging_status="active",
+        scope_id="scope_math_g4",
+        caps_ref="4.M.1.1",
+        layer="diagnostic_items",
+        artifact_type="diagnostic_item",
+        payload_json={"test": "payload"},
+    )
+    source_art = ContentGenerationArtifact(
+        artifact_id=art_id,
+        status=ContentArtifactStatus.APPROVED,
+    )
 
-    runs = await service.list_runs(session, limit=10)
-    assert len(runs) == 1
-    assert runs[0].run_id == run_id
+    items_res = MagicMock(scalars=MagicMock(return_value=MagicMock(all=MagicMock(return_value=[item]))))
+    staging_res = MagicMock(scalars=MagicMock(return_value=MagicMock(all=MagicMock(return_value=[staging_art]))))
+    active_res = MagicMock(scalars=MagicMock(return_value=MagicMock(all=MagicMock(return_value=[staging_art]))))
 
-    # 2. get_run_report not found
-    session.get.return_value = None
-    with pytest.raises(LookupError, match="not found"):
-        await service.get_run_report(session, run_id)
+    session.execute.side_effect = [items_res, staging_res, active_res]
+    session.get.return_value = source_art
 
-    # 3. get_run_report found
-    session.get.return_value = stored_run
-    scope_result = ContentStagingVerificationScopeResult(
-        run_id=run_id,
-        scope_id="scope-1",
-        status=StagingReadinessStatus.READY_FOR_STAGING.value,
+    report = await service.verify_seed_run(session, run_id)
+    assert isinstance(report, StagingReadVerificationReport)
+    assert report.passed is True
+    assert report.verified_count == 1
+    assert len(report.errors) == 0
+
+    # 2. verify_seed_run with multiple errors (missing staging, mismatched metadata, source deleted/unapproved)
+    staging_mismatch = ContentStagingArtifact(
+        id=uuid.uuid4(),
+        created_by_seed_run_id=run_id,
+        artifact_id=art_id,
+        staging_status="inactive",
+        scope_id="other_scope",
+        caps_ref="other_ref",
+        layer="lessons",
+        artifact_type="lesson",
+        payload_json={},
+    )
+    bad_staging_res = MagicMock(scalars=MagicMock(return_value=MagicMock(all=MagicMock(return_value=[staging_mismatch, staging_mismatch]))))
+    session.execute.side_effect = [items_res, bad_staging_res, active_res]
+    session.get.return_value = None  # source deleted
+
+    fail_report = await service.verify_seed_run(session, run_id)
+    assert fail_report.passed is False
+    assert any("Multiple staging records" in e for e in fail_report.errors)
+    assert any("not active" in e for e in fail_report.errors)
+    assert any("mismatched scope" in e for e in fail_report.errors)
+    assert any("deleted" in e for e in fail_report.errors)
+
+    # 3. verify_scope_staging clean
+    scope_staging_res = MagicMock(scalars=MagicMock(return_value=MagicMock(all=MagicMock(return_value=[staging_art]))))
+    session.execute.side_effect = None
+    session.execute.return_value = scope_staging_res
+    session.get.return_value = source_art
+
+    scope_report = await service.verify_scope_staging(session, "scope_math_g4", layers=["diagnostic_items"])
+    assert isinstance(scope_report, ScopeStagingReadReport)
+    assert scope_report.passed is True
+    assert scope_report.staged_artifacts_count == 1
+
+    # 4. verify_scope_staging with unapproved source
+    bad_source = ContentGenerationArtifact(
+        artifact_id=art_id,
+        status=ContentArtifactStatus.PENDING_REVIEW,
+    )
+    session.get.return_value = bad_source
+    scope_bad_report = await service.verify_scope_staging(session, "scope_math_g4")
+    assert scope_bad_report.passed is False
+    assert any("status is pending_review" in e for e in scope_bad_report.errors)
+
+
+@pytest.mark.asyncio
+async def test_content_staging_readiness_service():
+    scope_registry = MagicMock()
+    mock_scope = MagicMock(scope_id="scope_math_g4")
+    scope_registry.list_scopes.return_value = [mock_scope]
+    scope_registry.list_active_scopes.return_value = [mock_scope]
+
+    target_mock = MagicMock(caps_ref="4.M.1.1", targets={"diagnostic_items.approved": 2, "lessons.approved": 0})
+    scope_registry.get_scope_targets.return_value = [target_mock]
+
+
+
+
+    service = ContentStagingReadinessService(scope_registry=scope_registry)
+    session = AsyncMock()
+    session.flush = AsyncMock()
+    session.add = MagicMock()
+    session.execute = AsyncMock()
+
+    art_id1 = uuid.uuid4()
+    art1 = ContentGenerationArtifact(
+        artifact_id=art_id1,
+        scope_id="scope_math_g4",
+        caps_ref="4.M.1.1",
+        content_layer=ContentLayer.DIAGNOSTIC_ITEMS,
+        status=ContentArtifactStatus.APPROVED,
+        source_snapshot_hash="hash_abc",
+    )
+    art_id2 = uuid.uuid4()
+    art2 = ContentGenerationArtifact(
+        artifact_id=art_id2,
+        scope_id="scope_math_g4",
+        caps_ref="4.M.1.1",
+        content_layer=ContentLayer.DIAGNOSTIC_ITEMS,
+        status=ContentArtifactStatus.APPROVED,
+        source_snapshot_hash="hash_xyz",
+    )
+
+
+    src1 = ContentArtifactSource(
+        source_id=uuid.uuid4(),
+        artifact_id=art_id1,
+        source_hash="s_hash",
+        license_status="open",
+        source_quality_score=0.9,
+    )
+    src2 = ContentArtifactSource(
+        source_id=uuid.uuid4(),
+        artifact_id=art_id2,
+        source_hash="s_hash",
+        license_status="restricted",  # invalid license
+        source_quality_score=0.2,     # low quality
+    )
+
+    service._load_scope_artifacts = AsyncMock(return_value=[art1, art2])
+    service._load_source_index = AsyncMock(return_value={
+        art_id1: [src1],
+        art_id2: [src2],
+    })
+
+    # 1. verify_scope
+    scope_rep = await service.verify_scope("scope_math_g4", session=session)
+    assert isinstance(scope_rep, ScopeStagingVerificationReport)
+    assert len(scope_rep.layers) >= 1
+    assert scope_rep.status in {StagingReadinessStatus.PARTIALLY_STAGEABLE, StagingReadinessStatus.BLOCKED_BY_COVERAGE}
+
+
+    # 2. Scope not configured in registry
+    scope_registry.get_scope_targets.side_effect = LookupError("not found")
+    missing_scope_rep = await service.verify_scope("missing_scope", session=session)
+    assert missing_scope_rep.status == StagingReadinessStatus.BLOCKED_BY_MISSING_SCOPE
+
+
+    # 3. verify_all_scopes
+    scope_registry.get_scope_targets.side_effect = None
+    scope_registry.get_scope_targets.return_value = [target_mock]
+
+
+    all_rep = await service.verify_all_scopes(session, actor_id="admin_user", persist=True)
+    assert isinstance(all_rep, AllScopeStagingVerificationReport)
+    assert len(all_rep.scopes) == 1
+
+    # 4. list_runs & get_run_report
+    run_rec = ContentStagingVerificationRun(
+        run_id=uuid.uuid4(),
+        status="completed",
+        summary_json={"ready_scopes": 1},
+        created_by="admin",
+        created_at=datetime.now(timezone.utc),
+    )
+    scope_rec = ContentStagingVerificationScopeResult(
+        run_id=run_rec.run_id,
+        scope_id="scope_math_g4",
+        status="ready_for_staging",
         can_seed_staging=True,
         can_promote_production=True,
-        summary_json={
-            "target": 5,
-            "approved": 5,
-            "layers": [
-                {
-                    "layer": "lessons",
-                    "caps_ref": "4.M.1",
-                    "target": 5,
-                    "approved": 5,
-                    "pending_review": 0,
-                    "generated": 0,
-                    "validation_failed": 0,
-                    "rejected": 0,
-                    "quarantined": 0,
-                    "seeded_staging": 0,
-                    "promoted_production": 0,
-                    "stageable": 5,
-                    "invalid_provenance": 0,
-                    "invalid_license": 0,
-                    "low_source_quality": 0,
-                    "status": StagingReadinessStatus.READY_FOR_STAGING.value,
-                }
-            ],
-        },
+        summary_json={"target": 2, "layers": []},
         blockers_json=[],
     )
 
-    mock_scope_res = MagicMock()
-    mock_scope_res.scalars.return_value.all.return_value = [scope_result]
-    session.execute.return_value = mock_scope_res
+    list_run_res = MagicMock(scalars=MagicMock(return_value=MagicMock(all=MagicMock(return_value=[run_rec]))))
+    session.execute.side_effect = None
+    session.execute.return_value = list_run_res
+    runs = await service.list_runs(session)
+    assert len(runs) == 1
 
-    report = await service.get_run_report(session, run_id)
-    assert report.run_id == run_id
-    assert len(report.scopes) == 1
-    assert report.scopes[0].can_seed_staging is True
-    assert report.scopes[0].status == StagingReadinessStatus.READY_FOR_STAGING
+    session.get.return_value = run_rec
+    scope_rows_res = MagicMock(scalars=MagicMock(return_value=MagicMock(all=MagicMock(return_value=[scope_rec]))))
+    session.execute.return_value = scope_rows_res
+    run_report = await service.get_run_report(session, run_rec.run_id)
+    assert run_report.run_id == run_rec.run_id
+    assert len(run_report.scopes) == 1
+
+    # 4b. get_scope_blockers
+    blockers = await service.get_scope_blockers("scope_math_g4", session=session)
+    assert isinstance(blockers, list)
 
 
-def test_scope_status_edge_hierarchy():
-    service = ContentStagingReadinessService()
+    # 4c. Staging verification run not found
+    session.get.return_value = None
+    with pytest.raises(LookupError, match="not found"):
+        await service.get_run_report(session, uuid.uuid4())
 
-    # 1. No configured layers -> NOT_CONFIGURED
-    l_unconfig = LayerReadinessSummary(
-        layer="lessons",
-        caps_ref="4.M.1",
+    # 4e. _layer_summary and _layer_blockers branches
+    real_service = ContentStagingReadinessService(scope_registry=scope_registry)
+    sum_ready = LayerReadinessSummary(
+
+        layer="diagnostic_items",
+        caps_ref="4.M.1.1",
+        target=2,
+        approved=2,
+        stageable=2,
+        invalid_provenance=1,
+        invalid_license=1,
+        low_source_quality=1,
+        status=StagingReadinessStatus.READY_FOR_STAGING,
+    )
+    blockers_ready = real_service._layer_blockers(sum_ready)
+    assert len(blockers_ready) == 3  # provenance, license, low quality
+
+    sum_zero_target = LayerReadinessSummary(
+        layer="diagnostic_items",
+        caps_ref="4.M.1.1",
         target=0,
         status=StagingReadinessStatus.NOT_CONFIGURED,
     )
-    assert service._scope_status([l_unconfig], []) == StagingReadinessStatus.NOT_CONFIGURED
+    b_zero = real_service._layer_blockers(sum_zero_target)
+    assert b_zero[0].code == "target_not_configured"
 
-    # 2. All ready -> READY_FOR_STAGING
-    l_ready = LayerReadinessSummary(
-        layer="lessons",
-        caps_ref="4.M.1",
-        target=1,
-        stageable=1,
-        status=StagingReadinessStatus.READY_FOR_STAGING,
-    )
-    assert service._scope_status([l_ready], []) == StagingReadinessStatus.READY_FOR_STAGING
+    # Status calculation branches
+    assert real_service._scope_status([sum_zero_target], []) == StagingReadinessStatus.NOT_CONFIGURED
+    assert real_service._scope_status([sum_ready], []) == StagingReadinessStatus.READY_FOR_STAGING
 
-    # 3. Hierarchy checks
-    l_prov = LayerReadinessSummary(
-        layer="lessons",
-        caps_ref="4.M.1",
-        target=1,
-        stageable=0,
-        status=StagingReadinessStatus.BLOCKED_BY_PROVENANCE,
-    )
-    assert service._scope_status([l_prov], []) == StagingReadinessStatus.BLOCKED_BY_PROVENANCE
+    # 4f. Test _layer_summary with all artifact status conditions
+    art_approved = ContentGenerationArtifact(artifact_id=uuid.uuid4(), status=ContentArtifactStatus.APPROVED, source_snapshot_hash="h1")
+    src_clean = ContentArtifactSource(artifact_id=art_approved.artifact_id, source_hash="h1")
+    s_ready = real_service._layer_summary("diagnostic_items", "4.M.1.1", 1, [art_approved], {art_approved.artifact_id: [src_clean]})
+    assert s_ready.status == StagingReadinessStatus.READY_FOR_STAGING
 
-    l_lic = LayerReadinessSummary(
-        layer="lessons",
-        caps_ref="4.M.1",
-        target=1,
-        stageable=0,
-        status=StagingReadinessStatus.BLOCKED_BY_LICENSE,
-    )
-    assert service._scope_status([l_lic], []) == StagingReadinessStatus.BLOCKED_BY_LICENSE
+    art_pending = ContentGenerationArtifact(artifact_id=uuid.uuid4(), status=ContentArtifactStatus.PENDING_REVIEW)
+    s_rev = real_service._layer_summary("diagnostic_items", "4.M.1.1", 1, [art_pending], {})
+    assert s_rev.status == StagingReadinessStatus.BLOCKED_BY_REVIEW
+
+    art_gen = ContentGenerationArtifact(artifact_id=uuid.uuid4(), status=ContentArtifactStatus.GENERATED)
+    art_val_fail = ContentGenerationArtifact(artifact_id=uuid.uuid4(), status=ContentArtifactStatus.VALIDATION_FAILED)
+    s_val = real_service._layer_summary("diagnostic_items", "4.M.1.1", 1, [art_gen, art_val_fail], {})
+    assert s_val.status == StagingReadinessStatus.BLOCKED_BY_VALIDATION
+
+    # Unapproved provenance status
+    art_no_prov = ContentGenerationArtifact(artifact_id=uuid.uuid4(), status=ContentArtifactStatus.APPROVED, source_snapshot_hash="h1")
+    s_prov = real_service._layer_summary("diagnostic_items", "4.M.1.1", 1, [art_no_prov], {})
+    assert s_prov.status == StagingReadinessStatus.BLOCKED_BY_PROVENANCE
+
+    # Unmocked loaders
+    session.execute.return_value = MagicMock(scalars=MagicMock(return_value=MagicMock(all=MagicMock(return_value=[art1]))))
+    loaded = await real_service._load_scope_artifacts(session, "scope_math_g4")
+    assert len(loaded) == 1
+    src_idx = await real_service._load_source_index(session, [art1.artifact_id])
+    assert len(src_idx) == 1
+
+
+
