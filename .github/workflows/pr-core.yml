@@ -31,6 +31,8 @@ jobs:
         run: python3 -m compileall -q app tests scripts alembic
       - name: Ruff Check
         run: python3 -m ruff check app tests scripts
+      - name: Test Import Integrity Audit
+        run: PYTHONPATH=. python3 scripts/audit_test_imports.py
       - name: Pytest Blanket Test Collection Gate
         run: PYTHONPATH=. python3 -m pytest --collect-only -q
 
@@ -52,8 +54,8 @@ jobs:
         run: python3 -m mypy app
 
 
-  fast-unit-tests:
-    name: Fast Product Unit Tests
+  unit-tests:
+    name: Core Unit Test Suite & Coverage Floor
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -65,8 +67,9 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r requirements/base.txt -r requirements/dev.txt
-      - name: Run Fast Unit Tests
-        run: PYTHONPATH=. python3 -m pytest tests/unit/test_etl_mcp_server_startup.py tests/unit/test_subscription_service.py tests/unit/test_password_policy.py tests/unit/test_popia_consent_versioning.py -q
+      - name: Run Core Unit Tests with Coverage Floor
+        run: PYTHONPATH=. python3 -m pytest tests/unit/ -q --maxfail=10
+
 
 
   route-contract-audit:
