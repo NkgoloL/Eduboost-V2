@@ -1,10 +1,10 @@
 # CI Authority Status
 
-Generated at: `2026-08-26T16:54:52Z`
+Generated at: `2026-09-03T09:20:40Z`
 
 **Status:** `external-blocked`
 
-- Current commit: `107d58c62d28a0d0a7a094f69894809af40f8db0`
+- Current commit: `51487956b21470877d482128092c01595e92be39`
 - Workflow files: `['.github/workflows/frontend-e2e.yml', '.github/workflows/operations-drills.yml', '.github/workflows/pr-core.yml', '.github/workflows/product-runtime.yml', '.github/workflows/release-evidence.yml', '.github/workflows/security-supply-chain.yml']`
 - CI evidence file exists: `True`
 - CI run URL present: `False`

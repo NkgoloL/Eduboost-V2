@@ -51,8 +51,21 @@ REQUIRED_TRUE_KEYS = (
 )
 
 
-def _read(root: Path, path: Path) -> str:
+_ARCHIVE = Path("archive/github_workflows")
+
+
+def _resolve_wf(root: Path, path: Path) -> Path:
+    """Return root/path, with archive fallback for missing workflow files."""
     full = root / path
+    if not full.exists() and str(path).startswith(".github/workflows/"):
+        archived = root / _ARCHIVE / path.name
+        if archived.exists():
+            return archived
+    return full
+
+
+def _read(root: Path, path: Path) -> str:
+    full = _resolve_wf(root, path)
     return full.read_text(encoding="utf-8") if full.exists() else ""
 
 
@@ -84,7 +97,7 @@ def evaluate(root: Path | str = Path(".")) -> dict[str, Any]:
         "rr010_predecessor_recorded": rr010_record.get("beta_outcome_reporting_recorded") is True,
         "rr_doc_exists": (root / RR_DOC).exists(),
         "record_exists": (root / RECORD).exists(),
-        "workflow_exists": (root / WORKFLOW).exists(),
+        "workflow_exists": _resolve_wf(root, WORKFLOW).exists(),
         "audit_script_exists": (root / AUDIT_SCRIPT).exists(),
         "capture_script_exists": (root / CAPTURE_SCRIPT).exists(),
         "verify_script_exists": (root / VERIFY_SCRIPT).exists(),

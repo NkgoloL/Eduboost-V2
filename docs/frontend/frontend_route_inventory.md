@@ -97,12 +97,12 @@ This inventory records frontend route, page, and journey-related surfaces.
 | `app/frontend/.next/server/chunks/267.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
 | `app/frontend/.next/server/chunks/425.js` | `Route, Routes, path:, href=, Link` | `parent, progress` |
 | `app/frontend/.next/server/chunks/440.js` | `Route, href=, Link` | `_none_` |
+| `app/frontend/.next/server/chunks/451.js` | `Route` | `learner, dashboard, lesson` |
 | `app/frontend/.next/server/chunks/481.js` | `Route, Link` | `_none_` |
 | `app/frontend/.next/server/chunks/517.js` | `Route, Routes, path:` | `parent` |
-| `app/frontend/.next/server/chunks/593.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment` |
-| `app/frontend/.next/server/chunks/600.js` | `Route` | `learner, dashboard, lesson` |
-| `app/frontend/.next/server/chunks/921.js` | `Route, Link` | `learner, parent, dashboard, lesson, diagnostic, progress, consent` |
+| `app/frontend/.next/server/chunks/626.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment` |
 | `app/frontend/.next/server/chunks/928.js` | `Link` | `_none_` |
+| `app/frontend/.next/server/chunks/937.js` | `Route, Link` | `learner, parent, dashboard, lesson, diagnostic, progress, consent` |
 | `app/frontend/.next/server/chunks/985.js` | `Route` | `_none_` |
 | `app/frontend/.next/server/instrumentation.js` | `path:` | `parent` |
 | `app/frontend/.next/server/interception-route-rewrite-manifest.js` | `Route` | `_none_` |
@@ -184,57 +184,57 @@ This inventory records frontend route, page, and journey-related surfaces.
 | `app/frontend/.next/standalone/.next/server/chunks/267.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
 | `app/frontend/.next/standalone/.next/server/chunks/425.js` | `Route, Routes, path:, href=, Link` | `parent, progress` |
 | `app/frontend/.next/standalone/.next/server/chunks/440.js` | `Route, href=, Link` | `_none_` |
+| `app/frontend/.next/standalone/.next/server/chunks/451.js` | `Route` | `learner, dashboard, lesson` |
 | `app/frontend/.next/standalone/.next/server/chunks/481.js` | `Route, Link` | `_none_` |
 | `app/frontend/.next/standalone/.next/server/chunks/517.js` | `Route, Routes, path:` | `parent` |
-| `app/frontend/.next/standalone/.next/server/chunks/593.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment` |
-| `app/frontend/.next/standalone/.next/server/chunks/600.js` | `Route` | `learner, dashboard, lesson` |
-| `app/frontend/.next/standalone/.next/server/chunks/921.js` | `Route, Link` | `learner, parent, dashboard, lesson, diagnostic, progress, consent` |
+| `app/frontend/.next/standalone/.next/server/chunks/626.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment` |
 | `app/frontend/.next/standalone/.next/server/chunks/928.js` | `Link` | `_none_` |
+| `app/frontend/.next/standalone/.next/server/chunks/937.js` | `Route, Link` | `learner, parent, dashboard, lesson, diagnostic, progress, consent` |
 | `app/frontend/.next/standalone/.next/server/chunks/985.js` | `Route` | `_none_` |
 | `app/frontend/.next/standalone/.next/server/instrumentation.js` | `path:` | `parent` |
 | `app/frontend/.next/standalone/.next/server/server-reference-manifest.js` | `_none_` | `learner, dashboard, lesson, diagnostic` |
 | `app/frontend/.next/standalone/server.js` | `Route, Routes, Link` | `_none_` |
+| `app/frontend/.next/static/6MT_0mPxIptoZ9h9PSD4M/_buildManifest.js` | `Route` | `_none_` |
 | `app/frontend/.next/static/chunks/2349-fdb6f7cdc7d3ac75.js` | `Route, path:, Link` | `parent, progress` |
 | `app/frontend/.next/static/chunks/2513-98a4a8257e26393a.js` | `Link` | `_none_` |
 | `app/frontend/.next/static/chunks/4090-5e94e08d06b809c0.js` | `Route, Routes, path:, href=, Link` | `parent` |
 | `app/frontend/.next/static/chunks/4292-a955022516a20e92.js` | `Route, href=, Link` | `_none_` |
+| `app/frontend/.next/static/chunks/4897-333e89dc0b150cfd.js` | `Route, Link` | `learner, dashboard, lesson` |
 | `app/frontend/.next/static/chunks/5608-0086b4f44f3f8b53.js` | `Route, path:` | `parent, progress` |
 | `app/frontend/.next/static/chunks/59b4a6e9-015a87f8d1ca2642.js` | `href=, Link` | `parent, progress` |
 | `app/frontend/.next/static/chunks/6139-1250c0a8c490b7d3.js` | `_none_` | `parent` |
 | `app/frontend/.next/static/chunks/6246-25ccd54b6d198458.js` | `_none_` | `learner, parent, dashboard, lesson, diagnostic, progress, consent` |
-| `app/frontend/.next/static/chunks/7403-1294f02f45130ca7.js` | `Route, Link` | `learner, dashboard, lesson` |
 | `app/frontend/.next/static/chunks/9913-30eb4a3d8d51fd69.js` | `_none_` | `progress` |
-| `app/frontend/.next/static/chunks/app/(auth)/login/page-21d2c305faf671a4.js` | `Route, Link` | `learner, parent, dashboard, lesson, progress` |
-| `app/frontend/.next/static/chunks/app/(auth)/register/page-f797f4c208c62ac7.js` | `Route, Link` | `learner, parent, dashboard, lesson, diagnostic, progress, consent` |
-| `app/frontend/.next/static/chunks/app/(dashboard)/admin/roadmap/page-0d0270ec84d806bc.js` | `_none_` | `learner, dashboard, lesson, diagnostic, progress` |
-| `app/frontend/.next/static/chunks/app/(learner)/badges/page-c545c9892d4474fc.js` | `Link` | `learner, parent, lesson, diagnostic, progress` |
-| `app/frontend/.next/static/chunks/app/(learner)/dashboard/page-1fcda78f4cff84e5.js` | `Route, Link` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress` |
-| `app/frontend/.next/static/chunks/app/(learner)/diagnostic/page-3a1f6559c1e30e7c.js` | `Route` | `learner, dashboard, diagnostic, assessment, progress` |
-| `app/frontend/.next/static/chunks/app/(learner)/layout-bb9d815b3fc6ca9a.js` | `Route, Link` | `learner, parent, dashboard, lesson, diagnostic, assessment` |
-| `app/frontend/.next/static/chunks/app/(learner)/parent/page-300c3dfb55685c59.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
-| `app/frontend/.next/static/chunks/app/(learner)/plan/page-529f360b9330ce94.js` | `Route, Link` | `learner, lesson, diagnostic, assessment, progress` |
-| `app/frontend/.next/static/chunks/app/(parent)/parent-dashboard/page-975cd751a76471de.js` | `Route, Link` | `learner, parent, dashboard, lesson, progress, consent` |
-| `app/frontend/.next/static/chunks/app/admin/content-factory/page-56d3071c5cd48835.js` | `path:` | `learner, parent, lesson, diagnostic, assessment` |
-| `app/frontend/.next/static/chunks/app/auth/reset-password/page-de0e0d7fac5db486.js` | `Route, Link` | `learner, parent` |
-| `app/frontend/.next/static/chunks/app/auth/verify-email/page-b2bba859a63bfffe.js` | `Route, Link` | `onboarding` |
-| `app/frontend/.next/static/chunks/app/error-3b2d19b018e93c0d.js` | `Link` | `_none_` |
-| `app/frontend/.next/static/chunks/app/layout-4d5da681574338bd.js` | `Route, Link` | `dashboard` |
-| `app/frontend/.next/static/chunks/app/learners/[learnerId]/diagnostic/page-e9655271007491c0.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
-| `app/frontend/.next/static/chunks/app/learners/[learnerId]/diagnostic/results/page-099d317ae6bdea79.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
-| `app/frontend/.next/static/chunks/app/learners/[learnerId]/page-03f7ca5ca3fa2226.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
-| `app/frontend/.next/static/chunks/app/learners/[learnerId]/plan/page-10c13cf4ecf9e532.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
-| `app/frontend/.next/static/chunks/app/onboarding/page-a1e2b27ef78da0c8.js` | `Route, Link` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent, onboarding` |
-| `app/frontend/.next/static/chunks/app/page-433aed3d6d92042f.js` | `Route, Link` | `learner, parent` |
-| `app/frontend/.next/static/chunks/app/parent/learners/[learnerId]/consent/page-28748de6300445fd.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
-| `app/frontend/.next/static/chunks/app/parent/learners/[learnerId]/data/page-daa3fb269e9f86bd.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
-| `app/frontend/.next/static/chunks/app/parent/learners/[learnerId]/report/page-c25130f937b05926.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
-| `app/frontend/.next/static/chunks/app/parent-portal/page-9a4a4fe875fbb241.js` | `Route` | `parent, dashboard` |
-| `app/frontend/.next/static/chunks/app/settings/privacy/page-a3ffbd72099e48ef.js` | `_none_` | `learner, parent, lesson` |
+| `app/frontend/.next/static/chunks/app/(auth)/login/page-522737cc734a7246.js` | `Route, Link` | `learner, parent, dashboard, lesson, progress` |
+| `app/frontend/.next/static/chunks/app/(auth)/register/page-ececeac46b98cdd0.js` | `Route, Link` | `learner, parent, dashboard, lesson, diagnostic, progress, consent` |
+| `app/frontend/.next/static/chunks/app/(dashboard)/admin/roadmap/page-85e367540ac028b5.js` | `_none_` | `learner, dashboard, lesson, diagnostic, progress` |
+| `app/frontend/.next/static/chunks/app/(learner)/badges/page-d4c3471491e23b95.js` | `Link` | `learner, parent, lesson, diagnostic, progress` |
+| `app/frontend/.next/static/chunks/app/(learner)/dashboard/page-87c9f3228c41706f.js` | `Route, Link` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress` |
+| `app/frontend/.next/static/chunks/app/(learner)/diagnostic/page-1a5bfd1c6fd710ca.js` | `Route` | `learner, dashboard, diagnostic, assessment, progress` |
+| `app/frontend/.next/static/chunks/app/(learner)/layout-fd00e947638a66a2.js` | `Route, Link` | `learner, parent, dashboard, lesson, diagnostic, assessment` |
+| `app/frontend/.next/static/chunks/app/(learner)/parent/page-aa992ac30650e1e5.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
+| `app/frontend/.next/static/chunks/app/(learner)/plan/page-c7c551808dd13bba.js` | `Route, Link` | `learner, lesson, diagnostic, assessment, progress` |
+| `app/frontend/.next/static/chunks/app/(parent)/parent-dashboard/page-71710d71f30dd4da.js` | `Route, Link` | `learner, parent, dashboard, lesson, progress, consent` |
+| `app/frontend/.next/static/chunks/app/admin/content-factory/page-8b4c4dac53c2c026.js` | `path:` | `learner, parent, lesson, diagnostic, assessment` |
+| `app/frontend/.next/static/chunks/app/auth/reset-password/page-ae48a6d73846a14b.js` | `Route, Link` | `learner, parent` |
+| `app/frontend/.next/static/chunks/app/auth/verify-email/page-5b458d85052bdacd.js` | `Route, Link` | `onboarding` |
+| `app/frontend/.next/static/chunks/app/error-db0d4bcb8bb43247.js` | `Link` | `_none_` |
+| `app/frontend/.next/static/chunks/app/layout-fff677aa55811bad.js` | `Route, Link` | `dashboard` |
+| `app/frontend/.next/static/chunks/app/learners/[learnerId]/diagnostic/page-3489eeb060a2e3c6.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
+| `app/frontend/.next/static/chunks/app/learners/[learnerId]/diagnostic/results/page-b966ad788ac6946d.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
+| `app/frontend/.next/static/chunks/app/learners/[learnerId]/page-b5ddb64800ca9cb7.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
+| `app/frontend/.next/static/chunks/app/learners/[learnerId]/plan/page-c508f73b243f5a39.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
+| `app/frontend/.next/static/chunks/app/onboarding/page-8b36b6ae2faaf009.js` | `Route, Link` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent, onboarding` |
+| `app/frontend/.next/static/chunks/app/page-ae4de10a3f675fc2.js` | `Route, Link` | `learner, parent` |
+| `app/frontend/.next/static/chunks/app/parent/learners/[learnerId]/consent/page-32328f412b70a91d.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
+| `app/frontend/.next/static/chunks/app/parent/learners/[learnerId]/data/page-76c9d743763f2785.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
+| `app/frontend/.next/static/chunks/app/parent/learners/[learnerId]/report/page-50d05ab935ed14f3.js` | `Route` | `learner, parent, dashboard, lesson, diagnostic, assessment, progress, consent` |
+| `app/frontend/.next/static/chunks/app/parent-portal/page-77a91c1f3625d4f0.js` | `Route` | `parent, dashboard` |
+| `app/frontend/.next/static/chunks/app/settings/privacy/page-dfafc4ec4e136d39.js` | `_none_` | `learner, parent, lesson` |
 | `app/frontend/.next/static/chunks/framework-35256df14265b061.js` | `path:, href=, Link` | `parent, progress` |
 | `app/frontend/.next/static/chunks/main-2de5cb76fa39f915.js` | `Route, Routes, path:, href=, Link` | `parent, progress` |
 | `app/frontend/.next/static/chunks/polyfills-42372ed130431b0a.js` | `path:, href=` | `parent` |
 | `app/frontend/.next/static/chunks/webpack-6d2987a23a916cb0.js` | `_none_` | `parent` |
-| `app/frontend/.next/static/ogUR-PSrtyrt_G9ObxZYa/_buildManifest.js` | `Route` | `_none_` |
 | `app/frontend/.next/types/app/(dashboard)/admin/roadmap/page.ts` | `_none_` | `dashboard` |
 | `app/frontend/.next/types/app/(learner)/badges/page.ts` | `_none_` | `learner` |
 | `app/frontend/.next/types/app/(learner)/dashboard/page.ts` | `_none_` | `learner, dashboard` |

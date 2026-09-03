@@ -6,7 +6,12 @@ ROOT = Path(__file__).resolve().parents[3]
 
 
 def read(path: str) -> str:
-    return (ROOT / path).read_text(encoding="utf-8")
+    target = ROOT / path
+    if not target.exists() and path.startswith(".github/workflows/"):
+        archived = ROOT / "archive/github_workflows" / Path(path).name
+        if archived.exists():
+            target = archived
+    return target.read_text(encoding="utf-8")
 
 
 def test_staging_readiness_defaults_all_scope_verification_to_active_scopes() -> None:

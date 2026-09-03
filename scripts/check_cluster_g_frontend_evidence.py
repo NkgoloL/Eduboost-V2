@@ -238,15 +238,24 @@ class ClusterGResult:
     detail: str
 
 
+def _resolve_path(rel_path: str) -> Path:
+    path = REPO_ROOT / rel_path
+    if not path.exists() and rel_path.startswith(".github/workflows/"):
+        archived = REPO_ROOT / "archive" / "github_workflows" / Path(rel_path).name
+        if archived.exists():
+            return archived
+    return path
+
+
 def run_checks() -> list[ClusterGResult]:
     results: list[ClusterGResult] = []
 
     for rel_path in REQUIRED_FILES:
-        path = REPO_ROOT / rel_path
+        path = _resolve_path(rel_path)
         results.append(ClusterGResult("file", rel_path, path.exists(), "present" if path.exists() else "missing"))
 
     for rel_path, snippets in CONTENT_REQUIREMENTS.items():
-        path = REPO_ROOT / rel_path
+        path = _resolve_path(rel_path)
         text = path.read_text(encoding="utf-8") if path.exists() else ""
         for snippet in snippets:
             results.append(

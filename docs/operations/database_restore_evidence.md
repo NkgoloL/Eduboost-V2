@@ -1,8 +1,8 @@
 # Database Restore Evidence
 
-Generated: `2026-08-26T16:58:57Z`
-Branch: `codex/tsr-b04-architecture-and-data-integrity`
-Commit: `107d58c62d28a0d0a7a094f69894809af40f8db0`
+Generated: `2026-09-03T09:24:01Z`
+Branch: `fix/governance-verification-remediation`
+Commit: `51487956b21470877d482128092c01595e92be39`
 
 ## Restore Metadata
 

@@ -138,10 +138,12 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `app/repositories/lesson_repository.py` | `prompt, llm` |
 | `app/repositories/practice_session_repository.py` | `remediation` |
 | `app/repositories/repositories.py` | `diagnostic` |
+| `app/services/ai_budget_guard.py` | `llm` |
 | `app/services/ai_operations.py` | `prompt, anthropic, groq` |
 | `app/services/auth_lifecycle_impl.py` | `diagnostic` |
 | `app/services/backend_consolidation_runtime.py` | `diagnostic` |
 | `app/services/batch_generation.py` | `prompt, llm, diagnostic` |
+| `app/services/billing_guard.py` | `remediation` |
 | `app/services/content_answer_key_verification.py` | `diagnostic` |
 | `app/services/content_blueprint_validation.py` | `diagnostic` |
 | `app/services/content_coverage_service.py` | `diagnostic` |
@@ -398,6 +400,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/maintenance/generate_ci_authority_inventory.py` | `remediation` |
 | `scripts/maintenance/generate_current_state_docs.py` | `diagnostic, remediation` |
 | `scripts/maintenance/generate_release_sboms.py` | `remediation` |
+| `scripts/maintenance/generate_release_statement.py` | `llm, remediation` |
 | `scripts/maintenance/generate_test_health_metrics.py` | `remediation` |
 | `scripts/mastery_research/audit_rr013_advanced_mastery_model_research.py` | `diagnostic` |
 | `scripts/merge_lora.py` | `llm` |
@@ -494,6 +497,9 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/true_state_remediation/bundles/bundle_02.py` | `remediation` |
 | `scripts/true_state_remediation/bundles/bundle_03.py` | `remediation` |
 | `scripts/true_state_remediation/bundles/bundle_04.py` | `remediation` |
+| `scripts/true_state_remediation/bundles/bundle_05.py` | `remediation` |
+| `scripts/true_state_remediation/bundles/bundle_06.py` | `remediation` |
+| `scripts/true_state_remediation/bundles/bundle_07.py` | `remediation` |
 | `scripts/true_state_remediation/capture_baseline.py` | `remediation` |
 | `scripts/true_state_remediation/check_feature_freeze.py` | `remediation` |
 | `scripts/true_state_remediation/core.py` | `remediation` |
@@ -501,6 +507,7 @@ This inventory records likely prompt construction or AI generation surfaces.
 | `scripts/true_state_remediation/record_manual_evidence.py` | `remediation` |
 | `scripts/true_state_remediation/record_review.py` | `remediation` |
 | `scripts/true_state_remediation/run_release_gates.py` | `remediation` |
+| `scripts/true_state_remediation/verify_final_program.py` | `remediation` |
 | `scripts/tx_route_wiring_inventory.py` | `diagnostic` |
 | `scripts/validate_ai_output_fixtures.py` | `prompt, diagnostic, remediation` |
 | `scripts/validate_focused_adapter.py` | `llm` |

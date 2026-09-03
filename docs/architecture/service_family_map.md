@@ -1,9 +1,10 @@
 # Service Family Map
 
-Generated at: `2026-08-26T16:48:52Z`
+Generated at: `2026-09-03T09:20:36Z`
 
 | Domain | Path | Classification | Classes |
 |---|---|---|---|
+| other | `app/services/ai_budget_guard.py` | unclassified | `AIBudgetExceededError`, `AIBudgetGuard` |
 | other | `app/services/ai_operations.py` | unclassified | `AIBudgetExceededError`, `AIOperationsService`, `BudgetLimits` |
 | other | `app/services/ai_safety.py` | unclassified | `ContentQualityScore` |
 | other | `app/services/archetype_service.py` | duplicate_domain_service | - |
@@ -28,6 +29,7 @@ Generated at: `2026-08-26T16:48:52Z`
 | other | `app/services/backend_runtime_wiring_cases.py` | active_runtime_facade | `WiringCaseResult` |
 | other | `app/services/backend_runtime_wiring_preflight.py` | active_runtime_facade | `PreflightArea`, `RuntimeWiringPreflightResult` |
 | other | `app/services/batch_generation.py` | deprecated_legacy_service | `BatchGenerationEngine`, `GenerationTaskSpec`, `RunResult` |
+| billing | `app/services/billing_guard.py` | unclassified | `BillingLockError` |
 | other | `app/services/caps_validator.py` | unclassified | `CAPSAlignmentValidator`, `CAPSValidationResult` |
 | consent | `app/services/consent.py` | unclassified | - |
 | consent | `app/services/consent_compat.py` | migration_or_compat_helper | `ConsentAuditEvent` |
@@ -152,10 +154,12 @@ Generated at: `2026-08-26T16:48:52Z`
 | other | `app/services/llm/gateway.py` | unclassified | `CanonicalLLMGateway`, `DeterministicMockProvider`, `LLMGatewayMetadata`, `LLMGatewayRequest`, `LLMGatewayResponse`, `LLMProvider`, `ProviderHealth`, `ProviderPolicy`, `ProviderResult`, `TokenUsage` |
 | other | `app/services/llm/json_completion.py` | unclassified | `JsonCompletionError`, `JsonCompletionGateway`, `JsonCompletionResponse` |
 | other | `app/services/llm_provider.py` | unclassified | `AllProvidersFailedError`, `AnthropicProvider`, `AzureOpenAIProvider`, `CircuitBreaker`, `CircuitState`, `DeterministicProvider`, `GenerationResult`, `GroqProvider`, `LLMProvider`, `ProviderContentPolicyError`, `ProviderError`, `ProviderRateLimitError`, `ProviderRouter`, `ProviderTimeoutError`, `TokenUsage` |
+| other | `app/services/mastery_engine.py` | unclassified | `MasteryBoundError`, `MasteryEngine`, `MasteryEstimate`, `MasteryStateEnum` |
 | other | `app/services/parent_report_service_v2.py` | duplicate_domain_service | `ParentReportServiceV2` |
 | other | `app/services/pii_sweep.py` | unclassified | `PIIFinding`, `PIIScanner`, `PIISweepError`, `SweepResult` |
 | other | `app/services/policy_service.py` | duplicate_domain_service | - |
 | consent | `app/services/popia_consent_lifecycle_adapter.py` | unclassified | `POPIAConsentLifecycleAdapter` |
+| popia | `app/services/popia_dsr_service.py` | duplicate_domain_service | `DSRServiceError`, `POPIADSRService` |
 | popia | `app/services/popia_erasure_safety.py` | unclassified | `ErasurePreflightDecision` |
 | popia | `app/services/popia_service.py` | duplicate_domain_service | `POPIADataRightsService`, `RightsRequestStatus` |
 | popia | `app/services/popia_transactional_lifecycle.py` | unclassified | `POPIATransactionError`, `TransactionalPOPIAConsentLifecycleService`, `_NullAsyncContext` |

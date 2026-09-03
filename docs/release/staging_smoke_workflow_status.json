@@ -1,18 +1,12 @@
 {
-  "generated_at": "2026-08-26T17:00:37Z",
-  "current_commit": "107d58c62d28a0d0a7a094f69894809af40f8db0",
-  "status": "staging-smoke-workflow-not-configured",
-  "workflow_exists": false,
+  "generated_at": "2026-09-03T09:24:09Z",
+  "current_commit": "51487956b21470877d482128092c01595e92be39",
+  "status": "staging-smoke-workflow-configured",
+  "workflow_exists": true,
   "probe_exists": true,
-  "has_workflow_dispatch": false,
-  "has_staging_base_url_secret": false,
-  "has_probe_step": false,
-  "has_artifact_upload": false,
-  "blockers": [
-    "workflow file missing",
-    "workflow_dispatch missing",
-    "STAGING_SMOKE_BASE_URL secret reference missing",
-    "staging smoke probe step missing",
-    "artifact upload missing"
-  ]
+  "has_workflow_dispatch": true,
+  "has_staging_base_url_secret": true,
+  "has_probe_step": true,
+  "has_artifact_upload": true,
+  "blockers": []
 }
