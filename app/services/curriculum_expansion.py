@@ -242,6 +242,7 @@ class CurriculumExpansionService:
                         "target": int(target_count),
                         "pipeline_ready": pipeline_count,
                         "published": published_count,
+                        "gap": max(0, int(target_count) - pipeline_count),
                         "pipeline_gap": max(0, int(target_count) - pipeline_count),
                         "beta_gap": max(0, int(target_count) - published_count),
                     }

@@ -1,8 +1,8 @@
 # Diagnostic Deep Health Runtime Evidence Status
 
-Generated at: `2026-08-26T16:57:03Z`
-Commit: `107d58c62d28a0d0a7a094f69894809af40f8db0`
-Branch: `codex/tsr-b04-architecture-and-data-integrity`
+Generated at: `2026-08-29T09:34:58Z`
+Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
+Branch: `feature/coverage-target-90`
 
 **Status:** `diag-deep-health-runtime-not-accepted`
 **Deep health URL:** ``
@@ -15,7 +15,7 @@ Branch: `codex/tsr-b04-architecture-and-data-integrity`
 **Head SHA:** ``
 **Test command:** ``
 **Verified by:** `unverified`
-**Date verified:** `2026-08-26`
+**Date verified:** `2026-08-29`
 
 ## Required component results
 

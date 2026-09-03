@@ -242,3 +242,84 @@ class TestIterSyncLessonIds:
 
     def test_string_returns_empty(self):
         assert iter_sync_lesson_ids("not_a_dict") == []
+
+    def test_circular_reference_and_nested_objects(self):
+        from types import SimpleNamespace
+        child = SimpleNamespace(lesson_id="les-nested")
+        parent = SimpleNamespace(events=[child], items=[])
+        # Add circular reference
+        child.parent = parent
+
+        ids = iter_sync_lesson_ids(parent)
+        assert "les-nested" in ids
+
+
+class TestLessonAuthorizationExecution:
+    @pytest.mark.asyncio
+    async def test_lesson_owner_learner_id_from_db_model(self):
+        from unittest.mock import AsyncMock, MagicMock, patch
+        from app.services.lesson_authorization import lesson_owner_learner_id
+
+        mock_db = AsyncMock()
+        mock_repo = MagicMock()
+        mock_repo.get_by_id_with_learner = AsyncMock(return_value={"learner_id": "learner-db-1"})
+        mock_repo_cls = MagicMock(return_value=mock_repo)
+
+        with patch("app.services.lesson_authorization._first_import", return_value=mock_repo_cls):
+            owner = await lesson_owner_learner_id(mock_db, "lesson-1")
+            assert owner == "learner-db-1"
+
+    @pytest.mark.asyncio
+    async def test_lesson_owner_not_found_raises_404(self):
+        from unittest.mock import AsyncMock, patch
+        from fastapi import HTTPException
+        from app.services.lesson_authorization import lesson_owner_learner_id
+
+        mock_db = AsyncMock()
+        with patch("app.services.lesson_authorization._first_import", return_value=None):
+            with pytest.raises(HTTPException) as exc_info:
+                await lesson_owner_learner_id(mock_db, "lesson-missing")
+            assert exc_info.value.status_code == 404
+
+    @pytest.mark.asyncio
+    async def test_require_lesson_read_and_write_access(self):
+        from unittest.mock import AsyncMock, MagicMock, patch
+        from app.services.lesson_authorization import (
+            require_lesson_read_access_for_current_user,
+            require_lesson_write_access_for_current_user,
+            _current_user_claims,
+        )
+        from app.api_v2_deps.auth import AuthContext
+
+        mock_db = AsyncMock()
+        mock_auth_fn = AsyncMock(return_value=True)
+
+        with patch("app.services.lesson_authorization.lesson_owner_learner_id", AsyncMock(return_value="learner-1")):
+            with patch("app.services.lesson_authorization._first_import", return_value=mock_auth_fn):
+                # Using AuthContext
+                from app.api_v2_deps.auth import TokenType
+                ctx = AuthContext(
+                    user_id="guard-1",
+                    guardian_id="guard-1",
+                    token_type=TokenType.ACCESS,
+                    jti="jti-1",
+                    raw_claims={"sub": "guard-1", "role": "guardian"},
+                )
+                assert _current_user_claims(ctx) == {"sub": "guard-1", "role": "guardian"}
+
+                read_ok = await require_lesson_read_access_for_current_user(mock_db, ctx, "les-1")
+                assert read_ok is True
+
+                write_ok = await require_lesson_write_access_for_current_user(mock_db, ctx, "les-1")
+                assert write_ok is True
+
+
+class TestMergeRefreshClaims:
+    def test_merge_refresh_claims_basic(self):
+        token_claims = {"sub": "user-1", "role": "guardian"}
+        user_claims = {"roles": ["guardian", "admin"], "guardian_learner_ids": ["l1"]}
+        merged = merge_refresh_claims(token_claims, user_claims)
+        assert merged["sub"] == "user-1"
+        assert merged["role"] == "guardian"
+        assert merged["roles"] == ["guardian", "admin"]
+        assert merged["guardian_learner_ids"] == ["l1"]

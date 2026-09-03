@@ -99,3 +99,170 @@ def test_makefile_exposes_ci_cd_deployment_target() -> None:
     text = (REPO_ROOT / "Makefile").read_text(encoding="utf-8")
     assert "ci-cd-deployment-production-readiness-check:" in text
     assert "scripts/check_ci_cd_deployment_production_readiness.py" in text
+
+
+@pytest.mark.unit
+def test_deployment_contracts_validation_error_branches() -> None:
+    from app.modules.deployment.production_readiness_contracts import (
+        ArtifactProvenance,
+        DeploymentGate,
+        DeploymentStrategy,
+        DockerImageContract,
+        EnvironmentContract,
+        InfrastructureProviderDecision,
+        PipelineCheck,
+        PipelineStage,
+        RollbackContract,
+        RuntimeRole,
+        default_deployment_readiness_report,
+    )
+
+    # 1. InfrastructureProviderDecision invalid branches
+    bad_infra = InfrastructureProviderDecision(
+        provider="",
+        container_registry="",
+        deployment_platform="",
+        adr_path="invalid/path.md",
+        architecture_doc_path="invalid/doc.md",
+        infrastructure_as_code_required=False,
+        manual_production_approval_required=False,
+        environment_separation_required=False,
+    )
+    infra_issues = bad_infra.validate()
+    assert "infrastructure provider is required" in infra_issues
+    assert "container registry is required" in infra_issues
+    assert "deployment platform is required" in infra_issues
+    assert "infrastructure decision must be documented in docs/adr/" in infra_issues
+    assert "deployment architecture must be documented in docs/deployment/" in infra_issues
+    assert "infrastructure-as-code is required" in infra_issues
+    assert "manual production approval is required" in infra_issues
+    assert "environment separation is required" in infra_issues
+
+    # 2. PipelineCheck invalid branches
+    bad_check = PipelineCheck(
+        stage=PipelineStage.SECURITY_SCAN,
+        command="",
+        required_for_pr=False,
+        required_for_staging=False,
+        required_for_production=True,
+        produces_artifact=False,
+        blocks_deploy=False,
+    )
+    check_issues = bad_check.validate()
+    assert "security_scan command is required" in check_issues
+    assert "security_scan production check must block deploy" in check_issues
+    assert "security scan must run for PRs" in check_issues
+
+    bad_migration = PipelineCheck(
+        stage=PipelineStage.MIGRATION_CHECK,
+        command="make check",
+        required_for_pr=True,
+        required_for_staging=False,
+        required_for_production=False,
+        produces_artifact=False,
+        blocks_deploy=False,
+    )
+    assert "migration check must run before staging" in bad_migration.validate()
+
+    # 3. DockerImageContract invalid branches
+    bad_docker = DockerImageContract(
+        runtime_role=RuntimeRole.API,
+        dockerfile_path="",
+        non_root_user_required=False,
+        pinned_base_image_required=False,
+        healthcheck_required=False,
+        multi_stage_build_required=False,
+        dependency_lockfile_required=False,
+        vulnerability_scan_required=False,
+        sbom_required=False,
+    )
+    docker_issues = bad_docker.validate()
+    assert len(docker_issues) == 8
+
+    # 4. EnvironmentContract invalid branches
+    bad_env = EnvironmentContract(
+        environment=EnvironmentName.PRODUCTION,
+        required_variables=(),
+        forbidden_variables=("DEBUG",),
+        secrets_externalized=False,
+        debug_disabled=False,
+        uses_tls=False,
+        database_migrations_controlled=False,
+        observability_enabled=False,
+    )
+    env_issues = bad_env.validate()
+    assert "production missing required variable DATABASE_URL" in env_issues
+    assert "production secrets must be externalized" in env_issues
+    assert "production debug must be disabled" in env_issues
+    assert "production TLS is required" in env_issues
+    assert "database migrations must be controlled" in env_issues
+    assert "production observability is required" in env_issues
+
+    # Forbidden var present in required
+    forbidden_env = EnvironmentContract(
+        environment=EnvironmentName.STAGING,
+        required_variables=("DEBUG",),
+        forbidden_variables=("DEBUG",),
+        secrets_externalized=True,
+        debug_disabled=True,
+        uses_tls=True,
+        database_migrations_controlled=True,
+        observability_enabled=True,
+    )
+    assert "forbidden variable DEBUG cannot be required" in forbidden_env.validate()
+
+    # 5. DeploymentGate invalid branches
+    bad_gate = DeploymentGate(
+        name="",
+        environment=EnvironmentName.PRODUCTION,
+        strategy=DeploymentStrategy.ROLLING,
+        required_checks=(),
+        manual_approval_required=False,
+        rollback_plan_required=False,
+        smoke_test_required=False,
+        release_notes_required=False,
+        owner="",
+    )
+    gate_issues = bad_gate.validate()
+    assert "deployment gate name is required" in gate_issues
+    assert "deployment gate requires checks" in gate_issues
+    assert "production deployment gate requires manual approval" in gate_issues
+    assert "production strategy must preserve manual approval" in gate_issues
+    assert "rollback plan is required" in gate_issues
+    assert "smoke test is required" in gate_issues
+    assert "release notes are required" in gate_issues
+    assert "deployment gate owner is required" in gate_issues
+
+    # 6. RollbackContract invalid branches
+    bad_rollback = RollbackContract(
+        environment=EnvironmentName.PRODUCTION,
+        rollback_command_documented=False,
+        database_rollback_policy_documented=False,
+        feature_flag_rollback_supported=False,
+        previous_image_retained=False,
+        smoke_test_after_rollback_required=False,
+        incident_record_required=False,
+    )
+    assert len(bad_rollback.validate()) == 6
+
+    # 7. ArtifactProvenance invalid branches
+    bad_prov = ArtifactProvenance(
+        git_sha="INVALID_SHA!",
+        image_digest="invalid:digest",
+        sbom_path="",
+        build_log_path="",
+        vulnerability_scan_path="",
+        openapi_artifact_path="",
+        generated_at_utc="",
+    )
+    prov_issues = bad_prov.validate()
+    assert "git_sha must be lowercase hex" in prov_issues
+    assert "image_digest must be sha256" in prov_issues
+    assert "sbom_path is required" in prov_issues
+    assert "generated_at_utc is required" in prov_issues
+
+    # 8. default_deployment_readiness_report
+    report = default_deployment_readiness_report()
+    assert report["provider_decision_issues"] == []
+    assert report["pipeline_check_issues"] == []
+    assert "sha256:" in str(report["artifact_digest_sample"])

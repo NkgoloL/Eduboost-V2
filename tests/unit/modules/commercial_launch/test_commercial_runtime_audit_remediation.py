@@ -24,3 +24,19 @@ def test_commercial_runtime_audit_remediation_blocked_state_exposes_blocker():
 
     assert payload["accepted"] is False
     assert "commercial_runtime_audit_remediation_incomplete" in payload["blockers"]
+
+
+def test_commercial_runtime_audit_remediation_custom_parameters():
+    from app.modules.commercial_launch.remediation import CommercialRuntimeAuditRemediationReport
+
+    report = CommercialRuntimeAuditRemediationReport(
+        prd_id="PRD-9.5-CUSTOM",
+        accepted=True,
+        controls=("ctrl1", "ctrl2"),
+        blockers=(),
+        prd10_handoff_authorised=True,
+    )
+    p = report.to_payload()
+    assert p["prd_id"] == "PRD-9.5-CUSTOM"
+    assert p["controls"] == ["ctrl1", "ctrl2"]
+    assert p["prd10_handoff_authorised"] is True

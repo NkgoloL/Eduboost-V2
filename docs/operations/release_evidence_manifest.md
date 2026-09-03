@@ -1,8 +1,8 @@
 # Release Evidence Manifest
 
-Generated: `2026-08-26T16:55:17Z`
-Branch: `codex/tsr-b04-architecture-and-data-integrity`
-Commit: `107d58c62d28a0d0a7a094f69894809af40f8db0`
+Generated: `2026-08-29T09:33:07Z`
+Branch: `feature/coverage-target-90`
+Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
 
 ## Required Evidence Commands
 

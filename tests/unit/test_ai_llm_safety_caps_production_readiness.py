@@ -174,3 +174,55 @@ def test_makefile_exposes_ai_llm_safety_caps_check() -> None:
     text = (REPO_ROOT / "Makefile").read_text(encoding="utf-8")
     assert "ai-llm-safety-caps-production-readiness-check:" in text
     assert "scripts/check_ai_llm_safety_caps_production_readiness.py" in text
+
+
+@pytest.mark.unit
+def test_validate_lesson_output_additional_branch_rejections() -> None:
+    # 1. Missing topic and blank explanation
+    lesson1 = LessonOutput(
+        topic="",
+        grade=4,
+        subject="Mathematics",
+        caps_reference="ref",
+        objectives=[],
+        explanation="   ",
+        worked_examples=[],
+        practice_questions=[],
+        answer_key=[],
+        remediation_hints=[],
+        difficulty="core",
+        language_level="intermediate",
+        safety_classification="safe",
+        alignment_confidence=0.5,
+        quality_score=0.5,
+    )
+    res1 = validate_lesson_output(lesson1)
+    assert not res1.accepted
+    assert "topic missing" in res1.reasons
+    assert "explanation missing" in res1.reasons
+    assert "low alignment confidence" in res1.reasons
+    assert "low quality score" in res1.reasons
+
+
+@pytest.mark.unit
+def test_detect_pii_text_patterns_and_arithmetic_edge_cases() -> None:
+    from app.services.content_safety.pii import detect_pii_text, contains_pii
+
+    text_all_pii = (
+        "Email: user@example.com, Phone: 0821234567, "
+        "UUID: 123e4567-e89b-12d3-a456-426614174000, "
+        "ID: 9001015009087, Address: 42 Long Street"
+    )
+    findings = detect_pii_text(text_all_pii)
+    kinds = {f.kind for f in findings}
+    assert "email" in kinds
+    assert "phone" in kinds
+    assert "uuid" in kinds
+    assert "id_number" in kinds
+    assert "address" in kinds
+    assert contains_pii(text_all_pii) is True
+
+    # Arithmetic edge cases
+    assert arithmetic_expression_is_correct("invalid + chars", "10") is False
+    assert arithmetic_expression_is_correct("10 / 0", "0") is False
+    assert arithmetic_expression_is_correct("10 + 5", "15") is True

@@ -52,8 +52,9 @@ class TestArqImportCompat:
             pass
 
         result = cron(my_task, hour=1, minute=0)
-        # result should be the function itself (either decorated or fallback-marked)
-        assert callable(result)
+        # result is either CronJob (when arq installed) or decorated function (fallback)
+        assert result is not None
+        assert callable(result) or hasattr(result, "coroutine") or type(result).__name__ == "CronJob"
 
 
 # ─────────────────────────────────────────────

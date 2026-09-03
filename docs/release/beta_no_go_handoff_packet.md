@@ -1,7 +1,7 @@
 # Beta NO-GO Handoff Packet
 
-Generated at: `2026-08-26T16:54:45Z`
-Commit: `107d58c62d28a0d0a7a094f69894809af40f8db0`
+Generated at: `2026-08-29T09:32:54Z`
+Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
 
 **Handoff status:** `handoff-ready-no-go`
 **Beta decision:** `NO-GO`

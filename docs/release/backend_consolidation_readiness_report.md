@@ -1,6 +1,6 @@
 # Backend Consolidation Readiness Report
 
-Generated at: `2026-08-26T17:25:26Z`
+Generated at: `2026-08-29T09:31:56Z`
 
 | Check | Return code | Command |
 |---|---:|---|
@@ -40,7 +40,7 @@ Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bi
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release/backend_deletion_candidate_inventory.md (363918 candidate row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release/backend_deletion_candidate_inventory.md (385054 candidate row(s))
 ```
 
 ## no-op guard

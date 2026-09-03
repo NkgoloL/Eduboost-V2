@@ -34,3 +34,26 @@ def test_blocked_production_release_preflight_does_not_preserve_live_traffic():
     assert payload["controlled_beta_live_traffic_authorised"] is False
     assert payload["live_learner_traffic_authorised"] is False
     assert payload["production_release_authorised"] is False
+
+
+def test_production_release_preflight_custom_parameters():
+    from app.modules.production_release.readiness import ProductionReleasePreflightReport
+
+    report = ProductionReleasePreflightReport(
+        accepted=True,
+        prd_id="PRD-11-TEST",
+        controls=("ctrl1",),
+        blockers=("blocker1",),
+        release_scope="custom_scope",
+        controlled_beta_state="custom_beta",
+        release_candidate_gate_state="rc_state",
+        deployment_gate_state="deploy_state",
+        migration_rollback_gate_state="mig_state",
+        go_no_go_gate_state="gng_state",
+        production_release_final_handoff_authorised=True,
+    )
+    p = report.to_payload()
+    assert p["prd_id"] == "PRD-11-TEST"
+    assert p["controls"] == ["ctrl1"]
+    assert p["blockers"] == ["blocker1"]
+    assert p["production_release_final_handoff_authorised"] is True

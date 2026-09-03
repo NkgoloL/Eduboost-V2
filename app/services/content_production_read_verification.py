@@ -45,7 +45,7 @@ class ContentProductionReadVerificationService:
         # Find the promotion event
         result = await session.execute(
             select(ContentPromotionEvent).where(
-                ContentPromotionEvent.event_id == event_uuid,
+                ContentPromotionEvent.promotion_event_id == event_uuid,
             )
         )
         event = result.scalar_one_or_none()

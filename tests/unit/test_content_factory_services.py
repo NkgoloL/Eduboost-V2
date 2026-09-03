@@ -453,3 +453,167 @@ def test_content_factory_service_accepts_custom_validation() -> None:
     custom_validation = ContentValidationService()
     service = ContentFactoryService(validation_service=custom_validation)
     assert service.validation_service is custom_validation
+
+
+@pytest.mark.unit
+@pytest.mark.asyncio
+async def test_content_factory_service_create_and_validate_artifact() -> None:
+    from unittest.mock import AsyncMock, MagicMock
+    from types import SimpleNamespace
+    import uuid
+    from app.models.content_factory import ContentArtifactStatus, ContentReviewAction
+
+    service = ContentFactoryService()
+    session = AsyncMock()
+
+    # 1. create_artifact
+    payload = {
+        "artifact_json": {"title": "Maths Lesson", "safety_status": "passed"},
+        "caps_ref": "4.MATH.1.1",
+        "artifact_type": "lesson",
+        "sources": [
+            {
+                "source_document_id": "doc-1",
+                "source_chunk_id": "chunk-1",
+                "caps_ref": "4.MATH.1.1",
+                "document_status": "approved",
+                "license_status": "government_open",
+                "chunk_quality_score": 0.9,
+            }
+        ],
+    }
+    art = await service.create_artifact(session, payload=payload)
+    assert art.status == ContentArtifactStatus.PENDING_REVIEW
+    assert art.artifact_hash.startswith("sha256:")
+    session.add.assert_called()
+    session.flush.assert_called()
+
+    # 2. validate_existing_artifact
+    mock_art = SimpleNamespace(
+        artifact_id=uuid.uuid4(),
+        artifact_json={"title": "Maths Lesson", "safety_status": "passed"},
+        caps_ref="4.MATH.1.1",
+        artifact_type="lesson",
+        sources=[
+            SimpleNamespace(
+                source_document_id="doc-1",
+                source_chunk_id="chunk-1",
+                curriculum_mapping_id="map-1",
+                source_hash="hash-1",
+                source_metadata={
+                    "document_status": "approved",
+                    "license_status": "government_open",
+                    "chunk_quality_score": 0.9,
+                },
+            )
+        ],
+    )
+    mock_res = MagicMock()
+    mock_res.scalar_one_or_none.return_value = mock_art
+    session.execute.return_value = mock_res
+
+    report = await service.validate_existing_artifact(session, mock_art.artifact_id)
+    assert report.passed is True
+    assert mock_art.status == ContentArtifactStatus.PENDING_REVIEW
+
+
+@pytest.mark.unit
+@pytest.mark.asyncio
+async def test_content_factory_service_review_and_provenance_branches() -> None:
+    from unittest.mock import AsyncMock, MagicMock
+    from types import SimpleNamespace
+    import uuid
+    from app.models.content_factory import ContentArtifactStatus, ContentReviewAction
+
+    service = ContentFactoryService()
+    session = AsyncMock()
+    aid = uuid.uuid4()
+
+    mock_art = SimpleNamespace(
+        artifact_id=aid,
+        status=ContentArtifactStatus.PENDING_REVIEW,
+        caps_ref="4.MATH.1.1",
+        sources=[
+            SimpleNamespace(
+                source_document_id="doc-1",
+                source_chunk_id="chunk-1",
+                source_title="CAPS Math Doc",
+                source_type="pdf",
+                source_uri="/docs/math.pdf",
+                citation_text="Section 2.1",
+                caps_ref="4.MATH.1.1",
+                grade=4,
+                subject_code="MATH",
+                language="en",
+                license_status="government_open",
+                source_quality_score=0.9,
+                etl_version="v1",
+                document_version_id="doc-v1",
+                chunk_hash="chash-1",
+                curriculum_mapping_id="map-1",
+                source_hash="shash-1",
+                source_role="primary_context",
+                source_metadata={
+                    "document_status": "approved",
+                    "license_status": "government_open",
+                    "chunk_quality_score": 0.9,
+                },
+            )
+        ],
+    )
+    mock_res = MagicMock()
+    mock_res.scalar_one_or_none.return_value = mock_art
+    session.execute.return_value = mock_res
+
+    # 1. Review APPROVE
+    rev_approve = await service.review_artifact(
+        session,
+        artifact_id=aid,
+        reviewer_id="rev-1",
+        review_action=ContentReviewAction.APPROVE,
+        quality_score=0.95,
+    )
+    assert mock_art.status == ContentArtifactStatus.APPROVED
+
+    # 2. Cannot approve non-pending
+    with pytest.raises(ValueError, match="Only pending_review artifacts can be approved"):
+        await service.review_artifact(
+            session,
+            artifact_id=aid,
+            reviewer_id="rev-1",
+            review_action=ContentReviewAction.APPROVE,
+        )
+
+    # 3. Cannot approve without sources
+    mock_art.status = ContentArtifactStatus.PENDING_REVIEW
+    mock_art.sources = []
+    with pytest.raises(ValueError, match="Cannot approve artifact without ETL source citations"):
+        await service.review_artifact(
+            session,
+            artifact_id=aid,
+            reviewer_id="rev-1",
+            review_action=ContentReviewAction.APPROVE,
+        )
+
+    # 4. Review other actions
+    mock_art.sources = [SimpleNamespace(source_document_id="doc-1", source_chunk_id="chunk-1", source_title="", source_type="", source_uri="", citation_text="", caps_ref="4.MATH.1.1", grade=4, subject_code="MATH", language="en", license_status="government_open", source_quality_score=0.9, etl_version="", document_version_id="", chunk_hash="", curriculum_mapping_id="", source_hash="", source_role="", source_metadata={"document_status": "approved"})]
+    await service.review_artifact(session, artifact_id=aid, reviewer_id="rev-1", review_action=ContentReviewAction.REJECT)
+    assert mock_art.status == ContentArtifactStatus.REJECTED
+
+    await service.review_artifact(session, artifact_id=aid, reviewer_id="rev-1", review_action=ContentReviewAction.QUARANTINE)
+    assert mock_art.status == ContentArtifactStatus.QUARANTINED
+
+    await service.review_artifact(session, artifact_id=aid, reviewer_id="rev-1", review_action=ContentReviewAction.REQUEST_CHANGES)
+    assert mock_art.status == ContentArtifactStatus.VALIDATION_FAILED
+
+    # 5. Provenance reports and assertions
+    prov = await service.get_artifact_provenance(session, aid)
+    assert prov.passed is True
+    assert len(prov.sources) == 1
+
+    await service.assert_artifact_has_approved_sources(session, aid)
+
+    # 6. LookupError when artifact not found
+    mock_res.scalar_one_or_none.return_value = None
+    with pytest.raises(LookupError, match="not found"):
+        await service.get_artifact(session, aid)

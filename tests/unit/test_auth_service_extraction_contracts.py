@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import importlib
+import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -60,12 +62,14 @@ def test_app_api_v2_imports_after_auth_service_extraction():
 
 
 def test_auth_service_extraction_scripts_run():
+    env = {**os.environ, "PYTHONPATH": str(ROOT)}
     for command in [
         [sys.executable, "scripts/generate_auth_service_extraction_report.py"],
         [sys.executable, "scripts/check_auth_service_extraction.py"],
     ]:
-        result = subprocess.run(command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+        result = subprocess.run(command, cwd=ROOT, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
         assert result.returncode == 0, result.stdout
+
 
 
 def test_makefile_contains_871_910_targets():

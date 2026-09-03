@@ -302,7 +302,7 @@ async def expire_stale_diagnostic_sessions(ctx: dict[str, Any]) -> dict[str, Any
                 .where(
                     DiagnosticSession.completed_at.is_(None),
                     DiagnosticSession.session_state.not_in(["completed", "abandoned"]),
-                    DiagnosticSession.started_at < cutoff,
+                    DiagnosticSession.created_at < cutoff,
                 )
                 .values(session_state="abandoned")
             )
@@ -420,7 +420,7 @@ async def _send_renewal_email(consent: Any) -> None:
             ``guardian_id`` and ``expires_at`` attributes.
     """
     cfg = get_settings()
-    if not cfg.sendgrid_api_key:
+    if not cfg.SENDGRID_API_KEY:
         logger.warning("SendGrid not configured — skipping renewal email")
         return
 
@@ -439,7 +439,7 @@ async def _send_renewal_email(consent: Any) -> None:
         email = decrypt_pii(guardian.email_encrypted)
 
     message = Mail(
-        from_email=(cfg.sendgrid_from_email, cfg.sendgrid_from_name),
+        from_email=(cfg.SENDGRID_FROM_EMAIL, cfg.SENDGRID_FROM_NAME),
         to_emails=email,
         subject="EduBoost: Your child's consent is expiring soon",
         html_content=(
@@ -449,7 +449,7 @@ async def _send_renewal_email(consent: Any) -> None:
             f"to renew consent and ensure uninterrupted access.</p>"
         ),
     )
-    sg = SendGridAPIClient(cfg.sendgrid_api_key)
+    sg = SendGridAPIClient(cfg.SENDGRID_API_KEY)
     sg.send(message)
 
 

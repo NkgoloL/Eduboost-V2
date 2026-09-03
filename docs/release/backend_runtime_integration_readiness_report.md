@@ -1,6 +1,6 @@
 # Backend Runtime Integration Readiness Report
 
-Generated at: `2026-08-26T17:19:23Z`
+Generated at: `2026-08-29T09:32:27Z`
 
 | Check | Return code | Command |
 |---|---:|---|

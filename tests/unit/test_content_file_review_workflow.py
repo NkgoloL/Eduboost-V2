@@ -238,3 +238,37 @@ async def test_file_artifact_import_is_idempotent_for_pilot_scope(tmp_path: Path
     assert len(session.artifacts) == 4
     assert len(session.sources) == 4
     assert len(session.reports) == 4
+
+
+def test_review_status_missing_and_corrupt_manifest_branches(tmp_path: Path) -> None:
+    import json
+    service = ContentFileReviewWorkflowService(project_root=REPO_ROOT, manifest_dir=tmp_path)
+
+    # 1. Missing manifest
+    missing_stat = service.review_status("non_existent_scope")
+    assert missing_stat.status == "missing"
+    assert missing_stat.manifest_path is None
+    assert any("missing" in b for b in missing_stat.blockers)
+
+    # 2. Scope mismatch and invalid layers
+    corrupt_packet = {
+        "scope_id": "wrong_scope",
+        "decision": "approved",
+        "reviewer_id": "rev-1",
+        "evidence_url": "https://valid.evidence.co.za/doc.pdf",
+        "legal_decision": "approved",
+        "legal_evidence_url": "https://valid.legal.co.za/doc.pdf",
+        "approved_at": "2026-08-28T00:00:00Z",
+        "layer_review": {
+            "diagnostic_items": {"record_count": 0, "sha256": ""},
+            "lessons": {"record_count": 10, "sha256": None},
+        },
+    }
+    path = tmp_path / "test_scope_educator_review.json"
+    path.write_text(json.dumps(corrupt_packet), encoding="utf-8")
+
+    status = service.review_status("test_scope")
+    assert status.status == "pending"
+    assert any("does not match request" in b for b in status.stage_blockers)
+    assert any("no records" in b for b in status.stage_blockers)
+    assert any("missing artifact hash" in b for b in status.stage_blockers)

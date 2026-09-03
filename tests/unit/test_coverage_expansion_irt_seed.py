@@ -8,7 +8,7 @@ import importlib
 
 def test_irt_seed_items_structure():
     # Import migration module via importlib
-    mod = importlib.import_module("app.api_v2_routers.0005_irt_seed")
+    mod = importlib.import_module("scripts.migrations.0005_irt_seed")
     assert hasattr(mod, "_ITEMS")
     assert len(mod._ITEMS) > 50
 
@@ -25,6 +25,7 @@ def test_irt_seed_items_structure():
 
 
 def test_irt_seed_helper_make():
-    mod = importlib.import_module("app.api_v2_routers.0005_irt_seed")
+    mod = importlib.import_module("scripts.migrations.0005_irt_seed")
     res = mod._make(1, "Math", "Topic", "Q?", {"A": "1"}, "A", 1.0, 0.0, "en")
     assert res == (1, "Math", "Topic", "Q?", {"A": "1"}, "A", 1.0, 0.0, "en")
+

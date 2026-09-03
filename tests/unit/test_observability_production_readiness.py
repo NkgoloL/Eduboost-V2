@@ -94,3 +94,152 @@ def test_makefile_exposes_observability_target() -> None:
     text = (REPO_ROOT / "Makefile").read_text(encoding="utf-8")
     assert "observability-production-readiness-check:" in text
     assert "scripts/check_observability_production_readiness.py" in text
+
+
+@pytest.mark.unit
+def test_observability_contracts_validation_error_branches() -> None:
+    from app.modules.observability.production_readiness_contracts import (
+        AlertRule,
+        AlertSeverity,
+        DashboardDefinition,
+        IncidentRoute,
+        LogEventContract,
+        MetricDefinition,
+        ObservabilityProviderDecision,
+        ServiceTier,
+        SloDefinition,
+        TelemetryRetentionPolicy,
+        TraceSpanContract,
+        default_observability_readiness_report,
+    )
+
+    # 1. ObservabilityProviderDecision invalid branches
+    bad_dec = ObservabilityProviderDecision(
+        metrics_backend="",
+        log_backend="",
+        trace_backend="",
+        error_backend="",
+        alert_backend="",
+        adr_path="invalid/path.md",
+        architecture_doc_path="invalid/doc.md",
+        open_telemetry_required=False,
+        pii_redaction_required=False,
+        retention_policy_required=False,
+    )
+    assert len(bad_dec.validate()) == 10
+
+    # 2. MetricDefinition invalid branches
+    bad_metric = MetricDefinition(
+        name="INVALID-METRIC-NAME!",
+        description="",
+        service_tier=ServiceTier.API,
+        unit="",
+        labels=("route",),
+        owner=IncidentRoute.ENGINEERING,
+        pii_safe=False,
+    )
+    metric_issues = bad_metric.validate()
+    assert "metric name must be lowercase prometheus-style text" in metric_issues
+    assert "metric description is required" in metric_issues
+    assert "metric unit is required" in metric_issues
+    assert "metric labels must include environment" in metric_issues
+    assert "metric labels must include service" in metric_issues
+    assert "metric must be PII safe" in metric_issues
+
+    # 3. LogEventContract invalid branches
+    bad_log = LogEventContract(
+        event_name="",
+        service_tier=ServiceTier.API,
+        required_fields=("email",),
+        prohibited_fields=("email",),
+        redaction_required=False,
+        sample_message="user email test@example.com",
+    )
+    log_issues = bad_log.validate()
+    assert "log event name is required" in log_issues
+    assert "log redaction is required" in log_issues
+    assert "prohibited field email cannot be required" in log_issues
+    assert "sample log message must not contain PII" in log_issues
+
+    # 4. TraceSpanContract invalid branches
+    bad_span = TraceSpanContract(
+        span_name="",
+        service_tier=ServiceTier.API,
+        attributes=(),
+        propagates_request_id=False,
+        propagates_trace_id=False,
+        samples_errors=False,
+        pii_safe=False,
+    )
+    assert len(bad_span.validate()) == 7
+
+    # 5. SloDefinition invalid branches
+    bad_slo = SloDefinition(
+        name="",
+        service_tier=ServiceTier.API,
+        target_percentage=80.0,
+        window="",
+        sli_metric="",
+        burn_rate_alerts=False,
+        owner=IncidentRoute.ENGINEERING,
+    )
+    slo_issues = bad_slo.validate()
+    assert "SLO name is required" in slo_issues
+    assert "production SLO target must be at least 90 percent" in slo_issues
+    assert "SLO window is required" in slo_issues
+    assert "SLI metric is required" in slo_issues
+    assert "burn-rate alerts are required" in slo_issues
+
+    bad_slo_target = SloDefinition(
+        name="n", service_tier=ServiceTier.API, target_percentage=105.0, window="w", sli_metric="m", burn_rate_alerts=True, owner=IncidentRoute.ENGINEERING
+    )
+    assert "SLO target must be between 0 and 100" in bad_slo_target.validate()
+
+    # 6. AlertRule invalid branches
+    bad_alert = AlertRule(
+        name="",
+        severity=AlertSeverity.CRITICAL,
+        service_tier=ServiceTier.API,
+        expression="",
+        route=IncidentRoute.ENGINEERING,
+        runbook_path="invalid/path.md",
+        paging_required=False,
+        deduplication_key="",
+    )
+    alert_issues = bad_alert.validate()
+    assert "alert name is required" in alert_issues
+    assert "alert expression is required" in alert_issues
+    assert "alert runbook must live under docs/observability/runbooks/" in alert_issues
+    assert "critical/page alerts require paging" in alert_issues
+    assert "alert deduplication key is required" in alert_issues
+
+    # 7. DashboardDefinition invalid branches
+    bad_dash = DashboardDefinition(
+        dashboard_name="",
+        owner=IncidentRoute.ENGINEERING,
+        panels=(),
+        links_runbooks=False,
+        includes_slo_panels=False,
+        includes_error_panels=False,
+        includes_latency_panels=False,
+        includes_traffic_panels=False,
+    )
+    assert len(bad_dash.validate()) == 7
+
+    # 8. TelemetryRetentionPolicy invalid branches
+    bad_ret = TelemetryRetentionPolicy(
+        metrics_days=0,
+        logs_days=0,
+        traces_days=-1,
+        audit_logs_days=10,
+        pii_redaction_required=False,
+        deletion_workflow_required=False,
+        export_workflow_required=False,
+    )
+    assert len(bad_ret.validate()) == 6
+
+    # 9. default_observability_readiness_report
+    report = default_observability_readiness_report()
+    assert report["provider_decision_issues"] == []
+    assert report["pii_detection_sample"] is True
+    assert "[redacted-email]" in str(report["redaction_sample"])

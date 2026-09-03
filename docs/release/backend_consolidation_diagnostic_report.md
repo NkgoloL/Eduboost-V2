@@ -1,6 +1,6 @@
 # Backend Consolidation Diagnostic Report
 
-Generated at: `2026-08-26T17:24:45Z`
+Generated at: `2026-08-29T09:31:19Z`
 
 | Check | Return code | Command |
 |---|---:|---|
@@ -25,7 +25,7 @@ Return code: `0`
 
 ```text
 Backend consolidation dragon diagnostic
-- audit_repository: 50 match(es)
+- audit_repository: 53 match(es)
   - app/core/audit.py
   - app/modules/consent/service.py
   - app/repositories/__init__.py
@@ -38,7 +38,7 @@ Backend consolidation dragon diagnostic
   - app/services/popia_service.py
   - scripts/audit_write_flow_command.py
   - scripts/check_auth_service_extraction.py
-  - ... 9 more file(s)
+  - ... 11 more file(s)
 - audit_events: 154 match(es)
   - alembic/versions/0006_v2_audit_events.py
   - alembic/versions/20260507_1200_popia_consent_audit_hardening.py
@@ -92,7 +92,7 @@ Backend consolidation dragon diagnostic
   - scripts/check_first_audit_runtime_wiring_no_destructive_actions.py
   - scripts/check_runtime_wiring_no_destructive_actions.py
   - ... 7 more file(s)
-- consent_service: 173 match(es)
+- consent_service: 176 match(es)
   - app/api_v2_deps/consent_lifecycle.py
   - app/api_v2_routers/consent.py
   - app/api_v2_routers/popia.py
@@ -105,7 +105,7 @@ Backend consolidation dragon diagnostic
   - app/security/dependencies.py
   - app/services/consent.py
   - app/services/consent_runtime_compatibility.py
-  - ... 39 more file(s)
+  - ... 40 more file(s)
 - deep_health: 52 match(es)
   - app/api_v2.py
   - app/core/health.py
@@ -130,7 +130,7 @@ Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bi
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release/audit_callsite_inventory.md (6056 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release/audit_callsite_inventory.md (6084 row(s))
 ```
 
 ## consent inventory
@@ -140,7 +140,7 @@ Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bi
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release/consent_callsite_inventory.md (596 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release/consent_callsite_inventory.md (619 row(s))
 ```
 
 ## health readiness contract

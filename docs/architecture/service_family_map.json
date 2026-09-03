@@ -1,7 +1,16 @@
 {
-  "generated_at": "2026-08-26T16:48:52Z",
+  "generated_at": "2026-08-29T09:27:13Z",
   "domains": {
     "other": [
+      {
+        "path": "app/services/ai_budget_guard.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "AIBudgetExceededError",
+          "AIBudgetGuard"
+        ]
+      },
       {
         "path": "app/services/ai_operations.py",
         "domain": "other",
@@ -1035,6 +1044,17 @@
         ]
       },
       {
+        "path": "app/services/mastery_engine.py",
+        "domain": "other",
+        "classification": "unclassified",
+        "classes": [
+          "MasteryBoundError",
+          "MasteryEngine",
+          "MasteryEstimate",
+          "MasteryStateEnum"
+        ]
+      },
+      {
         "path": "app/services/parent_report_service_v2.py",
         "domain": "other",
         "classification": "duplicate_domain_service",
@@ -1885,6 +1905,32 @@
         ]
       }
     ],
+    "billing": [
+      {
+        "path": "app/services/billing_guard.py",
+        "domain": "billing",
+        "classification": "unclassified",
+        "classes": [
+          "BillingLockError"
+        ]
+      },
+      {
+        "path": "app/modules/billing/production_readiness_contracts.py",
+        "domain": "billing",
+        "classification": "unclassified",
+        "classes": [
+          "BillingAuditEvent",
+          "BillingPlan",
+          "BillingProvider",
+          "BillingProviderDecision",
+          "PricingPolicy",
+          "SubscriptionSnapshot",
+          "SubscriptionState",
+          "WebhookIdempotencyStore",
+          "WebhookRetryPolicy"
+        ]
+      }
+    ],
     "consent": [
       {
         "path": "app/services/consent.py",
@@ -2538,6 +2584,15 @@
     ],
     "popia": [
       {
+        "path": "app/services/popia_dsr_service.py",
+        "domain": "popia",
+        "classification": "duplicate_domain_service",
+        "classes": [
+          "DSRServiceError",
+          "POPIADSRService"
+        ]
+      },
+      {
         "path": "app/services/popia_erasure_safety.py",
         "domain": "popia",
         "classification": "unclassified",
@@ -2565,24 +2620,6 @@
         ]
       }
     ],
-    "billing": [
-      {
-        "path": "app/modules/billing/production_readiness_contracts.py",
-        "domain": "billing",
-        "classification": "unclassified",
-        "classes": [
-          "BillingAuditEvent",
-          "BillingPlan",
-          "BillingProvider",
-          "BillingProviderDecision",
-          "PricingPolicy",
-          "SubscriptionSnapshot",
-          "SubscriptionState",
-          "WebhookIdempotencyStore",
-          "WebhookRetryPolicy"
-        ]
-      }
-    ],
     "notification": [
       {
         "path": "app/modules/notifications/production_readiness_contracts.py",
@@ -2606,6 +2643,15 @@
     ]
   },
   "rows": [
+    {
+      "path": "app/services/ai_budget_guard.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "AIBudgetExceededError",
+        "AIBudgetGuard"
+      ]
+    },
     {
       "path": "app/services/ai_operations.py",
       "domain": "other",
@@ -2816,6 +2862,14 @@
         "BatchGenerationEngine",
         "GenerationTaskSpec",
         "RunResult"
+      ]
+    },
+    {
+      "path": "app/services/billing_guard.py",
+      "domain": "billing",
+      "classification": "unclassified",
+      "classes": [
+        "BillingLockError"
       ]
     },
     {
@@ -4031,6 +4085,17 @@
       ]
     },
     {
+      "path": "app/services/mastery_engine.py",
+      "domain": "other",
+      "classification": "unclassified",
+      "classes": [
+        "MasteryBoundError",
+        "MasteryEngine",
+        "MasteryEstimate",
+        "MasteryStateEnum"
+      ]
+    },
+    {
       "path": "app/services/parent_report_service_v2.py",
       "domain": "other",
       "classification": "duplicate_domain_service",
@@ -4061,6 +4126,15 @@
       "classification": "unclassified",
       "classes": [
         "POPIAConsentLifecycleAdapter"
+      ]
+    },
+    {
+      "path": "app/services/popia_dsr_service.py",
+      "domain": "popia",
+      "classification": "duplicate_domain_service",
+      "classes": [
+        "DSRServiceError",
+        "POPIADSRService"
       ]
     },
     {

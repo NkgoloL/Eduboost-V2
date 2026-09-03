@@ -1,6 +1,6 @@
 # Router Repository Boundary Matrix
 
-Generated at: `2026-08-26T17:20:23Z`
+Generated at: `2026-08-29T09:32:55Z`
 
 | Router | P0 | Repository imports | Transition allowed | Violations |
 |---|---:|---|---|---|

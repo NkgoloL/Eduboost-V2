@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-08-26T16:56:33.257358+00:00`
-- branch: `codex/tsr-b04-architecture-and-data-integrity`
-- commit: `107d58c62d28a0d0a7a094f69894809af40f8db0`
+- generated_at_utc: `2026-08-29T09:34:15.159820+00:00`
+- branch: `feature/coverage-target-90`
+- commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
 - release_candidate: `unset`
 
 ## Evidence Artifacts

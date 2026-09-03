@@ -259,7 +259,7 @@ class ContentStagingPreviewService:
         from app.models.content_factory import ContentSeedRun
 
         query = select(ContentSeedRun.status).where(
-            ContentSeedRun.run_id == seed_run_id
+            ContentSeedRun.seed_run_id == seed_run_id
         )
         return await session.scalar(query)
 
@@ -275,9 +275,12 @@ class ContentStagingPreviewService:
         Returns:
             Verification status or None
         """
-        from app.models.content_factory import ContentStagingVerification
+        from app.models.content_factory import ContentStagingVerificationRun
 
-        query = select(ContentStagingVerification.passed).where(
-            ContentStagingVerification.seed_run_id == seed_run_id
+        query = select(ContentStagingVerificationRun.status).where(
+            ContentStagingVerificationRun.run_id == seed_run_id
         )
-        return await session.scalar(query)
+        status = await session.scalar(query)
+        if status is None:
+            return None
+        return status in {"completed", "passed", "verified"}
