@@ -31,6 +31,9 @@ jobs:
         run: python3 -m compileall -q app tests scripts alembic
       - name: Ruff Check
         run: python3 -m ruff check app tests scripts
+      - name: Pytest Blanket Test Collection Gate
+        run: PYTHONPATH=. python3 -m pytest --collect-only -q
+
 
   mypy-typecheck:
     name: Mypy Static Type Analysis
@@ -45,8 +48,9 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r requirements/base.txt -r requirements/dev.txt
-      - name: Mypy Check
+      - name: Mypy Check Core Application
         run: python3 -m mypy app
+
 
   fast-unit-tests:
     name: Fast Product Unit Tests
