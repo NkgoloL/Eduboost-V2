@@ -28,6 +28,42 @@ def test_safe_candidate_payloads_build():
     assert all(payload.payload["resource_id"] == "learner-candidate" for payload in payloads)
 
 
+def test_build_candidate_payload_error_branches():
+    import pytest
+    from dataclasses import replace
+    from app.services.backend_first_wiring_candidates import (
+        WiringArea,
+        WiringCandidate,
+        build_candidate_payload,
+        safe_wiring_candidates,
+    )
+
+    base = safe_wiring_candidates()[0]
+
+    # 1. destructive
+    with pytest.raises(ValueError, match="destructive candidate is blocked"):
+        build_candidate_payload(replace(base, destructive=True))
+
+    # 2. requires_route_change
+    with pytest.raises(ValueError, match="route-change candidate is blocked"):
+        build_candidate_payload(replace(base, requires_route_change=True))
+
+    # 3. not approved_for_wiring
+    with pytest.raises(ValueError, match="candidate not approved for wiring"):
+        build_candidate_payload(replace(base, approved_for_wiring=False))
+
+    # 4. audit candidate missing candidate_name
+    audit_base = next(c for c in safe_wiring_candidates() if c.area == WiringArea.AUDIT)
+    with pytest.raises(ValueError, match="audit candidate missing candidate_name"):
+        build_candidate_payload(replace(audit_base, candidate_name=None))
+
+    # 5. unknown wiring area
+    fake_area = "UNKNOWN_AREA"
+    with pytest.raises(ValueError, match="unknown wiring area"):
+        build_candidate_payload(replace(base, area=fake_area))
+
+
+
 def test_adapter_wiring_service_records_to_in_memory_sink():
     async def run():
         sink = InMemoryAuditSink()

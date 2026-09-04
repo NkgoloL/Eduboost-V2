@@ -34,6 +34,22 @@ def test_deep_readiness_wiring_cases_pass():
     assert all(result.passed for result in results)
 
 
+def test_deep_readiness_wiring_case_missing_from_catalogue():
+    from unittest.mock import patch
+    fake_case = [{
+        "name": "nonexistent_check",
+        "required_for_release": True,
+        "public_safe": False,
+        "mutates_state": False,
+    }]
+    with patch("app.services.backend_runtime_wiring_cases._load_cases", return_value=fake_case):
+        results = run_deep_readiness_wiring_cases()
+        assert len(results) == 1
+        assert results[0].passed is False
+        assert "missing from catalogue" in results[0].message
+
+
+
 def test_all_wiring_cases_pass():
     assert all_wiring_cases_pass() is True
 
