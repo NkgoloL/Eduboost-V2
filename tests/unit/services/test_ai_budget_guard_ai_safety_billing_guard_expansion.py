@@ -33,6 +33,12 @@ from app.services.billing_guard import (
 
 
 class TestAIBudgetGuard:
+    @pytest.fixture(autouse=True)
+    def reset_guard(self):
+        AIBudgetGuard().reset_usage()
+        yield
+        AIBudgetGuard().reset_usage()
+
     def test_defaults(self):
         guard = AIBudgetGuard()
         assert guard.max_tokens_per_request == DEFAULT_MAX_TOKENS_PER_REQUEST
