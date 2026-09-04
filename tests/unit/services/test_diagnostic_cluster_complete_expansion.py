@@ -193,3 +193,16 @@ def test_diagnostic_data_integrity_expansion():
     assert clamp_theta(5.0) == 4.0
     assert clamp_theta(-5.0) == -4.0
     assert clamp_theta(0.5) == 0.5
+
+    # 6. extract_diagnostic_item_ids cycle handling
+    cycle_dict: dict = {"item_id": "root_id"}
+    cycle_dict["self"] = cycle_dict
+    assert extract_diagnostic_item_ids(cycle_dict) == ["root_id"]
+
+
+def test_diagnostic_service_shims():
+    import app.services.diagnostic as diag_shim
+    assert hasattr(diag_shim, "DiagnosticEngine")
+    assert hasattr(diag_shim, "p_correct")
+    assert hasattr(diag_shim, "update_theta_mle")
+
