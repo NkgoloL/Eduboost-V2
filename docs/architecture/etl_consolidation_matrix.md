@@ -1,3 +1,18 @@
+---
+title: ETL Consolidation Matrix
+status: active
+owner: architecture
+reviewers: [engineering, content-factory]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-03
+review_interval_days: 60
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/architecture/etl_consolidation_matrix.md]
+---
+
 # ETL Consolidation Matrix (TSR-6.3)
 
 ## Objective

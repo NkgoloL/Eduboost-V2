@@ -1,3 +1,18 @@
+---
+title: JWT Rotation Introspection
+status: active
+owner: security
+reviewers: [engineering]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-03
+review_interval_days: 45
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/security/jwt_rotation_introspection.md]
+---
+
 # JWT Rotation Introspection
 
 Generated at: `2026-08-29T09:38:30Z`

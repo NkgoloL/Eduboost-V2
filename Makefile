@@ -27,6 +27,7 @@ help:
 	@echo "  openapi-check   - Verify docs/openapi.json is current"
 	@echo "  route-inventory - Generate docs/route_inventory.md"
 	@echo "  route-inventory-check - Verify docs/route_inventory.md is current"
+	@echo "  readiness-register-consistency-check - Verify readiness registers agree"
 	@echo "  runtime-check   - Verify FastAPI runtime entrypoints"
 	@echo "  verify-repo-state - Verify repository provenance and release branch expectations"
 	@echo "  recommended-operating-model-check - Verify operating-model contract wording"
@@ -133,6 +134,10 @@ route-inventory:
 
 route-inventory-check:
 	$(PYTHON) scripts/generate_route_inventory.py --check
+
+.PHONY: readiness-register-consistency-check
+readiness-register-consistency-check:
+	$(PYTHON) scripts/maintenance/check_readiness_register_consistency.py --root .
 
 runtime-check:
 	$(PYTHON) scripts/check_runtime_entrypoints.py

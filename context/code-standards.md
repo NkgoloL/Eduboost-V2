@@ -1,7 +1,7 @@
 # Code Standards
 
-**Last updated:** 2026-06-09
-**Enforced by:** CI gates (RoadMap Phase 9), ruff (Phase 1.2), mypy (Phase 9)
+**Status:** Historical standards context.
+**Enforced by:** Current CI workflows, project configuration, and documentation governance checks.
 
 ## Engineering Mindset
 
@@ -18,14 +18,14 @@
 ## Python Standards
 
 - Python 3.12.3 (target; RoadMap Phase 4 will align Docker/CI/local)
-- Type hints throughout -- mypy in strict mode once Phase 9 gates are active
+- Type hints throughout -- verify current mypy policy from project configuration and CI
 - No Any except rare, documented cases
 - All functions typed (parameters and return types)
 - Docstrings on every module, class, function
 - Async by default for all I/O operations
 - Never let exceptions bubble up unhandled
 - No bare except -- always catch specific types
-- **Current gap:** 861 Ruff findings; Phase 1.2 fixes F821 (undefined names); Phase 11 burns down the rest
+- **Lint status:** Use current Ruff output; historical finding counts are not authoritative.
 
 ## FastAPI Conventions
 
@@ -35,7 +35,7 @@
 - Always use Depends() for auth, database, shared services
 - Use Pydantic BaseModel for all request/response schemas
 - Support skip and limit query params for list endpoints
-- **Known issue:** Routes registered twice (under /api/v2 AND /v2) -- Phase 11 will deduplicate
+- **Route policy:** The `/api/v2` and `/v2` surfaces require the active API compatibility decision; do not infer retirement from this historical page.
 
 ## SQLAlchemy & Database
 
@@ -49,11 +49,11 @@
 ## Testing
 
 - pytest + pytest-cov
-- Target: >80% coverage on business logic (currently 40.9%; Phase 9)
+- Coverage policy: Follow the approved current coverage contract and its evidence; historical percentages are not authoritative.
 - Use in-memory SQLite for tests (fast, isolated) -- or skip DB fixtures when unavailable
 - All tests async def test_* with @pytest.mark.asyncio
 - Always arrange -> act -> assert pattern
-- **Current:** 2051 passed, 1 skipped, 1 warning (local)
+- **Current:** Use the current executable test evidence; this historical count is not a live baseline.
 
 ## File Naming
 
@@ -72,7 +72,7 @@ Every feature must:
 3. Support data export (learner downloads as JSON)
 4. Support data erasure (delete from DB within 48h)
 5. Never use learner data for analytics without consent
-- **Current gaps:** Legal-hold checks, export-offered flows (Phase 8)
+- **Current gaps:** Use the active POPIA/privacy readiness records.
 
 ## Dependencies
 

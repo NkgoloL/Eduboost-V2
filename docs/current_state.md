@@ -7,7 +7,7 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-08-27
+last_reviewed: 2026-09-03
 review_interval_days: 45
 evidence_command: PYTHONPATH=. python3 scripts/true_state_remediation/execute_bundle.py --bundle B03 --phase verify --json
 code_anchors: [app/api_v2.py, app/frontend/package.json, docs/roadmap/production_readiness/true_state_remediation_register.json]
@@ -15,7 +15,7 @@ code_anchors: [app/api_v2.py, app/frontend/package.json, docs/roadmap/production
 
 # EduBoost Current State
 
-This file is the canonical current-state summary for EduBoost V2 generated deterministically from single-source register state on 2026-08-27.
+This file is the canonical current-state summary for EduBoost V2 generated deterministically from single-source register state on 2026-09-03.
 
 It is intentionally conservative. It records what is true now and what remains unauthorised before production, deployment, public beta, billing, live learner traffic, or further production-readiness implementation work can proceed.
 
@@ -52,9 +52,10 @@ The active technical direction is:
 Remediation program: EduBoost V2 True-State Remediation
 Active implementation bundle: B03 (CI Authority & Test-System Taxonomy Consolidation)
 Bundle B01 (Release Gate Recovery): verified and closed
-Bundle B02 (Canonical Truth and Toolchain): in_progress
+Bundle B02 (Canonical Truth and Toolchain): verified and closed
 Feature freeze: active
 Controlled beta operational hold: active
+Active production-readiness item: PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8
 ```
 
 ## Controlled beta semantics
@@ -82,4 +83,4 @@ billing_launch_authorised: false
 live_payment_processing_authorised: false
 ```
 
-**Generation timestamp: 2026-08-27T12:12:33.786710+00:00**
+**Generation timestamp: 2026-09-03T13:06:02.548587+00:00**

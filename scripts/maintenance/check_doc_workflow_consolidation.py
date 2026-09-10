@@ -12,23 +12,22 @@ def main() -> int:
     args = parser.parse_args()
     root = Path(args.root).resolve()
     failures: list[str] = []
-    primary = root / ".github/workflows/documentation-governance.yml"
-    retired = root / ".github/workflows/documentation-governance-stage2.yml"
+    primary = root / ".github/workflows/pr-core.yml"
+    retired = root / ".github/workflows/documentation-governance.yml"
     if not primary.exists():
-        failures.append("missing consolidated workflow: .github/workflows/documentation-governance.yml")
+        failures.append("missing canonical workflow for documentation governance: .github/workflows/pr-core.yml")
     else:
         text = primary.read_text(encoding="utf-8", errors="replace")
         required_tokens = [
             "make docs-housekeeping-check",
-            "make docs-housekeeping-stage3-check",
             "lfs: false",
-            "python-version: \"3.12\"",
+            "python-version: '3.12.3'",
         ]
         for token in required_tokens:
             if token not in text:
                 failures.append(f"consolidated workflow missing token: {token}")
     if retired.exists():
-        failures.append("retired Stage 2 workflow still exists: .github/workflows/documentation-governance-stage2.yml")
+        failures.append("documentation governance must remain consolidated; active workflow exists: .github/workflows/documentation-governance.yml")
     if failures:
         print("Documentation workflow consolidation check failed:")
         for failure in failures:

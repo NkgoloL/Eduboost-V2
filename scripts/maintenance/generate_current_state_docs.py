@@ -19,6 +19,7 @@ from scripts.true_state_remediation.core import atomic_write_text, load_json, ro
 
 def generate_current_state(root: Path) -> dict[str, Any]:
     prod_reg = load_json(root / "docs/roadmap/production_readiness/production_readiness_register.json", {})
+    prd11_reg = load_json(root / "docs/roadmap/production_readiness/prd11_production_release_register.json", {})
     tsr_reg = load_json(root / "docs/roadmap/production_readiness/true_state_remediation_register.json", {})
 
     now_iso = datetime.now(timezone.utc).isoformat()
@@ -27,6 +28,7 @@ def generate_current_state(root: Path) -> dict[str, Any]:
     # Current authority & active bundle
     active_bundle = tsr_reg.get("current_bundle", "B03")
     active_stream = "B03 (CI Authority & Test-System Taxonomy Consolidation)"
+    next_authorised_item = prd11_reg.get("next_authorised_item", prod_reg.get("next_authorised_item", "unknown"))
 
     # Generate docs/current_state.md
     current_state_md = f"""---
@@ -83,9 +85,10 @@ The active technical direction is:
 Remediation program: EduBoost V2 True-State Remediation
 Active implementation bundle: {active_stream}
 Bundle B01 (Release Gate Recovery): verified and closed
-Bundle B02 (Canonical Truth and Toolchain): in_progress
+Bundle B02 (Canonical Truth and Toolchain): verified and closed
 Feature freeze: active
 Controlled beta operational hold: active
+Active production-readiness item: {next_authorised_item}
 ```
 
 ## Controlled beta semantics

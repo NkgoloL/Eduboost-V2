@@ -1,8 +1,8 @@
 # Project Overview
 
-**Last updated:** 2026-06-09
-**Current state:** ../docs/roadmap/roadmap.md Phase 0 (in progress), quality gate RED (9/11)
-**Live trackers:** ../docs/roadmap/roadmap.md (17 phases), ../docs/todos/todo.md (North Star tasks)
+**Status:** Historical context; not a current-state authority.
+**Current state:** See `../docs/current_state.md` and `../docs/roadmap/README.md`.
+**Live tracker:** `../docs/roadmap/production_readiness/prd11_production_release_register.json`
 
 EduBoost V2 is an AI-powered adaptive learning platform for primary school learners in South Africa (Grades R-7), designed to accelerate mastery of CAPS learning outcomes through personalized, evidence-based learning paths.
 
@@ -38,19 +38,14 @@ South African primary learners face persistent achievement gaps. EduBoost solves
 ## Current Implementation Status
 
 **Repository-side (not CI/staging/production verified):**
-- Backend: 2051 unit tests passing, 355 API routes, 22 domain modules
+- Backend: FastAPI V2 runtime; route and test counts must come from current executable evidence
 - Content: Grade 4 Mathematics launch slice (120 items + 24 lessons) live
 - ETL: Content Factory pipeline with CAPS source ingestion
 - Auth: JWT with keyring, token revocation, Redis-backed
 - POPIA: Consent, audit, erasure, export workflows (partial)
 - Monitoring: Grafana dashboards, Prometheus metrics
 
-**Known critical gaps (see ../docs/roadmap/roadmap.md):**
-- P0: Practice sessions unauthenticated; in-memory state (Phase 2)
-- P0: Frontend build broken: dexie, TypeScript, Vitest (Phase 3)
-- P0: Python version inconsistency (Phase 4)
-- P1: 40.9% test coverage (Phase 9)
-- P1: ARQ durable jobs not wired (Phase 6)
+**Known gaps:** See the current production-readiness register and generated evidence. The phase list is historical and is not active next-work authority.
 
 ## Success Criteria
 
@@ -66,14 +61,14 @@ South African primary learners face persistent achievement gaps. EduBoost solves
 
 | Layer | Technology | Notes |
 |-------|-----------|-------|
-| Backend | FastAPI (Python 3.12.3 target) | 355 routes |
-| Database | PostgreSQL 15+ | 35 Alembic migrations |
-| Cache/Jobs | Redis + ARQ | Phase 6 pending |
-| Frontend | Next.js 15.5, React 18, TypeScript 5.4 | Phase 3 fixes needed |
+| Backend | FastAPI V2 (Python 3.12.3 target) | See generated route inventory |
+| Database | PostgreSQL 16/pgvector | See current migration evidence |
+| Cache/Jobs | Redis + ARQ | See current runtime evidence |
+| Frontend | Next.js, React, TypeScript | See current frontend manifest and evidence |
 | LLM | Groq, Anthropic, Gemini, HuggingFace | Multi-provider gateway |
-| Testing | pytest, Vitest, Playwright | 2051 unit / E2E broken |
+| Testing | pytest, Vitest, Playwright | See current test and frontend evidence |
 | Monitoring | Prometheus, Grafana | 3 dashboards |
-| Infrastructure | Docker Compose, Azure ACA (planned) | Phase 7: deployment hardening |
+| Infrastructure | Docker Compose, Azure ACA/Render configuration | Deployment authority remains gated |
 
 ## Project Governance
 
@@ -87,13 +82,8 @@ South African primary learners face persistent achievement gaps. EduBoost solves
 
 ## Next Milestones
 
-1. Complete Phase 0 (branch, evidence) -- in progress
-2. Complete Phase 1 (compile + lint fixes) -- next
-3. Complete Phase 2 (practice session auth) -- P0
-4. Complete Phase 3 (frontend build health) -- P0
-5. CI green on all release-blocking gates -- Phase 9
-6. Staging environment execution evidence -- Phase 16
-7. Controlled beta with real learners -- Phase 16
-8. Go/no-go production decision -- Phase 16
+1. Follow the active PRD-11 production-readiness item.
+2. Preserve fail-closed release, deployment, beta, billing, and live-learner boundaries.
+3. Use canonical documentation and evidence indexes for current milestones.
 
 **EduBoost is NOT public-beta-ready or production-ready.**

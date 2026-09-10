@@ -1,3 +1,18 @@
+---
+title: Auth Service Extraction Report
+status: active
+owner: architecture
+reviewers: [engineering, security]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-03
+review_interval_days: 60
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/architecture/auth_service_extraction_report.md]
+---
+
 # Auth Service Extraction Report
 
 Generated at: `2026-09-02T21:18:29Z`

@@ -1,3 +1,18 @@
+---
+title: Complexity Budgets and Dispositions
+status: active
+owner: architecture
+reviewers: [engineering]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-03
+review_interval_days: 60
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/architecture/complexity_budgets_and_dispositions.md]
+---
+
 # Complexity Budgets and Dispositions (TSR-6.14, TSR-6.15, TSR-6.17)
 
 ## Budgets & Quality Gates
