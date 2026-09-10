@@ -271,3 +271,140 @@ class TestEduboostETLPipeline:
         rejected_doc = etl_instance.reject_document(doc.document_id, reviewer="lead_educator", reason="Insufficient quality")
         assert rejected_doc.processing_status == ProcessingStatus.rejected
         assert rejected_doc.rejected_reason == "Insufficient quality"
+
+    def test_etl_queries_and_reprocess(self, etl_instance, tmp_path):
+        sample = tmp_path / "query_doc.txt"
+        sample.write_text("# Chapter 1\n" + "This is a detailed paragraph about science and nature.\n" * 20)
+        req = IngestRequest(
+            file_path=str(sample),
+            document_type=DocumentType.lesson_plan,
+            grade=7,
+            subject="natural_sciences",
+        )
+        doc = etl_instance.ingest(req)
+        etl_instance.run_full_pipeline(doc.document_id)
+
+        # list_documents
+        all_docs = etl_instance.list_documents()
+        assert len(all_docs) >= 1
+        docs_by_grade = etl_instance.list_documents(grade=7)
+        assert len(docs_by_grade) >= 1
+        docs_by_subject = etl_instance.list_documents(subject="natural_sciences")
+        assert len(docs_by_subject) >= 1
+        docs_by_type = etl_instance.list_documents(document_type="lesson_plan")
+        assert len(docs_by_type) >= 1
+        docs_by_status = etl_instance.list_documents(status=all_docs[0]["processing_status"])
+        assert len(docs_by_status) >= 1
+
+        # get_review_queue
+        queue = etl_instance.get_review_queue()
+        assert isinstance(queue, list)
+
+        # get_content_gaps
+        gaps = etl_instance.get_content_gaps()
+        assert isinstance(gaps, list)
+
+        # get_quality_report
+        qr = etl_instance.get_quality_report(doc.document_id)
+        assert "quality_score" in qr
+        assert etl_instance.get_quality_report("nonexistent") == {}
+
+        # get_pipeline_stats
+        stats = etl_instance.get_pipeline_stats()
+        assert "total" in stats
+        assert stats["total"] >= 1
+
+        # _load_ helpers missing branches
+        with pytest.raises(ValueError, match="Document not found"):
+            etl_instance._load_document("nonexistent-doc")
+        assert etl_instance._load_extraction("nonexistent-doc") == {}
+        assert etl_instance._load_normalized("nonexistent-doc") == {}
+
+        # reprocess_document
+        res = etl_instance.reprocess_document(doc.document_id)
+        assert res.status is not None
+
+
+class TestETLRemainingEdges:
+    def test_chunker_window_text(self):
+        chunker = Chunker()
+        long_text = "word " * 600
+        windows = chunker._split_large(long_text)
+        assert len(windows) > 1
+
+    def test_extractor_fallbacks(self, tmp_path):
+        import unittest.mock as mock
+        extractor = Extractor()
+
+        # HTML fallback without BS4
+        html_file = tmp_path / "page.html"
+        html_file.write_text("<h1>Title</h1><p>Body text</p>")
+        with mock.patch("app.services.etl.etl_pipeline.HAS_BS4", False):
+            res_html = extractor._html(str(html_file))
+            assert "Body text" in res_html.raw_text
+
+        # CSV fallback without pandas
+        csv_file = tmp_path / "data.csv"
+        csv_file.write_text("a,b,c\n1,2,3")
+        with mock.patch("app.services.etl.etl_pipeline.HAS_PANDAS", False):
+            res_csv = extractor._csv(str(csv_file))
+            assert "1,2,3" in res_csv.raw_text
+
+        # XLSX fallback without pandas
+        xlsx_file = tmp_path / "sheet.xlsx"
+        xlsx_file.write_text("fake xlsx")
+        with mock.patch("app.services.etl.etl_pipeline.HAS_PANDAS", False):
+            res_xlsx = extractor._xlsx(str(xlsx_file))
+            assert "install pandas" in res_xlsx.raw_text
+
+    def test_extractor_pdf_and_docx_mock(self, tmp_path):
+        from unittest.mock import MagicMock, patch
+        extractor = Extractor()
+
+        # Mock fitz PDF
+        fake_pdf = tmp_path / "test.pdf"
+        fake_pdf.write_bytes(b"%PDF-1.4...")
+        mock_page = MagicMock()
+        mock_page.get_text.side_effect = lambda mode: "Sample PDF Page Text" if mode == "text" else {
+            "blocks": [{"type": 0, "lines": [{"spans": [{"text": "PDF Heading", "size": 16}]}]}]
+        }
+        mock_doc = [mock_page]
+        mock_fitz = MagicMock()
+        mock_fitz.open.return_value = MagicMock(__enter__=lambda s: mock_doc, __exit__=lambda *a: None)
+        with patch.dict("sys.modules", {"fitz": mock_fitz}), \
+             patch("app.services.etl.etl_pipeline.fitz", mock_fitz, create=True), \
+             patch("app.services.etl.etl_pipeline.HAS_PYMUPDF", True):
+            res_pdf = extractor._pdf(str(fake_pdf))
+            assert "Sample PDF Page Text" in res_pdf.raw_text
+            assert "PDF Heading" in res_pdf.headings
+
+        # Mock docx
+        fake_docx = tmp_path / "test.docx"
+        fake_docx.write_bytes(b"PK...")
+        mock_para = MagicMock(text="Docx Heading", style=MagicMock(name="Heading 1"))
+        mock_para.style.name.startswith.return_value = True
+        mock_tbl = MagicMock()
+        mock_tbl.rows = [
+            MagicMock(cells=[MagicMock(text="h1"), MagicMock(text="h2")]),
+            MagicMock(cells=[MagicMock(text="r1"), MagicMock(text="r2")]),
+        ]
+        mock_docx_doc = MagicMock(paragraphs=[mock_para], tables=[mock_tbl])
+        mock_docx = MagicMock()
+        mock_docx.Document.return_value = mock_docx_doc
+        with patch.dict("sys.modules", {"docx": mock_docx}), \
+             patch("app.services.etl.etl_pipeline.python_docx", mock_docx, create=True), \
+             patch("app.services.etl.etl_pipeline.HAS_DOCX", True):
+            res_docx = extractor._docx(str(fake_docx))
+            assert "Docx Heading" in res_docx.raw_text
+            assert len(res_docx.tables) == 1
+
+    def test_create_etl_pipeline_factory(self, tmp_path):
+        from app.services.etl.factory import create_etl_pipeline
+        pipe1 = create_etl_pipeline(db_url=f"sqlite:///{tmp_path}/f_v1.db", storage_root=str(tmp_path), version="v1")
+        pipe2 = create_etl_pipeline(db_url=f"sqlite:///{tmp_path}/f_v2.db", storage_root=str(tmp_path), version="v2")
+        pipe3 = create_etl_pipeline(db_url=f"sqlite:///{tmp_path}/f_v3.db", storage_root=str(tmp_path), version="v3")
+        assert pipe1 is not None and pipe2 is not None and pipe3 is not None
+
+
+
+
