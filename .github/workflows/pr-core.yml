@@ -19,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          lfs: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12.3'
@@ -82,3 +84,7 @@ jobs:
         run: python3 scripts/generate_openapi.py --check
       - name: Verify Route Inventory & Current State
         run: PYTHONPATH=. python3 scripts/maintenance/generate_current_state_docs.py
+      - name: Documentation Governance
+        run: |
+          make docs-housekeeping-check
+          make readiness-register-consistency-check
