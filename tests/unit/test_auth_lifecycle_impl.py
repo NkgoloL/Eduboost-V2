@@ -251,3 +251,82 @@ async def test_register_impl_creates_guardian_and_returns_token():
     assert auth_lifecycle_impl.store_refresh_token.await_count == 1
     assert RecordingAudit.last_event is not None
     assert RecordingAudit.last_event[0] == "USER_REGISTERED"
+
+
+def test_auth_lifecycle_impl_helpers():
+    assert auth_lifecycle_impl._normalise_role_value("module.PARENT") == "parent"
+    assert auth_lifecycle_impl._normalise_role_value("TEACHER") == "teacher"
+
+    resp = Response()
+    auth_lifecycle_impl._set_refresh_cookie(resp, "test-cookie-token")
+    assert "set-cookie" in resp.headers
+
+
+@pytest.mark.asyncio
+async def test_auth_lifecycle_maybe_await():
+    async def _async_func():
+        return "async_res"
+    assert await auth_lifecycle_impl._maybe_await(_async_func()) == "async_res"
+    assert await auth_lifecycle_impl._maybe_await("sync_res") == "sync_res"
+
+
+@pytest.mark.asyncio
+async def test_create_dev_session_impl_reuses_existing_guardian_and_learner():
+    guardian = SimpleNamespace(
+        id="guardian-existing",
+        display_name="Dev Guardian",
+        role="parent",
+        password_hash="hashed-pass::secret",
+    )
+    learner = SimpleNamespace(
+        id="learner-existing",
+        display_name="DevLearner",
+        grade=3,
+        language="en",
+        streak_days=5,
+    )
+    other_learner = SimpleNamespace(
+        id="learner-other",
+        display_name="OtherLearner",
+        grade=4,
+        language="en",
+        streak_days=1,
+    )
+
+    guardian_repo = SimpleNamespace(
+        get_by_email_hash=AsyncMock(return_value=guardian),
+        create=AsyncMock(),
+    )
+    learner_repo = SimpleNamespace(
+        get_by_guardian=AsyncMock(return_value=[other_learner, learner]),
+        create=AsyncMock(),
+    )
+    # Test consent candidate reuse
+    existing_consent = SimpleNamespace(
+        revoked_at=None,
+        guardian_id="old-g",
+        policy_version="0.9",
+        status="pending",
+        expires_at=None,
+    )
+    consent_repo = SimpleNamespace(
+        get_active=AsyncMock(return_value=None),
+        get_latest_for_learner=AsyncMock(return_value=existing_consent),
+        create=AsyncMock(),
+    )
+    auth_runtime = build_auth_runtime(guardian_repo, learner_repo, consent_repo)
+    response = Response()
+
+    result = await auth_lifecycle_impl.create_dev_session_impl(
+        response=response,
+        db=object(),
+        auth_runtime=auth_runtime,
+    )
+    assert result["guardian_id"] == "guardian-existing"
+    assert result["learner"]["id"] == "learner-existing"
+    assert existing_consent.status == "granted"
+    assert existing_consent.policy_version == "1.0.0"
+    guardian_repo.create.assert_not_awaited()
+    learner_repo.create.assert_not_awaited()
+    consent_repo.create.assert_not_awaited()
+
