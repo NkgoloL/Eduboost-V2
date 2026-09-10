@@ -108,6 +108,7 @@ async def test_learner_service_complete():
         caps_ref="CAPS.MATH.1",
         mastery_score=0.85,
         mastery_label="proficient",
+        theta_se=1.0,
         last_updated_at=now,
     )
 
