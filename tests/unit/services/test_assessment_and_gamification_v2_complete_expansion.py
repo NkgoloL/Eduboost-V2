@@ -109,3 +109,48 @@ async def test_gamification_service_v2_complete():
         assert mock_l_repo.add_xp.await_count == 2
         mock_les_repo.mark_completed.assert_awaited_once_with("les-456")
 
+    # 5. repository parameter passed directly (lines 14-15)
+    custom_repo = AsyncMock()
+    svc_custom = GamificationServiceV2(repository=custom_repo)
+    assert svc_custom.repository is custom_repo
+
+    # 6. get_profile learner not found (lines 26-28)
+    custom_repo.get_profile_rows.return_value = (None, [])
+    with pytest.raises(ValueError, match="Learner not found"):
+        await svc_custom.get_profile("missing-learner")
+
+    # 7. get_profile success with badges and audit log (lines 29-46, 68-71)
+    learner_obj = {
+        "learner_id": "l-100",
+        "total_xp": 250,
+        "streak_days": 4,
+    }
+    badge_rows = [
+        ({"earned_at": "2026-09-01"}, {"badge_key": "first_lesson", "name": "First Lesson"}),
+        (type("BadgeRef", (), {"earned_at": "2026-09-02"})(), type("BadgeInfo", (), {"badge_key": "streak_3", "name": "3 Day Streak"})()),
+    ]
+    custom_repo.get_profile_rows.return_value = (learner_obj, badge_rows)
+    with patch("app.services.gamification_service_v2.AuditService") as mock_audit_cls:
+        mock_audit = AsyncMock()
+        mock_audit_cls.return_value = mock_audit
+        profile = await svc_custom.get_profile("l-100")
+        assert profile["learner_id"] == "l-100"
+        assert profile["total_xp"] == 250
+        assert profile["level"] == 3  # 250 // 100 + 1
+        assert len(profile["badges"]) == 2
+        assert profile["badges"][0]["badge_key"] == "first_lesson"
+        assert profile["badges"][1]["badge_key"] == "streak_3"
+        mock_audit.log_event.assert_awaited_once_with("GAMIFICATION_PROFILE_READ", {}, "l-100")
+
+    # 8. leaderboard (lines 56-65)
+    custom_repo.get_leaderboard_rows.return_value = [
+        {"learner_id": "l-1", "total_xp": 500, "streak_days": 10},
+        type("LeaderRow", (), {"id": "l-2", "xp": 300, "streak_days": 5})(),
+    ]
+    lb = await svc_custom.leaderboard(limit=5)
+    assert len(lb) == 2
+    assert lb[0]["learner_id"] == "l-1"
+    assert lb[0]["total_xp"] == 500
+    assert lb[1]["learner_id"] == "l-2"
+    assert lb[1]["total_xp"] == 300
+
