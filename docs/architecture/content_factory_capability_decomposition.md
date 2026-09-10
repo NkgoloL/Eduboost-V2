@@ -1,3 +1,18 @@
+---
+title: Content Factory Capability Decomposition
+status: active
+owner: architecture
+reviewers: [engineering, content-factory]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-03
+review_interval_days: 60
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/architecture/content_factory_capability_decomposition.md]
+---
+
 # Content Factory Capability Decomposition (TSR-6.2, TSR-6.6)
 
 ## Architectural Purpose

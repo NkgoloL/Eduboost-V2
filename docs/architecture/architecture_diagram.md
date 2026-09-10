@@ -88,7 +88,7 @@ graph TD
     end
 
     subgraph Infra["Infrastructure"]
-        PG["PostgreSQL 15"]
+        PG["PostgreSQL 16 / pgvector"]
         Redis["Redis 7"]
         Prom["Prometheus"]
         Grafana["Grafana"]

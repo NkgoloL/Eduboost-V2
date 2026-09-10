@@ -36,6 +36,7 @@ def test_canonical_docs_do_not_contain_known_stale_claims() -> None:
     assert "RR roadmap/TODO register: closed" in corpus
     assert "KG roadmap: closed through KG-8" in corpus
     assert "Controlled runtime KG authority switch: executed" in corpus
+    assert "Current authorised item: PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8" in corpus
 
 def test_truth_map_lists_expected_docs() -> None:
     truth_map = json.loads((ROOT / "docs/roadmap/production_readiness/current_state_documentation_truth_map.json").read_text(encoding="utf-8"))

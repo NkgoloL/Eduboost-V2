@@ -24,7 +24,7 @@ EduBoost is a South African Grade 4 Mathematics learning platform with a FastAPI
 Use these first:
 
 1. [`current_state.md`](current_state.md) — current project truth, closures, active stream, and boundaries.
-2. [`roadmap/production_readiness/production_readiness_register.json`](roadmap/production_readiness/production_readiness_register.json) — active PRD-0 and PRD-1+ sequencing.
+2. [`roadmap/production_readiness/prd11_production_release_register.json`](roadmap/production_readiness/prd11_production_release_register.json) — active PRD-11 release-readiness authority.
 3. [`roadmap/production_readiness/production_readiness_boundary_contract.md`](roadmap/production_readiness/production_readiness_boundary_contract.md) — authority boundaries.
 4. [`documentation/source_of_truth.yml`](documentation/source_of_truth.yml) — documentation governance register.
 
@@ -37,8 +37,8 @@ RR roadmap/TODO register: closed
 KG roadmap: closed through KG-8
 Controlled runtime KG authority switch: executed
 Production-readiness stream: open
-Current authorised item: PRD-0.1
-PRD-1 implementation: blocked until PRD-0.10 closure
+Current authorised item: PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8
+Production release remains blocked pending the PRD-11 release gate.
 Production release/deployment/public beta/billing/live learner traffic: not authorised
 New KG slice: not authorised
 ```

@@ -1,3 +1,18 @@
+---
+title: Transaction Boundary Inventory
+status: active
+owner: architecture
+reviewers: [engineering, database]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-03
+review_interval_days: 60
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/architecture/transaction_boundary_inventory.md]
+---
+
 # Transaction Boundary Inventory
 
 Generated at: `2026-08-29T09:39:37Z`

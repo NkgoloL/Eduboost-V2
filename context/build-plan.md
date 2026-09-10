@@ -1,10 +1,10 @@
 # Build Plan
 
-**Last updated:** 2026-06-12
-**Authoritative execution plan:** ../docs/roadmap/roadmap.md (17 phases)
-**Live task tracker:** ../docs/todos/todo.md (North Star)
+**Status:** Historical build-plan summary; not current execution authority.
+**Authoritative execution plan:** `../docs/roadmap/README.md` and the active PRD-11 register.
+**Live task tracker:** `../docs/current_state.md`
 
-This file is now a summary index. The authoritative build execution plan is ../docs/roadmap/roadmap.md (17 phases, Phase 0-16). Day-to-day task tracking lives in ../docs/todos/todo.md.
+This file is retained as historical context. Current execution status and next work must come from the canonical current-state and production-readiness documents.
 
 ## Current Phase Status
 
@@ -32,10 +32,10 @@ This file is now a summary index. The authoritative build execution plan is ../d
 
 The following are already implemented and tested locally (not CI-verified):
 
-- Backend: 2051 unit tests passing, 355 API routes, 35 Alembic migrations
+- Backend: FastAPI V2 runtime; current route, test, and migration facts come from executable evidence
 - Grade 4 Mathematics: 120 diagnostic items + 24 lessons live
 - 22 domain modules, 28 API routers, Content Factory ETL pipeline
-- POPIA consent/audit/erasure/export workflows (partial -- Phase 8)
+- POPIA consent/audit/erasure/export workflows; current completeness is governed by the active readiness evidence
 - Grafana dashboards, Prometheus metrics, structured logging
 - JWT auth with keyring, token revocation, Redis-backed
 
@@ -48,4 +48,4 @@ The following are already implemented and tested locally (not CI-verified):
 - Staging verified
 - Production verified
 
-Update ../docs/roadmap/roadmap.md and ../docs/todos/todo.md for detailed status. This file is the high-level index.
+Update the canonical current-state and production-readiness records for detailed status. This file is historical context only.

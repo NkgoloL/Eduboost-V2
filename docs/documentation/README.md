@@ -24,6 +24,7 @@ Core files:
 - `claim_discipline_policy.md`
 - `stale_documentation_register.md`
 - `migration_manifests/`
+- [`documentation_alignment_plan.md`](documentation_alignment_plan.md) — current plan for reconciling stale and conflicting documentation.
 
 ## Active cleanup stages
 

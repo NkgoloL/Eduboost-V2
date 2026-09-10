@@ -1,4 +1,6 @@
-# API Reference
+# Historical API Reference
+
+> This document describes the legacy v1 contract and is not the active API authority. Use `docs/openapi.json`, `docs/route_inventory.md`, and `app/api_v2.py` for the current V2 contract.
 
 **EduBoost SA Backend API — v1**
 

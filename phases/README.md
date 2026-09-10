@@ -1,9 +1,8 @@
-# Phases Implementation Overview
+# Historical Phases Implementation Overview
 
-This directory contains documentation and scripts for the 13 phases outlined in the production-readiness roadmap.
+This directory contains historical phase documentation. It is not the current execution authority.
 
-**STATUS: COMPLETED**
-All phases (0-13) have been fully executed as part of the v0.1.0-beta release. The platform has been hardened for production deployment.
+**CURRENT STATUS:** Historical phase records only. Production release, deployment, public beta, billing, and live learner traffic remain unauthorized. Use `docs/current_state.md` and the active PRD-11 register for current status.
 
 ## Phase Structure
 - `phase_0/README.md` – Production Definition of Done (COMPLETED)

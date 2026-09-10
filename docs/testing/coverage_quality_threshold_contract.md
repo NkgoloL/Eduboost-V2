@@ -7,7 +7,7 @@ audience: "quality-reviewer"
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-07-10"
+last_reviewed: "2026-06-24"
 review_interval_days: 60
 evidence_command: "make docs-housekeeping-stage5-check"
 code_anchors: "[tests, pytest.ini, Makefile]"

@@ -1,3 +1,18 @@
+---
+title: "EduBoost V2: Post-Remediation Educational Validity & Limitations Memo"
+status: "active"
+owner: "curriculum"
+reviewers: "[curriculum, content-factory, learning-science]"
+audience: "curriculum-reviewer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-06-24"
+review_interval_days: 60
+evidence_command: "make docs-housekeeping-stage5-check"
+code_anchors: "[docs/curriculum, app/services/content_factory]"
+---
+
 # EduBoost V2: Post-Remediation Educational Validity & Limitations Memo
 
 **Control ID**: `TSR-13.6`  
