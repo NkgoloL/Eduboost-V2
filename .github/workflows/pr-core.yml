@@ -83,7 +83,9 @@ jobs:
       - name: Check OpenAPI Drift
         run: python3 scripts/generate_openapi.py --check
       - name: Verify Route Inventory & Current State
-        run: PYTHONPATH=. python3 scripts/maintenance/generate_current_state_docs.py
+        run: |
+          python3 scripts/generate_route_inventory.py --check
+          python3 scripts/check_runtime_entrypoints.py
       - name: Documentation Governance
         run: |
           make docs-housekeeping-check
