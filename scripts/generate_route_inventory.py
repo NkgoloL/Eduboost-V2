@@ -290,11 +290,21 @@ def main() -> int:
         if check_inventory(output_path, content):
             return 0
 
+        committed_text = output_path.read_text(encoding="utf-8") if output_path.exists() else ""
+        committed_total = next(
+            (line.strip() for line in committed_text.splitlines() if line.startswith("- Total route entries:")),
+            "<missing>",
+        )
+        generated_total = next(
+            (line.strip() for line in content.splitlines() if line.startswith("- Total route entries:")),
+            "<missing>",
+        )
         print(
             f"Route inventory drift detected. Regenerate with: "
             f"python3 scripts/generate_route_inventory.py --output {_display_path(output_path)}",
             file=sys.stderr,
         )
+        print(f"Committed: {committed_total}; generated: {generated_total}", file=sys.stderr)
         return 1
 
     write_inventory(output_path, content)
