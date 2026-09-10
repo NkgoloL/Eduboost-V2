@@ -14,9 +14,9 @@ from app.models import LearnerProfile
 
 
 class LearnerService:
-    def __init__(self, db: AsyncSession) -> None:
+    def __init__(self, db: AsyncSession, repository: Any | None = None) -> None:
         self.db = db
-        self.repository = LearnerRepository(db)
+        self.repository = repository if repository is not None else LearnerRepository(db)
 
     async def get_learner_summary(self, learner_id: str):
         return await self.repository.get_by_id(learner_id)
