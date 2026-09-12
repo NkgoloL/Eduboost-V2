@@ -3,7 +3,9 @@ EduBoost V2 — Fourth Estate Service (Pillar 4)
 Durable, append-only audit trail written directly to PostgreSQL.
 Replaces the legacy RabbitMQ/Redis Streams dependency.
 """
-from __future__ import annotations
+from enum import Enum
+from typing import Any
+from uuid import UUID
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -11,6 +13,95 @@ from app.core.logging import get_logger
 from app.repositories.repositories import AuditRepository
 
 log = get_logger(__name__)
+
+
+class AuditAction(str, Enum):
+    # Auth
+    USER_REGISTERED = "user.registered"
+    USER_LOGIN = "user.login"
+    USER_LOGOUT = "user.logout"
+    USER_LOGIN_FAILED = "user.login_failed"
+    PASSWORD_CHANGED = "user.password_changed"
+
+    # Consent (POPIA critical)
+    CONSENT_GRANTED = "consent.granted"
+    CONSENT_REVOKED = "consent.revoked"
+    CONSENT_EXPIRED = "consent.expired"
+    CONSENT_RENEWED = "consent.renewed"
+
+    # Learner data
+    LEARNER_CREATED = "learner.created"
+    LEARNER_UPDATED = "learner.updated"
+    LEARNER_ERASED = "learner.erased"
+    LEARNER_DATA_EXPORTED = "learner.data_exported"
+
+    # Diagnostics
+    DIAGNOSTIC_SESSION_STARTED = "diagnostic.session_started"
+    DIAGNOSTIC_SESSION_COMPLETED = "diagnostic.session_completed"
+
+    # Lessons
+    LESSON_GENERATED = "lesson.generated"
+    LESSON_VIEWED = "lesson.viewed"
+
+    # Study plans
+    STUDY_PLAN_CREATED = "study_plan.created"
+    STUDY_PLAN_UPDATED = "study_plan.updated"
+
+    # RLHF
+    FEEDBACK_SUBMITTED = "feedback.submitted"
+
+    # Admin
+    ADMIN_ACTION = "admin.action"
+
+
+def _sanitise_metadata(data: dict[str, Any]) -> dict[str, Any]:
+    """Strip known PII keys from audit metadata."""
+    pii_keys = {"email", "password", "phone", "id_number", "address", "name"}
+    return {
+        k: "[REDACTED]" if k.lower() in pii_keys else v
+        for k, v in data.items()
+    }
+
+
+async def write_audit_event(
+    db: AsyncSession,
+    *,
+    action: AuditAction | str,
+    actor_id: UUID | str | None = None,
+    learner_id: UUID | None = None,
+    resource_type: str | None = None,
+    resource_id: str | None = None,
+    metadata: dict[str, Any] | None = None,
+    ip_address: str | None = None,
+    user_agent: str | None = None,
+) -> None:
+    svc = FourthEstateService(db)
+    safe_metadata = _sanitise_metadata(metadata or {})
+    payload = {
+        **safe_metadata,
+        "resource_type": resource_type,
+        "ip_address": ip_address,
+        "user_agent": user_agent,
+    }
+    if learner_id:
+        payload["learner_id"] = str(learner_id)
+    await svc.record(
+        event_type=str(action),
+        actor_id=str(actor_id) if actor_id else None,
+        resource_id=resource_id,
+        payload=payload,
+    )
+
+
+async def write_audit_event_background(
+    db: AsyncSession,
+    **kwargs: Any,
+) -> None:
+    try:
+        await write_audit_event(db, **kwargs)
+        await db.commit()
+    except Exception as exc:
+        log.error("Background audit write failed: %s", exc)
 
 
 class FourthEstateService:

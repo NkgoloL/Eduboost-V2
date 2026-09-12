@@ -8,6 +8,7 @@ from app.services.jwt_keyring import current_jwt_algorithm, current_jwt_headers,
 import base64
 import hashlib
 import hmac
+import secrets
 import uuid
 from datetime import datetime, timedelta
 try:
@@ -181,6 +182,11 @@ def decrypt_pii(ciphertext_hex: str) -> str:
     return _get_fernet().decrypt(bytes.fromhex(ciphertext_hex)).decode()
 
 
+def generate_secure_token(length: int = 32) -> str:
+    """URL-safe random token for email verification, consent links, etc."""
+    return secrets.token_urlsafe(length)
+
+
 __all__ = [
     "Role",
     "TokenPayload",
@@ -199,5 +205,6 @@ __all__ = [
     "verify_password",
     "encrypt_pii",
     "decrypt_pii",
+    "generate_secure_token",
 ]
 
