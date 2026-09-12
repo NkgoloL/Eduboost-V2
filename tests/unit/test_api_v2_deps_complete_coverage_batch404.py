@@ -399,3 +399,4 @@ async def test_auth_deps_complete(monkeypatch):
     assert auth.require_parent_or_admin(ctx_parent) == ctx_parent
     assert auth.require_teacher_or_admin(ctx_admin) == ctx_admin
     assert auth.require_student_or_admin(ctx_parent) == ctx_parent
+    assert auth._parse_roles(UserRole.ADMIN) == [UserRole.ADMIN]
