@@ -1,4 +1,4 @@
-# POPIA data-subject-rights workflow
+# POPIA Data-Subject-Rights Workflow (Privacy)
 
 EduBoost supports the POPIA operational baseline for learner and guardian data:
 

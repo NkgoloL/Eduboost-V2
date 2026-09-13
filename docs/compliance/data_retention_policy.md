@@ -13,7 +13,7 @@ evidence_command: "make docs-housekeeping-stage4-check"
 code_anchors: [docs/compliance/README.md]
 ---
 
-# Data retention policy
+# Compliance Data Retention Policy
 
 | Data category | Retention | Deletion/anonymisation trigger | Notes |
 |---|---:|---|---|

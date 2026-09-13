@@ -1,4 +1,4 @@
-# Subprocessor register
+# Subprocessor Register (Repository)
 
 | Subprocessor | Purpose | Data exposure | Status |
 |---|---|---|---|
