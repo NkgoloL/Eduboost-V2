@@ -1,3 +1,18 @@
+---
+title: Project Assistance Status
+status: active
+owner: repository-governance
+reviewers: [engineering, release-management, platform]
+audience: developer
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: make project-assistance-status
+code_anchors: [TODO.md, docs/current_state.md, docs/project_status.md]
+---
+
 # Project Assistance Status
 
 This report implements the five ways Codex assists this project. It is a
@@ -49,7 +64,7 @@ Commands:
 - `make refresh-current-state`
 - `make project-assistance-status`
 
-Done when: Open blockers are reflected in TODO.md and no release-ready claim exceeds the evidence.
+Done when: open blockers are reflected in TODO.md and no claim exceeds the evidence in scope.
 
 ## 2. Verification and repair
 

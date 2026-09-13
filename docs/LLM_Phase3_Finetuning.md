@@ -1,3 +1,18 @@
+---
+title: LLM Phase 3 Fine-Tuning Runbook
+status: active
+owner: ai-safety
+reviewers: [engineering, ai-safety, platform]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: python3 scripts/train_qlora.py --training-mode cpu-lora --dataset data/caps/training_data_with_guardrails.jsonl --dry-run
+code_anchors: [scripts/train_qlora.py, data/caps/]
+---
+
 # LLM Phase 3 Fine-Tuning Runbook
 
 This runbook covers the current CPU-friendly Phase 3 workflow for training the EduBoost CAPS LoRA adapter while GPU provisioning is blocked. The GPU QLoRA path remains available through `--training-mode qlora` once CUDA infrastructure is ready.

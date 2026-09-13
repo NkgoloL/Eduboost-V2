@@ -1,3 +1,17 @@
+---
+title: "EduBoost V2 Curriculum, CAPS Knowledge Graph, and Runtime KG"
+status: "active"
+owner: "architecture"
+reviewers: ['architecture', 'engineering']
+audience: "developer"
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # EduBoost V2 Curriculum, CAPS Knowledge Graph, and Runtime KG
 
 Maps authoritative CAPS acquisition, extraction, graph construction, target and learner graphs, gap planning, grounded generation, persistence, and route projections.

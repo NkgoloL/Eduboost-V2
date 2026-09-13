@@ -1,3 +1,17 @@
+---
+title: "Release — EduBoost SA V2 — Comparative Technical Audit Report"
+status: "active"
+owner: "release"
+reviewers: ['release', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # EduBoost SA V2 — Comparative Technical Audit Report
 
 **Report Date:** 4 May 2026  
@@ -11,7 +25,7 @@
 
 ## Executive Summary
 
-The existing report presents EduBoost SA V2 as a largely complete, production-ready modular monolith with a clean architectural transition, closed POPIA compliance gaps, and a hardened security posture. Direct inspection of the publicly accessible NkgoloL/Eduboost-V2 repository tells a materially different story across several critical dimensions.
+The existing report presents EduBoost SA V2 as a largely complete, production-candidate modular monolith with a clean architectural transition, closed POPIA compliance gaps, and a hardened security posture. Direct inspection of the publicly accessible NkgoloL/Eduboost-V2 repository tells a materially different story across several critical dimensions.
 
 **The five most significant divergences are:**
 

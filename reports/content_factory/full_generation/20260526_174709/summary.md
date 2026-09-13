@@ -1,4 +1,4 @@
-# Full Generation Run Report
+# Full Generation Run Report (2026-05-26 17:47)
 
 **Run ID:** 336bd5da-3d1f-4100-9482-18450a389db4
 **Scope:** all_scopes

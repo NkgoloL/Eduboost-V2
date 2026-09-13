@@ -1,3 +1,18 @@
+---
+title: Agent Instructions V2
+status: active
+owner: repository-governance
+reviewers: [engineering, platform]
+audience: contributor
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 180
+evidence_command: make repo-governance-check
+code_anchors: [app/, tests/, docs/]
+---
+
 # EduBoost V2 Agent Instructions — "The High-Assurance Mandate"
 
 ## 1. Core Mission

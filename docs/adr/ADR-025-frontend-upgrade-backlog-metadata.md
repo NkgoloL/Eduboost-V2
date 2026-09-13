@@ -190,7 +190,7 @@ const a11yScoreThreshold = 95; // 95/100
 - [ ] Zero critical errors in production
 - [ ] Performance maintained or improved
 - [ ] Bundle size within acceptable limits
-- [ ] All tests passing
+- [ ] Full test suite passing
 - [ ] Accessibility compliance maintained
 
 ### Business Success

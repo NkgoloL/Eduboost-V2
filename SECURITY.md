@@ -1,3 +1,18 @@
+---
+title: Security Policy
+status: active
+owner: security
+reviewers: [engineering, security, privacy]
+audience: contributor
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: make security-check
+code_anchors: [app/core/security.py, .github/workflows/]
+---
+
 # Security Policy
 
 EduBoost SA handles learner and guardian data. This document is meant to track

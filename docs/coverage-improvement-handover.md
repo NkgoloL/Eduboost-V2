@@ -1,3 +1,17 @@
+---
+title: "Code Coverage Improvement Handover"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Code Coverage Improvement Handover
 
 **Objective**: Increase overall code coverage from ~65% to 70%, with 90% target for `app/core/` directory (Task T132).

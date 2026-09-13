@@ -1,3 +1,17 @@
+---
+title: "Roadmap — EduBoost Full-Lifecycle Delivery and Beta Readiness Plan"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'product']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # EduBoost Full-Lifecycle Delivery and Beta Readiness Plan
 
 **Document owner:** NkgoloL
@@ -1579,7 +1593,7 @@ The meeting may be scheduled only when all mandatory entry criteria are met.
 - [ ] Every Phase 0–12 package contains the full approved control set: execution plan, implementation report, evidence index/pack, and independent phase audit report.
 - [ ] The phase-status register identifies the execution plan, implementation report, evidence index, audit report/verdict, canonical merge commit, environment, owner, custodian, auditor, and closure approval for every completed phase.
 - [ ] No completed phase has an open implementation PR, unmerged phase branch, failed mandatory criterion, missing evidence, failed/pending audit, unresolved blocking audit finding, or unapproved deferred scope.
-- [ ] The separate audit remediation roadmap has reached its approved release-ready state.
+- [ ] The separate audit remediation roadmap has reached its approved release state.
 - [ ] Its decision record and evidence package reference the same intended release source state.
 
 #### Engineering

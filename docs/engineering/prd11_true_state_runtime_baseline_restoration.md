@@ -1,3 +1,17 @@
+---
+title: "Engineering — PRD-11.0R — True-State Runtime Baseline Restoration and Evidence Hardening"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-11.0R — True-State Runtime Baseline Restoration and Evidence Hardening
 
 This corrective gate exists because the 2026-07-10 true-state report found that roadmap/evidence records had advanced faster than independently verified runtime proof.

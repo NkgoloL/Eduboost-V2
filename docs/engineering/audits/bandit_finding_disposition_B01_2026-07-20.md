@@ -1,3 +1,17 @@
+---
+title: "Audits — Bandit Finding Disposition — B01-TSR-2026"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Bandit Finding Disposition — B01-TSR-2026
 ## Generated: 2026-07-20
 

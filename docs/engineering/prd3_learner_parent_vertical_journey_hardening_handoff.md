@@ -1,3 +1,17 @@
+---
+title: "Engineering — PRD-3.5-3.9 Learner/Parent Vertical Journey Hardening and Handoff"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-3.5-3.9 Learner/Parent Vertical Journey Hardening and Handoff
 
 PRD-3.5-3.9 closes the learner and parent vertical journey hardening stream. It adds a final hardening helper over the PRD-3.0-3.4 journey snapshot and exposes that hardening payload through the vertical journey route.

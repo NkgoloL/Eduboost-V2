@@ -1,3 +1,17 @@
+---
+title: "Engineering — PRD-2.4-2.6 Runtime KG Route Projection Behaviour"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-2.4-2.6 Runtime KG Route Projection Behaviour
 
 This slice integrates the runtime KG foundation into learner-facing backend paths while preserving rollback to legacy behaviour.

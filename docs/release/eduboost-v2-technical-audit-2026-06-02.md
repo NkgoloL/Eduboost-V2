@@ -1,3 +1,17 @@
+---
+title: "Release — EduBoost V2 Technical Audit"
+status: "active"
+owner: "release"
+reviewers: ['release', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # EduBoost V2 Technical Audit
 
 Date: 2026-06-02  
@@ -6,7 +20,7 @@ Audit stance: implementation-first. Documentation was treated as context only af
 
 ## Executive Assessment
 
-The project is a substantial FastAPI plus Next.js codebase with serious backend architecture work, broad test inventory, POPIA/consent concepts, observability assets, and a verified Grade 4 Mathematics launch-content slice. It is not currently in a clean production-ready state.
+The project is a substantial FastAPI plus Next.js codebase with serious backend architecture work, broad test inventory, POPIA/consent concepts, observability assets, and a verified Grade 4 Mathematics launch-content slice. It is not currently in a clean production release state.
 
 The backend can import and a small smoke subset passes, but full static health is poor: Ruff reports 861 findings, `compileall` finds a real syntax error in a maintenance script, the stored backend coverage artifact reports only 40.9 percent line coverage, and the Python runtime story is inconsistent.
 
@@ -286,7 +300,7 @@ Backups:
 
 ## Documentation Reality
 
-The repository has extensive documentation and audit/evidence files, but the implementation does not fully match a release-ready story:
+The repository has extensive documentation and audit/evidence files, but the implementation does not fully match an approved release story:
 
 - Documentation says V2 and production-readiness work exists, and much of the scaffolding is real.
 - Fresh checks show current frontend test/type health is broken.

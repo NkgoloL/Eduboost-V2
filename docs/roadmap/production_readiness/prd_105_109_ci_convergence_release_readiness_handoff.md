@@ -1,3 +1,17 @@
+---
+title: "PRD-1.5-1.9 — CI Convergence, Release Readiness, Final Evidence, and PRD-2 Handoff"
+status: "active"
+owner: "product"
+reviewers: ['product', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-1.5-1.9 — CI Convergence, Release Readiness, Final Evidence, and PRD-2 Handoff
 
 **Merged slices:** PRD-1.5, PRD-1.6, PRD-1.7, PRD-1.8, and PRD-1.9.

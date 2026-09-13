@@ -1,3 +1,17 @@
+---
+title: "Engineering — PRD-7.5-7.9 Observability/SRE Final Assurance and Handoff"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-7.5-7.9 Observability/SRE Final Assurance and Handoff
 
 This record closes the PRD-7 observability, SRE, and incident-readiness stream.

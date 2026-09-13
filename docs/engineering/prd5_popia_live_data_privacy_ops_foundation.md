@@ -1,3 +1,17 @@
+---
+title: "Engineering — PRD-5.0-5.4 — POPIA Live-Data Privacy Operations Foundation"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-5.0-5.4 — POPIA Live-Data Privacy Operations Foundation
 
 This slice starts PRD-5 by making live-data privacy operations visible and testable inside the application.

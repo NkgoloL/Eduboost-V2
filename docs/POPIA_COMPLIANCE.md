@@ -1,3 +1,18 @@
+---
+title: POPIA Compliance Guide
+status: active
+owner: privacy
+reviewers: [legal, privacy, engineering, product]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: make popia-consent-closure-check
+code_anchors: [docs/security, docs/POPIA_COMPLIANCE.md]
+---
+
 # POPIA Compliance Guide
 
 **Protection of Personal Information Act (POPIA), No. 4 of 2013 — South Africa**

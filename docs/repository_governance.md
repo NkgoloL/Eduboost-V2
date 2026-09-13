@@ -1,3 +1,18 @@
+---
+title: Repository Governance
+status: active
+owner: repository-governance
+reviewers: [engineering, security, privacy, release-management]
+audience: developer
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: make verify-repo-state
+code_anchors: [Makefile, .github/PULL_REQUEST_TEMPLATE.md]
+---
+
 # Repository Governance
 
 This document defines the repository operating model for EduBoost V2. It is intentionally conservative because the product handles learner data, AI-generated educational content, curriculum alignment, and production infrastructure.
@@ -34,7 +49,7 @@ Promotion of a mirror to canonical upstream requires explicit owner approval, up
 
 | Branch | Purpose | Rules |
 |---|---|---|
-| `master` / `main` | Production-ready branch | PR-only, required checks, no force-push, no direct commits |
+| `master` / `main` | Production release branch | PR-only, required checks, no force-push, no direct commits |
 | `develop` | Integration branch when used | PR-only, required checks for merge readiness |
 | `feature/*` | Feature development | Short-lived, issue-linked, deleted after merge |
 | `hotfix/*` | Urgent production fixes | Must include incident link and rollback note |

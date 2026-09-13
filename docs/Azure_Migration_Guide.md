@@ -1,3 +1,18 @@
+---
+title: Azure Migration Guide
+status: active
+owner: platform-operations
+reviewers: [engineering, platform]
+audience: operator
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 180
+evidence_command: make runtime-check
+code_anchors: [bicep/azure_dev_box.bicep, docker-compose.yml]
+---
+
 # EduBoost SA — Azure Migration Guide (Dev/Test)
 
 This guide outlines the process of moving your development testing environment from WSL to an Azure VM to alleviate local resource constraints.

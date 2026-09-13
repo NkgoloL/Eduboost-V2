@@ -1,4 +1,18 @@
-# Subprocessor register
+---
+title: "Subprocessor Register (Repository)"
+status: "active"
+owner: "compliance"
+reviewers: ['compliance', 'legal', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
+# Subprocessor Register (Repository)
 
 | Subprocessor | Purpose | Data exposure | Status |
 |---|---|---|---|

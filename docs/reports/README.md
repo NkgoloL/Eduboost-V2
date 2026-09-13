@@ -1,3 +1,17 @@
+---
+title: "Reports Directory (Readme)"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Reports Directory
 
 This directory contains **historical reports** and review artifacts. These files may contain stale findings, pre-closure roadmap status, or old implementation-order recommendations.

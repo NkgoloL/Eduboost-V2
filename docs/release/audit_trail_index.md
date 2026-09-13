@@ -1,4 +1,18 @@
-# Release Audit Trail Index
+---
+title: "Release Audit Trail Index (Historical) (Audit Trail Index)"
+status: "active"
+owner: "release"
+reviewers: ['release', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
+# Release Audit Trail Index (Historical)
 
 Status: pending external approvals and runtime execution
 

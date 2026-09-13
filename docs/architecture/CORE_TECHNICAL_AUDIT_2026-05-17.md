@@ -24,7 +24,7 @@ Auditor stance: lead-developer readiness review, with priority given to runtime 
 
 EduBoost V2 has the right strategic direction: a FastAPI modular monolith, async SQLAlchemy persistence, Next.js frontend, POPIA-first consent flows, audit logging, Redis-backed runtime support, and domain modules for diagnostics, lessons, progress, practice, consent, and auth. The repository also contains substantial test and release-evidence scaffolding.
 
-However, the implementation is currently in a migration-heavy state. The active V2 runtime cannot be reliably considered production-ready until several core issues are corrected:
+However, the implementation is currently in a migration-heavy state. The active V2 runtime cannot be reliably considered ready for production release until several core issues are corrected:
 
 - The V2 app import path is currently broken by `app/api_v2_routers/auth.py`, which references undefined names in route signatures and route bodies.
 - Auth flows are incomplete or split between divergent service implementations.

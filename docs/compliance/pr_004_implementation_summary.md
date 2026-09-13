@@ -1,5 +1,5 @@
 ---
-title: "PR-004 POPIA consent/data-rights/audit implementation summary"
+title: "PR-004 POPIA consent/data-rights/audit compliance implementation summary"
 status: active
 owner: privacy
 reviewers: [privacy, security, release-management]
@@ -12,7 +12,6 @@ review_interval_days: 60
 evidence_command: "make docs-housekeeping-stage4-check"
 code_anchors: [docs/compliance/README.md]
 ---
-
 # PR-004 POPIA consent/data-rights/audit implementation summary
 
 ## Scope

@@ -1,3 +1,17 @@
+---
+title: "EduBoost V2 Documentation, ADRs, Repository Governance, and Maintenance"
+status: "active"
+owner: "architecture"
+reviewers: ['architecture', 'engineering']
+audience: "developer"
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # EduBoost V2 Documentation, ADRs, Repository Governance, and Maintenance
 
 Maps architecture authority, ADR lifecycle, documentation indexes, codemap governance, generated artefacts, housekeeping, repository hygiene, and contributor workflows.

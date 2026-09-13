@@ -1,3 +1,17 @@
+---
+title: "Engineering — PRD-7.0–7.4 Observability, SRE, and Incident Readiness Foundation"
+status: "active"
+owner: "operations"
+reviewers: ['operations', 'sre', 'engineering']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-7.0–7.4 Observability, SRE, and Incident Readiness Foundation
 
 This record starts PRD-7 after PRD-6 security assurance closure. It creates an

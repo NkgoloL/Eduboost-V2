@@ -1,3 +1,17 @@
+---
+title: "Backlog — PR-CF-004 Registry-Backed Coverage"
+status: "active"
+owner: "product"
+reviewers: ['product', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PR-CF-004 Registry-Backed Coverage
 
 Status: implemented and locally tested on branch `pr-cf-004-registry-backed-coverage`; CI and staging evidence are not yet captured.

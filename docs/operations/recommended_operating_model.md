@@ -1,3 +1,17 @@
+---
+title: "Operations — Recommended Operating Model"
+status: "active"
+owner: "operations"
+reviewers: ['operations', 'sre', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Recommended Operating Model
 
 ## Purpose
@@ -6,7 +20,7 @@ This operating model turns the repository governance rules into the day-to-day
 workflow for EduBoost V2. It applies until the repository owner replaces it with
 a signed release-management decision.
 
-This is an execution contract. It does not make the project release-ready by
+This is an execution contract. It does not make the project ready for release review by
 itself, and it does not replace the current state, North Star TODO, CI evidence,
 staging evidence, or release-owner go/no-go decision.
 
@@ -24,9 +38,9 @@ Use these sources in order when planning or reporting project state:
 
 Operating rules:
 
-- Do not claim release-ready, public-beta-ready, or production-ready status
-  unless `docs/current_state.md` is green and the release evidence bundle is
-  current.
+- Do not claim release authorization, public-beta authorization, or production
+  authorization unless `docs/current_state.md` is green and the release evidence
+  bundle is current.
 - Do not mark backlog items done unless the referenced evidence artifact can be
   opened and read.
 - Treat generated docs as generated. Refresh them through their scripts or Make

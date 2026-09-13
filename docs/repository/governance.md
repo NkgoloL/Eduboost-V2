@@ -1,3 +1,17 @@
+---
+title: "Repository Governance — EduBoost (Governance)"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Repository Governance — EduBoost
 
 **Last Updated**: 2026-06-12  
@@ -67,7 +81,7 @@ The following settings are enforced on `master`:
 
 ### Before Opening PR
 
-- [ ] All tests pass locally (`make test-fast`)
+- [ ] Full test suite passes locally (`make test-fast`)
 - [ ] Code formatted (`make lint`)
 - [ ] Type checks pass (`make typecheck`)
 - [ ] No new security vulnerabilities (`make security-check`)

@@ -1,3 +1,17 @@
+---
+title: "Engineering — PRD-4.0-4.4 — Content, CAPS, and Educational Quality Readiness Foundation"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-4.0-4.4 — Content, CAPS, and Educational Quality Readiness Foundation
 
 This slice starts PRD-4 with a runtime-visible readiness contract for Grade 4 Mathematics content quality.

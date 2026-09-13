@@ -1,3 +1,17 @@
+---
+title: "Technical Audit Remediation — Slice 01: OpenAPI Route Contract"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Technical Audit Remediation — Slice 01: OpenAPI Route Contract
 
 **Status:** Implementation package ready  
@@ -44,7 +58,7 @@ The frontend client must use canonical POPIA routes and must not reintroduce sta
 
 ## Knowledge-graph future constraint
 
-The KG pivot remains a future architectural north star. This slice preserves that direction by keeping route contracts deterministic and provenance-friendly, while explicitly avoiding runtime KG implementation until the audit remediation stream has a green baseline.
+The KG pivot remains a future architectural north star. This slice preserves that direction by keeping route contracts deterministic and provenance-friendly, while explicitly avoiding runtime KG implementation until the audit remediation stream has a verified baseline.
 
 ## Evidence
 

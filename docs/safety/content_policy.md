@@ -1,3 +1,17 @@
+---
+title: "Content Safety Policy (Content Policy)"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Content Safety Policy
 
 **Owner:** Safety / Product / Engineering
@@ -120,7 +134,7 @@ When either guard blocks content, the response must be:
 
 ## 4. Testing requirements
 
-Before the content filter can be considered production-ready, the following
+Before the content filter can be considered ready for production release, the following
 test cases must pass:
 
 | # | Test case | Expected result |

@@ -1,4 +1,4 @@
-# RR-001 — Atlas Phase Status Reconciliation
+# RR-001 — Atlas Phase Status Reconciliation Raw Snapshot
 
 **Status:** authority harness installed / evidence pending  
 **RR ID:** `RR-001`  

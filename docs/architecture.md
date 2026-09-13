@@ -1,4 +1,19 @@
-# Architecture
+---
+title: Architecture
+status: active
+owner: architecture
+reviewers: [engineering, platform, security]
+audience: developer
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: make architecture-gates
+code_anchors: [app/, docs/architecture/]
+---
+
+# Active Architecture Overview
 
 ## Current state
 

@@ -1,4 +1,4 @@
-# Runtime Integration PR Template
+# Runtime Integration PR Template (Archived 2026-06-22)
 
 ## Scope
 

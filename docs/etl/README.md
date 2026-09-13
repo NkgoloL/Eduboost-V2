@@ -1,3 +1,17 @@
+---
+title: "Eduboost ETL MCP Server README (Readme)"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Eduboost ETL MCP Server README
 
 This document explains how the Eduboost ETL MCP server works, how to start it, how to verify that it is alive, and how to use it from an MCP client or from local development tooling.

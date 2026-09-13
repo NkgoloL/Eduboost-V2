@@ -1,3 +1,18 @@
+---
+title: EduBoost V2 End-to-End System Startup Report
+status: historical
+owner: platform-operations
+reviewers: [engineering, platform]
+audience: operator
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 180
+evidence_command: make runtime-check
+code_anchors: [docker-compose.yml, app/api_v2.py]
+---
+
 # EduBoost V2 End-to-End System - Startup Report
 
 **Generated:** 2026-06-05 20:30 UTC  
@@ -361,11 +376,11 @@ psql -h 127.0.0.1 -p 54322 -U postgres
 
 ## References
 
-- **Architecture**: [docs/architecture.md](docs/architecture.md)
+- **Architecture**: [docs/architecture.md](/docs/architecture.md)
 - **CAPS Plan**: [../caps/caps_source_acquisition_plan_v2.md](../caps/caps_source_acquisition_plan_v2.md)
-- **Data Generator**: [../todos/data_generator_todo.md](../todos/data_generator_todo.md)
+- **Data Generator**: [../todos/data_generator_todo.md](/docs/archive/roadmaps-or-todos/20260622T193052Z/todos/data_generator_todo.md)
 - **Roadmap**: [../roadmap/roadmap.md](../roadmap/roadmap.md)
-- **TODO**: [../todos/todo.md](../todos/todo.md)
+- **TODO**: [../todos/todo.md](/TODO.md)
 - **Startup Guide**: [SYSTEM_STARTUP_GUIDE.md](SYSTEM_STARTUP_GUIDE.md)
 
 ---

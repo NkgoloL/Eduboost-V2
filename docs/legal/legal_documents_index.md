@@ -1,3 +1,17 @@
+---
+title: "Legal document index (Legal Documents Index)"
+status: "active"
+owner: "compliance"
+reviewers: ['compliance', 'legal', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Legal document index
 
 This repository does not contain final legal advice. The following documents must be drafted, reviewed, versioned, and accepted before public beta.

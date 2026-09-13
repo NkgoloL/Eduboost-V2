@@ -1,3 +1,17 @@
+---
+title: "Controlled Beta Traffic Control Plan (Controlled Beta Traffic Control Plan)"
+status: "active"
+owner: "operations"
+reviewers: ['operations', 'sre', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Controlled Beta Traffic Control Plan
 
 This plan does not authorise controlled beta launch, deployment, or live learner

@@ -1,5 +1,5 @@
 ---
-title: "RR-018 Trustworthy Beta Quality Boundary"
+title: "RR-018 Trustworthy Beta Quality Boundary (Template)"
 status: active
 owner: product-quality
 audience: developer
@@ -7,7 +7,6 @@ source_of_truth: false
 last_reviewed: 2026-07-05
 review_interval_days: 60
 ---
-
 # RR-018 Trustworthy Beta Quality Boundary
 
 Replace this template with final evidence before RR-018 capture.

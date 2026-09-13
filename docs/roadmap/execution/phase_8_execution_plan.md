@@ -1,3 +1,17 @@
+---
+title: "Phase 8 Execution Plan — Privacy and Authorization Completion (Phase 8 Execution Plan)"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'product']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Phase 8 Execution Plan — Privacy and Authorization Completion
 
 **Date**: 2026-06-12
@@ -339,7 +353,7 @@ The work splits into three tracks that can proceed partly in parallel:
 ### Track A (Authorization)
 - [ ] Auth abuse-path tests pass: lockout, cooldown, security alerts
 - [ ] `kid` rotation tests pass: CURRENT, PREVIOUS, unknown
-- [ ] Emergency revoke-all tests pass: invalidation, new-token, idempotency
+- [ ] Emergency revoke-all test suite passes: invalidation, new-token, idempotency
 - [ ] Cookie policy tests pass: HttpOnly, Secure, SameSite, Path, JS-inaccessibility
 - [ ] Frontend token-storage audit committed, no violations found or all fixed
 - [ ] Route policy matrix generated and CI-staleness-checked

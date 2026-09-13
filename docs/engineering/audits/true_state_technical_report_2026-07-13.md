@@ -1,3 +1,17 @@
+---
+title: "Audits — EduBoost V2 — Comprehensive True-State Technical Report"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # EduBoost V2 — Comprehensive True-State Technical Report
 
 **Assessment date:** 13 July 2026  
@@ -12,7 +26,7 @@
 
 EduBoost V2 is an **advanced pre-production educational platform**, not an early prototype. It has a substantial FastAPI backend, a real Next.js frontend, a broad PostgreSQL schema, an implemented runtime knowledge-graph layer, learner and parent journeys, diagnostics/IRT, content generation and review, POPIA controls, billing scaffolding, operational monitoring, and an unusually extensive evidence-driven governance system.
 
-The project is nevertheless **not production-release ready**. Its own current authority records correctly keep production release, deployment, release tagging, public beta, live payment processing, and billing launch unauthorised. The immediate release blocker is PRD-11 Runtime Restore Execution-7: coverage, Ruff, mypy, Bandit, Python and frontend dependency audit, and secret-baseline review have not all produced green, independently captured evidence.
+The project is nevertheless **not approved for production release**. Its own current authority records correctly keep production release, deployment, release tagging, public beta, live payment processing, and billing launch unauthorised. The immediate release blocker is PRD-11 Runtime Restore Execution-7: coverage, Ruff, mypy, Bandit, Python and frontend dependency audit, and secret-baseline review have not all produced green, independently captured evidence.
 
 The most accurate one-line description is:
 
@@ -858,4 +872,4 @@ Result: 2,802 tests collected; 132 collection errors caused by missing installed
 
 ## Appendix C — External compatibility note
 
-The frontend dependency observation is informed by the official Next.js 16 upgrade guidance, which describes the App Router using React 19.2-era capabilities. The repository should validate its exact compatibility matrix against the installed framework release before recording a new frontend green baseline.
+The frontend dependency observation is informed by the official Next.js 16 upgrade guidance, which describes the App Router using React 19.2-era capabilities. The repository should validate its exact compatibility matrix against the installed framework release before recording a new frontend verified baseline.

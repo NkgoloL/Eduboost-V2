@@ -1,3 +1,17 @@
+---
+title: "Roadmap — Known Issues and Follow-up Remediation"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'product']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Known Issues and Follow-up Remediation
 
 This file tracks identified issues that are not prerequisites for the current

@@ -1,3 +1,17 @@
+---
+title: "PRD-0 Expanded Post-Closure Current-State Authority Refresh"
+status: "active"
+owner: "product"
+reviewers: ['product', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-0 Expanded Post-Closure Current-State Authority Refresh
 
 PRD-0.1 through PRD-0.10 are tracked as the post-closure cleanup sequence for the production-readiness stream.

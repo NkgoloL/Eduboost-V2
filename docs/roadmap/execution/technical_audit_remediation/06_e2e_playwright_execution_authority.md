@@ -1,3 +1,17 @@
+---
+title: "TA Phase 06 — E2E / Playwright Execution Authority"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # TA Phase 06 — E2E / Playwright Execution Authority
 
 **Status:** Implementation ready  

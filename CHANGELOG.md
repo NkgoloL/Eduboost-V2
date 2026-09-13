@@ -1,3 +1,18 @@
+---
+title: Changelog
+status: active
+owner: repository-governance
+reviewers: [engineering, release-management]
+audience: developer
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: make changelog-check
+code_anchors: [README.md, docs/project_status.md]
+---
+
 # Changelog
 
 All notable changes to EduBoost SA are documented in this file.

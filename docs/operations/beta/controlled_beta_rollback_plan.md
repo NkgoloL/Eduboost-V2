@@ -1,3 +1,17 @@
+---
+title: "Phase 18 Controlled Beta Rollback Plan (Controlled Beta Rollback Plan)"
+status: "active"
+owner: "operations"
+reviewers: ['operations', 'sre', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Phase 18 Controlled Beta Rollback Plan
 
 This controlled beta rollback plan documents governance readiness and does not authorise production release, deployment, controlled beta launch activation, live learner traffic, learner data migration, or runtime KG implementation.

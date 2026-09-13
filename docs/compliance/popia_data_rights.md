@@ -13,7 +13,7 @@ evidence_command: "make docs-housekeeping-stage4-check"
 code_anchors: [docs/compliance/README.md]
 ---
 
-# POPIA data-subject-rights workflow
+# POPIA Data-Subject-Rights Workflow (Compliance)
 
 EduBoost supports the POPIA operational baseline for learner and guardian data:
 

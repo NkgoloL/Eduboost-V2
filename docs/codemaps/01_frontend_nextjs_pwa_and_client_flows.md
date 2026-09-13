@@ -1,3 +1,17 @@
+---
+title: "EduBoost V2 Frontend, Next.js PWA, and Client Flows"
+status: "active"
+owner: "architecture"
+reviewers: ['architecture', 'engineering']
+audience: "developer"
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # EduBoost V2 Frontend, Next.js PWA, and Client Flows
 
 Maps App Router composition, authentication guards, API access, offline/PWA behaviour, and the learner, parent, and administrator user journeys.

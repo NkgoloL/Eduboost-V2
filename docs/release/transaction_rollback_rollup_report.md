@@ -1,3 +1,17 @@
+---
+title: "Release — Transaction Rollback Proof Rollup"
+status: "active"
+owner: "release"
+reviewers: ['release', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Transaction Rollback Proof Rollup
 
 Generated at: `2026-08-29T09:39:37Z`
@@ -22,4 +36,4 @@ Generated at: `2026-08-29T09:39:37Z`
 
 ## Interpretation
 
-TX-001 can be treated as complete only at isolated rollback-proof coverage level. It is not production-ready until route wiring, live database, and staging evidence are attached.
+TX-001 can be treated as complete only at isolated rollback-proof coverage level. It is not ready for production release until route wiring, live database, and staging evidence are attached.

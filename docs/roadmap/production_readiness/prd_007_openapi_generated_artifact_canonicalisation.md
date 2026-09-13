@@ -1,3 +1,17 @@
+---
+title: "PRD-0.7 — OpenAPI and Generated Artifact Canonicalisation"
+status: "active"
+owner: "product"
+reviewers: ['product', 'engineering']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-0.7 — OpenAPI and Generated Artifact Canonicalisation
 
 **Stream:** PRD Production Readiness  

@@ -1,3 +1,17 @@
+---
+title: "Release — Route Transaction Slice Rollup"
+status: "active"
+owner: "release"
+reviewers: ['release', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Route Transaction Slice Rollup
 
 Generated at: `2026-08-29T09:39:09Z`
@@ -14,7 +28,7 @@ Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
 
 ## Slice status
 
-| Slice | Domain | Local status | Live DB status | Selected routes | Local gaps | Live DB gaps | Release ready |
+| Slice | Domain | Local status | Live DB status | Selected routes | Local gaps | Live DB gaps | Ready for release review |
 |---|---|---|---|---:|---:|---:|---:|
 | `ROUTE-TX-AUTH-001` | `auth` | `route-auth-delegation-passing` | `external-blocked` | 2 | 0 | 1 | False |
 | `ROUTE-TX-POPIA-001` | `popia` | `route-popia-delegation-passing` | `external-blocked` | 5 | 0 | 1 | False |
@@ -22,9 +36,9 @@ Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
 
 ## Blockers
 
-- ROUTE-TX-AUTH-001: not release-ready
-- ROUTE-TX-POPIA-001: not release-ready
-- ROUTE-TX-DIAG-001: not release-ready
+- ROUTE-TX-AUTH-001: not ready for release review
+- ROUTE-TX-POPIA-001: not ready for release review
+- ROUTE-TX-DIAG-001: not ready for release review
 
 ## No false-closure rules
 

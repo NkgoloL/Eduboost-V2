@@ -1,3 +1,17 @@
+---
+title: "Backlog — PR-CF-005 Content Factory Control Plane"
+status: "active"
+owner: "product"
+reviewers: ['product', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PR-CF-005 Content Factory Control Plane
 
 Status: implemented locally on `pr-cf-005-content-factory-control-plane`; CI, staging migration, and production promotion proof remain pending.

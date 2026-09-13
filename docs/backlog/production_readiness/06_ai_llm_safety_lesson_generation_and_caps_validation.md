@@ -1,3 +1,17 @@
+---
+title: "6. AI, LLM safety, lesson generation, and CAPS validation"
+status: "active"
+owner: "product"
+reviewers: ['product', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # 6. AI, LLM safety, lesson generation, and CAPS validation
 
 ## 6.1 LLM gateway

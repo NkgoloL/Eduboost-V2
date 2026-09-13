@@ -1,3 +1,17 @@
+---
+title: "17. Documentation, ADRs, and claim discipline"
+status: "active"
+owner: "product"
+reviewers: ['product', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # 17. Documentation, ADRs, and claim discipline
 
 ## 17.1 Required production docs
@@ -43,7 +57,7 @@
 - [verify] `P0` Remove or correct “V1 fully deleted” if legacy shims/archive remain.
 - [verify] `P0` Remove or correct “no microservices” if inference sidecar remains.
 - [verify] `P0` Remove or correct “ACA target” vs Kubernetes deployment mismatch.
-- [verify] `P0` Remove or correct “production-ready” unless all release gates pass.
+- [verify] `P0` Remove or correct ungrounded production release claims unless all release gates pass.
 - [verify] `P0` Avoid claiming full CAPS coverage until validated.
 - [verify] `P0` Avoid claiming full POPIA compliance until tests/legal docs pass.
 - [verify] `P0` Label claims as `implemented`.

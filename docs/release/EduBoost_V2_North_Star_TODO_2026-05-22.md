@@ -1,3 +1,17 @@
+---
+title: "Release — EduBoost V2 North Star TODO - 2026-05-22"
+status: "active"
+owner: "release"
+reviewers: ['release', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # EduBoost V2 North Star TODO - 2026-05-22
 
 Audit snapshot for branch `codex/production_readiness` at commit `db14a6821eb14de532434360265a7370119b04ac`.
@@ -71,7 +85,7 @@ The project is still not beta-ready. The remaining work is less about one broken
 - [ ] Add mobile and accessibility proof: responsive viewport checks, keyboard navigation, landmark/label checks, contrast review, and screen-reader state review.
 - [ ] Prove frontend environment safety. Validate no server secrets are exposed through `NEXT_PUBLIC_*`, and prove production disables `NEXT_PUBLIC_ENABLE_DEV_SESSION`.
 
-### P1 - Production-Ready Engineering
+### P1 - Production Engineering & Operational Hardening
 
 - [ ] Close transaction proof items: `TX-001`, `TX-POPIA-001`, `TX-AUTH-001`, `TX-DIAG-001`, `TX-LESSON-001`, `TX-ROUTE-001`, and related route transaction rollups.
 - [ ] Close live route rollback evidence for auth, POPIA, diagnostics, and lesson routes.

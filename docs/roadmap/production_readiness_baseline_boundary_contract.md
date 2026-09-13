@@ -1,3 +1,17 @@
+---
+title: "Roadmap — Production Readiness Baseline Boundary Contract"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'product']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Production Readiness Baseline Boundary Contract
 
 **Date**: 2026-06-12  
@@ -8,7 +22,7 @@
 
 ## Introduction
 
-This contract defines the boundaries of the production readiness baseline achieved in Phase 10. It serves as a reference for what functionality is considered "production-ready" versus what requires further work.
+This contract defines the boundaries of the production readiness baseline achieved in Phase 10. It serves as a reference for what functionality is considered "ready for production release" versus what requires further work.
 
 ---
 

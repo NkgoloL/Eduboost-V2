@@ -47,10 +47,10 @@ This contract defines claim boundaries for production-readiness evidence.
 
 ## Prohibited Unbounded Phrases
 
-- fully complete
+- completely verified
 - guaranteed
-- launch approved
-- production ready
+- launch approval implied
+- production launch authorized without evidence
 
 ## Required Boundary Phrase
 

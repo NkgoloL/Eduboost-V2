@@ -156,7 +156,7 @@ Project architecture strictly forbids API routers from importing repository modu
 source_modules = app.api_v2_routers
 forbidden_modules = app.repositories
 ```
-**Circumvention:** In [app/api_v2_routers/diagnostics.py](file:///home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/app/api_v2_routers/diagnostics.py) (line 19), the router imports `app.api_v2_deps.diagnostic_repositories`. That helper uses `importlib.import_module()` to dynamically instantiate repository classes at runtime:
+**Circumvention:** In [app/api_v2_routers/diagnostics.py](/app/api_v2_routers/diagnostics.py) (line 19), the router imports `app.api_v2_deps.diagnostic_repositories`. That helper uses `importlib.import_module()` to dynamically instantiate repository classes at runtime:
 ```python
 _REPOSITORY_TARGETS = {
     "learner": ("app.repositories.repositories.LearnerRepository", ...),

@@ -1,4 +1,4 @@
-# Backend Runtime Wiring PR Template
+# Backend Runtime Wiring PR Template (Archived 2026-06-22)
 
 ## Scope
 

@@ -1,3 +1,17 @@
+---
+title: "Engineering — PRD-1 CI Release-Gate Convergence — Required Checks and Gate Baseline"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-1 CI Release-Gate Convergence — Required Checks and Gate Baseline
 
 This document is the compact engineering reference for the consolidated PRD-1.2-1.4 slice.

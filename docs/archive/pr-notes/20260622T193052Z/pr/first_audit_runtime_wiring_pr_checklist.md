@@ -1,4 +1,4 @@
-# First Audit Runtime Wiring PR Checklist
+# First Audit Runtime Wiring PR Checklist (Archived 2026-06-22)
 
 ## Scope
 

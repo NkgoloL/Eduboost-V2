@@ -1,3 +1,17 @@
+---
+title: "Runbook: Database Rollback"
+status: "active"
+owner: "operations"
+reviewers: ['operations', 'sre', 'engineering']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Runbook: Database Rollback
 
 > Severity: P0 | Owner: Platform Engineering | Last reviewed: 2026-04-29
