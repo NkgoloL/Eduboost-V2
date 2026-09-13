@@ -1,4 +1,4 @@
-# Architecture
+# Historical Architecture Context
 
 **Status:** Historical architecture context; canonical architecture is `../docs/architecture/README.md`.
 **Current state tracked in:** `../docs/current_state.md` and the active production-readiness register.

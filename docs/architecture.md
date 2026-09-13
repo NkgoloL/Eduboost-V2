@@ -13,7 +13,7 @@ evidence_command: make architecture-gates
 code_anchors: [app/, docs/architecture/]
 ---
 
-# Architecture
+# Active Architecture Overview
 
 ## Current state
 

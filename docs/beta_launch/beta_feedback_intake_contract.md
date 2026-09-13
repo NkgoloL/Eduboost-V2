@@ -1,4 +1,4 @@
-# Beta Feedback Intake Contract
+# Beta Launch Feedback Intake Contract
 
 ## Required Feedback Channels
 

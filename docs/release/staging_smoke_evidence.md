@@ -1,4 +1,4 @@
-# Staging Smoke Evidence Status
+# Staging Smoke Evidence Summary
 
 Generated at: `2026-08-29T09:39:17Z`
 Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
