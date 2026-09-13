@@ -285,3 +285,4 @@ For balance, and because it would have been easy to assume otherwise given Findi
 ## 8. Closing Note
 
 This report and the 10 September report together give two verified, three-days-apart data points on the same codebase — which is more informative than either alone, because it separates what changed from what someone merely wrote about. The pattern that emerges is specific rather than generic: real product and test code moved forward this week; the CI mechanisms that would make that progress independently verifiable did not move in step, and the additions made to CI in this window describe themselves as coverage-related without measuring coverage. That is a precise, fixable gap, not a broad indictment of the engineering work — and the recommendations in Section 7 are scoped accordingly.
+

@@ -330,3 +330,4 @@ This pattern — real, verifiable remediation on the issues that were directly t
 ## 7. Closing Note
 
 This report reflects a single, time-boxed, static-analysis pass against one archive snapshot. It is a complement to — not a replacement for — the team's own live-environment testing, and several findings here (particularly around test-gate scope and coverage) would benefit from being re-verified inside an environment where the full dependency stack and CI runners can actually be exercised end to end. Where this audit's scope allowed a finding to be checked with certainty (ORM collisions, migration graph, dead config files, dependency CVEs, workflow YAML content), it was checked directly rather than inferred; where it could not (behavioural correctness of erasure/export logic, the 879 baselined secrets, full runtime test execution), that limitation is stated explicitly above rather than implied away.
+
