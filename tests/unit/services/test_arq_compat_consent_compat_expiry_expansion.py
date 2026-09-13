@@ -201,14 +201,14 @@ class TestConsentExpiryLoop:
             nonlocal call_count
             call_count += 1
             if call_count >= 2:
-                raise StopAsyncIteration("stop loop for test")
+                raise asyncio.CancelledError("stop loop for test")
             return 5
 
         from app.services.consent_expiry_service import consent_expiry_loop
         import asyncio
 
-        # Run the loop but stop it after 2 iterations via exception
-        with pytest.raises(StopAsyncIteration):
+        # Run the loop but stop it after 2 iterations via CancelledError (inherits from BaseException in Python 3.8+)
+        with pytest.raises(asyncio.CancelledError):
             await consent_expiry_loop(interval_seconds=0, run_once=fake_run_once)
 
         assert call_count == 2
@@ -216,6 +216,7 @@ class TestConsentExpiryLoop:
     @pytest.mark.asyncio
     async def test_loop_handles_exception_in_run_once(self):
         """Test that consent_expiry_loop gracefully handles errors and continues."""
+        import asyncio
         call_count = 0
 
         async def fake_run_once_with_error() -> int:
@@ -223,11 +224,11 @@ class TestConsentExpiryLoop:
             call_count += 1
             if call_count == 1:
                 raise RuntimeError("Transient failure")
-            raise StopAsyncIteration("stop loop for test")
+            raise asyncio.CancelledError("stop loop for test")
 
         from app.services.consent_expiry_service import consent_expiry_loop
 
-        with pytest.raises(StopAsyncIteration):
+        with pytest.raises(asyncio.CancelledError):
             await consent_expiry_loop(interval_seconds=0, run_once=fake_run_once_with_error)
 
         # Both iterations executed (first errored, second stopped loop)

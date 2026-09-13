@@ -111,8 +111,16 @@ def evaluate(root: Path) -> dict[str, Any]:
 
     bundles = remediation.get("bundles")
     current_bundle = remediation.get("current_bundle")
+    all_bundles_verified = (
+        isinstance(bundles, list)
+        and bool(bundles)
+        and all(isinstance(bundle, dict) and bundle.get("status") == "verified" for bundle in bundles)
+    )
     if not isinstance(bundles, list) or not current_bundle:
         errors.append("true-state remediation register lacks explicit current bundle state")
+    elif current_bundle in ("completed", "closed", "verified"):
+        if not all_bundles_verified:
+            errors.append(f"true-state current_bundle is {current_bundle!r} but not all bundles are verified")
     elif not any(isinstance(bundle, dict) and bundle.get("id") == current_bundle for bundle in bundles):
         errors.append(f"true-state current_bundle {current_bundle!r} has no matching bundle entry")
 
@@ -122,11 +130,19 @@ def evaluate(root: Path) -> dict[str, Any]:
         errors.append(f"cannot read current-state summary: {exc}")
         current_state = ""
     active_match = re.search(r"Active implementation bundle:\s*([^\n]+)", current_state)
-    if active_match and current_bundle and not active_match.group(1).startswith(str(current_bundle)):
-        errors.append(
-            "current-state active bundle differs from remediation register: "
-            f"current_state={active_match.group(1).strip()!r}, register={current_bundle!r}"
-        )
+    if active_match and current_bundle:
+        active_val = active_match.group(1).strip()
+        if current_bundle in ("completed", "closed", "verified"):
+            if not any(token in active_val.lower() for token in ("completed", "closed", "verified", "b01-b07")):
+                errors.append(
+                    "current-state active bundle differs from remediation register: "
+                    f"current_state={active_val!r}, register={current_bundle!r}"
+                )
+        elif not active_val.startswith(str(current_bundle)):
+            errors.append(
+                "current-state active bundle differs from remediation register: "
+                f"current_state={active_val!r}, register={current_bundle!r}"
+            )
 
     return {
         "valid": not errors,

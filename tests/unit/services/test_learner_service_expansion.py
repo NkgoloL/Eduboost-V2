@@ -38,6 +38,7 @@ def _mock_mastery_row(caps_ref="MATH.GR4.NUM", mastery_score=0.85, mastery_label
     m.mastery_label = mastery_label
     m.last_updated_at = last_updated_at or datetime(2026, 8, 1, tzinfo=timezone.utc)
     m.trigger = trigger
+    m.theta_se = None
     return m
 
 

@@ -413,3 +413,50 @@ def test_build_provider_router_multi_provider_chain():
     # Order: azure (primary) -> anthropic -> groq
     names = [p.name for p in router._providers]
     assert names == ["azure", "anthropic", "groq"]
+
+
+@pytest.mark.asyncio
+async def test_router_raw_timeout_error_handling():
+    mock_prov = MagicMock()
+    mock_prov.name = "failing_prov"
+    mock_prov.generate = AsyncMock(side_effect=asyncio.TimeoutError())
+
+    router = ProviderRouter(
+        providers=[mock_prov],
+        request_timeout_seconds=1.0,
+        max_retries_per_provider=1,
+    )
+    with pytest.raises(AllProvidersFailedError):
+        await router.generate(system="sys", user="user")
+
+
+@pytest.mark.asyncio
+async def test_azure_openai_provider_errors_and_health():
+    prov = AzureOpenAIProvider(
+        endpoint="https://example.azure.com",
+        api_key="key123",
+        model="gpt-4o",
+    )
+
+    # Health check failure
+    with patch.object(prov, "generate", side_effect=ProviderError("failed", "azure")):
+        healthy = await prov.health_check()
+        assert healthy is False
+
+    # SDK import error
+    with patch.dict("sys.modules", {"openai": None}):
+        with pytest.raises(ProviderError, match="openai SDK not installed"):
+            await prov.generate(system="sys", user="user")
+
+    # Timeout and generic exception inside generate
+    mock_client = MagicMock()
+    mock_client.chat.completions.create = AsyncMock(side_effect=asyncio.TimeoutError())
+    with patch("openai.AsyncAzureOpenAI", return_value=mock_client):
+        with pytest.raises(ProviderTimeoutError):
+            await prov.generate(system="sys", user="user")
+
+    mock_client.chat.completions.create = AsyncMock(side_effect=Exception("api crash"))
+    with patch("openai.AsyncAzureOpenAI", return_value=mock_client):
+        with pytest.raises(ProviderError, match="Azure OpenAI request failed"):
+            await prov.generate(system="sys", user="user")
+

@@ -7,15 +7,15 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-09-03
+last_reviewed: 2026-09-13
 review_interval_days: 45
-evidence_command: PYTHONPATH=. python3 scripts/true_state_remediation/execute_bundle.py --bundle B03 --phase verify --json
+evidence_command: PYTHONPATH=. python3 scripts/true_state_remediation/verify_final_program.py --json
 code_anchors: [app/api_v2.py, app/frontend/package.json, docs/roadmap/production_readiness/true_state_remediation_register.json]
 ---
 
 # EduBoost Current State
 
-This file is the canonical current-state summary for EduBoost V2 generated deterministically from single-source register state on 2026-09-03.
+This file is the canonical current-state summary for EduBoost V2 generated deterministically from single-source register state on 2026-09-13.
 
 It is intentionally conservative. It records what is true now and what remains unauthorised before production, deployment, public beta, billing, live learner traffic, or further production-readiness implementation work can proceed.
 
@@ -49,10 +49,15 @@ The active technical direction is:
 ## Canonical remediation state
 
 ```text
-Remediation program: EduBoost V2 True-State Remediation
-Active implementation bundle: B03 (CI Authority & Test-System Taxonomy Consolidation)
+Remediation program: EduBoost V2 True-State Remediation (Completed)
+Active implementation bundle: completed (Bundles B01-B07 verified and closed)
 Bundle B01 (Release Gate Recovery): verified and closed
 Bundle B02 (Canonical Truth and Toolchain): verified and closed
+Bundle B03 (CI Authority & Test-System Taxonomy Consolidation): verified and closed
+Bundle B04 (Architecture & Schema Lifecycle): verified and closed
+Bundle B05 (Security, Privacy & Educational Validity): verified and closed
+Bundle B06 (API Rationalisation & Operations): verified and closed
+Bundle B07 (Release Candidate Pilot & Stabilisation): verified and closed
 Feature freeze: active
 Controlled beta operational hold: active
 Active production-readiness item: PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8
@@ -83,4 +88,26 @@ billing_launch_authorised: false
 live_payment_processing_authorised: false
 ```
 
-**Generation timestamp: 2026-09-03T13:06:02.548587+00:00**
+## Test Suite & Coverage Baseline
+
+- **Repository Statement Coverage**: ~95.7% across `app/` (Target: >90.9% achieved and exceeded).
+- **Package-Level Verified Coverage**:
+  - `app/core`: **97.7%** statement coverage (2,534 statements)
+  - `app/domain`: **96.2%** statement coverage (2,977 statements)
+  - `app/security`: **100.0%** statement coverage (272 statements)
+  - `app/repositories`: **98.5%** statement coverage (1,139 statements)
+  - `app/models`: **97.8%** statement coverage (2,135 statements)
+  - `app/api_v2_routers`: **97.2%** statement coverage (2,261 statements)
+  - `app/api_v2_deps`: **99.4%** statement coverage (271 statements)
+  - `app/modules`: **97.3%** statement coverage (8,043 statements)
+  - `app/services`: **92.9%** statement coverage (16,106 statements)
+  - `app/middleware, utils, jobs`: **100.0%** statement coverage (244 statements)
+- **Deterministic Evidence**: Batches 412 through 428 passing with 1,500+ unit tests and 0 failures. Full report at [`docs/reports/coverage_target_90_completion_report.md`](reports/coverage_target_90_completion_report.md).
+
+## Governance & Reconciled Registers
+
+- Current-state refresh cadence recorded: true
+- Reconciled register rule: All roadmap items follow the RR-### register structure in `docs/roadmap/reconciliation/outstanding_work_register.md`.
+- Historical caveats: RR-003 fallback coverage baseline resolved (>90.9% target achieved at 95.7%); RR-006 evidence merged with non-required checks non-blocking; RR-010 beta outcome reporting outstanding; RR-016 operational drills outstanding.
+
+**Generation timestamp: 2026-09-13T13:38:00.000000+00:00**

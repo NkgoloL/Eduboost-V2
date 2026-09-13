@@ -95,7 +95,9 @@ class TransactionalPOPIAConsentLifecycleService:
     async def _transition(self, *, action: str, methods: tuple[str, ...], **kwargs: Any) -> Any:
         async with _transaction_context(self.db):
             consent_record = await _call_flexible(self.consent_service, methods, **kwargs)
-            await self._audit(action=action, consent_record=consent_record, actor_id=kwargs.get("actor_id"), **kwargs)
+            audit_kwargs = dict(kwargs)
+            actor_id = audit_kwargs.pop("actor_id", None)
+            await self._audit(action=action, consent_record=consent_record, actor_id=actor_id, **audit_kwargs)
             return consent_record
 
     async def grant(self, **kwargs: Any) -> Any:

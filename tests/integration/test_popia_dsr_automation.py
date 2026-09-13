@@ -11,8 +11,8 @@ from sqlalchemy import select
 from app.models import (
     Assessment,
     AssessmentAttempt,
-    AssessmentType,
     AuditLog,
+
     ConsentState,
     DiagnosticSession,
     ErasureRequest,
@@ -74,8 +74,9 @@ async def test_popia_erasure_cascade_executes_cleanly():
             title="Test Baseline Assessment",
             grade=4,
             subject="Mathematics",
-            assessment_type=AssessmentType.BASELINE,
+            assessment_type="baseline",
             term=1,
+
             total_marks=50,
             duration_minutes=45,
             pass_percentage=50.0,

@@ -13,8 +13,9 @@ from app.core.database import (
 
 
 def test_get_async_engine():
+    import app.core.database as core_db
     e = get_async_engine()
-    assert e == engine
+    assert e == core_db.engine
 
 
 def test_base_declarative_class():

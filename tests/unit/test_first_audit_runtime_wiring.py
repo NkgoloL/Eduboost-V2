@@ -6,6 +6,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import pytest
+
 from app.services.first_audit_runtime_wiring import (
     InMemoryFirstAuditRuntimeSink,
     build_first_audit_runtime_payload,
@@ -25,6 +27,33 @@ def test_selected_candidate_is_safe_and_scoped():
     assert candidate.requires_route_change is False
     assert candidate.requires_schema_change is False
     assert candidate.requires_database_write_in_test is False
+
+
+def test_assert_candidate_is_safe_branches():
+    from app.services.first_audit_runtime_wiring import assert_candidate_is_safe
+    from dataclasses import replace
+
+    base = load_first_audit_runtime_candidate()
+
+    # 1. Not approved
+    with pytest.raises(ValueError, match="not approved for runtime PR"):
+        assert_candidate_is_safe(replace(base, approved_for_runtime_pr=False))
+
+    # 2. Destructive
+    with pytest.raises(ValueError, match="destructive candidate is blocked"):
+        assert_candidate_is_safe(replace(base, destructive=True))
+
+    # 3. Requires route change
+    with pytest.raises(ValueError, match="route-change candidate is blocked"):
+        assert_candidate_is_safe(replace(base, requires_route_change=True))
+
+    # 4. Requires schema change
+    with pytest.raises(ValueError, match="schema-change candidate is blocked"):
+        assert_candidate_is_safe(replace(base, requires_schema_change=True))
+
+    # 5. Requires db write in test
+    with pytest.raises(ValueError, match="DB-writing test candidate is blocked"):
+        assert_candidate_is_safe(replace(base, requires_database_write_in_test=True))
 
 
 def test_first_audit_runtime_payload_is_canonical():

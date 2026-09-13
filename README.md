@@ -17,6 +17,7 @@ code_anchors: [docs/current_state.md, docs/roadmap/production_readiness/producti
 [![Security Scans](https://img.shields.io/badge/Security-Scanned-blue)](/SECURITY.md)
 [![POPIA](https://img.shields.io/badge/POPIA-Tracked-success)](/docs/POPIA_COMPLIANCE.md)
 [![CAPS](https://img.shields.io/badge/CAPS-Aligned-00897B)](https://www.education.gov.za)
+[![Coverage](https://img.shields.io/badge/Coverage-95.7%25-success)](/docs/reports/coverage_target_90_completion_report.md)
 
 EduBoost SA is a modular learning platform for South African Grade 4 Mathematics. The active implementation path is the V2 FastAPI runtime, the Next.js frontend, and the controlled Knowledge Graph learning-state architecture.
 

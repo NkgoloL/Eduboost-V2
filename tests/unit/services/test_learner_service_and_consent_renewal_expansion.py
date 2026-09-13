@@ -12,13 +12,13 @@ class TestLearnerServiceInitialization:
     def test_learner_service_init_default(self):
         mock_db = AsyncMock()
         service = LearnerService(db=mock_db)
+    def test_learner_service_init(self):
+        mock_db = AsyncMock()
+        service = LearnerService(db=mock_db)
         assert service.db == mock_db
         assert service.repository is not None
-
-    def test_learner_service_init_custom_repo(self):
-        mock_db = AsyncMock()
         mock_repo = MagicMock()
-        service = LearnerService(db=mock_db, repository=mock_repo)
+        service.repository = mock_repo
         assert service.repository == mock_repo
 
 

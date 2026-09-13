@@ -177,36 +177,32 @@ def test_grounded_generation_domain_helpers(tmp_path: Path):
 
 
 def test_authority_switch_domain_helpers(tmp_path: Path):
-    product_file = Path("data/knowledge_graph/product_alignment/grade4_mathematics_product_alignment_pack.json")
-    if product_file.exists():
-        rec = knowledge_graph_authority_switch.build_authority_switch_readiness_pack(product_file)
+    if knowledge_graph_authority_switch.DEFAULT_PRODUCT_ALIGNMENT_PACK.exists():
+        rec = knowledge_graph_authority_switch.build_authority_switch_readiness_pack()
         assert rec["graph_id"] == knowledge_graph_authority_switch.KG7_GRAPH_ID
         val = knowledge_graph_authority_switch.validate_authority_switch_readiness_pack(rec)
         assert val["valid"] is True
 
 
 def test_product_alignment_domain_helpers(tmp_path: Path):
-    grounded_file = Path("data/knowledge_graph/grounded_generation/grade4_mathematics_grounded_lesson_assessment_pack.json")
-    if grounded_file.exists():
-        rec = knowledge_graph_product_alignment.build_product_alignment_pack(grounded_file)
+    if knowledge_graph_product_alignment.DEFAULT_GENERATION_PACK.exists():
+        rec = knowledge_graph_product_alignment.build_product_alignment_pack()
         assert rec["graph_id"] == knowledge_graph_product_alignment.KG6_GRAPH_ID
         val = knowledge_graph_product_alignment.validate_product_alignment_pack(rec)
         assert val["valid"] is True
 
 
 def test_post_switch_review_domain_helpers(tmp_path: Path):
-    authority_file = Path("data/knowledge_graph/authority_switch/grade4_mathematics_authority_switch_readiness.json")
-    if authority_file.exists():
-        rec = knowledge_graph_post_switch_review.build_post_switch_review_pack(authority_file)
+    if knowledge_graph_post_switch_review.DEFAULT_RUNTIME_ACTIVATION_PACK.exists():
+        rec = knowledge_graph_post_switch_review.build_post_switch_review_pack()
         assert rec["graph_id"] == knowledge_graph_post_switch_review.KG8_GRAPH_ID
         val = knowledge_graph_post_switch_review.validate_post_switch_review_pack(rec)
         assert val["valid"] is True
 
 
 def test_runtime_activation_domain_helpers(tmp_path: Path):
-    post_switch_file = Path("data/knowledge_graph/post_switch_review/grade4_mathematics_post_switch_review_pack.json")
-    if post_switch_file.exists():
-        rec = knowledge_graph_runtime_activation.build_runtime_activation_pack(post_switch_file)
+    if knowledge_graph_runtime_activation.DEFAULT_KG7_READINESS_PACK.exists():
+        rec = knowledge_graph_runtime_activation.build_runtime_activation_pack()
         assert rec["graph_id"] == knowledge_graph_runtime_activation.KGACT001_GRAPH_ID
         val = knowledge_graph_runtime_activation.validate_runtime_activation_pack(rec)
         assert val["valid"] is True

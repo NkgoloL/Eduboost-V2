@@ -75,3 +75,24 @@ def test_consistency_check_rejects_duplicate_field_conflict(tmp_path: Path) -> N
 
     assert result["valid"] is False
     assert any("coverage_gate_green" in error for error in result["errors"])
+
+
+def test_consistency_check_passes_for_completed_bundle_state(tmp_path: Path) -> None:
+    _write_fixture(tmp_path)
+    base = tmp_path / "docs/roadmap/production_readiness"
+    (base / "true_state_remediation_register.json").write_text(
+        json.dumps({
+            "current_bundle": "completed",
+            "bundles": [{"id": "B01", "status": "verified"}, {"id": "B07", "status": "verified"}],
+        }),
+        encoding="utf-8",
+    )
+    (tmp_path / "docs/current_state.md").write_text(
+        "Active implementation bundle: completed (Bundles B01-B07 verified and closed)\n",
+        encoding="utf-8",
+    )
+
+    result = evaluate(tmp_path)
+
+    assert result["valid"] is True
+    assert result["errors"] == []

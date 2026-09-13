@@ -132,3 +132,42 @@ def test_scope_item_generator_bands_and_options():
         scope_id="term_1_maths",
     )
     assert item_unknown["difficulty_band"] == "unknown_band"
+
+
+@pytest.mark.unit
+def test_scope_item_generator_duplicate_options_and_stem_branches(monkeypatch):
+    import app.services.content_generation.scope_item_generator as sig
+
+    # 1. Test grade > 6 stem finalization
+    stem_g8 = _finalize_item_stem("What is the square root of 64?", grade=8, sequence=0)
+    assert stem_g8 == "What is the square root of 64?"
+
+    stem_g8_seq1 = _finalize_item_stem("What is the square root of 64?", grade=8, sequence=1)
+    assert stem_g8_seq1.startswith("Q2. ")
+
+    # 2. Test flesch_kincaid_grade branch in line 133
+    call_count = 0
+    def mock_fk(text):
+        nonlocal call_count
+        call_count += 1
+        return 9.0  # Always > MAX_FK_GRADE (4.5)
+
+    monkeypatch.setattr(sig, "flesch_kincaid_grade", mock_fk)
+    stem_hard = _finalize_item_stem("Explain the comprehensive institutional methodology in detail?", grade=4, sequence=1)
+    assert stem_hard.startswith("Q2. ")
+
+    # 3. Test duplicate option texts deduplication (lines 195-202)
+    fake_options = {"A": "Four", "B": "Four", "C": "Six", "D": "Eight"}
+    monkeypatch.setattr(
+        sig,
+        "options_for_template",
+        lambda *args, **kwargs: (fake_options, "2 * 2 = 4 and this is a comprehensive explanation."),
+    )
+
+    gen = ScopeItemGenerator()
+    ctx = make_context(grade=4)
+    item = gen.generate(ctx, index=0, band="on_level", scope_id="scope_1")
+    opt_texts = [opt["text"] for opt in item["options"]]
+    assert len(set(opt_texts)) == 4
+    assert any("(B)" in t for t in opt_texts)
+

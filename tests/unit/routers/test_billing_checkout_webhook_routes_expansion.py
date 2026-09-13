@@ -7,6 +7,7 @@ from app.api_v2_routers.billing import router
 from app.api_v2_deps.auth import require_parent_or_admin
 from app.core.database import get_db
 from app.core import providers
+from app.services.billing_guard import assert_billing_authorized
 
 
 @pytest.mark.asyncio
@@ -25,8 +26,9 @@ async def test_billing_create_checkout_and_webhook():
     app.dependency_overrides[require_parent_or_admin] = lambda: auth_ctx
     app.dependency_overrides[get_db] = lambda: mock_db
     app.dependency_overrides[providers.get_audit_service] = lambda: mock_audit
+    app.dependency_overrides[assert_billing_authorized] = lambda: None
 
-    with patch("app.api_v2_routers.billing.StripeService") as mock_stripe_cls:
+    with patch("app.api_v2_routers.billing.assert_billing_authorized"), patch("app.api_v2_routers.billing.StripeService") as mock_stripe_cls:
         stripe_inst = MagicMock()
         stripe_inst.create_checkout_session = AsyncMock(return_value="https://checkout.stripe.com/c/pay_test123")
         stripe_inst.handle_webhook = AsyncMock(return_value={"status": "received", "event_type": "checkout.session.completed"})
