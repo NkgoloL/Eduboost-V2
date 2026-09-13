@@ -6,7 +6,7 @@ speed.
 
 ## Prerequisites
 
-- Python 3.11+
+- Python 3.12.3 (see `.python-version` and `pyproject.toml`)
 - Node.js 20 LTS
 - Docker Desktop with Compose v2
 - Git 2.40+

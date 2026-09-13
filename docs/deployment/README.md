@@ -17,6 +17,8 @@ code_anchors: "[Dockerfile, docker-compose.yml, docker-compose.prod.yml, .github
 
 Deployment covers local compose, production-like compose smoke checks, Azure/IaC assets, runtime health, observability, backup/restore, and release evidence.
 
+**Authoritative deployment hierarchy:** Azure Container Apps via `bicep/container_apps.bicep` is the production target (ADR-028). Render is limited to previews/early-beta, Docker Compose is local development or smoke testing, and Kubernetes files are legacy exploratory material.
+
 ## Runtime map
 
 - Compose: `docker-compose.yml`, `docker-compose.prod.yml`, `docker-compose.override.example.yml`

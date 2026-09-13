@@ -1,3 +1,18 @@
+---
+title: Authorization Consolidation Matrix
+status: active
+owner: architecture
+reviewers: [engineering, security, privacy]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-03
+review_interval_days: 60
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/architecture/authorization_consolidation_matrix.md]
+---
+
 # Authorization Consolidation Matrix (TSR-6.10, TSR-6.11)
 
 ## Policy & Authority Overview

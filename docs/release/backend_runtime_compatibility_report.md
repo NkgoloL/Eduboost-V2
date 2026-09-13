@@ -1,6 +1,6 @@
 # Backend Runtime Compatibility Report
 
-Generated at: `2026-08-26T17:24:53Z`
+Generated at: `2026-08-29T09:31:25Z`
 
 | Check | Return code | Command |
 |---|---:|---|
@@ -48,7 +48,7 @@ Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bi
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release/audit_callsite_inventory.md (6056 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release/audit_callsite_inventory.md (6084 row(s))
 ```
 
 ## consent compatibility
@@ -58,7 +58,7 @@ Command: `/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/.venv/bi
 Return code: `0`
 
 ```text
-Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release/consent_callsite_inventory.md (596 row(s))
+Wrote /home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/docs/release/consent_callsite_inventory.md (619 row(s))
 ```
 
 ## health readiness

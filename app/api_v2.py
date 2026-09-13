@@ -22,6 +22,7 @@ from app.core.metrics import REGISTRY
 from app.core.middleware import RequestIDMiddleware, StructuredLoggingMiddleware, TimingMiddleware
 from app.core.rate_limit import limiter
 from app.core.secret_rotation import key_vault_rotation_loop
+from app.middleware.api_deprecation import APIDeprecationMiddleware
 from app.middleware.security_headers import SecurityHeadersMiddleware
 from app.services.consent_expiry_service import consent_expiry_loop
 from app.services.launch_content_seed import seed_launch_content_if_needed
@@ -137,6 +138,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.add_middleware(APIDeprecationMiddleware)
 app.add_middleware(SecurityHeadersMiddleware)
 app.add_middleware(StructuredLoggingMiddleware)
 app.add_middleware(TimingMiddleware)

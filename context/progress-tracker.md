@@ -1,17 +1,15 @@
 # Progress Tracker
 
-**Last updated:** 2026-06-12
-**Authoritative trackers:** ../docs/roadmap/roadmap.md (17-phase plan), ../docs/todos/todo.md (North Star tasks)
+**Status:** Historical progress tracker; not a current-state authority.
+**Authoritative trackers:** `../docs/current_state.md` and `../docs/roadmap/production_readiness/production_readiness_register.json`
 
 Update after every completed RoadMap phase or major TODO milestone.
 
 ## Current Status
 
-**Active RoadMap Phase:** Phase 8 (Privacy and Authorization Completion)
-**Last completed:** Phase 7 (Deployment and Security Hardening) - 2026-06-12
-**Next:** Phase 8 (Privacy and Authorization Completion)
-**Quality gate:** RED (9/11 checks passing as of 2026-05-17)
-**Local unit tests:** 2051 passed, 1 skipped, 1 warning
+**Active work:** PRD-11 production-readiness execution; see the canonical register for the current item.
+**Historical phase status:** The phase roadmap below is retained for traceability only.
+**Quality/test status:** Use current executable evidence; historical counts below are not a live baseline.
 
 ## RoadMap Phase Progress
 
@@ -94,14 +92,14 @@ Evidence: `docs/roadmap/execution/phase_6_execution_plan.md`, `docs/roadmap/exec
 
 Evidence: `docs/roadmap/execution/phase_7_implementation_report.md`, `docs/release/phase_7_evidence.md`
 
-### Phases 8-16
-See ../docs/roadmap/roadmap.md for full phase plans. This tracker will be updated as phases are executed.
+### Historical phases 8-16
+See `../docs/roadmap/roadmap.md` for historical plans. Do not use this section to determine current work.
 
 ## Verified Baseline (Already Implemented)
 
-These are repository-side complete but need CI/staging/production proof:
+These are historical repository-side claims and require current evidence before reuse:
 
-- Backend: 2051 unit tests passing, 355 API routes, 28 routers, 22 modules
+- Backend: FastAPI V2 runtime; current route and test facts come from executable evidence
 - Content: 120 Grade 4 Math diagnostic items, 24 lessons live
 - POPIA: Consent, audit, erasure, export workflows (partial)
 - Auth: JWT + keyring, token revocation, Redis-backed

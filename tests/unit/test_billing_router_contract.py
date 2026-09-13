@@ -56,9 +56,43 @@ class DummyRequest:
 
 
 @pytest.mark.unit
-def test_create_checkout_delegates_to_stripe_service():
+def test_create_checkout_blocked_when_billing_locked():
+    """Verify POST /billing/checkout fails closed with 403 when commercial authorization is False."""
+    from app.services.billing_guard import BillingLockError
+
+    async def run() -> None:
+        with pytest.raises(BillingLockError) as exc:
+            await billing.create_checkout(db=object(), current_user=_auth_context(PARENT))
+        assert exc.value.status_code == 403
+        assert "Commercial Release Boundary Lock" in exc.value.detail
+
+    asyncio.run(run())
+
+
+@pytest.mark.unit
+def test_stripe_webhook_blocked_when_billing_locked():
+    """Verify POST /billing/webhook fails closed with 403 when commercial authorization is False."""
+    from app.services.billing_guard import BillingLockError
+
+    async def run() -> None:
+        with pytest.raises(BillingLockError) as exc:
+            await billing.stripe_webhook(
+                request=DummyRequest(b'{"type":"checkout.session.completed"}'),
+                db=object(),
+                stripe_signature="sig_test",
+                audit=FakeFourthEstate(),
+            )
+        assert exc.value.status_code == 403
+        assert "Commercial Release Boundary Lock" in exc.value.detail
+
+    asyncio.run(run())
+
+
+@pytest.mark.unit
+def test_create_checkout_delegates_to_stripe_service_when_authorized(monkeypatch: pytest.MonkeyPatch):
+    """Verify checkout session creation succeeds when explicitly authorized."""
+    monkeypatch.setattr("app.api_v2_routers.billing.assert_billing_authorized", lambda: None)
     stripe = FakeStripeService()
-    FakeFourthEstate()
     billing.StripeService = lambda _db: stripe  # type: ignore[misc,assignment]
 
     async def run() -> None:
@@ -70,7 +104,9 @@ def test_create_checkout_delegates_to_stripe_service():
 
 
 @pytest.mark.unit
-def test_stripe_webhook_records_audit_trail():
+def test_stripe_webhook_records_audit_trail_when_authorized(monkeypatch: pytest.MonkeyPatch):
+    """Verify webhook handling succeeds and audits when explicitly authorized."""
+    monkeypatch.setattr("app.api_v2_routers.billing.assert_billing_authorized", lambda: None)
     stripe = FakeStripeService()
     audit = FakeFourthEstate()
     billing.StripeService = lambda _db: stripe  # type: ignore[misc,assignment]
@@ -88,3 +124,4 @@ def test_stripe_webhook_records_audit_trail():
     assert stripe.webhook_calls[0]["signature"] == "sig_test"
     assert audit.records[0][0] == "STRIPE_WEBHOOK"
     assert audit.records[0][1]["event_type"] == "checkout.session.completed"
+

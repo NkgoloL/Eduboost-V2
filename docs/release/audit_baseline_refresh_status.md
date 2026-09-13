@@ -1,8 +1,8 @@
 # Audit Baseline Refresh Status
 
-Generated at: `2026-08-26T17:19:34Z`
-Commit: `107d58c62d28a0d0a7a094f69894809af40f8db0`
-Branch: `codex/tsr-b04-architecture-and-data-integrity`
+Generated at: `2026-08-29T09:27:31Z`
+Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
+Branch: `feature/coverage-target-90`
 
 **Status:** `audit-baseline-refresh-current`
 **Beta decision:** `NO-GO`
@@ -20,20 +20,20 @@ Branch: `codex/tsr-b04-architecture-and-data-integrity`
 
 | Surface | Exists | Status | Decision | Commit | Stale |
 |---|---:|---|---|---|---:|
-| `final_beta_gate_refresh` | True | `NO-GO` | `NO-GO` | `107d58c62d28a0d0a7a094f69894809af40f8db0` | False |
-| `release_go_no_go_status` | True | `NO-GO` | `NO-GO` | `107d58c62d28a0d0a7a094f69894809af40f8db0` | False |
-| `ci_evidence` | True | `ci-evidence-not-accepted` | `` | `107d58c62d28a0d0a7a094f69894809af40f8db0` | False |
-| `ci_run_evidence` | True | `external-blocked` | `` | `107d58c62d28a0d0a7a094f69894809af40f8db0` | False |
-| `external_approval` | True | `external-blocked` | `` | `107d58c62d28a0d0a7a094f69894809af40f8db0` | False |
-| `approval_evidence` | True | `external-blocked` | `` | `107d58c62d28a0d0a7a094f69894809af40f8db0` | False |
-| `staging_smoke_evidence` | True | `staging-smoke-evidence-not-accepted` | `` | `107d58c62d28a0d0a7a094f69894809af40f8db0` | False |
-| `staging_acceptance` | True | `external-blocked` | `` | `107d58c62d28a0d0a7a094f69894809af40f8db0` | False |
-| `auth_refresh_db_evidence` | True | `auth-refresh-db-evidence-accepted` | `` | `107d58c62d28a0d0a7a094f69894809af40f8db0` | False |
-| `popia_response_contract_no_skip` | True | `popia-response-contract-no-skip-passing` | `` | `107d58c62d28a0d0a7a094f69894809af40f8db0` | False |
-| `diag_deep_health_runtime` | True | `diag-deep-health-runtime-not-accepted` | `` | `107d58c62d28a0d0a7a094f69894809af40f8db0` | False |
-| `live_db_transaction_evidence` | True | `external-blocked` | `` | `107d58c62d28a0d0a7a094f69894809af40f8db0` | False |
-| `beta_blocker_burndown` | True | `` | `` | `107d58c62d28a0d0a7a094f69894809af40f8db0` | False |
-| `docs_inventory` | True | `` | `` | `107d58c62d28a0d0a7a094f69894809af40f8db0` | False |
+| `final_beta_gate_refresh` | True | `NO-GO` | `NO-GO` | `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd` | False |
+| `release_go_no_go_status` | True | `NO-GO` | `NO-GO` | `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd` | False |
+| `ci_evidence` | True | `ci-evidence-not-accepted` | `` | `01bfdc2fbb342f4067135f919584de481da591cc` | True |
+| `ci_run_evidence` | True | `external-blocked` | `` | `01bfdc2fbb342f4067135f919584de481da591cc` | True |
+| `external_approval` | True | `external-blocked` | `` | `01bfdc2fbb342f4067135f919584de481da591cc` | True |
+| `approval_evidence` | True | `external-blocked` | `` | `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd` | False |
+| `staging_smoke_evidence` | True | `staging-smoke-evidence-not-accepted` | `` | `01bfdc2fbb342f4067135f919584de481da591cc` | True |
+| `staging_acceptance` | True | `external-blocked` | `` | `01bfdc2fbb342f4067135f919584de481da591cc` | True |
+| `auth_refresh_db_evidence` | True | `auth-refresh-db-evidence-accepted` | `` | `01bfdc2fbb342f4067135f919584de481da591cc` | True |
+| `popia_response_contract_no_skip` | True | `popia-response-contract-no-skip-passing` | `` | `01bfdc2fbb342f4067135f919584de481da591cc` | True |
+| `diag_deep_health_runtime` | True | `diag-deep-health-runtime-not-accepted` | `` | `01bfdc2fbb342f4067135f919584de481da591cc` | True |
+| `live_db_transaction_evidence` | True | `external-blocked` | `` | `01bfdc2fbb342f4067135f919584de481da591cc` | True |
+| `beta_blocker_burndown` | True | `` | `` | `01bfdc2fbb342f4067135f919584de481da591cc` | True |
+| `docs_inventory` | True | `` | `` | `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd` | False |
 
 ## Accepted evidence marker preservation
 

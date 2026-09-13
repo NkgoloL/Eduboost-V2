@@ -1,8 +1,8 @@
 # Staging Smoke Evidence Status
 
-Generated at: `2026-09-03T09:24:08Z`
-Commit: `51487956b21470877d482128092c01595e92be39`
-Branch: `fix/governance-verification-remediation`
+Generated at: `2026-08-29T09:39:17Z`
+Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
+Branch: `feature/coverage-target-90`
 
 **Status:** `staging-smoke-evidence-not-accepted`
 <!-- Status: pending runtime execution -->
@@ -19,7 +19,7 @@ Branch: `fix/governance-verification-remediation`
 **API result:** ``
 **Frontend result:** `not-recorded`
 **Verified by:** `unverified`
-**Date verified:** `2026-09-03`
+**Date verified:** `2026-08-29`
 
 ## Required Runtime Smoke Coverage
 
@@ -38,7 +38,7 @@ TODO before acceptance:
 - run ID is missing or non-numeric
 - GitHub Actions run status is missing, expected completed
 - GitHub Actions run conclusion is missing, expected success
-- GitHub Actions run SHA missing does not match current commit 51487956b21470877d482128092c01595e92be39
+- GitHub Actions run SHA missing does not match current commit d81bc05b230256f6c4ab39540ccb03ed4b52bcfd
 - workflow name is missing
 - staging base URL is missing, non-HTTPS, localhost/example, or placeholder
 - staging smoke test command is missing or placeholder

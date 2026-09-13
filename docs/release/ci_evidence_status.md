@@ -1,8 +1,8 @@
 # CI Evidence Status
 
-Generated at: `2026-09-03T09:20:42Z`
-Commit: `51487956b21470877d482128092c01595e92be39`
-Branch: `fix/governance-verification-remediation`
+Generated at: `2026-08-29T09:33:02Z`
+Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
+Branch: `feature/coverage-target-90`
 
 **Status:** `ci-evidence-not-accepted`
 **Run ID:** ``
@@ -12,7 +12,7 @@ Branch: `fix/governance-verification-remediation`
 **Conclusion:** ``
 **Head SHA:** ``
 **Verified by:** `unverified`
-**Date verified:** `2026-09-03`
+**Date verified:** `2026-08-29`
 
 ## Blockers
 
@@ -20,7 +20,7 @@ Branch: `fix/governance-verification-remediation`
 - run ID is missing or non-numeric
 - GitHub Actions run status is missing, expected completed
 - GitHub Actions run conclusion is missing, expected success
-- GitHub Actions run SHA missing does not match current commit 51487956b21470877d482128092c01595e92be39
+- GitHub Actions run SHA missing does not match current commit d81bc05b230256f6c4ab39540ccb03ed4b52bcfd
 - workflow name is missing
 
 ## No false-closure rules

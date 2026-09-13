@@ -5,24 +5,31 @@ import os
 from datetime import datetime, timezone
 from uuid import uuid4
 import pytest
-import pytest_asyncio
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from sqlalchemy import select
 
-from app.core.database import Base
 from app.models import (
+    Assessment,
+    AssessmentAttempt,
+    AssessmentType,
+    AuditLog,
     ConsentState,
+    DiagnosticSession,
     ErasureRequest,
     Guardian,
+    KnowledgeGap,
+    Language,
     LearnerProfile,
+    Lesson,
     ParentalConsent,
-    SubjectMastery,
-    TopicMastery,
+    PracticeQueue,
+    PracticeSession,
+    SecureToken,
     SpacedReviewSchedule,
     StudyPlan,
-    SecureToken,
+    SubjectMastery,
     TokenPurpose,
-    AuditLog,
+    TopicMastery,
 )
 from app.services.popia_dsr_service import POPIADSRService
 
@@ -41,6 +48,7 @@ async def test_popia_erasure_cascade_executes_cleanly():
         # Seed test fixture: Guardian, Learner, Consent, Learning records, Token
         guardian_id = str(uuid4())
         learner_id = str(uuid4())
+        assessment_id = str(uuid4())
 
         guardian = Guardian(
             id=guardian_id,
@@ -61,6 +69,53 @@ async def test_popia_erasure_cascade_executes_cleanly():
             learner_id=learner_id,
             status=ConsentState.GRANTED,
         )
+        assessment = Assessment(
+            id=assessment_id,
+            title="Test Baseline Assessment",
+            grade=4,
+            subject="Mathematics",
+            assessment_type=AssessmentType.BASELINE,
+            term=1,
+            total_marks=50,
+            duration_minutes=45,
+            pass_percentage=50.0,
+        )
+        attempt = AssessmentAttempt(
+            id=str(uuid4()),
+            learner_id=learner_id,
+            assessment_id=assessment_id,
+            score=0.80,
+            marks_obtained=40,
+            time_taken_seconds=1200,
+            responses={"q1": "A"},
+        )
+        diag = DiagnosticSession(
+            id=str(uuid4()),
+            learner_id=learner_id,
+            responses={"item_1": True},
+            theta_before=0.0,
+            theta_after=0.5,
+            se_estimate=0.4,
+            session_state="completed",
+        )
+        gap = KnowledgeGap(
+            id=str(uuid4()),
+            learner_id=learner_id,
+            grade=4,
+            subject="Mathematics",
+            topic="Fractions",
+            severity=0.6,
+        )
+        lesson = Lesson(
+            id=str(uuid4()),
+            learner_id=learner_id,
+            knowledge_gap_id=gap.id,
+            grade=4,
+            subject="Mathematics",
+            topic="Fractions",
+            language=Language.ENGLISH,
+            content="Lesson content on fractions",
+        )
         mastery = TopicMastery(
             id=str(uuid4()),
             learner_id=learner_id,
@@ -68,8 +123,14 @@ async def test_popia_erasure_cascade_executes_cleanly():
             mastery_score=0.75,
             mastery_label="proficient",
         )
+        study_plan = StudyPlan(
+            id=str(uuid4()),
+            learner_id=learner_id,
+            week_focus="Fractions Mastery",
+            schedule={"mon": "lesson_1"},
+        )
         token = SecureToken(
-            user_id=guardian_id,
+            user_id=learner_id,
             purpose=TokenPurpose.PASSWORD_RESET,
             token_hash="fake_hash_123",
             expires_at=datetime.now(timezone.utc),
@@ -79,7 +140,9 @@ async def test_popia_erasure_cascade_executes_cleanly():
         await session.flush()
         session.add(learner)
         await session.flush()
-        session.add_all([consent, mastery, token])
+        session.add(assessment)
+        await session.flush()
+        session.add_all([consent, attempt, diag, gap, lesson, mastery, study_plan, token])
         await session.commit()
 
         # Execute DSR Erasure Service
@@ -94,6 +157,8 @@ async def test_popia_erasure_cascade_executes_cleanly():
 
         cascade_result = await dsr_service.execute_erasure_cascade(req.id)
         assert cascade_result["state"] == "executed"
+        assert cascade_result["tables_cascaded"] >= 10
+        assert cascade_result["records_purged"] >= 6
 
         # Assertions: Primary Learner profile is soft-deleted and pseudonymized
         refreshed_learner = await session.get(LearnerProfile, learner_id)
@@ -107,20 +172,42 @@ async def test_popia_erasure_cascade_executes_cleanly():
         consents = res.scalars().all()
         assert all(c.status == ConsentState.WITHDRAWN for c in consents)
 
-        # Operational records are purged
-        stmt = select(TopicMastery).where(TopicMastery.learner_id == learner_id)
-        res = await session.execute(stmt)
-        assert len(res.scalars().all()) == 0
+        # Operational, diagnostic, lesson, and assessment records are purged
+        stmt_top = select(TopicMastery).where(TopicMastery.learner_id == learner_id)
+        assert len((await session.execute(stmt_top)).scalars().all()) == 0
 
-        stmt = select(SecureToken).where(SecureToken.user_id == learner_id)
-        res = await session.execute(stmt)
-        assert len(res.scalars().all()) == 0
+        stmt_diag = select(DiagnosticSession).where(DiagnosticSession.learner_id == learner_id)
+        assert len((await session.execute(stmt_diag)).scalars().all()) == 0
+
+        stmt_gap = select(KnowledgeGap).where(KnowledgeGap.learner_id == learner_id)
+        assert len((await session.execute(stmt_gap)).scalars().all()) == 0
+
+        stmt_lesson = select(Lesson).where(Lesson.learner_id == learner_id)
+        assert len((await session.execute(stmt_lesson)).scalars().all()) == 0
+
+        stmt_att = select(AssessmentAttempt).where(AssessmentAttempt.learner_id == learner_id)
+        assert len((await session.execute(stmt_att)).scalars().all()) == 0
+
+        stmt_plan = select(StudyPlan).where(StudyPlan.learner_id == learner_id)
+        assert len((await session.execute(stmt_plan)).scalars().all()) == 0
+
+        stmt_tok = select(SecureToken).where(SecureToken.user_id == learner_id)
+        assert len((await session.execute(stmt_tok)).scalars().all()) == 0
+
+        # Refreshed ErasureRequest record postflight_result is measured
+        refreshed_req = await session.get(ErasureRequest, req.id)
+        assert refreshed_req is not None
+        assert refreshed_req.state == "executed"
+        assert refreshed_req.postflight_result["status"] == "success"
+        assert refreshed_req.postflight_result["tables_cascaded"] >= 10
+        assert refreshed_req.postflight_result["records_purged"] >= 6
 
         # Audit log is appended and sanitized
-        stmt = select(AuditLog).where(AuditLog.event_type == "popia_erasure_completed")
-        res = await session.execute(stmt)
-        audit = res.scalars().first()
+        stmt_audit = select(AuditLog).where(AuditLog.event_type == "popia_erasure_completed")
+        res_audit = await session.execute(stmt_audit)
+        audit = res_audit.scalars().first()
         assert audit is not None
         assert audit.payload["action"] == "popia_erasure_cascade_completed"
 
     await engine.dispose()
+

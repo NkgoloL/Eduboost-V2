@@ -10,6 +10,7 @@ from app.core.database import get_db
 from app.domain.schemas import CheckoutSessionResponse
 from app.services.audit_service import AuditService
 from app.core import providers
+from app.services.billing_guard import assert_billing_authorized
 from app.services.stripe_service import StripeService
 
 router = APIRouter(route_class=EnvelopedRoute, prefix="/billing", tags=["billing"])
@@ -20,7 +21,9 @@ router = APIRouter(route_class=EnvelopedRoute, prefix="/billing", tags=["billing
 async def create_checkout(
     db: AsyncSession = Depends(get_db),
     current_user: AuthContext = Depends(require_parent_or_admin),
+    _auth_guard: None = Depends(assert_billing_authorized),
 ):
+    assert_billing_authorized()
     svc = StripeService(db)
     # Note: In production, retrieve email from encrypted field and decrypt
     url = await svc.create_checkout_session(
@@ -36,7 +39,9 @@ async def stripe_webhook(
     db: AsyncSession = Depends(get_db),
     stripe_signature: str = Header(alias="stripe-signature"),
     audit: AuditService = Depends(providers.get_audit_service),
+    _auth_guard: None = Depends(assert_billing_authorized),
 ):
+    assert_billing_authorized()
     payload = await request.body()
     svc = StripeService(db)
     result = await svc.handle_webhook(payload, stripe_signature)
@@ -45,3 +50,4 @@ async def stripe_webhook(
     await audit.record("STRIPE_WEBHOOK", payload=result)
 
     return result
+

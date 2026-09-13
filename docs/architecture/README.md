@@ -46,7 +46,9 @@ No new KG slice is authorised by the closure state. Further KG runtime optimisat
 
 ## Production-readiness architecture boundary
 
-The current authorised work is PRD-0.1. PRD-1 and later implementation work remain blocked until PRD-0.10 closure.
+The current authorised work is PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8. Production release,
+deployment, public beta, billing, live learner traffic, and new KG slices remain blocked
+until their explicit authority gates are satisfied.
 
 Future architecture changes must preserve these boundaries unless explicitly changed by a future PRD gate:
 

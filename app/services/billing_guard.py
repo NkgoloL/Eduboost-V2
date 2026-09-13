@@ -21,10 +21,24 @@ class BillingLockError(HTTPException):
         )
 
 
+def _find_register_path(root_dir: Path | str = ".") -> Path | None:
+    p = Path(root_dir).resolve()
+    # Check directly relative to root_dir
+    direct = p / "docs/roadmap/production_readiness/true_state_remediation_register.json"
+    if direct.exists():
+        return direct
+    # Walk parents if needed
+    for parent in p.parents:
+        cand = parent / "docs/roadmap/production_readiness/true_state_remediation_register.json"
+        if cand.exists():
+            return cand
+    return None
+
+
 def check_live_billing_authorization(root_dir: Path | str = ".") -> bool:
     """Read true_state_remediation_register.json and check payment authorization."""
-    path = Path(root_dir) / "docs/roadmap/production_readiness/true_state_remediation_register.json"
-    if not path.exists():
+    path = _find_register_path(root_dir)
+    if path is None or not path.exists():
         # Fail-closed if register is missing
         return False
 
@@ -53,3 +67,4 @@ def sanitize_billing_webhook(payload: dict[str, Any], root_dir: Path | str = "."
     """Process or reject incoming billing webhook events."""
     assert_billing_authorized(root_dir)
     return {"status": "processed", "event_id": payload.get("id")}
+

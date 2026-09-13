@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-09-03T09:24:09.107919+00:00`
-- branch: `fix/governance-verification-remediation`
-- commit: `51487956b21470877d482128092c01595e92be39`
+- generated_at_utc: `2026-08-29T09:39:18.397882+00:00`
+- branch: `feature/coverage-target-90`
+- commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
 - target_environment: `test`
 
 ## Required Smoke Checks

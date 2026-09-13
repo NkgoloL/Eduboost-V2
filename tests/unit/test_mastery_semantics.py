@@ -96,3 +96,33 @@ def test_assert_no_authoritative_claims_fails_closed():
 
     with pytest.raises(MasteryBoundError, match="Educational Claim Violation"):
         engine.assert_no_authoritative_claims(illegal_estimate)
+
+
+@pytest.mark.unit
+def test_module_level_assert_no_authoritative_claims():
+    from app.services.mastery_engine import assert_no_authoritative_claims
+
+    # Bounded values pass
+    assert_no_authoritative_claims(confidence=0.55, state="tentative")
+    assert_no_authoritative_claims({"confidence": 0.60, "state": "inferred"})
+    assert_no_authoritative_claims(confidence="0.55", state="tentative")
+
+    # Empty calls raise ValueError
+    with pytest.raises(ValueError, match="requires at least one estimate"):
+        assert_no_authoritative_claims()
+
+    # Invalid confidence string raises ValueError
+    with pytest.raises(ValueError, match="Invalid confidence value"):
+        assert_no_authoritative_claims(confidence="not-a-number")
+
+    # Violations raise MasteryBoundError
+    with pytest.raises(MasteryBoundError, match="Educational Claim Violation"):
+        assert_no_authoritative_claims(confidence=0.85, state="tentative")
+
+    with pytest.raises(MasteryBoundError, match="Educational Claim Violation"):
+        assert_no_authoritative_claims(confidence="0.85", state="tentative")
+
+    with pytest.raises(MasteryBoundError, match="Educational Claim Violation"):
+        assert_no_authoritative_claims(confidence=0.50, state="authoritative")
+
+

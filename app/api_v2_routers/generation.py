@@ -17,6 +17,7 @@ from app.core.database import get_db
 from app.domain.api_v2_models import ok
 from app.models.content_factory import ContentGenerationRun, ContentGenerationTask, ContentLayer
 from app.modules.jobs import enqueue_durable
+from app.services.ai_budget_guard import get_ai_budget_guard
 from app.services.batch_generation import BatchGenerationEngine, GenerationTaskSpec
 from app.services.content_generation.source_context import (
     ContentGenerationSourceContextService,
@@ -104,7 +105,14 @@ async def start_generation_run(
     engine: BatchGenerationEngine = Depends(_get_engine),
 ) -> RunResponse:
     """Create and enqueue a run using only server-resolved approved sources."""
+    # 0. Enforce AI Token Budget and Emergency Cost Kill-Switch Guard (TSR-11.11)
+    estimated_tokens = sum(spec.count * 1000 for spec in body.task_specs)
+    guard = get_ai_budget_guard()
+    await guard.check_and_reserve_async(estimated_tokens)
+
     context_service = ContentGenerationSourceContextService()
+
+
     sources_by_caps_ref: dict[str, list[dict[str, Any]]] = {}
     for spec in body.task_specs:
         if spec.caps_ref in sources_by_caps_ref:

@@ -42,7 +42,18 @@ def test_legacy_route_receives_deprecation_and_canonical_link_headers(test_app: 
 
     assert response.status_code == 200
     assert response.json() == {"status": "ok", "canonical": False}
-    assert response.headers.get("Deprecation") == "@1730419200"
+    assert response.headers.get("Deprecation") == "@1793491200"
     assert response.headers.get("Sunset") == SUNSET_DATE
     assert response.headers.get("X-API-Canonical-Prefix") == "/api/v2"
     assert response.headers.get("Link") == '</api/v2/health>; rel="canonical"'
+
+
+@pytest.mark.unit
+def test_live_application_has_deprecation_middleware_registered():
+    """Verify the middleware is registered in the live FastAPI application."""
+    from app.api_v2 import app as live_app
+    from starlette.middleware.base import BaseHTTPMiddleware
+
+    middleware_types = [m.cls if hasattr(m, "cls") else m for m in live_app.user_middleware]
+    assert APIDeprecationMiddleware in middleware_types
+

@@ -65,3 +65,26 @@ def test_safe_structures_preserve_types():
     }
     result = sanitize_payload(clean_dict)
     assert result == clean_dict
+
+
+@pytest.mark.unit
+def test_hmac_pseudonymization_with_custom_and_env_salt(monkeypatch: pytest.MonkeyPatch):
+    from app.core.pii_sanitizer import hash_pseudonym
+
+    # Same value with different salts produces different pseudonyms (keyed HMAC)
+    val = "8501015009087"
+    p1 = hash_pseudonym(val, salt="secret_salt_a")
+    p2 = hash_pseudonym(val, salt="secret_salt_b")
+    p3 = hash_pseudonym(val, salt="secret_salt_a")
+
+    assert p1.startswith("pseudonym_")
+    assert p2.startswith("pseudonym_")
+    assert p1 != p2
+    assert p1 == p3
+
+    # Environment variable salt override
+    monkeypatch.setenv("PII_PSEUDONYMIZATION_SALT", "env_secret_salt_123")
+    p_env = hash_pseudonym(val)
+    p_direct = hash_pseudonym(val, salt="env_secret_salt_123")
+    assert p_env == p_direct
+

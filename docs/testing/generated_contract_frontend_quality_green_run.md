@@ -7,10 +7,10 @@ audience: "developer"
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-08-26"
+last_reviewed: "2026-06-24"
 review_interval_days: 60
-evidence_command: "make docs-housekeeping-check"
-code_anchors: ["docs/testing/generated_contract_frontend_quality_green_run.md"]
+evidence_command: "make docs-housekeeping-stage5-check"
+code_anchors: "[tests, pytest.ini, Makefile]"
 ---
 
 # Generated Contract and Frontend Quality Green Run Contract

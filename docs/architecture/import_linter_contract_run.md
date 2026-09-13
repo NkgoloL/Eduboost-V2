@@ -1,7 +1,47 @@
+---
+title: Import-Linter Contract Run
+status: active
+owner: architecture
+reviewers: [engineering]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-03
+review_interval_days: 60
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/architecture/import_linter_contract_run.md]
+---
+
 # Import-Linter Contract Run
 
-Generated at: `2026-09-03T09:20:36Z`
+Generated at: `2026-08-29T09:27:13Z`
 
-**Status:** skipped_missing_tool
+**Status:** pass
 
-Install `import-linter` in the project virtual environment to enforce `.importlinter` contracts in CI.
+```text
+
+╔══╗─────────▶╔╗ ╔╗      ╔╗◀───┐
+╚╣╠╝◀─────┐  ╔╝╚╗║║────▶╔╝╚╗   │
+ ║║   ╔══╦══╦╩╗╔╝║║  ╔╦═╩╗╔╝╔═╦══╗
+ ║║╔══╣╔╗║╔╗║╔╣║ ║║ ╔╬╣╔╗║║ ║│║╔═╝
+╔╣╠╣║║║╚╝║╚╝║║║╚╗║╚═╝║║║║║╚╗║═╣║
+╚══╩╩╩╣╔═╩══╩╝╚═╝╚═══╩╩╝╚╩═╩╩═╩╝
+  └──▶║║                    ▲ 
+      ╚╝────────────────────┘
+
+
+---------
+Contracts
+---------
+
+Analyzed 535 files, 2749 dependencies.
+--------------------------------------
+
+FastAPI v2 routers should not import repositories directly KEPT
+POPIA router uses dependency layer rather than repository construction KEPT
+Lessons router uses authorization service layer rather than repositories KEPT
+Prevent imports from legacy into core or domain KEPT
+
+Contracts: 4 kept, 0 broken.
+```

@@ -7,7 +7,7 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-08-27
+last_reviewed: 2026-09-03
 review_interval_days: 180
 evidence_command: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd001_canonical_current_state_documentation_refresh.py --json
 code_anchors: [docs/current_state.md, docs/roadmap/production_readiness/production_readiness_register.json]
@@ -28,9 +28,9 @@ The repository has completed two major closure streams and opened a new producti
 RR roadmap/TODO register: closed
 KG roadmap: closed through KG-8
 Controlled runtime KG authority switch: executed
-Production-readiness stream: open at PRD-0
-Current authorised item: PRD-0.1
-PRD-1 implementation: blocked until PRD-0.10 closure
+Production-readiness stream: open at PRD-11
+Current authorised item: PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8
+Production release remains blocked pending the PRD-11 release gate.
 ```
 
 The controlled runtime KG authority switch is recorded as:

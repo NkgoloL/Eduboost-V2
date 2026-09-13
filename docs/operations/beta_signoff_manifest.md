@@ -2,9 +2,9 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-09-03T09:22:10.063550+00:00`
-- branch: `fix/governance-verification-remediation`
-- commit: `51487956b21470877d482128092c01595e92be39`
+- generated_at_utc: `2026-08-29T09:34:15.872146+00:00`
+- branch: `feature/coverage-target-90`
+- commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
 - release_candidate: `unset`
 
 ## Required Sign-Off Areas

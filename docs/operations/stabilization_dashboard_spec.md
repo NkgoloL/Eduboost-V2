@@ -18,7 +18,7 @@ The **14-day post-launch stabilization window** follows any release tag deployme
 ### Panel 1: Reliability & Performance
 - **HTTP Request Volume & Error Budget**: Real-time graph of requests/sec by response code (`2xx`, `4xx`, `5xx`).
 - **Database Connection Pool & Query Latency**: Active connections vs maximum pool limit; p95/p99 query execution times.
-- **Worker Queue Health**: Background Celery/Redis queue depth, task failure count, and retry latency.
+- **Worker Queue Health**: ARQ/Redis queue depth, task failure count, and retry latency.
 
 ### Panel 2: Security, Privacy & DSR
 - **POPIA Erasure Queue**: Volume of pending, processing, and completed DSR erasure requests.

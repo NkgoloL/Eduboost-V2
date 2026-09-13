@@ -73,6 +73,16 @@ def service(mock_db, mock_router, mock_budget):
     )
 
 
+def test_learner_tutor_default_budget(mock_db, mock_router):
+    with patch("app.services.learner_tutor.get_redis", return_value=None), \
+         patch("app.services.learner_tutor.BudgetGuardrails.from_settings") as mock_bg:
+        mock_bg.return_value = MagicMock()
+        svc = LearnerTutorService(db=mock_db, provider_router=mock_router)
+        assert svc.budget is not None
+        mock_bg.assert_called_once()
+
+
+
 # ---------------------------------------------------------------------------
 # Session Creation, Retrieval, Cancellation
 # ---------------------------------------------------------------------------
