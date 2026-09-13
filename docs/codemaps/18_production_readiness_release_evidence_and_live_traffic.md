@@ -88,7 +88,7 @@ Run the relevant `audit_prd*` verifier in authority and final modes and confirm 
 **Location ID: 1d**
 - **Title:** PRD workflow
 - **Description:** Hosted authority gate.
-- **Path:LineNumber:** .github/workflows/prd100-ci-release-gate-stream-authority.yml:1
+- **Path:LineNumber:** .github/workflows/release-evidence.yml:1
 
 ### AI Guide: PRD authority, implementation, verification, and handoff
 
@@ -174,7 +174,7 @@ Run controlled beta module/routes, preflight, launch monitoring, beta release ev
 **Location ID: 2d**
 - **Title:** Beta approval workflow
 - **Description:** Hosted launch decision gate.
-- **Path:LineNumber:** .github/workflows/beta-release-approval.yml:1
+- **Path:LineNumber:** .github/workflows/release-evidence.yml:1
 
 ### AI Guide: Controlled beta preflight, activation, monitoring, and outcome evidence
 
@@ -253,9 +253,9 @@ Run PRD-11 runtime-restore verifiers, release go/no-go, deployment readiness, st
 - **Path:LineNumber:** app/modules/production_release/true_state_baseline.py:55
 
 **Location ID: 3c**
-- **Title:** Execution-7 verifier
-- **Description:** Coverage/static/security release slice.
-- **Path:LineNumber:** scripts/production_readiness/audit_prd1100r_runtime_restore_execution_7_coverage_static_security_green.py:1
+- **Title:** Active PRD-11 runtime-restore verifier
+- **Description:** Current production-readiness release slice and next-item authority.
+- **Path:LineNumber:** docs/roadmap/production_readiness/prd11_production_release_register.json:84
 
 **Location ID: 3d**
 - **Title:** Go/no-go command
@@ -269,7 +269,7 @@ A production label is valid only when the current merged runtime—not historica
 
 **Details:**
 
-**Reasoning through the execution path.** Start at [3a] and follow the ordered state transition rather than jumping directly to a downstream repository or generated artefact. The trace is designed to show which layer owns transport, orchestration, persistence, and evidence. [3a] anchors production release readiness. [3b] anchors true-state baseline. [3c] anchors execution-7 verifier. [3d] anchors go/no-go command.
+**Reasoning through the execution path.** Start at [3a] and follow the ordered state transition rather than jumping directly to a downstream repository or generated artefact. The trace is designed to show which layer owns transport, orchestration, persistence, and evidence. [3a] anchors production release readiness. [3b] anchors true-state baseline. [3c] anchors the active PRD-11 register. [3d] anchors go/no-go command.
 
 **Safe change boundary.** Release evidence is commit-specific and environment-specific; prior green evidence cannot authorize a changed runtime. A change that moves responsibility across these boundaries should update the owning codemap, tests, and any affected ADR or release verifier in the same change.
 

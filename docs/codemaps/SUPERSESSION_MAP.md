@@ -1,6 +1,6 @@
 # Codemap Supersession Map
 
-**Effective date:** 2026-07-13
+**Effective date:** 2026-09-13
 
 The previous codemap directory contained broad, overlapping maps with duplicated subsystems and stale workstation-absolute paths. The canonical suite replaces those files with domain-owned maps. The apply script archives the previous directory before installing this set.
 

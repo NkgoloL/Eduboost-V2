@@ -173,7 +173,7 @@ Run AI safety, tutor safety, content safety, PII, prompt-injection, and cluster-
 **Location ID: 2d**
 - **Title:** AI safety workflow
 - **Description:** Hosted AI safety gate.
-- **Path:LineNumber:** .github/workflows/cluster-f-ai-safety.yml:1
+- **Path:LineNumber:** .github/workflows/security-supply-chain.yml:1
 
 ### AI Guide: Prompt safety, content filtering, and tutor guardrails
 

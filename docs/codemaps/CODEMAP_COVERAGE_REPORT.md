@@ -1,13 +1,13 @@
 # EduBoost V2 Codemap Coverage Report
 
-**Generated:** 2026-07-13
+**Generated:** 2026-09-13
 
 ## Result
 
 - Canonical codemaps: **20**
 - Execution traces: **60**
 - Source anchors: **240**
-- Maintained files inventoried: **6218**
+- Maintained files inventoried: **6700**
 - Files with a primary owner: **100%**
 - Unassigned files: **0**
 - Duplicate primary assignments: **0**
@@ -48,7 +48,7 @@ Excluded transient or vendor directories include `.git`, `node_modules`, `.next`
 
 ## Interpretation
 
-Primary ownership does not imply that every file appears as a Location ID. Location IDs identify representative execution anchors; the manifest provides exhaustive ownership. Cross-cutting files can be cited by multiple maps while retaining a single primary owner.
+Primary ownership does not imply that every file appears as a Location ID. Location IDs identify representative execution anchors; the manifest provides exhaustive ownership. Cross-cutting files can be cited by multiple maps while retaining a single primary owner. The manifest was regenerated against the current repository inventory on 2026-09-13; retired workflow and legacy paths are excluded automatically when absent from the checkout.
 
 Large ownership totals for production readiness and testing reflect the repository’s extensive verifier, evidence, workflow, and test surface. Runtime domain maps remain focused on the application paths that those controls exercise.
 

@@ -245,7 +245,7 @@ Run migration_check, schema integrity, smoke migrations, backup matrix, and rest
 **Location ID: 3b**
 - **Title:** Migration workflow
 - **Description:** Hosted graph and migration checks.
-- **Path:LineNumber:** .github/workflows/migration_check.yml:18
+- **Path:LineNumber:** .github/workflows/product-runtime.yml:1
 
 **Location ID: 3c**
 - **Title:** Migration evidence

@@ -174,7 +174,7 @@ Run observability/SRE routes, readiness assurance, alert rule, staging smoke, an
 **Location ID: 2d**
 - **Title:** Observability workflow
 - **Description:** Hosted monitoring gate.
-- **Path:LineNumber:** .github/workflows/observability_check.yml:14
+- **Path:LineNumber:** .github/workflows/operations-drills.yml:1
 
 ### AI Guide: Health, readiness, alerting, and incident response
 
@@ -260,7 +260,7 @@ Run performance-scale-cost route/module tests, smoke suites, Lighthouse, and PRD
 **Location ID: 3d**
 - **Title:** Frontend performance workflow
 - **Description:** Lighthouse budget gate.
-- **Path:LineNumber:** .github/workflows/lighthouse.yml:1
+- **Path:LineNumber:** .github/workflows/frontend-e2e.yml:1
 
 ### AI Guide: Performance, scale, resource budgets, and cost controls
 

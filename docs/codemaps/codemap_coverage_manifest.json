@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-13",
+  "generated_at": "2026-09-13",
   "repository": "EduBoost-V2",
   "purpose": "Canonical primary ownership coverage for the application-wide codemap suite.",
   "inventory_policy": {
@@ -96,8 +96,8 @@
     "canonical_codemaps": 20,
     "execution_traces": 60,
     "source_anchors": 240,
-    "inventoried_files": 6218,
-    "assigned_files": 6218,
+    "inventoried_files": 6760,
+    "assigned_files": 6760,
     "unassigned_files": 0,
     "duplicate_primary_assignments": 0
   },
@@ -112,7 +112,7 @@
         "app/middleware",
         "app/api_v2_routers/system.py"
       ],
-      "assigned_file_count": 66
+      "assigned_file_count": 67
     },
     {
       "id": "01_frontend_nextjs_pwa_and_client_flows",
@@ -121,7 +121,7 @@
       "scope": [
         "app/frontend"
       ],
-      "assigned_file_count": 255
+      "assigned_file_count": 251
     },
     {
       "id": "02_api_routing_contracts_and_openapi",
@@ -134,7 +134,7 @@
         "openapi",
         "scripts/generate_openapi.py"
       ],
-      "assigned_file_count": 19
+      "assigned_file_count": 18
     },
     {
       "id": "03_authentication_authorization_and_session_security",
@@ -161,7 +161,7 @@
         "app/services/data_subject_rights_service.py",
         "app/services/audit*"
       ],
-      "assigned_file_count": 312
+      "assigned_file_count": 310
     },
     {
       "id": "05_learner_parent_onboarding_and_vertical_journeys",
@@ -175,7 +175,7 @@
         "app/modules/vertical_journey",
         "app/services/learner_service.py"
       ],
-      "assigned_file_count": 75
+      "assigned_file_count": 74
     },
     {
       "id": "06_diagnostics_irt_item_bank_and_mastery",
@@ -188,7 +188,7 @@
         "app/repositories/*diagnostic*",
         "app/repositories/irt_repository.py"
       ],
-      "assigned_file_count": 106
+      "assigned_file_count": 103
     },
     {
       "id": "07_lessons_tutor_study_plans_practice_and_gamification",
@@ -203,7 +203,7 @@
         "app/modules/practice",
         "app/modules/study_plans"
       ],
-      "assigned_file_count": 104
+      "assigned_file_count": 106
     },
     {
       "id": "08_curriculum_caps_knowledge_graph_and_runtime_kg",
@@ -215,7 +215,7 @@
         "app/services/runtime_kg",
         "app/models/runtime_kg.py"
       ],
-      "assigned_file_count": 301
+      "assigned_file_count": 291
     },
     {
       "id": "09_content_factory_review_quality_and_promotion",
@@ -242,7 +242,7 @@
         "supabase",
         "scripts/*migration*"
       ],
-      "assigned_file_count": 49
+      "assigned_file_count": 47
     },
     {
       "id": "11_async_jobs_arq_redis_and_scheduled_work",
@@ -284,7 +284,7 @@
         "app/services/email_service.py",
         "app/modules/commercial_launch"
       ],
-      "assigned_file_count": 50
+      "assigned_file_count": 49
     },
     {
       "id": "14_observability_health_sre_performance_and_cost",
@@ -299,7 +299,7 @@
         "app/modules/observability",
         "app/modules/performance_scale_cost"
       ],
-      "assigned_file_count": 135
+      "assigned_file_count": 132
     },
     {
       "id": "15_infrastructure_deployment_backup_and_disaster_recovery",
@@ -315,7 +315,7 @@
         "app/modules/deployment",
         "app/modules/disaster_recovery"
       ],
-      "assigned_file_count": 100
+      "assigned_file_count": 102
     },
     {
       "id": "16_etl_ingestion_semantic_retrieval_and_mcp_tools",
@@ -345,7 +345,7 @@
         "scripts/coverage_suites",
         "scripts/advisory_suites"
       ],
-      "assigned_file_count": 1485
+      "assigned_file_count": 1863
     },
     {
       "id": "18_production_readiness_release_evidence_and_live_traffic",
@@ -360,7 +360,7 @@
         "app/api_v2_routers/controlled_beta.py",
         "app/api_v2_routers/production_release.py"
       ],
-      "assigned_file_count": 2109
+      "assigned_file_count": 2234
     },
     {
       "id": "19_documentation_adrs_repository_governance_and_maintenance",
@@ -375,7 +375,7 @@
         "scripts/docs_inventory.py",
         "scripts/maintenance"
       ],
-      "assigned_file_count": 736
+      "assigned_file_count": 797
     }
   ],
   "assignments": [
@@ -385,434 +385,34 @@
       "kind": "repository-config"
     },
     {
-      "path": ".github/workflows/api-envelope-error-contract.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/architecture-gates.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/audit-write-runtime-evidence.yml",
-      "primary_owner": "04_consent_popia_audit_and_data_subject_rights",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/auth-boundary.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/auth-refresh-db-proof.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/backend-consolidation.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/backend-nightly-coverage.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/beta-release-approval.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/caps-source-topic-map.yml",
-      "primary_owner": "08_curriculum_caps_knowledge_graph_and_runtime_kg",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/ci-cd.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/ci-core.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/ci_diagnostics_assessment.yml",
-      "primary_owner": "06_diagnostics_irt_item_bank_and_mastery",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/ci_lesson_quality.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/cluster-d-ci.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/cluster-e-data-resilience.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/cluster-f-ai-safety.yml",
-      "primary_owner": "12_llm_gateway_ai_operations_and_safety",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/cluster-g-frontend.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/cluster-h-release-readiness.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/db-backup-dryrun.yml",
-      "primary_owner": "15_infrastructure_deployment_backup_and_disaster_recovery",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/db-backup-matrix.yml",
-      "primary_owner": "15_infrastructure_deployment_backup_and_disaster_recovery",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/db-backup-restore-rollback-evidence.yml",
-      "primary_owner": "15_infrastructure_deployment_backup_and_disaster_recovery",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/dependency-scan.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/deploy-frontend.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/diag-score-live-audit.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/docs.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/documentation-governance.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/e2e.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/final-roadmap-reconciliation-closure.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
       "path": ".github/workflows/frontend-e2e.yml",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "workflow"
     },
     {
-      "path": ".github/workflows/item_bank_ci.yml",
-      "primary_owner": "06_diagnostics_irt_item_bank_and_mastery",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/jwt-secret-rotation-evidence.yml",
+      "path": ".github/workflows/operations-drills.yml",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
+      "kind": "maintained-file"
     },
     {
-      "path": ".github/workflows/kg-roadmap-closure-report.yml",
+      "path": ".github/workflows/pr-core.yml",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
+      "kind": "maintained-file"
     },
     {
-      "path": ".github/workflows/kg000-formal-kg-roadmap-approval.yml",
-      "primary_owner": "08_curriculum_caps_knowledge_graph_and_runtime_kg",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/kg001-caps-graph-foundation.yml",
-      "primary_owner": "08_curriculum_caps_knowledge_graph_and_runtime_kg",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/kg002-target-graph-generation.yml",
-      "primary_owner": "08_curriculum_caps_knowledge_graph_and_runtime_kg",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/kg003-learner-graph-shadow-mode.yml",
-      "primary_owner": "08_curriculum_caps_knowledge_graph_and_runtime_kg",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/kg004-gap-engine-intervention-planner.yml",
-      "primary_owner": "08_curriculum_caps_knowledge_graph_and_runtime_kg",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/kg005-graph-grounded-lesson-assessment-generation.yml",
-      "primary_owner": "08_curriculum_caps_knowledge_graph_and_runtime_kg",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/kg006-tutor-study-plan-gamification-parent-alignment.yml",
-      "primary_owner": "08_curriculum_caps_knowledge_graph_and_runtime_kg",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/kg007-authority-switch-legacy-cleanup.yml",
-      "primary_owner": "08_curriculum_caps_knowledge_graph_and_runtime_kg",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/kg008-post-switch-optimisation-scale-review.yml",
-      "primary_owner": "08_curriculum_caps_knowledge_graph_and_runtime_kg",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/kgact001-controlled-runtime-kg-authority-activation.yml",
-      "primary_owner": "08_curriculum_caps_knowledge_graph_and_runtime_kg",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/learner-authz-coverage.yml",
+      "path": ".github/workflows/product-runtime.yml",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
+      "kind": "maintained-file"
     },
     {
-      "path": ".github/workflows/learning-evidence.yml",
-      "primary_owner": "08_curriculum_caps_knowledge_graph_and_runtime_kg",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/legacy-route-guard.yml",
+      "path": ".github/workflows/release-evidence.yml",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
+      "kind": "maintained-file"
     },
     {
-      "path": ".github/workflows/lighthouse.yml",
-      "primary_owner": "14_observability_health_sre_performance_and_cost",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/migration_check.yml",
-      "primary_owner": "10_persistence_repositories_models_migrations_and_transactions",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/observability_check.yml",
-      "primary_owner": "14_observability_health_sre_performance_and_cost",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/openapi-contract.yml",
+      "path": ".github/workflows/security-supply-chain.yml",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/openapi-drift.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/persistence-resilience.yml",
-      "primary_owner": "10_persistence_repositories_models_migrations_and_transactions",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/popia-consent-audit.yml",
-      "primary_owner": "04_consent_popia_audit_and_data_subject_rights",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/prd000-production-readiness-stream-authority.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/prd001-canonical-current-state-documentation-refresh.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/prd002-historical-report-stale-source-quarantine.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/prd003-documentation-housekeeping-ratchet-refresh.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/prd004-test-dependency-bootstrap-baseline.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/prd005-test-failure-collection-stabilisation-register.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/prd006-workflow-command-hygiene-ci-inventory.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/prd007-openapi-generated-artifact-canonicalisation.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/prd008-branch-release-naming-reconciliation.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/prd009-repository-hygiene-generated-local-artifact-audit.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/prd010-prd0-closure-evidence-handoff.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/prd100-ci-release-gate-stream-authority.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/prd101-ci-inventory-authority.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/privacy-boundary.yml",
-      "primary_owner": "04_consent_popia_audit_and_data_subject_rights",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/release.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/repo-state.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/rr003-release-authority.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/rr006-security-posture.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/rr007-product-quality-gates.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/rr008-operational-readiness.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/rr009-governance-process.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/rr010-beta-outcome-reporting.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/rr011-live-billing-provider-integration.yml",
-      "primary_owner": "13_billing_commercial_launch_and_external_integrations",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/rr012-production-telemetry-dashboard.yml",
-      "primary_owner": "14_observability_health_sre_performance_and_cost",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/rr013-advanced-mastery-model-research.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/rr014-public-beta-expansion.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/rr015-external-approvals.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/rr016-operational-drills.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/rr017-release-safety-controls.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/rr018-trustworthy-beta-product-quality.yml",
-      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/runtime-contract.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/secrets-scan.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/staging-smoke.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
-    },
-    {
-      "path": ".github/workflows/technical-audit-hosted-ci.yml",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "workflow"
+      "kind": "maintained-file"
     },
     {
       "path": ".pre-commit-config.yaml",
@@ -1150,11 +750,6 @@
       "kind": "application"
     },
     {
-      "path": "app/api_v2_routers/0005_irt_seed.py",
-      "primary_owner": "06_diagnostics_irt_item_bank_and_mastery",
-      "kind": "application"
-    },
-    {
       "path": "app/api_v2_routers/__init__.py",
       "primary_owner": "02_api_routing_contracts_and_openapi",
       "kind": "application"
@@ -1335,16 +930,6 @@
       "kind": "application"
     },
     {
-      "path": "app/api_v2_routers/test_api.py",
-      "primary_owner": "02_api_routing_contracts_and_openapi",
-      "kind": "application"
-    },
-    {
-      "path": "app/api_v2_routers/test_services.py",
-      "primary_owner": "02_api_routing_contracts_and_openapi",
-      "kind": "application"
-    },
-    {
       "path": "app/api_v2_routers/tutor.py",
       "primary_owner": "07_lessons_tutor_study_plans_practice_and_gamification",
       "kind": "application"
@@ -1488,6 +1073,11 @@
       "path": "app/core/password_policy.py",
       "primary_owner": "03_authentication_authorization_and_session_security",
       "kind": "application"
+    },
+    {
+      "path": "app/core/pii_sanitizer.py",
+      "primary_owner": "00_application_bootstrap_and_request_lifecycle",
+      "kind": "maintained-file"
     },
     {
       "path": "app/core/policy.py",
@@ -1756,11 +1346,6 @@
     },
     {
       "path": "app/frontend/__tests__/InteractiveDiagnosticFlow.test.tsx",
-      "primary_owner": "01_frontend_nextjs_pwa_and_client_flows",
-      "kind": "frontend"
-    },
-    {
-      "path": "app/frontend/__tests__/LegacyApiHelpers.test.ts",
       "primary_owner": "01_frontend_nextjs_pwa_and_client_flows",
       "kind": "frontend"
     },
@@ -2585,21 +2170,6 @@
       "kind": "frontend"
     },
     {
-      "path": "app/frontend/src/components/ui/Badge-legacy.tsx",
-      "primary_owner": "01_frontend_nextjs_pwa_and_client_flows",
-      "kind": "frontend"
-    },
-    {
-      "path": "app/frontend/src/components/ui/Button-legacy.tsx",
-      "primary_owner": "01_frontend_nextjs_pwa_and_client_flows",
-      "kind": "frontend"
-    },
-    {
-      "path": "app/frontend/src/components/ui/Card-legacy.tsx",
-      "primary_owner": "01_frontend_nextjs_pwa_and_client_flows",
-      "kind": "frontend"
-    },
-    {
       "path": "app/frontend/src/components/ui/ErrorMessage.tsx",
       "primary_owner": "01_frontend_nextjs_pwa_and_client_flows",
       "kind": "frontend"
@@ -3015,24 +2585,9 @@
       "kind": "application"
     },
     {
-      "path": "app/legacy/DEPRECATED.md",
+      "path": "app/middleware/api_deprecation.py",
       "primary_owner": "00_application_bootstrap_and_request_lifecycle",
-      "kind": "application"
-    },
-    {
-      "path": "app/legacy/api/__init__.py",
-      "primary_owner": "00_application_bootstrap_and_request_lifecycle",
-      "kind": "application"
-    },
-    {
-      "path": "app/legacy/api/main.py",
-      "primary_owner": "00_application_bootstrap_and_request_lifecycle",
-      "kind": "application"
-    },
-    {
-      "path": "app/legacy/api/version.py",
-      "primary_owner": "00_application_bootstrap_and_request_lifecycle",
-      "kind": "application"
+      "kind": "maintained-file"
     },
     {
       "path": "app/middleware/security_headers.py",
@@ -3385,6 +2940,11 @@
       "kind": "application"
     },
     {
+      "path": "app/modules/lessons/lesson_review_service.py",
+      "primary_owner": "07_lessons_tutor_study_plans_practice_and_gamification",
+      "kind": "maintained-file"
+    },
+    {
       "path": "app/modules/lessons/lesson_schema_v1.py",
       "primary_owner": "07_lessons_tutor_study_plans_practice_and_gamification",
       "kind": "application"
@@ -3508,6 +3068,11 @@
       "path": "app/modules/practice/router.py",
       "primary_owner": "07_lessons_tutor_study_plans_practice_and_gamification",
       "kind": "application"
+    },
+    {
+      "path": "app/modules/practice/service.py",
+      "primary_owner": "07_lessons_tutor_study_plans_practice_and_gamification",
+      "kind": "maintained-file"
     },
     {
       "path": "app/modules/practice/spaced_repetition_scheduler.py",
@@ -3770,6 +3335,11 @@
       "kind": "application"
     },
     {
+      "path": "app/services/ai_budget_guard.py",
+      "primary_owner": "12_llm_gateway_ai_operations_and_safety",
+      "kind": "maintained-file"
+    },
+    {
       "path": "app/services/ai_operations.py",
       "primary_owner": "12_llm_gateway_ai_operations_and_safety",
       "kind": "application"
@@ -3888,6 +3458,11 @@
       "path": "app/services/batch_generation.py",
       "primary_owner": "00_application_bootstrap_and_request_lifecycle",
       "kind": "application"
+    },
+    {
+      "path": "app/services/billing_guard.py",
+      "primary_owner": "00_application_bootstrap_and_request_lifecycle",
+      "kind": "maintained-file"
     },
     {
       "path": "app/services/caps_validator.py",
@@ -4535,6 +4110,11 @@
       "kind": "application"
     },
     {
+      "path": "app/services/mastery_engine.py",
+      "primary_owner": "00_application_bootstrap_and_request_lifecycle",
+      "kind": "maintained-file"
+    },
+    {
       "path": "app/services/parent_report_service_v2.py",
       "primary_owner": "05_learner_parent_onboarding_and_vertical_journeys",
       "kind": "application"
@@ -4553,6 +4133,11 @@
       "path": "app/services/popia_consent_lifecycle_adapter.py",
       "primary_owner": "04_consent_popia_audit_and_data_subject_rights",
       "kind": "application"
+    },
+    {
+      "path": "app/services/popia_dsr_service.py",
+      "primary_owner": "00_application_bootstrap_and_request_lifecycle",
+      "kind": "maintained-file"
     },
     {
       "path": "app/services/popia_erasure_safety.py",
@@ -5455,6 +5040,16 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/architecture/architectural_debt_register.json",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/architecture/architectural_debt_register.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/architecture/architecture_decisions.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
@@ -5515,6 +5110,11 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/architecture/authorization_consolidation_matrix.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/architecture/boundary_debt_queue.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
@@ -5525,6 +5125,16 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/architecture/complexity_budgets_and_dispositions.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/architecture/content_factory_capability_decomposition.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/architecture/db_live_only_table_ownership.yml",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
@@ -5533,6 +5143,11 @@
       "path": "docs/architecture/diagnostic_item_bank_canonicality.yml",
       "primary_owner": "06_diagnostics_irt_item_bank_and_mastery",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/architecture/etl_consolidation_matrix.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/architecture/import_boundaries.md",
@@ -5575,6 +5190,11 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/architecture/legacy_quarantine_boundary.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/architecture/metaphor_glossary.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
@@ -5583,6 +5203,11 @@
       "path": "docs/architecture/metaphor_layer_inventory_baseline.json",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/architecture/popia_orchestration_boundaries.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/architecture/router_audit.txt",
@@ -5643,6 +5268,11 @@
       "path": "docs/architecture/service_family_map.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/architecture/technical_debt_ratchets.json",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/architecture/transaction_boundary_inventory.json",
@@ -6013,6 +5643,11 @@
       "path": "docs/archive/roadmaps-or-todos/RoadMap.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/audits/reports/audit_report_2026_09_03_true_state_verification.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/backend/README.md",
@@ -6515,6 +6150,16 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/ci/ci_authority_matrix.json",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/ci/ci_workflow_inventory.md",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/codemaps/00_application_bootstrap_and_request_lifecycle.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
@@ -6745,9 +6390,54 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/curriculum/pedagogical_validity_review.md",
+      "primary_owner": "08_curriculum_caps_knowledge_graph_and_runtime_kg",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/curriculum/post_launch_educational_limitations_memo.md",
+      "primary_owner": "08_curriculum_caps_knowledge_graph_and_runtime_kg",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/curriculum/rr007_content_expansion_roadmap.md",
       "primary_owner": "08_curriculum_caps_knowledge_graph_and_runtime_kg",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/data/audit_immutability_verification.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/data/backup_retention_and_erasure_policy.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/data/data_lineage_map.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/data/migration_rollback_and_forward_fix_policy.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/data/table_field_data_inventory.json",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/data/table_field_data_inventory.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/data/transaction_ownership_and_isolation_policy.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/data_inventory.md",
@@ -6985,6 +6675,11 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/documentation/documentation_alignment_plan.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/documentation/documentation_debt_baseline.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
@@ -7088,6 +6783,16 @@
       "path": "docs/engineering/README.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/engineering/audits/bandit_finding_disposition_B01_2026-07-20.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/engineering/audits/true_state_technical_report_2026-07-13.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/engineering/branching.md",
@@ -7720,6 +7425,26 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/generated/README.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/generated/documentation_findings.csv",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/generated/documentation_inventory.csv",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/generated/documentation_inventory.json",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/governance/rr009_adr_index_completion.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
@@ -7758,6 +7483,11 @@
       "path": "docs/index.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/infrastructure/cost_and_capacity_model.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/input/README.md",
@@ -8305,6 +8035,11 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/openapi.yaml",
+      "primary_owner": "02_api_routing_contracts_and_openapi",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/openapi_pr003.json",
       "primary_owner": "02_api_routing_contracts_and_openapi",
       "kind": "documentation"
@@ -8343,6 +8078,11 @@
       "path": "docs/operations/SYSTEM_STARTUP_REPORT.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/operations/access_and_evidence_custody_report.md",
+      "primary_owner": "15_infrastructure_deployment_backup_and_disaster_recovery",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/operations/alertmanager.md",
@@ -8630,6 +8370,11 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/operations/billing_lock_commercial_attestation.md",
+      "primary_owner": "15_infrastructure_deployment_backup_and_disaster_recovery",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/operations/branch_handoff_proof_record.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
@@ -8738,6 +8483,11 @@
       "path": "docs/operations/deployment_runbook.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/operations/dr_and_resilience_attestation.md",
+      "primary_owner": "15_infrastructure_deployment_backup_and_disaster_recovery",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/operations/drills/rr016_backup_drill_report.md",
@@ -8948,6 +8698,11 @@
       "path": "docs/operations/observability_ops_evidence.md",
       "primary_owner": "14_observability_health_sre_performance_and_cost",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/operations/operational_handover_runbook.md",
+      "primary_owner": "15_infrastructure_deployment_backup_and_disaster_recovery",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/operations/persistence_resilience_evidence.md",
@@ -9200,6 +8955,11 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/operations/stabilization_dashboard_spec.md",
+      "primary_owner": "15_infrastructure_deployment_backup_and_disaster_recovery",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/operations/staging_operations_evidence_2026-05-11.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
@@ -9418,6 +9178,11 @@
       "path": "docs/privacy/information_officer.md",
       "primary_owner": "04_consent_popia_audit_and_data_subject_rights",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/privacy/popia_legal_architecture_review.md",
+      "primary_owner": "04_consent_popia_audit_and_data_subject_rights",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/product/README.md",
@@ -11675,6 +11440,11 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-6-final-true-state-baseline-handoff/raw-20260817/summary.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-6-final-true-state-baseline-handoff/summary.json",
       "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
       "kind": "documentation"
@@ -11720,9 +11490,59 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-2-generated-contract-frontend-quality/raw-20260817/summary.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-2-generated-contract-frontend-quality/summary.json",
       "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/frontend-build.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/frontend-lint.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/frontend-quality-release.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/frontend-typecheck.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/frontend-vitest.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/generated-contract-readonly-check.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/openapi-regenerate.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/route-inventory-regenerate.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/raw-20260816/summary.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-3-generated-contract-frontend-green-run/record.json",
@@ -11768,6 +11588,36 @@
       "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/green_run_summary.json",
       "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/raw-20260816/frontend-build-side-effect-check.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/raw-20260816/frontend-release-quality.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/raw-20260816/generated-contract-readonly-check.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/raw-20260816/openapi-regenerate.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/raw-20260816/route-inventory-regenerate.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/raw-20260816/summary.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-4-frontend-quality-defect-repair-generated-contract-green-evidence/summary.json",
@@ -11823,6 +11673,16 @@
       "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-6-product-critical-flow-green/summary.json",
       "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-7-coverage-static-security-green/coverage-static-security-summary.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/production-readiness/prd-1100r-runtime-restore-execution-7-coverage-static-security-green/summary.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/release-evidence/production-readiness/prd-1100r-true-state-runtime-baseline-restoration/audit_after.json",
@@ -14460,6 +14320,651 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/release-evidence/true-state-remediation/b01/apply/capture_baseline.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/apply/release_gates.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/baseline_manifest.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/commands/bandit.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/commands/command_summary.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/commands/compileall.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/commands/execution7_gate_suite.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/commands/execution7_verifier.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/commands/frontend_audit.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/commands/frontend_quality.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/commands/mcp_stub_isolation.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/commands/mypy.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/commands/pip_audit_base.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/commands/pip_audit_dev.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/commands/pre_coverage_commit.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/commands/pre_coverage_git_commit.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/commands/product_gate.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/commands/product_runtime_gate.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/commands/ruff.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/commands/test_collection.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/environment_manifest.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/implementation_state.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/manual/execution-8-gov-01.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/manual/execution-8-gov-02.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/manual/execution-8-gov-03.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/manual/execution-8-gov-04.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/manual/execution-8-gov-05.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/manual/execution-8-gov-06.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/manual/prd-11-0r-runtime-restore-6.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/manual/prd-11-0r-runtime-restore-execution-2.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/manual/prd-11-0r-runtime-restore-execution-3.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/manual/prd-11-0r-runtime-restore-execution-4.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/manual/tsr-0-7.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/manual/tsr-0.7-responsibility-matrix.md",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/manual/tsr-1-11.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/manual/tsr-1.11-rescan.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/manual/tsr-1.11-review-head.txt",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/manual/tsr-1.11-secret-baseline-review.md",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/manual/tsr-manual-verification.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b01/verification.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/apply/generate_docs.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/apply/generate_openapi.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/apply/generate_routes.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/apply/generate_sboms.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/environment_manifest.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/implementation_state.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/manual/tsr-2-11.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/manual/tsr-2-3.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/manual/tsr-2-9.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/manual/tsr-2.11-project-version-metadata.md",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/manual/tsr-2.3-product-scope-authority.md",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/manual/tsr-2.9-immutable-archive-policy.md",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/manual/tsr-3-1.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/manual/tsr-3-10.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/manual/tsr-3-11.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/manual/tsr-3-3.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/manual/tsr-3-7.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/manual/tsr-3.1-frontend-compatibility-matrix.md",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/manual/tsr-3.10-release-sboms.md",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/manual/tsr-3.11-dependency-update-policy.md",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/manual/tsr-3.3-root-package-architecture.md",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/manual/tsr-3.7-celery-worker-architecture-decision.md",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/sbom/sbom-backend.cdx.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/sbom/sbom-frontend.cdx.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b02/verification.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b03/apply/generate_ci_authority.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b03/apply/generate_current_state.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b03/apply/generate_test_health_metrics.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b03/environment_manifest.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b03/implementation_state.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b03/manual/tsr-4-10.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b03/manual/tsr-4-2.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b03/manual/tsr-4-9.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b03/manual/tsr-4.10-branch-protection-reconciliation.md",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b03/manual/tsr-4.2-ci-authority-decision.md",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b03/manual/tsr-4.9-concurrency-retention-policy.md",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b03/manual/tsr-5-5.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b03/manual/tsr-5-9.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b03/manual/tsr-5.5-flake-policy-authority.md",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b03/manual/tsr-5.9-test-budget-timeout-policy.md",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b03/verification.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b04/apply/check_router_repo_isolation.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b04/apply/lint_imports.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b04/environment_manifest.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b04/implementation_state.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b04/manual/tsr-6-1.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b04/manual/tsr-6-10.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b04/manual/tsr-6-12.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b04/manual/tsr-6-14.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b04/manual/tsr-6-2.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b04/manual/tsr-6-3.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b04/manual/tsr-6-4.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b04/manual/tsr-7-1.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b04/manual/tsr-7-10.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b04/manual/tsr-7-12.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b04/manual/tsr-7-2.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b04/manual/tsr-7-6.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b04/manual/tsr-7-8.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b04/verification.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b05/apply/test_b05_integration.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b05/apply/test_b05_unit.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b05/environment_manifest.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b05/implementation_state.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b05/manual/tsr-8-1.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b05/manual/tsr-9-1.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b05/verification.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b06/apply/test_b06_dr_drill.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b06/apply/test_b06_unit.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b06/environment_manifest.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b06/implementation_state.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b06/manual/tsr-11-16.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b06/manual/tsr-11-6.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b06/verification.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b07/apply/generate_release_statement.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b07/apply/test_b07_final_program.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b07/environment_manifest.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b07/implementation_state.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b07/manual/tsr-12-3.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b07/manual/tsr-12-4.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b07/manual/tsr-12-7.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b07/manual/tsr-12-8.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/b07/verification.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/execution8-governance-refresh/coverage_contract.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/execution8-governance-refresh/coverage_frontend_advisory_gate_contract.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/execution8-governance-refresh/product_gate_execution_contract.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/execution8-governance-refresh/product_runtime_test_gate_contract.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/execution8-governance-refresh/script_taxonomy.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/execution8-governance-refresh/summary.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release-evidence/true-state-remediation/execution8-governance-refresh/test_suite_taxonomy.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/release/DB_BACKUP_RESTORE_ROLLBACK_DRILL_README.md",
       "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
       "kind": "documentation"
@@ -16525,6 +17030,16 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/release/pilot_monitoring_spec.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "docs/release/pilot_stop_rollback_criteria.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/release/popia_consent_lifecycle_introspection.json",
       "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
       "kind": "documentation"
@@ -16605,9 +17120,19 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/release/post_deployment_verification_runbook.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/release/post_migration_cleanup_report.md",
       "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/release/post_remediation_formal_review.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/release/production_frontend_deployment_status.json",
@@ -17070,6 +17595,11 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/releases/true_state_release_statement.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/reports/EduBoost_V2_True_Status_Report_2026-07-03.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
@@ -17078,6 +17608,11 @@
       "path": "docs/reports/README.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/reports/coverage_target_90_completion_report.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/reports/stale_source_quarantine_register.json",
@@ -17890,6 +18425,11 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/roadmap/execution/true_state_remediation_roadmap_2026-07-13.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/roadmap/ga_graduation_boundary_contract.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
@@ -18030,6 +18570,11 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/roadmap/known-issues.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/roadmap/post_530_north_star_execution_board.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
@@ -18103,6 +18648,11 @@
       "path": "docs/roadmap/production_readiness/current_state_documentation_truth_map.json",
       "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/roadmap/production_readiness/defect_register_baseline.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/roadmap/production_readiness/documentation_housekeeping_ratchet_refresh_plan.md",
@@ -18185,6 +18735,11 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/roadmap/production_readiness/prd11_execution_evidence_integrity_decision.md",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/roadmap/production_readiness/prd11_production_release_register.json",
       "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
       "kind": "documentation"
@@ -18248,6 +18803,11 @@
       "path": "docs/roadmap/production_readiness/prd11_runtime_restore_execution_6_product_critical_flow_green.json",
       "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/roadmap/production_readiness/prd11_runtime_restore_execution_7_coverage_static_security_green.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/roadmap/production_readiness/prd11_script_taxonomy_functional_overhaul.json",
@@ -18893,6 +19453,11 @@
       "path": "docs/roadmap/production_readiness/third_party_content_licensing_register.json",
       "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/roadmap/production_readiness/true_state_remediation_register.json",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/roadmap/production_readiness/unit_shard_stabilisation_contract.json",
@@ -19990,6 +20555,11 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/testing/flake_policy_and_quarantine_register.md",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/testing/generated_contract_frontend_quality_execution.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
@@ -20055,6 +20625,11 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/testing/risk_based_coverage_thresholds.md",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/testing/runtime_stack_db_lineage_ready_green.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
@@ -20070,6 +20645,11 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/testing/test_health_metrics.json",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/testing/test_strategy_matrix_contract.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
@@ -20078,6 +20658,11 @@
       "path": "docs/testing/test_suite_taxonomy.md",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
+    },
+    {
+      "path": "docs/testing/test_taxonomy_and_fast_suite_manifest.md",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "docs/testing/testing_release_evidence_architecture_contract.md",
@@ -20143,6 +20728,11 @@
       "path": "requirements.txt",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "repository-config"
+    },
+    {
+      "path": "scripts/_subprocess.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
     },
     {
       "path": "scripts/advisory_suites/__init__.py",
@@ -20698,6 +21288,11 @@
       "path": "scripts/audit_router_thinness.py",
       "primary_owner": "04_consent_popia_audit_and_data_subject_rights",
       "kind": "script"
+    },
+    {
+      "path": "scripts/audit_test_imports.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
     },
     {
       "path": "scripts/audit_write_flow.py",
@@ -23305,11 +23900,6 @@
       "kind": "script"
     },
     {
-      "path": "scripts/generate_legacy_learner_access_guard_report.py",
-      "primary_owner": "05_learner_parent_onboarding_and_vertical_journeys",
-      "kind": "script"
-    },
-    {
       "path": "scripts/generate_openapi.py",
       "primary_owner": "02_api_routing_contracts_and_openapi",
       "kind": "script"
@@ -23845,6 +24435,11 @@
       "kind": "script"
     },
     {
+      "path": "scripts/maintenance/check_readiness_register_consistency.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
       "path": "scripts/maintenance/check_repo_hygiene.py",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "script"
@@ -23858,6 +24453,31 @@
       "path": "scripts/maintenance/docker_maintenance.sh",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "script"
+    },
+    {
+      "path": "scripts/maintenance/generate_ci_authority_inventory.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/maintenance/generate_current_state_docs.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/maintenance/generate_release_sboms.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/maintenance/generate_release_statement.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/maintenance/generate_test_health_metrics.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
     },
     {
       "path": "scripts/maintenance/patch_makefile_docs_housekeeping.py",
@@ -23878,6 +24498,11 @@
       "path": "scripts/maintenance/push_all.sh",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "script"
+    },
+    {
+      "path": "scripts/maintenance/regenerate_codemaps.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
     },
     {
       "path": "scripts/maintenance/setup_cron.sh",
@@ -23918,6 +24543,11 @@
       "path": "scripts/migrate_auth_lifecycle_helpers_to_service.py",
       "primary_owner": "03_authentication_authorization_and_session_security",
       "kind": "script"
+    },
+    {
+      "path": "scripts/migrations/0005_irt_seed.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
     },
     {
       "path": "scripts/monitor_redmine.sh",
@@ -24793,6 +25423,11 @@
       "path": "scripts/restore_postgres.sh",
       "primary_owner": "15_infrastructure_deployment_backup_and_disaster_recovery",
       "kind": "script"
+    },
+    {
+      "path": "scripts/roadmap_reconciliation/capture_execution8_governance_refresh.py",
+      "primary_owner": "18_production_readiness_release_evidence_and_live_traffic",
+      "kind": "maintained-file"
     },
     {
       "path": "scripts/roadmap_reconciliation/capture_final_roadmap_reconciliation_closure_evidence.py",
@@ -26095,6 +26730,96 @@
       "kind": "script"
     },
     {
+      "path": "scripts/true_state_remediation/__init__.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/true_state_remediation/bundles/__init__.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/true_state_remediation/bundles/bundle_01.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/true_state_remediation/bundles/bundle_02.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/true_state_remediation/bundles/bundle_03.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/true_state_remediation/bundles/bundle_04.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/true_state_remediation/bundles/bundle_05.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/true_state_remediation/bundles/bundle_06.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/true_state_remediation/bundles/bundle_07.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/true_state_remediation/capture_baseline.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/true_state_remediation/check_feature_freeze.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/true_state_remediation/check_router_repo_isolation.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/true_state_remediation/core.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/true_state_remediation/execute_bundle.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/true_state_remediation/record_manual_evidence.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/true_state_remediation/record_review.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/true_state_remediation/run_release_gates.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "scripts/true_state_remediation/verify_final_program.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
       "path": "scripts/tx_route_wiring_inventory.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "script"
@@ -26805,6 +27530,11 @@
       "kind": "test"
     },
     {
+      "path": "tests/integration/test_billing_lock_enforcement.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/integration/test_consent_grant_authorization.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
@@ -26845,6 +27575,11 @@
       "kind": "test"
     },
     {
+      "path": "tests/integration/test_curriculum_graph_migration.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/integration/test_deep_health.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
@@ -26878,6 +27613,11 @@
       "path": "tests/integration/test_diagnostics_transaction_rollback_proof.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
+    },
+    {
+      "path": "tests/integration/test_disaster_recovery_drill.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "tests/integration/test_gamification_award_xp_authorization.py",
@@ -26955,6 +27695,11 @@
       "kind": "test"
     },
     {
+      "path": "tests/integration/test_popia_dsr_automation.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/integration/test_popia_lifecycle_response_contract.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
@@ -27006,156 +27751,6 @@
     },
     {
       "path": "tests/integration/test_v2_routers.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/README.md",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/integration/test_api_contracts.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/integration/test_auth_lifecycle.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/integration/test_celery_study_plan.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/integration/test_consent_enforcement.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/integration/test_five_pillar_pipeline.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/integration/test_gamification_integration.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/integration/test_lesson_api.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/integration/test_parent_portal_integration.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/integration/test_parent_reporting.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/integration/test_phase1_contracts_extended.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/integration/test_privacy_compliance.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/integration/test_study_plan_integration.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/integration/test_study_plan_mastery.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/popia/test_parent_routes.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/popia/test_popia_compliance.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/test_api_contract.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/unit/modules/diagnostics/test_irt_engine.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/unit/test_constitutional_schema.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/unit/test_five_pillars.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/unit/test_fourth_estate.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/unit/test_fourth_estate_circuit_breaker.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/unit/test_gamification.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/unit/test_gamification_service.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/unit/test_irt_benchmarks.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/unit/test_irt_engine.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/unit/test_judiciary.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/unit/test_pii_scrubber.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/unit/test_profiler.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/legacy/unit/test_study_plan_service.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
     },
@@ -27415,6 +28010,11 @@
       "kind": "test"
     },
     {
+      "path": "tests/taxonomy.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/test_e2e_integration.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
@@ -27431,11 +28031,6 @@
     },
     {
       "path": "tests/test_health_metrics.py",
-      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
-      "kind": "test"
-    },
-    {
-      "path": "tests/test_legacy_route_exclusion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
     },
@@ -27635,6 +28230,86 @@
       "kind": "test"
     },
     {
+      "path": "tests/unit/core/test_authorization_policies_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_core_engine_health_auth_config_complete_batch410.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_core_infrastructure_complete_batch408.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_core_llm_metrics_judiciary_batch412.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_core_protocols_middleware_policy_complete_batch409.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_core_security_auth_complete_batch407.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_core_security_deps_tokens_pii_consent_batch411.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_database_lifecycle_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_dependencies_and_system_router_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_dependencies_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_health_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_llm_and_ai_operations_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_llm_comprehensive_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_llm_core_executive_service_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_llm_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_llm_inference_prompt_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/coverage_suites/test_budgeted_terminal_isolation.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
@@ -27655,6 +28330,46 @@
       "kind": "test"
     },
     {
+      "path": "tests/unit/domain/test_content_factory_schemas_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/domain/test_data_subject_rights_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/domain/test_domain_complete_batch413.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/domain/test_kg_advanced_packs_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/domain/test_kg_domain_complete_batch428.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/domain/test_kg_product_alignment_functions_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/domain/test_kg_runtime_activation_and_post_switch_review_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/domain/test_knowledge_graph_domain_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/modules/commercial_launch/test_commercial_launch_readiness.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
@@ -27663,6 +28378,11 @@
       "path": "tests/unit/modules/commercial_launch/test_commercial_runtime_audit_remediation.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
+    },
+    {
+      "path": "tests/unit/modules/content_factory/test_content_factory_and_governance_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "tests/unit/modules/content_quality/test_content_quality_acceptance.py",
@@ -27685,9 +28405,24 @@
       "kind": "test"
     },
     {
+      "path": "tests/unit/modules/curriculum/test_caps_topic_map_and_study_plans_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/modules/diagnostics/conftest.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
+    },
+    {
+      "path": "tests/unit/modules/diagnostics/test_irt_engine_complete_coverage.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/diagnostics/test_irt_engine_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "tests/unit/modules/diagnostics/test_irt_engine_hardening.py",
@@ -27720,9 +28455,24 @@
       "kind": "test"
     },
     {
+      "path": "tests/unit/modules/diagnostics/test_session_and_recovery_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/modules/diagnostics/test_session_lifecycle.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
+    },
+    {
+      "path": "tests/unit/modules/lessons/test_answer_key_verifier_and_topic_map_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/lessons/test_caps_topic_map_service_queries_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "tests/unit/modules/lessons/test_golden_prompts.py",
@@ -27733,6 +28483,41 @@
       "path": "tests/unit/modules/lessons/test_lesson_generation_perf.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
+    },
+    {
+      "path": "tests/unit/modules/lessons/test_lesson_generator_and_validator_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/lessons/test_lesson_generator_and_verifier_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/lessons/test_lesson_generator_pipeline_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/lessons/test_lesson_validator_all_rules_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/lessons/test_lesson_validator_rules_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/lessons/test_lessons_and_jobs_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/lessons/test_lessons_and_topics_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "tests/unit/modules/lessons/test_phase4.py",
@@ -27798,6 +28583,66 @@
       "path": "tests/unit/modules/security_assurance/test_security_final_assurance.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
+    },
+    {
+      "path": "tests/unit/modules/test_jobs_and_dsr_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/test_jobs_complete_branch_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/test_jobs_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/test_lesson_generator_error_handling_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/test_lesson_generator_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/test_lesson_generator_verification_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/test_modules_burndown_complete_batch419.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/test_modules_burndown_complete_batch422.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/test_modules_burndown_complete_batch423.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/test_modules_burndown_complete_batch424.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/test_modules_burndown_complete_batch425.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/test_modules_burndown_complete_batch426.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "tests/unit/modules/vertical_journey/test_vertical_journey_hardening.py",
@@ -27873,6 +28718,56 @@
       "path": "tests/unit/phase02r/test_source_completeness_register.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
+    },
+    {
+      "path": "tests/unit/repositories/test_audit_repository_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/repositories/test_audit_repository_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/repositories/test_item_bank_and_jobs_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/repositories/test_item_bank_repository_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/repositories/test_item_bank_repository_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/repositories/test_item_bank_repository_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/repositories/test_repositories_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/repositories/test_repositories_complete_batch415.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/repositories/test_repositories_layer_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/repositories/test_repositories_layer_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "tests/unit/roadmap_reconciliation/test_final_roadmap_reconciliation_closure.py",
@@ -28290,6 +29185,481 @@
       "kind": "test"
     },
     {
+      "path": "tests/unit/routers/test_0005_irt_seed_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_admin_etl_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_ai_operations_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_api_v2_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_assessments_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_assessments_submit_attempt_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_audit_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_auth_extended_and_services_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_auth_extended_comprehensive_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_auth_extended_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_auth_extended_forgot_password_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_auth_extended_onboarding_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_auth_extended_privacy_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_auth_extended_router_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_auth_extended_schemas_and_rate_limit_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_auth_extended_tokens_and_privacy_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_auth_extended_validations_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_billing_checkout_webhook_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_billing_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_commercial_launch_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_consent_renewal_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_consent_renewal_trigger_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_content_factory_full_generation_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_content_factory_previews_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_content_factory_production_and_verification_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_content_factory_queue_and_workload_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_content_factory_router_endpoints_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_content_factory_router_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_content_factory_runs_management_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_content_factory_scopes_and_health_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_content_factory_seed_runs_and_gate_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_content_quality_direct_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_content_quality_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_content_review_actor_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_content_review_actor_permissions_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_content_review_router_actions_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_content_review_router_coverage_batch403.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_content_review_router_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_content_review_router_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_content_review_routes_history_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_controlled_beta_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_curriculum_expansion_all_routes_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_curriculum_expansion_export_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_curriculum_expansion_manifests_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_curriculum_expansion_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_diagnostics_comprehensive_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_diagnostics_coverage_item_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_diagnostics_items_submit_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_diagnostics_next_item_respond_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_diagnostics_review_start_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_diagnostics_router_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_diagnostics_router_helpers_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_diagnostics_router_payloads_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_diagnostics_session_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_ether_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_gamification_profile_award_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_gamification_profile_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_gamification_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_jobs_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_learner_content_items_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_learner_content_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_learners_create_get_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_learners_mastery_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_learners_routes_erasure_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_lessons_generate_sync_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_lessons_routes_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_observability_sre_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_onboarding_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_onboarding_submit_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_parents_and_tutor_router_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_parents_and_tutor_router_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_parents_comprehensive_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_parents_export_erasure_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_parents_router_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_parents_routes_trust_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_performance_scale_cost_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_popia_correction_restriction_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_popia_export_erasure_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_popia_grant_withdraw_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_popia_routes_deny_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_privacy_operations_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_production_release_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_routers_core_expansion_batch401.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_routers_expansion_batch400.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_routers_governance_and_ops_expansion_batch399.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_routers_tutor_parents_generation_batch402.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_security_assurance_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_study_plans_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_system_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_tutor_ask_message_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_tutor_cancel_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_tutor_get_session_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_tutor_routes_cancel_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_tutor_stream_reply_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_vertical_journey_routes_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/runtime/test_disposable_stack_schema_lineage.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
@@ -28400,6 +29770,1106 @@
       "kind": "test"
     },
     {
+      "path": "tests/unit/security/test_security_burndown_complete_batch420.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_generation/test_blueprint_generators_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_generation/test_content_generation_providers_complete_suite_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_generation/test_content_generators_and_provider_factory_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_generation/test_diagnostic_and_lesson_validators_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_generation/test_generated_item_contract_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_generation/test_generated_lesson_contract_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_generation/test_provider_factory_and_deterministic_provider_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_generation/test_scope_blueprint_generator_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_generation/test_scope_generators_complete_suite_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_generation/test_scope_item_generator_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_generation/test_scope_lesson_generator_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_generation/test_scope_mcq_templates_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_generation/test_scope_study_plan_generator_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_generation/test_study_plan_generators_deep_branch_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_generation/test_topic_map_source_context_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_safety/test_lesson_contracts_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/curriculum/test_curriculum_core_cluster_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/curriculum/test_curriculum_services_expansion_batch398.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/semantic_retrieval/test_semantic_retrieval_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_ai_budget_and_billing_guards_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_ai_budget_guard_ai_safety_billing_guard_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_ai_operations_and_runtime_kg_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_ai_operations_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_ai_operations_cost_and_budget_limits_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_ai_operations_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_arq_compat_consent_compat_expiry_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_assessment_and_gamification_v2_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_assessment_and_mastery_engine_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_audit_popia_adapter_and_auth_proof_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_audit_service_caps_validator_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_audit_services_and_migration_orchestrator_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_audit_services_complete_suite_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_auth_application_service_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_auth_service_deep_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_auth_service_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_auth_services_cluster_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_auth_token_claims_lesson_authorization_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_backend_candidate_execution_harness_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_backend_consolidation_runtime_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_backend_runtime_integration_readiness_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_backend_runtime_wiring_preflight_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_batch_generation_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_batch_generation_deep_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_batch_generation_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_batch_generation_engine_locking_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_batch_generation_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_batch_generation_locking_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_caps_validator_and_ai_safety_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_caps_validator_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_consent_and_job_factory_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_consent_expiry_and_runtime_facade_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_consent_runtime_compat_orchestrator_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_consent_service_and_renewal_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_answer_key_verification_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_artifact_lifecycle_bulk_and_risk_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_artifact_lifecycle_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_blueprint_and_template_validation_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_blueprint_validation_scope_registry_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_coverage_and_factory_orchestrator_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_coverage_and_staging_readiness_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_coverage_service_deep_branch_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_factory_complete_lifecycle_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_factory_provenance_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_file_artifact_import_complete_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_file_artifact_import_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_file_import_quality_and_readiness_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_file_lesson_quality_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_file_promotion_readiness_and_gate_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_file_promotion_readiness_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_file_review_queue_and_risk_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_file_review_workflow_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_file_workflows_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_generation_complete_package_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_generation_executor_complete_branch_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_generation_executor_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_generation_planner_and_lock_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_generation_planner_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_generation_reporter_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_generation_runs_and_planner_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_generation_runs_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_generation_runs_planner_lock_and_reporter_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_generation_source_context_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_learner_read_and_staging_seed_executor_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_learner_read_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_lifecycle_validator_blueprint_and_template_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_orchestrator_schemas_and_factory_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_production_promotion_and_read_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_production_promotion_executor_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_production_promotion_executor_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_production_promotion_gate_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_production_promotion_gate_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_review_eligibility_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_review_governance_and_workflow_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_review_governance_complete_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_review_governance_consensus_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_review_governance_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_review_governance_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_review_governance_history_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_review_governance_reassignment_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_review_governance_rubric_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_review_governance_validations_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_review_queue_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_review_risk_and_reviewer_assignment_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_review_risk_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_reviewer_assignment_and_bulk_review_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_reviewer_assignment_and_queue_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_reviewer_assignment_bulk_and_answer_key_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_safety_pii_and_prompt_payloads_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_scope_and_governance_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_scope_registry_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_seed_promotion_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_staging_and_seed_promotion_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_staging_preview_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_staging_read_verification_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_staging_readiness_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_staging_readiness_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_staging_seed_and_promotion_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_staging_seed_executor_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_staging_seed_executor_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_staging_seed_plans_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_template_and_blueprint_validation_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_validation_and_answer_key_verification_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_validator_and_queue_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_validator_deep_branch_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_curriculum_and_llm_burndown_complete_batch417.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_curriculum_expansion_dataset_governance_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_curriculum_expansion_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_curriculum_expansion_pii_and_hashing_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_curriculum_expansion_service_complete_branch_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_curriculum_expansion_suite.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_curriculum_graph_complete_branch_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_curriculum_graph_control_layer_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_curriculum_graph_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_deep_readiness_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_diagnostic_cluster_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_diagnostic_data_and_tx_response_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_diagnostic_data_integrity_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_diagnostic_safety_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_diagnostic_scoring_and_integrity_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_diagnostic_scoring_snapshot_session_integrity_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_diagnostic_seed_and_runtime_kg_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_diagnostic_services_cluster_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_diagnostic_session_service_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_diagnostic_session_service_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_diagnostic_snapshot_and_route_integrity_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_diagnostic_transactional_response_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_email_billing_subscription_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_email_service_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_etl_and_curriculum_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_etl_pipeline_base_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_etl_pipeline_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_etl_pipeline_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_etl_pipeline_extraction_and_normalization_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_etl_pipeline_extraction_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_etl_pipeline_normalizer_and_chunker_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_etl_pipeline_v2_complete_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_etl_pipeline_v2_dataclasses_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_etl_pipeline_v2_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_etl_pipeline_v2_execution_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_etl_pipeline_v2_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_etl_pipeline_v2_formats_and_queries_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_first_consent_and_deep_readiness_wiring_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_first_runtime_wiring_cluster_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_first_runtime_wiring_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_gamification_and_study_plan_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_generation_router_and_retrieval_indexing_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_irt_quality_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_irt_quality_service_complete_branch_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_irt_quality_service_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_irt_quality_service_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_irt_quality_service_positions_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_jobs_module_svc_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_jwt_keyring_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_jwt_keyring_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_launch_content_seed_and_staging_seed_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_launch_content_seed_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_launch_content_seed_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_learner_service_and_consent_renewal_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_learner_service_and_guards_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_learner_service_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_learner_tutor_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_learner_tutor_deep_state_machine_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_learner_tutor_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_learner_tutor_sessions_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_learner_tutor_views_and_helpers_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_lesson_context_builder_and_transactional_completion_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_lesson_services_cluster_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_lightweight_services_cluster_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_llm_provider_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_llm_provider_deep_telemetry_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_llm_provider_router_and_factory_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_pii_sweep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_policy_service_contracts_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_popia_consent_adapter_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_popia_service_deep_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_popia_services_cluster_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_popia_transactional_and_dsr_service_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_quota_and_email_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_review_governance_consensus_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_run_lock_and_promotion_gate_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_safety_and_guards_burndown_complete_batch418.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_safety_filter_and_tutor_safety_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_safety_filter_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_schemas_and_support_services_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_service_shims_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_services_burndown_complete_batch416.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_staging_and_promotion_execution_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_staging_preview_and_generation_executor_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_staging_preview_and_locks_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_staging_preview_and_read_verification_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_stripe_diagnostic_session_and_consent_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_study_plan_service_and_repository_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_study_plan_updater_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_study_plan_v2_and_mastery_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_system_service_v2_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_telemetry_service_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_trustworthy_beta_and_reexports_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_tutor_grounding_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_tutor_safety_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/test_accessibility_pwa_e2e_evidence.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
@@ -28413,6 +30883,11 @@
       "path": "tests/unit/test_active_consent_route_sources.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
+    },
+    {
+      "path": "tests/unit/test_ai_budget_guard.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "tests/unit/test_ai_fixture_coverage_matrix.py",
@@ -28475,9 +30950,19 @@
       "kind": "test"
     },
     {
+      "path": "tests/unit/test_api_deprecation_middleware.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/test_api_envelope_error_contract.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
+    },
+    {
+      "path": "tests/unit/test_api_v2_deps_complete_coverage_batch404.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "tests/unit/test_api_v2_envelope.py",
@@ -28933,6 +31418,11 @@
       "path": "tests/unit/test_beta_signoff_manifest.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
+    },
+    {
+      "path": "tests/unit/test_billing_lock_enforcement.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "tests/unit/test_billing_monetization_production_readiness.py",
@@ -29630,6 +32120,126 @@
       "kind": "test"
     },
     {
+      "path": "tests/unit/test_coverage_expansion_ai_ops.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_answer_key_verifier.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_batch_learner.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_content_factory_svc.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_content_review_governance.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_core_modules.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_curriculum.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_dsr.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_etl_v3.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_irt_quality.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_irt_seed.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_launch_seed.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_lessons_modules.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_llm_provider.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_pii_sweep.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_policy.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_prompt_payloads.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_prompt_registry.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_runtime_kg_repo.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_safety.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_scope_registry.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_security_schemas.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_source_context.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_coverage_expansion_validator_pii.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/test_curriculum_coverage.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
@@ -30240,6 +32850,41 @@
       "kind": "test"
     },
     {
+      "path": "tests/unit/test_honest_coverage_auth_service_behaviour.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_honest_coverage_diagnostics_contracts.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_honest_coverage_etl_behaviour.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_honest_coverage_privacy_pii_sweep.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_honest_coverage_product_behaviour.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_honest_coverage_readiness_contracts.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_honest_coverage_runtime_health.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/test_imports.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
@@ -30345,6 +32990,16 @@
       "kind": "test"
     },
     {
+      "path": "tests/unit/test_legacy_api_router.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_legacy_api_services.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/test_lesson_authorization_hardening.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
@@ -30430,14 +33085,29 @@
       "kind": "test"
     },
     {
+      "path": "tests/unit/test_manual_review_evidence.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/test_mastery_repository_contract.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
     },
     {
+      "path": "tests/unit/test_mastery_semantics.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/test_merge_control_evidence_gate.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
+    },
+    {
+      "path": "tests/unit/test_middleware_utils_jobs_complete_coverage_batch406.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "tests/unit/test_migration_evidence_tooling.py",
@@ -30613,6 +33283,11 @@
       "path": "tests/unit/test_phase8_popia_auth_context.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
+    },
+    {
+      "path": "tests/unit/test_pii_sanitization.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "tests/unit/test_policy_schema_enforcement.py",
@@ -30870,6 +33545,16 @@
       "kind": "test"
     },
     {
+      "path": "tests/unit/test_production_readiness_contracts_complete_batch414.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_production_readiness_contracts_complete_batch421.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/test_production_restore_approval.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
@@ -30913,6 +33598,11 @@
       "path": "tests/unit/test_quota_service.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
+    },
+    {
+      "path": "tests/unit/test_readiness_register_consistency.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "tests/unit/test_readonly_deep_readiness_runtime.py",
@@ -31025,6 +33715,11 @@
       "kind": "test"
     },
     {
+      "path": "tests/unit/test_resilience_circuit_breaker.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/test_resolve_dbe_caps_urls.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
@@ -31125,9 +33820,19 @@
       "kind": "test"
     },
     {
+      "path": "tests/unit/test_security_authorization_complete_coverage_batch405.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/test_security_dependencies.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
+    },
+    {
+      "path": "tests/unit/test_security_object_isolation.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "tests/unit/test_security_posture_threat_modeling_production_readiness.py",
@@ -31363,6 +34068,11 @@
       "path": "tests/unit/test_transaction_rollback_rollup.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
+    },
+    {
+      "path": "tests/unit/test_true_state_final_program.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "tests/unit/test_tx_route_wiring_inventory.py",

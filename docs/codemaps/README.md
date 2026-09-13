@@ -1,10 +1,10 @@
 # EduBoost V2 Canonical Codemaps
 
-**Generated:** 2026-07-13
+**Generated:** 2026-09-13
 **Canonical codemaps:** 20
 **Execution traces:** 60
 **Source anchors:** 240
-**Maintained files assigned to a primary codemap:** 6218
+**Maintained files assigned to a primary codemap:** 6700
 
 This directory is the canonical application-wide codemap suite for EduBoost V2. It replaces the earlier overlapping set with domain-owned maps, repository-relative source references, a complete source-coverage manifest, and a verifier.
 
