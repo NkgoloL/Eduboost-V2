@@ -1,4 +1,4 @@
-# Phase 2R Gate 2R.1 Evidence Index
+# Phase 2R Gate 2R.1 Evidence Index (Superseded Premature Transition)
 
 **Generated:** 2026-06-16T19:45:01Z
 **Status:** Closed

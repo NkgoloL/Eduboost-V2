@@ -1,4 +1,4 @@
-# TA Phase 09 — Hosted CI Run Evidence / Merge Readiness Authority
+# TA Phase 09 — Hosted CI Run Evidence / Merge Readiness Authority Specification
 
 **Status:** Ready for controlled execution  
 **Scope:** Hosted CI evidence and branch merge-readiness authority  

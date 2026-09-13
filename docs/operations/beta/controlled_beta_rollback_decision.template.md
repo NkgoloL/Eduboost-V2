@@ -1,4 +1,4 @@
-# Controlled Beta Rollback Decision
+# Controlled Beta Rollback Decision (Template)
 
 Rollback reviewed: false
 Rollback required: true

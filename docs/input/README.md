@@ -1,5 +1,5 @@
 ---
-title: Archived documentation redirect
+title: "Documentation Input Directory Overview"
 status: archived
 owner: documentation-governance
 reviewers: [release-management]
@@ -12,7 +12,6 @@ review_interval_days: 180
 evidence_command: make docs-housekeeping-check
 code_anchors: [docs/documentation/migration_manifests]
 ---
-
 # Archived documentation redirect
 
 Moved by EduBoost documentation housekeeping.

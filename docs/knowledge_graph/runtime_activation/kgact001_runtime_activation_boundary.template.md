@@ -1,4 +1,4 @@
-# KG-ACT-001 Runtime Activation Boundary
+# KG-ACT-001 Runtime Activation Boundary (Template)
 
 Reviewer: <replace-with-reviewer-name>
 Reviewed at: <YYYY-MM-DD>

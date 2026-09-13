@@ -1,4 +1,4 @@
-# Phase 18–21 Governance Classification
+# Phase 18–21 Governance Classification Snapshot (Reconciliation Slice)
 
 **Status:** initial classification / pending evidence capture
 

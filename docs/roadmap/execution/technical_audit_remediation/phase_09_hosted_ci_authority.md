@@ -1,4 +1,4 @@
-# TA Phase 09 — Hosted CI Run Evidence / Merge Readiness Authority
+# TA Phase 09 — Hosted CI Run Evidence / Merge Readiness Authority Execution Plan
 
 ## Status
 

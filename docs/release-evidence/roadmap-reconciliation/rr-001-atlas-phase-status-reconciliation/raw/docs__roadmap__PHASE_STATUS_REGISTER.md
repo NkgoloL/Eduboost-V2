@@ -1,4 +1,4 @@
-# EduBoost Phase Status Register
+# Phase Status Register Raw Snapshot (RR-001)
 
 **Document version:** 3.0
 **Date:** 2026-07-02

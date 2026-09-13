@@ -1,4 +1,4 @@
-# Combined Runtime Wiring PR Checklist
+# Combined Runtime Wiring PR Checklist (Archived 2026-06-22)
 
 ## Scope
 

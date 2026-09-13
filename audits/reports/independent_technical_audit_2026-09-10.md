@@ -1,5 +1,5 @@
 ---
-title: "EduBoost V2 - Independent Technical Audit"
+title: "EduBoost V2 - Archive Audit Summary (10 September 2026)"
 status: active
 owner: engineering
 reviewers: [engineering, architecture, security]
@@ -8,7 +8,6 @@ source_of_truth: false
 last_reviewed: 2026-09-10
 review_interval_days: 90
 ---
-
 # EduBoost V2 — Independent Technical Audit
 **Codebase, CI/CD, Security & Compliance-Path Review**
 

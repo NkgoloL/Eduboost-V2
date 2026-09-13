@@ -1,4 +1,4 @@
-# Roadmap New-Work Freeze
+# Roadmap New-Work Freeze Snapshot (Reconciliation Slice)
 
 **Status:** active after reconciliation evidence is captured
 

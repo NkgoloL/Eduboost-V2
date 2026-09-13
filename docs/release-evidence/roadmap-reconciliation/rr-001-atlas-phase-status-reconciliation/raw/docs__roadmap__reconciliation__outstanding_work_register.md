@@ -1,4 +1,4 @@
-# Outstanding Work Register
+# Outstanding Work Register Raw Snapshot (RR-001)
 
 **Status:** initial reconciliation baseline / pending evidence capture  
 **Source rule:** entries must come from roadmap or TODO sources listed in `canonical_roadmap_sources.json`.  
