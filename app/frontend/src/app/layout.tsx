@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { LearnerProvider } from "@/context/LearnerContext";
 import { SkipLink } from "@/components/accessibility/A11y";
@@ -10,15 +9,10 @@ import { LowDataMode } from "@/components/eduboost/LowDataMode";
 import { ServiceWorkerRegistration } from "@/components/eduboost/ServiceWorkerRegistration";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// Offline-safe font definitions avoiding build-time CDN network calls (DEF-11)
+const geistSans = { variable: "font-sans" };
+const geistMono = { variable: "font-mono" };
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: {
