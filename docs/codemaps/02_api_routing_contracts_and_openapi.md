@@ -244,17 +244,17 @@ Run OpenAPI generation twice, compare hashes, and execute openapi-contract, open
 **Location ID: 3b**
 - **Title:** OpenAPI dumper
 - **Description:** Runtime schema serialization.
-- **Path:LineNumber:** scripts/dump_openapi.py:16
+- **Path:LineNumber:** scripts/generate_openapi.py:1
 
 **Location ID: 3c**
 - **Title:** OpenAPI contract workflow
 - **Description:** Hosted contract verification.
-- **Path:LineNumber:** .github/workflows/openapi-contract.yml:6
+- **Path:LineNumber:** .github/workflows/pr-core.yml:1
 
 **Location ID: 3d**
 - **Title:** OpenAPI drift workflow
 - **Description:** Generated artifact drift gate.
-- **Path:LineNumber:** .github/workflows/openapi-drift.yml:1
+- **Path:LineNumber:** .github/workflows/pr-core.yml:1
 
 ### AI Guide: OpenAPI generation, canonicalization, and drift gates
 

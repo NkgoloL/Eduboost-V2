@@ -258,7 +258,7 @@ Run learner authorization coverage, parent access, cross-tenant denial, and secu
 **Location ID: 3d**
 - **Title:** Authorization coverage workflow
 - **Description:** Hosted regression gate.
-- **Path:LineNumber:** .github/workflows/learner-authz-coverage.yml:1
+- **Path:LineNumber:** .github/workflows/pr-core.yml:1
 
 ### AI Guide: Role and object-level authorization
 

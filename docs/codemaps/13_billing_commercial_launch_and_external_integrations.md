@@ -173,7 +173,7 @@ Run signature, duplicate event, ordering, reconciliation, and live-provider inte
 **Location ID: 2d**
 - **Title:** Billing integration workflow
 - **Description:** Hosted provider readiness evidence.
-- **Path:LineNumber:** .github/workflows/rr011-live-billing-provider-integration.yml:1
+- **Path:LineNumber:** .github/workflows/release-evidence.yml:1
 
 ### AI Guide: Webhook verification, idempotency, and reconciliation
 

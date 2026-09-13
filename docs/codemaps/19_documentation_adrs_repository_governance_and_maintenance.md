@@ -88,7 +88,7 @@ Run ADR validation, documentation governance, current-state claim discipline, an
 **Location ID: 1d**
 - **Title:** Documentation governance workflow
 - **Description:** Hosted documentation gate.
-- **Path:LineNumber:** .github/workflows/documentation-governance.yml:1
+- **Path:LineNumber:** .github/workflows/pr-core.yml:1
 
 ### AI Guide: Architecture documentation index and ADR lifecycle
 

@@ -89,7 +89,7 @@ Run collection-only, focused unit, product-critical, integration, and seeded E2E
 **Location ID: 1d**
 - **Title:** Core CI workflow
 - **Description:** Hosted backend verification.
-- **Path:LineNumber:** .github/workflows/ci-core.yml:1
+- **Path:LineNumber:** .github/workflows/pr-core.yml:1
 
 ### AI Guide: Backend pytest taxonomy, fixtures, integration, and E2E
 
@@ -261,7 +261,7 @@ Run coverage suite verifiers, advisory quality gates, dependency scan, secrets s
 **Location ID: 3d**
 - **Title:** Dependency scan workflow
 - **Description:** Hosted dependency audit gate.
-- **Path:LineNumber:** .github/workflows/dependency-scan.yml:3
+- **Path:LineNumber:** .github/workflows/security-supply-chain.yml:1
 
 ### AI Guide: Coverage, lint, typing, security scans, and required-check convergence
 

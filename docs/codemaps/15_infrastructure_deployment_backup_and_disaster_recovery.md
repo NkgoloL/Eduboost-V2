@@ -175,7 +175,7 @@ Validate manifests, run ready-probe contracts, staging smoke, secret placeholder
 **Location ID: 2d**
 - **Title:** Staging smoke workflow
 - **Description:** Post-deploy validation.
-- **Path:LineNumber:** .github/workflows/staging-smoke.yml:1
+- **Path:LineNumber:** .github/workflows/product-runtime.yml:1
 
 ### AI Guide: Kubernetes rollout, readiness, staging, and secret controls
 
@@ -261,7 +261,7 @@ Run backup dry-run/matrix workflows, restore rollback evidence, disaster recover
 **Location ID: 3d**
 - **Title:** Restore evidence workflow
 - **Description:** Hosted backup and rollback proof.
-- **Path:LineNumber:** .github/workflows/db-backup-restore-rollback-evidence.yml:1
+- **Path:LineNumber:** .github/workflows/operations-drills.yml:1
 
 ### AI Guide: Database backup, restore, rollback, and disaster recovery
 
