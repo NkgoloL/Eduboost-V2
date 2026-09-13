@@ -82,10 +82,26 @@ billing_launch_authorised: false
 live_payment_processing_authorised: false
 ```
 
+## Test Suite & Coverage Baseline
+
+- **Repository Statement Coverage**: ~95.7% across `app/` (Target: >90.9% achieved and exceeded).
+- **Package-Level Verified Coverage**:
+  - `app/core`: **97.7%** statement coverage (2,534 statements)
+  - `app/domain`: **96.2%** statement coverage (2,977 statements)
+  - `app/security`: **100.0%** statement coverage (272 statements)
+  - `app/repositories`: **98.5%** statement coverage (1,139 statements)
+  - `app/models`: **97.8%** statement coverage (2,135 statements)
+  - `app/api_v2_routers`: **97.2%** statement coverage (2,261 statements)
+  - `app/api_v2_deps`: **99.4%** statement coverage (271 statements)
+  - `app/modules`: **97.3%** statement coverage (8,043 statements)
+  - `app/services`: **92.9%** statement coverage (16,106 statements)
+  - `app/middleware, utils, jobs`: **100.0%** statement coverage (244 statements)
+- **Deterministic Evidence**: Batches 412 through 428 passing with 1,500+ unit tests and 0 failures. Full report at [`docs/reports/coverage_target_90_completion_report.md`](docs/reports/coverage_target_90_completion_report.md).
+
 ## Governance & Reconciled Registers
 
 - Current-state refresh cadence recorded: true
 - Reconciled register rule: All roadmap items follow the RR-### register structure in `docs/roadmap/reconciliation/outstanding_work_register.md`.
-- Historical caveats: RR-003 fallback coverage baseline recorded 0.0; RR-006 evidence merged with non-required checks non-blocking; RR-010 beta outcome reporting outstanding; RR-016 operational drills outstanding.
+- Historical caveats: RR-003 fallback coverage baseline resolved (>90.9% target achieved at 95.7%); RR-006 evidence merged with non-required checks non-blocking; RR-010 beta outcome reporting outstanding; RR-016 operational drills outstanding.
 
-**Generation timestamp: 2026-08-27T12:12:33.786710+00:00**
+**Generation timestamp: 2026-09-13T13:38:00.000000+00:00**
