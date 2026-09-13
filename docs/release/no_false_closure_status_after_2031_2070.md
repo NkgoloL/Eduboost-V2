@@ -13,5 +13,5 @@
 
 - Production route transaction wiring is complete.
 - Live database rollback proof is complete.
-- TX-001 is production-ready.
+- TX-001 is ready for production release.
 - Any production route handler has been rewritten by this planning batch.

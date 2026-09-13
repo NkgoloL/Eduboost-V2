@@ -74,6 +74,6 @@ consent markers, and which belong in a reviewed allowlist.
 
 ## Release Claim
 
-This sweep does not make EduBoost V2 public-beta-ready or production-ready. It
+This sweep does not make EduBoost V2 public-beta-ready or approved for production release. It
 establishes the current clean-branch evidence baseline and identifies POPIA
 consent-gate reconciliation as the next high-risk automated blocker.

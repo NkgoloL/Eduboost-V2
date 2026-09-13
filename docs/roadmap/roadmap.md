@@ -7,7 +7,7 @@ Gap analysis: `Eduboost-V2_Gap_Analysis.md` (2026-06-09)
 
 ## Objective
 
-Bring the project from "substantial but not production-ready" through release-candidate, controlled beta, and into verified production-ready state by fixing all verified implementation gaps, aligning runtime and deployment assumptions, replacing documentation-only confidence with executable checks, and proving real-learner safety through a gated beta period.
+Bring the project from "substantial but not ready for production release" through release-candidate, controlled beta, and into verified production release state by fixing all verified implementation gaps, aligning runtime and deployment assumptions, replacing documentation-only confidence with executable checks, and proving real-learner safety through a gated beta period.
 
 ## Guiding Rules
 
@@ -556,7 +556,7 @@ Acceptance checks:
 
 Priority: P0 (release gate) | **NEW**
 
-Objective: Prove the system is safe and effective with real learners before declaring production-ready.
+Objective: Prove the system is safe and effective with real learners before declaring ready for production release.
 
 Preconditions:
 

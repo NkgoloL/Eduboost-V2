@@ -36,7 +36,7 @@ opened.
 
 ## Wave 1: Baseline Freeze And Local Evidence
 
-Goal: preserve the current local green baseline while making unresolved local
+Goal: preserve the current local verified baseline while making unresolved local
 evidence explicit.
 
 | TODO IDs | Workstream | Implementation approach | Evidence output | Exit gate |

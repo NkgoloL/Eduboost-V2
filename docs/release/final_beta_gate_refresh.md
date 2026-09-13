@@ -24,7 +24,7 @@ Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
 
 ## Beta-critical findings
 
-| ID | Proof status | External | Evidence | Release-ready | Effective blocks beta | Blocker |
+| ID | Proof status | External | Evidence | Ready for release review | Effective blocks beta | Blocker |
 |---|---|---:|---|---:|---:|---|
 | `JWT-001` | `runtime-passing` | False | `docs/release/jwt_production_guard_repair_report.md` | False | True | external production secret provisioning and rotation evidence |
 | `ARQ-001` | `runtime-passing` | False | `docs/release/arq_dependency_worker_import_repair_report.md` | False | True | live Redis worker enqueue/dequeue staging evidence |
@@ -39,7 +39,7 @@ Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
 
 ## Resolved non-blocking accepted findings
 
-| ID | Proof status | External | Release-ready | Registry blocks beta | Effective blocks beta | Blocker |
+| ID | Proof status | External | Ready for release review | Registry blocks beta | Effective blocks beta | Blocker |
 |---|---|---:|---:|---:|---:|---|
 | `AUTH-REFRESH-DB-PROOF-001` | `integration-passing` | True | True | False | False | none |
 | `AUTH-REFRESH-DB-EVIDENCE-001` | `integration-passing` | True | True | False | False | none |
@@ -59,8 +59,8 @@ Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
 
 ## No false-closure rules
 
-- Do not mark beta GO while any effective beta-blocking registry item is not release-ready.
-- Integration-passing with `closure_blocker: none` can be release-ready even when the item had an external dependency.
+- Do not mark beta GO while any effective beta-blocking registry item is not ready for release review.
+- Integration-passing with `closure_blocker: none` can be ready for release review even when the item had an external dependency.
 - External-blocked, not-proven, skipped-test, scaffold-only, and unresolved runtime/staging blockers remain beta-blocking.
 
 ## Interpretation

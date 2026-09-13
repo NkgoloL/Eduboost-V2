@@ -44,7 +44,7 @@ The frontend client must use canonical POPIA routes and must not reintroduce sta
 
 ## Knowledge-graph future constraint
 
-The KG pivot remains a future architectural north star. This slice preserves that direction by keeping route contracts deterministic and provenance-friendly, while explicitly avoiding runtime KG implementation until the audit remediation stream has a green baseline.
+The KG pivot remains a future architectural north star. This slice preserves that direction by keeping route contracts deterministic and provenance-friendly, while explicitly avoiding runtime KG implementation until the audit remediation stream has a verified baseline.
 
 ## Evidence
 

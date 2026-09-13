@@ -71,7 +71,7 @@ The project is still not beta-ready. The remaining work is less about one broken
 - [ ] Add mobile and accessibility proof: responsive viewport checks, keyboard navigation, landmark/label checks, contrast review, and screen-reader state review.
 - [ ] Prove frontend environment safety. Validate no server secrets are exposed through `NEXT_PUBLIC_*`, and prove production disables `NEXT_PUBLIC_ENABLE_DEV_SESSION`.
 
-### P1 - Production-Ready Engineering
+### P1 - Production Engineering & Operational Hardening
 
 - [ ] Close transaction proof items: `TX-001`, `TX-POPIA-001`, `TX-AUTH-001`, `TX-DIAG-001`, `TX-LESSON-001`, `TX-ROUTE-001`, and related route transaction rollups.
 - [ ] Close live route rollback evidence for auth, POPIA, diagnostics, and lesson routes.

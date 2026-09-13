@@ -55,4 +55,4 @@
 
     This branch verifies repository artifacts only. Full roadmap completion still
     requires green CI for the branch and closure of the external/human gates above.
-    Do not mark this domain production-ready from this branch alone.
+    Do not mark this domain ready for production release from this branch alone.

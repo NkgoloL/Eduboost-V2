@@ -49,7 +49,7 @@ Promotion of a mirror to canonical upstream requires explicit owner approval, up
 
 | Branch | Purpose | Rules |
 |---|---|---|
-| `master` / `main` | Production-ready branch | PR-only, required checks, no force-push, no direct commits |
+| `master` / `main` | Production release branch | PR-only, required checks, no force-push, no direct commits |
 | `develop` | Integration branch when used | PR-only, required checks for merge readiness |
 | `feature/*` | Feature development | Short-lived, issue-linked, deleted after merge |
 | `hotfix/*` | Urgent production fixes | Must include incident link and rollback note |

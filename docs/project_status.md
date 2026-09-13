@@ -42,7 +42,7 @@ The root TODO.md remains the North Star tracker for work that is implemented but
 
 ## Claim Discipline
 
-Do not describe the repository as production-ready until the release-blocker checklist is complete.
+Do not describe the repository as ready for production release until the release-blocker checklist is complete.
 
 Claims must be phrased according to evidence:
 

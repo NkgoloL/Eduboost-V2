@@ -14,5 +14,5 @@
 
 - Live DB rollback tests were executed.
 - Evidence URLs were remotely verified.
-- TX-ROUTE-001 is production-ready.
-- TX-001 is production-ready.
+- TX-ROUTE-001 is ready for production release.
+- TX-001 is ready for production release.

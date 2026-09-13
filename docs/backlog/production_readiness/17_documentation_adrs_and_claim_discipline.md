@@ -43,7 +43,7 @@
 - [verify] `P0` Remove or correct “V1 fully deleted” if legacy shims/archive remain.
 - [verify] `P0` Remove or correct “no microservices” if inference sidecar remains.
 - [verify] `P0` Remove or correct “ACA target” vs Kubernetes deployment mismatch.
-- [verify] `P0` Remove or correct “production-ready” unless all release gates pass.
+- [verify] `P0` Remove or correct ungrounded production release claims unless all release gates pass.
 - [verify] `P0` Avoid claiming full CAPS coverage until validated.
 - [verify] `P0` Avoid claiming full POPIA compliance until tests/legal docs pass.
 - [verify] `P0` Label claims as `implemented`.

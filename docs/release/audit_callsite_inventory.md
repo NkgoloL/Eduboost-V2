@@ -2948,7 +2948,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_route_tx_popia_slice.py` | 109 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_route_tx_slice_rollup.py` | 41 | audit_append_call | `failures.append("expected three route transaction slices in rollup")` |
 | `scripts/check_route_tx_slice_rollup.py` | 48 | audit_append_call | `failures.append(f"unexpected rollup status: {rollup.status}")` |
-| `scripts/check_route_tx_slice_rollup.py` | 51 | audit_append_call | `failures.append("release mode requires route transaction slice rollup release-ready")` |
+| `scripts/check_route_tx_slice_rollup.py` | 51 | audit_append_call | `failures.append("release mode requires route transaction slice rollup ready for release review")` |
 | `scripts/check_route_tx_slice_rollup.py` | 82 | audit_append_call | `failures.append("route transaction slice rollup tests failed")` |
 | `scripts/check_route_tx_slice_rollup.py` | 103 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_router_boundary_enforcement.py` | 24 | audit_append_call | `failures.append(f"{router}: {violations}")` |
@@ -3026,7 +3026,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/check_transaction_rollback_rollup.py` | 48 | audit_append_call | `failures.append(f"{proof.id} is not integration-passing")` |
 | `scripts/check_transaction_rollback_rollup.py` | 52 | audit_append_call | `failures.append(f"{proof.id} evidence file missing: {proof.evidence_file}")` |
 | `scripts/check_transaction_rollback_rollup.py` | 57 | audit_append_call | `failures.append(f"registry missing {proof_id}")` |
-| `scripts/check_transaction_rollback_rollup.py` | 62 | audit_append_call | `failures.append("TX-001 must not be marked production-ready by this rollup")` |
+| `scripts/check_transaction_rollback_rollup.py` | 62 | audit_append_call | `failures.append("TX-001 must not be marked ready for production release by this rollup")` |
 | `scripts/check_transaction_rollback_rollup.py` | 93 | audit_append_call | `failures.append("transaction rollback rollup tests failed")` |
 | `scripts/check_transaction_rollback_rollup.py` | 114 | audit_append_call | `failures.append("focused Ruff failed")` |
 | `scripts/check_tx_route_wiring.py` | 38 | audit_append_call | `failures.append("no route functions scanned")` |
@@ -3429,8 +3429,8 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/evidence_registry.py` | 93 | audit_append_call | `errors.append(f"{finding.id}: invalid proof_status {finding.proof_status!r}")` |
 | `scripts/evidence_registry.py` | 96 | audit_append_call | `errors.append(f"{finding.id}: P0/P1 item cannot close on static-passing proof")` |
 | `scripts/evidence_registry.py` | 99 | audit_append_call | `errors.append(f"{finding.id}: {finding.proof_status} requires last_verified_commit")` |
-| `scripts/evidence_registry.py` | 103 | audit_append_call | `errors.append(f"{finding.id}: production-ready requires evidence_file")` |
-| `scripts/evidence_registry.py` | 105 | audit_append_call | `errors.append(f"{finding.id}: production-ready cannot have closure_blocker")` |
+| `scripts/evidence_registry.py` | 103 | audit_append_call | `errors.append(f"{finding.id}: ready for production release requires evidence_file")` |
+| `scripts/evidence_registry.py` | 105 | audit_append_call | `errors.append(f"{finding.id}: ready for production release cannot have closure_blocker")` |
 | `scripts/evidence_registry.py` | 109 | audit_append_call | `errors.append(f"{finding.id}: beta-blocking incomplete item must name closure_blocker")` |
 | `scripts/evidence_registry.py` | 118 | audit_append_call | `errors.append(f"{finding.id}: evidence_file missing: {finding.evidence_file}")` |
 | `scripts/execute_disposable_db_schema_proof.py` | 31 | audit_append_call | `code,out=run_command(cmd); overall=max(overall,code); lines.append(f"\| `{' '.join(cmd).replace(url,'<DATABASE_URL>')}` \| {code} \|"); lines+=["","```text",out.rstrip(),"```"]` |
@@ -4793,7 +4793,7 @@ This inventory supports audit repository consolidation. It is diagnostic only.
 | `scripts/route_tx_slice_rollup.py` | 145 | audit_append_call | `slice_blockers.append("slice report missing")` |
 | `scripts/route_tx_slice_rollup.py` | 147 | audit_append_call | `slice_blockers.append(f"{local_gaps} local route-source gap(s) remain")` |
 | `scripts/route_tx_slice_rollup.py` | 149 | audit_append_call | `slice_blockers.append("live DB rollback evidence missing")` |
-| `scripts/route_tx_slice_rollup.py` | 152 | audit_append_call | `blockers.append(f"{slice_id}: not release-ready")` |
+| `scripts/route_tx_slice_rollup.py` | 152 | audit_append_call | `blockers.append(f"{slice_id}: not ready for release review")` |
 | `scripts/route_tx_slice_rollup.py` | 153 | audit_append_call | `slices.append(` |
 | `scripts/route_tx_slice_rollup.py` | 218 | audit_append_call | `lines.append(` |
 | `scripts/run_database_backup.py` | 53 | audit_append_call | `results.append(` |

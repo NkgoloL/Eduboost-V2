@@ -6,7 +6,7 @@ This operating model turns the repository governance rules into the day-to-day
 workflow for EduBoost V2. It applies until the repository owner replaces it with
 a signed release-management decision.
 
-This is an execution contract. It does not make the project release-ready by
+This is an execution contract. It does not make the project ready for release review by
 itself, and it does not replace the current state, North Star TODO, CI evidence,
 staging evidence, or release-owner go/no-go decision.
 

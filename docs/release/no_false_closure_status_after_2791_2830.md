@@ -1,10 +1,10 @@
 # No False-Closure Status After FINAL-GATE-REFRESH-001R / code_2791_2830
 
-**Status:** final gate release-ready classifier repaired.
+**Status:** final gate release classifier repaired.
 
 ## Proven
 
-- `integration-passing` with `closure_blocker: none` is release-ready.
+- `integration-passing` with `closure_blocker: none` is ready for release review.
 - Accepted auth refresh DB proof/evidence entries are non-beta-blocking.
 - `external-blocked`, `not-proven`, skipped-test, scaffold-only, and unresolved runtime/staging blockers remain beta-blocking.
 - Final gate still returns `NO-GO` while true beta blockers remain.

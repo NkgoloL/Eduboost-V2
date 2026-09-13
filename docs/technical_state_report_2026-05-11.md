@@ -8,7 +8,7 @@ Runtime version observed: `1.0.0-rc1`
 ## Executive Summary
 
 EduBoost V2 is in production-readiness hardening. It is not public-beta-ready
-or production-ready yet, but the local `master` branch is materially ahead of
+or ready for production release yet, but the local `master` branch is materially ahead of
 the earlier snapshot: the PR1 through PR16 evidence train has been merged into
 `master`, the runtime/OpenAPI/route inventory checks are green, the migration
 graph and schema-integrity checks now pass, and the POPIA consent-gate

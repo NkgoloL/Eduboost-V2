@@ -41,7 +41,7 @@ Use bounded wording:
 
 Do not use unbounded wording:
 
-- `The platform is production ready.`
+- `The platform is ready for production release (ungrounded).`
 - `All checks pass.`
 - `POPIA is complete.`
 - `Security is done.`

@@ -120,7 +120,7 @@ When either guard blocks content, the response must be:
 
 ## 4. Testing requirements
 
-Before the content filter can be considered production-ready, the following
+Before the content filter can be considered ready for production release, the following
 test cases must pass:
 
 | # | Test case | Expected result |

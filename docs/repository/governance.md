@@ -67,7 +67,7 @@ The following settings are enforced on `master`:
 
 ### Before Opening PR
 
-- [ ] All tests pass locally (`make test-fast`)
+- [ ] Full test suite passes locally (`make test-fast`)
 - [ ] Code formatted (`make lint`)
 - [ ] Type checks pass (`make typecheck`)
 - [ ] No new security vulnerabilities (`make security-check`)

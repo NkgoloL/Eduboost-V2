@@ -14,4 +14,4 @@
 - Live database rollback proof is complete.
 - All auth routes are transaction-proven.
 - TX-ROUTE-001 is closed.
-- TX-001 is production-ready.
+- TX-001 is ready for production release.

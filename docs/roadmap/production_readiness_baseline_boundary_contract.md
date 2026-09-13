@@ -8,7 +8,7 @@
 
 ## Introduction
 
-This contract defines the boundaries of the production readiness baseline achieved in Phase 10. It serves as a reference for what functionality is considered "production-ready" versus what requires further work.
+This contract defines the boundaries of the production readiness baseline achieved in Phase 10. It serves as a reference for what functionality is considered "ready for production release" versus what requires further work.
 
 ---
 

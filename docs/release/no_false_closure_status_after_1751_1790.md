@@ -14,4 +14,4 @@
 - Production route handlers are fully wired through transactional services.
 - Live Postgres rollback proof is complete.
 - Staging route transaction proof is attached.
-- TX-001 is production-ready.
+- TX-001 is ready for production release.
