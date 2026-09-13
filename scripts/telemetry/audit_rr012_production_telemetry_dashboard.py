@@ -197,7 +197,12 @@ def audit(root: Path | str = Path("."), require_final: bool = False) -> dict[str
             errors.append(f"missing RR-012 authority file: {path}")
 
     for name, path in EXISTING_OBSERVABILITY_CONTRACTS.items():
-        exists = (root / path).exists()
+        target = root / path
+        if not target.exists() and str(path).startswith(".github/workflows/"):
+            archived = root / "archive/github_workflows" / path.name
+            if archived.exists():
+                target = archived
+        exists = target.exists()
         authority_checks[f"existing_{name}_exists"] = exists
         if not exists:
             errors.append(f"missing existing observability contract: {path}")

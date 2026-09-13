@@ -89,15 +89,24 @@ class EvidenceResult:
     message: str
 
 
+def _resolve_path(path: str) -> Path:
+    file_path = REPO_ROOT / path
+    if not file_path.exists() and path.startswith(".github/workflows/"):
+        archived = REPO_ROOT / "archive" / "github_workflows" / Path(path).name
+        if archived.exists():
+            return archived
+    return file_path
+
+
 def _read(path: str) -> str:
-    return (REPO_ROOT / path).read_text(encoding="utf-8")
+    return _resolve_path(path).read_text(encoding="utf-8")
 
 
 def check_required_files() -> list[EvidenceResult]:
     results: list[EvidenceResult] = []
 
     for path in REQUIRED_FILES:
-        exists = (REPO_ROOT / path).exists()
+        exists = _resolve_path(path).exists()
         results.append(
             EvidenceResult(
                 path=path,
@@ -114,7 +123,7 @@ def check_content_requirements() -> list[EvidenceResult]:
     results: list[EvidenceResult] = []
 
     for path, needles in CONTENT_REQUIREMENTS.items():
-        file_path = REPO_ROOT / path
+        file_path = _resolve_path(path)
         if not file_path.exists():
             results.append(
                 EvidenceResult(

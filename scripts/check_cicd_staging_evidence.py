@@ -34,8 +34,23 @@ class Result:
     detail: str
 
 
+ARCHIVE = ROOT / "archive" / "github_workflows"
+
+
+def _resolve_path(rel_path: str) -> Path:
+    target = ROOT / rel_path
+    if not target.exists() and rel_path.startswith(".github/workflows/"):
+        archived = ARCHIVE / Path(rel_path).name
+        if archived.exists():
+            return archived
+    return target
+
+
 def check_all() -> list[Result]:
-    return [Result(p, (ROOT / p).exists(), "present" if (ROOT / p).exists() else "missing") for p in REQUIRED]
+    return [
+        Result(p, _resolve_path(p).exists(), "present" if _resolve_path(p).exists() else "missing")
+        for p in REQUIRED
+    ]
 
 
 def main() -> int:

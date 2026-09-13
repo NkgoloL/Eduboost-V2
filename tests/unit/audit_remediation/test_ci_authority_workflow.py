@@ -11,7 +11,10 @@ ROOT = Path(__file__).resolve().parents[3]
 
 
 def test_ci_cd_workflow_uses_pnpm_and_supported_actions() -> None:
-    text = (ROOT / ".github/workflows/ci-cd.yml").read_text(encoding="utf-8")
+    wf = ROOT / ".github/workflows/ci-cd.yml"
+    if not wf.exists() and (ROOT / "archive/github_workflows/ci-cd.yml").exists():
+        wf = ROOT / "archive/github_workflows/ci-cd.yml"
+    text = wf.read_text(encoding="utf-8")
     assert "npm ci" not in text
     assert "package-lock.json" not in text
     assert "app/frontend/node_modules/.bin/playwright" not in text

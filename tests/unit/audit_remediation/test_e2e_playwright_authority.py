@@ -30,9 +30,18 @@ def test_e2e_playwright_authority_verifier_passes() -> None:
     assert payload["remote_ci_run_claimed"] is False
 
 
+def _read_wf(rel: str) -> str:
+    path = ROOT / rel
+    if not path.exists() and rel.startswith(".github/workflows/"):
+        archived = ROOT / "archive/github_workflows" / Path(rel).name
+        if archived.exists():
+            path = archived
+    return path.read_text(encoding="utf-8")
+
+
 def test_e2e_workflows_use_pnpm_and_supported_artifact_uploads() -> None:
     combined = "\n".join(
-        (ROOT / path).read_text(encoding="utf-8")
+        _read_wf(path)
         for path in (
             ".github/workflows/ci-cd.yml",
             ".github/workflows/e2e.yml",

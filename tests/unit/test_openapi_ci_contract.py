@@ -20,7 +20,10 @@ def test_makefile_exposes_openapi_targets() -> None:
 
 @pytest.mark.unit
 def test_openapi_drift_workflow_is_master_and_release_aware() -> None:
-    workflow = (REPO_ROOT / ".github" / "workflows" / "openapi-drift.yml").read_text(
+    workflow_path = REPO_ROOT / ".github" / "workflows" / "openapi-drift.yml"
+    if not workflow_path.exists():
+        workflow_path = REPO_ROOT / "archive" / "github_workflows" / "openapi-drift.yml"
+    workflow = workflow_path.read_text(
         encoding="utf-8"
     )
 

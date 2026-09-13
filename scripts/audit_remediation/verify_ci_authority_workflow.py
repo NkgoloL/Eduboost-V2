@@ -15,6 +15,8 @@ from typing import Iterable
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 CI_CD = REPO_ROOT / ".github" / "workflows" / "ci-cd.yml"
+if not CI_CD.exists() and (REPO_ROOT / "archive" / "github_workflows" / "ci-cd.yml").exists():
+    CI_CD = REPO_ROOT / "archive" / "github_workflows" / "ci-cd.yml"
 FRONTEND_LOCKFILE = REPO_ROOT / "app" / "frontend" / "pnpm-lock.yaml"
 ROOT_PACKAGE = REPO_ROOT / "package.json"
 FRONTEND_PACKAGE = REPO_ROOT / "app" / "frontend" / "package.json"

@@ -12,6 +12,8 @@ from scripts._subprocess import run
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github/workflows/staging-smoke.yml"
+if not WORKFLOW.exists() and (ROOT / "archive/github_workflows/staging-smoke.yml").exists():
+    WORKFLOW = ROOT / "archive/github_workflows/staging-smoke.yml"
 PROBE = ROOT / "scripts/staging_smoke_probe.py"
 STATUS_JSON = ROOT / "docs/release/staging_smoke_workflow_status.json"
 STATUS_MD = ROOT / "docs/release/staging_smoke_workflow_status.md"

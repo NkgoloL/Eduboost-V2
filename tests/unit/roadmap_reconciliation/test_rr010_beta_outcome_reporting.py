@@ -95,6 +95,10 @@ def _copy_rr010_minimal_repo(source: Path, target: Path) -> None:
     ]
     for rel in paths:
         src = source / rel
+        if not src.exists() and rel.startswith(".github/workflows/"):
+            archived = source / "archive/github_workflows" / Path(rel).name
+            if archived.exists():
+                src = archived
         dst = target / rel
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dst)

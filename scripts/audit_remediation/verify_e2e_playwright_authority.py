@@ -19,7 +19,12 @@ class Finding:
 
 
 def _read(path: Path) -> str:
-    return path.read_text(encoding="utf-8") if path.exists() else ""
+    target = path
+    if not target.exists() and ".github/workflows" in str(path):
+        archived = REPO_ROOT / "archive" / "github_workflows" / path.name
+        if archived.exists():
+            target = archived
+    return target.read_text(encoding="utf-8") if target.exists() else ""
 
 
 def _json(path: Path) -> dict[str, object]:

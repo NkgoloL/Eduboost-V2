@@ -5,11 +5,14 @@ import subprocess  # nosec B404 — subprocess constants support the controlled 
 import ast
 import json
 import os
-from scripts._subprocess import run
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts._subprocess import run  # noqa: E402
 INVENTORY_JSON = ROOT / "docs/architecture/transaction_boundary_inventory.json"
 REGISTRY = ROOT / "docs/release/evidence_status_registry.yml"
 

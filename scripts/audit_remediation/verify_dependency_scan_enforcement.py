@@ -16,6 +16,8 @@ from typing import Iterable
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 WORKFLOW = REPO_ROOT / ".github" / "workflows" / "dependency-scan.yml"
+if not WORKFLOW.exists() and (REPO_ROOT / "archive" / "github_workflows" / "dependency-scan.yml").exists():
+    WORKFLOW = REPO_ROOT / "archive" / "github_workflows" / "dependency-scan.yml"
 BLOCKER_REGISTER = REPO_ROOT / "docs" / "roadmap" / "execution" / "technical_audit_remediation" / "blocker_register.json"
 
 @dataclass(frozen=True)
