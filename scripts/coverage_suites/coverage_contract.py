@@ -24,7 +24,7 @@ COVERAGE_DOC = ROOT / "docs/testing/coverage_quality_threshold_contract.md"
 MAKEFILE = ROOT / "Makefile"
 PYTEST_COVERAGE = ROOT / "pytest-coverage.ini"
 COVERAGERC = ROOT / ".coveragerc"
-CI_CD = ROOT / ".github/workflows/ci-cd.yml"
+CI_CD = ROOT / ".github/workflows/pr-core.yml"
 REQUIRED_CLASSES = ("product", "runtime", "governance", "advisory")
 FRESHNESS_MAX_AGE_DAYS = 21
 ALLOWED_NEXT = {"PRD-11.3R", "PRD-11.0R.RUNTIME-RESTORE", "PRD-11.0R.RUNTIME-RESTORE-1", "PRD-11.0R.RUNTIME-RESTORE-2", "PRD-11.0R.RUNTIME-RESTORE-3", "PRD-11.0R.RUNTIME-RESTORE-4", "PRD-11.0R.RUNTIME-RESTORE-5", "PRD-11.0R.RUNTIME-RESTORE-6", "PRD-11.0R.RUNTIME-RESTORE.EXECUTION", "PRD-11.0-11.4"}
@@ -114,7 +114,7 @@ def evaluate_threshold_alignment(root: Path = ROOT) -> dict[str, Any]:
             thresholds.get("branch_coverage_required") is True,
             "app" in thresholds.get("coverage_source_paths", []),
             make_threshold is not None and make_threshold >= 70,
-            not ci_thresholds or min(ci_thresholds) >= 70,
+            bool(ci_thresholds) and min(ci_thresholds) >= 70,
             not any("coverage run" in line and "|| true" in line for line in target.splitlines()),
             "--cov=app" in pytest_cov_text,
             "branch = True" in coveragerc_text,
@@ -132,7 +132,7 @@ def evaluate_threshold_alignment(root: Path = ROOT) -> dict[str, Any]:
     }
 
 
-def evaluate_governance_sync(root: Path = ROOT, *, now: datetime | None = None) -> dict[str, Any]:
+def evaluate_governance_sync(root: Path = ROOT, *, now: datetime | None = None, require_freshness: bool = True) -> dict[str, Any]:
     prod = _load_json(root / PRODUCTION_REGISTER.relative_to(ROOT))
     prd11 = _load_json(root / PRD11_REGISTER.relative_to(ROOT))
     contract = load_contract(root)
@@ -155,10 +155,10 @@ def evaluate_governance_sync(root: Path = ROOT, *, now: datetime | None = None) 
         "public_beta_authorised", "public_beta_live_traffic_authorised", "billing_launch_authorised",
         "live_payment_processing_authorised",
     ))
-    return {"valid": fresh and state_agrees and release_boundaries_locked, "fresh": fresh, "state_agrees": state_agrees, "freshness_max_age_days": FRESHNESS_MAX_AGE_DAYS, "production_register_next_authorised_item": prod_next, "prd11_register_next_authorised_item": prd11_next, "release_boundaries_locked": release_boundaries_locked, **ages}
+    return {"valid": (fresh if require_freshness else True) and state_agrees and release_boundaries_locked, "fresh": fresh, "state_agrees": state_agrees, "freshness_max_age_days": FRESHNESS_MAX_AGE_DAYS, "production_register_next_authorised_item": prod_next, "prd11_register_next_authorised_item": prd11_next, "release_boundaries_locked": release_boundaries_locked, **ages}
 
 
-def evaluate_coverage_contract(root: Path = ROOT) -> dict[str, Any]:
+def evaluate_coverage_contract(root: Path = ROOT, *, now: datetime | None = None, require_freshness: bool = True) -> dict[str, Any]:
     contract = load_contract(root)
     classes = contract.get("coverage_classes", []) if isinstance(contract.get("coverage_classes"), list) else []
     domains = contract.get("coverage_domains", []) if isinstance(contract.get("coverage_domains"), list) else []
@@ -183,7 +183,7 @@ def evaluate_coverage_contract(root: Path = ROOT) -> dict[str, Any]:
     no_presence_only = "presence" in release_policy and "cannot" in release_policy
     taxonomy_classes_match = set(REQUIRED_CLASSES) == class_ids == domain_classes
     threshold_alignment = evaluate_threshold_alignment(root)
-    governance_sync = evaluate_governance_sync(root)
+    governance_sync = evaluate_governance_sync(root, now=now, require_freshness=require_freshness)
     valid = all([
         contract.get("prd_id") == "PRD-11.3R",
         contract.get("schema_version") == "prd11.3r/documentation-defined-coverage/v1",
