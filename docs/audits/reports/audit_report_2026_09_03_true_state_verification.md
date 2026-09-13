@@ -97,7 +97,7 @@ python3 -m pytest tests/unit -m governance
 | **Route Inventory** | Runtime has 463 endpoints; `docs/route_inventory.md` has 459; legacy context has 355 | Fails route audit and governance synchronization | Regenerate via `scripts/generate_route_inventory.py` |
 | **Readiness Register** | `advisory_static_gate_green`: top-level is `true`, `current_truth` is `false` | Conflicting machine-readable release truth | Synchronize top-level flags to fail closed matching `current_truth` |
 | **Deployment Blueprint** | `render.yaml` exports `SECRET_KEY`; `app/core/config.py` requires `JWT_SECRET` | Render deployments boot with default placeholder JWT key | Add fallback `SECRET_KEY` alias in `app/core/config.py` |
-| **Coverage Gate** | `Makefile` defines `COVERAGE_THRESHOLD ?= 70` while branch target is 90% | PR checks enforce lower bar than project target | Bump `COVERAGE_THRESHOLD` to 90 in `Makefile` |
+| **Coverage Gate** | `Makefile` defines `COVERAGE_THRESHOLD ?= 90` aligned with CI and contract floor | PR checks enforce strict 90% floor matching project target | Resolved: `COVERAGE_THRESHOLD` bumped to 90 across Makefile, CI, and contracts |
 | **Code Hygiene** | `ruff check .` emits 1 error (`F541` in `test_content_factory_router_expansion.py:1139`) | Minor lint failure | Strip unnecessary `f` prefix |
 
 ---
@@ -116,4 +116,4 @@ On the dedicated remediation branch:
 
 1. **Retain Canonical Truth**: Do not declare production readiness or live beta authorization until register boolean conflicts are reconciled.
 2. **Synchronize Route Artifacts**: Commit regenerated `docs/route_inventory.md` matching the 463 runtime routes.
-3. **Align Makefile Threshold**: Align `COVERAGE_THRESHOLD` in `Makefile` to `90` to match the target branch contract.
+3. **Align Makefile Threshold**: `COVERAGE_THRESHOLD` in `Makefile` and CI aligned to `90` matching target branch contract.

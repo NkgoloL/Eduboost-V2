@@ -13,6 +13,9 @@ concurrency:
 permissions:
   contents: read
 
+env:
+  COVERAGE_THRESHOLD: "90"
+
 jobs:
   runtime-services-integration:
     name: Disposable PostgreSQL & Redis Integration

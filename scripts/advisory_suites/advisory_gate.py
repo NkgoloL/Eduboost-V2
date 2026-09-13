@@ -56,7 +56,7 @@ class AdvisoryGateCommand:
 DEFAULT_GATE_COMMANDS: tuple[AdvisoryGateCommand, ...] = (
     AdvisoryGateCommand(
         "coverage_execution",
-        "make test-coverage COVERAGE_THRESHOLD=70",
+        "make test-coverage COVERAGE_THRESHOLD=90",
         "coverage-execution.json",
         True,
         False,
