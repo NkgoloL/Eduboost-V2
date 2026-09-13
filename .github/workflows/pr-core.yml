@@ -72,9 +72,7 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements/base.txt -r requirements/dev.txt
       - name: Run Fast Unit Tests
-        run: PYTHONPATH=. python3 -m pytest tests/unit/test_etl_mcp_server_startup.py tests/unit/test_subscription_service.py tests/unit/test_password_policy.py tests/unit/test_popia_consent_versioning.py -q
-
-
+        run: make test-fast
 
   route-contract-audit:
     name: Route & OpenAPI Canonical Contract Audit
@@ -99,5 +97,17 @@ jobs:
         run: |
           make docs-housekeeping-check
           make readiness-register-consistency-check
+      - name: Run Real Code Coverage Gate (90% Floor)
+        run: make test-coverage
+      - name: Verify Empirical Coverage Meets 90% Floor
+        run: PYTHONPATH=. python3 scripts/coverage_suites/verify_coverage_contract.py --check-empirical
       - name: Verify Coverage Threshold Alignment
         run: PYTHONPATH=. python3 scripts/coverage_suites/verify_coverage_contract.py --threshold-only
+      - name: Upload Coverage Artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-report
+          path: |
+            coverage.xml
+            coverage_html/
