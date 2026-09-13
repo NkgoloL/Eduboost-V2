@@ -28,6 +28,7 @@ def _import_model_modules() -> None:
         "app.models",
         "app.models.diagnostic_item",
         "app.models.item_exposure",
+        "app.models.popia_consolidation",
     ]
     for module in modules:
         try:
@@ -89,14 +90,7 @@ async def _async_main(args: argparse.Namespace) -> int:
         return 1 if args.require_db else 0
 
     ignore = {"alembic_version"}
-    if args.ignore_consolidation_tables:
-        ignore.update({
-            "consent_records",
-            "correction_requests",
-            "data_export_requests",
-            "erasure_requests",
-            "restriction_requests",
-        })
+
 
     comparison = await compare(args.database_url, ignore_tables=ignore)
     _print_table_list("Database tables", comparison.database_tables)

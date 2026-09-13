@@ -888,3 +888,13 @@ from app.models.runtime_kg import (  # noqa: E402, F401
     RuntimeKGGraphLoad,
     RuntimeKGNode,
 )
+
+# POPIA consolidation and Data Subject Rights models (DEF-12)
+from app.models.popia_consolidation import (  # noqa: E402, F401
+    ConsentRecordModel,
+    CorrectionRequestRecord,
+    DataExportRequestRecord,
+    ErasureRequestRecord,
+    RestrictionRequestRecord,
+)
+

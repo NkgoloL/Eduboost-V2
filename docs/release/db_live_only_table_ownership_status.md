@@ -1,21 +1,7 @@
----
-title: "Release — DB Live-Only Table Ownership Status"
-status: "active"
-owner: "release"
-reviewers: ['release', 'engineering']
-audience: "internal"
-source_of_truth: false
-supersedes: []
-superseded_by: null
-last_reviewed: "2026-09-13"
-review_interval_days: 90
-evidence_command: "make docs-housekeeping-check"
-code_anchors: "[]"
----
 # DB Live-Only Table Ownership Status
 
-Generated at: `2026-08-29T09:34:57Z`
-Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
+Generated at: `2026-09-13T20:45:41Z`
+Commit: `f9c9d1112cd560a40a5d2f2c433829aea7c41894`
 
 **Status:** `db-live-only-table-ownership-accepted`
 **Policy:** `docs/architecture/db_live_only_table_ownership.yml`
@@ -25,11 +11,11 @@ Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
 
 | Table | Domain | Ownership | ORM model required | ORM model detected | Migration action | Beta blocking | Accepted |
 |---|---|---|---:|---:|---|---:|---:|
-| `consent_records` | `popia-consent` | `sql-owned` | False | False | `document-and-monitor` | False | True |
-| `data_export_requests` | `data-subject-rights` | `sql-owned` | False | False | `document-and-monitor` | False | True |
-| `erasure_requests` | `data-subject-rights` | `sql-owned` | False | False | `document-and-monitor` | False | True |
-| `correction_requests` | `data-subject-rights` | `sql-owned` | False | False | `document-and-monitor` | False | True |
-| `restriction_requests` | `data-subject-rights` | `sql-owned` | False | False | `document-and-monitor` | False | True |
+| `consent_records` | `popia-consent` | `orm-managed` | True | True | `none` | False | True |
+| `data_export_requests` | `data-subject-rights` | `orm-managed` | True | True | `none` | False | True |
+| `erasure_requests` | `data-subject-rights` | `orm-managed` | True | True | `none` | False | True |
+| `correction_requests` | `data-subject-rights` | `orm-managed` | True | True | `none` | False | True |
+| `restriction_requests` | `data-subject-rights` | `orm-managed` | True | True | `none` | False | True |
 
 ## Blockers
 
