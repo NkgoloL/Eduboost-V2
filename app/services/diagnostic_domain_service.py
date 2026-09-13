@@ -127,3 +127,4 @@ def get_diagnostic_domain_service(
 ) -> DiagnosticDomainService:
     """FastAPI dependency provider for DiagnosticDomainService."""
     return DiagnosticDomainService(db)
+

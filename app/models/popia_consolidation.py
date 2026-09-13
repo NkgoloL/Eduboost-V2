@@ -104,3 +104,4 @@ class RestrictionRequestRecord(Base):
     status: Mapped[str] = mapped_column(String(32), nullable=False, server_default="pending")
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
     lifted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
