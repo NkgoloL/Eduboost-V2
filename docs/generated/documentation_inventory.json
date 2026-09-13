@@ -1388,6 +1388,44 @@
       "title": ""
     },
     {
+      "audience": "internal",
+      "broken_local_links": 0,
+      "byte_count": 34881,
+      "content_kind": "markdown",
+      "h1": "EduBoost V2 \u2014 Independent Technical Audit",
+      "has_front_matter": true,
+      "last_reviewed": "2026-09-10",
+      "lfs_sha256": "",
+      "lfs_size": 0,
+      "line_count": 333,
+      "owner": "engineering",
+      "path": "audits/reports/independent_technical_audit_2026-09-10.md",
+      "review_interval_days": "90",
+      "risky_terms": "",
+      "source_of_truth": false,
+      "status": "active",
+      "title": "EduBoost V2 - Independent Technical Audit"
+    },
+    {
+      "audience": "internal",
+      "broken_local_links": 0,
+      "byte_count": 30812,
+      "content_kind": "markdown",
+      "h1": "EduBoost V2 \u2014 Independent Technical Audit \u2014 Second Pass",
+      "has_front_matter": true,
+      "last_reviewed": "2026-09-13",
+      "lfs_sha256": "",
+      "lfs_size": 0,
+      "line_count": 288,
+      "owner": "engineering",
+      "path": "audits/reports/independent_technical_audit_second_pass_2026-09-13.md",
+      "review_interval_days": "90",
+      "risky_terms": "",
+      "source_of_truth": false,
+      "status": "active",
+      "title": "EduBoost V2 - Independent Technical Audit - Second Pass"
+    },
+    {
       "audience": "",
       "broken_local_links": 0,
       "byte_count": 64242,
@@ -6558,14 +6596,52 @@
     {
       "audience": "internal",
       "broken_local_links": 0,
-      "byte_count": 23104,
+      "byte_count": 34881,
+      "content_kind": "markdown",
+      "h1": "EduBoost V2 \u2014 Independent Technical Audit",
+      "has_front_matter": true,
+      "last_reviewed": "2026-09-10",
+      "lfs_sha256": "",
+      "lfs_size": 0,
+      "line_count": 333,
+      "owner": "engineering",
+      "path": "docs/audits/reports/independent_technical_audit_2026-09-10.md",
+      "review_interval_days": "90",
+      "risky_terms": "",
+      "source_of_truth": false,
+      "status": "active",
+      "title": "EduBoost V2 - Independent Technical Audit"
+    },
+    {
+      "audience": "internal",
+      "broken_local_links": 0,
+      "byte_count": 30812,
+      "content_kind": "markdown",
+      "h1": "EduBoost V2 \u2014 Independent Technical Audit \u2014 Second Pass",
+      "has_front_matter": true,
+      "last_reviewed": "2026-09-13",
+      "lfs_sha256": "",
+      "lfs_size": 0,
+      "line_count": 288,
+      "owner": "engineering",
+      "path": "docs/audits/reports/independent_technical_audit_second_pass_2026-09-13.md",
+      "review_interval_days": "90",
+      "risky_terms": "",
+      "source_of_truth": false,
+      "status": "active",
+      "title": "EduBoost V2 - Independent Technical Audit - Second Pass"
+    },
+    {
+      "audience": "internal",
+      "broken_local_links": 1,
+      "byte_count": 24539,
       "content_kind": "markdown",
       "h1": "Comprehensive Technical Audit Report: The True State of EduBoost V2",
       "has_front_matter": true,
       "last_reviewed": "2026-09-13",
       "lfs_sha256": "",
       "lfs_size": 0,
-      "line_count": 350,
+      "line_count": 236,
       "owner": "engineering",
       "path": "docs/audits/reports/true_state_technical_audit_report_2026-09-13.md",
       "review_interval_days": "90",
@@ -39162,6 +39238,12 @@
   ],
   "findings": [
     {
+      "detail": "1",
+      "path": "docs/audits/reports/true_state_technical_audit_report_2026-09-13.md",
+      "severity": "high",
+      "type": "broken_local_links"
+    },
+    {
       "detail": "3",
       "path": "docs/operations/SYSTEM_STARTUP_GUIDE.md",
       "severity": "high",
@@ -39660,6 +39742,18 @@
       "type": "duplicate_title"
     },
     {
+      "detail": "Duplicate title appears in 2 files",
+      "path": "audits/reports/independent_technical_audit_2026-09-10.md",
+      "severity": "medium",
+      "type": "duplicate_title"
+    },
+    {
+      "detail": "Duplicate title appears in 2 files",
+      "path": "audits/reports/independent_technical_audit_second_pass_2026-09-13.md",
+      "severity": "medium",
+      "type": "duplicate_title"
+    },
+    {
       "detail": "Duplicate title appears in 6 files",
       "path": "docs/DOC/README.md",
       "severity": "medium",
@@ -39704,6 +39798,18 @@
     {
       "detail": "Duplicate title appears in 2 files",
       "path": "docs/audits/reports/audit_report_2026_09_03_true_state_verification.md",
+      "severity": "medium",
+      "type": "duplicate_title"
+    },
+    {
+      "detail": "Duplicate title appears in 2 files",
+      "path": "docs/audits/reports/independent_technical_audit_2026-09-10.md",
+      "severity": "medium",
+      "type": "duplicate_title"
+    },
+    {
+      "detail": "Duplicate title appears in 2 files",
+      "path": "docs/audits/reports/independent_technical_audit_second_pass_2026-09-13.md",
       "severity": "medium",
       "type": "duplicate_title"
     },
@@ -46591,21 +46697,21 @@
     }
   ],
   "summary": {
-    "broken_local_link_count": 7,
-    "files_with_metadata": 669,
-    "files_with_owner": 637,
+    "broken_local_link_count": 8,
+    "files_with_metadata": 673,
+    "files_with_owner": 641,
     "files_with_source_of_truth": 101,
-    "finding_count": 1238,
+    "finding_count": 1243,
     "finding_counts_by_type": {
-      "broken_local_links": 3,
-      "duplicate_title": 85,
+      "broken_local_links": 4,
+      "duplicate_title": 89,
       "missing_metadata": 1072,
       "oversized_document": 23,
       "risky_or_stale_terms": 55
     },
     "inventory_mode": "deterministic-lfs-aware",
     "lfs_tracked_markdown_files": 1,
-    "markdown_files": 2061,
+    "markdown_files": 2065,
     "repository_root": ".",
     "schema_version": "doc-inventory/v2-deterministic-lfs-aware",
     "top_directories": [
@@ -46663,7 +46769,7 @@
       ],
       [
         "audits/reports",
-        27
+        29
       ],
       [
         "docs/codemaps",
