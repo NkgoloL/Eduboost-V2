@@ -12,6 +12,7 @@ Implements §3.4:
 from __future__ import annotations
 
 import os
+from typing import Literal
 
 from fastapi import Response
 
@@ -35,7 +36,10 @@ REFRESH_TOKEN_COOKIE_NAME = "refresh_token"
 COOKIE_PATH = "/api/auth"          # scope to auth endpoints only (§3.4 P0)
 COOKIE_DOMAIN = os.getenv("COOKIE_DOMAIN") or None          # None = current domain
 COOKIE_SECURE = os.getenv("COOKIE_SECURE", "true").lower() != "false"
-COOKIE_SAMESITE: str = os.getenv("COOKIE_SAMESITE", "lax")  # "lax" | "strict" | "none"
+_raw_samesite = os.getenv("COOKIE_SAMESITE", "lax").lower()
+COOKIE_SAMESITE: Literal["lax", "strict", "none"] = (
+    "strict" if _raw_samesite == "strict" else "none" if _raw_samesite == "none" else "lax"
+)
 
 REFRESH_TOKEN_MAX_AGE_SECONDS = 7 * 24 * 3600  # mirrors REFRESH_TOKEN_TTL_DAYS
 

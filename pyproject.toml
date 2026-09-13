@@ -30,20 +30,24 @@ exclude = [
 ]
 
 [tool.ruff.lint]
-select = ["E", "F", "W"]
+select = ["E", "F", "W", "B", "UP"]
 ignore = [
     "E401",  # Multiple imports on one line
     "E402",  # Module level import not at top of file
     "E501",  # Line too long
     "E701",  # Multiple statements on one line (colon)
     "E702",  # Multiple statements on one line (semicolon)
-    "E722",  # Do not use bare `except`
     "E741",  # Ambiguous variable name
-    "F401",  # Imported but unused
     "F402",  # Import shadowed by loop var
     "F811",  # Redefinition of name
-    "F841",  # Local variable is assigned to but never used
     "W291",  # Trailing whitespace
     "W292",  # No newline at end of file
     "W293",  # Blank line contains whitespace
+    "B008",  # Do not perform function call in argument defaults (FastAPI Depends idiom)
 ]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/**" = ["F401", "F841", "B011"]
+"scripts/**" = ["F401", "F841"]
+

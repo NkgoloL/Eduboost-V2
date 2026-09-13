@@ -226,8 +226,10 @@ class AuditRepository:
                       payload, created_at, event_hash,
                       previous_event_hash, hmac_signature
         """
-        fetchrow = (conn or self._db).fetchrow
-        row = await fetchrow(
+        db_target: Any = conn or self._db
+        if not hasattr(db_target, "fetchrow"):
+            raise TypeError("Expected asyncpg.Pool or Connection with fetchrow")
+        row = await db_target.fetchrow(
             sql,
             event_id,
             event_type_value,
@@ -394,8 +396,10 @@ class AuditRepository:
             ORDER BY created_at DESC, id DESC
             LIMIT 1
         """
-        fetch_one = (conn or self._db).fetchrow
-        row = await fetch_one(sql, resource_id)
+        db_target: Any = conn or self._db
+        if not hasattr(db_target, "fetchrow"):
+            raise TypeError("Expected asyncpg.Pool or Connection with fetchrow")
+        row = await db_target.fetchrow(sql, resource_id)
         return row["event_hash"] if row else "GENESIS"
 
     def _validate_payload(self, payload: dict[str, Any]) -> None:
