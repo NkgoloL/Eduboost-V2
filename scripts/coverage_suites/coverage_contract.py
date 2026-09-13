@@ -43,7 +43,7 @@ DEFAULT_COVERAGE_COMMANDS: tuple[CoverageCommand, ...] = (
     CoverageCommand("product", "PYTHONPATH=. pytest -m product -q --no-cov", "Product behaviour coverage for services, routes, DB, auth, POPIA, billing and learner journeys.", True),
     CoverageCommand("runtime", "PYTHONPATH=. pytest -m runtime -q --no-cov", "Runtime coverage for Postgres, Redis, migrations, schema, /ready, worker and frontend proxy.", True, True),
     CoverageCommand("governance", "PYTHONPATH=. pytest -m governance -q --no-cov", "Governance/evidence/documentation sync and freshness coverage.", False),
-    CoverageCommand("advisory", "make coverage-contract-check && make openapi-check && make route-inventory-check && make test-coverage COVERAGE_THRESHOLD=70", "Advisory/static coverage for drift, dependency/security, quality and numeric coverage thresholds.", True),
+    CoverageCommand("advisory", "make coverage-contract-check && make openapi-check && make route-inventory-check && make test-coverage COVERAGE_THRESHOLD=90", "Advisory/static coverage for drift, dependency/security, quality and numeric coverage thresholds.", True),
 )
 
 
@@ -110,11 +110,11 @@ def evaluate_threshold_alignment(root: Path = ROOT) -> dict[str, Any]:
     markers = _pytest_coverage_markers(root / PYTEST_COVERAGE.relative_to(ROOT)) if (root / PYTEST_COVERAGE.relative_to(ROOT)).exists() else set()
     return {
         "valid": all([
-            thresholds.get("minimum_line_coverage_percent", 0) >= 70,
+            thresholds.get("minimum_line_coverage_percent", 0) >= 90,
             thresholds.get("branch_coverage_required") is True,
             "app" in thresholds.get("coverage_source_paths", []),
-            make_threshold is not None and make_threshold >= 70,
-            bool(ci_thresholds) and min(ci_thresholds) >= 70,
+            make_threshold is not None and make_threshold >= 90,
+            bool(ci_thresholds) and min(ci_thresholds) >= 90,
             not any("coverage run" in line and "|| true" in line for line in target.splitlines()),
             "--cov=app" in pytest_cov_text,
             "branch = True" in coveragerc_text,

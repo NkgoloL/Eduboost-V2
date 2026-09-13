@@ -32,7 +32,7 @@ This contract defines coverage thresholds and quality ratchet rules.
 
 ## Required Threshold Rules
 
-- production line coverage threshold must be at least 70 percent
+- production line coverage threshold must be at least 70 percent (ratcheted and enforced at 90 percent across active CI, Makefile, and coverage contract gates)
 - unit coverage waiver is not allowed by default
 - integration coverage waiver requires release owner approval
 - coverage ratchet is required

@@ -90,7 +90,8 @@ live_payment_processing_authorised: false
 
 ## Test Suite & Coverage Baseline
 
-- **Repository Statement Coverage**: ~95.7% across `app/` (Target: >90.9% achieved and exceeded).
+- **Repository Statement Coverage**: ~95.7% across `app/` (Target: >90.9% achieved and exceeded; CI and Contract Floor strictly enforced at 90%).
+- **Enforced CI & Contract Floor**: **90%** minimum line coverage enforced in `.github/workflows/pr-core.yml`, `Makefile`, and `coverage_contract.json`.
 - **Package-Level Verified Coverage**:
   - `app/core`: **97.7%** statement coverage (2,534 statements)
   - `app/domain`: **96.2%** statement coverage (2,977 statements)

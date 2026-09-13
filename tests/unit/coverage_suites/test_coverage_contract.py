@@ -12,8 +12,8 @@ def test_coverage_contract_is_valid_for_authority_state():
 def test_coverage_thresholds_are_documentation_aligned_and_do_not_swallow_failures():
     result = evaluate_threshold_alignment()
     assert result["valid"] is True
-    assert result["minimum_line_coverage_percent"] >= 70
-    assert result["makefile_coverage_threshold"] >= 70
+    assert result["minimum_line_coverage_percent"] >= 90
+    assert result["makefile_coverage_threshold"] >= 90
     assert result["test_coverage_target_swallows_failures"] is False
     assert result["coveragerc_branch_enabled"] is True
 

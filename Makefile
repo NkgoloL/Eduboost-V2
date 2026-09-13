@@ -47,7 +47,7 @@ dev:
 	docker-compose up
 
 PYTEST ?= $(PYTHON) -m pytest
-COVERAGE_THRESHOLD ?= 70
+COVERAGE_THRESHOLD ?= 90
 PR_TEST_MARKERS := not governance and not slow and not llm and not e2e
 
 .PHONY: test test-fast test-integration test-coverage test-coverage-full test-governance coverage-baseline-stabilisation coverage-baseline-stabilisation-plan coverage-baseline-stabilisation-verify unit-shard-stabilisation unit-shard-stabilisation-plan unit-shard-stabilisation-verify budgeted-terminal-isolation-plan budgeted-terminal-isolation-verify
