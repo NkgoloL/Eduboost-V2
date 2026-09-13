@@ -1,4 +1,4 @@
-# Release State Snapshot
+# Release State Snapshot (Historical)
 
 Generated at: `2026-05-22T14:26:54Z`
 Branch: `codex/production_readiness`

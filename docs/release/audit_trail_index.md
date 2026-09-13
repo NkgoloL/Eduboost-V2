@@ -1,4 +1,4 @@
-# Release Audit Trail Index
+# Release Audit Trail Index (Historical)
 
 Status: pending external approvals and runtime execution
 
