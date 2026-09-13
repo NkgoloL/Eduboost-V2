@@ -53,7 +53,7 @@ An exhaustive, zero-trust empirical technical audit was conducted across the ent
 | **Commercial & Billing Lock** | "Fail-closed lock active (`BILLING_FAIL_CLOSED_LOCK = True`)" | Verified. `assert_billing_authorized` actively blocks live payments (`HTTP 403`) against `true_state_remediation_register.json`. | 🟢 **VERIFIED (Genuine Fail-Closed)** |
 | **Pedagogical Integrity (KG)** | "Grade 4 Math KG mapped; mastery capped at 0.6" | Verified. Grade 4 Math graph (226 nodes, 260 edges) exists; `MAX_CONFIDENCE_THRESHOLD = 0.60` strictly raises `MasteryBoundError`. Runtime KG is disabled by default. | 🟢 **VERIFIED (Sound Invariants)** |
 | **POPIA / Privacy Cascades** | "Transactional DSR erasure and consent gates enforced" | Consent and erasure gates are present and functional, but code sprawl exists across 6 overlapping POPIA services with dynamic fallback reflection. | ⚠️ **LOW / MEDIUM (Technical Debt)** |
-| **Frontend & Offline Build** | "Production-ready standalone frontend build" | Vitest (149 tests) and `tsc` pass, but `pnpm run build` crashes in sandboxed/offline environments due to network-dependent Google Fonts. | 🛑 **HIGH (Build Reliability Blocker)** |
+| **Frontend & Offline Build** | "Ready for release standalone frontend build" | Vitest (149 tests) and `tsc` pass, but `pnpm run build` crashes in sandboxed/offline environments due to network-dependent Google Fonts. | 🛑 **HIGH (Build Reliability Blocker)** |
 
 ---
 
