@@ -1,3 +1,17 @@
+---
+title: "Audits — EduBoost V2 — Comprehensive True-State Technical Report"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # EduBoost V2 — Comprehensive True-State Technical Report
 
 **Assessment date:** 13 July 2026  

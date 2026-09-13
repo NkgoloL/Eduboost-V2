@@ -1,3 +1,17 @@
+---
+title: "Phase 18 Controlled Beta Launch Governance (Controlled Beta Launch Governance)"
+status: "active"
+owner: "operations"
+reviewers: ['operations', 'sre', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Phase 18 Controlled Beta Launch Governance
 
 This document defines the controlled beta launch-governance package for EduBoost. It is intentionally a governance-readiness artifact and does not authorise production release, deployment, public beta, controlled beta launch activation, live learner traffic, learner data migration, or runtime KG implementation.

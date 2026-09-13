@@ -1,3 +1,17 @@
+---
+title: "Engineering — PRD-8.5-8.9 Performance/Scale/Cost Final Handoff"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-8.5-8.9 Performance/Scale/Cost Final Handoff
 
 This record closes PRD-8 after PRD-8.0-8.4 introduced the performance, scale,

@@ -1,3 +1,17 @@
+---
+title: "EduBoost V2 ETL, Ingestion, Semantic Retrieval, and MCP Tools"
+status: "active"
+owner: "architecture"
+reviewers: ['architecture', 'engineering']
+audience: "developer"
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # EduBoost V2 ETL, Ingestion, Semantic Retrieval, and MCP Tools
 
 Maps ETL pipeline versions, document processing, MCP server startup and tools, semantic indexing and retrieval, curriculum extraction, and administrator controls.

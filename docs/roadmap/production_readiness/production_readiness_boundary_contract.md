@@ -1,3 +1,17 @@
+---
+title: "Production Readiness Boundary Contract"
+status: "active"
+owner: "product"
+reviewers: ['product', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Production Readiness Boundary Contract
 
 This contract preserves the production-readiness boundary established after RR and KG closure.

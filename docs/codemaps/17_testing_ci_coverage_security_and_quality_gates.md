@@ -1,3 +1,17 @@
+---
+title: "EduBoost V2 Testing, CI, Coverage, Security, and Quality Gates"
+status: "active"
+owner: "architecture"
+reviewers: ['architecture', 'engineering']
+audience: "developer"
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # EduBoost V2 Testing, CI, Coverage, Security, and Quality Gates
 
 Maps backend and frontend test taxonomies, fixtures, E2E flows, coverage execution, static analysis, dependency and secret scans, required checks, and failure triage.

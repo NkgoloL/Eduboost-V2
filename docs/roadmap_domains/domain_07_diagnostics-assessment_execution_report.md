@@ -1,3 +1,17 @@
+---
+title: "Domain 07 Diagnostics Assessment Execution Report"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
     # Domain 07: Diagnostics & Assessment execution report
 
     Source roadmap: `temp/roadmaps/Domain_07_Diagnostics_Assessment.docx`  

@@ -1,3 +1,17 @@
+---
+title: "PRD-0.5 Test Failure Collection Stabilisation Register Schema"
+status: "active"
+owner: "product"
+reviewers: ['product', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-0.5 Test Failure Collection Stabilisation Register Schema
 
 The generated `test_failure_collection_stabilisation_register.json` uses schema version:

@@ -1,3 +1,17 @@
+---
+title: "Atlas — Phase 02R Gate 2R.7 Implementation Note — Grounded Learner Tutor"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'product']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Phase 02R Gate 2R.7 Implementation Note — Grounded Learner Tutor
 
 **Gate:** 2R.7  

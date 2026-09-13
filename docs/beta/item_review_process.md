@@ -1,3 +1,17 @@
+---
+title: "EduBoost Beta Item Review Process (Item Review Process)"
+status: "active"
+owner: "product"
+reviewers: ['product', 'release']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # EduBoost Beta Item Review Process
 
 Status: launch-slice content threshold passed; expansion review remains required.

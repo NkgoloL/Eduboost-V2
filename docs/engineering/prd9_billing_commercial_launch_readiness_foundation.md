@@ -1,3 +1,17 @@
+---
+title: "Engineering — PRD-9.0–9.4 Billing and Commercial Launch Readiness Foundation"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-9.0–9.4 Billing and Commercial Launch Readiness Foundation
 
 This record starts PRD-9 after PRD-8 closure. It defines deterministic, repository-verifiable readiness for billing and commercial launch without enabling live payment processing, public beta, live learner traffic, deployment, release tags, or production release.

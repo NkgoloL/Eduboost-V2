@@ -1,3 +1,17 @@
+---
+title: "Documentation Gap Report"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Documentation Gap Report
 
 Generated at: `2026-08-29T09:36:48Z`

@@ -1,3 +1,17 @@
+---
+title: "Content Factory Full Generation System: Overnight Batch Pipeline — Complete Trace Text"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Content Factory Full Generation System: Overnight Batch Pipeline — Complete Trace Text
 
 This document reproduces the complete trace text for the eight steps of the Content Factory overnight batch pipeline, including the expanded "see more" details: trace text diagrams, location references with file paths and line numbers, and the provided code snippet references.

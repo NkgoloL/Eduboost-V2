@@ -1,3 +1,17 @@
+---
+title: "Phase 18 Controlled Beta Incident Response Runbook (Controlled Beta Incident Response Runbook)"
+status: "active"
+owner: "operations"
+reviewers: ['operations', 'sre', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Phase 18 Controlled Beta Incident Response Runbook
 
 This incident response runbook supports controlled beta governance. It does not authorise production release, deployment, public beta, controlled beta launch activation, live learner traffic, or runtime KG implementation.

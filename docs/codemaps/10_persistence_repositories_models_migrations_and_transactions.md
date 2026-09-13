@@ -1,3 +1,17 @@
+---
+title: "EduBoost V2 Persistence, Repositories, Models, Migrations, and Transactions"
+status: "active"
+owner: "architecture"
+reviewers: ['architecture', 'engineering']
+audience: "developer"
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # EduBoost V2 Persistence, Repositories, Models, Migrations, and Transactions
 
 Maps async database lifecycle, repository abstractions, ORM domains, transactional service patterns, Alembic migrations, Supabase artefacts, and resilience controls.

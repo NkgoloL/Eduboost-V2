@@ -1,3 +1,17 @@
+---
+title: "Ether Archetype Map — Sephira → Psychographic Signal Mapping"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Ether Archetype Map — Sephira → Psychographic Signal Mapping
 
 > This document is the authoritative reference for how observable session signals

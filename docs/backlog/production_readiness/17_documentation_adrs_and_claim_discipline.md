@@ -1,3 +1,17 @@
+---
+title: "17. Documentation, ADRs, and claim discipline"
+status: "active"
+owner: "product"
+reviewers: ['product', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # 17. Documentation, ADRs, and claim discipline
 
 ## 17.1 Required production docs

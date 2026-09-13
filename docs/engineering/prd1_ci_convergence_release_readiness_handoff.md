@@ -1,3 +1,17 @@
+---
+title: "Engineering — PRD-1 CI/Release Gate Closure Handoff"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-1 CI/Release Gate Closure Handoff
 
 PRD-1.5-1.9 intentionally closes the CI/release-gate convergence stream in one bundle to reduce governance overhead. The implementation focus is evidence and register reconciliation, not more workflow sprawl.

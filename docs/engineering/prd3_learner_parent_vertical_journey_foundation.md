@@ -1,3 +1,17 @@
+---
+title: "Engineering — PRD-3.0-3.4 Learner and Parent Vertical Journey Foundation"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-3.0-3.4 Learner and Parent Vertical Journey Foundation
 
 This slice starts PRD-3 by adding a single learner/parent journey contract on

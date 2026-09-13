@@ -1,3 +1,17 @@
+---
+title: "Project Status"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Project Status
 
 This page is a project-status index. The canonical current-state source of truth is docs/current_state.md, which is generated from live checks by scripts/refresh_current_state_doc.py.
@@ -91,7 +105,7 @@ Current blockers are evidence-backed, not inferred:
 - [`docs/route_inventory.md`](route_inventory.md)
 - [`docs/error_contract.md`](error_contract.md)
 - [`docs/api_versioning_policy.md`](api_versioning_policy.md)
-- [`PR_INTEGRATION_SUMMARY.md`](/PR_INTEGRATION_SUMMARY.md)
+- [`PR_INTEGRATION_SUMMARY.md`](/audits/reports/PR_INTEGRATION_SUMMARY.md)
 
 ## Audit Tracker
 

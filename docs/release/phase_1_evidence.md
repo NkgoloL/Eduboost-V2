@@ -1,3 +1,17 @@
+---
+title: "Phase 1 - Release-Blocking Correctness Fixes (Phase 1 Evidence)"
+status: "active"
+owner: "release"
+reviewers: ['release', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Phase 1 - Release-Blocking Correctness Fixes
 
 **Date:** 2026-06-09

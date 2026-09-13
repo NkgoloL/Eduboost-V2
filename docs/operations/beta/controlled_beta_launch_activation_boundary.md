@@ -1,3 +1,17 @@
+---
+title: "Controlled Beta Launch Activation Boundary (Controlled Beta Launch Activation Boundary)"
+status: "active"
+owner: "operations"
+reviewers: ['operations', 'sre', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Controlled Beta Launch Activation Boundary
 
 This document defines what Phase 19 does **not** authorise.

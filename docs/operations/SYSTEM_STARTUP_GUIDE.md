@@ -279,11 +279,11 @@ supabase logs --follow
 
 ## References
 
-- Architecture: [docs/architecture.md](docs/architecture.md)
+- Architecture: [docs/architecture.md](/docs/architecture.md)
 - CAPS Plan: [../caps/caps_source_acquisition_plan_v2.md](../caps/caps_source_acquisition_plan_v2.md)
-- Data Generator TODO: [../todos/data_generator_todo.md](../todos/data_generator_todo.md)
+- Data Generator TODO: [../todos/data_generator_todo.md](/docs/archive/roadmaps-or-todos/20260622T193052Z/todos/data_generator_todo.md)
 - Roadmap: [../roadmap/roadmap.md](../roadmap/roadmap.md)
-- TODO: [../todos/todo.md](../todos/todo.md)
+- TODO: [../todos/todo.md](/TODO.md)
 
 ---
 

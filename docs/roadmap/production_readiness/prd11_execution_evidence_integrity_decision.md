@@ -1,3 +1,17 @@
+---
+title: "PRD-11.00R execution evidence-integrity decision"
+status: "active"
+owner: "product"
+reviewers: ['product', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-11.00R execution evidence-integrity decision
 
 Status: identified remediation debt; not a TSR-B01 closure prerequisite.

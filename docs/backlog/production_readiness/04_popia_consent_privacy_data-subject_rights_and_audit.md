@@ -1,3 +1,17 @@
+---
+title: "4. POPIA consent, privacy, data-subject rights, and audit"
+status: "active"
+owner: "compliance"
+reviewers: ['compliance', 'legal', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # 4. POPIA consent, privacy, data-subject rights, and audit
 
 ## 4.1 Consent lifecycle

@@ -1,3 +1,17 @@
+---
+title: "Operations — Release Candidate Evidence Sweep"
+status: "active"
+owner: "operations"
+reviewers: ['operations', 'sre', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Release Candidate Evidence Sweep
 
 Date: 2026-05-11

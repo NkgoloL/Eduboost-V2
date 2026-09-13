@@ -1,3 +1,17 @@
+---
+title: "POPIA And Data Rights (Readme)"
+status: "active"
+owner: "compliance"
+reviewers: ['compliance', 'legal', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # POPIA And Data Rights
 
 POPIA work covers guardian consent, data export, correction, restriction, erasure, audit preservation, and privacy-safe telemetry.

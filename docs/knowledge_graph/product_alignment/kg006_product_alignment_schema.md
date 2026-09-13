@@ -1,3 +1,17 @@
+---
+title: "KG-6 Product Alignment Schema (Kg006 Product Alignment Schema)"
+status: "active"
+owner: "pedagogy"
+reviewers: ['pedagogy', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # KG-6 Product Alignment Schema
 
 The KG-6 evidence artifact contains:

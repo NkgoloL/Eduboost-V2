@@ -1,3 +1,17 @@
+---
+title: "Release — Phase 11 Implementation Audit - Technical Debt Burn-Down"
+status: "active"
+owner: "release"
+reviewers: ['release', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Phase 11 Implementation Audit - Technical Debt Burn-Down
 
 **Audit date:** 2026-06-14

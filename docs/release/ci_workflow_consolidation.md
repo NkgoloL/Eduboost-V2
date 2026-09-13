@@ -1,3 +1,17 @@
+---
+title: "Release — EduBoost V2 CI Workflow Consolidation Plan"
+status: "active"
+owner: "release"
+reviewers: ['release', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # EduBoost V2 CI Workflow Consolidation Plan
 
 EduBoost has accumulated many evidence-specific workflows. Those workflows are useful, but the release process needs a small number of primary CI lanes that reviewers can reason about quickly.

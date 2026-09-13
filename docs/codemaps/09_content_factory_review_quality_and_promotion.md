@@ -1,3 +1,17 @@
+---
+title: "EduBoost V2 Content Factory, Review, Quality, and Promotion"
+status: "active"
+owner: "architecture"
+reviewers: ['architecture', 'engineering']
+audience: "developer"
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # EduBoost V2 Content Factory, Review, Quality, and Promotion
 
 Maps generation planning, deterministic and LLM providers, provenance, review queues, quality scoring, staging, seeding, and production promotion.

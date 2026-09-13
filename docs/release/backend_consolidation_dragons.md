@@ -1,3 +1,17 @@
+---
+title: "Release — Backend Consolidation Dragons"
+status: "active"
+owner: "release"
+reviewers: ['release', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Backend Consolidation Dragons
 
 This document records the architectural risks identified by the backend consolidation proposal. These are not approval to delete or consolidate code directly; they are tracked as diagnostic targets for evidence-first batches.

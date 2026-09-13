@@ -1,3 +1,17 @@
+---
+title: "Runtime Readiness — Phase 16 — Backend-Backed Seeded E2E Authority"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'product']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Phase 16 — Backend-Backed Seeded E2E Authority
 
 **Status:** control harness placeholder until evidence is captured on protected `master`.

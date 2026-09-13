@@ -1,3 +1,17 @@
+---
+title: "Release — No False-Closure Status After AUTH-REPO-001 / code_1271_1310"
+status: "active"
+owner: "release"
+reviewers: ['release', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # No False-Closure Status After AUTH-REPO-001 / code_1271_1310
 
 **Status:** production repository auth fixture proof added at integration-fixture level.

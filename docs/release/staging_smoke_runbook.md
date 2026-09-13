@@ -1,3 +1,17 @@
+---
+title: "Release — Staging Smoke Runbook"
+status: "active"
+owner: "release"
+reviewers: ['release', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Staging Smoke Runbook
 
 This runbook defines the repeatable command used to produce staging smoke evidence.

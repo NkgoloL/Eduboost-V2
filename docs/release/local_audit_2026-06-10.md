@@ -1,3 +1,17 @@
+---
+title: "Release — EduBoost V2 -- Local Repo Audit"
+status: "active"
+owner: "release"
+reviewers: ['release', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # EduBoost V2 -- Local Repo Audit
 
 **Path:** nkgolol@LAPTOP-0A5BOB9P:~/Dev/Development/Eduboost-V2

@@ -1,3 +1,17 @@
+---
+title: "EduBoost V2 Release Evidence Index (Evidence Index)"
+status: "active"
+owner: "release"
+reviewers: ['release', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # EduBoost V2 Release Evidence Index
 
 This index is the authoritative map from release claims to readable evidence artefacts.

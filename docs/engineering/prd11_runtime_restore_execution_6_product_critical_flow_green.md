@@ -1,3 +1,17 @@
+---
+title: "Engineering — PRD-11.0R.RUNTIME-RESTORE.EXECUTION-6 — Product Gate and Critical Flow Green Execution"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-11.0R.RUNTIME-RESTORE.EXECUTION-6 — Product Gate and Critical Flow Green Execution
 
 This slice executes the product side of the true-state restoration work after the runtime stack and schema lineage have been proven green.

@@ -1,3 +1,17 @@
+---
+title: "Engineering — PRD-5.5-5.9 — POPIA Final Assurance and Handoff"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "developer"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-13"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # PRD-5.5-5.9 — POPIA Final Assurance and Handoff
 
 This slice closes PRD-5 by recording final POPIA live-data assurance, privacy signoff, the 2026-07-09 audit crosswalk, and the controlled handoff to PRD-6.
