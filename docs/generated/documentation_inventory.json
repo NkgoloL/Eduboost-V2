@@ -6556,6 +6556,25 @@
       "title": "Independent Technical Investigation & Verification Report"
     },
     {
+      "audience": "internal",
+      "broken_local_links": 0,
+      "byte_count": 23103,
+      "content_kind": "markdown",
+      "h1": "Comprehensive Technical Audit Report: The True State of EduBoost V2",
+      "has_front_matter": true,
+      "last_reviewed": "2026-09-13",
+      "lfs_sha256": "",
+      "lfs_size": 0,
+      "line_count": 350,
+      "owner": "engineering",
+      "path": "docs/audits/reports/true_state_technical_audit_report_2026-09-13.md",
+      "review_interval_days": "90",
+      "risky_terms": "production-ready",
+      "source_of_truth": false,
+      "status": "active",
+      "title": "EduBoost V2 Comprehensive True State Technical Audit Report"
+    },
+    {
       "audience": "developer",
       "broken_local_links": 0,
       "byte_count": 1265,
@@ -39174,6 +39193,12 @@
     },
     {
       "detail": "production-ready",
+      "path": "docs/audits/reports/true_state_technical_audit_report_2026-09-13.md",
+      "severity": "high",
+      "type": "risky_or_stale_terms"
+    },
+    {
+      "detail": "production-ready",
       "path": "docs/backlog/production_readiness/17_documentation_adrs_and_claim_discipline.md",
       "severity": "high",
       "type": "risky_or_stale_terms"
@@ -46573,20 +46598,20 @@
   ],
   "summary": {
     "broken_local_link_count": 7,
-    "files_with_metadata": 668,
-    "files_with_owner": 636,
+    "files_with_metadata": 669,
+    "files_with_owner": 637,
     "files_with_source_of_truth": 101,
-    "finding_count": 1238,
+    "finding_count": 1239,
     "finding_counts_by_type": {
       "broken_local_links": 3,
       "duplicate_title": 85,
       "missing_metadata": 1072,
       "oversized_document": 23,
-      "risky_or_stale_terms": 55
+      "risky_or_stale_terms": 56
     },
     "inventory_mode": "deterministic-lfs-aware",
     "lfs_tracked_markdown_files": 1,
-    "markdown_files": 2060,
+    "markdown_files": 2061,
     "repository_root": ".",
     "schema_version": "doc-inventory/v2-deterministic-lfs-aware",
     "top_directories": [
