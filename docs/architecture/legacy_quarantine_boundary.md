@@ -1,3 +1,18 @@
+---
+title: Legacy Quarantine Boundary
+status: active
+owner: architecture
+reviewers: [engineering, release-management]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-03
+review_interval_days: 60
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/architecture/legacy_quarantine_boundary.md]
+---
+
 # Legacy Quarantine Boundary (TSR-6.12)
 
 ## Quarantine Directive

@@ -1,16 +1,16 @@
 ---
 title: "Knowledge Graph AI Grounding Contract"
-status: active
-owner: ai-safety
-reviewers: [architecture, product, privacy, curriculum, engineering]
-audience: developer
+status: "active"
+owner: "ai-safety"
+reviewers: ["architecture", "product", "privacy", "curriculum", "engineering"]
+audience: "developer"
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-05
+last_reviewed: "2026-06-24"
 review_interval_days: 60
-evidence_command: make kg000-formal-kg-roadmap-approval-check
-code_anchors: []
+evidence_command: "make docs-housekeeping-stage5-check"
+code_anchors: "[app/services, docs/ai]"
 ---
 
 # Knowledge Graph AI Grounding Contract

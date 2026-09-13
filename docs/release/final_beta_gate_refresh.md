@@ -1,7 +1,7 @@
 # Final Beta Gate Refresh
 
-Generated at: `2026-09-03T09:24:00Z`
-Commit: `51487956b21470877d482128092c01595e92be39`
+Generated at: `2026-08-29T09:37:11Z`
+Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
 
 **Beta decision:** `NO-GO`
 

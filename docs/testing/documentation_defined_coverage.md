@@ -7,11 +7,10 @@ audience: "developer"
 source_of_truth: false
 supersedes: []
 superseded_by: null
-prd_id: "PRD-11.3R"
-last_reviewed: "2026-08-26"
+last_reviewed: "2026-06-24"
 review_interval_days: 21
-evidence_command: "make docs-housekeeping-check"
-code_anchors: ["docs/testing/documentation_defined_coverage.md"]
+evidence_command: "make docs-housekeeping-stage5-check"
+code_anchors: "[tests, pytest.ini, Makefile]"
 ---
 
 # Documentation-defined Coverage Contract

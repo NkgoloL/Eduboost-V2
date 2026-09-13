@@ -1,3 +1,18 @@
+---
+title: Auth Boundary Debt Report
+status: active
+owner: architecture
+reviewers: [engineering, security]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-03
+review_interval_days: 60
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/architecture/auth_boundary_debt_report.md]
+---
+
 # Auth Boundary Debt Report
 
 Generated at: `2026-08-26T17:19:41Z`

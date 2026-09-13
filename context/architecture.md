@@ -1,19 +1,19 @@
 # Architecture
 
-**Last updated:** 2026-06-09
-**Current state tracked in:** ../docs/roadmap/roadmap.md (17 phases) and ../docs/todos/todo.md (North Star)
+**Status:** Historical architecture context; canonical architecture is `../docs/architecture/README.md`.
+**Current state tracked in:** `../docs/current_state.md` and the active production-readiness register.
 
 ## Technology Stack (Verified)
 
 | Component | Technology | Version | Notes |
 |-----------|-----------|---------|-------|
 | Runtime | Python | 3.12.3 (target) / 3.11-slim (Docker) | RoadMap Phase 4 resolves |
-| HTTP Framework | FastAPI | 0.104+ | 355 routes on app/api_v2.py |
+| HTTP Framework | FastAPI | V2 runtime | See generated route inventory for current count |
 | Database | PostgreSQL | 15+ | 35 Alembic migrations |
 | ORM | SQLAlchemy | 2.0+ | AsyncSession throughout |
 | Async Driver | asyncpg | 0.28+ | |
 | Validation | Pydantic | v2 | model_config from_attributes=True |
-| Testing | pytest | 7.4+ | 2051 passed, 1 skipped, 1 warning (local) |
+| Testing | pytest | Project-configured | See current executable evidence; historical counts are not authoritative |
 | LLM Providers | Groq (primary), Anthropic, Gemini, HuggingFace | | 4 providers configured |
 | Frontend | Next.js 15.5, React 18, TypeScript 5.4 | 15.5.18 | pnpm 9.x, Vitest 4.x, Tailwind 3.4 |
 | Monitoring | Prometheus + Grafana | | 3 dashboards provisioned |
@@ -22,7 +22,7 @@
 ## Folder Structure (Verified, June 2026)
 
 app/
-  api_v2.py                   # FastAPI entrypoint (355 routes)
+  api_v2.py                   # FastAPI entrypoint; see generated route inventory
   api_v2_routers/             # 28 HTTP routers
   modules/                    # 22 bounded-context domains
   repositories/               # Async data access
@@ -36,7 +36,7 @@ app/
   utils/
 
 tests/                        # 716 test files
-  unit/                       # 2051 passing (local green baseline)
+  unit/                       # Product and governance tests; see current evidence
   integration/                # Security, Stripe, routers, jobs
   e2e/                        # Playwright (broken - Phase 13)
 

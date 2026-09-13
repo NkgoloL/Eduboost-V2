@@ -1,9 +1,25 @@
+---
+title: Router Service Dependency Map
+status: active
+owner: architecture
+reviewers: [engineering]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-03
+review_interval_days: 60
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/architecture/router_service_dependency_map.md]
+---
+
 # Router Service Dependency Map
 
-Generated at: `2026-09-03T09:20:36Z`
+Generated at: `2026-08-29T09:27:13Z`
 
 | Router | Dependencies | Services/modules | Repositories | Database imports |
 |---|---|---|---|---|
+| `app/api_v2_routers/0005_irt_seed.py` | - | - | - | - |
 | `app/api_v2_routers/__init__.py` | - | - | - | - |
 | `app/api_v2_routers/admin_etl.py` | `app.api_v2_deps.auth` | - | - | - |
 | `app/api_v2_routers/ai_operations.py` | `app.api_v2_deps.auth` | `app.services.ai_operations` | - | `app.core.database`, `sqlalchemy.ext.asyncio` |

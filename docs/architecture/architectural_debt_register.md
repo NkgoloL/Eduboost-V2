@@ -1,3 +1,18 @@
+---
+title: Architectural Debt Register
+status: active
+owner: architecture
+reviewers: [engineering, release-management]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-03
+review_interval_days: 60
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/architecture/architectural_debt_register.md]
+---
+
 # Architectural Debt Register (TSR-6.1)
 
 ## Overview

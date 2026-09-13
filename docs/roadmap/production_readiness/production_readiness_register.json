@@ -1,6 +1,6 @@
 {
-  "advisory_static_gate_green": true,
-  "all_advisory_gates_green": true,
+  "advisory_static_gate_green": false,
+  "all_advisory_gates_green": false,
   "all_release_gates_green": false,
   "authority_boundaries": {
     "authority_switch_executed": true,
@@ -31,7 +31,7 @@
   "billing_launch_authorised": false,
   "controlled_beta_activation_operational_hold": true,
   "controlled_handoff_to_prd1100_1104_authorised": false,
-  "coverage_gate_green": true,
+  "coverage_gate_green": false,
   "critical_product_flows_green": true,
   "current_truth": {
     "advisory_static_gate_green": false,
@@ -63,7 +63,7 @@
     "prd10_pyjwt_migration_completed": true,
     "prd10_sequence_complete": true,
     "prd10_started": true,
-    "prd11_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-7",
+    "prd11_next_authorised_item": "PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8",
     "prd11_production_release_preflight_evidence_recorded": false,
     "prd11_production_release_preflight_foundation_recorded": true,
     "prd11_runtime_restore_1_authority_recorded": true,
@@ -179,7 +179,7 @@
     "stream_id": "PRD-PRODUCTION-READINESS"
   },
   "database_lineage_green": true,
-  "dependency_audit_gate_green": true,
+  "dependency_audit_gate_green": false,
   "deployment_authorised": false,
   "frontend_quality_green": true,
   "gates": {
@@ -487,7 +487,7 @@
   "runtime_restore_handoff_authorised": true,
   "runtime_stack_green": true,
   "schema_contract_green": true,
-  "secret_baseline_gate_green": true,
+  "secret_baseline_gate_green": false,
   "status": "prd11_runtime_restore_execution_5_evidence_recorded",
   "stream_id": "PRD-PRODUCTION-READINESS"
 }

@@ -19,14 +19,21 @@ from scripts.true_state_remediation.core import atomic_write_text, load_json, ro
 
 def generate_current_state(root: Path) -> dict[str, Any]:
     prod_reg = load_json(root / "docs/roadmap/production_readiness/production_readiness_register.json", {})
+    prd11_reg = load_json(root / "docs/roadmap/production_readiness/prd11_production_release_register.json", {})
     tsr_reg = load_json(root / "docs/roadmap/production_readiness/true_state_remediation_register.json", {})
 
     now_iso = datetime.now(timezone.utc).isoformat()
     now_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
     # Current authority & active bundle
-    active_bundle = tsr_reg.get("current_bundle", "B03")
-    active_stream = "B03 (CI Authority & Test-System Taxonomy Consolidation)"
+    active_bundle = tsr_reg.get("current_bundle", "completed")
+    if active_bundle in ("completed", "closed", "verified"):
+        active_stream = "completed (Bundles B01-B07 verified and closed)"
+        evidence_cmd = "PYTHONPATH=. python3 scripts/true_state_remediation/verify_final_program.py --json"
+    else:
+        active_stream = f"{active_bundle} (CI Authority & Test-System Taxonomy Consolidation)"
+        evidence_cmd = f"PYTHONPATH=. python3 scripts/true_state_remediation/execute_bundle.py --bundle {active_bundle} --phase verify --json"
+    next_authorised_item = prd11_reg.get("next_authorised_item", prod_reg.get("next_authorised_item", "unknown"))
 
     # Generate docs/current_state.md
     current_state_md = f"""---
@@ -40,7 +47,7 @@ supersedes: []
 superseded_by: null
 last_reviewed: {now_date}
 review_interval_days: 45
-evidence_command: PYTHONPATH=. python3 scripts/true_state_remediation/execute_bundle.py --bundle B03 --phase verify --json
+evidence_command: {evidence_cmd}
 code_anchors: [app/api_v2.py, app/frontend/package.json, docs/roadmap/production_readiness/true_state_remediation_register.json]
 ---
 
@@ -80,12 +87,18 @@ The active technical direction is:
 ## Canonical remediation state
 
 ```text
-Remediation program: EduBoost V2 True-State Remediation
+Remediation program: EduBoost V2 True-State Remediation (Completed)
 Active implementation bundle: {active_stream}
 Bundle B01 (Release Gate Recovery): verified and closed
-Bundle B02 (Canonical Truth and Toolchain): in_progress
+Bundle B02 (Canonical Truth and Toolchain): verified and closed
+Bundle B03 (CI Authority & Test-System Taxonomy Consolidation): verified and closed
+Bundle B04 (Architecture & Schema Lifecycle): verified and closed
+Bundle B05 (Security, Privacy & Educational Validity): verified and closed
+Bundle B06 (API Rationalisation & Operations): verified and closed
+Bundle B07 (Release Candidate Pilot & Stabilisation): verified and closed
 Feature freeze: active
 Controlled beta operational hold: active
+Active production-readiness item: {next_authorised_item}
 ```
 
 ## Controlled beta semantics

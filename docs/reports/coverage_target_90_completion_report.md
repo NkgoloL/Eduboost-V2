@@ -1,3 +1,18 @@
+---
+title: Test Coverage Target Completion Report
+status: active
+owner: engineering
+reviewers: [engineering]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: make coverage
+code_anchors: [app]
+---
+
 # EduBoost V2 — Comprehensive Test Coverage Target Completion Report (>90.9% Statement Coverage Across `app/`)
 
 **Assessment Date:** 13 September 2026  

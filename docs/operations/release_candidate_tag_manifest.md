@@ -2,10 +2,10 @@
 
 ## Metadata
 
-- generated_at_utc: `2026-09-03T09:24:03.655400+00:00`
-- branch: `fix/governance-verification-remediation`
-- commit: `51487956b21470877d482128092c01595e92be39`
-- release_candidate: `beta-51487956`
+- generated_at_utc: `2026-08-29T09:39:05.410977+00:00`
+- branch: `feature/coverage-target-90`
+- commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
+- release_candidate: `beta-d81bc05b2`
 
 ## Tagging Convention
 
@@ -26,8 +26,8 @@
 ## Example Commands
 
 ```bash
-git tag -a beta-51487956 -m "Beta release candidate beta-51487956"
-git push origin beta-51487956
+git tag -a beta-d81bc05b2 -m "Beta release candidate beta-d81bc05b2"
+git push origin beta-d81bc05b2
 ```
 
 ## Safety Boundary

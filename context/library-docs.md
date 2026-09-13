@@ -1,7 +1,6 @@
 # Library Docs
 
-**Last updated:** 2026-06-09
-**Verified against:** Current codebase state (June 2026)
+**Status:** Historical library-usage context; current versions and runtime claims come from manifests and executable evidence.
 
 Project-specific usage patterns for all third-party libraries.
 
@@ -12,7 +11,7 @@ Project-specific usage patterns for all third-party libraries.
 - All endpoints async, wrapped in try/catch, responses wrapped in EnvelopedRoute
 - Always use Depends() for auth, database, services
 - Validation with Pydantic BaseModel
-- **Note:** 355 routes registered; some dormant routers still in tree (Phase 11 cleanup)
+- **Note:** See the generated route inventory for the current route surface and compatibility policy.
 
 ## SQLAlchemy 2.0
 
@@ -55,8 +54,7 @@ All providers accessed through the LLM gateway abstraction in core/llm_gateway.p
 - All tests async def test_* with @pytest.mark.asyncio
 - Use in-memory SQLite for tests where possible
 - Always arrange -> act -> assert pattern
-- Target: >80% coverage (currently 40.9%; Phase 9)
-- **Current:** 2051 passed, 1 skipped, 1 warning (local)
+- Coverage and test status: See the current coverage contract and executable test evidence.
 
 ## Alembic
 
@@ -70,7 +68,7 @@ All providers accessed through the LLM gateway abstraction in core/llm_gateway.p
 - ARQ replaces Celery for async task queue (Redis-backed)
 - Define jobs in app/jobs/
 - Worker started via arq command
-- **Current gap:** ARQ not wired into Compose; BackgroundTasks used as placeholder (Phase 6)
+- Background jobs: ARQ is the current queue architecture; verify active deployment topology from current operations documentation.
 
 ## Logging
 
@@ -86,4 +84,4 @@ All providers accessed through the LLM gateway abstraction in core/llm_gateway.p
 - Use Histogram for time measurements
 - Use Gauge for current state
 - Scrape endpoint: /metrics
-- **Current gap:** /metrics is unauthenticated (Phase 12 decision pending)
+- Metrics access: Verify current authentication/network policy from the active security and operations contracts.
