@@ -96,8 +96,8 @@
     "canonical_codemaps": 20,
     "execution_traces": 60,
     "source_anchors": 240,
-    "inventoried_files": 6700,
-    "assigned_files": 6700,
+    "inventoried_files": 6760,
+    "assigned_files": 6760,
     "unassigned_files": 0,
     "duplicate_primary_assignments": 0
   },
@@ -345,7 +345,7 @@
         "scripts/coverage_suites",
         "scripts/advisory_suites"
       ],
-      "assigned_file_count": 1805
+      "assigned_file_count": 1863
     },
     {
       "id": "18_production_readiness_release_evidence_and_live_traffic",
@@ -375,7 +375,7 @@
         "scripts/docs_inventory.py",
         "scripts/maintenance"
       ],
-      "assigned_file_count": 795
+      "assigned_file_count": 797
     }
   ],
   "assignments": [
@@ -17610,6 +17610,11 @@
       "kind": "documentation"
     },
     {
+      "path": "docs/reports/coverage_target_90_completion_report.md",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
+    },
+    {
       "path": "docs/reports/stale_source_quarantine_register.json",
       "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
       "kind": "documentation"
@@ -21283,6 +21288,11 @@
       "path": "scripts/audit_router_thinness.py",
       "primary_owner": "04_consent_popia_audit_and_data_subject_rights",
       "kind": "script"
+    },
+    {
+      "path": "scripts/audit_test_imports.py",
+      "primary_owner": "19_documentation_adrs_repository_governance_and_maintenance",
+      "kind": "maintained-file"
     },
     {
       "path": "scripts/audit_write_flow.py",
@@ -28225,6 +28235,36 @@
       "kind": "maintained-file"
     },
     {
+      "path": "tests/unit/core/test_core_engine_health_auth_config_complete_batch410.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_core_infrastructure_complete_batch408.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_core_llm_metrics_judiciary_batch412.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_core_protocols_middleware_policy_complete_batch409.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_core_security_auth_complete_batch407.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/core/test_core_security_deps_tokens_pii_consent_batch411.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/core/test_database_lifecycle_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
@@ -28300,7 +28340,17 @@
       "kind": "maintained-file"
     },
     {
+      "path": "tests/unit/domain/test_domain_complete_batch413.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/domain/test_kg_advanced_packs_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/domain/test_kg_domain_complete_batch428.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
@@ -28363,6 +28413,11 @@
       "path": "tests/unit/modules/diagnostics/conftest.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
+    },
+    {
+      "path": "tests/unit/modules/diagnostics/test_irt_engine_complete_coverage.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "tests/unit/modules/diagnostics/test_irt_engine_deep_expansion.py",
@@ -28560,6 +28615,36 @@
       "kind": "maintained-file"
     },
     {
+      "path": "tests/unit/modules/test_modules_burndown_complete_batch419.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/test_modules_burndown_complete_batch422.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/test_modules_burndown_complete_batch423.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/test_modules_burndown_complete_batch424.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/test_modules_burndown_complete_batch425.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/modules/test_modules_burndown_complete_batch426.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/modules/vertical_journey/test_vertical_journey_hardening.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
@@ -28666,6 +28751,11 @@
     },
     {
       "path": "tests/unit/repositories/test_repositories_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/repositories/test_repositories_complete_batch415.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
@@ -29275,6 +29365,11 @@
       "kind": "maintained-file"
     },
     {
+      "path": "tests/unit/routers/test_content_review_router_coverage_batch403.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/routers/test_content_review_router_deep_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
@@ -29500,6 +29595,26 @@
       "kind": "maintained-file"
     },
     {
+      "path": "tests/unit/routers/test_routers_core_expansion_batch401.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_routers_expansion_batch400.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_routers_governance_and_ops_expansion_batch399.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/routers/test_routers_tutor_parents_generation_batch402.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/routers/test_security_assurance_routes_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
@@ -29655,7 +29770,22 @@
       "kind": "test"
     },
     {
+      "path": "tests/unit/security/test_security_burndown_complete_batch420.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/services/content_generation/test_blueprint_generators_branch_coverage_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_generation/test_content_generation_providers_complete_suite_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_generation/test_content_generators_and_provider_factory_complete_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
@@ -29681,6 +29811,11 @@
     },
     {
       "path": "tests/unit/services/content_generation/test_scope_blueprint_generator_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/content_generation/test_scope_generators_complete_suite_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
@@ -29721,6 +29856,11 @@
     },
     {
       "path": "tests/unit/services/curriculum/test_curriculum_core_cluster_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/curriculum/test_curriculum_services_expansion_batch398.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
@@ -29895,7 +30035,17 @@
       "kind": "maintained-file"
     },
     {
+      "path": "tests/unit/services/test_consent_service_and_renewal_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/services/test_content_answer_key_verification_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_artifact_lifecycle_bulk_and_risk_complete_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
@@ -29911,6 +30061,16 @@
     },
     {
       "path": "tests/unit/services/test_content_blueprint_validation_scope_registry_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_coverage_and_factory_orchestrator_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_coverage_and_staging_readiness_complete_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
@@ -29940,6 +30100,11 @@
       "kind": "maintained-file"
     },
     {
+      "path": "tests/unit/services/test_content_file_import_quality_and_readiness_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/services/test_content_file_lesson_quality_deep_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
@@ -29951,6 +30116,11 @@
     },
     {
       "path": "tests/unit/services/test_content_file_promotion_readiness_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_file_review_queue_and_risk_complete_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
@@ -29975,6 +30145,11 @@
       "kind": "maintained-file"
     },
     {
+      "path": "tests/unit/services/test_content_generation_executor_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/services/test_content_generation_planner_and_lock_complete_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
@@ -29985,7 +30160,22 @@
       "kind": "maintained-file"
     },
     {
+      "path": "tests/unit/services/test_content_generation_reporter_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_generation_runs_and_planner_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/services/test_content_generation_runs_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_generation_runs_planner_lock_and_reporter_complete_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
@@ -29995,7 +30185,27 @@
       "kind": "maintained-file"
     },
     {
+      "path": "tests/unit/services/test_content_learner_read_and_staging_seed_executor_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/services/test_content_learner_read_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_lifecycle_validator_blueprint_and_template_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_orchestrator_schemas_and_factory_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_production_promotion_and_read_complete_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
@@ -30021,6 +30231,11 @@
     },
     {
       "path": "tests/unit/services/test_content_review_eligibility_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_review_governance_and_workflow_complete_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
@@ -30085,7 +30300,22 @@
       "kind": "maintained-file"
     },
     {
+      "path": "tests/unit/services/test_content_reviewer_assignment_and_queue_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_reviewer_assignment_bulk_and_answer_key_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/services/test_content_safety_pii_and_prompt_payloads_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_scope_and_governance_complete_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
@@ -30096,6 +30326,11 @@
     },
     {
       "path": "tests/unit/services/test_content_seed_promotion_deep_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_content_staging_and_seed_promotion_complete_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
@@ -30120,6 +30355,11 @@
       "kind": "maintained-file"
     },
     {
+      "path": "tests/unit/services/test_content_staging_seed_and_promotion_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/services/test_content_staging_seed_executor_deep_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
@@ -30140,12 +30380,22 @@
       "kind": "maintained-file"
     },
     {
+      "path": "tests/unit/services/test_content_validation_and_answer_key_verification_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/services/test_content_validator_and_queue_complete_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
     {
       "path": "tests/unit/services/test_content_validator_deep_branch_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_curriculum_and_llm_burndown_complete_batch417.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
@@ -30505,12 +30755,27 @@
       "kind": "maintained-file"
     },
     {
+      "path": "tests/unit/services/test_popia_transactional_and_dsr_service_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/services/test_quota_and_email_deep_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
     {
       "path": "tests/unit/services/test_review_governance_consensus_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_run_lock_and_promotion_gate_complete_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_safety_and_guards_burndown_complete_batch418.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
@@ -30531,6 +30796,11 @@
     },
     {
       "path": "tests/unit/services/test_service_shims_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_services_burndown_complete_batch416.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
@@ -30581,6 +30851,11 @@
     },
     {
       "path": "tests/unit/services/test_telemetry_service_expansion.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/services/test_trustworthy_beta_and_reexports_expansion.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "maintained-file"
     },
@@ -30683,6 +30958,11 @@
       "path": "tests/unit/test_api_envelope_error_contract.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
+    },
+    {
+      "path": "tests/unit/test_api_v2_deps_complete_coverage_batch404.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "tests/unit/test_api_v2_envelope.py",
@@ -32825,6 +33105,11 @@
       "kind": "test"
     },
     {
+      "path": "tests/unit/test_middleware_utils_jobs_complete_coverage_batch406.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/test_migration_evidence_tooling.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
@@ -33260,6 +33545,16 @@
       "kind": "test"
     },
     {
+      "path": "tests/unit/test_production_readiness_contracts_complete_batch414.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
+      "path": "tests/unit/test_production_readiness_contracts_complete_batch421.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
+    },
+    {
       "path": "tests/unit/test_production_restore_approval.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
@@ -33523,6 +33818,11 @@
       "path": "tests/unit/test_secret_rotation.py",
       "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
       "kind": "test"
+    },
+    {
+      "path": "tests/unit/test_security_authorization_complete_coverage_batch405.py",
+      "primary_owner": "17_testing_ci_coverage_security_and_quality_gates",
+      "kind": "maintained-file"
     },
     {
       "path": "tests/unit/test_security_dependencies.py",
