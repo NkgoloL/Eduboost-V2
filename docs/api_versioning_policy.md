@@ -1,3 +1,18 @@
+---
+title: API Versioning Policy
+status: active
+owner: api-governance
+reviewers: [engineering, platform, release-management]
+audience: developer
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: make openapi-check
+code_anchors: [app/api_v2.py, scripts/generate_openapi.py]
+---
+
 # EduBoost API Versioning Policy
 
 ## Current Version

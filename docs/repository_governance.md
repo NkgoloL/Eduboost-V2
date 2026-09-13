@@ -1,3 +1,18 @@
+---
+title: Repository Governance
+status: active
+owner: repository-governance
+reviewers: [engineering, security, privacy, release-management]
+audience: developer
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: make verify-repo-state
+code_anchors: [Makefile, .github/PULL_REQUEST_TEMPLATE.md]
+---
+
 # Repository Governance
 
 This document defines the repository operating model for EduBoost V2. It is intentionally conservative because the product handles learner data, AI-generated educational content, curriculum alignment, and production infrastructure.

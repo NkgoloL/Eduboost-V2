@@ -1,3 +1,18 @@
+---
+title: EduBoost V2 End-to-End System Startup Guide
+status: active
+owner: platform-operations
+reviewers: [engineering, platform, release-management]
+audience: operator
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: make runtime-check
+code_anchors: [app/api_v2.py, docker-compose.yml]
+---
+
 # EduBoost V2 End-to-End System Startup Guide
 
 **Last Updated:** 2026-06-05  

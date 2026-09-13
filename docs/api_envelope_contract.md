@@ -1,3 +1,18 @@
+---
+title: API Envelope Contract
+status: active
+owner: api-governance
+reviewers: [engineering, platform]
+audience: developer
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: make openapi-check
+code_anchors: [app/core/exceptions.py, tests/unit/test_api_v2_envelope.py]
+---
+
 # API Envelope Contract
 
 This document records the current V2 API envelope contract. It is evidence for

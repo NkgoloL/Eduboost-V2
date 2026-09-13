@@ -1,4 +1,4 @@
-# Status
+# Release Status Snapshot
 
 ## PR-CF-007 Content Factory Staging Verification
 

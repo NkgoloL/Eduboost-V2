@@ -1,3 +1,18 @@
+---
+title: Development Guide
+status: active
+owner: engineering
+reviewers: [engineering, platform, release-management]
+audience: developer
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: make runtime-check
+code_anchors: [Makefile, docker-compose.yml]
+---
+
 # Development Guide
 
 This guide is the doc-site version of the contributor setup for the active V2

@@ -1,3 +1,18 @@
+---
+title: Dependency Management
+status: active
+owner: engineering
+reviewers: [engineering, platform]
+audience: developer
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: make runtime-check
+code_anchors: [requirements/, requirements-dev.txt]
+---
+
 # Dependency Management
 
 EduBoost V2 uses the `requirements/` directory as the canonical Python dependency surface. Root-level `requirements*.txt` files are compatibility aliases for common tooling and should stay one-line includes.

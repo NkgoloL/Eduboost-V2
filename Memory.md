@@ -1,3 +1,18 @@
+---
+title: Agent Memory and Behavioral Directives
+status: active
+owner: repository-governance
+reviewers: [engineering, platform]
+audience: contributor
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 180
+evidence_command: make repo-governance-check
+code_anchors: [AGENT_INSTRUCTIONS_V2.md, docs/]
+---
+
 # Agent Memory & Behavioral Directives
 
 This document serves as persistent memory and operational directives to ensure high standards of verification, accuracy, and thoroughness in all work.

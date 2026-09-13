@@ -1,3 +1,18 @@
+---
+title: Disaster Recovery Plan
+status: active
+owner: platform-operations
+reviewers: [engineering, platform, security]
+audience: operator
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: make local-release-evidence-check
+code_anchors: [docs/release, scripts/]
+---
+
 # Disaster recovery plan
 
 ## Recovery objectives

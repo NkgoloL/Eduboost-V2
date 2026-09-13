@@ -4,7 +4,7 @@ This page is a project-status index. The canonical current-state source of truth
 
 ## Current Verified Baseline
 
-EduBoost V2 is in a release-candidate hardening phase, not a release-ready or public-beta-ready phase.
+EduBoost V2 is in an evidence-bound hardening phase, not a release-authorized or public-beta-authorized phase.
 
 The latest local refresh on 2026-05-17 assessed commit 859695dac818 and reports RED quality status: 9 of 11 required checks passed. The live API contract checks now pass after regenerating docs/openapi.json and docs/route_inventory.md, but two required gates remain open:
 
@@ -36,7 +36,7 @@ Implemented scope includes Content Factory ORM tables and migration, ETL service
 Remaining proof required: CI run, disposable PostgreSQL migration evidence, staging seed/promotion proof, educator review evidence, and production rollback evidence.`n`nPR-CF-005 control-plane foundation is implemented locally: provenance expansion, lifecycle transitions, generation run/task ledger, dry-run orchestrator, seed/promotion gates, admin ETL visibility, and live dashboard reads are present behind admin-only routes and feature flags.
 ## Release Readiness
 
-Status: blocked. Do not describe the repository as production-ready, release-ready, or public-beta-ready until docs/current_state.md is green and the release evidence bundle has current CI, staging, backup, restore, rollback, branch-protection, and sign-off evidence.
+Status: blocked. Do not describe the repository as release-authorized or public-beta-authorized until docs/current_state.md is green and the release evidence bundle has current CI, staging, backup, restore, rollback, branch-protection, and sign-off evidence.
 
 The root TODO.md remains the North Star tracker for work that is implemented but still needs CI, runtime, external, legal, security, product, or beta-launch proof.
 

@@ -1,3 +1,18 @@
+---
+title: LLM Test Gating
+status: active
+owner: testing
+reviewers: [engineering, ai-safety, platform]
+audience: developer
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: pytest -m "not llm" -q
+code_anchors: [pytest.ini, .github/workflows/]
+---
+
 LLM Test Gating
 
 Purpose

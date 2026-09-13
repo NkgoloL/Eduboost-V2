@@ -1,6 +1,6 @@
 # Warning Cleanup Register — NS-05
 
-This register tracks non-failing warnings observed after the repository-local green baseline.
+This register tracks non-failing warnings observed after the repository-local checks were recorded in the current environment.
 
 ## Current warning classes (NS-05 Triage)
 

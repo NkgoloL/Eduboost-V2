@@ -7,7 +7,7 @@
 ## Scope candidates
 
 1. Add `docs/release/evidence_status_registry.yml`.
-2. Add proof statuses: `not-started`, `static-passing`, `runtime-passing`, `integration-passing`, `production-ready`, `external-blocked`, `contradicted`, `not-proven`.
+2. Add proof statuses: `not-started`, `static-passing`, `runtime-passing`, `integration-passing`, `candidate-verified`, `external-blocked`, `contradicted`, `not-proven`.
 3. Treat skipped tests as not-proven.
 4. Require P0/P1 items to have runtime/integration proof.
 5. Add registry validation script and Makefile targets.

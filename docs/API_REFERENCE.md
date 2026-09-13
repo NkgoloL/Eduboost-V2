@@ -1,3 +1,18 @@
+---
+title: Historical API Reference
+status: archived
+owner: api-governance
+reviewers: [engineering, platform]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-06-14
+review_interval_days: 180
+evidence_command: make openapi-check
+code_anchors: [app/api_v2.py, docs/openapi.json, docs/route_inventory.md]
+---
+
 # Historical API Reference
 
 > This document describes the legacy v1 contract and is not the active API authority. Use `docs/openapi.json`, `docs/route_inventory.md`, and `app/api_v2.py` for the current V2 contract.

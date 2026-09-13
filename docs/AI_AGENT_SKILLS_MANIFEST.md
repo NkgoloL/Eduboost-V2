@@ -1,3 +1,18 @@
+---
+title: AI Agent Skills Manifest
+status: active
+owner: architecture
+reviewers: [engineering, security, privacy, product]
+audience: developer
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: make architecture-gates
+code_anchors: [docs/AI_AGENT_SKILLS_MANIFEST.md, AGENT_INSTRUCTIONS_V2.md]
+---
+
 # EduBoost SA: AI Agent System Prompt & Skills Manifest
 
 **File Name:** `AI_AGENT_SKILLS_MANIFEST.md`

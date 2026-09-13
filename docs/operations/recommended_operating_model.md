@@ -24,9 +24,9 @@ Use these sources in order when planning or reporting project state:
 
 Operating rules:
 
-- Do not claim release-ready, public-beta-ready, or production-ready status
-  unless `docs/current_state.md` is green and the release evidence bundle is
-  current.
+- Do not claim release authorization, public-beta authorization, or production
+  authorization unless `docs/current_state.md` is green and the release evidence
+  bundle is current.
 - Do not mark backlog items done unless the referenced evidence artifact can be
   opened and read.
 - Treat generated docs as generated. Refresh them through their scripts or Make

@@ -2,7 +2,7 @@
 
 **Date:** 2026-05-12  
 **Commit:** `83d45d2e3d7d`  
-**Status:** 🟢 RELEASE-READY
+**Status:** evidence bundle captured; this does not authorize a release decision
 
 This document bundles the verification evidence for the EduBoost V2 release candidate.
 

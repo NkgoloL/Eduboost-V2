@@ -17,19 +17,18 @@ code_anchors: [scripts/maintenance/check_doc_truth_claims.py]
 
 EduBoost documents must avoid unsupported broad claims.
 
-## Controlled terms
+## Controlled status language
 
-The following terms are allowed only when they are bounded by scope, date, and evidence:
+Use explicit evidence-bound qualifiers instead of blanket delivery claims. The following forms are acceptable only when tied to scope, date, command output, and evidence path:
 
-- production-ready
-- release-ready
-- launch approved
-- fully complete
-- all tests pass
-- green baseline
-- compliant
-- secure
-- complete
+- implementation present
+- targeted checks passed
+- CI evidence attached
+- staging evidence attached
+- external approval attached
+- verified against the listed scope
+- not yet verified for the requested claim
+- blocked by missing evidence
 
 ## Required evidence language
 

@@ -1,3 +1,18 @@
+---
+title: POPIA-safe learning event schema
+status: active
+owner: privacy
+reviewers: [engineering, privacy, analytics]
+audience: developer
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: make popia-consent-closure-check
+code_anchors: [docs/security, app/]
+---
+
 # POPIA-safe learning event schema
 
 Learning analytics must avoid direct identifiers and negative learner labels.

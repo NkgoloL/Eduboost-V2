@@ -15,4 +15,4 @@
 - Production routes are fully wired through the transactional proof services.
 - Live Postgres rollback proof is complete.
 - Staging transaction behavior is proven.
-- TX-001 is production-ready.
+- TX-001 is release-authorized; it remains pending live route, database, and staging evidence.

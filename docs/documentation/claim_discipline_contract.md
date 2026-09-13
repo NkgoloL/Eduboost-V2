@@ -49,8 +49,8 @@ This contract defines claim boundaries for production-readiness evidence.
 
 - fully complete
 - guaranteed
-- launch approved
-- production ready
+- launch approval implied
+- production launch authorized without evidence
 
 ## Required Boundary Phrase
 

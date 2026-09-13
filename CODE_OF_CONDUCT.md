@@ -1,3 +1,18 @@
+---
+title: Code of Conduct
+status: active
+owner: repository-governance
+reviewers: [engineering, security]
+audience: contributor
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 180
+evidence_command: make repo-governance-check
+code_anchors: [CONTRIBUTING.md, SECURITY.md]
+---
+
 # Code of Conduct
 
 ## Our Pledge

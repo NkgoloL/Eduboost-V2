@@ -1,3 +1,18 @@
+---
+title: Privacy Notice
+status: active
+owner: privacy
+reviewers: [legal, privacy, engineering]
+audience: guardian
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 180
+evidence_command: make popia-consent-closure-check
+code_anchors: [docs/POPIA_COMPLIANCE.md, app/modules/consent/]
+---
+
 # EduBoost SA Privacy Notice
 
 **Last Updated**: 2026-05-28

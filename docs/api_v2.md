@@ -1,3 +1,18 @@
+---
+title: API V2 Overview
+status: active
+owner: api-governance
+reviewers: [engineering, platform]
+audience: developer
+source_of_truth: true
+supersedes: []
+superseded_by: null
+last_reviewed: 2026-09-13
+review_interval_days: 90
+evidence_command: make openapi-check
+code_anchors: [app/api_v2.py, docs/openapi.json]
+---
+
 # API V2 Overview
 
 The V2 API is the supported EduBoost runtime.
