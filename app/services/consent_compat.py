@@ -1,12 +1,22 @@
 """Compatibility helpers for consent service consolidation.
 
-This module is intentionally non-invasive. It documents and normalizes common
-consent audit/event shapes so future batches can migrate call sites safely.
+⚠️ DEPRECATION NOTICE:
+This module is a legacy compatibility shim. The canonical consent lifecycle services are:
+    - app.services.consent_service.ConsentService
+    - app.services.popia_service.POPIADataRightsService
+DO NOT use this module for new v2 routes or features.
 """
 from __future__ import annotations
 
+import warnings
 from dataclasses import dataclass, field
 from typing import Any
+
+warnings.warn(
+    "app.services.consent_compat is deprecated; use app.services.consent_service instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 
 READ_CONSENT_ACTIONS = {

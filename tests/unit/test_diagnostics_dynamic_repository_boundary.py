@@ -6,6 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 DIAGNOSTICS = ROOT / "app/api_v2_routers/diagnostics.py"
 BOUNDARY = ROOT / "app/api_v2_deps/diagnostic_repositories.py"
+SERVICE = ROOT / "app/services/diagnostic_domain_service.py"
 
 
 def test_diagnostics_router_does_not_use_dynamic_repository_resolution():
@@ -16,12 +17,12 @@ def test_diagnostics_router_does_not_use_dynamic_repository_resolution():
     assert "app.repositories." not in source
 
 
-def test_diagnostics_router_calls_dependency_boundary_not_repository_constructors():
+def test_diagnostics_router_calls_domain_service_not_repositories():
     source = DIAGNOSTICS.read_text(encoding="utf-8")
 
-    assert "from app.api_v2_deps import diagnostic_repositories" in source
-    assert "diagnostic_repositories.learner(db)" in source
-    assert "diagnostic_repositories.item_bank(db)" in source
+    assert "from app.services.diagnostic_domain_service import" in source
+    assert "DiagnosticDomainService" in source
+    assert "get_diagnostic_domain_service" in source
 
     for token in [
         "LearnerRepository(db)",
@@ -38,16 +39,10 @@ def test_diagnostics_router_calls_dependency_boundary_not_repository_constructor
         assert token not in source
 
 
-def test_diagnostic_repository_boundary_owns_dynamic_resolution():
-    source = BOUNDARY.read_text(encoding="utf-8")
-
-    assert "from importlib import import_module" in source
-    assert "app.repositories.repositories.LearnerRepository" in source
-    assert "def learner(db:" in source
-    assert "def item_bank(db:" in source
-    assert "DiagnosticRepositoryBoundaryError" in source
+def test_dynamic_repository_boundary_shim_is_eliminated():
+    assert not BOUNDARY.exists(), "Dynamic reflection boundary app/api_v2_deps/diagnostic_repositories.py must be deleted."
 
 
-def test_diagnostics_boundary_files_are_syntax_valid():
-    for path in [DIAGNOSTICS, BOUNDARY]:
+def test_diagnostics_domain_service_syntax_valid():
+    for path in [DIAGNOSTICS, SERVICE]:
         ast.parse(path.read_text(encoding="utf-8"))

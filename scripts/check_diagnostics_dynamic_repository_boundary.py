@@ -12,9 +12,8 @@ DIAGNOSTICS = ROOT / "app/api_v2_routers/diagnostics.py"
 BOUNDARY = ROOT / "app/api_v2_deps/diagnostic_repositories.py"
 
 CRITICAL = [
-    "app/api_v2_deps/diagnostic_repositories.py",
+    "app/services/diagnostic_domain_service.py",
     "app/api_v2_routers/diagnostics.py",
-    "scripts/patch_diagnostics_dynamic_repository_boundary.py",
     "scripts/check_diagnostics_dynamic_repository_boundary.py",
     "tests/unit/test_diagnostics_dynamic_repository_boundary.py",
 ]
@@ -45,7 +44,11 @@ def main() -> int:
     print("Diagnostics dynamic repository boundary check")
 
     diagnostics_source = DIAGNOSTICS.read_text(encoding="utf-8")
-    boundary_source = BOUNDARY.read_text(encoding="utf-8")
+
+    if BOUNDARY.exists():
+        failures.append(f"Reflection boundary {BOUNDARY} still exists; must be eliminated.")
+    else:
+        print(f"- PASS eliminated dynamic reflection shim {BOUNDARY.name}")
 
     for token in DISALLOWED_ROUTER_TOKENS:
         if token in diagnostics_source:
@@ -60,28 +63,15 @@ def main() -> int:
             print(f"- PASS diagnostics.py excludes {call}")
 
     required_router_tokens = (
-        "from app.api_v2_deps import diagnostic_repositories",
-        "diagnostic_repositories.learner(db)",
-        "diagnostic_repositories.item_bank(db)",
+        "from app.services.diagnostic_domain_service import",
+        "DiagnosticDomainService",
+        "get_diagnostic_domain_service",
     )
     for token in required_router_tokens:
         if token in diagnostics_source:
             print(f"- PASS diagnostics.py contains {token}")
         else:
-            failures.append(f"diagnostics.py missing required boundary token: {token}")
-
-    required_boundary_tokens = (
-        "import_module",
-        "app.repositories.repositories.LearnerRepository",
-        "def learner(db:",
-        "def item_bank(db:",
-        "DiagnosticRepositoryBoundaryError",
-    )
-    for token in required_boundary_tokens:
-        if token in boundary_source:
-            print(f"- PASS diagnostic_repositories.py contains {token}")
-        else:
-            failures.append(f"diagnostic_repositories.py missing {token}")
+            failures.append(f"diagnostics.py missing required domain service token: {token}")
 
     for path in CRITICAL:
         ast.parse((ROOT / path).read_text(encoding="utf-8"))

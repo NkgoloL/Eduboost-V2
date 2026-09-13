@@ -157,9 +157,9 @@ def test_item_bank_serialisation_and_admin_guard(admin_user, normal_user):
 @pytest.mark.asyncio
 @pytest.mark.unit
 async def test_get_diagnostic_items_branches(mock_db, mock_request, admin_user):
-    with patch("app.api_v2_deps.diagnostic_repositories.learner") as mock_learner_repo, \
-         patch("app.api_v2_deps.diagnostic_repositories.item_bank") as mock_item_bank_repo, \
-         patch("app.api_v2_deps.diagnostic_repositories.irt") as mock_irt_repo, \
+    with patch("app.api_v2_routers.diagnostics.diagnostic_repositories.learner") as mock_learner_repo, \
+         patch("app.api_v2_routers.diagnostics.diagnostic_repositories.item_bank") as mock_item_bank_repo, \
+         patch("app.api_v2_routers.diagnostics.diagnostic_repositories.irt") as mock_irt_repo, \
          patch("app.api_v2_routers.diagnostics.require_learner_read_for_current_user"), \
          patch("app.api_v2_routers.diagnostics.require_active_consent_for_current_user", new_callable=AsyncMock):
 
@@ -223,11 +223,11 @@ async def test_submit_diagnostic_flow(mock_db, mock_request, admin_user):
         "answers": [{"item_id": "00000000-0000-0000-0000-000000000002", "selected_option": "B"}],
     })
 
-    with patch("app.api_v2_deps.diagnostic_repositories.learner") as mock_learner_repo, \
-         patch("app.api_v2_deps.diagnostic_repositories.guardian") as mock_guardian_repo, \
-         patch("app.api_v2_deps.diagnostic_repositories.item_bank") as mock_item_bank_repo, \
-         patch("app.api_v2_deps.diagnostic_repositories.diagnostic") as mock_diag_repo, \
-         patch("app.api_v2_deps.diagnostic_repositories.knowledge_gap") as mock_gap_repo, \
+    with patch("app.api_v2_routers.diagnostics.diagnostic_repositories.learner") as mock_learner_repo, \
+         patch("app.api_v2_routers.diagnostics.diagnostic_repositories.guardian") as mock_guardian_repo, \
+         patch("app.api_v2_routers.diagnostics.diagnostic_repositories.item_bank") as mock_item_bank_repo, \
+         patch("app.api_v2_routers.diagnostics.diagnostic_repositories.diagnostic") as mock_diag_repo, \
+         patch("app.api_v2_routers.diagnostics.diagnostic_repositories.knowledge_gap") as mock_gap_repo, \
          patch("app.api_v2_routers.diagnostics.require_learner_write_for_current_user"), \
          patch("app.api_v2_routers.diagnostics.require_active_consent_for_current_user", new_callable=AsyncMock), \
          patch("app.api_v2_routers.diagnostics.check_ai_quota", new_callable=AsyncMock), \
@@ -301,7 +301,7 @@ async def test_item_bank_admin_routes(mock_db, admin_user):
         assert "4.M.1.1" in cov
 
     # 2. Get item bank item 404 & success
-    with patch("app.api_v2_deps.diagnostic_repositories.item_bank") as mock_item_bank_repo:
+    with patch("app.api_v2_routers.diagnostics.diagnostic_repositories.item_bank") as mock_item_bank_repo:
         mock_item_bank_repo.return_value.get_item = AsyncMock(return_value=None)
         with pytest.raises(HTTPException) as exc:
             await get_item_bank_item(item_id, mock_db, admin_user)
@@ -360,8 +360,8 @@ async def test_diagnostic_sessions_full_flow(mock_db, admin_user):
          patch("app.api_v2_routers.diagnostics.require_learner_read_for_current_user"), \
          patch("app.api_v2_routers.diagnostics.require_active_consent_for_current_user", new_callable=AsyncMock), \
          patch("app.api_v2_routers.diagnostics.DiagnosticSessionService") as mock_sess_svc_cls, \
-         patch("app.api_v2_deps.diagnostic_repositories.learner") as mock_learner_repo, \
-         patch("app.api_v2_deps.diagnostic_repositories.item_bank") as mock_item_bank_repo:
+         patch("app.api_v2_routers.diagnostics.diagnostic_repositories.learner") as mock_learner_repo, \
+         patch("app.api_v2_routers.diagnostics.diagnostic_repositories.item_bank") as mock_item_bank_repo:
 
         mock_snap = SimpleNamespace(
             session_id=session_id,

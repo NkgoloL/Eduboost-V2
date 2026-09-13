@@ -14,7 +14,6 @@ from app.api_v2_deps import (
     auth_runtime,
     auth_service,
     consent_lifecycle,
-    diagnostic_repositories,
 )
 from app.api_v2_deps.auth import AuthContext, TokenType, UserRole
 from app.core.config import settings
@@ -33,67 +32,6 @@ def test_auth_runtime_and_auth_service(monkeypatch):
     # auth_service
     monkeypatch.setattr(auth_service, "build_auth_application_service", lambda db: "app_svc")
     assert auth_service.get_auth_application_service(mock_db) == "app_svc"
-
-
-# ── DIAGNOSTIC_REPOSITORIES ───────────────────────────────────────────────────
-
-
-def test_diagnostic_repositories():
-    # 1. _split_dotted_path
-    mod, attr = diagnostic_repositories._split_dotted_path("a.b.c")
-    assert mod == "a.b" and attr == "c"
-
-    with pytest.raises(diagnostic_repositories.DiagnosticRepositoryBoundaryError):
-        diagnostic_repositories._split_dotted_path("invalidpath")
-
-    with pytest.raises(diagnostic_repositories.DiagnosticRepositoryBoundaryError):
-        diagnostic_repositories._split_dotted_path(".invalid")
-
-    # 2. resolve_repository_class
-    # cached
-    diagnostic_repositories._CLASS_CACHE["fake_repo"] = MagicMock
-    assert diagnostic_repositories.resolve_repository_class("fake_repo") is MagicMock
-
-    # unknown name
-    with pytest.raises(diagnostic_repositories.DiagnosticRepositoryBoundaryError) as exc_un:
-        diagnostic_repositories.resolve_repository_class("non_existent_target")
-    assert "Unknown diagnostics repository" in str(exc_un.value)
-
-    # all targets resolution
-    targets = [
-        "learner",
-        "guardian",
-        "irt",
-        "diagnostic",
-        "knowledge_gap",
-        "item_bank",
-        "diagnostic_session",
-        "mastery",
-    ]
-    mock_db = MagicMock()
-    for name in targets:
-        cls = diagnostic_repositories.resolve_repository_class(name)
-        assert cls is not None
-        inst = diagnostic_repositories.repository(name, mock_db)
-        assert inst is not None
-
-    # test helper functions
-    assert diagnostic_repositories.learner(mock_db) is not None
-    assert diagnostic_repositories.guardian(mock_db) is not None
-    assert diagnostic_repositories.irt(mock_db) is not None
-    assert diagnostic_repositories.diagnostic(mock_db) is not None
-    assert diagnostic_repositories.knowledge_gap(mock_db) is not None
-    assert diagnostic_repositories.item_bank(mock_db) is not None
-    assert diagnostic_repositories.diagnostic_session(mock_db) is not None
-    assert diagnostic_repositories.mastery(mock_db) is not None
-
-    # Failure when all candidates fail
-    with patch.dict(diagnostic_repositories._REPOSITORY_TARGETS, {"fail_repo": ("non.existent.Module.Repo",)}):
-        if "fail_repo" in diagnostic_repositories._CLASS_CACHE:
-            del diagnostic_repositories._CLASS_CACHE["fail_repo"]
-        with pytest.raises(diagnostic_repositories.DiagnosticRepositoryBoundaryError) as exc_fail:
-            diagnostic_repositories.resolve_repository_class("fail_repo")
-        assert "Could not resolve diagnostics repository" in str(exc_fail.value)
 
 
 # ── CONSENT_LIFECYCLE ─────────────────────────────────────────────────────────

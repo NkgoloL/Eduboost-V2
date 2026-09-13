@@ -1,9 +1,23 @@
+"""Consent runtime compatibility layer.
+
+⚠️ DEPRECATION NOTICE:
+This module is a legacy compatibility shim. The canonical consent lifecycle services are:
+    - app.services.consent_service.ConsentService
+    - app.services.popia_service.POPIADataRightsService
+"""
 from __future__ import annotations
 
 import importlib
 import inspect
+import warnings
 from dataclasses import dataclass, field
 from typing import Any
+
+warnings.warn(
+    "app.services.consent_runtime_compatibility is deprecated; use app.services.consent_service instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 
 CONSENT_SERVICE_CANDIDATES = (

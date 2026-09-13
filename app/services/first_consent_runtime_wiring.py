@@ -1,9 +1,23 @@
+"""First consent runtime wiring candidate helpers.
+
+⚠️ DEPRECATION NOTICE:
+This module is a legacy staging candidate helper. The canonical consent lifecycle services are:
+    - app.services.consent_service.ConsentService
+    - app.services.popia_service.POPIADataRightsService
+"""
 from __future__ import annotations
 
 import json
+import warnings
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+
+warnings.warn(
+    "app.services.first_consent_runtime_wiring is deprecated; use app.services.consent_service instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 from app.services.consent_runtime_orchestrator import build_consent_runtime_audit_payload
 
