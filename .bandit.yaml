@@ -1,0 +1,9 @@
+# Bandit static application security testing configuration
+# Replaces legacy broken INI format (.bandit)
+skips: ['B101']
+exclude_dirs:
+  - 'tests'
+  - 'archive'
+  - 'node_modules'
+  - '.venv'
+  - 'app/frontend'

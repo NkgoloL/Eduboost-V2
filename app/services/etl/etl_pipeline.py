@@ -1132,12 +1132,18 @@ class EduboostETL:
         norm_path = norm_dir / "normalized.json"
         norm_path.write_text(json.dumps({**norm, "metadata_updates": updates}, ensure_ascii=False, indent=2))
 
-        # Apply updates
-        set_clauses = ", ".join(f"{k}=?" for k in updates)
-        values = list(updates.values())
+        # Apply updates with explicit column allowlist protection
+        ALLOWED_METADATA_COLUMNS = frozenset({
+            "title", "description", "subject", "grade", "phase", "curriculum",
+            "country", "province", "language", "publisher", "author",
+            "publication_year", "license_status", "reviewer_notes", "document_type",
+        })
+        safe_updates = {k: v for k, v in updates.items() if k in ALLOWED_METADATA_COLUMNS}
+        set_clauses = ", ".join(f"{k}=?" for k in safe_updates)
+        values = list(safe_updates.values())
         if set_clauses:
             self._db().execute(
-                f"UPDATE documents SET {set_clauses}, processing_status=?, updated_at=? WHERE document_id=?",  # nosec B608
+                f"UPDATE documents SET {set_clauses}, processing_status=?, updated_at=? WHERE document_id=?",  # nosec B608 - column names strictly validated against ALLOWED_METADATA_COLUMNS
                 [*values, ProcessingStatus.metadata_enriched, _now(), document_id]
             )
         else:
