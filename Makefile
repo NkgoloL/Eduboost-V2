@@ -3485,7 +3485,7 @@ prd1100-1104-production-release-deployment-preflight-foundation-capture:
 	PYTHONPATH=. python3 scripts/roadmap_reconciliation/capture_prd1100_1104_production_release_deployment_preflight_foundation_evidence.py --claim-prd1100-1104-production-release-deployment-preflight-foundation --prd-owner "Nkgolo Lebelo" --target-branch master --require-valid --json
 
 # PRD-11.1R test-suite taxonomy and behavioural gate overhaul
-.PHONY: test-product test-runtime test-governance test-advisory test-suite-taxonomy-check
+.PHONY: test-product test-runtime test-governance-class test-advisory test-suite-taxonomy-check
 
 test-product:
 	PYTHONPATH=. python3 scripts/test_suites/run_test_suite_class.py product --dry-run --json
@@ -3493,7 +3493,7 @@ test-product:
 test-runtime:
 	PYTHONPATH=. python3 scripts/test_suites/run_test_suite_class.py runtime --dry-run --json
 
-test-governance:
+test-governance-class:
 	PYTHONPATH=. python3 scripts/test_suites/run_test_suite_class.py governance --dry-run --json
 
 test-advisory:
@@ -3534,9 +3534,12 @@ prd1102r-script-taxonomy-functional-overhaul-capture:
 
 
 # PRD-11.3R documentation-defined coverage closure
-.PHONY: coverage-contract-check coverage-suite-product coverage-suite-runtime coverage-suite-governance coverage-suite-advisory
+.PHONY: coverage-contract-check coverage-threshold-check coverage-suite-product coverage-suite-runtime coverage-suite-governance coverage-suite-advisory
 coverage-contract-check:
-	PYTHONPATH=. python3 scripts/coverage_suites/verify_coverage_contract.py --json
+	PYTHONPATH=. $(PYTHON) scripts/coverage_suites/verify_coverage_contract.py --threshold-only --json
+
+coverage-threshold-check:
+	PYTHONPATH=. $(PYTHON) scripts/coverage_suites/verify_coverage_contract.py --threshold-only --json
 
 coverage-suite-product:
 	PYTHONPATH=. python3 scripts/coverage_suites/run_coverage_domain.py product --dry-run --json

@@ -157,7 +157,15 @@ def is_governance_test_path(path: str | Path) -> bool:
     full = str(p)
     if any(token in name for token in _GOVERNANCE_EXCLUDES):
         return False
-    if "roadmap_reconciliation" in full or "audit_remediation" in full or "production_readiness" in full:
+    if (
+        "roadmap_reconciliation" in full
+        or "audit_remediation" in full
+        or "production_readiness" in full
+        or "advisory_suites" in full
+        or "coverage_suites" in full
+        or "script_suites" in full
+        or "test_suites" in full
+    ):
         return True
     return any(token in name for token in _GOVERNANCE_MARKERS)
 

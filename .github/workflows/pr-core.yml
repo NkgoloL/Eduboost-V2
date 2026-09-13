@@ -13,6 +13,9 @@ concurrency:
 permissions:
   contents: read
 
+env:
+  COVERAGE_THRESHOLD: "70"
+
 jobs:
   compile-and-lint:
     name: Compile & Ruff Lint
@@ -96,3 +99,5 @@ jobs:
         run: |
           make docs-housekeeping-check
           make readiness-register-consistency-check
+      - name: Verify Coverage Threshold Alignment
+        run: PYTHONPATH=. python3 scripts/coverage_suites/verify_coverage_contract.py --threshold-only
