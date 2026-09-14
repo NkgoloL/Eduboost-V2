@@ -110,7 +110,6 @@ def main() -> int:
     parser.add_argument("--database-url", default=os.getenv("DATABASE_URL", ""))
     parser.add_argument("--require-db", action="store_true")
     parser.add_argument("--fail-on-drift", action="store_true")
-    parser.add_argument("--ignore-consolidation-tables", action="store_true", help="Ignore known unmapped POPIA/Consolidation tables")
     args = parser.parse_args()
 
     return asyncio.run(_async_main(args))
