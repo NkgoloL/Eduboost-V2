@@ -71,8 +71,19 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r requirements/base.txt -r requirements/dev.txt
-      - name: Run Fast Unit Tests
-        run: PYTHONPATH=. python3 -m pytest tests/unit/test_etl_mcp_server_startup.py tests/unit/test_subscription_service.py tests/unit/test_password_policy.py tests/unit/test_popia_consent_versioning.py -q
+      - name: Run Fast Unit Tests & Real Coverage Enforcement
+        run: make test-coverage COVERAGE_THRESHOLD=90
+      - name: Verify Measured Coverage Contract
+        run: PYTHONPATH=. python3 scripts/coverage_suites/verify_coverage_contract.py --require-report --min-percent 90
+      - name: Upload Coverage Artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-report
+          path: |
+            coverage.xml
+            coverage_html/
+          retention-days: 14
 
 
 

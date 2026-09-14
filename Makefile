@@ -61,12 +61,7 @@ test-integration:
 	$(PYTEST) -c pytest.ini tests/integration --no-cov -m "$(PR_TEST_MARKERS)" -q
 
 test-coverage:
-	# Use coverage CLI to avoid pytest-cov sqlite context corruption on this runner
-	$(PYTHON) -m coverage run -m pytest -c pytest-coverage.ini tests/unit tests/integration \
-		-m "$(PR_TEST_MARKERS)" -q
-	$(PYTHON) -m coverage html -d coverage_html || true
-	$(PYTHON) -m coverage xml -o coverage.xml || true
-	$(PYTHON) -m coverage report --fail-under=$(COVERAGE_THRESHOLD)
+	$(PYTEST) -c pytest-coverage.ini tests/unit -n auto -m "$(PR_TEST_MARKERS)" --cov-fail-under=$(COVERAGE_THRESHOLD) -q
 
 test-coverage-full:
 	$(PYTEST) -c pytest-coverage.ini tests/ --cov-fail-under=0 -q

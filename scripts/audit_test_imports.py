@@ -3,11 +3,14 @@ from __future__ import annotations
 
 import ast
 import importlib
+import os
 import sys
 from pathlib import Path
 
 
 def audit_test_imports(tests_dir: Path) -> list[str]:
+    if os.environ.get("DEBUG", "").lower() not in ("true", "1", "false", "0"):
+        os.environ["DEBUG"] = "false"
     root = tests_dir.parent
     if str(root) not in sys.path:
         sys.path.insert(0, str(root))
