@@ -84,7 +84,7 @@ class SemanticRetrievalRepository:
                 "limit": limit,
             }
         )
-        sql = text(  # nosec: B608
+        sql = text(
             f"""
             SELECT {_COMMON_SELECT},
                    GREATEST(0.0, LEAST(1.0,
@@ -100,7 +100,7 @@ class SemanticRetrievalRepository:
               AND (1.0 - (c.embedding <=> CAST(:query_vector AS vector))) >= :min_semantic_score
             ORDER BY c.embedding <=> CAST(:query_vector AS vector), c.chunk_id
             LIMIT :limit
-            """
+            """  # nosec: B608 # Dynamically constructed bind parameters for vector query
         )
         result = await session.execute(sql, params)
         return [_row_to_hit(dict(row), "semantic") for row in result.mappings().all()]
@@ -117,7 +117,7 @@ class SemanticRetrievalRepository:
         params.update({"query": query, "limit": limit})
         document = "to_tsvector('simple', COALESCE(c.heading, '') || ' ' || c.content)"
         tsquery = "websearch_to_tsquery('simple', :query)"
-        sql = text(  # nosec: B608
+        sql = text(
             f"""
             SELECT {_COMMON_SELECT},
                    ts_rank_cd({document}, {tsquery}, 32) AS score
@@ -127,7 +127,7 @@ class SemanticRetrievalRepository:
               AND {document} @@ {tsquery}
             ORDER BY score DESC, c.chunk_id
             LIMIT :limit
-            """
+            """  # nosec: B608 # Parameterized full-text search with verified column identifiers
         )
         result = await session.execute(sql, params)
         return [_row_to_hit(dict(row), "full_text") for row in result.mappings().all()]
@@ -145,7 +145,7 @@ class SemanticRetrievalRepository:
         placeholders = ", ".join(f":{name}" for name in names)
         params = _filter_params(filters)
         params.update(dict(zip(names, chunk_ids)))
-        sql = text(  # nosec: B608
+        sql = text(
             f"""
             SELECT {_COMMON_SELECT}, 1.0 AS score
             FROM retrieval_source_chunks c
@@ -153,7 +153,7 @@ class SemanticRetrievalRepository:
             WHERE {_FILTER_SQL}
               AND c.chunk_id IN ({placeholders})
             ORDER BY c.chunk_index, c.chunk_id
-            """
+            """  # nosec: B608 # Generated bind parameter placeholders for IN clause
         )
         result = await session.execute(sql, params)
         return [_row_to_hit(dict(row), "semantic") for row in result.mappings().all()]
@@ -174,7 +174,7 @@ class SemanticRetrievalRepository:
                 "limit": limit,
             }
         )
-        sql = text(  # nosec: B608
+        sql = text(
             f"""
             EXPLAIN (FORMAT TEXT)
             SELECT c.chunk_id
@@ -187,8 +187,9 @@ class SemanticRetrievalRepository:
               AND (CAST(:embedding_version AS text) IS NULL OR c.embedding_version = CAST(:embedding_version AS text))
             ORDER BY c.embedding <=> CAST(:query_vector AS vector)
             LIMIT :limit
-            """
+            """  # nosec: B608 # EXPLAIN query with validated filter clauses
         )
+
         result = await session.execute(sql, params)
         return [str(row[0]) for row in result.all()]
 

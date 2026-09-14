@@ -231,12 +231,12 @@ class RetrievalIndexingService:
         params: dict[str, Any] = {"document_id": document_id}
         params.update(dict(zip(names, current_chunk_ids)))
         await session.execute(
-            text(  # nosec: B608
+            text(
                 f"""
                 DELETE FROM retrieval_source_chunks
                 WHERE document_id = :document_id
                   AND chunk_id NOT IN ({placeholders})
-                """
+                """  # nosec: B608 # Bound parameter placeholders for chunk deletion
             ),
             params,
         )
@@ -338,7 +338,7 @@ class RetrievalIndexingService:
                     indexed_at = EXCLUDED.indexed_at,
                     source_metadata = EXCLUDED.source_metadata,
                     updated_at = now()
-                """
+                """  # nosec: B608 # Parameterized upsert statement with statically defined column list
             ),
             params,
         )
