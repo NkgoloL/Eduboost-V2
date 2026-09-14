@@ -216,3 +216,39 @@ def evaluate_coverage_contract(root: Path = ROOT, *, now: datetime | None = None
         "coverage_commands": coverage_commands(),
         "next_after_evidence": contract.get("next_after_evidence"),
     }
+
+
+def evaluate_measured_coverage(
+    root: Path = ROOT,
+    report_path: Path | None = None,
+    min_percent: float = 90.0,
+) -> dict[str, Any]:
+    target = report_path or (root / "coverage.xml")
+    if not target.exists():
+        return {
+            "valid": False,
+            "error": f"Coverage artifact not found at {target}",
+            "coverage_xml_path": str(target),
+        }
+    try:
+        import xml.etree.ElementTree as ET  # nosec: B405 # Parsing trusted internal coverage.xml
+        tree = ET.parse(target)  # nosec: B314 # Internal test coverage report produced locally
+        xml_root = tree.getroot()
+        line_rate = float(xml_root.attrib.get("line-rate", 0.0))
+        branch_rate = float(xml_root.attrib.get("branch-rate", 0.0))
+        line_pct = round(line_rate * 100.0, 2)
+        branch_pct = round(branch_rate * 100.0, 2)
+        lines_valid = line_pct >= min_percent
+        return {
+            "valid": lines_valid,
+            "line_coverage_percent": line_pct,
+            "branch_coverage_percent": branch_pct,
+            "minimum_required_percent": min_percent,
+            "coverage_xml_path": str(target),
+        }
+    except Exception as exc:
+        return {
+            "valid": False,
+            "error": f"Failed to parse coverage artifact: {exc}",
+            "coverage_xml_path": str(target),
+        }
