@@ -231,8 +231,8 @@ def evaluate_measured_coverage(
             "coverage_xml_path": str(target),
         }
     try:
-        import xml.etree.ElementTree as ET
-        tree = ET.parse(target)
+        import xml.etree.ElementTree as ET  # nosec: B405 # Parsing trusted internal coverage.xml
+        tree = ET.parse(target)  # nosec: B314 # Internal test coverage report produced locally
         xml_root = tree.getroot()
         line_rate = float(xml_root.attrib.get("line-rate", 0.0))
         branch_rate = float(xml_root.attrib.get("branch-rate", 0.0))
