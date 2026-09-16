@@ -144,7 +144,7 @@ class ItemBankPipeline:
         # Use the injected repository if provided; otherwise rely on the
         # module-level ``ItemBankRepository`` (patchable by unit tests).
         self._repository: ItemBankRepository = (
-            repository if repository is not None else ItemBankRepository()
+            repository if repository is not None else ItemBankRepository()  # type: ignore[call-arg]
         )
 
     # ------------------------------------------------------------------

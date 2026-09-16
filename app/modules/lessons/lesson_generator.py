@@ -37,7 +37,7 @@ import logging
 import time
 import uuid
 from dataclasses import dataclass
-from typing import TYPE_CHECKING
+from typing import Any, TYPE_CHECKING, cast
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -222,8 +222,9 @@ class LessonGenerator:
         # ── Step 9: Build final LessonCreate with computed fields ─────────
         generation_latency_ms = int((time.perf_counter() - start_ts) * 1000)
 
-        final_lesson = lesson_create.model_copy(
-            update={
+        final_lesson = LessonResponse.model_validate(
+            {
+                **lesson_create.model_dump(),
                 "lesson_id": uuid.uuid4(),
                 "answer_key_verified": answer_key_verified,
                 "quality_score": quality_score,
@@ -265,7 +266,7 @@ class LessonGenerator:
                 answer_key_verified,
             )
 
-        return LessonResponse.model_validate(final_lesson.model_dump())
+        return final_lesson
 
     # ── Private helpers ───────────────────────────────────────────────────
 
@@ -389,14 +390,21 @@ class LessonGenerator:
             VerificationResult with agrees_on_all and any disagreements.
         """
         template = self._jinja_env.get_template("answer_key_verification_v1.jinja2")
-        questions_for_prompt = [
-            {
-                "question_id": q["question_id"],
-                "question": q["question"],
-                "options": q["options"],
-            }
-            for q in lesson.practice_questions
-        ]
+        questions_for_prompt = []
+        for q in lesson.practice_questions:
+            q_any = cast(Any, q)
+            if isinstance(q, dict):
+                questions_for_prompt.append({
+                    "question_id": q_any.get("question_id"),
+                    "question": q_any.get("question_text") or q_any.get("question"),
+                    "options": q_any.get("options"),
+                })
+            else:
+                questions_for_prompt.append({
+                    "question_id": getattr(q, "question_id", None),
+                    "question": getattr(q, "question_text", None) or getattr(q, "question", None),
+                    "options": getattr(q, "options", None),
+                })
         prompt = template.render(
             caps_ref=lesson.caps_ref,
             grade=lesson.grade,
@@ -452,10 +460,24 @@ class LessonGenerator:
 
         # Compare derived answers against original answer key
         disagreements = []
+        if isinstance(lesson.answer_key, dict):
+            answer_key_map = lesson.answer_key
+        else:
+            answer_key_map = {}
+            for entry in (lesson.answer_key or []):
+                e_any = cast(Any, entry)
+                if isinstance(entry, dict):
+                    key = e_any.get("question_id")
+                    val = e_any.get("correct_option")
+                else:
+                    key = getattr(entry, "question_id", str(entry))
+                    val = getattr(entry, "correct_option", "")
+                if key is not None:
+                    answer_key_map[key] = val
         for result in verification_results:
             qid = result.get("question_id")
             derived = result.get("derived_answer", "").upper().strip()
-            original = lesson.answer_key.get(qid, "").upper().strip()
+            original = str(answer_key_map.get(qid, "")).upper().strip()
 
             agrees = derived == original
             # Fill in the agrees_with_key field
@@ -559,7 +581,7 @@ def _lesson_generator_init_compat(self, db=None, provider: str | None = None, **
     _original_lesson_generator_init(self, db)
     self._provider = provider
 
-async def _lesson_generator_generate_compat(self, caps_ref: str, **kwargs: object):
+async def _lesson_generator_generate_compat(self, caps_ref: str, **kwargs: Any):
     if getattr(self, "_db", None) is None and hasattr(self._gateway, "generate"):
         payload = await self._gateway.generate(caps_ref=caps_ref, **kwargs)
         verified = await AnswerKeyVerifier(self._gateway).verify(payload)
@@ -571,5 +593,6 @@ async def _lesson_generator_generate_compat(self, caps_ref: str, **kwargs: objec
         return payload
     return await _original_lesson_generator_generate(self, caps_ref, **kwargs)
 
-LessonGenerator.__init__ = _lesson_generator_init_compat
-LessonGenerator.generate = _lesson_generator_generate_compat
+
+LessonGenerator.__init__ = _lesson_generator_init_compat  # type: ignore[method-assign]
+LessonGenerator.generate = _lesson_generator_generate_compat  # type: ignore[method-assign]

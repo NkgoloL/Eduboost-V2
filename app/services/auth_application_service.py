@@ -134,32 +134,38 @@ class AuthApplicationService:
             self.repositories = AuthRepositoryBundle(self.db)
 
     @property
+    def _bundle(self) -> AuthRepositoryBundle:
+        if self.repositories is None:
+            self.repositories = AuthRepositoryBundle(self.db)
+        return self.repositories
+
+    @property
     def user_repo(self) -> Any:
-        return self.repositories.user_repo
+        return self._bundle.user_repo
 
     @property
     def guardian_repo(self) -> Any:
-        return self.repositories.guardian_repo
+        return self._bundle.guardian_repo
 
     @property
     def learner_repo(self) -> Any:
-        return self.repositories.learner_repo
+        return self._bundle.learner_repo
 
     @property
     def consent_repo(self) -> Any:
-        return self.repositories.consent_repo
+        return self._bundle.consent_repo
 
     @property
     def audit_repo(self) -> Any:
-        return self.repositories.audit_repo
+        return self._bundle.audit_repo
 
     @property
     def refresh_token_repo(self) -> Any:
-        return self.repositories.refresh_token_repo
+        return self._bundle.refresh_token_repo
 
     @property
     def password_reset_repo(self) -> Any:
-        return self.repositories.password_reset_repo
+        return self._bundle.password_reset_repo
 
     async def guardian_learner_ids(self, guardian_id: Any) -> list[Any]:
         repo = self.learner_repo
@@ -223,6 +229,7 @@ class AuthApplicationService:
 
     async def logout(self, *args, **kwargs):
         """Service-owned logout boundary."""
+        impl: Any
         try:
             from app.services import auth_lifecycle_impl as impl
         except Exception:
@@ -243,6 +250,7 @@ class AuthApplicationService:
 
     async def revoke_all_tokens(self, *args, **kwargs):
         """Service-owned revoke_all_tokens boundary."""
+        impl: Any
         try:
             from app.services import auth_lifecycle_impl as impl
         except Exception:

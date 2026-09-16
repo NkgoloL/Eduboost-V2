@@ -15,7 +15,7 @@ class StudyPlanTemplateGenerationResult:
     """Result of study-plan template generation."""
     artifact_id: uuid.UUID
     status: str
-    errors: list[str] = None
+    errors: list[str] | None = None
 
 
 class StudyPlanTemplateGenerator:

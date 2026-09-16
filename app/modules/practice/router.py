@@ -42,7 +42,7 @@ async def create_practice_session(
 
     session_id, item_count = await service.create_session(
         learner_id=str(body.learner_id),
-        owner_subject=actor_id_from_current_user(current_user),
+        owner_subject=str(actor_id_from_current_user(current_user) or ""),
         gap_topics=body.gap_topics,
         theta=body.theta,
     )

@@ -31,6 +31,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
+from typing import Any
 
 from app.modules.lessons.lesson_schema_v1 import LessonCreate
 from app.modules.lessons.caps_topic_map_service import CAPSTopicMapService
@@ -73,9 +74,38 @@ class ValidationResult:
     failures: list[str] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
     readability_grade: float | None = None
+    quality_score: float | None = None
 
     def __bool__(self) -> bool:
         return self.passed
+
+    @property
+    def is_valid(self) -> bool:
+        return self.passed
+
+    @property
+    def details(self) -> dict[str, Any]:
+        return {
+            "failures": self.failures,
+            "warnings": self.warnings,
+            "readability_grade": self.readability_grade,
+        }
+
+    @property
+    def failed_rules(self) -> list[str]:
+        rules = []
+        for failure in self.failures:
+            text = str(failure).lower()
+            if "rule 1" in text or "caps_ref" in text:
+                rules.append("caps_ref_resolves")
+            if "rule 3" in text or "answer_key_verified" in text:
+                rules.append("answer_key_verified")
+            if "rule 8" in text or "explanation" in text:
+                rules.append("explanation_non_empty")
+            if "schema validation" in text and not rules:
+                rules.append("schema_valid")
+            rules.append(failure)
+        return rules
 
 
 class LessonValidator:
@@ -349,10 +379,9 @@ class LessonValidator:
         return bool(lesson.explanation) and len(lesson.explanation.strip()) >= 50
 
 # Compatibility aliases for integrated phase artifacts.
-ValidationResult.is_valid = property(lambda self: self.passed)
-ValidationResult.failed_rules = property(lambda self: self.failures)
-ValidationResult.details = property(lambda self: {"failures": self.failures, "warnings": self.warnings, "readability_grade": self.readability_grade})
 _original_validate = LessonValidator.validate
+
+
 def _validate_compat(self, lesson, *args, **kwargs):
     quality_score = lesson.get("quality_score") if isinstance(lesson, dict) else getattr(lesson, "quality_score", None)
     try:
@@ -361,20 +390,6 @@ def _validate_compat(self, lesson, *args, **kwargs):
         result = ValidationResult(passed=False, failures=[f"Schema validation FAIL: {exc}"])
     result.quality_score = quality_score if quality_score is not None else getattr(result, "quality_score", None)
     return result
-LessonValidator.validate = _validate_compat
 
-def _validation_failed_rules(self):
-    rules = []
-    for failure in self.failures:
-        text = str(failure).lower()
-        if "rule 1" in text or "caps_ref" in text:
-            rules.append("caps_ref_resolves")
-        if "rule 3" in text or "answer_key_verified" in text:
-            rules.append("answer_key_verified")
-        if "rule 8" in text or "explanation" in text:
-            rules.append("explanation_non_empty")
-        if "schema validation" in text and not rules:
-            rules.append("schema_valid")
-        rules.append(failure)
-    return rules
-ValidationResult.failed_rules = property(_validation_failed_rules)
+
+LessonValidator.validate = _validate_compat  # type: ignore[method-assign]

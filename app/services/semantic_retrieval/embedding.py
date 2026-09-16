@@ -85,7 +85,7 @@ class DeterministicEmbeddingProvider:
             raise EmbeddingProviderError("Cannot embed empty text.")
         vector = [0.0] * cls.dimensions
         features = list(tokens)
-        features.extend(f"{a}::{b}" for a, b in zip(tokens, tokens[1:]))
+        features.extend(f"{a}::{b}" for a, b in zip(tokens, tokens[1:], strict=False))
         for feature in features:
             digest = hashlib.sha256(feature.encode("utf-8")).digest()
             index = int.from_bytes(digest[:4], "big") % cls.dimensions

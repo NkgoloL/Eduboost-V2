@@ -42,11 +42,11 @@ async def _get_learner_id_from_request(request: Request) -> uuid.UUID:
         )
     try:
         return uuid.UUID(str(raw))
-    except ValueError:
+    except ValueError as err:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"Invalid learner_id: {raw!r}",
-        )
+        ) from err
 
 
 async def require_active_consent(
@@ -64,7 +64,7 @@ async def require_active_consent(
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail=str(exc),
-        )
+        ) from exc
 
 
 # Convenience alias for injection sites

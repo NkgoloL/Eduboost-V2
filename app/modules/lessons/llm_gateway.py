@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import logging
 import time
+from typing import Any
 from dataclasses import dataclass
 
 from app.core.config import get_settings
@@ -147,7 +148,7 @@ class LLMGateway:
         from groq import AsyncGroq  # type: ignore[import-untyped]
 
         client = AsyncGroq(api_key=cfg.GROQ_API_KEY)
-        messages = []
+        messages: list[Any] = []
         if system:
             messages.append({"role": "system", "content": system})
         messages.append({"role": "user", "content": prompt})
@@ -221,7 +222,7 @@ class LLMGateway:
         )
 
         return LLMResponse(
-            content=message.content[0].text if message.content else "",
+            content=getattr(message.content[0], "text", "") if message.content else "",
             provider="anthropic",
             model=cfg.ANTHROPIC_MODEL,
             prompt_tokens=message.usage.input_tokens,

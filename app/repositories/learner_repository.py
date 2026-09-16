@@ -43,9 +43,7 @@ class LearnerRepository(BaseRepository[Learner]):
         learner.display_name = "[erased]"
         learner.is_deleted = True
         learner.deletion_requested_at = datetime.now(timezone.utc)
-        add_result = db.add(learner)
-        if inspect.isawaitable(add_result):
-            await add_result
+        db.add(learner)
         await db.flush()
 
     async def purge_personal_data(self, learner_id: str | UUID, db: AsyncSession | None = None) -> None:

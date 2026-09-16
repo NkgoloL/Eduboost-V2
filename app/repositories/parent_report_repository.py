@@ -37,10 +37,10 @@ class ParentReportRepository:
             rows = result.scalars().all()
         return [
             {
-                "subject_code": row.subject_code,
-                "mastery_score": row.mastery_score,
-                "grade_level": row.grade_level,
-                "knowledge_gaps": row.knowledge_gaps or [],
+                "subject_code": getattr(row, "subject_code", getattr(row, "subject", "")),
+                "mastery_score": getattr(row, "mastery_score", getattr(row, "theta", 0.0)),
+                "grade_level": getattr(row, "grade_level", 0),
+                "knowledge_gaps": getattr(row, "knowledge_gaps", None) or [],
             }
             for row in rows
         ]

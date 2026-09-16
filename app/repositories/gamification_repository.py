@@ -34,7 +34,7 @@ class GamificationRepository:
 class _optional_session:
     def __init__(self, db: AsyncSession | None) -> None:
         self.db = db
-        self._owned = None
+        self._owned: AsyncSession | None = None
 
     async def __aenter__(self) -> AsyncSession:
         if self.db is not None:

@@ -1,7 +1,6 @@
 """Service layer for human review and coverage metrics of generated lessons."""
 from __future__ import annotations
 
-from datetime import datetime, timezone
 from typing import Any
 from uuid import UUID
 
@@ -9,7 +8,6 @@ from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
-from app.domain.lesson import ReviewStatus, SafetyClassification
 from app.repositories.lesson_repository import LessonRepository
 
 

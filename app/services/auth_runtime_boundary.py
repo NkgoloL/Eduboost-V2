@@ -56,9 +56,9 @@ class AuthRuntimeContext:
     """Runtime dependencies used by auth routes without direct router repositories."""
 
     db: Any
-    learner_repo: Any | None = None
-    consent_repo: Any | None = None
-    guardian_repo: Any | None = None
+    learner_repo: Any = None
+    consent_repo: Any = None
+    guardian_repo: Any = None
 
     async def guardian_learner_ids(self, guardian_id: Any) -> list[Any]:
         if self.learner_repo is None:
@@ -69,7 +69,7 @@ class AuthRuntimeContext:
             if method is None:
                 continue
 
-            attempts = (
+            attempts: tuple[tuple[tuple[Any, ...], dict[str, Any]], ...] = (
                 ((guardian_id,), {}),
                 ((), {"guardian_id": guardian_id}),
                 ((), {"parent_id": guardian_id}),

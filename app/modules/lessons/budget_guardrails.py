@@ -36,7 +36,7 @@ from __future__ import annotations
 import logging
 import time
 from dataclasses import dataclass
-from typing import Any
+from typing import Any, Protocol
 
 logger = logging.getLogger(__name__)
 
@@ -87,6 +87,11 @@ class BudgetConfig:
 # ---------------------------------------------------------------------------
 # Redis-backed counter helpers
 # ---------------------------------------------------------------------------
+
+class _Counter(Protocol):
+    async def get(self, key: str) -> int: ...
+    async def add(self, key: str, amount: int, ttl: int) -> int: ...
+
 
 class _RedisCounter:
     """INCR/GET with TTL in Redis."""
@@ -174,7 +179,10 @@ class BudgetGuardrails:
         redis: Any = None,
     ) -> None:
         self._config = config or BudgetConfig()
-        self._counter = _RedisCounter(redis) if redis else _InProcessCounter()
+        if redis:
+            self._counter: _Counter = _RedisCounter(redis)
+        else:
+            self._counter = _InProcessCounter()
 
     @classmethod
     def from_settings(cls, settings: Any, redis: Any = None) -> "BudgetGuardrails":

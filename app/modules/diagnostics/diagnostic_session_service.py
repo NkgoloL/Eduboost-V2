@@ -11,7 +11,7 @@ from app.modules.diagnostics.session_recovery_service import DiagnosticSessionSn
 from app.modules.diagnostics.termination_service import TerminationService
 from app.modules.progress.mastery_model import compute_mastery_score, label_for_score
 from app.services.diagnostic_scoring_snapshot import diagnostic_item_from_response, diagnostic_response_snapshot
-from app.services.mastery_engine import assert_no_authoritative_claims, MAX_CONFIDENCE_THRESHOLD
+from app.services.mastery_engine import assert_no_authoritative_claims
 
 
 @dataclass

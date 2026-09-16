@@ -344,8 +344,8 @@ def validate_roadmap_bundle(
     roadmap_ids = {item.roadmap_id for item in roadmap_items}
     for item in roadmap_items:
         issues.extend(item.validate())
-    for item in deferred_items:
-        issues.extend(item.validate(today))
+    for deferred in deferred_items:
+        issues.extend(deferred.validate(today))
     for dependency in dependencies:
         issues.extend(dependency.validate())
         if dependency.source_roadmap_id not in roadmap_ids:

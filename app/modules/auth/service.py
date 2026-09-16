@@ -25,6 +25,7 @@ Example:
 from __future__ import annotations
 
 from datetime import datetime, timezone
+from typing import Any
 from uuid import UUID
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -190,11 +191,13 @@ class AuthService:
             ip_address=ip_address,
         )
 
-        access_token = create_access_token(
+        create_access: Any = create_access_token
+        create_refresh: Any = create_refresh_token
+        access_token = create_access(
             guardian.id,
-            extra={"role": "guardian", "verified": guardian.is_verified},
+            extra={"role": "guardian", "verified": getattr(guardian, "is_verified", getattr(guardian, "email_verified", False))},
         )
-        refresh_token = create_refresh_token(guardian.id)
+        refresh_token = create_refresh(guardian.id)
         return access_token, refresh_token
 
     async def verify_email(self, token: str, db: AsyncSession) -> Guardian:
@@ -253,8 +256,8 @@ class AuthService:
         guardian = await _guardian_repo.get_or_404(guardian_id, db)
         return {
             "id": str(guardian.id),
-            "email": decrypt_pii(guardian.email_encrypted),
-            "full_name": decrypt_pii(guardian.full_name_encrypted),
-            "is_verified": guardian.is_verified,
+            "email": decrypt_pii(getattr(guardian, "email_encrypted", "")),
+            "full_name": decrypt_pii(getattr(guardian, "full_name_encrypted", "")),
+            "is_verified": getattr(guardian, "is_verified", getattr(guardian, "email_verified", False)),
             "created_at": guardian.created_at.isoformat(),
         }

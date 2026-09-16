@@ -123,6 +123,10 @@ class LearnerRepository:
         await self.db.execute(delete(ParentalConsent).where(ParentalConsent.learner_id == learner_id))
         await self.db.execute(delete(LearnerProfile).where(LearnerProfile.id == learner_id))
 
+    async def delete_by_id(self, learner_id: str) -> bool:
+        await self.db.execute(delete(LearnerProfile).where(LearnerProfile.id == learner_id))
+        return True
+
     async def count_lessons(self, learner_id: str) -> int:
         result = await self.db.execute(select(Lesson).where(Lesson.learner_id == learner_id))
         return len(result.scalars().all())

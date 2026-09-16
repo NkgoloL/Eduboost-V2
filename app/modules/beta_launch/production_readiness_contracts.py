@@ -434,7 +434,7 @@ def default_beta_launch_readiness_report() -> dict[str, object]:
         "exit_criteria_issues": [issue for criterion in DEFAULT_EXIT_CRITERIA for issue in criterion.validate()],
         "cohort_issues": DEFAULT_COHORT.validate(),
         "feedback_rule_issues": [issue for rule in DEFAULT_FEEDBACK_RULES for issue in rule.validate()],
-        "known_issue_issues": [issue for issue in DEFAULT_KNOWN_ISSUES for issue in issue.validate()],
+        "known_issue_issues": [err for item in DEFAULT_KNOWN_ISSUES for err in item.validate()],
         "review_issues": DEFAULT_REVIEW.validate(),
         "launch_bundle_issues": validate_beta_launch_bundle(DEFAULT_ENTRY_CRITERIA, DEFAULT_KNOWN_ISSUES, DEFAULT_REVIEW),
         "acceptance_status_sample": summarize_acceptance_status(DEFAULT_STAGING_ACCEPTANCE).value,

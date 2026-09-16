@@ -50,6 +50,36 @@ class AuditService:
             actor_id=guardian_id,
         )
 
+    async def record(
+        self,
+        event_type: str,
+        payload: dict | None = None,
+        learner_id: str | None = None,
+        actor_id: str | None = None,
+        learner_pseudonym: str | None = None,
+        resource_id: str | None = None,
+        **extra: Any,
+    ) -> AuditLogEntry:
+        merged_payload = dict(payload or {})
+        if extra:
+            merged_payload.update(extra)
+        if resource_id and "resource_id" not in merged_payload:
+            merged_payload["resource_id"] = resource_id
+        target_learner = learner_id or learner_pseudonym or resource_id
+        return await self.log_event(
+            event_type=event_type,
+            payload=merged_payload,
+            learner_id=target_learner,
+            actor_id=actor_id,
+        )
+
+    async def lesson_generated(self, learner_id: str | None, subject: str, topic: str, provider: str) -> AuditLogEntry:
+        return await self.log_event(
+            "LESSON_GENERATED",
+            payload={"subject": subject, "topic": topic, "provider": provider},
+            learner_id=learner_id,
+        )
+
 
 def _entry_from_row(row: Any) -> AuditLogEntry:
     return AuditLogEntry(

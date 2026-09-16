@@ -58,7 +58,7 @@ class StripeService:
     async def handle_webhook(self, payload: bytes, sig_header: str) -> dict:
         try:
             event = stripe.Webhook.construct_event(payload, sig_header, settings.STRIPE_WEBHOOK_SECRET)
-        except stripe.error.SignatureVerificationError as exc:
+        except stripe.SignatureVerificationError as exc:
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid Stripe signature") from exc
 
         if await self._event_repo.is_processed(event["id"]):

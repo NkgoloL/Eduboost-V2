@@ -304,7 +304,7 @@ class ContentStagingReadinessService:
         artifacts: list[ContentGenerationArtifact],
         source_index: dict[uuid.UUID, list[ContentArtifactSource]],
     ) -> LayerReadinessSummary:
-        counts = defaultdict(int)
+        counts: dict[str, int] = defaultdict(int)
         for artifact in artifacts:
             counts[_value(artifact.status)] += 1
         approved_artifacts = [artifact for artifact in artifacts if _value(artifact.status) in {ContentArtifactStatus.APPROVED.value, ContentArtifactStatus.SEEDED_STAGING.value, ContentArtifactStatus.PROMOTED_PRODUCTION.value}]
@@ -347,7 +347,7 @@ class ContentStagingReadinessService:
 
     def _layer_blockers(self, summary: LayerReadinessSummary) -> list[ScopeBlocker]:
         blockers: list[ScopeBlocker] = []
-        common = {
+        common: dict[str, Any] = {
             "layer": summary.layer,
             "caps_ref": summary.caps_ref,
             "required": summary.target,

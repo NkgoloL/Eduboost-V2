@@ -15,7 +15,7 @@ class BlueprintGenerationResult:
     """Result of blueprint generation."""
     artifact_id: uuid.UUID
     status: str
-    errors: list[str] = None
+    errors: list[str] | None = None
 
 
 class BlueprintGenerator:

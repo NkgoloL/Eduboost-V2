@@ -40,15 +40,15 @@ class DiagnosticItemValidator:
 
     def from_orm(self, item: Any) -> DiagnosticItemValidation:
         payload = {
-            "item_id": getattr(item, "id"),
-            "subject": getattr(item, "subject"),
-            "grade": getattr(item, "grade"),
-            "topic": getattr(item, "topic"),
+            "item_id": item.id,
+            "subject": item.subject,
+            "grade": item.grade,
+            "topic": item.topic,
             "skill": getattr(item, "skill", None) or getattr(item, "topic", "general"),
-            "difficulty": getattr(item, "b_param"),
-            "discrimination": getattr(item, "a_param"),
-            "correct_answer": getattr(item, "correct_option"),
-            "distractors": getattr(item, "options"),
+            "difficulty": item.b_param,
+            "discrimination": item.a_param,
+            "correct_answer": item.correct_option,
+            "distractors": item.options,
             "explanation": getattr(item, "explanation", "Review the worked solution."),
             "caps_reference": getattr(item, "caps_reference", None) or "CAPS:missing",
             "review_status": getattr(getattr(item, "review_status", "draft"), "value", getattr(item, "review_status", "draft")),

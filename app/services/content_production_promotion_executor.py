@@ -237,8 +237,8 @@ class ContentProductionPromotionExecutor:
 
         return ProductionPromotionResult(
             promotion_event_id=event.event_id,
-            scope_id=event.scope_id,
-            status=event.status,
+            scope_id=event.scope_id or "",
+            status=event.status or "unknown",
             promoted_count=promoted_count,
             skipped_count=0,
             errors=event.summary.get("errors", []),
@@ -284,8 +284,8 @@ class ContentProductionPromotionExecutor:
             items.append(
                 ProductionPromotionResult(
                     promotion_event_id=event.event_id,
-                    scope_id=event.scope_id,
-                    status=event.status,
+                    scope_id=event.scope_id or "",
+                    status=event.status or "unknown",
                     promoted_count=promoted_count,
                     skipped_count=0,
                     errors=event.summary.get("errors", []),

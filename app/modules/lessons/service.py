@@ -33,7 +33,7 @@ from app.repositories.auth_repository import GuardianRepository
 from app.repositories.learner_repository import LearnerRepository
 from app.repositories.lesson_repository import LessonRepository
 from app.services.consent import ConsentService
-from app.services.lesson_generator import LessonGenerator, QuotaExceededError
+from app.core.llm import ExecutiveService, QuotaExceededError
 from app.services.audit_service import AuditService
 from app.services.runtime_kg.integration import build_lesson_context_with_runtime_kg
 
@@ -72,7 +72,7 @@ class LessonService:
                 svc = LessonService(db)
         """
         self.db = db
-        self._executive = LessonGenerator()
+        self._executive = ExecutiveService()
         self._lesson_repo = LessonRepository(db)
         self._learner_repo = LearnerRepository(db)
         self._guardian_repo = GuardianRepository(db)
@@ -157,6 +157,12 @@ class LessonService:
 
         # 4. Persist and Audit
         provider = "cache" if from_cache else active_provider_label()
+        trust_label_obj = getattr(payload, "trust_label", None)
+        trust_label = (
+            trust_label_obj.model_dump()
+            if trust_label_obj is not None and hasattr(trust_label_obj, "model_dump")
+            else (trust_label_obj if isinstance(trust_label_obj, dict) else {})
+        )
         lesson = await self._lesson_repo.create(
             learner_id=body.learner_id,
             grade=learner.grade,
@@ -168,7 +174,7 @@ class LessonService:
             caps_reference=getattr(payload, "caps_reference", None),
             alignment_confidence=getattr(payload, "alignment_confidence", 0.0),
             quality_score=getattr(payload, "quality_score", 0.0),
-            trust_label=(getattr(payload, "trust_label", None).model_dump() if getattr(payload, "trust_label", None) else {}),
+            trust_label=trust_label,
             llm_provider=provider,
             served_from_cache=from_cache,
         )

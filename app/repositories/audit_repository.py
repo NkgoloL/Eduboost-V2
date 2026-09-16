@@ -66,9 +66,9 @@ def _compute_hash(payload: dict[str, Any]) -> str:
     return hashlib.sha256(canonical.encode()).hexdigest()
 
 
-def _compute_hmac(event_hash: str, previous_hash: str) -> str:
+def _compute_hmac(event_hash: str, previous_hash: str | None) -> str:
     """HMAC-SHA256 over '{event_hash}:{previous_hash}'."""
-    message = f"{event_hash}:{previous_hash}".encode()
+    message = f"{event_hash}:{previous_hash or ''}".encode()
     return hmac.new(_HMAC_SECRET, message, hashlib.sha256).hexdigest()
 
 
@@ -83,8 +83,8 @@ class AuditRepository:
       - A row-level trigger that raises on UPDATE/DELETE as a belt-and-suspenders guard
     """
 
-    def __init__(self, db: AsyncSession | asyncpg.Pool) -> None:
-        self._db = db
+    def __init__(self, db: Any) -> None:
+        self._db: Any = db
 
     @property
     def _is_async_session(self) -> bool:
@@ -103,6 +103,7 @@ class AuditRepository:
         resource_id: Optional[uuid.UUID | str] = None,
         payload: dict[str, Any] | None = None,
         *,
+        learner_id: Optional[uuid.UUID | str] = None,
         conn: Optional[asyncpg.Connection] = None,
     ) -> uuid.UUID:
         """
@@ -110,6 +111,8 @@ class AuditRepository:
         Automatically chains the hash to the previous event for the same resource
         (or global tail if resource_id is None).
         """
+        if resource_id is None and learner_id is not None:
+            resource_id = learner_id
         payload = payload or {}
         event_id = uuid.uuid4()
 
@@ -153,7 +156,7 @@ class AuditRepository:
                 event_hash, previous_event_hash, hmac_signature
             ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
         """
-        execute = (conn or self._db).execute
+        execute: Any = (conn or self._db).execute
         await execute(
             sql,
             event_id,
@@ -226,7 +229,7 @@ class AuditRepository:
                       payload, created_at, event_hash,
                       previous_event_hash, hmac_signature
         """
-        fetchrow = (conn or self._db).fetchrow
+        fetchrow: Any = (conn or self._db).fetchrow
         row = await fetchrow(
             sql,
             event_id,
@@ -335,14 +338,15 @@ class AuditRepository:
                 event_hash_value = row.event_hash
                 hmac_signature_value = row.hmac_signature
             else:
-                eid = str(row["id"])
-                payload_value = row["payload"] if isinstance(row["payload"], dict) else json.loads(row["payload"])
-                event_type_value = row["event_type"]
-                actor_id_value = str(row["actor_id"]) if row["actor_id"] else None
-                resource_id_value = str(row["resource_id"]) if row["resource_id"] else None
-                previous_event_hash_value = row["previous_event_hash"]
-                event_hash_value = row["event_hash"]
-                hmac_signature_value = row["hmac_signature"]
+                raw_row: Any = row
+                eid = str(raw_row["id"])
+                payload_value = raw_row["payload"] if isinstance(raw_row["payload"], dict) else json.loads(raw_row["payload"])
+                event_type_value = raw_row["event_type"]
+                actor_id_value = str(raw_row["actor_id"]) if raw_row["actor_id"] else None
+                resource_id_value = str(raw_row["resource_id"]) if raw_row["resource_id"] else None
+                previous_event_hash_value = raw_row["previous_event_hash"]
+                event_hash_value = raw_row["event_hash"]
+                hmac_signature_value = raw_row["hmac_signature"]
 
             hash_payload = {
                 "event_id": eid,
@@ -394,7 +398,7 @@ class AuditRepository:
             ORDER BY created_at DESC, id DESC
             LIMIT 1
         """
-        fetch_one = (conn or self._db).fetchrow
+        fetch_one: Any = (conn or self._db).fetchrow
         row = await fetch_one(sql, resource_id)
         return row["event_hash"] if row else "GENESIS"
 

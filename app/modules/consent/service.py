@@ -107,12 +107,11 @@ class ConsentService:
         # Check if consent is stale due to policy version change
         if consent and decision.active:
             if self._is_consent_stale(consent.policy_version):
-                from app.models import ConsentState
-                from app.core.consent_policy import ConsentPolicyDecision
+                from app.core.consent_policy import ConsentPolicyDecision, ConsentState as CoreConsentState
                 # Create new decision with stale consent status
                 decision = ConsentPolicyDecision(
                     learner_id=decision.learner_id,
-                    state=ConsentState.RENEWAL_REQUIRED,
+                    state=CoreConsentState.RENEWAL_REQUIRED,
                     active=False,
                     reason=f"Consent version {consent.policy_version} is stale; required version is {self._required_policy_version}",
                     policy_version=consent.policy_version,

@@ -36,7 +36,7 @@ import math
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from statistics import fmean
-from typing import Optional
+from typing import Any, Optional
 from uuid import UUID
 
 from app.core.logging import get_logger
@@ -636,8 +636,8 @@ class IRTEngine:
         self,
         state: DiagnosticSessionState,
         last_item: DiagnosticItem,
-    ) -> list[tuple[DiagnosticItem, bool]]:
-        proxies: list[tuple[DiagnosticItem, bool]] = []
+    ) -> list[tuple[Any, bool]]:
+        proxies: list[tuple[Any, bool]] = []
         final_index = len(state.responses) - 1
         for index, (_item_id, correct) in enumerate(state.responses):
             if index == final_index:

@@ -30,8 +30,9 @@ exclude = [
 ]
 
 [tool.ruff.lint]
-select = ["E", "F", "W"]
+select = ["E", "F", "W", "B"]
 ignore = [
+    "B008",  # Do not perform function call in argument defaults (FastAPI Depends)
     "E401",  # Multiple imports on one line
     "E402",  # Module level import not at top of file
     "E501",  # Line too long
@@ -47,3 +48,8 @@ ignore = [
     "W292",  # No newline at end of file
     "W293",  # Blank line contains whitespace
 ]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/**" = ["B017", "B009", "B010", "B007", "B905", "F401", "F841"]
+"scripts/**" = ["B007", "B008", "B009", "B010", "B904", "B905", "F401", "F841"]

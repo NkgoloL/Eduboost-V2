@@ -153,7 +153,8 @@ class ContentReviewQueueService:
         result = await session.execute(select(ContentValidationReport).where(ContentValidationReport.artifact_id.in_(artifact_ids)).order_by(ContentValidationReport.created_at.desc()))
         reports: dict[uuid.UUID, ContentValidationReport] = {}
         for report in result.scalars().all():
-            reports.setdefault(report.artifact_id, report)
+            if report.artifact_id is not None:
+                reports.setdefault(report.artifact_id, report)
         return reports
 
     def _queue_item(self, artifact, risk, validation, provenance, assignment) -> ReviewQueueItem:

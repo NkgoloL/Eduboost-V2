@@ -157,9 +157,9 @@ class CanonicalLLMGateway:
                 try:
                     result = provider.complete(request, timeout_seconds=self.policy.timeout_seconds)
                     latency_ms = int((time.perf_counter() - started) * 1000)
-                    fallback = fallback_status if index == 0 else "provider_fallback"
-                    if failures and fallback == "primary":
-                        fallback = "recovered_after_retry"
+                    fallback_label = fallback_status if index == 0 else "provider_fallback"
+                    if failures and fallback_label == "primary":
+                        fallback_label = "recovered_after_retry"
                     return LLMGatewayResponse(
                         content=result.content,
                         metadata=LLMGatewayMetadata(
@@ -175,7 +175,7 @@ class CanonicalLLMGateway:
                                 "total_tokens": result.token_usage.total_tokens,
                             },
                             safety_status=result.safety_status,
-                            fallback_status=fallback,
+                            fallback_status=fallback_label,
                             timeout_seconds=self.policy.timeout_seconds,
                             retry_count=retry_count,
                             circuit_breaker_status="closed",

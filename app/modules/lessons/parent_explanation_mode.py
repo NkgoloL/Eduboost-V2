@@ -269,7 +269,7 @@ async def generate_parent_summary(
 
     # Parse and validate response
     try:
-        clean = raw_response.strip().lstrip("```json").lstrip("```").rstrip("```").strip()
+        clean = raw_response.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
         data: dict[str, Any] = json.loads(clean)
     except json.JSONDecodeError as exc:
         raise ParentSummaryGenerationError(

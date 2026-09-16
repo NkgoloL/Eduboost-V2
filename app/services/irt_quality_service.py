@@ -254,9 +254,10 @@ class IRTQualityService:
         )
         db.add(run)
         await db.commit()
-        run = await db.get(IRTCalibrationRun, run.run_id)
-        if run is None:  # pragma: no cover - defensive persistence check
+        reloaded_run = await db.get(IRTCalibrationRun, run.run_id)
+        if reloaded_run is None:  # pragma: no cover - defensive persistence check
             raise IRTQualityError("calibration run could not be reloaded")
+        run = reloaded_run
 
         query = select(DiagnosticItem).where(DiagnosticItem.review_status == ReviewStatusEnum.APPROVED)
         if item_ids:

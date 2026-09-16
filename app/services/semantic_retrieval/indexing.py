@@ -147,13 +147,13 @@ class RetrievalIndexingService:
             for index, vector in zip(eligible_indexes, embedded, strict=True):
                 vectors[index] = vector
 
-        for chunk, vector in zip(chunks, vectors, strict=True):
+        for chunk, chunk_vector in zip(chunks, vectors, strict=True):
             await self._upsert_chunk(
                 session,
                 document=document,
                 document_source_hash=source_hash,
                 chunk=chunk,
-                vector=vector,
+                vector=chunk_vector,
             )
         await self._delete_stale_chunks(
             session,
@@ -194,7 +194,7 @@ class RetrievalIndexingService:
         if not rows:
             return 0
         vectors = await self.embedding_provider.embed([str(row["content"]) for row in rows])
-        for row, vector in zip(rows, vectors):
+        for row, vector in zip(rows, vectors, strict=False):
             await session.execute(
                 text(
                     """
@@ -229,7 +229,7 @@ class RetrievalIndexingService:
         names = [f"current_chunk_{index}" for index in range(len(current_chunk_ids))]
         placeholders = ", ".join(f":{name}" for name in names)
         params: dict[str, Any] = {"document_id": document_id}
-        params.update(dict(zip(names, current_chunk_ids)))
+        params.update(dict(zip(names, current_chunk_ids, strict=False)))
         await session.execute(
             text(
                 f"""

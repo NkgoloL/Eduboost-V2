@@ -4,7 +4,7 @@ Pydantic BaseSettings with environment-variable loading and validation.
 """
 from functools import lru_cache
 import json
-from typing import Literal
+from typing import Any, Literal
 from urllib.parse import urlparse, urlunparse, parse_qsl, urlencode
 
 from pydantic import field_validator, model_validator
@@ -27,7 +27,7 @@ def _fetch_key_vault_secret_values(vault_url: str) -> dict[str, str]:
     credential = DefaultAzureCredential()
     client = SecretClient(vault_url=vault_url, credential=credential)
     return {
-        field_name: client.get_secret(secret_name).value
+        field_name: (client.get_secret(secret_name).value or "")
         for field_name, secret_name in KEY_VAULT_SECRET_NAMES.items()
     }
 
@@ -138,9 +138,6 @@ class Settings(BaseSettings):
     RATE_LIMIT_AUTH: str = "10/minute"
     RATE_LIMIT_LLM: str = "20/minute"
     RATE_LIMIT_TUTOR: str = "12/minute"
-    USER_DAILY_TOKEN_LIMIT: int = 50_000
-    TENANT_MONTHLY_TOKEN_LIMIT: int = 10_000_000
-    TENANT_BUDGET_ALERT_PCT: float = 0.80
     ARQ_MAX_JOBS: int = 10
     ARQ_JOB_TIMEOUT: int = 300
     PASSWORD_MIN_LENGTH: int = 12
@@ -192,7 +189,7 @@ class Settings(BaseSettings):
 
     @field_validator("DATABASE_URL", mode="before")
     @classmethod
-    def normalize_database_url(cls, v: object) -> str:
+    def normalize_database_url(cls, v: Any) -> Any:
         if not isinstance(v, str):
             return v
         parsed = urlparse(v)

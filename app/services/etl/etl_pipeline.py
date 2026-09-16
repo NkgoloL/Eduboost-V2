@@ -46,7 +46,7 @@ from dataclasses import dataclass, field, asdict
 from datetime import datetime, timezone
 from enum import Enum
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional
 from uuid import uuid4
 
 # ---------------------------------------------------------------------------
@@ -489,7 +489,9 @@ class Extractor:
     def _pdf(self, path: str) -> ExtractionResult:
         if not HAS_PYMUPDF:
             return self._txt(path)   # fallback
-        pages, headings, tables = [], [], []
+        pages: list[dict[str, Any]] = []
+        headings: list[str] = []
+        tables: list[Any] = []
         raw_parts = []
         with fitz.open(path) as doc:
             for pnum, page in enumerate(doc, 1):
@@ -679,7 +681,7 @@ class Normalizer:
 
         # CAPS phase mapping
         if "grade" in updates or doc.grade:
-            g = updates.get("grade") or doc.grade
+            g = int(updates.get("grade") or doc.grade or 0)
             if g <= 3:
                 updates["phase"] = "Foundation Phase"
             elif g <= 6:
@@ -716,7 +718,11 @@ class Chunker:
             DocumentType.assessment_rubric:    self._chunk_assessment,
             DocumentType.memorandum:           self._chunk_assessment,
         }
-        handler = dispatch.get(document_type, self._chunk_generic)
+        try:
+            dtype: DocumentType | None = DocumentType(document_type)
+        except ValueError:
+            dtype = None
+        handler = dispatch.get(dtype, self._chunk_generic) if dtype else self._chunk_generic
         chunks  = handler(text, document_id)
         # Assign stable IDs and timestamps
         ts = _now()
@@ -838,7 +844,8 @@ class Chunker:
     def _chunk_generic(self, text: str, document_id: str) -> list[DocumentChunk]:
         chunks = []
         paragraphs = [p.strip() for p in re.split(r'\n{2,}', text) if p.strip()]
-        buf, buf_tokens = [], 0
+        buf: list[str] = []
+        buf_tokens = 0
         for para in paragraphs:
             t = _token_count(para)
             if buf_tokens + t > self.MAX_TOKENS and buf:
@@ -1273,7 +1280,8 @@ class EduboostETL:
                        subject: Optional[str] = None,
                        document_type: Optional[str] = None,
                        limit: int = 100) -> list[dict]:
-        clauses, params = [], []
+        clauses: list[str] = []
+        params: list[Any] = []
         if status:
             clauses.append("processing_status=?")
             params.append(status)

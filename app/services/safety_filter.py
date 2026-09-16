@@ -241,8 +241,7 @@ class SafetyFilter:
                 )
             )
 
-        # Unsafe: hate speech
-        for match in _HATE_KEYWORDS.finditer(text):
+        for _match in _HATE_KEYWORDS.finditer(text):
             violations.append(
                 SafetyViolation(
                     category=ViolationCategory.UNSAFE_HATE,

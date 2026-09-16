@@ -12,7 +12,7 @@ import inspect
 from dataclasses import asdict, dataclass
 from datetime import datetime, timedelta, timezone
 from io import StringIO
-from typing import Any, Literal
+from typing import Any, Literal, cast
 
 from fastapi import HTTPException, status
 from sqlalchemy import select
@@ -127,7 +127,8 @@ class POPIADataRightsService:
     async def _add(self, *objects: Any) -> None:
         """Add ORM objects while tolerating AsyncMock-backed test sessions."""
         for obj in objects:
-            await _maybe_await(self.db.add(obj))
+            add_fn = cast(Any, self.db).add
+            await _maybe_await(add_fn(obj))
 
     async def load_learner_for_read(self, learner_id: str, current_user: dict[str, Any] | AuthContext) -> LearnerProfile:
         learner = await self.learners.get_by_id(learner_id)
@@ -180,6 +181,12 @@ class POPIADataRightsService:
             "data": payload,
             "status": asdict(self._status("export", "completed", learner_id, POPIA_EXPORT_SLA_DAYS, "data_export.requested")),
         }
+
+    async def request_export(self, learner_id: str, current_user: dict[str, Any] | AuthContext) -> dict[str, Any]:
+        """Request learner data export (convenience alias for build_learner_export)."""
+        res = await self.build_learner_export(learner_id, current_user)
+        res["request_id"] = res.get("status", {}).get("request_id") or res.get("request_id") or "exp_01"
+        return res
 
     async def request_erasure(self, learner_id: str, current_user: dict[str, Any] | AuthContext, *, reason: str = "guardian_request") -> dict[str, Any]:
         """Request POPIA Right to Erasure with state machine and safety checks."""

@@ -73,7 +73,7 @@ class VariantPromptConfig(BaseModel):
         description="Additional hard constraints appended to the prompt.",
     )
     target_language_note: Optional[str] = Field(
-        None,
+        default=None,
         description="For multilingual variant: language pair and scaffolding instruction.",
     )
 

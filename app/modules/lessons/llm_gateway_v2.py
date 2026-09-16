@@ -155,7 +155,7 @@ class GroqAdapter:
             raise LLMGatewayError("groq package not installed") from exc
 
         client = AsyncGroq(api_key=self._api_key)
-        messages = []
+        messages: list[Any] = []
         if system:
             messages.append({"role": "system", "content": system})
         messages.append({"role": "user", "content": prompt})
@@ -174,7 +174,7 @@ class GroqAdapter:
             raise LLMGatewayError(f"Groq call timed out after {self.TIMEOUT_S}s") from exc
 
         choice = resp.choices[0]
-        usage = resp.usage or {}
+        usage: Any = resp.usage or {}
         return {
             "content": choice.message.content or "",
             "provider": self.PROVIDER_NAME,

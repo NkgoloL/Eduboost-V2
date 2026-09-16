@@ -21,8 +21,8 @@ class LockAcquisitionResult:
     """Result of lock acquisition attempt."""
     acquired: bool
     lock_holder: str | None = None
-    lock_acquired_at: str | None = None
-    lock_expires_at: str | None = None
+    lock_acquired_at: str | float | None = None
+    lock_expires_at: str | float | None = None
     error: str | None = None
 
 

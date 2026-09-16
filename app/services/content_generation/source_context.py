@@ -87,8 +87,8 @@ class ContentGenerationSourceContextService:
                 continue
             chunks.append(
                 SourceContextChunk(
-                    source_document_id=str(getattr(source, "source_document_id")),
-                    source_chunk_id=str(getattr(source, "source_chunk_id")),
+                    source_document_id=str(source.source_document_id),
+                    source_chunk_id=str(source.source_chunk_id),
                     text=str(metadata.get("chunk_text") or getattr(source, "citation_text", None) or getattr(source, "source_title", None) or caps_ref),
                     source_title=getattr(source, "source_title", None),
                     source_hash=getattr(source, "source_hash", None),
@@ -137,4 +137,4 @@ from app.services.semantic_retrieval.generation_context import (  # noqa: E402
     SemanticContentGenerationSourceContextService,
 )
 
-ContentGenerationSourceContextService = SemanticContentGenerationSourceContextService  # noqa: F811
+ContentGenerationSourceContextService = SemanticContentGenerationSourceContextService  # type: ignore[misc]  # noqa: F811

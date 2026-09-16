@@ -188,7 +188,7 @@ class ArchetypeService:
                 if not (isinstance(label, ArchetypeLabel)): raise AssertionError("assertion failed")
         """
         scores = self.posterior_distribution(answers)
-        best = max(scores, key=scores.get)
+        best = max(scores, key=lambda k: scores[k])
         label = ArchetypeLabel(best)
         description = _ARCHETYPE_DESCRIPTIONS.get(best, "")
         return label, description, scores

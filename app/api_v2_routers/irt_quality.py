@@ -14,6 +14,7 @@ from app.domain.irt_quality_schemas import (
     IRTCalibrationRunResponse,
     IRTItemQualityResponse,
     IRTManualOverrideRequest,
+    IRTQualityState,
     IRTRunStatusResponse,
 )
 from app.models.diagnostic_item import DiagnosticItem
@@ -31,7 +32,7 @@ router = APIRouter(
 def _item_response(item: DiagnosticItem) -> IRTItemQualityResponse:
     return IRTItemQualityResponse(
         item_id=item.item_id,
-        state=item.irt_quality_state,
+        state=IRTQualityState(str(item.irt_quality_state)),
         strike_count=item.irt_strike_count,
         response_count=item.irt_response_count,
         unique_learners=item.irt_unique_learners,

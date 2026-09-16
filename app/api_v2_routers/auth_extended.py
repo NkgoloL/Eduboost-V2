@@ -465,7 +465,7 @@ async def update_learner_profile(
 
     result = await session.execute(
         select(LearnerProfile)
-        .where(LearnerProfile.guardian_id == user.id, LearnerProfile.is_deleted is False)
+        .where(LearnerProfile.guardian_id == user.id, LearnerProfile.is_deleted.is_(False))
         .order_by(LearnerProfile.created_at.asc())
         .limit(1)
     )
@@ -476,10 +476,10 @@ async def update_learner_profile(
         learner.language = Language(body.home_language)
 
     # Mark profile step complete
-    result = await session.execute(
+    state_result = await session.execute(
         select(OnboardingState).where(OnboardingState.user_id == user.id)
     )
-    state: OnboardingState | None = result.scalar_one_or_none()
+    state: OnboardingState | None = state_result.scalar_one_or_none()
     if not state:
         state = OnboardingState(user_id=user.id)
         session.add(state)

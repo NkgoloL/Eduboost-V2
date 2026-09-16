@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
+from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from app.core.envelope_route import EnvelopedRoute
@@ -92,7 +93,7 @@ async def get_parent_dashboard(
         }
 
     return ParentDashboardResponse(
-        guardian_id=guardian.id,
+        guardian_id=UUID(str(guardian.id)),
         learners=dashboard_learners,
         total_lessons_generated=total_lessons_generated,
         subscription_tier=guardian.subscription_tier,
@@ -251,7 +252,7 @@ async def get_learner_progress(
     for subject, resolved in gaps:
         entry = gap_summary.setdefault(subject, {"subject": subject, "active": 0, "resolved": 0})
         key = "resolved" if resolved else "active"
-        entry[key] += 1
+        entry[key] = int(entry[key]) + 1
 
     return {
         "learner_id": learner.id,

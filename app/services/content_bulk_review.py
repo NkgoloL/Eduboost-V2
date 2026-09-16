@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import os
 import uuid
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -37,13 +38,13 @@ class ContentBulkReviewService:
         self.risk_service = risk_service or ContentReviewRiskService()
         self.assignment_service = assignment_service or ContentReviewerAssignmentService()
 
-    async def bulk_approve(self, session: AsyncSession, artifact_ids: list[str | uuid.UUID], *, reviewer_id: str, notes: str) -> BulkReviewResult:
+    async def bulk_approve(self, session: AsyncSession, artifact_ids: Sequence[str | uuid.UUID], *, reviewer_id: str, notes: str) -> BulkReviewResult:
         del session, artifact_ids, reviewer_id, notes
         raise ValueError(
             "Bulk approval is disabled by Phase 3 governance. Each distinct reviewer must submit an attributable rubric decision for each artifact version."
         )
 
-    async def bulk_reject(self, session: AsyncSession, artifact_ids: list[str | uuid.UUID], *, reviewer_id: str, reason: str) -> BulkReviewResult:
+    async def bulk_reject(self, session: AsyncSession, artifact_ids: Sequence[str | uuid.UUID], *, reviewer_id: str, reason: str) -> BulkReviewResult:
         max_batch = int(os.getenv("CONTENT_REVIEW_BULK_REJECT_MAX", "100"))
         if not reason or not reason.strip():
             raise ValueError("Bulk rejection requires a reason.")
@@ -54,7 +55,7 @@ class ContentBulkReviewService:
             rejected.append((await self.lifecycle_service.reject_artifact(session, uuid.UUID(str(artifact_id)), reviewer_id, reason)).artifact_id)
         return BulkReviewResult(status="rejected", artifact_ids=rejected, summary={"rejected": len(rejected)})
 
-    async def bulk_quarantine(self, session: AsyncSession, artifact_ids: list[str | uuid.UUID], *, reviewer_id: str, reason: str) -> BulkReviewResult:
+    async def bulk_quarantine(self, session: AsyncSession, artifact_ids: Sequence[str | uuid.UUID], *, reviewer_id: str, reason: str) -> BulkReviewResult:
         if not reason or not reason.strip():
             raise ValueError("Bulk quarantine requires a reason.")
         quarantined = []
@@ -62,8 +63,8 @@ class ContentBulkReviewService:
             quarantined.append((await self.lifecycle_service.quarantine_artifact(session, uuid.UUID(str(artifact_id)), reviewer_id, reason)).artifact_id)
         return BulkReviewResult(status="quarantined", artifact_ids=quarantined, summary={"quarantined": len(quarantined)})
 
-    async def bulk_assign(self, session: AsyncSession, artifact_ids: list[str | uuid.UUID], *, reviewer_id: str, assigned_by: str, priority: str = "normal") -> BulkReviewResult:
-        assignments = await self.assignment_service.assign_batch(session, artifact_ids, reviewer_id, assigned_by, priority=priority)
+    async def bulk_assign(self, session: AsyncSession, artifact_ids: Sequence[str | uuid.UUID], *, reviewer_id: str, assigned_by: str, priority: str = "normal") -> BulkReviewResult:
+        assignments = await self.assignment_service.assign_batch(session, list(artifact_ids), reviewer_id, assigned_by, priority=priority)
         return BulkReviewResult(status="assigned", artifact_ids=[assignment.artifact_id for assignment in assignments], summary={"assigned": len(assignments)})
 
 
