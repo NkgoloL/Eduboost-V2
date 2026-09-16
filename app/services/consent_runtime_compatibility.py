@@ -1,3 +1,10 @@
+"""Runtime consent compatibility probes and transitional operations.
+
+DEPRECATED / TRANSITIONAL ADAPTER:
+Authoritative canonical paths:
+  - Consent Lifecycle: `app.modules.consent.service.ConsentService`
+  - POPIA DSR Rights: `app.services.popia_service.POPIADataRightsService`
+"""
 from __future__ import annotations
 
 import importlib
@@ -5,10 +12,12 @@ import inspect
 from dataclasses import dataclass, field
 from typing import Any
 
+CANONICAL_CONSENT_SERVICE = "app.modules.consent.service.ConsentService"
+CANONICAL_POPIA_SERVICE = "app.services.popia_service.POPIADataRightsService"
 
 CONSENT_SERVICE_CANDIDATES = (
-    "app.services.consent_service.ConsentService",
     "app.modules.consent.service.ConsentService",
+    "app.services.consent_service.ConsentService",
 )
 
 POPIA_SERVICE_CANDIDATES = (

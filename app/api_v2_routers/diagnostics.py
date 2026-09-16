@@ -16,14 +16,18 @@ from app.core.security import get_current_user  # noqa: F401
 from app.domain.schemas import DiagnosticResult, DiagnosticSubmit
 from app.security.dependencies import require_learner_read_for_current_user, require_active_consent_for_current_user
 from app.security.dependencies import require_learner_write_for_current_user
-from app.api_v2_deps import diagnostic_repositories
+from app.api_v2_deps import diagnostic_repositories  # noqa: F401 - backward-compatibility test double anchor
 from app.services.diagnostic import DiagnosticEngine
 from app.services.caps_validator import CAPSAlignmentValidator
 from app.core.metrics import ITEM_BANK_COVERAGE_RATIO
-from app.modules.diagnostics.item_bank_service import ItemBankService
 from app.modules.diagnostics import bias_review_router
-from app.modules.diagnostics.diagnostic_session_service import DiagnosticSessionService
-from app.modules.diagnostics.session_recovery_service import SessionRecoveryService
+from app.modules.diagnostics.item_bank_service import ItemBankService  # noqa: F401
+from app.modules.diagnostics.diagnostic_session_service import DiagnosticSessionService  # noqa: F401
+from app.modules.diagnostics.session_recovery_service import SessionRecoveryService  # noqa: F401
+from app.services.diagnostic_domain_service import (
+    DiagnosticDomainService,
+    get_diagnostic_domain_service,
+)
 from app.services.diagnostic_data_integrity import DiagnosticIntegrityError, validate_diagnostic_submission_payload
 from app.services.diagnostic_route_integrity import validate_adaptive_diagnostic_response
 from app.services.runtime_kg.route_integration import build_runtime_kg_diagnostic_projection
@@ -46,12 +50,10 @@ _FRONTEND_SUBJECT_CODES = {
     "life orientation": "LIFE",
 }
 
-
 def _subject_code(value) -> str:
     raw = getattr(value, "value", value)
     text = str(raw or "").strip()
     return _FRONTEND_SUBJECT_CODES.get(text.lower(), text)
-
 
 def _option_payload(options) -> list[dict[str, str]]:
     if not options:
@@ -68,7 +70,6 @@ def _option_payload(options) -> list[dict[str, str]]:
         else:
             payload.append({"key": fallback_key, "label": str(option)})
     return payload
-
 
 def _serialise_item_bank_item(item) -> dict:
     options = _option_payload(item.options)
@@ -88,7 +89,6 @@ def _serialise_item_bank_item(item) -> dict:
         "caps_ref": item.caps_ref,
         "review_status": getattr(item.review_status, "value", item.review_status),
     }
-
 
 def _engine_item_from_item_bank(item):
     return SimpleNamespace(
@@ -117,8 +117,11 @@ async def get_diagnostic_items(
     request: Request,
     db: AsyncSession = Depends(get_db),
     current_user: AuthContext = Depends(require_auth_context),
+    service: DiagnosticDomainService = Depends(get_diagnostic_domain_service),
 ):
-    learner = await diagnostic_repositories.learner(db).get_by_id(learner_id)
+    if not isinstance(service, DiagnosticDomainService):
+        service = get_diagnostic_domain_service(db)
+    learner = await service.get_learner(learner_id)
     if not learner:
         raise HTTPException(status_code=404, detail="Learner not found")
     require_learner_read_for_current_user(current_user, learner)
@@ -129,11 +132,11 @@ async def get_diagnostic_items(
         "properties": {"learner_grade": learner.grade},
     }
 
-    canonical_items = await diagnostic_repositories.item_bank(db).list_approved_for_grade(learner.grade, limit=20)
+    canonical_items = await service.list_approved_items_for_grade(learner.grade, limit=20)
     if canonical_items:
         return [_serialise_item_bank_item(item) for item in canonical_items]
 
-    items = await diagnostic_repositories.irt(db).get_items_for_grade(learner.grade, limit=20)
+    items = await service.get_irt_items_for_grade(learner.grade, limit=20)
     return [
         {
             "id": i.id,
@@ -157,19 +160,22 @@ async def submit_diagnostic(
     request: Request,
     db: AsyncSession = Depends(get_db),
     current_user: AuthContext = Depends(require_auth_context),
+    service: DiagnosticDomainService = Depends(get_diagnostic_domain_service),
 ):
+    if not isinstance(service, DiagnosticDomainService):
+        service = get_diagnostic_domain_service(db)
     # code_691_720_diagnostic_submission_integrity
     validate_diagnostic_submission_payload(body, require_items=True)
-    learner = await diagnostic_repositories.learner(db).get_by_id(body.learner_id)
+    learner = await service.get_learner(body.learner_id)
     if not learner:
         raise HTTPException(status_code=404, detail="Learner not found")
     require_learner_write_for_current_user(current_user, body.learner_id)
     await require_active_consent_for_current_user(db, current_user, str(body.learner_id))
-    guardian = await diagnostic_repositories.guardian(db).get_by_id(learner.guardian_id)
+    guardian = await service.get_guardian(learner.guardian_id)
     tier = guardian.subscription_tier if guardian else "free"
     await check_ai_quota(learner.guardian_id, tier)
 
-    canonical_items = await diagnostic_repositories.item_bank(db).list_approved_for_grade(learner.grade, limit=50)
+    canonical_items = await service.list_approved_items_for_grade(learner.grade, limit=50)
     canonical_map = {str(item.item_id): item for item in canonical_items}
     answer_ids = {str(answer.item_id) for answer in body.answers}
 
@@ -182,7 +188,7 @@ async def submit_diagnostic(
             if str(answer.selected_option).upper() == str(canonical_map[str(answer.item_id)].answer_key).upper()
         }
     else:
-        items = await diagnostic_repositories.irt(db).get_items_for_grade(learner.grade)
+        items = await service.get_irt_items_for_grade(learner.grade)
         item_map = {str(i.id): i for i in items}
         correct_ids = {
             str(answer.item_id)
@@ -202,18 +208,16 @@ async def submit_diagnostic(
     theta_after = analysis["theta"]
 
     # Persist session
-    diag_repo = diagnostic_repositories.diagnostic(db)
-    session = await diag_repo.create_session(body.learner_id, learner.theta)
-    await diag_repo.complete_session(session.id, responses_dict, theta_after)
+    session = await service.create_session(body.learner_id, learner.theta)
+    await service.complete_session(session.id, responses_dict, theta_after)
 
     # Update learner theta
-    await diagnostic_repositories.learner(db).update_theta(body.learner_id, theta_after)
+    await service.update_learner_theta(body.learner_id, theta_after)
 
     # Identify and persist gaps
     gaps = analysis["ranked_gaps"]
-    gap_repo = diagnostic_repositories.knowledge_gap(db)
     for g in gaps:
-        await gap_repo.upsert(body.learner_id, g["grade"], g["subject"], g["topic"], g["severity"])
+        await service.upsert_knowledge_gap(body.learner_id, g["grade"], g["subject"], g["topic"], g["severity"])
 
     item_to_stable_code: dict[str, str] = {}
     if canonical_map and answer_ids.issubset(set(canonical_map)):
@@ -257,10 +261,12 @@ async def submit_diagnostic(
 async def get_item_bank_coverage(
     db: AsyncSession = Depends(get_db),
     current_user: AuthContext = Depends(require_auth_context),
+    service: DiagnosticDomainService = Depends(get_diagnostic_domain_service),
 ):
+    if not isinstance(service, DiagnosticDomainService):
+        service = get_diagnostic_domain_service(db)
     _require_item_bank_admin(current_user)
-    service = ItemBankService(diagnostic_repositories.item_bank(db))
-    summary = await service.get_coverage_summary()
+    summary = await service.get_item_bank_coverage_summary()
     for caps_ref, row in summary.items():
         ITEM_BANK_COVERAGE_RATIO.labels(caps_ref=caps_ref).set(row.get("coverage_ratio", 0.0))
     return summary
@@ -270,9 +276,12 @@ async def get_item_bank_item(
     item_id: UUID,
     db: AsyncSession = Depends(get_db),
     current_user: AuthContext = Depends(require_auth_context),
+    service: DiagnosticDomainService = Depends(get_diagnostic_domain_service),
 ):
+    if not isinstance(service, DiagnosticDomainService):
+        service = get_diagnostic_domain_service(db)
     _require_item_bank_admin(current_user)
-    item = await diagnostic_repositories.item_bank(db).get_item(item_id)
+    item = await service.get_item_bank_item(item_id)
     if item is None:
         raise HTTPException(status_code=404, detail="Item not found")
     return {
@@ -308,10 +317,12 @@ async def review_item_bank_item(
     body: ReviewItemRequest,
     db: AsyncSession = Depends(get_db),
     current_user: AuthContext = Depends(require_auth_context),
+    service: DiagnosticDomainService = Depends(get_diagnostic_domain_service),
 ):
+    if not isinstance(service, DiagnosticDomainService):
+        service = get_diagnostic_domain_service(db)
     _require_item_bank_admin(current_user)
     reviewer_id = UUID(current_user.user_id)
-    service = ItemBankService(diagnostic_repositories.item_bank(db))
     item = await service.mark_item_reviewed(
         item_id=item_id,
         new_status=body.review_status,
@@ -343,14 +354,12 @@ async def start_diagnostic_session(
     body: DiagnosticSessionStartRequest,
     db: AsyncSession = Depends(get_db),
     current_user: AuthContext = Depends(require_auth_context),
+    service: DiagnosticDomainService = Depends(get_diagnostic_domain_service),
 ):
+    if not isinstance(service, DiagnosticDomainService):
+        service = get_diagnostic_domain_service(db)
     require_learner_write_for_current_user(current_user, str(body.learner_id))
     await require_active_consent_for_current_user(db, current_user, str(body.learner_id))
-    service = DiagnosticSessionService(
-        session_repository=diagnostic_repositories.diagnostic_session(db),
-        mastery_repository=diagnostic_repositories.mastery(db),
-        recovery_service=SessionRecoveryService(),
-    )
     snap = await service.start_session(body.learner_id, body.caps_ref, theta=body.theta)
     return snap.__dict__
 
@@ -359,11 +368,14 @@ async def recover_diagnostic_session(
     session_id: UUID,
     db: AsyncSession = Depends(get_db),
     current_user: AuthContext = Depends(require_auth_context),
+    service: DiagnosticDomainService = Depends(get_diagnostic_domain_service),
 ):
-    snap = await DiagnosticSessionService(recovery_service=SessionRecoveryService()).recover_session(session_id)
+    if not isinstance(service, DiagnosticDomainService):
+        service = get_diagnostic_domain_service(db)
+    snap = await service.recover_session(session_id)
     if snap is None:
         raise HTTPException(status_code=404, detail="No recoverable diagnostic session")
-    learner = await diagnostic_repositories.learner(db).get_by_id(snap.learner_id)
+    learner = await service.get_learner(snap.learner_id)
     if learner is None:
         raise HTTPException(status_code=404, detail="Learner not found")
     require_learner_read_for_current_user(current_user, learner)
@@ -376,12 +388,14 @@ async def diagnostic_next_item(
     caps_ref: str,
     db: AsyncSession = Depends(get_db),
     current_user: AuthContext = Depends(require_auth_context),
+    service: DiagnosticDomainService = Depends(get_diagnostic_domain_service),
 ):
-    session_service = DiagnosticSessionService(recovery_service=SessionRecoveryService())
-    snap = await session_service.recover_session(session_id)
+    if not isinstance(service, DiagnosticDomainService):
+        service = get_diagnostic_domain_service(db)
+    snap = await service.recover_session(session_id)
     if snap is None:
         raise HTTPException(status_code=404, detail="No recoverable diagnostic session")
-    learner = await diagnostic_repositories.learner(db).get_by_id(snap.learner_id)
+    learner = await service.get_learner(snap.learner_id)
     if learner is None:
         raise HTTPException(status_code=404, detail="Learner not found")
     require_learner_read_for_current_user(current_user, learner)
@@ -389,10 +403,8 @@ async def diagnostic_next_item(
     session_caps_ref = getattr(snap, "caps_ref", None) or caps_ref
     if session_caps_ref and str(caps_ref) != str(session_caps_ref):
         raise HTTPException(status_code=400, detail="caps_ref does not match recovered diagnostic session")
-    repo = diagnostic_repositories.item_bank(db)
-    # Use only supported arguments to be compatible with repository fakes in integration tests.
-    items = list(await repo.list_by_caps_ref(session_caps_ref, limit=200))
-    item = await session_service.get_next_item(session_id, items)
+    items = list(await service.list_items_by_caps_ref(session_caps_ref, limit=200))
+    item = await service.get_next_session_item(session_id, items)
     if item is None:
         return {"completed": True}
     return {
@@ -409,13 +421,11 @@ async def diagnostic_respond(
     body: DiagnosticSessionResponseRequest,
     db: AsyncSession = Depends(get_db),
     current_user: AuthContext = Depends(require_auth_context),
+    service: DiagnosticDomainService = Depends(get_diagnostic_domain_service),
 ):
-    session_service = DiagnosticSessionService(
-        session_repository=diagnostic_repositories.diagnostic_session(db),
-        mastery_repository=diagnostic_repositories.mastery(db),
-        recovery_service=SessionRecoveryService(),
-    )
-    snap = await session_service.recover_session(session_id)
+    if not isinstance(service, DiagnosticDomainService):
+        service = get_diagnostic_domain_service(db)
+    snap = await service.recover_session(session_id)
     if snap is None:
         raise HTTPException(status_code=404, detail="No recoverable diagnostic session")
     require_learner_write_for_current_user(current_user, snap.learner_id)
@@ -424,8 +434,8 @@ async def diagnostic_respond(
         validate_adaptive_diagnostic_response(body.model_dump(), snapshot=snap, session_id=session_id)
     except DiagnosticIntegrityError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
-    item = await diagnostic_repositories.item_bank(db).get_item(body.item_id)
+    item = await service.get_item_bank_item(body.item_id)
     if item is None:
         raise HTTPException(status_code=404, detail="Diagnostic item not found")
-    result = await session_service.submit_response(session_id, item, correct=body.correct, response=body.response)
+    result = await service.submit_session_response(session_id, item, correct=body.correct, response=body.response)
     return result.__dict__
