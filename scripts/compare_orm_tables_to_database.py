@@ -89,14 +89,6 @@ async def _async_main(args: argparse.Namespace) -> int:
         return 1 if args.require_db else 0
 
     ignore = {"alembic_version"}
-    if args.ignore_consolidation_tables:
-        ignore.update({
-            "consent_records",
-            "correction_requests",
-            "data_export_requests",
-            "erasure_requests",
-            "restriction_requests",
-        })
 
     comparison = await compare(args.database_url, ignore_tables=ignore)
     _print_table_list("Database tables", comparison.database_tables)
@@ -116,7 +108,11 @@ def main() -> int:
     parser.add_argument("--database-url", default=os.getenv("DATABASE_URL", ""))
     parser.add_argument("--require-db", action="store_true")
     parser.add_argument("--fail-on-drift", action="store_true")
-    parser.add_argument("--ignore-consolidation-tables", action="store_true", help="Ignore known unmapped POPIA/Consolidation tables")
+    parser.add_argument(
+        "--ignore-consolidation-tables",
+        action="store_true",
+        help="Deprecated: legacy consolidation tables are now reconciled via Alembic migration (DEF-12)",
+    )
     args = parser.parse_args()
 
     return asyncio.run(_async_main(args))

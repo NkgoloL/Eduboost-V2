@@ -55,7 +55,7 @@ def test_compose_and_migration_contracts_are_static_green() -> None:
     assert compose["valid"] is True
     assert not compose["missing_services"]
     assert graph["valid"] is True
-    assert graph["expected_single_head"] == "20260711_1510_prd11_runtime_green_exec5"
+    assert graph["expected_single_head"] == "20260913_2300_reconcile_consolidation_tables"
 
 
 def test_unknown_revision_decision_forbids_blind_stamp() -> None:
