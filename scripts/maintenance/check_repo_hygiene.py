@@ -11,7 +11,7 @@ from pathlib import Path
 
 ROOT_ALLOWED_FILES = {
     '.agent.md',
-    '.bandit',
+    '.bandit.yaml',
     '.coveragerc',
     '.dockerignore',
     '.env.example',

@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: pip install bandit
       - name: Bandit Scan
-        run: python3 -m bandit -r app scripts -ll -q
+        run: python3 -m bandit -r app scripts -c .bandit.yaml -ll -q
 
   pip-audit-dependencies:
     name: Python pip-audit
@@ -41,8 +41,10 @@ jobs:
           cache: 'pip'
       - name: Install dependencies
         run: pip install pip-audit
-      - name: Audit Base & Dev Requirements
+      - name: Audit App Base & Dev Requirements
         run: pip-audit -r requirements/base.txt -r requirements/dev.txt
+      - name: Audit Inference Container Requirements
+        run: pip-audit -r docker/requirements.inference.txt
 
   pnpm-audit-dependencies:
     name: Frontend pnpm audit

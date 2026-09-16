@@ -1133,11 +1133,17 @@ class EduboostETL:
         norm_path.write_text(json.dumps({**norm, "metadata_updates": updates}, ensure_ascii=False, indent=2))
 
         # Apply updates
-        set_clauses = ", ".join(f"{k}=?" for k in updates)
-        values = list(updates.values())
+        allowed = {
+            "title", "subject", "grade", "term", "language", "document_type",
+            "curriculum_version", "caps_strand", "topic", "author", "publisher",
+            "province", "license_status", "reviewer_notes", "phase",
+        }
+        filtered = {k: v for k, v in updates.items() if k in allowed}
+        set_clauses = ", ".join(f"{k}=?" for k in filtered)
+        values = list(filtered.values())
         if set_clauses:
             self._db().execute(
-                f"UPDATE documents SET {set_clauses}, processing_status=?, updated_at=? WHERE document_id=?",  # nosec B608
+                f"UPDATE documents SET {set_clauses}, processing_status=?, updated_at=? WHERE document_id=?",  # nosec: B608
                 [*values, ProcessingStatus.metadata_enriched, _now(), document_id]
             )
         else:
