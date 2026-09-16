@@ -147,7 +147,7 @@ class DiagnosticDomainService:
         responses: dict[str, str],
         theta_final: float,
     ) -> None:
-        await self.diagnostic_repo.complete_session(session_id, responses, theta_final)
+        await self.diagnostic_repo.complete_session(str(session_id), responses, theta_final)
 
     async def upsert_knowledge_gap(
         self,
