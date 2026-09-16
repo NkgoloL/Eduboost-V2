@@ -111,6 +111,11 @@ _GOVERNANCE_MARKERS = (
     "terminal_handoff_closure",
     "merge_control_evidence",
     "warning_cleanup_contract",
+    "backend_consolidation",
+    "ci_auth_refresh",
+    "ci_route_alias",
+    "pr002r_",
+    "project_assistance",
 )
 
 # Runtime/API contract tests that must stay in the fast gate despite name overlap.
