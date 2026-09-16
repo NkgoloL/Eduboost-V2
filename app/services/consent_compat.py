@@ -1,7 +1,11 @@
 """Compatibility helpers for consent service consolidation.
 
-This module is intentionally non-invasive. It documents and normalizes common
-consent audit/event shapes so future batches can migrate call sites safely.
+DEPRECATED / COMPATIBILITY SHIM:
+Canonical Domain Services:
+  - Consent Lifecycle: `app.modules.consent.service.ConsentService`
+  - POPIA DSR Rights: `app.services.popia_service.POPIADataRightsService`
+
+This module is maintained as an edge-normalizer and compatibility adapter for legacy call sites.
 """
 from __future__ import annotations
 

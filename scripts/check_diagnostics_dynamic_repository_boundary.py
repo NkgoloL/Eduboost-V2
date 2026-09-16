@@ -10,10 +10,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DIAGNOSTICS = ROOT / "app/api_v2_routers/diagnostics.py"
 BOUNDARY = ROOT / "app/api_v2_deps/diagnostic_repositories.py"
+SERVICE = ROOT / "app/services/diagnostic_domain_service.py"
 
 CRITICAL = [
     "app/api_v2_deps/diagnostic_repositories.py",
     "app/api_v2_routers/diagnostics.py",
+    "app/services/diagnostic_domain_service.py",
     "scripts/patch_diagnostics_dynamic_repository_boundary.py",
     "scripts/check_diagnostics_dynamic_repository_boundary.py",
     "tests/unit/test_diagnostics_dynamic_repository_boundary.py",
@@ -37,6 +39,13 @@ DISALLOWED_ROUTER_CALLS = (
     "MasteryRepository(db)",
     "_LearnerRepo(db)",
     "_ItemBankRepo(db)",
+    "diagnostic_repositories.learner(db)",
+    "diagnostic_repositories.item_bank(db)",
+    "diagnostic_repositories.irt(db)",
+    "diagnostic_repositories.diagnostic(db)",
+    "diagnostic_repositories.knowledge_gap(db)",
+    "diagnostic_repositories.diagnostic_session(db)",
+    "diagnostic_repositories.mastery(db)",
 )
 
 
@@ -46,6 +55,7 @@ def main() -> int:
 
     diagnostics_source = DIAGNOSTICS.read_text(encoding="utf-8")
     boundary_source = BOUNDARY.read_text(encoding="utf-8")
+    service_source = SERVICE.read_text(encoding="utf-8")
 
     for token in DISALLOWED_ROUTER_TOKENS:
         if token in diagnostics_source:
@@ -60,15 +70,27 @@ def main() -> int:
             print(f"- PASS diagnostics.py excludes {call}")
 
     required_router_tokens = (
-        "from app.api_v2_deps import diagnostic_repositories",
-        "diagnostic_repositories.learner(db)",
-        "diagnostic_repositories.item_bank(db)",
+        "DiagnosticDomainService",
+        "get_diagnostic_domain_service",
+        "service: DiagnosticDomainService",
     )
     for token in required_router_tokens:
         if token in diagnostics_source:
             print(f"- PASS diagnostics.py contains {token}")
         else:
-            failures.append(f"diagnostics.py missing required boundary token: {token}")
+            failures.append(f"diagnostics.py missing required domain service token: {token}")
+
+    required_service_tokens = (
+        "class DiagnosticDomainService:",
+        "def get_diagnostic_domain_service(",
+        "async def get_learner(",
+        "async def list_approved_items_for_grade(",
+    )
+    for token in required_service_tokens:
+        if token in service_source:
+            print(f"- PASS diagnostic_domain_service.py contains {token}")
+        else:
+            failures.append(f"diagnostic_domain_service.py missing {token}")
 
     required_boundary_tokens = (
         "import_module",
@@ -87,9 +109,14 @@ def main() -> int:
         ast.parse((ROOT / path).read_text(encoding="utf-8"))
         print(f"- PASS syntax {path}")
 
+    python_bin = sys.executable
+    venv_python = ROOT / ".venv/bin/python3"
+    if venv_python.exists():
+        python_bin = str(venv_python)
+
     pytest_result = run(
         [
-            sys.executable,
+            python_bin,
             "-m",
             "pytest",
             "-c",
@@ -113,7 +140,7 @@ def main() -> int:
 
     ruff = run(
         [
-            sys.executable,
+            python_bin,
             "-m",
             "ruff",
             "check",

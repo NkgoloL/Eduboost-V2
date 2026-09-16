@@ -1,3 +1,10 @@
+"""Transitional first consent runtime candidate wiring loader.
+
+DEPRECATED / TRANSITIONAL FIXTURE:
+Authoritative canonical paths:
+  - Consent Lifecycle: `app.modules.consent.service.ConsentService`
+  - POPIA DSR Rights: `app.services.popia_service.POPIADataRightsService`
+"""
 from __future__ import annotations
 
 import json

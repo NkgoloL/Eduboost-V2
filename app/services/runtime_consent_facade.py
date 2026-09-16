@@ -1,3 +1,10 @@
+"""Transitional runtime consent event emission facade.
+
+DEPRECATED / COMPATIBILITY FACADE:
+Authoritative canonical paths:
+  - Consent Lifecycle: `app.modules.consent.service.ConsentService`
+  - POPIA DSR Rights: `app.services.popia_service.POPIADataRightsService`
+"""
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
