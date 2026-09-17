@@ -1,8 +1,7 @@
 export const styles = `
-  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap');
   *{box-sizing:border-box;margin:0;padding:0}
   :root{--bg:#0f1923;--surface:#1a2535;--surface2:#243044;--border:rgba(255,255,255,0.08);--text:#e8f0fe;--muted:#8899aa;--gold:#FFD700;--green:#4ade80;--red:#f87171;--blue:#60a5fa;--orange:#fb923c;--purple:#c084fc;--radius:16px}
-  body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text)}
+  body{font-family:'Nunito',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text)}
   .app{min-height:100vh;background:var(--bg);overflow-x:hidden}
   .stars-bg{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
   .star{position:absolute;background:white;border-radius:50%;animation:twinkle var(--d,3s) ease-in-out infinite;opacity:var(--o,.4)}
