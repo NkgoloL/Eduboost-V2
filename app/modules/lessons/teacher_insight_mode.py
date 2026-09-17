@@ -318,7 +318,7 @@ Generate a teacher insight report as a JSON object with this exact structure:
 
 async def generate_teacher_insight(
     request: TeacherInsightRequest,
-    llm_gateway,  # type: LLMGateway
+    llm_gateway: Any,
 ) -> TeacherInsightResponse:
     """
     Generates a teacher insight report for a given cohort and CAPS reference.
@@ -375,7 +375,7 @@ async def generate_teacher_insight(
 
     # Step 4: parse LLM response
     try:
-        clean = raw_response.strip().lstrip("```json").lstrip("```").rstrip("```").strip()
+        clean = raw_response.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
         data: dict[str, Any] = json.loads(clean)
     except json.JSONDecodeError as exc:
         raise TeacherInsightGenerationError(

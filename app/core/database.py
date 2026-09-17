@@ -3,6 +3,7 @@ EduBoost V2 — Database Engine & Session Factory
 SQLAlchemy async engine wired to PostgreSQL via asyncpg.
 """
 from collections.abc import AsyncGenerator
+from typing import Any
 import uuid
 
 from sqlalchemy.pool import NullPool
@@ -14,7 +15,7 @@ import time
 from app.core.config import settings
 
 # Configure engine based on database type
-engine_kwargs = {
+engine_kwargs: dict[str, Any] = {
     "echo": settings.DEBUG,
     "pool_pre_ping": True,
 }
@@ -143,6 +144,7 @@ except Exception:
     slow_threshold = 0.0
 
 if slow_threshold > 0:
+    slow_log: Any
     try:
         # Prefer structured logger if available
         from app.core.logging import get_logger

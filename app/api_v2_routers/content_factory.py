@@ -4,7 +4,7 @@ from __future__ import annotations
 import os
 import sys
 import uuid
-from typing import Any
+from typing import Any, cast
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy import select
@@ -51,6 +51,7 @@ from app.domain.content_factory_schemas import (
     ReviewAssignmentResponse,
     ReviewQueueItemResponse,
     ReviewQueuePageResponse,
+    ReviewRiskResponse,
     ReviewSummaryResponse,
     ReviewerWorkloadResponse,
     StagingReadVerificationResponse,
@@ -59,6 +60,7 @@ from app.domain.content_factory_schemas import (
     StagingSeedPlanResponse,
     StagingSeedRunPageResponse,
     StagingSeedRunResultResponse,
+    StagingSeedSkippedArtifactResponse,
 )
 from app.domain.content_coverage import CapsRefCoverageReport, ContentLayer, CoverageTarget, ScopeCoverageReport
 from app.domain.content_scope import ContentScope
@@ -269,7 +271,7 @@ async def create_generation_run(
     run = await service.create_run(
         session,
         scope_id=request.scope_id,
-        layers=request.layers,
+        layers=cast(Any, request.layers),
         requested_by=current_user.user_id,
         dry_run=request.dry_run or not _generation_enabled(),
         budget_cap=request.budget_cap,
@@ -521,7 +523,7 @@ async def get_artifact_review_bundle(
             validation_report=bundle.validation_report,
             provenance=bundle.provenance,
             sources=bundle.sources,
-            review_risk=bundle.review_risk.__dict__,
+            review_risk=ReviewRiskResponse.model_validate(bundle.review_risk),
             generation_metadata=bundle.generation_metadata,
             prior_review_events=bundle.prior_review_events,
             similar_artifacts=bundle.similar_artifacts,
@@ -717,7 +719,7 @@ async def dry_run_scope_seed(
         layers=plan.layers,
         seedable_count=len(plan.seedable),
         skipped_count=len(plan.skipped),
-        skipped=[{"artifact_id": s.artifact_id, "reason": s.reason} for s in plan.skipped],
+        skipped=[StagingSeedSkippedArtifactResponse(artifact_id=s.artifact_id, reason=s.reason) for s in plan.skipped],
     )
 
 
@@ -732,6 +734,7 @@ async def seed_scope_staging(
 ) -> StagingSeedRunResultResponse:
     try:
         # Prefer a fake/injected seed_service (unit tests), otherwise use the executor path.
+        result: Any
         if seed_service.__class__.__name__ != "ContentSeedPromotionService":
             result = await seed_service.seed_staging(session, scope_id, actor_id=current_user.user_id)
         else:
@@ -829,7 +832,7 @@ async def get_production_gate(
     session: AsyncSession = Depends(get_db),
     gate: ContentProductionPromotionGate = Depends(get_production_promotion_gate),
 ) -> ProductionGateReportResponse:
-    report = await gate.evaluate_scope(session, scope_id, layers=layers)
+    report = await gate.evaluate_scope(session, scope_id, layers=[ContentLayer(l) for l in layers] if layers else None)
     return ProductionGateReportResponse(
         scope_id=report.scope_id,
         status=report.status.value,
@@ -870,6 +873,7 @@ async def promote_production(
     current_user: AuthContext = Depends(require_auth_context),
 ) -> ProductionPromotionResultResponse:
     try:
+        result: Any
         if request is None:
             # Backward-compatible seed-promotion flow used by unit tests.
             result = await seed_service.promote_production(session, scope_id, actor_id=current_user.user_id)

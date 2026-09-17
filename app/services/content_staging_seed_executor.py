@@ -309,8 +309,9 @@ class ContentStagingSeedExecutor:
 
                         except IntegrityError as item_integrity_err:
                             await _session_rollback(session)
-                            orig_msg = str(item_integrity_err.orig).lower() if item_integrity_err.orig else ""
-                            if "foreign key" in orig_msg or (hasattr(item_integrity_err.orig, "pgcode") and item_integrity_err.orig.pgcode == "23503") or (hasattr(item_integrity_err.orig, "sqlstate") and item_integrity_err.orig.sqlstate == "23503"):
+                            orig = item_integrity_err.orig
+                            orig_msg = str(orig).lower() if orig else ""
+                            if "foreign key" in orig_msg or getattr(orig, "pgcode", None) == "23503" or getattr(orig, "sqlstate", None) == "23503":
                                 logger.error(f"Missing foreign key reference for scope {scope_id}, artifact {artifact.artifact_id}: {item_integrity_err}")
                                 raise MissingForeignKeyError(f"Missing foreign key reference for artifact {artifact.artifact_id}") from item_integrity_err
                             else:
@@ -381,7 +382,7 @@ class ContentStagingSeedExecutor:
         )
 
     async def list_seed_runs(self, session: AsyncSession, *, scope_id: str | None = None, limit: int = 50, offset: int = 0) -> StagingSeedRunPage:
-        stmt = select(ContentSeedRun).where(ContentSeedRun.dry_run is False)
+        stmt = select(ContentSeedRun).where(ContentSeedRun.dry_run.is_(False))
         if scope_id:
             stmt = stmt.where(ContentSeedRun.scope_id == scope_id)
 

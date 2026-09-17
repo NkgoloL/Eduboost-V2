@@ -191,7 +191,7 @@ async def login_impl(
     repo = auth_runtime.guardian_repo
     audit = FourthEstateService(db)
 
-    submitted_email = getattr(body, "email")
+    submitted_email = body.email
     email_hash = hash_email(submitted_email)
     guardian = await repo.get_by_email_hash(email_hash)
     if not guardian or not verify_password(body.password, guardian.password_hash):
@@ -259,7 +259,7 @@ async def register_impl(
     repo = auth_runtime.guardian_repo
     audit = FourthEstateService(db)
 
-    submitted_email = getattr(body, "email")
+    submitted_email = body.email
     email_hash = hash_email(submitted_email)
     if await repo.get_by_email_hash(email_hash):
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Email already registered")

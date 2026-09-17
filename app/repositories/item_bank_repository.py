@@ -269,11 +269,16 @@ class ItemBankRepository:
         item_id: uuid.UUID,
         new_status: str,
         *,
-        reviewer_id: Optional[uuid.UUID] = None,
+        reviewer_id: Optional[uuid.UUID | str] = None,
         quality_score: Optional[float] = None,
         reviewed_at: Optional[datetime] = None,
     ) -> Optional[DiagnosticItem]:
         """Transition an item's review workflow status."""
+        if isinstance(reviewer_id, str):
+            try:
+                reviewer_id = uuid.UUID(reviewer_id)
+            except ValueError:
+                reviewer_id = None
         item = await self.get_item(item_id)
         if item is None:
             return None

@@ -6,12 +6,15 @@ Generator identifier: generate_beta_pr_body.
 from __future__ import annotations
 
 import os
-from scripts._subprocess import check_output, run
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-
 REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from scripts._subprocess import check_output, run
 OUTPUT = REPO_ROOT / "docs" / "operations" / "beta_release_pr_body.md"
 
 

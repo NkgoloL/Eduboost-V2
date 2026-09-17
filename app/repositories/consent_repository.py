@@ -18,6 +18,30 @@ class ConsentRepository:
         self._pool: Any = pool
 
 
+    async def get_active(
+        self, learner_id: Any, db: Any = None
+    ) -> Any:
+        return await self.get_active_for_learner(learner_id)
+
+    async def grant(
+        self,
+        learner_id: Any,
+        guardian_id: Any,
+        db: Any = None,
+        *,
+        ip_address: str | None = None,
+        user_agent: str | None = None,
+        consent_version: str = "1.0",
+        **kwargs: Any,
+    ) -> Any:
+        return None
+
+    async def revoke(self, learner_id: Any, db: Any = None, reason: str = "revoked", **kwargs: Any) -> int:
+        return 0
+
+    async def get_expiring_soon(self, db: Any = None, days: int = 30, **kwargs: Any) -> list[Any]:
+        return await self.list_expiring_soon(within_days=days)
+
     async def get_active_for_learner(
         self, learner_id: uuid.UUID
     ) -> Optional[ConsentRecord]:

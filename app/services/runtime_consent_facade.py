@@ -21,7 +21,7 @@ class ConsentRuntimeEmission:
 async def emit_consent_runtime_event(*, action: str, learner_id: str, actor_id: str | None = None,
                                      audit_repository: Any | None = None,
                                      metadata: dict[str, Any] | None = None) -> ConsentRuntimeEmission:
-    payload = build_consent_runtime_audit_payload(action=action, actor_id=actor_id, learner_id=learner_id,
+    payload = build_consent_runtime_audit_payload(action=action, actor_id=actor_id or "system", learner_id=learner_id,
                                                   metadata={"runtime_consent_facade": True, **(metadata or {})})
     recorded = False
     if audit_repository is not None:

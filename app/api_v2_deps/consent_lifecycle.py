@@ -55,7 +55,7 @@ def authenticated_actor_id(current_user: Any) -> Any:
 async def enforce_popia_learner_write(current_user: Any, learner_id: Any) -> Any:
     """Enforce learner write access for POPIA lifecycle mutations."""
     helper = _load_learner_write_helper()
-    attempts = (
+    attempts: tuple[tuple[tuple[Any, ...], dict[str, Any]], ...] = (
         ((current_user, learner_id), {}),
         ((learner_id, current_user), {}),
         ((), {"current_user": current_user, "learner_id": learner_id}),
@@ -69,20 +69,20 @@ async def enforce_popia_learner_write(current_user: Any, learner_id: Any) -> Any
     raise RuntimeError(f"Could not call learner-write helper {helper!r}")
 
 
-def get_canonical_consent_service(db: AsyncSession = Depends(get_db)) -> ConsentService:
+def get_canonical_consent_service(db: AsyncSession = Depends(get_db)) -> POPIAConsentLifecycleAdapter:
     """Construct the canonical SQLAlchemy-compatible consent service for FastAPI v2."""
     params = inspect.signature(ConsentService).parameters
 
     if "session" in params:
-        return POPIAConsentLifecycleAdapter(ConsentService(session=db))
+        return POPIAConsentLifecycleAdapter(ConsentService(session=db))  # type: ignore[call-arg]
     if "db" in params:
         return POPIAConsentLifecycleAdapter(ConsentService(db=db))
 
     if "consent_repository" in params or "consent_repo" in params:
-        repo = ConsentRepository(db)
+        repo: Any = ConsentRepository(db)
         if "consent_repository" in params:
-            return POPIAConsentLifecycleAdapter(ConsentService(consent_repository=repo))
-        return POPIAConsentLifecycleAdapter(ConsentService(consent_repo=repo))
+            return POPIAConsentLifecycleAdapter(ConsentService(consent_repository=repo))  # type: ignore[call-arg]
+        return POPIAConsentLifecycleAdapter(ConsentService(consent_repo=repo))  # type: ignore[call-arg,arg-type]
 
     try:
         return POPIAConsentLifecycleAdapter(ConsentService(db))

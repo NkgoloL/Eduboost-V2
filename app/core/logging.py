@@ -7,6 +7,8 @@ from __future__ import annotations
 import logging
 import sys
 
+from typing import Any
+
 import structlog
 import sentry_sdk
 from sentry_sdk.integrations.fastapi import FastApiIntegration
@@ -18,7 +20,7 @@ from app.core.config import settings
 
 def configure_logging() -> None:
     log_level = logging.DEBUG if settings.DEBUG else logging.INFO
-    renderer = (
+    renderer: Any = (
         structlog.processors.JSONRenderer()
         if settings.is_production()
         else structlog.dev.ConsoleRenderer(colors=True)

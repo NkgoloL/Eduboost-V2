@@ -14,7 +14,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.api_v2_deps.auth import AuthContext, require_admin
 from app.core.config import get_settings
 from app.core.database import get_db
-from app.domain.api_v2_models import ok
+from app.domain.api_v2_models import ApiSuccessEnvelope, ok
 from app.models.content_factory import ContentGenerationRun, ContentGenerationTask, ContentLayer
 from app.modules.jobs import enqueue_durable
 from app.services.ai_budget_guard import get_ai_budget_guard
@@ -285,7 +285,7 @@ async def cancel_generation_run(
     run_id: uuid.UUID,
     _auth: AuthContext = Depends(require_admin),
     db: AsyncSession = Depends(get_db),
-) -> dict[str, Any]:
+) -> ApiSuccessEnvelope[dict[str, Any]]:
     run_row = await db.execute(
         select(ContentGenerationRun).where(ContentGenerationRun.run_id == run_id)
     )

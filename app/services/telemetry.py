@@ -5,13 +5,7 @@ from typing import Any
 
 from app.core.config import settings
 from app.core.degraded_mode import get_runtime_capabilities
-try:
-    from app.core.logging import get_logger
-except ModuleNotFoundError:  # pragma: no cover - lightweight validation environments
-    import logging
-
-    def get_logger(name: str):
-        return logging.getLogger(name)
+from app.core.logging import get_logger
 
 log = get_logger(__name__)
 
@@ -46,7 +40,11 @@ class TelemetryService:
 
             posthog.project_api_key = settings.POSTHOG_API_KEY
             posthog.host = settings.POSTHOG_HOST
-            posthog.capture(payload["distinct_id"], payload["event"], payload["properties"])
+            posthog.capture(
+                distinct_id=payload["distinct_id"],
+                event=payload["event"],
+                properties=payload["properties"],
+            )
         except Exception as exc:  # noqa: BLE001 - telemetry must never break learner flows
             log.warning("telemetry_dispatch_failed", event_name=event_name, error=exc.__class__.__name__)
 

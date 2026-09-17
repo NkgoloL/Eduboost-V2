@@ -29,8 +29,13 @@ async def check_postgres() -> dict[str, Any]:
         from app.core.metrics import db_pool_checkedout, db_pool_overflow, db_pool_size
         if hasattr(engine.pool, "checkedout"):
             db_pool_size.set(getattr(engine.pool, "size", lambda: 0)())
-            db_pool_checkedout.set(engine.pool.checkedout())
-            db_pool_overflow.set(engine.pool.overflow())
+            db_pool_checkedout.set(getattr(engine.pool, "checkedout", lambda: 0)())
+            db_pool_overflow.set(getattr(engine.pool, "overflow", lambda: 0)())
+        pool = engine.pool
+        if hasattr(pool, "checkedout"):
+            db_pool_size.set(getattr(pool, "size", lambda: 0)())
+            db_pool_checkedout.set(getattr(pool, "checkedout", lambda: 0)())
+            db_pool_overflow.set(getattr(pool, "overflow", lambda: 0)())
 
         return {"status": "ok"}
     except Exception as exc:  # noqa: BLE001

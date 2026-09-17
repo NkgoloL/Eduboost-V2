@@ -20,7 +20,7 @@ def set_request_id(request_id: str | None) -> None:
         _request_id_var.set(request_id)
 
 
-def get_request_id(default: str = "unknown") -> str:
+def get_request_id(default: Optional[str] = "unknown") -> Optional[str]:
     """Return the current request id or `default` when not set."""
     rid = _request_id_var.get()
     return rid if rid is not None else default

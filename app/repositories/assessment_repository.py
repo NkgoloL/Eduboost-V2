@@ -83,7 +83,7 @@ class AssessmentRepository(BaseRepository[Assessment]):
 
     @staticmethod
     def to_payload(row: Assessment) -> dict[str, Any]:
-        questions = row.questions or []
+        questions: Any = row.questions or []
         if isinstance(questions, dict):
             questions = questions.get("questions", questions.get("items", []))
         return {

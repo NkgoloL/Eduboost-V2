@@ -64,7 +64,7 @@ class ContentProductionPromotionGate:
         session: AsyncSession,
         scope_id: str,
         *,
-        layers: list[ContentLayer] | None = None,
+        layers: list[ContentLayer] | list[str] | None = None,
     ) -> ProductionGateReport:
         """Evaluate a scope for production eligibility."""
         layers = [ContentLayer(layer) for layer in (layers or list(ContentLayer))]
@@ -165,7 +165,7 @@ class ContentProductionPromotionGate:
         blockers: list[ProductionGateBlocker],
     ) -> dict[str, Any]:
         """Check that staging seed exists and passed read verification."""
-        summary = {}
+        summary: dict[str, Any] = {}
 
         # Find the latest successful staging seed run for this scope
         result = await session.execute(

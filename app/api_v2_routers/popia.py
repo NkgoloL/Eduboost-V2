@@ -21,7 +21,8 @@ from app.api_v2_deps.auth import require_auth_context
 from app.core.envelope_route import EnvelopedRoute
 from app.core.security import get_current_user  # noqa: F401
 from app.domain.consent import ConsentRecord
-from app.modules.consent.service import ConsentService
+from app.modules.consent.service import ConsentService  # noqa: F401
+from app.services.popia_consent_lifecycle_adapter import POPIAConsentLifecycleAdapter
 from app.services.popia_service import POPIADataRightsService
 
 router = APIRouter(route_class=EnvelopedRoute, prefix="/popia", tags=["popia"])
@@ -103,7 +104,7 @@ class DeletionRequestBody(BaseModel):
 async def grant_consent(
     # require_learner_write_for_current_user
     body: ConsentGrantRequest,
-    consent_svc: ConsentService = Depends(get_canonical_consent_service),
+    consent_svc: POPIAConsentLifecycleAdapter = Depends(get_canonical_consent_service),
     current_user: Any = Depends(require_auth_context),
 ) -> ConsentRecord:
     await _enforce_popia_learner_write(current_user, body.learner_id)
@@ -120,7 +121,7 @@ async def grant_consent(
 async def deny_consent(
     # require_learner_write_for_current_user
     body: ConsentDenyRequest,
-    consent_svc: ConsentService = Depends(get_canonical_consent_service),
+    consent_svc: POPIAConsentLifecycleAdapter = Depends(get_canonical_consent_service),
     current_user: Any = Depends(require_auth_context),
 ) -> ConsentRecord:
     await _enforce_popia_learner_write(current_user, body.learner_id)
@@ -138,7 +139,7 @@ async def deny_consent(
 async def withdraw_consent(
     # require_learner_write_for_current_user
     body: ConsentWithdrawRequest,
-    consent_svc: ConsentService = Depends(get_canonical_consent_service),
+    consent_svc: POPIAConsentLifecycleAdapter = Depends(get_canonical_consent_service),
     current_user: Any = Depends(require_auth_context),
 ) -> ConsentRecord:
     await _enforce_popia_learner_write(current_user, body.learner_id)
@@ -153,7 +154,7 @@ async def withdraw_consent(
 async def renew_consent(
     # require_learner_write_for_current_user
     body: ConsentRenewRequest,
-    consent_svc: ConsentService = Depends(get_canonical_consent_service),
+    consent_svc: POPIAConsentLifecycleAdapter = Depends(get_canonical_consent_service),
     current_user: Any = Depends(require_auth_context),
 ) -> ConsentRecord:
     await _enforce_popia_learner_write(current_user, body.learner_id)

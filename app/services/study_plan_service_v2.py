@@ -98,7 +98,7 @@ def _build_template_schedule(weak: list[dict], learner_grade: int | None) -> dic
         return None
     topics = _template_lookup(template)
     weak_refs = _weak_caps_refs(weak)
-    days = {"Mon": [], "Tue": [], "Wed": [], "Thu": [], "Fri": [], "Sat": [], "Sun": []}
+    days: dict[str, list[dict[str, Any]]] = {"Mon": [], "Tue": [], "Wed": [], "Thu": [], "Fri": [], "Sat": [], "Sun": []}
     for slot in template.get("weekly_template", []):
         ref = slot["caps_ref"]
         topic = topics.get(ref, {})

@@ -144,7 +144,7 @@ class SemanticRetrievalRepository:
         names = [f"chunk_id_{index}" for index in range(len(chunk_ids))]
         placeholders = ", ".join(f":{name}" for name in names)
         params = _filter_params(filters)
-        params.update(dict(zip(names, chunk_ids)))
+        params.update(dict(zip(names, chunk_ids, strict=False)))
         sql = text(
             f"""
             SELECT {_COMMON_SELECT}, 1.0 AS score

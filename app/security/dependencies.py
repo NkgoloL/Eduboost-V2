@@ -190,7 +190,7 @@ def build_actor_from_current_user_for_learner(
         )
 
     role = _role_from_current_user(claims.get("role"))
-    learner_id = str(getattr(learner, "id"))
+    learner_id = str(learner.id)
 
     learner_ids: tuple[str, ...] = ()
     guardian_learner_ids: tuple[str, ...] = ()
@@ -223,7 +223,7 @@ def require_learner_read_for_current_user(
 ) -> AuthorizationDecision:
     """Authorize read access to a loaded learner for the current user payload."""
     actor = build_actor_from_current_user_for_learner(current_user, learner)
-    return require_learner_read(actor, str(getattr(learner, "id")))
+    return require_learner_read(actor, str(learner.id))
 
 
 def _iter_claim_values(value: _Any) -> tuple[str, ...]:

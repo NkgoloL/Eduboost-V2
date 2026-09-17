@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from uuid import UUID
 from datetime import datetime, timezone
+from typing import Any
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -21,11 +22,12 @@ class DiagnosticRepository(BaseRepository[DiagnosticSession]):
         subject: str,
         db: AsyncSession,
     ) -> DiagnosticSession | None:
+        session_cls: Any = DiagnosticSession
         result = await db.execute(
             select(DiagnosticSession)
             .where(DiagnosticSession.learner_id == learner_id)
-            .where(DiagnosticSession.subject == subject)
-            .order_by(DiagnosticSession.started_at.desc())
+            .where(session_cls.subject == subject)
+            .order_by(session_cls.started_at.desc())
             .limit(1)
         )
         return result.scalar_one_or_none()

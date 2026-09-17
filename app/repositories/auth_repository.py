@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
+from typing import Any
 
 from sqlalchemy import select, text, update
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -44,7 +45,8 @@ class GuardianRepository(BaseRepository[Guardian]):
 
     async def get_by_verification_token(self, token: str, db: AsyncSession | None = None) -> Guardian | None:
         session = self._resolve_db(db)
-        result = await session.execute(select(Guardian).where(Guardian.verification_token == token))
+        guardian_cls: Any = Guardian
+        result = await session.execute(select(Guardian).where(guardian_cls.verification_token == token))
         return result.scalar_one_or_none()
 
     async def get_guardian_by_id(self, guardian_id: str, db: AsyncSession | None = None) -> Guardian | None:

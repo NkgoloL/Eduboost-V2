@@ -4,6 +4,7 @@ POPIA parental consent lifecycle endpoints.
 """
 from __future__ import annotations
 
+import inspect
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
@@ -93,12 +94,20 @@ async def revoke_consent(
     erasure_request_id = None
 
     if body.request_export:
-        export_result = await popia_service.request_export(learner_id, current_user.raw_claims)
-        export_request_id = export_result.get("request_id")
+        res_exp = popia_service.request_export(learner_id, current_user.raw_claims)
+        export_result = await res_exp if inspect.isawaitable(res_exp) else res_exp
+        if isinstance(export_result, dict):
+            export_request_id = export_result.get("request_id") or export_result.get("export_id")
+        else:
+            export_request_id = getattr(export_result, "request_id", None) or getattr(export_result, "export_id", None)
 
     if body.request_erasure:
-        erasure_result = await popia_service.request_erasure(learner_id, current_user.raw_claims, reason="consent_withdrawal")
-        erasure_request_id = erasure_result.get("request_id")
+        res_era = popia_service.request_erasure(learner_id, current_user.raw_claims, reason="consent_withdrawal")
+        erasure_result = await res_era if inspect.isawaitable(res_era) else res_era
+        if isinstance(erasure_result, dict):
+            erasure_request_id = erasure_result.get("request_id")
+        else:
+            erasure_request_id = getattr(erasure_result, "request_id", None)
 
     request.state.analytics = {
         "event": "consent_revoked",

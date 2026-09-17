@@ -226,7 +226,7 @@ def _sa_context_score(item: dict) -> float:
         texts.append(opt.get("text", ""))
     combined = " ".join(texts)
 
-    signals = 0
+    signals: float = 0.0
     if SA_CURRENCY_PATTERN.search(combined):
         signals += 1
     if SA_NAMES_PATTERN.search(combined):

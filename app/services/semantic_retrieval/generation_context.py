@@ -36,7 +36,7 @@ class SemanticContentGenerationSourceContextService(
             embedding_provider=build_embedding_provider()
         )
 
-    async def build_context(
+    async def build_context(  # type: ignore[override]
         self,
         session: AsyncSession,
         *,

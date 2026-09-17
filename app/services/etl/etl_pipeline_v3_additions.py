@@ -223,7 +223,7 @@ class EduboostETLv3(EduboostETLv2):
         ).fetchall()
         return [dict(r) for r in rows]
 
-    def deprecate_document(
+    def deprecate_document(  # type: ignore[override]
         self,
         document_id: str,
         deprecated_by: str,

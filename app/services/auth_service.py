@@ -80,7 +80,7 @@ class AuthError(Exception):
 class SignupResult:
     def __init__(self, user_id: str, email: str) -> None:
         self.user_id = user_id
-        setattr(self, "email", email)
+        self.email = email
 
 
 class LoginResult:
@@ -457,9 +457,7 @@ class AuthService:
 # Legacy synchronous AuthService compatibility API for historical unit tests
 # ---------------------------------------------------------------------------
 
-try:
-    CompatSession
-except NameError:  # pragma: no cover - compatibility fallback
+if "CompatSession" not in globals():
     from dataclasses import dataclass as _compat_dataclass
 
     @_compat_dataclass(frozen=True)
@@ -506,8 +504,8 @@ def _compat_verify_password(self, password: str, password_hash: str) -> bool:
     return _compat_hmac.compare_digest(_compat_hash_password(self, password), password_hash)
 
 
-AuthService.create_session = _compat_create_session
-AuthService.rotate_refresh_token = _compat_rotate_refresh_token
-AuthService.decode_token = _compat_decode_token
-AuthService.hash_password = _compat_hash_password
-AuthService.verify_password = _compat_verify_password
+AuthService.create_session = _compat_create_session  # type: ignore[method-assign]
+AuthService.rotate_refresh_token = _compat_rotate_refresh_token  # type: ignore[method-assign]
+AuthService.decode_token = _compat_decode_token  # type: ignore[method-assign]
+AuthService.hash_password = _compat_hash_password  # type: ignore[attr-defined]
+AuthService.verify_password = _compat_verify_password  # type: ignore[attr-defined]

@@ -171,7 +171,7 @@ class ContentFileArtifactImportService:
             items = list(payload.get(collection_key, []))
             if max_records_per_layer is not None:
                 items = items[:max_records_per_layer]
-            for index, item in enumerate(items):
+            for item in items:
                 caps_ref = _caps_ref_for(path_key, item)
                 artifact_hash = stable_json_hash({"scope_id": scope.scope_id, "layer": layer.value, "payload": item})
                 records.append(
@@ -347,7 +347,7 @@ class ContentFileArtifactImportService:
         result = await session.execute(
             select(ContentValidationReport).where(
                 ContentValidationReport.artifact_id == record.artifact_id,
-                ContentValidationReport.passed is True,
+                ContentValidationReport.passed.is_(True),
             )
         )
         return result.scalar_one_or_none() is not None

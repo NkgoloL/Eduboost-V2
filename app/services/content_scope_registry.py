@@ -43,7 +43,7 @@ class ContentScopeRegistry:
         targets = {(target.scope_id, target.caps_ref): target for target in document.targets}
         if len(targets) != len(document.targets):
             raise ContentScopeRegistryError("Duplicate scope_id/caps_ref values in Content Factory coverage registry.")
-        self._validate_targets(targets.values())
+        self._validate_targets(list(targets.values()))
         return targets
 
     def list_scopes(self) -> list[ContentScope]:

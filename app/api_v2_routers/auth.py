@@ -180,7 +180,7 @@ async def list_sessions(current_user: AuthContext = Depends(require_auth_context
 
     The response intentionally exposes only token metadata, never token values.
     """
-    user_id = current_user.user_id if hasattr(current_user, "user_id") else current_user.get("sub")
+    user_id = current_user.user_id if hasattr(current_user, "user_id") else getattr(current_user, "sub", "")
     return {"sessions": await list_user_refresh_sessions(user_id)}
 
 @router.post("/logout", status_code=status.HTTP_204_NO_CONTENT)

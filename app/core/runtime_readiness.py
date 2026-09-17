@@ -82,7 +82,8 @@ def _extract_assignment(module: ast.Module, name: str) -> Any:
                 if isinstance(target, ast.Name) and target.id == name:
                     return ast.literal_eval(node.value)
         if isinstance(node, ast.AnnAssign) and isinstance(node.target, ast.Name) and node.target.id == name:
-            return ast.literal_eval(node.value)
+            if node.value is not None:
+                return ast.literal_eval(node.value)
     raise ValueError(f"{name} assignment not found")
 
 

@@ -319,7 +319,7 @@ def can_access_learner(actor: object, learner: object) -> bool:
     return False
 
 
-def assert_can_access_learner(actor: object, learner: object) -> None:  # noqa: F811 — later def shadows this; kept for backward compat
+def assert_can_access_learner(actor: object, learner: object) -> None:  # type: ignore[no-redef]  # noqa: F811
     """Raise HTTP 403 unless the actor may access the learner."""
     if not can_access_learner(actor, learner):
         from fastapi import HTTPException  # noqa: PLC0415

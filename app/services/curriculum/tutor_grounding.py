@@ -523,10 +523,10 @@ class GroundedTutorService:
 Audience = Literal["learner", "guardian", "educator", "reviewer", "operator", "auditor"]
 
 
-def render_tutor_provenance_for_audience(response: GroundedTutorResponse, audience: Audience) -> dict[str, Any]:
+def render_tutor_provenance_for_audience(response: GroundedTutorResponse, audience: Audience | str) -> dict[str, Any]:
     if audience not in SUPPORTED_AUDIENCES:
         raise TutorGroundingError("unsupported provenance audience")
-    base = {
+    base: dict[str, Any] = {
         "audience": audience,
         "tutor_message_id": response.tutor_message_id,
         "grounding_status": response.trace.grounding_status,

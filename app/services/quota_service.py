@@ -62,6 +62,9 @@ class QuotaService:
             if tier == "premium"
             else getattr(settings, "daily_token_quota_free", getattr(settings, "USER_DAILY_TOKEN_LIMIT", 50000))
         )
+        if self._redis is None:
+            return
+
         key = self._quota_key(guardian_id)
 
         current = await self._redis.incrby(key, estimated_tokens)
@@ -87,6 +90,8 @@ class QuotaService:
 
     async def get_usage(self, guardian_id: str) -> tuple[int, int]:
         """Returns (tokens_used_today, requests_today) from Redis."""
+        if self._redis is None:
+            return 0, 0
         key = self._quota_key(guardian_id)
         raw = await self._redis.get(key)
         tokens = int(raw) if raw else 0
@@ -97,6 +102,8 @@ class QuotaService:
         return tokens, reqs
 
     async def increment_requests(self, guardian_id: str) -> None:
+        if self._redis is None:
+            return
         req_key = self._quota_key(guardian_id) + ":reqs"
         await self._redis.incr(req_key)
         await self._redis.expire(req_key, 86400)

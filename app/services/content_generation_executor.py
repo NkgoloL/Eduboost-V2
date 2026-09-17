@@ -10,7 +10,7 @@ from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models.content_factory import ContentArtifactType, ContentGenerationArtifact, ContentGenerationTask, ContentLayer
+from app.models.content_factory import ContentArtifactStatus, ContentArtifactType, ContentGenerationArtifact, ContentGenerationTask, ContentLayer
 from app.services.content_factory import ContentFactoryService, stable_json_hash
 from app.services.content_generation.diagnostic_generator import DiagnosticGenerator
 from app.services.content_generation.lesson_generator import LessonGenerator
@@ -149,16 +149,7 @@ class ContentGenerationExecutor:
             # If the generator reported pre-validation errors, mark the persisted
             # artifact as validation_failed so it is blocked from review.
             if pre_validation_errors:
-                try:
-                    artifact.status = "validation_failed"
-                except Exception:
-                    # Best-effort: if artifact object uses an enum, set to enum value.
-                    try:
-                        from app.models.content_factory import ContentArtifactStatus
-
-                        artifact.status = ContentArtifactStatus.VALIDATION_FAILED
-                    except Exception:  # best-effort probe, cannot fail-close
-                        pass
+                artifact.status = ContentArtifactStatus.VALIDATION_FAILED
             artifact_ids.append(artifact.artifact_id)
             existing_hashes.add(artifact.artifact_hash)
 
@@ -213,7 +204,7 @@ class ContentGenerationExecutor:
     async def _call_provider(self, provider: Any, task: ContentGenerationTask, chunks: list[Any]) -> list[dict[str, Any]]:
         metadata = task.task_metadata or {}
         scope = self.scope_registry.get_scope(task.scope_id)
-        base = {
+        base: dict[str, Any] = {
             "scope_id": task.scope_id,
             "caps_ref": task.caps_ref or "",
             "grade": int(metadata.get("grade") or scope.grade),

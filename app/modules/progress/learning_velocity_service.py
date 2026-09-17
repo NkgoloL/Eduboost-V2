@@ -10,8 +10,10 @@ class LearningVelocityService:
         if len(ordered) < 2:
             return 0.0
         first, last = ordered[0], ordered[-1]
-        days = max(1.0, (getattr(last, "snapshot_at") - getattr(first, "snapshot_at")).total_seconds() / 86400)
-        delta = float(getattr(last, "mastery_score")) - float(getattr(first, "mastery_score"))
+        first_at = getattr(first, "snapshot_at", getattr(first, "created_at", datetime.min))
+        last_at = getattr(last, "snapshot_at", getattr(last, "created_at", datetime.min))
+        days = max(1.0, (last_at - first_at).total_seconds() / 86400)
+        delta = float(getattr(last, "mastery_score", 0.0)) - float(getattr(first, "mastery_score", 0.0))
         return round(delta / (days / 7.0), 4)
 
     def compute_risk_signal(self, mastery_score: float, days_since_last_activity: int, velocity: float) -> str:

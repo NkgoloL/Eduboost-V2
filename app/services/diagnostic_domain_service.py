@@ -184,7 +184,7 @@ class DiagnosticDomainService:
 
     async def get_next_session_item(
         self, session_id: str | UUID, items: list[object] | None = None
-    ) -> object | None:
+    ) -> Any | None:
         service = self.get_session_service(recovery_only=True)
         return await service.get_next_item(session_id, items)
 

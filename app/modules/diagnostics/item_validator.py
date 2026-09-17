@@ -136,7 +136,7 @@ class ItemValidator:
     def __init__(self, topic_map: Optional[dict] = None) -> None:
         self._topic_map = topic_map or {}
         # Flatten CAPS refs for O(1) lookup
-        self._valid_caps_refs = set()
+        self._valid_caps_refs: set[str] = set()
         if "topics" in self._topic_map:
             # Handle both list and dict formats for robustness
             topics = self._topic_map["topics"]
@@ -316,11 +316,11 @@ class ItemValidator:
                 )
             try:
                 value = float(value)
-            except (TypeError, ValueError):
+            except (TypeError, ValueError) as err:
                 raise ValidationError(
                     "irt_params",
                     f"IRT parameter '{param}' is not numeric: {value!r}",
-                )
+                ) from err
             if not (lo <= value <= hi):
                 raise ValidationError(
                     "irt_params",

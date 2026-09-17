@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from typing import Any
 from uuid import UUID
+from typing import Any
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from pydantic import BaseModel, Field
@@ -37,7 +37,7 @@ async def bias_review_queue(
 ):
     _require_admin(current_user)
     refs = [caps_ref] if caps_ref else []
-    items = []
+    items: list[Any] = []
     for ref in refs:
         items.extend(await service.repo.list_by_caps_ref(ref, limit=limit))
     flagged = [

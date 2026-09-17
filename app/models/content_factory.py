@@ -26,7 +26,7 @@ from sqlalchemy import (
     func,
 )
 from sqlalchemy.dialects.postgresql import JSONB, UUID
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.orm import Mapped, mapped_column, relationship, synonym
 
 from app.core.database import Base
 
@@ -496,12 +496,20 @@ class ContentPromotionEvent(Base):
     __tablename__ = "content_promotion_events"
 
     promotion_event_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4, server_default=func.gen_random_uuid())
-    artifact_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("content_generation_artifacts.artifact_id"), nullable=False)
-    promoted_table: Mapped[str] = mapped_column(String(80), nullable=False)
-    promoted_record_id: Mapped[str] = mapped_column(String(120), nullable=False)
+    artifact_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("content_generation_artifacts.artifact_id"), nullable=True)
+    promoted_table: Mapped[str | None] = mapped_column(String(80), nullable=True, default="")
+    promoted_record_id: Mapped[str | None] = mapped_column(String(120), nullable=True, default="")
     promoted_by: Mapped[str | None] = mapped_column(String(80), nullable=True)
     promoted_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
     rollback_metadata: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False, default=dict)
+    scope_id: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    status: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    updated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True, server_default=func.now(), onupdate=func.now())
+
+    # ORM synonyms and property mappings for executor compatibility
+    event_id = synonym("promotion_event_id")
+    summary = synonym("rollback_metadata")
+    created_at = synonym("promoted_at")
 
 
 class LessonBank(Base):

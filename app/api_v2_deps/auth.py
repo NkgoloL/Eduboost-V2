@@ -159,12 +159,12 @@ def _claims_to_auth_context(claims: dict[str, Any]) -> AuthContext:
     token_type_str = claims.get("type", "access")
     try:
         token_type = TokenType(token_type_str)
-    except ValueError:
+    except ValueError as err:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail=f"Invalid token type: {token_type_str}",
             headers={"WWW-Authenticate": "Bearer"},
-        )
+        ) from err
 
     # Parse roles
     roles = _parse_roles(claims.get("role"))

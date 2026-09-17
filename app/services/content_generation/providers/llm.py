@@ -161,6 +161,7 @@ def _json_items(text: str, *, key: str) -> list[dict[str, Any]]:
         cleaned = cleaned.split("\n", 1)[1]
         cleaned = cleaned.rsplit("```", 1)[0]
     payload = json.loads(cleaned)
+    values: Any = None
     if isinstance(payload, list):
         values = payload
     elif isinstance(payload, dict):

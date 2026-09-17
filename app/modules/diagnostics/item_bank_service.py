@@ -220,7 +220,7 @@ class ItemBankService:
 
         return await self.repo.update_review_status(
             item_id=item_id,
-            new_status=new_status,
+            new_status=str(new_status),
             reviewer_id=reviewer_id,
             quality_score=quality_score,
         )

@@ -33,6 +33,34 @@ class LessonRepository:
         await db.refresh(lesson)
         return lesson
 
+    async def create_lesson(self, lesson: Any, db: AsyncSession | None = None) -> Lesson:
+        data = lesson.model_dump() if hasattr(lesson, "model_dump") else dict(lesson)
+        session = self._db(db)
+        lesson_obj = Lesson(
+            id=str(data.get("lesson_id") or UUID(int=0)),
+            grade=data.get("grade", 0),
+            subject=data.get("subject", ""),
+            topic=data.get("topic", ""),
+            caps_ref=data.get("caps_ref", ""),
+            content=data.get("explanation", ""),
+            explanation=data.get("explanation", ""),
+            worked_examples=data.get("worked_examples"),
+            practice_questions=data.get("practice_questions"),
+            answer_key=data.get("answer_key"),
+            answer_key_verified=data.get("answer_key_verified", False),
+            quality_score=data.get("quality_score", 0.0),
+            review_status=data.get("review_status", "ai_generated"),
+            llm_provider=data.get("provider", "unknown"),
+            model_version=data.get("model_version"),
+            generation_latency_ms=data.get("generation_latency_ms"),
+            token_usage=data.get("token_usage"),
+            prompt_template_version=data.get("prompt_template_version"),
+            variant_type=data.get("variant_type", "standard"),
+        )
+        session.add(lesson_obj)
+        await session.flush()
+        return lesson_obj
+
     async def get(self, lesson_id: str | UUID, db: AsyncSession | None = None) -> Lesson | None:
         result = await self._db(db).execute(select(Lesson).where(Lesson.id == str(lesson_id)))
         return result.scalar_one_or_none()

@@ -4,7 +4,7 @@ import inspect
 import uuid
 from dataclasses import dataclass
 from datetime import datetime, timezone
-from typing import Any
+from typing import Any, overload
 
 from app.domain.consent import ConsentRecord, ConsentState
 
@@ -34,7 +34,13 @@ def _coerce_uuid(value: Any, *, salt: str) -> uuid.UUID:
         return uuid.uuid5(uuid.NAMESPACE_URL, f"eduboost-popia-{salt}-{text}")
 
 
-def _coerce_datetime(value: Any, *, fallback: datetime) -> datetime:
+@overload
+def _coerce_datetime(value: Any, *, fallback: datetime) -> datetime: ...
+@overload
+def _coerce_datetime(value: Any, *, fallback: None) -> datetime | None: ...
+@overload
+def _coerce_datetime(value: Any, *, fallback: datetime | None) -> datetime | None: ...
+def _coerce_datetime(value: Any, *, fallback: datetime | None) -> datetime | None:
     if isinstance(value, datetime):
         return value
     return fallback
@@ -208,7 +214,7 @@ class POPIAConsentLifecycleAdapter:
     def _merge_positional(args: tuple[Any, ...], kwargs: dict[str, Any]) -> dict[str, Any]:
         names = ("guardian_id", "learner_id", "consent_version")
         merged = dict(kwargs)
-        for name, value in zip(names, args):
+        for name, value in zip(names, args, strict=False):
             merged.setdefault(name, value)
         return merged
 

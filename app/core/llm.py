@@ -536,8 +536,9 @@ class ExecutiveService:
         )
         for block in response.content:
             if getattr(block, "type", "") == "tool_use" and getattr(block, "name", "") == "submit_lesson":
-                return json.dumps(block.input)
-        return response.content[0].text if response.content else "{}"
+                return json.dumps(getattr(block, "input", {}))
+        first_block = response.content[0] if response.content else None
+        return getattr(first_block, "text", "{}") if first_block else "{}"
 
     async def generate_progress_summary(self, pseudonym_id: str, gaps: list[str], lessons_done: int) -> str:
         """Generate a parent-facing AI progress summary (no PII in prompt)."""
@@ -690,7 +691,7 @@ def _extract_labelled_sections(text: str) -> dict[str, str]:
     positions.sort()
 
     sections: dict[str, str] = {}
-    for index, (start, label, content_start) in enumerate(positions):
+    for index, (_start, label, content_start) in enumerate(positions):
         end = positions[index + 1][0] if index + 1 < len(positions) else len(text)
         value = text[content_start:end].strip(" \n\r\t-*0123456789.")
         if value:

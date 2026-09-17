@@ -13,6 +13,19 @@ from app.models import KnowledgeGap
 class KnowledgeGapRepository(BaseRepository[KnowledgeGap]):
     model = KnowledgeGap
 
+    def __init__(self, db: AsyncSession | None = None) -> None:
+        self.db = db
+
+    async def get_active_gaps(
+        self,
+        learner_id: str | UUID,
+        db: AsyncSession | None = None,
+    ) -> list[KnowledgeGap]:
+        target_db = db or self.db
+        if target_db is None:
+            raise ValueError("AsyncSession must be provided to get_active_gaps")
+        return await self.get_active_for_learner(learner_id, target_db)
+
     async def get_active_for_learner(
         self,
         learner_id: str | UUID,

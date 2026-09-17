@@ -36,8 +36,8 @@ def _slug(value: str) -> str:
 
 _CAPS_TOPICS: tuple[CAPSTopic, ...] = (
     CAPSTopic("foundation", 0, "mathematics", 1, "counting", "numbers 1 to 10", (), ("Counts objects reliably",)),
-    CAPSTopic("foundation", 0, "mathematics", 2, "patterns", "copy and extend patterns", ("counting"), ("Extends simple repeated patterns",)),
-    CAPSTopic("foundation", 1, "mathematics", 1, "number sense", "counting and comparing", ("counting"), ("Compares small whole numbers",)),
+    CAPSTopic("foundation", 0, "mathematics", 2, "patterns", "copy and extend patterns", ("counting",), ("Extends simple repeated patterns",)),
+    CAPSTopic("foundation", 1, "mathematics", 1, "number sense", "counting and comparing", ("counting",), ("Compares small whole numbers",)),
     CAPSTopic("foundation", 2, "mathematics", 2, "place value", "tens and units", ("number sense",), ("Uses tens and units to represent numbers",)),
     CAPSTopic("foundation", 3, "mathematics", 2, "fractions", "halves quarters thirds", ("division",), ("Identifies and compares common fractions",)),
     CAPSTopic("intermediate", 4, "mathematics", 1, "fractions", "equivalent fractions", ("division",), ("Recognises and explains equivalent fractions",)),
@@ -49,7 +49,7 @@ _CAPS_TOPICS: tuple[CAPSTopic, ...] = (
     CAPSTopic("intermediate", 6, "mathematics", 1, "ratios", "ratio language", ("fractions",), ("Uses ratio notation and language",)),
     CAPSTopic("senior", 7, "mathematics", 1, "algebra", "expressions", ("number sentences",), ("Writes and simplifies algebraic expressions",)),
     CAPSTopic("senior", 7, "mathematics", 2, "integers", "operations with integers", ("whole number operations",), ("Calculates with positive and negative integers",)),
-    CAPSTopic("intermediate", 4, "english", 1, "comprehension", "main idea", ("reading"), ("Identifies main ideas and supporting detail",)),
+    CAPSTopic("intermediate", 4, "english", 1, "comprehension", "main idea", ("reading",), ("Identifies main ideas and supporting detail",)),
     CAPSTopic("intermediate", 5, "english", 2, "grammar", "parts of speech", ("sentence building",), ("Uses nouns, verbs, adjectives and adverbs correctly",)),
     CAPSTopic("intermediate", 6, "natural sciences and technology", 1, "photosynthesis", "plants make food", ("plants",), ("Explains the basic process of photosynthesis",)),
     CAPSTopic("intermediate", 4, "social sciences", 2, "map skills", "symbols and keys", (), ("Uses symbols and keys on maps",)),

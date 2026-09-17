@@ -17,7 +17,7 @@ jwt = _pyjwt
 JWTError = _pyjwt.PyJWTError
 
 
-def decode_options(options: Mapping[str, Any] | None = None) -> dict[str, Any]:
+def decode_options(options: Mapping[str, Any] | None = None) -> Any:
     """Return PyJWT decode options that preserve EduBoost's claim policy.
 
     EduBoost validates optional issuer/audience claims in ``AuthContext`` so

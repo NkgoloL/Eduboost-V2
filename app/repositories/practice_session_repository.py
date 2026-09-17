@@ -161,4 +161,4 @@ class PracticeSessionRepository:
                 PracticeSession.expires_at > datetime.now(timezone.utc),
             )
         )
-        return result.scalars().all()
+        return list(result.scalars().all())

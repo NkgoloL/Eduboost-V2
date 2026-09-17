@@ -167,7 +167,7 @@ class AnthropicProvider(LLMProvider):
             raise ProviderError(f"Anthropic request failed: {exc}", self.name) from exc
 
         latency_ms = (time.monotonic() - t0) * 1000
-        text = msg.content[0].text if msg.content else ""
+        text = getattr(msg.content[0], "text", "") if msg.content else ""
         usage = TokenUsage(
             prompt_tokens=msg.usage.input_tokens,
             completion_tokens=msg.usage.output_tokens,
@@ -491,7 +491,7 @@ class ProviderRouter:
                     breaker.record_failure()
                     raise
                 except TimeoutError:
-                    error = ProviderTimeoutError(
+                    error: ProviderError = ProviderTimeoutError(
                         f"{provider.name} timed out after {self._request_timeout}s",
                         provider.name,
                     )

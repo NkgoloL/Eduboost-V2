@@ -177,8 +177,8 @@ class MasteryEngine:
         if raw_conf is not None:
             try:
                 numeric_conf = float(raw_conf)
-            except (ValueError, TypeError):
-                raise ValueError(f"Invalid confidence value: {raw_conf}")
+            except (ValueError, TypeError) as err:
+                raise ValueError(f"Invalid confidence value: {raw_conf}") from err
 
             if numeric_conf > (self.max_confidence + 1e-6):
                 raise MasteryBoundError(

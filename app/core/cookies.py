@@ -13,6 +13,8 @@ from __future__ import annotations
 
 import os
 
+from typing import Literal, cast
+
 from fastapi import Response
 
 # ---------------------------------------------------------------------------
@@ -35,7 +37,7 @@ REFRESH_TOKEN_COOKIE_NAME = "refresh_token"
 COOKIE_PATH = "/api/auth"          # scope to auth endpoints only (§3.4 P0)
 COOKIE_DOMAIN = os.getenv("COOKIE_DOMAIN") or None          # None = current domain
 COOKIE_SECURE = os.getenv("COOKIE_SECURE", "true").lower() != "false"
-COOKIE_SAMESITE: str = os.getenv("COOKIE_SAMESITE", "lax")  # "lax" | "strict" | "none"
+COOKIE_SAMESITE: Literal["lax", "strict", "none"] = cast(Literal["lax", "strict", "none"], os.getenv("COOKIE_SAMESITE", "lax"))
 
 REFRESH_TOKEN_MAX_AGE_SECONDS = 7 * 24 * 3600  # mirrors REFRESH_TOKEN_TTL_DAYS
 
