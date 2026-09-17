@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { LearnerProvider } from "@/context/LearnerContext";
 import { SkipLink } from "@/components/accessibility/A11y";
@@ -9,16 +8,6 @@ import { NetworkStatus } from "@/components/eduboost/NetworkStatus";
 import { LowDataMode } from "@/components/eduboost/LowDataMode";
 import { ServiceWorkerRegistration } from "@/components/eduboost/ServiceWorkerRegistration";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: {
@@ -70,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background text-foreground`}
+        className="font-sans antialiased min-h-screen bg-background text-foreground"
         data-theme="night"
         suppressHydrationWarning
       >
