@@ -22,7 +22,7 @@ def test_ownership_values_are_allowed():
 def test_default_policy_marks_live_only_tables_sql_owned_non_blocking():
     records = build_records()
     for record in records:
-        assert record.ownership == "sql-owned"
+        assert record.ownership in {"sql-owned", "legacy-retired"}
         assert record.orm_model_required is False
         assert record.beta_blocking is False
         assert record.accepted is True

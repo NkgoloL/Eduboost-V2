@@ -85,14 +85,12 @@ def preflight(database_url: str, allow_non_test: bool = False, allow_placeholder
     return failures
 
 
-def build_commands(ignore_consolidation: bool = False) -> list[tuple[str, list[str]]]:
+def build_commands() -> list[tuple[str, list[str]]]:
     commands = [
         ("migration_evidence_capture", [sys.executable, "scripts/capture_migration_evidence.py"]),
         ("migration_evidence_check", [sys.executable, "scripts/capture_migration_evidence.py", "--validate", "--require-pass"]),
     ]
     drift_cmd = [sys.executable, "scripts/compare_orm_tables_to_database.py", "--require-db", "--fail-on-drift"]
-    if ignore_consolidation:
-        drift_cmd.append("--ignore-consolidation-tables")
     commands.append(("schema_drift_db", drift_cmd))
     return commands
 
@@ -115,15 +113,15 @@ def write_outputs(payload: dict[str, object], json_path: Path = DEFAULT_OUTPUT, 
     markdown_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def run_proof(database_url: str, *, dry_run: bool = False, allow_non_test: bool = False, allow_placeholder_credentials: bool = False, ignore_consolidation: bool = False) -> dict[str, object]:
+def run_proof(database_url: str, *, dry_run: bool = False, allow_non_test: bool = False, allow_placeholder_credentials: bool = False) -> dict[str, object]:
     failures = preflight(database_url, allow_non_test, allow_placeholder_credentials)
     if failures:
         raise SystemExit("Schema drift disposable proof preflight failed: " + "; ".join(failures))
 
     if dry_run:
-        results = [CommandResult(name, command, 0, "dry-run", True) for name, command in build_commands(ignore_consolidation)]
+        results = [CommandResult(name, command, 0, "dry-run", True) for name, command in build_commands()]
     else:
-        results = [_run(name, command) for name, command in build_commands(ignore_consolidation)]
+        results = [_run(name, command) for name, command in build_commands()]
 
     return {
         "captured_at": _utc_now(),
@@ -157,7 +155,6 @@ def main() -> int:
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--allow-non-test-db", action="store_true")
     parser.add_argument("--allow-placeholder-credentials", action="store_true")
-    parser.add_argument("--ignore-consolidation-tables", action="store_true")
     parser.add_argument("--validate", action="store_true")
     parser.add_argument("--require-pass", action="store_true")
     args = parser.parse_args()
@@ -170,7 +167,6 @@ def main() -> int:
         dry_run=args.dry_run,
         allow_non_test=args.allow_non_test_db,
         allow_placeholder_credentials=args.allow_placeholder_credentials,
-        ignore_consolidation=args.ignore_consolidation_tables,
     )
     write_outputs(payload)
     print(json.dumps(payload, indent=2, sort_keys=True))
