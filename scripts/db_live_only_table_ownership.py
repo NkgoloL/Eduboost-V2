@@ -217,7 +217,34 @@ def write_status() -> DbLiveOnlyTableOwnershipStatus:
     return result
 
 
+DEFAULT_FRONTMATTER = """---
+title: "Release — DB Live-Only Table Ownership Status"
+status: "active"
+owner: "release"
+reviewers: ['release', 'engineering']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-17"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
+"""
+
+
 def _write_markdown(status: DbLiveOnlyTableOwnershipStatus) -> None:
+    frontmatter = ""
+    if STATUS_MD.exists():
+        existing_text = STATUS_MD.read_text(encoding="utf-8")
+        if existing_text.startswith("---\n"):
+            end_match = re.search(r"\n---\s*\n", existing_text[4:])
+            if end_match:
+                frontmatter = existing_text[: 4 + end_match.end()]
+    if not frontmatter:
+        frontmatter = DEFAULT_FRONTMATTER
+
     lines = [
         "# DB Live-Only Table Ownership Status",
         "",
@@ -253,6 +280,7 @@ def _write_markdown(status: DbLiveOnlyTableOwnershipStatus) -> None:
             "## No false-closure rules",
             "",
             "- `sql-owned` means the table is documented as live SQL-owned and monitored, not ORM-managed.",
+            "- `legacy-retired` means the table was dropped via reconciliation migration and is no longer present.",
             "- This status does not add ORM models.",
             "- This status does not drop, rename, migrate, or backfill live tables.",
             "- This status does not prove audit writes, backup/restore/rollback, or legal approval.",
@@ -261,7 +289,7 @@ def _write_markdown(status: DbLiveOnlyTableOwnershipStatus) -> None:
         ]
     )
 
-    STATUS_MD.write_text("\n".join(lines), encoding="utf-8")
+    STATUS_MD.write_text(frontmatter + "\n".join(lines), encoding="utf-8")
 
 
 if __name__ == "__main__":
