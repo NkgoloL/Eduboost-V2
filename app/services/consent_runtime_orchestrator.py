@@ -11,16 +11,16 @@ import warnings
 from dataclasses import dataclass
 from typing import Any
 
-warnings.warn(
-    "app.services.consent_runtime_orchestrator is deprecated; use app.modules.consent.service.ConsentService instead.",
-    DeprecationWarning,
-    stacklevel=2,
-)
-
 from app.services.consent_runtime_compatibility import (
     ConsentRuntimeOperation,
     normalize_consent_runtime_operation,
     probe_known_consent_surfaces,
+)
+
+warnings.warn(
+    "app.services.consent_runtime_orchestrator is deprecated; use app.modules.consent.service.ConsentService instead.",
+    DeprecationWarning,
+    stacklevel=2,
 )
 
 
