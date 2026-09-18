@@ -9,8 +9,15 @@ from __future__ import annotations
 
 import importlib
 import inspect
+import warnings
 from dataclasses import dataclass, field
 from typing import Any
+
+warnings.warn(
+    "app.services.consent_runtime_compatibility is deprecated; use app.modules.consent.service.ConsentService instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 CANONICAL_CONSENT_SERVICE = "app.modules.consent.service.ConsentService"
 CANONICAL_POPIA_SERVICE = "app.services.popia_service.POPIADataRightsService"

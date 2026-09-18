@@ -1,5 +1,13 @@
+"""Transitional consent runtime orchestrator.
+
+DEPRECATED / TRANSITIONAL ORCHESTRATOR:
+Authoritative canonical paths:
+  - Consent Lifecycle: `app.modules.consent.service.ConsentService`
+  - POPIA DSR Rights: `app.services.popia_service.POPIADataRightsService`
+"""
 from __future__ import annotations
 
+import warnings
 from dataclasses import dataclass
 from typing import Any
 
@@ -7,6 +15,12 @@ from app.services.consent_runtime_compatibility import (
     ConsentRuntimeOperation,
     normalize_consent_runtime_operation,
     probe_known_consent_surfaces,
+)
+
+warnings.warn(
+    "app.services.consent_runtime_orchestrator is deprecated; use app.modules.consent.service.ConsentService instead.",
+    DeprecationWarning,
+    stacklevel=2,
 )
 
 

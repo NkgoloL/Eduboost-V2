@@ -1,12 +1,27 @@
+"""Transitional POPIA consent lifecycle adapter.
+
+DEPRECATED / TRANSITIONAL ADAPTER:
+Authoritative canonical paths:
+  - Consent Lifecycle: `app.modules.consent.service.ConsentService`
+  - POPIA DSR Rights: `app.services.popia_service.POPIADataRightsService`
+"""
 from __future__ import annotations
 
 import inspect
 import uuid
+import warnings
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any, overload
 
 from app.domain.consent import ConsentRecord, ConsentState
+
+warnings.warn(
+    "app.services.popia_consent_lifecycle_adapter is deprecated; use app.modules.consent.service.ConsentService "
+    "or app.services.popia_service.POPIADataRightsService instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 
 async def _maybe_await(value: Any) -> Any:

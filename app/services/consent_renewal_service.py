@@ -1,9 +1,18 @@
-"""
-Consent Renewal Reminder Service — Task #24
-============================================
+"""Consent Renewal Reminder Service (ARQ Worker / Notification Path).
+======================================================================
 POPIA §18 requires guardians to renew parental consent annually.
 This service queries for ParentalConsent records expiring within 30 days
 and dispatches SendGrid reminder emails with a renewal link.
+
+ARCHITECTURAL BOUNDARY & CANONICAL SERVICE NOTICE:
+This module is exclusively a background notification dispatch worker (ARQ worker job)
+for querying expiring parental consents and sending email reminders under POPIA §18.
+
+It is NOT an authoritative consent lifecycle mutation service.
+All domain consent lifecycle operations (granting, revoking, renewing, or querying
+authoritative state) MUST be routed through:
+    Canonical Domain Service: `app.modules.consent.service.ConsentService`
+    Canonical POPIA DSR Rights: `app.services.popia_service.POPIADataRightsService`
 
 Designed to run as:
   - A durable ARQ worker job

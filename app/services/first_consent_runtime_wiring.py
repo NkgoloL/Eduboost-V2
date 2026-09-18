@@ -8,11 +8,18 @@ Authoritative canonical paths:
 from __future__ import annotations
 
 import json
+import warnings
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 from app.services.consent_runtime_orchestrator import build_consent_runtime_audit_payload
+
+warnings.warn(
+    "app.services.first_consent_runtime_wiring is deprecated; use app.modules.consent.service.ConsentService instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]

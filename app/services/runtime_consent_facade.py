@@ -6,10 +6,18 @@ Authoritative canonical paths:
   - POPIA DSR Rights: `app.services.popia_service.POPIADataRightsService`
 """
 from __future__ import annotations
+import warnings
 from dataclasses import dataclass
 from typing import Any
+
 from app.services.consent_runtime_orchestrator import build_consent_runtime_audit_payload
 from app.services.runtime_audit_facade import record_runtime_audit_event
+
+warnings.warn(
+    "app.services.runtime_consent_facade is deprecated; use app.modules.consent.service.ConsentService instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 @dataclass(frozen=True)
 class ConsentRuntimeEmission:
