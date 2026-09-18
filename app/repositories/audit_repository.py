@@ -15,7 +15,6 @@ from typing import Any, Optional
 
 import asyncpg
 from sqlalchemy import select
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.consent import AuditEventType
 from app.models import AuditEvent

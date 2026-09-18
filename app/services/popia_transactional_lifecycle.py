@@ -1,9 +1,22 @@
+"""Transitional POPIA transactional lifecycle wrapper.
+
+DEPRECATED / TRANSITIONAL LIFECYCLE:
+Authoritative canonical paths:
+  - Consent Lifecycle: `app.modules.consent.service.ConsentService`
+  - POPIA DSR Rights: `app.services.popia_service.POPIADataRightsService`
+"""
 from __future__ import annotations
 
 import inspect
+import warnings
 from dataclasses import dataclass
 from typing import Any, AsyncContextManager, Callable
 
+warnings.warn(
+    "app.services.popia_transactional_lifecycle is deprecated; use app.services.popia_service.POPIADataRightsService instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 class POPIATransactionError(RuntimeError):
     """Raised when a POPIA lifecycle transaction cannot be completed."""

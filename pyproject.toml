@@ -38,12 +38,8 @@ ignore = [
     "E501",  # Line too long
     "E701",  # Multiple statements on one line (colon)
     "E702",  # Multiple statements on one line (semicolon)
-    "E722",  # Do not use bare `except`
     "E741",  # Ambiguous variable name
-    "F401",  # Imported but unused
     "F402",  # Import shadowed by loop var
-    "F811",  # Redefinition of name
-    "F841",  # Local variable is assigned to but never used
     "W291",  # Trailing whitespace
     "W292",  # No newline at end of file
     "W293",  # Blank line contains whitespace
@@ -51,5 +47,5 @@ ignore = [
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
-"tests/**" = ["B017", "B009", "B010", "B007", "B905", "F401", "F841"]
-"scripts/**" = ["B007", "B008", "B009", "B010", "B904", "B905", "F401", "F841"]
+"tests/**" = ["B017", "B009", "B010", "B007", "B905", "F401", "F841", "F811"]
+"scripts/**" = ["B007", "B008", "B009", "B010", "B904", "B905", "F401", "F841", "F811"]

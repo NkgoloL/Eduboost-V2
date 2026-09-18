@@ -9,8 +9,16 @@ This module is maintained as an edge-normalizer and compatibility adapter for le
 """
 from __future__ import annotations
 
+import warnings
 from dataclasses import dataclass, field
 from typing import Any
+
+warnings.warn(
+    "app.services.consent_compat is deprecated; use app.modules.consent.service.ConsentService "
+    "or app.services.popia_service.POPIADataRightsService instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 
 READ_CONSENT_ACTIONS = {
