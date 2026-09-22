@@ -8,10 +8,8 @@ epistemic uncertainty is maintained under staleness.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
 from enum import Enum
-import math
-from typing import Any, Dict, List, Optional, Sequence, Set
+from typing import Any, Dict, List, Optional, Sequence
 
 
 class TransitionViolationType(str, Enum):

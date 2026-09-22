@@ -6,8 +6,7 @@ mastery transitions, and validation runs.
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
-import uuid
+from typing import List, Optional
 
 from sqlalchemy import desc, select
 from sqlalchemy.ext.asyncio import AsyncSession

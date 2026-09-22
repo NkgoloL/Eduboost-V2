@@ -7,9 +7,9 @@ recommendations to protect learner emotional and cognitive well-being.
 
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 from enum import Enum
-from typing import Any, Dict, List, Optional, Sequence
+from typing import Any, Dict, Sequence
 
 
 class SafetySeverity(str, Enum):

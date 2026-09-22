@@ -8,9 +8,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import math
-from typing import Any, Dict, List, Sequence, Tuple
+from typing import Any, Dict, Sequence
 
-import numpy as np
 from scipy import stats
 from sklearn import metrics as sk_metrics
 
@@ -100,10 +99,10 @@ def evaluate_classification_risk(
         raise ValueError("Predicted and true mastery sequences must be non-empty and of identical length.")
 
     n = len(predicted_mastery)
-    tp = sum(1 for p, t in zip(predicted_mastery, true_mastery) if p and t)
-    fp = sum(1 for p, t in zip(predicted_mastery, true_mastery) if p and not t)
-    tn = sum(1 for p, t in zip(predicted_mastery, true_mastery) if not p and not t)
-    fn = sum(1 for p, t in zip(predicted_mastery, true_mastery) if not p and t)
+    tp = sum(1 for p, t in zip(predicted_mastery, true_mastery, strict=False) if p and t)
+    fp = sum(1 for p, t in zip(predicted_mastery, true_mastery, strict=False) if p and not t)
+    tn = sum(1 for p, t in zip(predicted_mastery, true_mastery, strict=False) if not p and not t)
+    fn = sum(1 for p, t in zip(predicted_mastery, true_mastery, strict=False) if not p and t)
 
     # FMR = FP / (TN + FP) [False Positive Rate / False Mastery Rate]
     actual_negatives = tn + fp

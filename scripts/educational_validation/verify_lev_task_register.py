@@ -15,7 +15,7 @@ def main():
       if len(set(ids))!=len(ids):errors.append('duplicate task IDs')
       known=set(ids); statuses=set(d.get('allowed_statuses',[]))
       for t in tasks:
-        cid=t.get('canonical_id');
+        cid=t.get('canonical_id')
         if cid!='LEV-'+t.get('id',''):errors.append(f'bad canonical id: {cid}')
         if t.get('status') not in statuses:errors.append(f"{cid}: bad status {t.get('status')}")
         for dep in t.get('depends_on',[]):
