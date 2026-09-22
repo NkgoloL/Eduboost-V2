@@ -2780,7 +2780,7 @@
       "phase": "LEV-0",
       "action": "Pre-specify calibration estimands, time horizons, outcome definitions, minimum sample sizes and acceptable uncertainty.",
       "required_evidence": "Approved statistical analysis plan.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -2826,7 +2826,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -2839,7 +2839,7 @@
       "phase": "LEV-1",
       "action": "Define independence rules preventing validation items, labels or later outcomes from leaking into training or adaptation.",
       "required_evidence": "Leakage-control specification and tests.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -2884,7 +2884,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -2897,7 +2897,7 @@
       "phase": "LEV-1",
       "action": "Build baseline, term and concept-level independent assessment administrations with standardised conditions.",
       "required_evidence": "Administration manuals and secure form schedule.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P0",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -2944,7 +2944,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "04.04",
@@ -2955,7 +2957,7 @@
       "phase": "LEV-2",
       "action": "Collect shadow-mode predictions before independent outcomes are observed.",
       "required_evidence": "Timestamped prediction snapshots with no retrospective replacement.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -3002,7 +3004,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "04.05",
@@ -3013,7 +3017,7 @@
       "phase": "LEV-2",
       "action": "Assess data completeness, representativeness, missingness and outcome quality before modelling.",
       "required_evidence": "Data-quality gate passed.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P1",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -3058,7 +3062,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -3071,7 +3075,7 @@
       "phase": "LEV-2",
       "action": "Compare the production model with simple baselines such as last response, rolling accuracy, IRT-only and non-temporal models.",
       "required_evidence": "Benchmark report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -3118,7 +3122,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "04.07",
@@ -3129,7 +3135,7 @@
       "phase": "LEV-2",
       "action": "Estimate calibration intercept, calibration slope, reliability curves, Brier score, log loss and uncertainty by concept.",
       "required_evidence": "Calibration report with confidence intervals.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -3176,7 +3182,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "04.08",
@@ -3187,7 +3195,7 @@
       "phase": "LEV-2",
       "action": "Evaluate discrimination and ranking metrics without treating them as substitutes for calibration.",
       "required_evidence": "AUC/PR results reported alongside calibration.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -3234,7 +3242,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "04.09",
@@ -3245,7 +3255,7 @@
       "phase": "LEV-3",
       "action": "Evaluate calibration by evidence count, item exposure, time since evidence, assistance level and concept difficulty.",
       "required_evidence": "Conditional calibration analysis.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -3292,7 +3302,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "04.10",
@@ -3303,7 +3315,7 @@
       "phase": "LEV-3",
       "action": "Evaluate calibration on unseen learners, unseen items and later time windows.",
       "required_evidence": "Out-of-sample report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -3350,7 +3362,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "04.11",
@@ -3361,7 +3375,7 @@
       "phase": "LEV-3",
       "action": "Evaluate subgroup calibration and differential prediction for approved contexts.",
       "required_evidence": "Fairness-calibration report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -3408,7 +3422,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "04.12",
@@ -3419,7 +3435,7 @@
       "phase": "LEV-3",
       "action": "Develop and test recalibration methods without altering the underlying construct definition.",
       "required_evidence": "Recalibration protocol and holdout results.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -3466,7 +3482,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "04.13",
@@ -3477,7 +3495,7 @@
       "phase": "LEV-3",
       "action": "Set model release thresholds, uncertainty displays and fallback behaviour when calibration fails.",
       "required_evidence": "Operational gate configuration.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -3524,7 +3542,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "04.14",
@@ -3535,7 +3555,7 @@
       "phase": "LEV-3",
       "action": "Obtain independent psychometric review of the calibration evidence and limitations.",
       "required_evidence": "Signed review decision.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -3582,7 +3602,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "04.15",
@@ -3593,7 +3615,7 @@
       "phase": "LEV-6",
       "action": "Automate recurring calibration monitoring against later independent outcomes.",
       "required_evidence": "Production calibration dashboard and alerting.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -3640,7 +3662,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "05.01",
@@ -3651,7 +3675,7 @@
       "phase": "LEV-0",
       "action": "Define false mastery and false non-mastery for immediate, delayed and transfer outcomes.",
       "required_evidence": "Approved classification definitions.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -3696,7 +3720,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -3709,7 +3733,7 @@
       "phase": "LEV-0",
       "action": "Document the educational cost of each error type for each intended decision.",
       "required_evidence": "Decision-specific error-cost matrix.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -3753,7 +3777,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -3766,7 +3790,7 @@
       "phase": "LEV-0",
       "action": "Set provisional safety ceilings and harm boundaries, subject to later evidence and independent approval.",
       "required_evidence": "Threshold policy with rationale.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P0",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -3812,7 +3836,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "05.04",
@@ -3823,7 +3849,7 @@
       "phase": "LEV-2",
       "action": "Construct confusion matrices for each candidate mastery threshold and outcome horizon.",
       "required_evidence": "Threshold-performance tables.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P1",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -3867,7 +3893,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -3880,7 +3906,7 @@
       "phase": "LEV-2",
       "action": "Estimate sensitivity, specificity, predictive values, false discovery rate and false omission rate with uncertainty.",
       "required_evidence": "Classification report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -3926,7 +3952,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "05.06",
@@ -3937,7 +3965,7 @@
       "phase": "LEV-2",
       "action": "Estimate error by concept, difficulty, evidence count, hint use, response latency and time since learning.",
       "required_evidence": "Error-source analysis.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -3983,7 +4011,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "05.07",
@@ -3994,7 +4024,7 @@
       "phase": "LEV-2",
       "action": "Investigate repeated-item exposure, guessing, copying, disengagement and assistance as causes of false mastery.",
       "required_evidence": "Behavioural confound report.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P1",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -4038,7 +4068,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -4051,7 +4081,7 @@
       "phase": "LEV-2",
       "action": "Investigate language load, poor item fit, missing opportunity to learn and interface problems as causes of false non-mastery.",
       "required_evidence": "Measurement-confound report.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P1",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -4095,7 +4125,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -4108,7 +4138,7 @@
       "phase": "LEV-3",
       "action": "Compare threshold policies: global, concept-specific, uncertainty-aware and cost-sensitive.",
       "required_evidence": "Policy evaluation report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -4154,7 +4184,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "05.10",
@@ -4165,7 +4197,7 @@
       "phase": "LEV-3",
       "action": "Introduce human-review and conservative fallback states for high-uncertainty classifications.",
       "required_evidence": "Workflow and product behaviour verified.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -4211,7 +4243,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "05.11",
@@ -4222,7 +4256,7 @@
       "phase": "LEV-3",
       "action": "Evaluate error rates across approved learner contexts and identify unacceptable disparities.",
       "required_evidence": "Subgroup error report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -4268,7 +4302,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "05.12",
@@ -4279,7 +4315,7 @@
       "phase": "LEV-3",
       "action": "Run teacher adjudication studies on sampled disagreements between the model and independent outcomes.",
       "required_evidence": "Disagreement taxonomy and adjudication evidence.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -4325,7 +4361,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "05.13",
@@ -4336,7 +4374,7 @@
       "phase": "LEV-3",
       "action": "Select and approve operational thresholds for each authorised use rather than one universal threshold.",
       "required_evidence": "Use-specific threshold register.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -4382,7 +4420,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "05.14",
@@ -4393,7 +4433,7 @@
       "phase": "LEV-6",
       "action": "Monitor error rates continuously and automatically reduce decision authority when ceilings are exceeded.",
       "required_evidence": "Alert, freeze and rollback controls tested.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P2",
       "implementation_type": "operations",
       "estimated_effort": "M",
@@ -4437,7 +4477,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -7104,7 +7144,7 @@
       "phase": "LEV-0",
       "action": "Define the intended learner population and every context dimension material to the model's use.",
       "required_evidence": "Population and context specification.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P0",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -7153,7 +7193,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "09.02",
@@ -7164,7 +7206,7 @@
       "phase": "LEV-0",
       "action": "Determine which context variables may lawfully and ethically be collected, for what purpose and for how long.",
       "required_evidence": "Approved data-minimisation and lawful-basis record.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -7209,7 +7251,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -7222,7 +7264,7 @@
       "phase": "LEV-0",
       "action": "Define minimum subgroup sample requirements and rules for suppressing unstable estimates.",
       "required_evidence": "Analysis sufficiency policy.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -7267,7 +7309,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -7280,7 +7322,7 @@
       "phase": "LEV-1",
       "action": "Design recruitment to include varied school contexts, baseline attainment, language, device and connectivity conditions.",
       "required_evidence": "Sampling and recruitment plan.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P0",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -7327,7 +7369,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "09.05",
@@ -7338,7 +7382,7 @@
       "phase": "LEV-1",
       "action": "Implement accessibility and accommodation metadata without conflating support with ability.",
       "required_evidence": "Accessible assessment protocol.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "engineering",
       "estimated_effort": "M/L",
@@ -7383,7 +7427,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -7396,7 +7440,7 @@
       "phase": "LEV-2",
       "action": "Measure representation, missingness, data quality and platform exposure by context.",
       "required_evidence": "Context data-quality report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -7443,7 +7487,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "09.07",
@@ -7454,7 +7500,7 @@
       "phase": "LEV-2",
       "action": "Test differential item functioning and differential test functioning where estimable.",
       "required_evidence": "Measurement fairness report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -7501,7 +7547,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "09.08",
@@ -7512,7 +7560,7 @@
       "phase": "LEV-3",
       "action": "Test subgroup calibration, discrimination, false mastery, false non-mastery, retention and transfer.",
       "required_evidence": "Context validity report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -7559,7 +7607,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "09.09",
@@ -7570,7 +7620,7 @@
       "phase": "LEV-3",
       "action": "Analyse interaction effects for device, connectivity, language and opportunity to learn.",
       "required_evidence": "Context-interaction analysis.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -7617,7 +7667,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "09.10",
@@ -7628,7 +7680,7 @@
       "phase": "LEV-3",
       "action": "Conduct qualitative investigation with teachers and learners where quantitative differences appear.",
       "required_evidence": "Mixed-methods explanation report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -7675,7 +7727,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "09.11",
@@ -7686,7 +7740,7 @@
       "phase": "LEV-3",
       "action": "Identify unsupported or weakly supported contexts and impose conservative product behaviour.",
       "required_evidence": "Supported-context matrix and feature restrictions.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -7733,7 +7787,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "09.12",
@@ -7744,7 +7800,7 @@
       "phase": "LEV-3",
       "action": "Remediate item, interface, content, model or access causes and re-test affected groups.",
       "required_evidence": "Remediation and revalidation evidence.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -7791,7 +7847,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "09.13",
@@ -7802,7 +7860,7 @@
       "phase": "LEV-4",
       "action": "Pre-register impact-study subgroup analyses and harm boundaries.",
       "required_evidence": "Approved subgroup analysis plan.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -7849,7 +7907,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "09.14",
@@ -7860,7 +7920,7 @@
       "phase": "LEV-5",
       "action": "Confirm generalisability in an additional school, region, language or delivery context where feasible.",
       "required_evidence": "External-context replication evidence.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -7907,7 +7967,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "09.15",
@@ -7918,7 +7980,7 @@
       "phase": "LEV-6",
       "action": "Monitor context mix and automatically flag population shift beyond the authorised envelope.",
       "required_evidence": "Population-drift dashboard and response runbook.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P2",
       "implementation_type": "operations",
       "estimated_effort": "M",
@@ -7963,7 +8025,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -8928,7 +8990,7 @@
       "phase": "LEV-0",
       "action": "Create an adverse-consequence taxonomy covering educational, psychological, operational, fairness, privacy and teacher-workflow harms.",
       "required_evidence": "Approved harm taxonomy.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P0",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -8977,7 +9039,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "11.02",
@@ -8988,7 +9052,7 @@
       "phase": "LEV-0",
       "action": "Define severity, likelihood, detectability, escalation and stop-work criteria.",
       "required_evidence": "Risk-scoring and escalation policy.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -9034,7 +9098,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -9047,7 +9111,7 @@
       "phase": "LEV-0",
       "action": "Define leading and lagging indicators for each major harm.",
       "required_evidence": "Harm indicator catalogue.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -9093,7 +9157,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -9106,7 +9170,7 @@
       "phase": "LEV-1",
       "action": "Instrument curriculum breadth, grade-level exposure, repetition burden, remediation duration, abandonment, help requests and overrides.",
       "required_evidence": "Consequence event coverage verified.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "engineering",
       "estimated_effort": "M/L",
@@ -9152,7 +9216,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -9165,7 +9229,7 @@
       "phase": "LEV-1",
       "action": "Implement learner-, guardian- and teacher-facing feedback and complaint channels.",
       "required_evidence": "Accessible feedback channels and response SLA.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P0",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -9213,7 +9277,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "11.06",
@@ -9224,7 +9290,7 @@
       "phase": "LEV-2",
       "action": "Establish baseline rates before high-impact adaptation is enabled.",
       "required_evidence": "Baseline consequence report.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P1",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -9270,7 +9336,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -9283,7 +9349,7 @@
       "phase": "LEV-2",
       "action": "Review sampled learner pathways for over-remediation, skipped content, lock-in and feedback-loop behaviour.",
       "required_evidence": "Pathway audit report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -9331,7 +9397,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "11.08",
@@ -9342,7 +9410,7 @@
       "phase": "LEV-3",
       "action": "Analyse adverse indicators by learner context and model error type.",
       "required_evidence": "Differential consequence report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -9390,7 +9458,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "11.09",
@@ -9401,7 +9471,7 @@
       "phase": "LEV-3",
       "action": "Run qualitative interviews or focus groups on frustration, trust, understanding and teacher workload.",
       "required_evidence": "Qualitative safety report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -9449,7 +9519,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "11.10",
@@ -9460,7 +9532,7 @@
       "phase": "LEV-3",
       "action": "Define and implement mitigations such as content floors, maximum remediation windows, teacher override and mandatory grade-level exposure.",
       "required_evidence": "Mitigation controls and tests.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -9508,7 +9580,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "11.11",
@@ -9519,7 +9593,7 @@
       "phase": "LEV-3",
       "action": "Implement automated freeze, rollback or authority-reduction behaviour for breached harm thresholds.",
       "required_evidence": "Safety automation rehearsal.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "engineering",
       "estimated_effort": "M/L",
@@ -9567,7 +9641,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "11.12",
@@ -9578,7 +9654,7 @@
       "phase": "LEV-4",
       "action": "Include adverse outcomes and curriculum-breadth measures in the controlled impact study.",
       "required_evidence": "Trial consequence results.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -9626,7 +9702,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "11.13",
@@ -9637,7 +9715,7 @@
       "phase": "LEV-4",
       "action": "Convene an independent safety review before expanding model authority.",
       "required_evidence": "Safety approval decision.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -9685,7 +9763,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 3 psychometrics, fairness, and safety analytics complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "11.14",
@@ -9696,7 +9776,7 @@
       "phase": "LEV-6",
       "action": "Operate a recurring educational-safety review board and publish internal trend reports.",
       "required_evidence": "Meeting records and action register.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P2",
       "implementation_type": "operations",
       "estimated_effort": "M",
@@ -9742,7 +9822,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -9755,7 +9835,7 @@
       "phase": "LEV-6",
       "action": "Maintain post-incident learning, corrective-action verification and reauthorisation requirements.",
       "required_evidence": "Closed-loop incident governance.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P2",
       "implementation_type": "operations",
       "estimated_effort": "M",
@@ -9801,7 +9881,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
