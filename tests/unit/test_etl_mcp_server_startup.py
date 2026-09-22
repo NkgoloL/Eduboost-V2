@@ -100,3 +100,32 @@ def test_start_streamable_http_falls_back_to_settings(monkeypatch: pytest.Monkey
     assert fake_mcp.settings.host == "0.0.0.0"
     assert fake_mcp.settings.port == 8765
     assert called == [(fake_mcp, "0.0.0.0", 8765)]
+
+
+def test_etl_mcp_server_registers_all_32_tools(forced_mcp_test_stub):
+    server = forced_mcp_test_stub
+    tool_names = {name for kind, name in server.mcp._registered_tools if kind == "tool"}
+    expected_tools = {
+        "etl_ingest_document", "etl_get_document", "etl_list_documents", "etl_run_pipeline",
+        "etl_run_stage", "etl_approve_document", "etl_reject_document", "etl_reprocess_document",
+        "etl_get_review_queue", "etl_get_pipeline_stats", "etl_get_content_gaps", "etl_get_quality_report",
+        "etl_get_document_chunks", "etl_update_metadata", "etl_create_document_version", "etl_search_fulltext",
+        "etl_generate_training_data", "etl_list_training_datasets", "etl_export_dataset", "etl_submit_feedback",
+        "etl_get_monitoring_report", "etl_get_completeness_report",
+        "etl_get_audit_trail", "etl_deprecate_document", "etl_bulk_review", "etl_assign_reviewer",
+        "etl_get_reviewer_workload", "etl_split_dataset", "etl_check_contamination",
+        "etl_get_dataset_statistics", "etl_resolve_feedback", "etl_get_metric_window",
+    }
+    assert expected_tools.issubset(tool_names)
+    assert len(tool_names) == 32
+
+
+def test_etl_mcp_server_pipeline_is_v3(forced_mcp_test_stub, monkeypatch, tmp_path):
+    server = forced_mcp_test_stub
+    monkeypatch.setattr(server, "ETL_DB_URL", f"sqlite:///{tmp_path}/test_etl.db")
+    monkeypatch.setattr(server, "ETL_STORAGE", str(tmp_path / "storage"))
+    monkeypatch.setattr(server, "_pipeline", None)
+
+    from app.services.etl.etl_pipeline_v3_additions import EduboostETLv3
+    pipe = server.pipeline()
+    assert isinstance(pipe, EduboostETLv3)

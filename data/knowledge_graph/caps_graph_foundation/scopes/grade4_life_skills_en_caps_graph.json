@@ -1,0 +1,3694 @@
+{
+  "graph_id": "KG-CAPS-GRAPH-GRADE-4-LIFE-SKILLS",
+  "graph_version": "kg1-caps-graph-foundation-v1",
+  "status": "caps_graph_foundation_generated",
+  "scope": {
+    "curriculum": "CAPS",
+    "grade": 4,
+    "subject": "life skills",
+    "language": "en"
+  },
+  "source": {
+    "source_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/data/caps/topic_maps/grade4_life_skills_en.json",
+    "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+    "source_ref": "Official DBE CAPS source document linked in source_documents manifest.",
+    "schema_version": "1.0.0"
+  },
+  "review": {
+    "node_review_status": "approved",
+    "edge_review_status": "approved",
+    "runtime_authority": "read_model_only"
+  },
+  "counts": {
+    "terms": 4,
+    "topics": 16,
+    "subtopics": 16,
+    "assessment_statements": 48,
+    "misconceptions": 32,
+    "prerequisite_edges": 15,
+    "nodes": 119,
+    "edges": 133
+  },
+  "nodes": [
+    {
+      "node_id": "kgn_3ba1ec0f1a2c09c1db156659",
+      "node_key": "caps:assessment_statement:4.LS.1.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to beginning knowledge and personal well-being.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.1.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_0dfbaca1090ea2115baa9266",
+      "node_key": "caps:assessment_statement:4.LS.1.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.1.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_0d64ebb55597887f7119e751",
+      "node_key": "caps:assessment_statement:4.LS.1.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.1.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_c3a22db068eddfc41fc9f375",
+      "node_key": "caps:assessment_statement:4.LS.1.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to creative arts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.2.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_7b4073eded5525c4f56670ed",
+      "node_key": "caps:assessment_statement:4.LS.1.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.2.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_223737987495564806fe57a1",
+      "node_key": "caps:assessment_statement:4.LS.1.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.2.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_c09c3b82865f24653912ae7c",
+      "node_key": "caps:assessment_statement:4.LS.1.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to physical education.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.3.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_b80c94d7c09024238b1757f3",
+      "node_key": "caps:assessment_statement:4.LS.1.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.3.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_faf4606a4519087fc9a79b95",
+      "node_key": "caps:assessment_statement:4.LS.1.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.3.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_98ebfe920d193738eaa6d9bf",
+      "node_key": "caps:assessment_statement:4.LS.1.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to health and safety.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.4.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_d9d3665b76be122eca58d1c3",
+      "node_key": "caps:assessment_statement:4.LS.1.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.4.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_662a02e8bb575a721984da91",
+      "node_key": "caps:assessment_statement:4.LS.1.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.4.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_51beb818415ede8fe49cc252",
+      "node_key": "caps:assessment_statement:4.LS.2.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to beginning knowledge and personal well-being.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.1.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_529555185f41db43fe61fb61",
+      "node_key": "caps:assessment_statement:4.LS.2.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.1.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_7f7562c5aa9e28efcab1a858",
+      "node_key": "caps:assessment_statement:4.LS.2.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.1.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_4bf3e343281a598282fcbd8b",
+      "node_key": "caps:assessment_statement:4.LS.2.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to creative arts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.2.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_7e00b5591708b0401d61d140",
+      "node_key": "caps:assessment_statement:4.LS.2.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.2.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_157b5788a4c548cb391b3fb8",
+      "node_key": "caps:assessment_statement:4.LS.2.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.2.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_b18f8fc88da06e081ffc68be",
+      "node_key": "caps:assessment_statement:4.LS.2.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to physical education.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.3.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_f79e534c69256f20a9a0b894",
+      "node_key": "caps:assessment_statement:4.LS.2.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.3.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_4b59f3147249c35524e94cd1",
+      "node_key": "caps:assessment_statement:4.LS.2.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.3.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_452a021f8774706e5e2e6bbc",
+      "node_key": "caps:assessment_statement:4.LS.2.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to social responsibility.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.4.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_cbcf3b7c98fb4d51a697a6f8",
+      "node_key": "caps:assessment_statement:4.LS.2.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.4.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_6fde725662e0a2657af94426",
+      "node_key": "caps:assessment_statement:4.LS.2.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.4.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_30262f9c5b89fbfa885a187c",
+      "node_key": "caps:assessment_statement:4.LS.3.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to personal and social well-being.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.1.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_96930e2fb2e22a2e579cf206",
+      "node_key": "caps:assessment_statement:4.LS.3.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.1.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_4c97d1dab9e7459833334bbe",
+      "node_key": "caps:assessment_statement:4.LS.3.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.1.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_226c4cbb3d980820e289e7f4",
+      "node_key": "caps:assessment_statement:4.LS.3.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to creative arts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.2.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_ff38204a755c62dfd62956a7",
+      "node_key": "caps:assessment_statement:4.LS.3.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.2.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_d116f8a020bf51496901c8e1",
+      "node_key": "caps:assessment_statement:4.LS.3.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.2.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_73678ec79fe617004425f476",
+      "node_key": "caps:assessment_statement:4.LS.3.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to physical education.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.3.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_f33a50a18183c06fbe4ab0b5",
+      "node_key": "caps:assessment_statement:4.LS.3.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.3.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_4abc9169793c9cf83121f275",
+      "node_key": "caps:assessment_statement:4.LS.3.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.3.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_7587509b42d1efe44345a0e9",
+      "node_key": "caps:assessment_statement:4.LS.3.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to study skills.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.4.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_362de17c361bdb038cb523ca",
+      "node_key": "caps:assessment_statement:4.LS.3.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.4.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_8506fc9a98b6a35eecc14bd7",
+      "node_key": "caps:assessment_statement:4.LS.3.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.4.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_ef01c0855de4b7dccfde6d52",
+      "node_key": "caps:assessment_statement:4.LS.4.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to personal and social well-being.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.1.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_891b377cf2ec3b4e2133d29a",
+      "node_key": "caps:assessment_statement:4.LS.4.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.1.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_8d68f5367411d8319d7459d0",
+      "node_key": "caps:assessment_statement:4.LS.4.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.1.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_857fb8d26e0ce34aad92ef4c",
+      "node_key": "caps:assessment_statement:4.LS.4.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to creative arts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.2.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_18b523d7e9793db488d3b358",
+      "node_key": "caps:assessment_statement:4.LS.4.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.2.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_e3875ae3f8ca3b8523907f42",
+      "node_key": "caps:assessment_statement:4.LS.4.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.2.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_f85748cbeca9ab3a6585af60",
+      "node_key": "caps:assessment_statement:4.LS.4.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to physical education.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.3.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_3898735e48d8aed6ef9df103",
+      "node_key": "caps:assessment_statement:4.LS.4.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.3.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_a4b9d0b4cda9d4fc0d72761c",
+      "node_key": "caps:assessment_statement:4.LS.4.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.3.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_7bb2dd1d1c1a5ead6032352d",
+      "node_key": "caps:assessment_statement:4.LS.4.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to health, safety and environmental responsibility.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.4.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_5254f68db22782619de3af8a",
+      "node_key": "caps:assessment_statement:4.LS.4.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.4.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_7ddf5d4ed7db368d44e97619",
+      "node_key": "caps:assessment_statement:4.LS.4.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.4.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_c8a2e47bc28572931f00d59e",
+      "node_key": "caps:curriculum",
+      "node_type": "curriculum",
+      "label": "CAPS",
+      "description": "South African CAPS curriculum",
+      "grade": null,
+      "subject": null,
+      "term": null,
+      "source_ref": "CAPS",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "source_file": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/data/caps/topic_maps/grade4_life_skills_en.json"
+      }
+    },
+    {
+      "node_id": "kgn_c0e63d749ca5d9d7e469ff19",
+      "node_key": "caps:grade:4",
+      "node_type": "grade",
+      "label": "Grade 4",
+      "description": "CAPS Grade 4",
+      "grade": 4,
+      "subject": null,
+      "term": null,
+      "source_ref": "grade:4",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "node_id": "kgn_45e545a6b364aed753a154e5",
+      "node_key": "caps:grade:4:subject:life skills",
+      "node_type": "subject",
+      "label": "Life Skills",
+      "description": "CAPS Grade 4 Life Skills",
+      "grade": 4,
+      "subject": "life skills",
+      "term": null,
+      "source_ref": "grade:4:subject:LS",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subject_code": "LS"
+      }
+    },
+    {
+      "node_id": "kgn_23f1f7fc3a8b945a6ee16302",
+      "node_key": "caps:grade:4:subject:life skills:term:1",
+      "node_type": "term",
+      "label": "Term 1",
+      "description": "Grade 4 Life Skills Term 1",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "term:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_34213ef2d43e3d078ffa0718",
+      "node_key": "caps:grade:4:subject:life skills:term:2",
+      "node_type": "term",
+      "label": "Term 2",
+      "description": "Grade 4 Life Skills Term 2",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "term:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_7efdccf6df93416308925ef7",
+      "node_key": "caps:grade:4:subject:life skills:term:3",
+      "node_type": "term",
+      "label": "Term 3",
+      "description": "Grade 4 Life Skills Term 3",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "term:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_359f05000194c71d107093f2",
+      "node_key": "caps:grade:4:subject:life skills:term:4",
+      "node_type": "term",
+      "label": "Term 4",
+      "description": "Grade 4 Life Skills Term 4",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "term:4",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-8"
+      }
+    },
+    {
+      "node_id": "kgn_c97678aa228f7d9e560d33de",
+      "node_key": "caps:misconception:4.LS.1.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.1.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_37c067381301d69718353f67",
+      "node_key": "caps:misconception:4.LS.1.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.1.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_f65e4ec3c9efcb13352bf3d7",
+      "node_key": "caps:misconception:4.LS.1.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.2.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_9b1c8fb88fbfe93717a6c359",
+      "node_key": "caps:misconception:4.LS.1.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.2.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_cc7668f3a0bce648a999c4bb",
+      "node_key": "caps:misconception:4.LS.1.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.3.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_9442e18a49f1f331b93770b4",
+      "node_key": "caps:misconception:4.LS.1.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.3.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_649dc8260ef852de1963f881",
+      "node_key": "caps:misconception:4.LS.1.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.4.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_4e1adab39f8f2d1d99d3b2d8",
+      "node_key": "caps:misconception:4.LS.1.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.4.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_855dfab2aee42e0ff354a7e0",
+      "node_key": "caps:misconception:4.LS.2.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.1.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_21fb9381615f5e2807a1c14a",
+      "node_key": "caps:misconception:4.LS.2.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.1.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_6e8e3ec9200487cebbb6dbe8",
+      "node_key": "caps:misconception:4.LS.2.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.2.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_4032d491759111704c4d28e4",
+      "node_key": "caps:misconception:4.LS.2.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.2.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_6852f2fbfed86eb58e8c7435",
+      "node_key": "caps:misconception:4.LS.2.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.3.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_a1ae72be028da3b1376966eb",
+      "node_key": "caps:misconception:4.LS.2.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.3.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_0e84a84632f71de3bd5d4c0e",
+      "node_key": "caps:misconception:4.LS.2.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.4.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_d7d5a4b60b526240f31eb615",
+      "node_key": "caps:misconception:4.LS.2.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.4.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_c9ce0c9a1a30e4354c6a60b0",
+      "node_key": "caps:misconception:4.LS.3.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.1.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_def573fed23e088ea77cd5e4",
+      "node_key": "caps:misconception:4.LS.3.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.1.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_3b05caba7103ac9b8da3b149",
+      "node_key": "caps:misconception:4.LS.3.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.2.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_e428f30c0878e01020473a63",
+      "node_key": "caps:misconception:4.LS.3.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.2.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_15894241b206624ee5f3f13d",
+      "node_key": "caps:misconception:4.LS.3.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.3.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_2111be20c4691d37e8285f52",
+      "node_key": "caps:misconception:4.LS.3.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.3.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_36eed21d0056654052953465",
+      "node_key": "caps:misconception:4.LS.3.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.4.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_da3377a9925cbdff942e9486",
+      "node_key": "caps:misconception:4.LS.3.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.4.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_27efb89cc1fe8ac8134bc217",
+      "node_key": "caps:misconception:4.LS.4.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.1.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_4d53dfdb24455e0d3247beb4",
+      "node_key": "caps:misconception:4.LS.4.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.1.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_4fae834f96feb540b0cb48df",
+      "node_key": "caps:misconception:4.LS.4.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.2.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_d016b144c6a6b3205000e3f4",
+      "node_key": "caps:misconception:4.LS.4.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.2.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_9c2f46bdfbcd50c5b17594d6",
+      "node_key": "caps:misconception:4.LS.4.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.3.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_30fea1184ff2077bf4412f37",
+      "node_key": "caps:misconception:4.LS.4.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.3.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_d49f5301099e12d14cf822c4",
+      "node_key": "caps:misconception:4.LS.4.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.4.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_3a8f4134be88f3cc03715948",
+      "node_key": "caps:misconception:4.LS.4.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.4.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "4.LS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_a7717304696ecabbcf2f96ad",
+      "node_key": "caps:subtopic:4.LS.1.1.1",
+      "node_type": "subtopic",
+      "label": "Beginning knowledge and personal well-being",
+      "description": "Beginning knowledge and personal well-being",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.1.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_a56928939b96790d720ff6ab",
+      "node_key": "caps:subtopic:4.LS.1.2.1",
+      "node_type": "subtopic",
+      "label": "Creative arts",
+      "description": "Creative arts",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.2.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_b2094e091ceecd725f8d9daa",
+      "node_key": "caps:subtopic:4.LS.1.3.1",
+      "node_type": "subtopic",
+      "label": "Physical education",
+      "description": "Physical education",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.3.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_d27b40af37b856efb01b0c7f",
+      "node_key": "caps:subtopic:4.LS.1.4.1",
+      "node_type": "subtopic",
+      "label": "Health and safety",
+      "description": "Health and safety",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.4.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_dccb94a159d4449ad37a77dc",
+      "node_key": "caps:subtopic:4.LS.2.1.1",
+      "node_type": "subtopic",
+      "label": "Beginning knowledge and personal well-being",
+      "description": "Beginning knowledge and personal well-being",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.1.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_9d39753a8bca00f6514f5984",
+      "node_key": "caps:subtopic:4.LS.2.2.1",
+      "node_type": "subtopic",
+      "label": "Creative arts",
+      "description": "Creative arts",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.2.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_a4d3c2cae15e97b2719462c3",
+      "node_key": "caps:subtopic:4.LS.2.3.1",
+      "node_type": "subtopic",
+      "label": "Physical education",
+      "description": "Physical education",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.3.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_15dba716f086ca1371a59dbf",
+      "node_key": "caps:subtopic:4.LS.2.4.1",
+      "node_type": "subtopic",
+      "label": "Social responsibility",
+      "description": "Social responsibility",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.4.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_e1ca435b82e8d67c01d95b64",
+      "node_key": "caps:subtopic:4.LS.3.1.1",
+      "node_type": "subtopic",
+      "label": "Personal and social well-being",
+      "description": "Personal and social well-being",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.1.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_a77286bfcecbe0b099eee1a2",
+      "node_key": "caps:subtopic:4.LS.3.2.1",
+      "node_type": "subtopic",
+      "label": "Creative arts",
+      "description": "Creative arts",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.2.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_e696392cbfca84c23ae51b97",
+      "node_key": "caps:subtopic:4.LS.3.3.1",
+      "node_type": "subtopic",
+      "label": "Physical education",
+      "description": "Physical education",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.3.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_3525c2139c2f62f10b2bb21a",
+      "node_key": "caps:subtopic:4.LS.3.4.1",
+      "node_type": "subtopic",
+      "label": "Study skills",
+      "description": "Study skills",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.4.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_bcde737380fdec2105652972",
+      "node_key": "caps:subtopic:4.LS.4.1.1",
+      "node_type": "subtopic",
+      "label": "Personal and social well-being",
+      "description": "Personal and social well-being",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.1.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_b4f196666c109a6e552e9f26",
+      "node_key": "caps:subtopic:4.LS.4.2.1",
+      "node_type": "subtopic",
+      "label": "Creative arts",
+      "description": "Creative arts",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.2.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_a95b95a7809bb772c26dd6eb",
+      "node_key": "caps:subtopic:4.LS.4.3.1",
+      "node_type": "subtopic",
+      "label": "Physical education",
+      "description": "Physical education",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.3.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_2aea2ffa195dd1ab5cc15ed4",
+      "node_key": "caps:subtopic:4.LS.4.4.1",
+      "node_type": "subtopic",
+      "label": "Health, safety and environmental responsibility",
+      "description": "Health, safety and environmental responsibility",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.4.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_ea2848554672840f23aea2a0",
+      "node_key": "caps:topic:4.LS.1.1",
+      "node_type": "topic",
+      "label": "Beginning knowledge and personal well-being",
+      "description": "Beginning knowledge and personal well-being",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_68165b0e6f2b60e371ac0cca",
+      "node_key": "caps:topic:4.LS.1.2",
+      "node_type": "topic",
+      "label": "Creative arts",
+      "description": "Creative arts",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_2bff79d3ff90dd155b1f2563",
+      "node_key": "caps:topic:4.LS.1.3",
+      "node_type": "topic",
+      "label": "Physical education",
+      "description": "Physical education",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_a929e8224949c995d33f57c5",
+      "node_key": "caps:topic:4.LS.1.4",
+      "node_type": "topic",
+      "label": "Health and safety",
+      "description": "Health and safety",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 1,
+      "source_ref": "4.LS.1.4",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_a4569c8e7ca224111e3dc55b",
+      "node_key": "caps:topic:4.LS.2.1",
+      "node_type": "topic",
+      "label": "Beginning knowledge and personal well-being",
+      "description": "Beginning knowledge and personal well-being",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_465aa14456c4bee99e4e21fd",
+      "node_key": "caps:topic:4.LS.2.2",
+      "node_type": "topic",
+      "label": "Creative arts",
+      "description": "Creative arts",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_cc2a4530ce51833a92da80fe",
+      "node_key": "caps:topic:4.LS.2.3",
+      "node_type": "topic",
+      "label": "Physical education",
+      "description": "Physical education",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_3dd92bba0a12db278f0911e9",
+      "node_key": "caps:topic:4.LS.2.4",
+      "node_type": "topic",
+      "label": "Social responsibility",
+      "description": "Social responsibility",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 2,
+      "source_ref": "4.LS.2.4",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_62d53278de0167d8584c1b4f",
+      "node_key": "caps:topic:4.LS.3.1",
+      "node_type": "topic",
+      "label": "Personal and social well-being",
+      "description": "Personal and social well-being",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_ed622d6d1633b95dd511455d",
+      "node_key": "caps:topic:4.LS.3.2",
+      "node_type": "topic",
+      "label": "Creative arts",
+      "description": "Creative arts",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_3d16aafa0a648784f1e272aa",
+      "node_key": "caps:topic:4.LS.3.3",
+      "node_type": "topic",
+      "label": "Physical education",
+      "description": "Physical education",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_1f9132c96e3541dd00e9c96a",
+      "node_key": "caps:topic:4.LS.3.4",
+      "node_type": "topic",
+      "label": "Study skills",
+      "description": "Study skills",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 3,
+      "source_ref": "4.LS.3.4",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_464c589bc17f5aabd33b726c",
+      "node_key": "caps:topic:4.LS.4.1",
+      "node_type": "topic",
+      "label": "Personal and social well-being",
+      "description": "Personal and social well-being",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_d8e7b62395fd22ec24736442",
+      "node_key": "caps:topic:4.LS.4.2",
+      "node_type": "topic",
+      "label": "Creative arts",
+      "description": "Creative arts",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_919265b21e01547ff10172c1",
+      "node_key": "caps:topic:4.LS.4.3",
+      "node_type": "topic",
+      "label": "Physical education",
+      "description": "Physical education",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_bfa9d52a2b8106fdbb38ed2c",
+      "node_key": "caps:topic:4.LS.4.4",
+      "node_type": "topic",
+      "label": "Health, safety and environmental responsibility",
+      "description": "Health, safety and environmental responsibility",
+      "grade": 4,
+      "subject": "life skills",
+      "term": 4,
+      "source_ref": "4.LS.4.4",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "kge_d5095078c5af164574f79c8c",
+      "source_node_key": "caps:curriculum",
+      "target_node_key": "caps:grade:4",
+      "edge_type": "contains",
+      "label": "CAPS contains grade",
+      "source_ref": "CAPS",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c97e845b35c88aa4de3c5880",
+      "source_node_key": "caps:grade:4",
+      "target_node_key": "caps:grade:4:subject:life skills",
+      "edge_type": "contains",
+      "label": "Grade contains subject",
+      "source_ref": "grade:4:subject:LS",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ce83d1a144e98b6f71e0d287",
+      "source_node_key": "caps:grade:4:subject:life skills",
+      "target_node_key": "caps:grade:4:subject:life skills:term:1",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b1255d6dda080bd3cafcba56",
+      "source_node_key": "caps:grade:4:subject:life skills",
+      "target_node_key": "caps:grade:4:subject:life skills:term:2",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_54241d0c5183d9c3b77daba3",
+      "source_node_key": "caps:grade:4:subject:life skills",
+      "target_node_key": "caps:grade:4:subject:life skills:term:3",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_341dd42d2a11e8a0617715da",
+      "source_node_key": "caps:grade:4:subject:life skills",
+      "target_node_key": "caps:grade:4:subject:life skills:term:4",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:4",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f9a4982039edf05f0ca397fa",
+      "source_node_key": "caps:grade:4:subject:life skills:term:1",
+      "target_node_key": "caps:topic:4.LS.1.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "4.LS.1.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f4b13f6a2b55e134f21717ac",
+      "source_node_key": "caps:grade:4:subject:life skills:term:1",
+      "target_node_key": "caps:topic:4.LS.1.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "4.LS.1.2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fb1e8250d988b0e73d30aeff",
+      "source_node_key": "caps:grade:4:subject:life skills:term:1",
+      "target_node_key": "caps:topic:4.LS.1.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "4.LS.1.3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_938d28e3669fb66881c436e5",
+      "source_node_key": "caps:grade:4:subject:life skills:term:1",
+      "target_node_key": "caps:topic:4.LS.1.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "4.LS.1.4",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6debf0a6f0368acbf7369d05",
+      "source_node_key": "caps:grade:4:subject:life skills:term:2",
+      "target_node_key": "caps:topic:4.LS.2.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "4.LS.2.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e6319b7d0959e47e77514f3d",
+      "source_node_key": "caps:grade:4:subject:life skills:term:2",
+      "target_node_key": "caps:topic:4.LS.2.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "4.LS.2.2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_842d80b9194f94ac849ea399",
+      "source_node_key": "caps:grade:4:subject:life skills:term:2",
+      "target_node_key": "caps:topic:4.LS.2.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "4.LS.2.3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_24bf8783b748da4ed3d07e03",
+      "source_node_key": "caps:grade:4:subject:life skills:term:2",
+      "target_node_key": "caps:topic:4.LS.2.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "4.LS.2.4",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_94124cd6ff7cbe1b499d17dd",
+      "source_node_key": "caps:grade:4:subject:life skills:term:3",
+      "target_node_key": "caps:topic:4.LS.3.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "4.LS.3.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e53ac3f1cdf759031d64e023",
+      "source_node_key": "caps:grade:4:subject:life skills:term:3",
+      "target_node_key": "caps:topic:4.LS.3.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "4.LS.3.2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_845943c59c580a740a6d3058",
+      "source_node_key": "caps:grade:4:subject:life skills:term:3",
+      "target_node_key": "caps:topic:4.LS.3.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "4.LS.3.3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_07520ac9b7f0b275e7b1d07d",
+      "source_node_key": "caps:grade:4:subject:life skills:term:3",
+      "target_node_key": "caps:topic:4.LS.3.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "4.LS.3.4",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e4ca46369af11d5076e79718",
+      "source_node_key": "caps:grade:4:subject:life skills:term:4",
+      "target_node_key": "caps:topic:4.LS.4.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "4.LS.4.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9a9f3fb15b8cbc23ad046827",
+      "source_node_key": "caps:grade:4:subject:life skills:term:4",
+      "target_node_key": "caps:topic:4.LS.4.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "4.LS.4.2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_64aef4673935c450308f985a",
+      "source_node_key": "caps:grade:4:subject:life skills:term:4",
+      "target_node_key": "caps:topic:4.LS.4.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "4.LS.4.3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b56c4783a2ad3d5c76d78d35",
+      "source_node_key": "caps:grade:4:subject:life skills:term:4",
+      "target_node_key": "caps:topic:4.LS.4.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "4.LS.4.4",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_41f8c80e15118c9378643ebb",
+      "source_node_key": "caps:subtopic:4.LS.1.1.1",
+      "target_node_key": "caps:assessment_statement:4.LS.1.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.1.1.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d9546d9ca487e2f469572607",
+      "source_node_key": "caps:subtopic:4.LS.1.1.1",
+      "target_node_key": "caps:assessment_statement:4.LS.1.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.1.1.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8c80273e77c88c05b8b4cf87",
+      "source_node_key": "caps:subtopic:4.LS.1.1.1",
+      "target_node_key": "caps:assessment_statement:4.LS.1.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.1.1.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4f300ceb7253c91424d0f82c",
+      "source_node_key": "caps:subtopic:4.LS.1.1.1",
+      "target_node_key": "caps:misconception:4.LS.1.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.1.1.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3fd39b83904c6a92ad55ffbe",
+      "source_node_key": "caps:subtopic:4.LS.1.1.1",
+      "target_node_key": "caps:misconception:4.LS.1.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.1.1.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a379c9758fb9503fa6ee0ab4",
+      "source_node_key": "caps:subtopic:4.LS.1.2.1",
+      "target_node_key": "caps:assessment_statement:4.LS.1.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.1.2.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_05ab75c2e5ae7455584ba8f1",
+      "source_node_key": "caps:subtopic:4.LS.1.2.1",
+      "target_node_key": "caps:assessment_statement:4.LS.1.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.1.2.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ac655ab2fa91781e06905dd0",
+      "source_node_key": "caps:subtopic:4.LS.1.2.1",
+      "target_node_key": "caps:assessment_statement:4.LS.1.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.1.2.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_739db55657994a84149af217",
+      "source_node_key": "caps:subtopic:4.LS.1.2.1",
+      "target_node_key": "caps:misconception:4.LS.1.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.1.2.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d086f898d7a704dcda4f6ac0",
+      "source_node_key": "caps:subtopic:4.LS.1.2.1",
+      "target_node_key": "caps:misconception:4.LS.1.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.1.2.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ed1ec1e116554e4ae8fc7a82",
+      "source_node_key": "caps:subtopic:4.LS.1.3.1",
+      "target_node_key": "caps:assessment_statement:4.LS.1.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.1.3.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_241940bc12b11fd13489f7ed",
+      "source_node_key": "caps:subtopic:4.LS.1.3.1",
+      "target_node_key": "caps:assessment_statement:4.LS.1.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.1.3.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_601c1c519e6e064373c22480",
+      "source_node_key": "caps:subtopic:4.LS.1.3.1",
+      "target_node_key": "caps:assessment_statement:4.LS.1.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.1.3.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e00d5117d0f27d833644db58",
+      "source_node_key": "caps:subtopic:4.LS.1.3.1",
+      "target_node_key": "caps:misconception:4.LS.1.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.1.3.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6246314e09d909aa520b4049",
+      "source_node_key": "caps:subtopic:4.LS.1.3.1",
+      "target_node_key": "caps:misconception:4.LS.1.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.1.3.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8dd764b83b5fd91a774b6922",
+      "source_node_key": "caps:subtopic:4.LS.1.4.1",
+      "target_node_key": "caps:assessment_statement:4.LS.1.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.1.4.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ca9f531866831c2cc7ebfe01",
+      "source_node_key": "caps:subtopic:4.LS.1.4.1",
+      "target_node_key": "caps:assessment_statement:4.LS.1.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.1.4.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7c56b8be2909357055c0327c",
+      "source_node_key": "caps:subtopic:4.LS.1.4.1",
+      "target_node_key": "caps:assessment_statement:4.LS.1.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.1.4.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f1e7e817a4828aeaab48ff4c",
+      "source_node_key": "caps:subtopic:4.LS.1.4.1",
+      "target_node_key": "caps:misconception:4.LS.1.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.1.4.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bddcae1d37a3ef64a7b278da",
+      "source_node_key": "caps:subtopic:4.LS.1.4.1",
+      "target_node_key": "caps:misconception:4.LS.1.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.1.4.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a8751292333f54dd851d0b03",
+      "source_node_key": "caps:subtopic:4.LS.2.1.1",
+      "target_node_key": "caps:assessment_statement:4.LS.2.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.2.1.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9d2d01f2eb988b5e095bdb5a",
+      "source_node_key": "caps:subtopic:4.LS.2.1.1",
+      "target_node_key": "caps:assessment_statement:4.LS.2.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.2.1.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8d8a8f5772f08839c5707f33",
+      "source_node_key": "caps:subtopic:4.LS.2.1.1",
+      "target_node_key": "caps:assessment_statement:4.LS.2.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.2.1.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1f0d862b39b146bddbd3de8c",
+      "source_node_key": "caps:subtopic:4.LS.2.1.1",
+      "target_node_key": "caps:misconception:4.LS.2.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.2.1.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c68b23a51cd76d56848ad410",
+      "source_node_key": "caps:subtopic:4.LS.2.1.1",
+      "target_node_key": "caps:misconception:4.LS.2.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.2.1.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c765b5f6ad9f4d2ff996bce4",
+      "source_node_key": "caps:subtopic:4.LS.2.2.1",
+      "target_node_key": "caps:assessment_statement:4.LS.2.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.2.2.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c4847152aefb760957c72e0e",
+      "source_node_key": "caps:subtopic:4.LS.2.2.1",
+      "target_node_key": "caps:assessment_statement:4.LS.2.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.2.2.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_565ba6d5358fd488cfc1d07e",
+      "source_node_key": "caps:subtopic:4.LS.2.2.1",
+      "target_node_key": "caps:assessment_statement:4.LS.2.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.2.2.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_204bde50719227284867902b",
+      "source_node_key": "caps:subtopic:4.LS.2.2.1",
+      "target_node_key": "caps:misconception:4.LS.2.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.2.2.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_61f7486667d003e8f1a80de9",
+      "source_node_key": "caps:subtopic:4.LS.2.2.1",
+      "target_node_key": "caps:misconception:4.LS.2.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.2.2.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ff5c6556fb47248bc446a038",
+      "source_node_key": "caps:subtopic:4.LS.2.3.1",
+      "target_node_key": "caps:assessment_statement:4.LS.2.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.2.3.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_03de3bf602ef2665a090b18b",
+      "source_node_key": "caps:subtopic:4.LS.2.3.1",
+      "target_node_key": "caps:assessment_statement:4.LS.2.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.2.3.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_56a6b9a5df17ca958a4b2313",
+      "source_node_key": "caps:subtopic:4.LS.2.3.1",
+      "target_node_key": "caps:assessment_statement:4.LS.2.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.2.3.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d11814e8387f0e3608fa3870",
+      "source_node_key": "caps:subtopic:4.LS.2.3.1",
+      "target_node_key": "caps:misconception:4.LS.2.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.2.3.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1eeb9f1d1e8c540853db3c9d",
+      "source_node_key": "caps:subtopic:4.LS.2.3.1",
+      "target_node_key": "caps:misconception:4.LS.2.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.2.3.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_78564644586cb0e63950c90c",
+      "source_node_key": "caps:subtopic:4.LS.2.4.1",
+      "target_node_key": "caps:assessment_statement:4.LS.2.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.2.4.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_27e7496c5590c185f6957ec2",
+      "source_node_key": "caps:subtopic:4.LS.2.4.1",
+      "target_node_key": "caps:assessment_statement:4.LS.2.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.2.4.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_262ac2f2448fa8591091f88a",
+      "source_node_key": "caps:subtopic:4.LS.2.4.1",
+      "target_node_key": "caps:assessment_statement:4.LS.2.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.2.4.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a111395a6d4c16053fc4250d",
+      "source_node_key": "caps:subtopic:4.LS.2.4.1",
+      "target_node_key": "caps:misconception:4.LS.2.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.2.4.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_caaef98550e7a6f84c61a6e6",
+      "source_node_key": "caps:subtopic:4.LS.2.4.1",
+      "target_node_key": "caps:misconception:4.LS.2.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.2.4.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fb79cb4ec5da16a210916056",
+      "source_node_key": "caps:subtopic:4.LS.3.1.1",
+      "target_node_key": "caps:assessment_statement:4.LS.3.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.3.1.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6499706fe482a53ca578927c",
+      "source_node_key": "caps:subtopic:4.LS.3.1.1",
+      "target_node_key": "caps:assessment_statement:4.LS.3.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.3.1.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3d3324cc77ff12afabff868d",
+      "source_node_key": "caps:subtopic:4.LS.3.1.1",
+      "target_node_key": "caps:assessment_statement:4.LS.3.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.3.1.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bb9ff882ea1c827fba376d38",
+      "source_node_key": "caps:subtopic:4.LS.3.1.1",
+      "target_node_key": "caps:misconception:4.LS.3.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.3.1.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_cd66159841b06fc6156a813c",
+      "source_node_key": "caps:subtopic:4.LS.3.1.1",
+      "target_node_key": "caps:misconception:4.LS.3.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.3.1.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f99fb412ccbaebaeae57d9ce",
+      "source_node_key": "caps:subtopic:4.LS.3.2.1",
+      "target_node_key": "caps:assessment_statement:4.LS.3.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.3.2.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_dc54ea7db0e54960d087e165",
+      "source_node_key": "caps:subtopic:4.LS.3.2.1",
+      "target_node_key": "caps:assessment_statement:4.LS.3.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.3.2.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2de75c0510d473d08ef32981",
+      "source_node_key": "caps:subtopic:4.LS.3.2.1",
+      "target_node_key": "caps:assessment_statement:4.LS.3.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.3.2.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_55f88fb06c7c998b4e049e74",
+      "source_node_key": "caps:subtopic:4.LS.3.2.1",
+      "target_node_key": "caps:misconception:4.LS.3.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.3.2.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0a7afb71a28820432fab3c6e",
+      "source_node_key": "caps:subtopic:4.LS.3.2.1",
+      "target_node_key": "caps:misconception:4.LS.3.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.3.2.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_888d1bbaef1ec7bfea1c1df3",
+      "source_node_key": "caps:subtopic:4.LS.3.3.1",
+      "target_node_key": "caps:assessment_statement:4.LS.3.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.3.3.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2d960409a8f224aea92ee34a",
+      "source_node_key": "caps:subtopic:4.LS.3.3.1",
+      "target_node_key": "caps:assessment_statement:4.LS.3.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.3.3.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2475c5e92b6358594da607ce",
+      "source_node_key": "caps:subtopic:4.LS.3.3.1",
+      "target_node_key": "caps:assessment_statement:4.LS.3.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.3.3.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a8f454420a3b5ab5f4e4156f",
+      "source_node_key": "caps:subtopic:4.LS.3.3.1",
+      "target_node_key": "caps:misconception:4.LS.3.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.3.3.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e8e1c1bd3d408336dfcbbaf7",
+      "source_node_key": "caps:subtopic:4.LS.3.3.1",
+      "target_node_key": "caps:misconception:4.LS.3.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.3.3.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_52d969374be1c2059297341c",
+      "source_node_key": "caps:subtopic:4.LS.3.4.1",
+      "target_node_key": "caps:assessment_statement:4.LS.3.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.3.4.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e6485ef27abf5f97565df0ca",
+      "source_node_key": "caps:subtopic:4.LS.3.4.1",
+      "target_node_key": "caps:assessment_statement:4.LS.3.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.3.4.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4342440603287ce400517265",
+      "source_node_key": "caps:subtopic:4.LS.3.4.1",
+      "target_node_key": "caps:assessment_statement:4.LS.3.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.3.4.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4e564a7203e871f9de1de690",
+      "source_node_key": "caps:subtopic:4.LS.3.4.1",
+      "target_node_key": "caps:misconception:4.LS.3.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.3.4.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_57e32edced98dfe4a019976e",
+      "source_node_key": "caps:subtopic:4.LS.3.4.1",
+      "target_node_key": "caps:misconception:4.LS.3.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.3.4.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fd4ff75fa611fa1265618f12",
+      "source_node_key": "caps:subtopic:4.LS.4.1.1",
+      "target_node_key": "caps:assessment_statement:4.LS.4.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.4.1.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_555c35a6bb159182e838f871",
+      "source_node_key": "caps:subtopic:4.LS.4.1.1",
+      "target_node_key": "caps:assessment_statement:4.LS.4.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.4.1.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3438c01f4d6d3a89e7d23790",
+      "source_node_key": "caps:subtopic:4.LS.4.1.1",
+      "target_node_key": "caps:assessment_statement:4.LS.4.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.4.1.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_04c7a172ddb2e370ddebbcd7",
+      "source_node_key": "caps:subtopic:4.LS.4.1.1",
+      "target_node_key": "caps:misconception:4.LS.4.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.4.1.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_092a04ad6de71a1286e0ba08",
+      "source_node_key": "caps:subtopic:4.LS.4.1.1",
+      "target_node_key": "caps:misconception:4.LS.4.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.4.1.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c3046564b6fade858c613a54",
+      "source_node_key": "caps:subtopic:4.LS.4.2.1",
+      "target_node_key": "caps:assessment_statement:4.LS.4.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.4.2.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d40ee5a98250f5517eef76f7",
+      "source_node_key": "caps:subtopic:4.LS.4.2.1",
+      "target_node_key": "caps:assessment_statement:4.LS.4.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.4.2.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7d8eb323c132211fc624e8c1",
+      "source_node_key": "caps:subtopic:4.LS.4.2.1",
+      "target_node_key": "caps:assessment_statement:4.LS.4.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.4.2.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a57935f21145f9dd19885e95",
+      "source_node_key": "caps:subtopic:4.LS.4.2.1",
+      "target_node_key": "caps:misconception:4.LS.4.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.4.2.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fc85084b9ef1dd74d28faa55",
+      "source_node_key": "caps:subtopic:4.LS.4.2.1",
+      "target_node_key": "caps:misconception:4.LS.4.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.4.2.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a3934fb99b071346ee03ab0b",
+      "source_node_key": "caps:subtopic:4.LS.4.3.1",
+      "target_node_key": "caps:assessment_statement:4.LS.4.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.4.3.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_87dc76c8b2b70c1b95775465",
+      "source_node_key": "caps:subtopic:4.LS.4.3.1",
+      "target_node_key": "caps:assessment_statement:4.LS.4.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.4.3.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a150ed2b510f3f6ca7db6285",
+      "source_node_key": "caps:subtopic:4.LS.4.3.1",
+      "target_node_key": "caps:assessment_statement:4.LS.4.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.4.3.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d96908f939d687f4fe5e5090",
+      "source_node_key": "caps:subtopic:4.LS.4.3.1",
+      "target_node_key": "caps:misconception:4.LS.4.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.4.3.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b6f83ad1eea6d3366b13b588",
+      "source_node_key": "caps:subtopic:4.LS.4.3.1",
+      "target_node_key": "caps:misconception:4.LS.4.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.4.3.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b733c040e1a14e7c0f7d24a2",
+      "source_node_key": "caps:subtopic:4.LS.4.4.1",
+      "target_node_key": "caps:assessment_statement:4.LS.4.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.4.4.1#assessment:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d52243efb7c66c6859d2c7f7",
+      "source_node_key": "caps:subtopic:4.LS.4.4.1",
+      "target_node_key": "caps:assessment_statement:4.LS.4.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.4.4.1#assessment:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9536ac2ab7b669bddfe244a3",
+      "source_node_key": "caps:subtopic:4.LS.4.4.1",
+      "target_node_key": "caps:assessment_statement:4.LS.4.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "4.LS.4.4.1#assessment:3",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0928b325fe030784723d6d55",
+      "source_node_key": "caps:subtopic:4.LS.4.4.1",
+      "target_node_key": "caps:misconception:4.LS.4.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.4.4.1#misconception:2",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7e11d600028dd7b19ea32666",
+      "source_node_key": "caps:subtopic:4.LS.4.4.1",
+      "target_node_key": "caps:misconception:4.LS.4.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "4.LS.4.4.1#misconception:1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_151093b7ed13d8b21f89eb2e",
+      "source_node_key": "caps:topic:4.LS.1.1",
+      "target_node_key": "caps:subtopic:4.LS.1.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "4.LS.1.1.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_dd98f29488ce7c1ce4de1a41",
+      "source_node_key": "caps:topic:4.LS.1.1",
+      "target_node_key": "caps:subtopic:4.LS.1.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "4.LS.1.2.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "4.LS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_6429fee897f37b4de3fdc239",
+      "source_node_key": "caps:topic:4.LS.1.1",
+      "target_node_key": "caps:subtopic:4.LS.1.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "4.LS.1.3.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "4.LS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_0ad895f483bc1dbbd8c2157c",
+      "source_node_key": "caps:topic:4.LS.1.1",
+      "target_node_key": "caps:subtopic:4.LS.1.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "4.LS.1.4.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "4.LS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_de592e83f84d62267573178e",
+      "source_node_key": "caps:topic:4.LS.1.1",
+      "target_node_key": "caps:subtopic:4.LS.2.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "4.LS.2.1.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "4.LS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_c67a9b005b047f2dfb361b71",
+      "source_node_key": "caps:topic:4.LS.1.1",
+      "target_node_key": "caps:subtopic:4.LS.2.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "4.LS.2.2.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "4.LS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_d4c04f3304ef120a8cd22d55",
+      "source_node_key": "caps:topic:4.LS.1.1",
+      "target_node_key": "caps:subtopic:4.LS.2.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "4.LS.2.3.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "4.LS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_b659c4cc2c163d37af4fb17a",
+      "source_node_key": "caps:topic:4.LS.1.1",
+      "target_node_key": "caps:subtopic:4.LS.2.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "4.LS.2.4.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "4.LS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_7d2bb5d1db3b78b2cfcb69b5",
+      "source_node_key": "caps:topic:4.LS.1.2",
+      "target_node_key": "caps:subtopic:4.LS.1.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "4.LS.1.2.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_75fbf74569f8fb1885379a5a",
+      "source_node_key": "caps:topic:4.LS.1.3",
+      "target_node_key": "caps:subtopic:4.LS.1.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "4.LS.1.3.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b9c3a0090ac2c7ac73bf7cf8",
+      "source_node_key": "caps:topic:4.LS.1.4",
+      "target_node_key": "caps:subtopic:4.LS.1.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "4.LS.1.4.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_dcc6d7ff7a843418301f362e",
+      "source_node_key": "caps:topic:4.LS.2.1",
+      "target_node_key": "caps:subtopic:4.LS.2.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "4.LS.2.1.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_918fad19c25721ab41b2d577",
+      "source_node_key": "caps:topic:4.LS.2.1",
+      "target_node_key": "caps:subtopic:4.LS.3.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "4.LS.3.1.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "4.LS.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_1a392db7346ce0ca3e18e18e",
+      "source_node_key": "caps:topic:4.LS.2.1",
+      "target_node_key": "caps:subtopic:4.LS.3.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "4.LS.3.2.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "4.LS.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_3c93af245597a39f7d516d67",
+      "source_node_key": "caps:topic:4.LS.2.1",
+      "target_node_key": "caps:subtopic:4.LS.3.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "4.LS.3.3.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "4.LS.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_23594707f31539c1ff19eab7",
+      "source_node_key": "caps:topic:4.LS.2.1",
+      "target_node_key": "caps:subtopic:4.LS.3.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "4.LS.3.4.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "4.LS.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_d1885107447adb4b77226721",
+      "source_node_key": "caps:topic:4.LS.2.2",
+      "target_node_key": "caps:subtopic:4.LS.2.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "4.LS.2.2.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_687b5d038b6b5fc22dc5c702",
+      "source_node_key": "caps:topic:4.LS.2.3",
+      "target_node_key": "caps:subtopic:4.LS.2.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "4.LS.2.3.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_23902d5d15c4d38c8bbd2e24",
+      "source_node_key": "caps:topic:4.LS.2.4",
+      "target_node_key": "caps:subtopic:4.LS.2.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "4.LS.2.4.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_61325970fee0d0d0a2873cd4",
+      "source_node_key": "caps:topic:4.LS.3.1",
+      "target_node_key": "caps:subtopic:4.LS.3.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "4.LS.3.1.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b98876af499d478fd41c1dcc",
+      "source_node_key": "caps:topic:4.LS.3.1",
+      "target_node_key": "caps:subtopic:4.LS.4.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "4.LS.4.1.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "4.LS.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_4faf444882052836347ee486",
+      "source_node_key": "caps:topic:4.LS.3.1",
+      "target_node_key": "caps:subtopic:4.LS.4.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "4.LS.4.2.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "4.LS.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_2aab24c0dc48f76907b95f17",
+      "source_node_key": "caps:topic:4.LS.3.1",
+      "target_node_key": "caps:subtopic:4.LS.4.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "4.LS.4.3.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "4.LS.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_06537eb4d0ba0690919ae1ef",
+      "source_node_key": "caps:topic:4.LS.3.1",
+      "target_node_key": "caps:subtopic:4.LS.4.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "4.LS.4.4.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "4.LS.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_2e0928728fa0b8810e549ee4",
+      "source_node_key": "caps:topic:4.LS.3.2",
+      "target_node_key": "caps:subtopic:4.LS.3.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "4.LS.3.2.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d0f297b57fca0df1ee4147cb",
+      "source_node_key": "caps:topic:4.LS.3.3",
+      "target_node_key": "caps:subtopic:4.LS.3.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "4.LS.3.3.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3ea7c582cb395091f2ebb14b",
+      "source_node_key": "caps:topic:4.LS.3.4",
+      "target_node_key": "caps:subtopic:4.LS.3.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "4.LS.3.4.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_785258477be947ce27ed6b45",
+      "source_node_key": "caps:topic:4.LS.4.1",
+      "target_node_key": "caps:subtopic:4.LS.4.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "4.LS.4.1.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_385e92dc037f2f7c35dfe3c3",
+      "source_node_key": "caps:topic:4.LS.4.2",
+      "target_node_key": "caps:subtopic:4.LS.4.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "4.LS.4.2.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b10857b40f4e10ae3d04ad05",
+      "source_node_key": "caps:topic:4.LS.4.3",
+      "target_node_key": "caps:subtopic:4.LS.4.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "4.LS.4.3.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bf5c8c8effa033fb83afce28",
+      "source_node_key": "caps:topic:4.LS.4.4",
+      "target_node_key": "caps:subtopic:4.LS.4.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "4.LS.4.4.1",
+      "source_sha256": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    }
+  ],
+  "boundary": {
+    "runtime_kg_implementation_claimed": false,
+    "runtime_kg_authority_switch_authorised": false,
+    "database_schema_migration_authorised": false,
+    "learner_facing_model_change_authorised": false,
+    "learner_graph_implementation_authorised": false,
+    "production_release_authorised": false,
+    "deployment_authorised": false,
+    "release_tag_authorised": false,
+    "public_beta_authorised": false
+  }
+}

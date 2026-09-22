@@ -1,0 +1,3694 @@
+{
+  "graph_id": "KG-CAPS-GRAPH-GRADE-6-MATHEMATICS",
+  "graph_version": "kg1-caps-graph-foundation-v1",
+  "status": "caps_graph_foundation_generated",
+  "scope": {
+    "curriculum": "CAPS",
+    "grade": 6,
+    "subject": "mathematics",
+    "language": "en"
+  },
+  "source": {
+    "source_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/data/caps/topic_maps/grade6_mathematics_en.json",
+    "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+    "source_ref": "Official DBE CAPS source document linked in source_documents manifest.",
+    "schema_version": "1.0.0"
+  },
+  "review": {
+    "node_review_status": "approved",
+    "edge_review_status": "approved",
+    "runtime_authority": "read_model_only"
+  },
+  "counts": {
+    "terms": 4,
+    "topics": 16,
+    "subtopics": 16,
+    "assessment_statements": 48,
+    "misconceptions": 32,
+    "prerequisite_edges": 15,
+    "nodes": 119,
+    "edges": 133
+  },
+  "nodes": [
+    {
+      "node_id": "kgn_822cab933b67a90a94299494",
+      "node_key": "caps:assessment_statement:6.M.1.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Solve grade-appropriate problems involving numbers, operations and relationships.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.1.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_bbca6cb08edf1cf2ad2832e5",
+      "node_key": "caps:assessment_statement:6.M.1.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use mathematical language, representations and strategies accurately.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.1.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_a8dd2ebd364e8bcc15083da9",
+      "node_key": "caps:assessment_statement:6.M.1.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Explain methods, check answers and correct common errors.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.1.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_dba893d0a5dd73f0f197ad04",
+      "node_key": "caps:assessment_statement:6.M.1.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Solve grade-appropriate problems involving number patterns.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.2.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_5719e08b415bb9f956f99e91",
+      "node_key": "caps:assessment_statement:6.M.1.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use mathematical language, representations and strategies accurately.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.2.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_f18da7c33d1e627c16e0fa25",
+      "node_key": "caps:assessment_statement:6.M.1.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Explain methods, check answers and correct common errors.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.2.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_1a16b2ed300e46ac4d71c366",
+      "node_key": "caps:assessment_statement:6.M.1.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Solve grade-appropriate problems involving space and shape.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.3.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_a3a761eabe84edc69e5eca03",
+      "node_key": "caps:assessment_statement:6.M.1.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use mathematical language, representations and strategies accurately.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.3.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_2c45996f504dae1a9445f614",
+      "node_key": "caps:assessment_statement:6.M.1.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Explain methods, check answers and correct common errors.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.3.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_041169dbc987319be38a286e",
+      "node_key": "caps:assessment_statement:6.M.1.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Solve grade-appropriate problems involving measurement.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.4.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_97cad65d252a19621a866cb3",
+      "node_key": "caps:assessment_statement:6.M.1.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use mathematical language, representations and strategies accurately.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.4.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_e0612c1d0bb7224821c2b485",
+      "node_key": "caps:assessment_statement:6.M.1.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Explain methods, check answers and correct common errors.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.4.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_46700b8feabffee28f1371c0",
+      "node_key": "caps:assessment_statement:6.M.2.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Solve grade-appropriate problems involving numbers, operations and relationships.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.1.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_a96f3796de52dfa36a8a5fcb",
+      "node_key": "caps:assessment_statement:6.M.2.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use mathematical language, representations and strategies accurately.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.1.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_44a50e6b43d6fd978c757951",
+      "node_key": "caps:assessment_statement:6.M.2.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Explain methods, check answers and correct common errors.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.1.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_6b6d04b0a6286eb3eeb5e2b0",
+      "node_key": "caps:assessment_statement:6.M.2.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Solve grade-appropriate problems involving fractions.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.2.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_98cec0c72c5518a34040b83c",
+      "node_key": "caps:assessment_statement:6.M.2.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use mathematical language, representations and strategies accurately.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.2.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_bcd38bce9a0c53584299fcf8",
+      "node_key": "caps:assessment_statement:6.M.2.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Explain methods, check answers and correct common errors.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.2.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_35bc25d0aa16b0bf948809f0",
+      "node_key": "caps:assessment_statement:6.M.2.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Solve grade-appropriate problems involving space and shape.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.3.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_bba1845732d5da2dc10bc08a",
+      "node_key": "caps:assessment_statement:6.M.2.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use mathematical language, representations and strategies accurately.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.3.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_47d876d41409ecbdd0f321cd",
+      "node_key": "caps:assessment_statement:6.M.2.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Explain methods, check answers and correct common errors.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.3.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_41c3793fcc1862f3fbd3ae93",
+      "node_key": "caps:assessment_statement:6.M.2.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Solve grade-appropriate problems involving data handling.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.4.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_fe3c31d5a47ca80d0bc0f133",
+      "node_key": "caps:assessment_statement:6.M.2.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use mathematical language, representations and strategies accurately.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.4.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_721015a7344d540785174052",
+      "node_key": "caps:assessment_statement:6.M.2.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Explain methods, check answers and correct common errors.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.4.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_987d2b94817f530dac8ab04e",
+      "node_key": "caps:assessment_statement:6.M.3.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Solve grade-appropriate problems involving numbers, operations and relationships.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.1.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_8215e9bc1bbf71ba9c5ca178",
+      "node_key": "caps:assessment_statement:6.M.3.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use mathematical language, representations and strategies accurately.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.1.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_7d1288313fe8edbe27515469",
+      "node_key": "caps:assessment_statement:6.M.3.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Explain methods, check answers and correct common errors.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.1.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_beed33964f1057af0ceb5483",
+      "node_key": "caps:assessment_statement:6.M.3.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Solve grade-appropriate problems involving numeric and geometric patterns.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.2.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_7291fec79b43d543eaa9c98b",
+      "node_key": "caps:assessment_statement:6.M.3.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use mathematical language, representations and strategies accurately.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.2.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_1c79e2a49f446167498fc6fe",
+      "node_key": "caps:assessment_statement:6.M.3.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Explain methods, check answers and correct common errors.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.2.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_7320b2c85dfa819d417c09f6",
+      "node_key": "caps:assessment_statement:6.M.3.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Solve grade-appropriate problems involving measurement.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.3.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_6b93762d3bf4a1409e6f2011",
+      "node_key": "caps:assessment_statement:6.M.3.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use mathematical language, representations and strategies accurately.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.3.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_5241b76f48e5fbab1b878b28",
+      "node_key": "caps:assessment_statement:6.M.3.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Explain methods, check answers and correct common errors.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.3.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_ffdfbe9707809a7784a4325c",
+      "node_key": "caps:assessment_statement:6.M.3.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Solve grade-appropriate problems involving data handling.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.4.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_43d9c1029986a2e735ad5478",
+      "node_key": "caps:assessment_statement:6.M.3.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use mathematical language, representations and strategies accurately.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.4.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_8d4705c5b33bb7545996ff68",
+      "node_key": "caps:assessment_statement:6.M.3.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Explain methods, check answers and correct common errors.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.4.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_fa876a9daedfc1b8bde13c2a",
+      "node_key": "caps:assessment_statement:6.M.4.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Solve grade-appropriate problems involving whole numbers and calculations.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.1.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_6bf9ed5439ea11732e3b3cf5",
+      "node_key": "caps:assessment_statement:6.M.4.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use mathematical language, representations and strategies accurately.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.1.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_0283711c19a35f5d713321f0",
+      "node_key": "caps:assessment_statement:6.M.4.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Explain methods, check answers and correct common errors.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.1.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_67e763a6cce14b1efa8aef82",
+      "node_key": "caps:assessment_statement:6.M.4.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Solve grade-appropriate problems involving common fractions.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.2.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_18aa88159c778a36af70b7ce",
+      "node_key": "caps:assessment_statement:6.M.4.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use mathematical language, representations and strategies accurately.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.2.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_230356e2cc52726451ef006f",
+      "node_key": "caps:assessment_statement:6.M.4.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Explain methods, check answers and correct common errors.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.2.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_80c63399510c2bfeb8e18dc1",
+      "node_key": "caps:assessment_statement:6.M.4.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Solve grade-appropriate problems involving geometry of 2-d and 3-d objects.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.3.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_8f530b978f1c488d9dd510c3",
+      "node_key": "caps:assessment_statement:6.M.4.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use mathematical language, representations and strategies accurately.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.3.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_e1901baaf8dd0fd45b54adf1",
+      "node_key": "caps:assessment_statement:6.M.4.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Explain methods, check answers and correct common errors.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.3.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_9b004c526eeb4f495f4731aa",
+      "node_key": "caps:assessment_statement:6.M.4.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Solve grade-appropriate problems involving measurement and data.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.4.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_1e7b24b63df9854786f5d514",
+      "node_key": "caps:assessment_statement:6.M.4.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use mathematical language, representations and strategies accurately.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.4.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_937703bc55b112cba88404fe",
+      "node_key": "caps:assessment_statement:6.M.4.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Explain methods, check answers and correct common errors.",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.4.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_c8a2e47bc28572931f00d59e",
+      "node_key": "caps:curriculum",
+      "node_type": "curriculum",
+      "label": "CAPS",
+      "description": "South African CAPS curriculum",
+      "grade": null,
+      "subject": null,
+      "term": null,
+      "source_ref": "CAPS",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "source_file": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/data/caps/topic_maps/grade6_mathematics_en.json"
+      }
+    },
+    {
+      "node_id": "kgn_70f2b2f91f09cb5d7d4d2928",
+      "node_key": "caps:grade:6",
+      "node_type": "grade",
+      "label": "Grade 6",
+      "description": "CAPS Grade 6",
+      "grade": 6,
+      "subject": null,
+      "term": null,
+      "source_ref": "grade:6",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "node_id": "kgn_33a10b850d3b1948e921183b",
+      "node_key": "caps:grade:6:subject:mathematics",
+      "node_type": "subject",
+      "label": "Mathematics",
+      "description": "CAPS Grade 6 Mathematics",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": null,
+      "source_ref": "grade:6:subject:M",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subject_code": "M"
+      }
+    },
+    {
+      "node_id": "kgn_9de506c3a186d6763d111e47",
+      "node_key": "caps:grade:6:subject:mathematics:term:1",
+      "node_type": "term",
+      "label": "Term 1",
+      "description": "Grade 6 Mathematics Term 1",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "term:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_5b52f912a85c09c0edaa33bf",
+      "node_key": "caps:grade:6:subject:mathematics:term:2",
+      "node_type": "term",
+      "label": "Term 2",
+      "description": "Grade 6 Mathematics Term 2",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "term:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_f170670c61fc1ca948c1bb19",
+      "node_key": "caps:grade:6:subject:mathematics:term:3",
+      "node_type": "term",
+      "label": "Term 3",
+      "description": "Grade 6 Mathematics Term 3",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "term:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_6300a9eb8730d4cf773d6abf",
+      "node_key": "caps:grade:6:subject:mathematics:term:4",
+      "node_type": "term",
+      "label": "Term 4",
+      "description": "Grade 6 Mathematics Term 4",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "term:4",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-8"
+      }
+    },
+    {
+      "node_id": "kgn_9725a9a424b8cde61cb87c83",
+      "node_key": "caps:misconception:6.M.1.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.1.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_2476f90fafbaf74b71d73214",
+      "node_key": "caps:misconception:6.M.1.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.1.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_800f584d1c773541d548d5f9",
+      "node_key": "caps:misconception:6.M.1.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.2.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_fce13cd5ebf408329cf33473",
+      "node_key": "caps:misconception:6.M.1.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.2.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_199abce77888eb8a33c4e5c3",
+      "node_key": "caps:misconception:6.M.1.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.3.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_c66c588d083cf072bc1dfc2f",
+      "node_key": "caps:misconception:6.M.1.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.3.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_655ebf812b0800ec50e21788",
+      "node_key": "caps:misconception:6.M.1.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.4.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_5b6bc6d9139c580eef81b001",
+      "node_key": "caps:misconception:6.M.1.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.4.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_cf11527dc389d0a11a509790",
+      "node_key": "caps:misconception:6.M.2.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.1.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_f22761edde59e8ce79e7c035",
+      "node_key": "caps:misconception:6.M.2.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.1.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_4b8e64f45c958e2ef226b9b7",
+      "node_key": "caps:misconception:6.M.2.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.2.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_293489519cb2dbb50bded0aa",
+      "node_key": "caps:misconception:6.M.2.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.2.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_ca9227c29a19cc08d5f1eb75",
+      "node_key": "caps:misconception:6.M.2.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.3.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_e4a8999c7d0b19202e491002",
+      "node_key": "caps:misconception:6.M.2.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.3.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_94a64c5cf521b82e2cf864cd",
+      "node_key": "caps:misconception:6.M.2.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.4.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_43720b73d65a4b9f96dd5502",
+      "node_key": "caps:misconception:6.M.2.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.4.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_ef0f6cdb2cdf8d85441f6678",
+      "node_key": "caps:misconception:6.M.3.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.1.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_40fdbb7fcc0e25a46ec152e1",
+      "node_key": "caps:misconception:6.M.3.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.1.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_c7f4057a3fdbf31a07779c3f",
+      "node_key": "caps:misconception:6.M.3.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.2.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_a8a2efa806fd7f6a934dd3bd",
+      "node_key": "caps:misconception:6.M.3.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.2.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_81fc0ef64abbe009f4fa6513",
+      "node_key": "caps:misconception:6.M.3.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.3.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_e94f877584474ec0ed385622",
+      "node_key": "caps:misconception:6.M.3.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.3.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_30b46ca44f16e9bacd3dbcf4",
+      "node_key": "caps:misconception:6.M.3.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.4.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_445bb7b65cac4860b6844c3b",
+      "node_key": "caps:misconception:6.M.3.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.4.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_3e16cf6a0c9503ee2c25bdc2",
+      "node_key": "caps:misconception:6.M.4.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.1.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_08fd398269ca4dd45daaf577",
+      "node_key": "caps:misconception:6.M.4.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.1.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_552cb2a5ae19157fb4c81a2d",
+      "node_key": "caps:misconception:6.M.4.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.2.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_58201b60e58212e190ab6e58",
+      "node_key": "caps:misconception:6.M.4.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.2.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_94d96d38e8391926d31ab390",
+      "node_key": "caps:misconception:6.M.4.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.3.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_91ec80cd45ab324aed2c1383",
+      "node_key": "caps:misconception:6.M.4.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.3.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_760813a5db70ef184bafa8a1",
+      "node_key": "caps:misconception:6.M.4.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.4.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_07a3306bf2fb25ef33c69738",
+      "node_key": "caps:misconception:6.M.4.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.4.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "6.M.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_41dede462417823c5149e8f7",
+      "node_key": "caps:subtopic:6.M.1.1.1",
+      "node_type": "subtopic",
+      "label": "Numbers, operations and relationships",
+      "description": "Numbers, operations and relationships",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.1.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_8c6c92a4852364aa205cb8b7",
+      "node_key": "caps:subtopic:6.M.1.2.1",
+      "node_type": "subtopic",
+      "label": "Number patterns",
+      "description": "Number patterns",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.2.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_8464ff23c96865e49c0577c2",
+      "node_key": "caps:subtopic:6.M.1.3.1",
+      "node_type": "subtopic",
+      "label": "Space and shape",
+      "description": "Space and shape",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.3.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_527d324772922b65af5f6d8a",
+      "node_key": "caps:subtopic:6.M.1.4.1",
+      "node_type": "subtopic",
+      "label": "Measurement",
+      "description": "Measurement",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.4.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_96a0382796ae2aafea1c3b9d",
+      "node_key": "caps:subtopic:6.M.2.1.1",
+      "node_type": "subtopic",
+      "label": "Numbers, operations and relationships",
+      "description": "Numbers, operations and relationships",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.1.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_5da78c590c6dfa7c56d68d72",
+      "node_key": "caps:subtopic:6.M.2.2.1",
+      "node_type": "subtopic",
+      "label": "Fractions",
+      "description": "Fractions",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.2.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_faeb12d319274d7fdcc6c92a",
+      "node_key": "caps:subtopic:6.M.2.3.1",
+      "node_type": "subtopic",
+      "label": "Space and shape",
+      "description": "Space and shape",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.3.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_c079d1e8e7f835595e683e18",
+      "node_key": "caps:subtopic:6.M.2.4.1",
+      "node_type": "subtopic",
+      "label": "Data handling",
+      "description": "Data handling",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.4.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_a4beef76f5fe8cdfab0c4d49",
+      "node_key": "caps:subtopic:6.M.3.1.1",
+      "node_type": "subtopic",
+      "label": "Numbers, operations and relationships",
+      "description": "Numbers, operations and relationships",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.1.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_16abee238c5b3b8f75a51b7b",
+      "node_key": "caps:subtopic:6.M.3.2.1",
+      "node_type": "subtopic",
+      "label": "Numeric and geometric patterns",
+      "description": "Numeric and geometric patterns",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.2.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_9bc97cccae54f45532b650fc",
+      "node_key": "caps:subtopic:6.M.3.3.1",
+      "node_type": "subtopic",
+      "label": "Measurement",
+      "description": "Measurement",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.3.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_5cbc5d2adf54ac401d827331",
+      "node_key": "caps:subtopic:6.M.3.4.1",
+      "node_type": "subtopic",
+      "label": "Data handling",
+      "description": "Data handling",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.4.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_b14cd7132cb1522a997bb855",
+      "node_key": "caps:subtopic:6.M.4.1.1",
+      "node_type": "subtopic",
+      "label": "Whole numbers and calculations",
+      "description": "Whole numbers and calculations",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.1.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_4df93417bd3764a3efbc4955",
+      "node_key": "caps:subtopic:6.M.4.2.1",
+      "node_type": "subtopic",
+      "label": "Common fractions",
+      "description": "Common fractions",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.2.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_b6e4a10df6e5ae3e436db38e",
+      "node_key": "caps:subtopic:6.M.4.3.1",
+      "node_type": "subtopic",
+      "label": "Geometry of 2-D and 3-D objects",
+      "description": "Geometry of 2-D and 3-D objects",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.3.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_eac631e5d1f8e3b1456a7140",
+      "node_key": "caps:subtopic:6.M.4.4.1",
+      "node_type": "subtopic",
+      "label": "Measurement and data",
+      "description": "Measurement and data",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.4.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_e6d42964709566c3a8943a1b",
+      "node_key": "caps:topic:6.M.1.1",
+      "node_type": "topic",
+      "label": "Numbers, operations and relationships",
+      "description": "Numbers, operations and relationships",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_0bac65e7cd2fcd4873d07ca6",
+      "node_key": "caps:topic:6.M.1.2",
+      "node_type": "topic",
+      "label": "Number patterns",
+      "description": "Number patterns",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_f872396d1b9519f04feedf5f",
+      "node_key": "caps:topic:6.M.1.3",
+      "node_type": "topic",
+      "label": "Space and shape",
+      "description": "Space and shape",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_1f8f12d55320f6d9dfebb962",
+      "node_key": "caps:topic:6.M.1.4",
+      "node_type": "topic",
+      "label": "Measurement",
+      "description": "Measurement",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 1,
+      "source_ref": "6.M.1.4",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_d93dfadc14f7a9c3004ac867",
+      "node_key": "caps:topic:6.M.2.1",
+      "node_type": "topic",
+      "label": "Numbers, operations and relationships",
+      "description": "Numbers, operations and relationships",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_38a081ba190444edb4e1b2dc",
+      "node_key": "caps:topic:6.M.2.2",
+      "node_type": "topic",
+      "label": "Fractions",
+      "description": "Fractions",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_f9c22aa5b463dc12fc49887f",
+      "node_key": "caps:topic:6.M.2.3",
+      "node_type": "topic",
+      "label": "Space and shape",
+      "description": "Space and shape",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_771595a33711b5399b625810",
+      "node_key": "caps:topic:6.M.2.4",
+      "node_type": "topic",
+      "label": "Data handling",
+      "description": "Data handling",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 2,
+      "source_ref": "6.M.2.4",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_96fed8cb308e8cb0418e26ee",
+      "node_key": "caps:topic:6.M.3.1",
+      "node_type": "topic",
+      "label": "Numbers, operations and relationships",
+      "description": "Numbers, operations and relationships",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_b1a9d318c9d279930ce14911",
+      "node_key": "caps:topic:6.M.3.2",
+      "node_type": "topic",
+      "label": "Numeric and geometric patterns",
+      "description": "Numeric and geometric patterns",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_f8d4819bb8fb3e91d82450c0",
+      "node_key": "caps:topic:6.M.3.3",
+      "node_type": "topic",
+      "label": "Measurement",
+      "description": "Measurement",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_91a14a20937edc0a2fddd9a7",
+      "node_key": "caps:topic:6.M.3.4",
+      "node_type": "topic",
+      "label": "Data handling",
+      "description": "Data handling",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 3,
+      "source_ref": "6.M.3.4",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_bb915a3517d1f20bb68cd87d",
+      "node_key": "caps:topic:6.M.4.1",
+      "node_type": "topic",
+      "label": "Whole numbers and calculations",
+      "description": "Whole numbers and calculations",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_9577865f5711b8c85cdcc386",
+      "node_key": "caps:topic:6.M.4.2",
+      "node_type": "topic",
+      "label": "Common fractions",
+      "description": "Common fractions",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_6e8d2db9aea69a2e92c6c17a",
+      "node_key": "caps:topic:6.M.4.3",
+      "node_type": "topic",
+      "label": "Geometry of 2-D and 3-D objects",
+      "description": "Geometry of 2-D and 3-D objects",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_bea1870be352dfdeefbff883",
+      "node_key": "caps:topic:6.M.4.4",
+      "node_type": "topic",
+      "label": "Measurement and data",
+      "description": "Measurement and data",
+      "grade": 6,
+      "subject": "mathematics",
+      "term": 4,
+      "source_ref": "6.M.4.4",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "kge_f163140fc5ffe2a0df383ebc",
+      "source_node_key": "caps:curriculum",
+      "target_node_key": "caps:grade:6",
+      "edge_type": "contains",
+      "label": "CAPS contains grade",
+      "source_ref": "CAPS",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_dfdf7a4977bd62f6504cec23",
+      "source_node_key": "caps:grade:6",
+      "target_node_key": "caps:grade:6:subject:mathematics",
+      "edge_type": "contains",
+      "label": "Grade contains subject",
+      "source_ref": "grade:6:subject:M",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b48066783ce9626d63c05c9e",
+      "source_node_key": "caps:grade:6:subject:mathematics",
+      "target_node_key": "caps:grade:6:subject:mathematics:term:1",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9f06ff11bc63de8fbdba57c1",
+      "source_node_key": "caps:grade:6:subject:mathematics",
+      "target_node_key": "caps:grade:6:subject:mathematics:term:2",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_da049d99ac972557954c5a78",
+      "source_node_key": "caps:grade:6:subject:mathematics",
+      "target_node_key": "caps:grade:6:subject:mathematics:term:3",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_adaa79f2735cd3f9dfb612a9",
+      "source_node_key": "caps:grade:6:subject:mathematics",
+      "target_node_key": "caps:grade:6:subject:mathematics:term:4",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:4",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b48a9c7c7365b5115fe9d22f",
+      "source_node_key": "caps:grade:6:subject:mathematics:term:1",
+      "target_node_key": "caps:topic:6.M.1.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "6.M.1.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2045d9be4f4399f82313ef8b",
+      "source_node_key": "caps:grade:6:subject:mathematics:term:1",
+      "target_node_key": "caps:topic:6.M.1.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "6.M.1.2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7f1bf8d4dfd6f4f6870e7177",
+      "source_node_key": "caps:grade:6:subject:mathematics:term:1",
+      "target_node_key": "caps:topic:6.M.1.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "6.M.1.3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e62bccd4007d154e5eecc1d9",
+      "source_node_key": "caps:grade:6:subject:mathematics:term:1",
+      "target_node_key": "caps:topic:6.M.1.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "6.M.1.4",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_639aaa9e3a79c8a79cc6e95f",
+      "source_node_key": "caps:grade:6:subject:mathematics:term:2",
+      "target_node_key": "caps:topic:6.M.2.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "6.M.2.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_388e22488238553c357f1de6",
+      "source_node_key": "caps:grade:6:subject:mathematics:term:2",
+      "target_node_key": "caps:topic:6.M.2.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "6.M.2.2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_032506721a321cfd6196b533",
+      "source_node_key": "caps:grade:6:subject:mathematics:term:2",
+      "target_node_key": "caps:topic:6.M.2.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "6.M.2.3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d27306629a683005d6357088",
+      "source_node_key": "caps:grade:6:subject:mathematics:term:2",
+      "target_node_key": "caps:topic:6.M.2.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "6.M.2.4",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_498c09dfb08b3f10c72f6861",
+      "source_node_key": "caps:grade:6:subject:mathematics:term:3",
+      "target_node_key": "caps:topic:6.M.3.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "6.M.3.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_08315bab4e229145e46e033d",
+      "source_node_key": "caps:grade:6:subject:mathematics:term:3",
+      "target_node_key": "caps:topic:6.M.3.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "6.M.3.2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f47cb36e43e9b85c979713fb",
+      "source_node_key": "caps:grade:6:subject:mathematics:term:3",
+      "target_node_key": "caps:topic:6.M.3.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "6.M.3.3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_631e2ea721b4691378378d35",
+      "source_node_key": "caps:grade:6:subject:mathematics:term:3",
+      "target_node_key": "caps:topic:6.M.3.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "6.M.3.4",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f46f891c875e3b5edf8949c1",
+      "source_node_key": "caps:grade:6:subject:mathematics:term:4",
+      "target_node_key": "caps:topic:6.M.4.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "6.M.4.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_17d96b9a5ede718df6fdf3d4",
+      "source_node_key": "caps:grade:6:subject:mathematics:term:4",
+      "target_node_key": "caps:topic:6.M.4.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "6.M.4.2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d4bdcd345c1fc51f0350a4a6",
+      "source_node_key": "caps:grade:6:subject:mathematics:term:4",
+      "target_node_key": "caps:topic:6.M.4.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "6.M.4.3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_74173ad1369ed081b147ef4a",
+      "source_node_key": "caps:grade:6:subject:mathematics:term:4",
+      "target_node_key": "caps:topic:6.M.4.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "6.M.4.4",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8e816326cec360757c1cdd04",
+      "source_node_key": "caps:subtopic:6.M.1.1.1",
+      "target_node_key": "caps:assessment_statement:6.M.1.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.1.1.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2bea7323c84b3577382cb4ff",
+      "source_node_key": "caps:subtopic:6.M.1.1.1",
+      "target_node_key": "caps:assessment_statement:6.M.1.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.1.1.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_65c8a93567268048611d9ea1",
+      "source_node_key": "caps:subtopic:6.M.1.1.1",
+      "target_node_key": "caps:assessment_statement:6.M.1.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.1.1.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9e1dca80871d6db9f3a29e3c",
+      "source_node_key": "caps:subtopic:6.M.1.1.1",
+      "target_node_key": "caps:misconception:6.M.1.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.1.1.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_86ff31f52ee0f29559ed3218",
+      "source_node_key": "caps:subtopic:6.M.1.1.1",
+      "target_node_key": "caps:misconception:6.M.1.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.1.1.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f6af90fb51e7f0f80afcd83d",
+      "source_node_key": "caps:subtopic:6.M.1.2.1",
+      "target_node_key": "caps:assessment_statement:6.M.1.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.1.2.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_370f2ace5d0b24dc5fade1d1",
+      "source_node_key": "caps:subtopic:6.M.1.2.1",
+      "target_node_key": "caps:assessment_statement:6.M.1.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.1.2.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1db18222c1e2f67d42442e26",
+      "source_node_key": "caps:subtopic:6.M.1.2.1",
+      "target_node_key": "caps:assessment_statement:6.M.1.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.1.2.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8ae0dbf0f8df96c24fc03068",
+      "source_node_key": "caps:subtopic:6.M.1.2.1",
+      "target_node_key": "caps:misconception:6.M.1.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.1.2.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3eb365059d07316e6315eda3",
+      "source_node_key": "caps:subtopic:6.M.1.2.1",
+      "target_node_key": "caps:misconception:6.M.1.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.1.2.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_de30aabeb0cc6b6024c3223a",
+      "source_node_key": "caps:subtopic:6.M.1.3.1",
+      "target_node_key": "caps:assessment_statement:6.M.1.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.1.3.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_793283d496af1a37a09dd20f",
+      "source_node_key": "caps:subtopic:6.M.1.3.1",
+      "target_node_key": "caps:assessment_statement:6.M.1.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.1.3.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bb83d382e0281a57463681d5",
+      "source_node_key": "caps:subtopic:6.M.1.3.1",
+      "target_node_key": "caps:assessment_statement:6.M.1.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.1.3.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f249ef7f0a4d4e47d80897db",
+      "source_node_key": "caps:subtopic:6.M.1.3.1",
+      "target_node_key": "caps:misconception:6.M.1.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.1.3.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_661214e0fed550aa374d5ba8",
+      "source_node_key": "caps:subtopic:6.M.1.3.1",
+      "target_node_key": "caps:misconception:6.M.1.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.1.3.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b67744ef2a2dd9614faf9ac4",
+      "source_node_key": "caps:subtopic:6.M.1.4.1",
+      "target_node_key": "caps:assessment_statement:6.M.1.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.1.4.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bff823249e7421d852ccea52",
+      "source_node_key": "caps:subtopic:6.M.1.4.1",
+      "target_node_key": "caps:assessment_statement:6.M.1.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.1.4.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b624318f55ec4e9719ac5f76",
+      "source_node_key": "caps:subtopic:6.M.1.4.1",
+      "target_node_key": "caps:assessment_statement:6.M.1.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.1.4.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1f64e6b434a52be4dc54c729",
+      "source_node_key": "caps:subtopic:6.M.1.4.1",
+      "target_node_key": "caps:misconception:6.M.1.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.1.4.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_dfccd4dbc40d06081c8350cd",
+      "source_node_key": "caps:subtopic:6.M.1.4.1",
+      "target_node_key": "caps:misconception:6.M.1.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.1.4.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6131290a2c03610dcac74f99",
+      "source_node_key": "caps:subtopic:6.M.2.1.1",
+      "target_node_key": "caps:assessment_statement:6.M.2.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.2.1.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_db00cd81a21c5ea14e2e6120",
+      "source_node_key": "caps:subtopic:6.M.2.1.1",
+      "target_node_key": "caps:assessment_statement:6.M.2.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.2.1.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f530968322877431473e3a03",
+      "source_node_key": "caps:subtopic:6.M.2.1.1",
+      "target_node_key": "caps:assessment_statement:6.M.2.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.2.1.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_287dc2e5251d91d89fd01ef2",
+      "source_node_key": "caps:subtopic:6.M.2.1.1",
+      "target_node_key": "caps:misconception:6.M.2.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.2.1.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1b5c94872fabe1af3bbd7c33",
+      "source_node_key": "caps:subtopic:6.M.2.1.1",
+      "target_node_key": "caps:misconception:6.M.2.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.2.1.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_25a13d09ff2c57faa9b1504f",
+      "source_node_key": "caps:subtopic:6.M.2.2.1",
+      "target_node_key": "caps:assessment_statement:6.M.2.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.2.2.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_621782a2501e4890d5b9122a",
+      "source_node_key": "caps:subtopic:6.M.2.2.1",
+      "target_node_key": "caps:assessment_statement:6.M.2.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.2.2.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1f068f00c77c20373455e9dc",
+      "source_node_key": "caps:subtopic:6.M.2.2.1",
+      "target_node_key": "caps:assessment_statement:6.M.2.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.2.2.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a833d780b2d8799b29fd132a",
+      "source_node_key": "caps:subtopic:6.M.2.2.1",
+      "target_node_key": "caps:misconception:6.M.2.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.2.2.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f222ce77192117bf9d8033ad",
+      "source_node_key": "caps:subtopic:6.M.2.2.1",
+      "target_node_key": "caps:misconception:6.M.2.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.2.2.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ddb4cbd02d614e1741cce89f",
+      "source_node_key": "caps:subtopic:6.M.2.3.1",
+      "target_node_key": "caps:assessment_statement:6.M.2.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.2.3.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3907d0902be11286d54c90c3",
+      "source_node_key": "caps:subtopic:6.M.2.3.1",
+      "target_node_key": "caps:assessment_statement:6.M.2.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.2.3.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_76abad26f1a6029f47df75ec",
+      "source_node_key": "caps:subtopic:6.M.2.3.1",
+      "target_node_key": "caps:assessment_statement:6.M.2.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.2.3.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_03316236d317641ae9d0a386",
+      "source_node_key": "caps:subtopic:6.M.2.3.1",
+      "target_node_key": "caps:misconception:6.M.2.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.2.3.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0d06a0a809fc804a3532ae64",
+      "source_node_key": "caps:subtopic:6.M.2.3.1",
+      "target_node_key": "caps:misconception:6.M.2.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.2.3.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4bc62e45021060835105bbbe",
+      "source_node_key": "caps:subtopic:6.M.2.4.1",
+      "target_node_key": "caps:assessment_statement:6.M.2.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.2.4.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_015b56e5e1aba416d48366a6",
+      "source_node_key": "caps:subtopic:6.M.2.4.1",
+      "target_node_key": "caps:assessment_statement:6.M.2.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.2.4.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9a1349604645474a2642d444",
+      "source_node_key": "caps:subtopic:6.M.2.4.1",
+      "target_node_key": "caps:assessment_statement:6.M.2.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.2.4.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a8af114893e884c93b349383",
+      "source_node_key": "caps:subtopic:6.M.2.4.1",
+      "target_node_key": "caps:misconception:6.M.2.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.2.4.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_327dada425c5af6295320a88",
+      "source_node_key": "caps:subtopic:6.M.2.4.1",
+      "target_node_key": "caps:misconception:6.M.2.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.2.4.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2de8bc46d6528b88082b4231",
+      "source_node_key": "caps:subtopic:6.M.3.1.1",
+      "target_node_key": "caps:assessment_statement:6.M.3.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.3.1.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_81c96ad1caecf6a3aed798ee",
+      "source_node_key": "caps:subtopic:6.M.3.1.1",
+      "target_node_key": "caps:assessment_statement:6.M.3.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.3.1.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a2e9ea68b9d704156f1c3a20",
+      "source_node_key": "caps:subtopic:6.M.3.1.1",
+      "target_node_key": "caps:assessment_statement:6.M.3.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.3.1.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f0896707d8bad1f07a28258c",
+      "source_node_key": "caps:subtopic:6.M.3.1.1",
+      "target_node_key": "caps:misconception:6.M.3.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.3.1.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7f6c47b2f15d60d1774ea3cc",
+      "source_node_key": "caps:subtopic:6.M.3.1.1",
+      "target_node_key": "caps:misconception:6.M.3.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.3.1.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5f96d330caf74cf24f84cbd6",
+      "source_node_key": "caps:subtopic:6.M.3.2.1",
+      "target_node_key": "caps:assessment_statement:6.M.3.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.3.2.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_419abfb0dcf49ad140462b8c",
+      "source_node_key": "caps:subtopic:6.M.3.2.1",
+      "target_node_key": "caps:assessment_statement:6.M.3.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.3.2.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8398df8fcff424bc05fbca05",
+      "source_node_key": "caps:subtopic:6.M.3.2.1",
+      "target_node_key": "caps:assessment_statement:6.M.3.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.3.2.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8e540b9ad75fba100fd09f4a",
+      "source_node_key": "caps:subtopic:6.M.3.2.1",
+      "target_node_key": "caps:misconception:6.M.3.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.3.2.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ef9036c862474a4b95d8f382",
+      "source_node_key": "caps:subtopic:6.M.3.2.1",
+      "target_node_key": "caps:misconception:6.M.3.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.3.2.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_daab298e22d5cfc101ad444b",
+      "source_node_key": "caps:subtopic:6.M.3.3.1",
+      "target_node_key": "caps:assessment_statement:6.M.3.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.3.3.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e0e9023af006f3bcce9b7041",
+      "source_node_key": "caps:subtopic:6.M.3.3.1",
+      "target_node_key": "caps:assessment_statement:6.M.3.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.3.3.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f9d2ba41e6c588645524da19",
+      "source_node_key": "caps:subtopic:6.M.3.3.1",
+      "target_node_key": "caps:assessment_statement:6.M.3.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.3.3.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_dba5639ad06a04d50f183155",
+      "source_node_key": "caps:subtopic:6.M.3.3.1",
+      "target_node_key": "caps:misconception:6.M.3.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.3.3.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e0faa4dbcbee3bcdd452d9ee",
+      "source_node_key": "caps:subtopic:6.M.3.3.1",
+      "target_node_key": "caps:misconception:6.M.3.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.3.3.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7379443a4351e87d60eb5791",
+      "source_node_key": "caps:subtopic:6.M.3.4.1",
+      "target_node_key": "caps:assessment_statement:6.M.3.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.3.4.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5ea8d34034a9d3590e4c5087",
+      "source_node_key": "caps:subtopic:6.M.3.4.1",
+      "target_node_key": "caps:assessment_statement:6.M.3.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.3.4.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8334d4133af967576cc16fd4",
+      "source_node_key": "caps:subtopic:6.M.3.4.1",
+      "target_node_key": "caps:assessment_statement:6.M.3.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.3.4.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e0d7e828f47e8f0c353797e2",
+      "source_node_key": "caps:subtopic:6.M.3.4.1",
+      "target_node_key": "caps:misconception:6.M.3.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.3.4.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6915741912213aecb919a899",
+      "source_node_key": "caps:subtopic:6.M.3.4.1",
+      "target_node_key": "caps:misconception:6.M.3.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.3.4.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b31506d419e73b0778919337",
+      "source_node_key": "caps:subtopic:6.M.4.1.1",
+      "target_node_key": "caps:assessment_statement:6.M.4.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.4.1.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2e5066df26772ee6b7c3eeed",
+      "source_node_key": "caps:subtopic:6.M.4.1.1",
+      "target_node_key": "caps:assessment_statement:6.M.4.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.4.1.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a8342bcbba74548cb0c465c1",
+      "source_node_key": "caps:subtopic:6.M.4.1.1",
+      "target_node_key": "caps:assessment_statement:6.M.4.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.4.1.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_624a69bffffa076dfdf57ed5",
+      "source_node_key": "caps:subtopic:6.M.4.1.1",
+      "target_node_key": "caps:misconception:6.M.4.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.4.1.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_17458d5f2889599b82db543c",
+      "source_node_key": "caps:subtopic:6.M.4.1.1",
+      "target_node_key": "caps:misconception:6.M.4.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.4.1.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a94d393acab001613d88f685",
+      "source_node_key": "caps:subtopic:6.M.4.2.1",
+      "target_node_key": "caps:assessment_statement:6.M.4.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.4.2.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_131e00fce69837a68494c52b",
+      "source_node_key": "caps:subtopic:6.M.4.2.1",
+      "target_node_key": "caps:assessment_statement:6.M.4.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.4.2.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6c73e58a588a2bebb6a0996d",
+      "source_node_key": "caps:subtopic:6.M.4.2.1",
+      "target_node_key": "caps:assessment_statement:6.M.4.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.4.2.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3ebf5143393db0f447f7a950",
+      "source_node_key": "caps:subtopic:6.M.4.2.1",
+      "target_node_key": "caps:misconception:6.M.4.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.4.2.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5daa5dc18571aebbff9cc72d",
+      "source_node_key": "caps:subtopic:6.M.4.2.1",
+      "target_node_key": "caps:misconception:6.M.4.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.4.2.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3149e436487be589fc5f8bd4",
+      "source_node_key": "caps:subtopic:6.M.4.3.1",
+      "target_node_key": "caps:assessment_statement:6.M.4.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.4.3.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a34ef2f6899f1dadde44f986",
+      "source_node_key": "caps:subtopic:6.M.4.3.1",
+      "target_node_key": "caps:assessment_statement:6.M.4.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.4.3.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3fd20e819197da7308e98aec",
+      "source_node_key": "caps:subtopic:6.M.4.3.1",
+      "target_node_key": "caps:assessment_statement:6.M.4.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.4.3.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9fbdcf1491b615ce23074453",
+      "source_node_key": "caps:subtopic:6.M.4.3.1",
+      "target_node_key": "caps:misconception:6.M.4.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.4.3.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ffb88c7179ced3b2a3296068",
+      "source_node_key": "caps:subtopic:6.M.4.3.1",
+      "target_node_key": "caps:misconception:6.M.4.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.4.3.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_498e15be71c3831bde014b95",
+      "source_node_key": "caps:subtopic:6.M.4.4.1",
+      "target_node_key": "caps:assessment_statement:6.M.4.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.4.4.1#assessment:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3728a6f4ae942b39f0acab68",
+      "source_node_key": "caps:subtopic:6.M.4.4.1",
+      "target_node_key": "caps:assessment_statement:6.M.4.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.4.4.1#assessment:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0e533d9af9417eeae14e8853",
+      "source_node_key": "caps:subtopic:6.M.4.4.1",
+      "target_node_key": "caps:assessment_statement:6.M.4.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "6.M.4.4.1#assessment:3",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f087fe0a5a066e8753b4438b",
+      "source_node_key": "caps:subtopic:6.M.4.4.1",
+      "target_node_key": "caps:misconception:6.M.4.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.4.4.1#misconception:2",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5ede3ad92feabaa7ebf03ead",
+      "source_node_key": "caps:subtopic:6.M.4.4.1",
+      "target_node_key": "caps:misconception:6.M.4.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "6.M.4.4.1#misconception:1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_74a483a658bbfc419b71a6f0",
+      "source_node_key": "caps:topic:6.M.1.1",
+      "target_node_key": "caps:subtopic:6.M.1.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "6.M.1.1.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3a109aa2eb2e60cc8e1dfb56",
+      "source_node_key": "caps:topic:6.M.1.1",
+      "target_node_key": "caps:subtopic:6.M.1.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "6.M.1.2.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "6.M.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_edd75e2aaffd36527c41c0a1",
+      "source_node_key": "caps:topic:6.M.1.1",
+      "target_node_key": "caps:subtopic:6.M.1.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "6.M.1.3.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "6.M.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_b9e28774d216b6537fc14527",
+      "source_node_key": "caps:topic:6.M.1.1",
+      "target_node_key": "caps:subtopic:6.M.1.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "6.M.1.4.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "6.M.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_e9ff70e96a05338982e7d7d8",
+      "source_node_key": "caps:topic:6.M.1.1",
+      "target_node_key": "caps:subtopic:6.M.2.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "6.M.2.1.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "6.M.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_b24d3bc06065cef6f4408af2",
+      "source_node_key": "caps:topic:6.M.1.1",
+      "target_node_key": "caps:subtopic:6.M.2.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "6.M.2.2.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "6.M.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_3d0b1afa9ef6f918e71e1f5a",
+      "source_node_key": "caps:topic:6.M.1.1",
+      "target_node_key": "caps:subtopic:6.M.2.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "6.M.2.3.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "6.M.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_7c6dc0e0bfbe29dc251da521",
+      "source_node_key": "caps:topic:6.M.1.1",
+      "target_node_key": "caps:subtopic:6.M.2.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "6.M.2.4.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "6.M.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_28fead4dcfff4f4e630e2e47",
+      "source_node_key": "caps:topic:6.M.1.2",
+      "target_node_key": "caps:subtopic:6.M.1.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "6.M.1.2.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ad1dead464e4624f08850611",
+      "source_node_key": "caps:topic:6.M.1.3",
+      "target_node_key": "caps:subtopic:6.M.1.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "6.M.1.3.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2849b33ab735b94b6588312e",
+      "source_node_key": "caps:topic:6.M.1.4",
+      "target_node_key": "caps:subtopic:6.M.1.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "6.M.1.4.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e475ec93c576bffea723878a",
+      "source_node_key": "caps:topic:6.M.2.1",
+      "target_node_key": "caps:subtopic:6.M.2.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "6.M.2.1.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f184a113076d8d34eb3394dd",
+      "source_node_key": "caps:topic:6.M.2.1",
+      "target_node_key": "caps:subtopic:6.M.3.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "6.M.3.1.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "6.M.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_bbabe0554ddd2d19cc16332d",
+      "source_node_key": "caps:topic:6.M.2.1",
+      "target_node_key": "caps:subtopic:6.M.3.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "6.M.3.2.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "6.M.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_8df742cfc47a380020a17cc9",
+      "source_node_key": "caps:topic:6.M.2.1",
+      "target_node_key": "caps:subtopic:6.M.3.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "6.M.3.3.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "6.M.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_edca761e3121adf3e42a6f4d",
+      "source_node_key": "caps:topic:6.M.2.1",
+      "target_node_key": "caps:subtopic:6.M.3.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "6.M.3.4.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "6.M.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_eae3611c3e6a0c1becd8df2c",
+      "source_node_key": "caps:topic:6.M.2.2",
+      "target_node_key": "caps:subtopic:6.M.2.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "6.M.2.2.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a80f5980af72ad1944654948",
+      "source_node_key": "caps:topic:6.M.2.3",
+      "target_node_key": "caps:subtopic:6.M.2.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "6.M.2.3.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7cb4a300acea42fdf5cd02f5",
+      "source_node_key": "caps:topic:6.M.2.4",
+      "target_node_key": "caps:subtopic:6.M.2.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "6.M.2.4.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6107f547893ed5190af78713",
+      "source_node_key": "caps:topic:6.M.3.1",
+      "target_node_key": "caps:subtopic:6.M.3.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "6.M.3.1.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_504ed662e51c799a324f211b",
+      "source_node_key": "caps:topic:6.M.3.1",
+      "target_node_key": "caps:subtopic:6.M.4.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "6.M.4.1.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "6.M.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_9a238c56b5d832a2db7969fd",
+      "source_node_key": "caps:topic:6.M.3.1",
+      "target_node_key": "caps:subtopic:6.M.4.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "6.M.4.2.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "6.M.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_15e1dea82c40e61e3dd30f3f",
+      "source_node_key": "caps:topic:6.M.3.1",
+      "target_node_key": "caps:subtopic:6.M.4.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "6.M.4.3.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "6.M.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_23c125e61791345587b90457",
+      "source_node_key": "caps:topic:6.M.3.1",
+      "target_node_key": "caps:subtopic:6.M.4.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "6.M.4.4.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "6.M.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_ef8b47825c59f10a9d0a23c2",
+      "source_node_key": "caps:topic:6.M.3.2",
+      "target_node_key": "caps:subtopic:6.M.3.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "6.M.3.2.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_35e4b4657041b0ed0ecc8b8b",
+      "source_node_key": "caps:topic:6.M.3.3",
+      "target_node_key": "caps:subtopic:6.M.3.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "6.M.3.3.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_29cb3fd261a48cae617f4870",
+      "source_node_key": "caps:topic:6.M.3.4",
+      "target_node_key": "caps:subtopic:6.M.3.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "6.M.3.4.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4ffce4aca4b8fa083b6b23b9",
+      "source_node_key": "caps:topic:6.M.4.1",
+      "target_node_key": "caps:subtopic:6.M.4.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "6.M.4.1.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d6cfd35af09c5cfc94d151de",
+      "source_node_key": "caps:topic:6.M.4.2",
+      "target_node_key": "caps:subtopic:6.M.4.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "6.M.4.2.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_43f02c19edd43c2348c8e438",
+      "source_node_key": "caps:topic:6.M.4.3",
+      "target_node_key": "caps:subtopic:6.M.4.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "6.M.4.3.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_09f26bab78bc4986496f1405",
+      "source_node_key": "caps:topic:6.M.4.4",
+      "target_node_key": "caps:subtopic:6.M.4.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "6.M.4.4.1",
+      "source_sha256": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    }
+  ],
+  "boundary": {
+    "runtime_kg_implementation_claimed": false,
+    "runtime_kg_authority_switch_authorised": false,
+    "database_schema_migration_authorised": false,
+    "learner_facing_model_change_authorised": false,
+    "learner_graph_implementation_authorised": false,
+    "production_release_authorised": false,
+    "deployment_authorised": false,
+    "release_tag_authorised": false,
+    "public_beta_authorised": false
+  }
+}

@@ -1,0 +1,3694 @@
+{
+  "graph_id": "KG-CAPS-GRAPH-GRADE-7-CREATIVE-ARTS",
+  "graph_version": "kg1-caps-graph-foundation-v1",
+  "status": "caps_graph_foundation_generated",
+  "scope": {
+    "curriculum": "CAPS",
+    "grade": 7,
+    "subject": "creative arts",
+    "language": "en"
+  },
+  "source": {
+    "source_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/data/caps/topic_maps/grade7_creative_arts_en.json",
+    "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+    "source_ref": "Official DBE CAPS source document linked in source_documents manifest.",
+    "schema_version": "1.0.0"
+  },
+  "review": {
+    "node_review_status": "approved",
+    "edge_review_status": "approved",
+    "runtime_authority": "read_model_only"
+  },
+  "counts": {
+    "terms": 4,
+    "topics": 16,
+    "subtopics": 16,
+    "assessment_statements": 48,
+    "misconceptions": 32,
+    "prerequisite_edges": 15,
+    "nodes": 119,
+    "edges": 133
+  },
+  "nodes": [
+    {
+      "node_id": "kgn_50bb11a7468f811065eaf781",
+      "node_key": "caps:assessment_statement:7.CA.1.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to dance.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.1.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_0e778b74a58cb372d2d36eaf",
+      "node_key": "caps:assessment_statement:7.CA.1.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.1.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_090382df4544eea82708d4aa",
+      "node_key": "caps:assessment_statement:7.CA.1.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.1.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_401da4af965896675d34b34d",
+      "node_key": "caps:assessment_statement:7.CA.1.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to drama.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.2.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_4a204106806bd2594f23de2f",
+      "node_key": "caps:assessment_statement:7.CA.1.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.2.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_6ab7b50baa991947ff4a8abc",
+      "node_key": "caps:assessment_statement:7.CA.1.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.2.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_382096dde431928700f519a0",
+      "node_key": "caps:assessment_statement:7.CA.1.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to music.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.3.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_22ee24aaee8e6edabbfa0384",
+      "node_key": "caps:assessment_statement:7.CA.1.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.3.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_b6218b3a7a9b9997c361f612",
+      "node_key": "caps:assessment_statement:7.CA.1.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.3.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_89181386728e4ffe78c6b055",
+      "node_key": "caps:assessment_statement:7.CA.1.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to visual arts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.4.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_0e031f471357039fea81b7d6",
+      "node_key": "caps:assessment_statement:7.CA.1.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.4.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_afd6cd733e5c5ed5703b48e9",
+      "node_key": "caps:assessment_statement:7.CA.1.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.4.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_59afec04dd02c2720f84403e",
+      "node_key": "caps:assessment_statement:7.CA.2.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to dance.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.1.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_51d1aadf9e1b60ad3f28dce6",
+      "node_key": "caps:assessment_statement:7.CA.2.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.1.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_e9d12c3259fede7cc256236a",
+      "node_key": "caps:assessment_statement:7.CA.2.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.1.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_c239de1f16810edbe24121b5",
+      "node_key": "caps:assessment_statement:7.CA.2.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to drama.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.2.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_301c2b000126ca94d4a56d54",
+      "node_key": "caps:assessment_statement:7.CA.2.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.2.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_c934bf795326d308334e2aaf",
+      "node_key": "caps:assessment_statement:7.CA.2.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.2.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_f9243c6c52e33a4341ca1ff5",
+      "node_key": "caps:assessment_statement:7.CA.2.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to music.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.3.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_9bcda9c904ed6e8134454717",
+      "node_key": "caps:assessment_statement:7.CA.2.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.3.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_25f51ac3d7b765073a1a5170",
+      "node_key": "caps:assessment_statement:7.CA.2.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.3.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_76a904c7cf5f09a4d5372570",
+      "node_key": "caps:assessment_statement:7.CA.2.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to visual arts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.4.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_0bbd5e45bd380898d1f2316e",
+      "node_key": "caps:assessment_statement:7.CA.2.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.4.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_36cbebdcf95a457fbc0cb415",
+      "node_key": "caps:assessment_statement:7.CA.2.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.4.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_ef5f569507222d75d0750356",
+      "node_key": "caps:assessment_statement:7.CA.3.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to dance.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.1.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_950e02cb6dc6ab9c2cbaa775",
+      "node_key": "caps:assessment_statement:7.CA.3.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.1.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_5ba5e69229f7c5d966eed3af",
+      "node_key": "caps:assessment_statement:7.CA.3.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.1.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_dc034538ab6df695234092d6",
+      "node_key": "caps:assessment_statement:7.CA.3.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to drama.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.2.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_c08410a76bf39d7602c4d7e9",
+      "node_key": "caps:assessment_statement:7.CA.3.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.2.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_b358f6bf4add0a2bac07d5f5",
+      "node_key": "caps:assessment_statement:7.CA.3.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.2.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_936c771018c6f4e82180d588",
+      "node_key": "caps:assessment_statement:7.CA.3.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to music.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.3.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_2e4d9fec274893aac1eecd11",
+      "node_key": "caps:assessment_statement:7.CA.3.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.3.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_41d37f1ffcdaf221d776584a",
+      "node_key": "caps:assessment_statement:7.CA.3.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.3.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_a2c6a38431d9d6e8876eb564",
+      "node_key": "caps:assessment_statement:7.CA.3.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to visual arts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.4.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_1e4bc5f32c30d53ac19ac09e",
+      "node_key": "caps:assessment_statement:7.CA.3.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.4.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_6f2d623baf9ef27ba0e940a8",
+      "node_key": "caps:assessment_statement:7.CA.3.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.4.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_c9071eab1a2edbf260608177",
+      "node_key": "caps:assessment_statement:7.CA.4.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to integrated creative arts project.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.1.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_6759b3f16e2a209d58166076",
+      "node_key": "caps:assessment_statement:7.CA.4.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.1.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_c3f4494a8e93fb1786c0a9b6",
+      "node_key": "caps:assessment_statement:7.CA.4.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.1.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_703040150547c90db9d7dd31",
+      "node_key": "caps:assessment_statement:7.CA.4.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to performance and exhibition.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.2.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_2b59f3e23367c66ba06e0a6e",
+      "node_key": "caps:assessment_statement:7.CA.4.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.2.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_bf678af16cf1a6a2f2e0bf9b",
+      "node_key": "caps:assessment_statement:7.CA.4.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.2.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_6c20f997dbfff8db5611769d",
+      "node_key": "caps:assessment_statement:7.CA.4.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to reflection.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.3.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_a7c592518eae6bbab7726478",
+      "node_key": "caps:assessment_statement:7.CA.4.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.3.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_0569b7f3c72c30da4e5f24c8",
+      "node_key": "caps:assessment_statement:7.CA.4.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.3.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_c7c4e8de1ca21a3e67553b76",
+      "node_key": "caps:assessment_statement:7.CA.4.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to assessment.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.4.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_0654cdd39edd5ddfa61aca02",
+      "node_key": "caps:assessment_statement:7.CA.4.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.4.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_8d184ba0316554b637923139",
+      "node_key": "caps:assessment_statement:7.CA.4.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.4.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_c8a2e47bc28572931f00d59e",
+      "node_key": "caps:curriculum",
+      "node_type": "curriculum",
+      "label": "CAPS",
+      "description": "South African CAPS curriculum",
+      "grade": null,
+      "subject": null,
+      "term": null,
+      "source_ref": "CAPS",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "source_file": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/data/caps/topic_maps/grade7_creative_arts_en.json"
+      }
+    },
+    {
+      "node_id": "kgn_75eaf84a4563217d33ca777a",
+      "node_key": "caps:grade:7",
+      "node_type": "grade",
+      "label": "Grade 7",
+      "description": "CAPS Grade 7",
+      "grade": 7,
+      "subject": null,
+      "term": null,
+      "source_ref": "grade:7",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "node_id": "kgn_038f8426f661af1632c0f100",
+      "node_key": "caps:grade:7:subject:creative arts",
+      "node_type": "subject",
+      "label": "Creative Arts",
+      "description": "CAPS Grade 7 Creative Arts",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": null,
+      "source_ref": "grade:7:subject:CA",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subject_code": "CA"
+      }
+    },
+    {
+      "node_id": "kgn_825b34959b87ddbe997c8f5b",
+      "node_key": "caps:grade:7:subject:creative arts:term:1",
+      "node_type": "term",
+      "label": "Term 1",
+      "description": "Grade 7 Creative Arts Term 1",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "term:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_a75b9277ac68f149ac5d8d24",
+      "node_key": "caps:grade:7:subject:creative arts:term:2",
+      "node_type": "term",
+      "label": "Term 2",
+      "description": "Grade 7 Creative Arts Term 2",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "term:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_643384e259c680079435de60",
+      "node_key": "caps:grade:7:subject:creative arts:term:3",
+      "node_type": "term",
+      "label": "Term 3",
+      "description": "Grade 7 Creative Arts Term 3",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "term:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_24e4cf2b4ffcf43193db08ea",
+      "node_key": "caps:grade:7:subject:creative arts:term:4",
+      "node_type": "term",
+      "label": "Term 4",
+      "description": "Grade 7 Creative Arts Term 4",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "term:4",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-8"
+      }
+    },
+    {
+      "node_id": "kgn_bd67dd4950784964ebdbc310",
+      "node_key": "caps:misconception:7.CA.1.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.1.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_2712816f5a46a7e6aaa597cc",
+      "node_key": "caps:misconception:7.CA.1.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.1.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_939e70c3b138cba8d8e4bcb3",
+      "node_key": "caps:misconception:7.CA.1.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.2.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_d4efe9e5b433e509681151c4",
+      "node_key": "caps:misconception:7.CA.1.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.2.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_3e3ee1f0270cf8bff40dd64b",
+      "node_key": "caps:misconception:7.CA.1.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.3.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_38b0d4fd62926e9bfbe0ec7c",
+      "node_key": "caps:misconception:7.CA.1.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.3.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_68efe26fe908e913edcd0fca",
+      "node_key": "caps:misconception:7.CA.1.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.4.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_3ed497df9e1867b269e66763",
+      "node_key": "caps:misconception:7.CA.1.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.4.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_9438500db0f644c18262b0a5",
+      "node_key": "caps:misconception:7.CA.2.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.1.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_80d636362d6f25f9fcb945d4",
+      "node_key": "caps:misconception:7.CA.2.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.1.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_195a6e5f21f56ae8166bff68",
+      "node_key": "caps:misconception:7.CA.2.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.2.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_aba7ab8d548ba0b1e1cf7795",
+      "node_key": "caps:misconception:7.CA.2.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.2.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_b943bad7e079cff3764e3fe3",
+      "node_key": "caps:misconception:7.CA.2.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.3.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_69c142dfc6ecb689fb05e8e3",
+      "node_key": "caps:misconception:7.CA.2.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.3.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_19ea0fc70e3e67a86b1086d1",
+      "node_key": "caps:misconception:7.CA.2.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.4.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_548744c1fdb0af5207786ae4",
+      "node_key": "caps:misconception:7.CA.2.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.4.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_9d22799b6f048d5ab297b3ce",
+      "node_key": "caps:misconception:7.CA.3.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.1.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_7125258632c6d2df87949f58",
+      "node_key": "caps:misconception:7.CA.3.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.1.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_0dfb4f4a9789c17f327e1614",
+      "node_key": "caps:misconception:7.CA.3.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.2.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_54e5d666470951c859f10108",
+      "node_key": "caps:misconception:7.CA.3.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.2.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_d0aea11c79d8fb53557f443a",
+      "node_key": "caps:misconception:7.CA.3.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.3.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_f4bb6177e5e5437633893c20",
+      "node_key": "caps:misconception:7.CA.3.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.3.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_7b50f1cf89aaf9e07bb03842",
+      "node_key": "caps:misconception:7.CA.3.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.4.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_2d73b6e7e46d1aa3df38d9e6",
+      "node_key": "caps:misconception:7.CA.3.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.4.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_6c21dfb5c45ac45bd77e44e7",
+      "node_key": "caps:misconception:7.CA.4.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.1.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_7f520d3c6bd3e7581dc95aa3",
+      "node_key": "caps:misconception:7.CA.4.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.1.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_ac5923dbb3f4c388c69581df",
+      "node_key": "caps:misconception:7.CA.4.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.2.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_7eff7dbba6954e3708a9c2be",
+      "node_key": "caps:misconception:7.CA.4.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.2.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_bd8064b018e3a41c6d119ca7",
+      "node_key": "caps:misconception:7.CA.4.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.3.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_1db31149c7a75dcaf34600d1",
+      "node_key": "caps:misconception:7.CA.4.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.3.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_480562407593d8f14be4bcd8",
+      "node_key": "caps:misconception:7.CA.4.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.4.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_d3a58e01cf3ba262f9dc8d78",
+      "node_key": "caps:misconception:7.CA.4.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.4.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.CA.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_c0554667fe3a35a17b99bf49",
+      "node_key": "caps:subtopic:7.CA.1.1.1",
+      "node_type": "subtopic",
+      "label": "Dance",
+      "description": "Dance",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.1.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_db55c19ffe54db1c4d358e95",
+      "node_key": "caps:subtopic:7.CA.1.2.1",
+      "node_type": "subtopic",
+      "label": "Drama",
+      "description": "Drama",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.2.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_bd9ebd6ee782d0b76d4c31c9",
+      "node_key": "caps:subtopic:7.CA.1.3.1",
+      "node_type": "subtopic",
+      "label": "Music",
+      "description": "Music",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.3.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_3c5767d7188e3c06436a99de",
+      "node_key": "caps:subtopic:7.CA.1.4.1",
+      "node_type": "subtopic",
+      "label": "Visual arts",
+      "description": "Visual arts",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.4.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_a0c53ecf0adcac04540b2708",
+      "node_key": "caps:subtopic:7.CA.2.1.1",
+      "node_type": "subtopic",
+      "label": "Dance",
+      "description": "Dance",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.1.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_7460e879fcd0e564cf5a92dd",
+      "node_key": "caps:subtopic:7.CA.2.2.1",
+      "node_type": "subtopic",
+      "label": "Drama",
+      "description": "Drama",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.2.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_4572f82ef8c6c786e127de51",
+      "node_key": "caps:subtopic:7.CA.2.3.1",
+      "node_type": "subtopic",
+      "label": "Music",
+      "description": "Music",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.3.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_428b9ab0affc6a65ad909236",
+      "node_key": "caps:subtopic:7.CA.2.4.1",
+      "node_type": "subtopic",
+      "label": "Visual arts",
+      "description": "Visual arts",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.4.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_f80877f490e328312149a1fb",
+      "node_key": "caps:subtopic:7.CA.3.1.1",
+      "node_type": "subtopic",
+      "label": "Dance",
+      "description": "Dance",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.1.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_fe227ed8b138fd731cc84388",
+      "node_key": "caps:subtopic:7.CA.3.2.1",
+      "node_type": "subtopic",
+      "label": "Drama",
+      "description": "Drama",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.2.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_604a2e4dc2197fd78e74184d",
+      "node_key": "caps:subtopic:7.CA.3.3.1",
+      "node_type": "subtopic",
+      "label": "Music",
+      "description": "Music",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.3.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_0043fe3b8103cd0ca484394d",
+      "node_key": "caps:subtopic:7.CA.3.4.1",
+      "node_type": "subtopic",
+      "label": "Visual arts",
+      "description": "Visual arts",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.4.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_1b67eb42c0a16132984b284c",
+      "node_key": "caps:subtopic:7.CA.4.1.1",
+      "node_type": "subtopic",
+      "label": "Integrated creative arts project",
+      "description": "Integrated creative arts project",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.1.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_bce67f6f9ae35e301065ff22",
+      "node_key": "caps:subtopic:7.CA.4.2.1",
+      "node_type": "subtopic",
+      "label": "Performance and exhibition",
+      "description": "Performance and exhibition",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.2.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_01dc0a8a445f559d8d47ce37",
+      "node_key": "caps:subtopic:7.CA.4.3.1",
+      "node_type": "subtopic",
+      "label": "Reflection",
+      "description": "Reflection",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.3.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_795ea68ef594705c412ea38f",
+      "node_key": "caps:subtopic:7.CA.4.4.1",
+      "node_type": "subtopic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.4.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_edb1e9366c33896efa04ed4f",
+      "node_key": "caps:topic:7.CA.1.1",
+      "node_type": "topic",
+      "label": "Dance",
+      "description": "Dance",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_9d95293c5840f3c33a9283e8",
+      "node_key": "caps:topic:7.CA.1.2",
+      "node_type": "topic",
+      "label": "Drama",
+      "description": "Drama",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_06dc61524157de9a367c220a",
+      "node_key": "caps:topic:7.CA.1.3",
+      "node_type": "topic",
+      "label": "Music",
+      "description": "Music",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_96b62e293c9c219fde81932d",
+      "node_key": "caps:topic:7.CA.1.4",
+      "node_type": "topic",
+      "label": "Visual arts",
+      "description": "Visual arts",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 1,
+      "source_ref": "7.CA.1.4",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_59dd232f5b0cfe2f28b6985d",
+      "node_key": "caps:topic:7.CA.2.1",
+      "node_type": "topic",
+      "label": "Dance",
+      "description": "Dance",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_3072f2c9f0b94b3f6399a84a",
+      "node_key": "caps:topic:7.CA.2.2",
+      "node_type": "topic",
+      "label": "Drama",
+      "description": "Drama",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_37861b7ad12edc50a3a32d39",
+      "node_key": "caps:topic:7.CA.2.3",
+      "node_type": "topic",
+      "label": "Music",
+      "description": "Music",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_c1e536a3edea9b3f5db361d5",
+      "node_key": "caps:topic:7.CA.2.4",
+      "node_type": "topic",
+      "label": "Visual arts",
+      "description": "Visual arts",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 2,
+      "source_ref": "7.CA.2.4",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_9bc83e9d19dd773df376c412",
+      "node_key": "caps:topic:7.CA.3.1",
+      "node_type": "topic",
+      "label": "Dance",
+      "description": "Dance",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_df20bd90881454d43520c4a0",
+      "node_key": "caps:topic:7.CA.3.2",
+      "node_type": "topic",
+      "label": "Drama",
+      "description": "Drama",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_f73dc9f6ea654a36801f4202",
+      "node_key": "caps:topic:7.CA.3.3",
+      "node_type": "topic",
+      "label": "Music",
+      "description": "Music",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_7c68e9e2a1c68ca0541e9f91",
+      "node_key": "caps:topic:7.CA.3.4",
+      "node_type": "topic",
+      "label": "Visual arts",
+      "description": "Visual arts",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 3,
+      "source_ref": "7.CA.3.4",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_962a12f3db7b13066b6dbd0d",
+      "node_key": "caps:topic:7.CA.4.1",
+      "node_type": "topic",
+      "label": "Integrated creative arts project",
+      "description": "Integrated creative arts project",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_2de7bf8f0f978352496c33b5",
+      "node_key": "caps:topic:7.CA.4.2",
+      "node_type": "topic",
+      "label": "Performance and exhibition",
+      "description": "Performance and exhibition",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_28b2b305339332f3d5f81a1a",
+      "node_key": "caps:topic:7.CA.4.3",
+      "node_type": "topic",
+      "label": "Reflection",
+      "description": "Reflection",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_ab556b7f2f9b8020ecc7ab69",
+      "node_key": "caps:topic:7.CA.4.4",
+      "node_type": "topic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "creative arts",
+      "term": 4,
+      "source_ref": "7.CA.4.4",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "kge_8de3252b449e05142dae8603",
+      "source_node_key": "caps:curriculum",
+      "target_node_key": "caps:grade:7",
+      "edge_type": "contains",
+      "label": "CAPS contains grade",
+      "source_ref": "CAPS",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3a7a8f0eae32f5931038328f",
+      "source_node_key": "caps:grade:7",
+      "target_node_key": "caps:grade:7:subject:creative arts",
+      "edge_type": "contains",
+      "label": "Grade contains subject",
+      "source_ref": "grade:7:subject:CA",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_77f41a3eb875e3d173d28677",
+      "source_node_key": "caps:grade:7:subject:creative arts",
+      "target_node_key": "caps:grade:7:subject:creative arts:term:1",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c8154a188f70bf17f8fe728c",
+      "source_node_key": "caps:grade:7:subject:creative arts",
+      "target_node_key": "caps:grade:7:subject:creative arts:term:2",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_58aec8dbdeeb6d5c4e9164c3",
+      "source_node_key": "caps:grade:7:subject:creative arts",
+      "target_node_key": "caps:grade:7:subject:creative arts:term:3",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d02e9c7ba4a23723860d4d9c",
+      "source_node_key": "caps:grade:7:subject:creative arts",
+      "target_node_key": "caps:grade:7:subject:creative arts:term:4",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:4",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_403ef23c7b31fd9888d26008",
+      "source_node_key": "caps:grade:7:subject:creative arts:term:1",
+      "target_node_key": "caps:topic:7.CA.1.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.CA.1.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9670523e06082400c053bb87",
+      "source_node_key": "caps:grade:7:subject:creative arts:term:1",
+      "target_node_key": "caps:topic:7.CA.1.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.CA.1.2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9c8a32dfcd6984c1b2f4ed86",
+      "source_node_key": "caps:grade:7:subject:creative arts:term:1",
+      "target_node_key": "caps:topic:7.CA.1.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.CA.1.3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8ef22e1a75c20f2f044be625",
+      "source_node_key": "caps:grade:7:subject:creative arts:term:1",
+      "target_node_key": "caps:topic:7.CA.1.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.CA.1.4",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_890cc5b0a3d9f36426984375",
+      "source_node_key": "caps:grade:7:subject:creative arts:term:2",
+      "target_node_key": "caps:topic:7.CA.2.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.CA.2.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8f70c62990478ede7e4862ac",
+      "source_node_key": "caps:grade:7:subject:creative arts:term:2",
+      "target_node_key": "caps:topic:7.CA.2.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.CA.2.2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_07365e766c0d2606ab465832",
+      "source_node_key": "caps:grade:7:subject:creative arts:term:2",
+      "target_node_key": "caps:topic:7.CA.2.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.CA.2.3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7a465919c7d3b13a7fb4e51f",
+      "source_node_key": "caps:grade:7:subject:creative arts:term:2",
+      "target_node_key": "caps:topic:7.CA.2.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.CA.2.4",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8743106c1b7c70d1d885819a",
+      "source_node_key": "caps:grade:7:subject:creative arts:term:3",
+      "target_node_key": "caps:topic:7.CA.3.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.CA.3.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_295667132559524d16a52d33",
+      "source_node_key": "caps:grade:7:subject:creative arts:term:3",
+      "target_node_key": "caps:topic:7.CA.3.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.CA.3.2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6b5f4c2a7ce0eaacd0c0b88c",
+      "source_node_key": "caps:grade:7:subject:creative arts:term:3",
+      "target_node_key": "caps:topic:7.CA.3.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.CA.3.3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_35bb2fb414a15f9dc6c2d900",
+      "source_node_key": "caps:grade:7:subject:creative arts:term:3",
+      "target_node_key": "caps:topic:7.CA.3.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.CA.3.4",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_02e0c686db85af983e1b7e4f",
+      "source_node_key": "caps:grade:7:subject:creative arts:term:4",
+      "target_node_key": "caps:topic:7.CA.4.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.CA.4.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_880dcdc05dffe179f4e7798c",
+      "source_node_key": "caps:grade:7:subject:creative arts:term:4",
+      "target_node_key": "caps:topic:7.CA.4.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.CA.4.2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_cb7c7d2d7d7ffde1a48954b0",
+      "source_node_key": "caps:grade:7:subject:creative arts:term:4",
+      "target_node_key": "caps:topic:7.CA.4.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.CA.4.3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_de44f9eb0ae401ff8e7c7d91",
+      "source_node_key": "caps:grade:7:subject:creative arts:term:4",
+      "target_node_key": "caps:topic:7.CA.4.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.CA.4.4",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_cc782603c9b00c1d4f9db788",
+      "source_node_key": "caps:subtopic:7.CA.1.1.1",
+      "target_node_key": "caps:assessment_statement:7.CA.1.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.1.1.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_369eddecfbf7fbc18e00fe06",
+      "source_node_key": "caps:subtopic:7.CA.1.1.1",
+      "target_node_key": "caps:assessment_statement:7.CA.1.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.1.1.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c812874c0b3b71be1f07913c",
+      "source_node_key": "caps:subtopic:7.CA.1.1.1",
+      "target_node_key": "caps:assessment_statement:7.CA.1.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.1.1.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_cbf3a2bd310bb9f2fd619a18",
+      "source_node_key": "caps:subtopic:7.CA.1.1.1",
+      "target_node_key": "caps:misconception:7.CA.1.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.1.1.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ff5b0f77034613cc344e3de7",
+      "source_node_key": "caps:subtopic:7.CA.1.1.1",
+      "target_node_key": "caps:misconception:7.CA.1.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.1.1.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b700571c583e57214cfc870b",
+      "source_node_key": "caps:subtopic:7.CA.1.2.1",
+      "target_node_key": "caps:assessment_statement:7.CA.1.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.1.2.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5f0298c5c9b968d6642d52a9",
+      "source_node_key": "caps:subtopic:7.CA.1.2.1",
+      "target_node_key": "caps:assessment_statement:7.CA.1.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.1.2.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d864c3128020085e17334823",
+      "source_node_key": "caps:subtopic:7.CA.1.2.1",
+      "target_node_key": "caps:assessment_statement:7.CA.1.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.1.2.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_12c73bb24d837a58fa46797a",
+      "source_node_key": "caps:subtopic:7.CA.1.2.1",
+      "target_node_key": "caps:misconception:7.CA.1.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.1.2.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5596a67d4b0cef6801bd1202",
+      "source_node_key": "caps:subtopic:7.CA.1.2.1",
+      "target_node_key": "caps:misconception:7.CA.1.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.1.2.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_736d7566a0cd2aa9ee574bc6",
+      "source_node_key": "caps:subtopic:7.CA.1.3.1",
+      "target_node_key": "caps:assessment_statement:7.CA.1.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.1.3.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f2229e54fbfa2841c60adaa7",
+      "source_node_key": "caps:subtopic:7.CA.1.3.1",
+      "target_node_key": "caps:assessment_statement:7.CA.1.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.1.3.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_18668a9693d7b4c65a83d6c1",
+      "source_node_key": "caps:subtopic:7.CA.1.3.1",
+      "target_node_key": "caps:assessment_statement:7.CA.1.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.1.3.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e6298695a4688730a6f0f18d",
+      "source_node_key": "caps:subtopic:7.CA.1.3.1",
+      "target_node_key": "caps:misconception:7.CA.1.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.1.3.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_05eef84eccaaded90f8b1e69",
+      "source_node_key": "caps:subtopic:7.CA.1.3.1",
+      "target_node_key": "caps:misconception:7.CA.1.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.1.3.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_daebc19e1fdfb30970ca7727",
+      "source_node_key": "caps:subtopic:7.CA.1.4.1",
+      "target_node_key": "caps:assessment_statement:7.CA.1.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.1.4.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e68de2216d574a320ba7a8af",
+      "source_node_key": "caps:subtopic:7.CA.1.4.1",
+      "target_node_key": "caps:assessment_statement:7.CA.1.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.1.4.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bc1bdfb6b08ca0514a976122",
+      "source_node_key": "caps:subtopic:7.CA.1.4.1",
+      "target_node_key": "caps:assessment_statement:7.CA.1.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.1.4.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6de04a382ce2eb640e3da1aa",
+      "source_node_key": "caps:subtopic:7.CA.1.4.1",
+      "target_node_key": "caps:misconception:7.CA.1.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.1.4.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_535ba577f673ea82944abace",
+      "source_node_key": "caps:subtopic:7.CA.1.4.1",
+      "target_node_key": "caps:misconception:7.CA.1.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.1.4.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_41f86a976f30c87c55b9d5f8",
+      "source_node_key": "caps:subtopic:7.CA.2.1.1",
+      "target_node_key": "caps:assessment_statement:7.CA.2.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.2.1.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5290a3a3dde61bc2982b4bf9",
+      "source_node_key": "caps:subtopic:7.CA.2.1.1",
+      "target_node_key": "caps:assessment_statement:7.CA.2.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.2.1.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8d35d97be3bcf765e7114a9e",
+      "source_node_key": "caps:subtopic:7.CA.2.1.1",
+      "target_node_key": "caps:assessment_statement:7.CA.2.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.2.1.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e485308f1e17123f887559ff",
+      "source_node_key": "caps:subtopic:7.CA.2.1.1",
+      "target_node_key": "caps:misconception:7.CA.2.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.2.1.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_347c6447d09c3e78015c631b",
+      "source_node_key": "caps:subtopic:7.CA.2.1.1",
+      "target_node_key": "caps:misconception:7.CA.2.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.2.1.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7f4b3f1d3cefcf06240440d1",
+      "source_node_key": "caps:subtopic:7.CA.2.2.1",
+      "target_node_key": "caps:assessment_statement:7.CA.2.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.2.2.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b20e453ba12d7da42e3ced55",
+      "source_node_key": "caps:subtopic:7.CA.2.2.1",
+      "target_node_key": "caps:assessment_statement:7.CA.2.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.2.2.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_250bd37c150b016557ea8603",
+      "source_node_key": "caps:subtopic:7.CA.2.2.1",
+      "target_node_key": "caps:assessment_statement:7.CA.2.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.2.2.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e7b025f98baf797d0ec792b0",
+      "source_node_key": "caps:subtopic:7.CA.2.2.1",
+      "target_node_key": "caps:misconception:7.CA.2.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.2.2.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_72d0c2351aa7ca80db13ff01",
+      "source_node_key": "caps:subtopic:7.CA.2.2.1",
+      "target_node_key": "caps:misconception:7.CA.2.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.2.2.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_23353de5db23ef3a84afe810",
+      "source_node_key": "caps:subtopic:7.CA.2.3.1",
+      "target_node_key": "caps:assessment_statement:7.CA.2.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.2.3.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b368c215b1c773c8c36755e3",
+      "source_node_key": "caps:subtopic:7.CA.2.3.1",
+      "target_node_key": "caps:assessment_statement:7.CA.2.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.2.3.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d6a56d950d575c51dc9ac5c6",
+      "source_node_key": "caps:subtopic:7.CA.2.3.1",
+      "target_node_key": "caps:assessment_statement:7.CA.2.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.2.3.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a8d848fb99f54823c61ce5c4",
+      "source_node_key": "caps:subtopic:7.CA.2.3.1",
+      "target_node_key": "caps:misconception:7.CA.2.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.2.3.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_498e506ca8e95b8fa5179524",
+      "source_node_key": "caps:subtopic:7.CA.2.3.1",
+      "target_node_key": "caps:misconception:7.CA.2.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.2.3.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3fa0fdd064e5c93eb55b54ce",
+      "source_node_key": "caps:subtopic:7.CA.2.4.1",
+      "target_node_key": "caps:assessment_statement:7.CA.2.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.2.4.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_85bcd717fa6a66e63dde623c",
+      "source_node_key": "caps:subtopic:7.CA.2.4.1",
+      "target_node_key": "caps:assessment_statement:7.CA.2.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.2.4.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6e908c1b651edfc20a6604ec",
+      "source_node_key": "caps:subtopic:7.CA.2.4.1",
+      "target_node_key": "caps:assessment_statement:7.CA.2.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.2.4.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ce1f7aec73f64c092792b4e5",
+      "source_node_key": "caps:subtopic:7.CA.2.4.1",
+      "target_node_key": "caps:misconception:7.CA.2.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.2.4.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a86237cc206463da0343d075",
+      "source_node_key": "caps:subtopic:7.CA.2.4.1",
+      "target_node_key": "caps:misconception:7.CA.2.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.2.4.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2d5ed1d1d4d68515a6e95830",
+      "source_node_key": "caps:subtopic:7.CA.3.1.1",
+      "target_node_key": "caps:assessment_statement:7.CA.3.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.3.1.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_50b227236967958255258a43",
+      "source_node_key": "caps:subtopic:7.CA.3.1.1",
+      "target_node_key": "caps:assessment_statement:7.CA.3.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.3.1.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2e25516a4cabafb863660176",
+      "source_node_key": "caps:subtopic:7.CA.3.1.1",
+      "target_node_key": "caps:assessment_statement:7.CA.3.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.3.1.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_dae85167448681c1e208c046",
+      "source_node_key": "caps:subtopic:7.CA.3.1.1",
+      "target_node_key": "caps:misconception:7.CA.3.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.3.1.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_442276bf30726af06038d79e",
+      "source_node_key": "caps:subtopic:7.CA.3.1.1",
+      "target_node_key": "caps:misconception:7.CA.3.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.3.1.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c91d3746cc774682751afea6",
+      "source_node_key": "caps:subtopic:7.CA.3.2.1",
+      "target_node_key": "caps:assessment_statement:7.CA.3.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.3.2.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5274b91f0b42a6e876401fd2",
+      "source_node_key": "caps:subtopic:7.CA.3.2.1",
+      "target_node_key": "caps:assessment_statement:7.CA.3.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.3.2.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8eca9a2223438395dd15ec29",
+      "source_node_key": "caps:subtopic:7.CA.3.2.1",
+      "target_node_key": "caps:assessment_statement:7.CA.3.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.3.2.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_802835762aa3ebe9dfac20c6",
+      "source_node_key": "caps:subtopic:7.CA.3.2.1",
+      "target_node_key": "caps:misconception:7.CA.3.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.3.2.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_53938e77cdf2a1bd9a35061b",
+      "source_node_key": "caps:subtopic:7.CA.3.2.1",
+      "target_node_key": "caps:misconception:7.CA.3.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.3.2.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_02b03feb62698d91d2757545",
+      "source_node_key": "caps:subtopic:7.CA.3.3.1",
+      "target_node_key": "caps:assessment_statement:7.CA.3.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.3.3.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f14ec3ab5fa3d229ba5ed988",
+      "source_node_key": "caps:subtopic:7.CA.3.3.1",
+      "target_node_key": "caps:assessment_statement:7.CA.3.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.3.3.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f3d406489b1e4505d42f567a",
+      "source_node_key": "caps:subtopic:7.CA.3.3.1",
+      "target_node_key": "caps:assessment_statement:7.CA.3.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.3.3.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_01ada4406e39a27f1ae7c083",
+      "source_node_key": "caps:subtopic:7.CA.3.3.1",
+      "target_node_key": "caps:misconception:7.CA.3.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.3.3.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_779d869489cbb6e02cd64f7c",
+      "source_node_key": "caps:subtopic:7.CA.3.3.1",
+      "target_node_key": "caps:misconception:7.CA.3.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.3.3.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ad3c7f506574ed86e21db417",
+      "source_node_key": "caps:subtopic:7.CA.3.4.1",
+      "target_node_key": "caps:assessment_statement:7.CA.3.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.3.4.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_024fe343c94ccc9e1569f6d4",
+      "source_node_key": "caps:subtopic:7.CA.3.4.1",
+      "target_node_key": "caps:assessment_statement:7.CA.3.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.3.4.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_74efd93bdb07d21ba21fbd13",
+      "source_node_key": "caps:subtopic:7.CA.3.4.1",
+      "target_node_key": "caps:assessment_statement:7.CA.3.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.3.4.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_70e9e79a46405c718709690d",
+      "source_node_key": "caps:subtopic:7.CA.3.4.1",
+      "target_node_key": "caps:misconception:7.CA.3.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.3.4.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_180f7d5a06f71a8e8d820b2f",
+      "source_node_key": "caps:subtopic:7.CA.3.4.1",
+      "target_node_key": "caps:misconception:7.CA.3.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.3.4.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_acfcb40b9fadefe7a915d394",
+      "source_node_key": "caps:subtopic:7.CA.4.1.1",
+      "target_node_key": "caps:assessment_statement:7.CA.4.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.4.1.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a51b81967798a54c4199fff1",
+      "source_node_key": "caps:subtopic:7.CA.4.1.1",
+      "target_node_key": "caps:assessment_statement:7.CA.4.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.4.1.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c92ead3941b7721377e5a844",
+      "source_node_key": "caps:subtopic:7.CA.4.1.1",
+      "target_node_key": "caps:assessment_statement:7.CA.4.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.4.1.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2e9d9f12952239c0b80121d5",
+      "source_node_key": "caps:subtopic:7.CA.4.1.1",
+      "target_node_key": "caps:misconception:7.CA.4.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.4.1.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f1c868d40aa5b4b7e3ca9542",
+      "source_node_key": "caps:subtopic:7.CA.4.1.1",
+      "target_node_key": "caps:misconception:7.CA.4.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.4.1.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f46efec20876567962b33402",
+      "source_node_key": "caps:subtopic:7.CA.4.2.1",
+      "target_node_key": "caps:assessment_statement:7.CA.4.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.4.2.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5628052bea6e15334fcee8c7",
+      "source_node_key": "caps:subtopic:7.CA.4.2.1",
+      "target_node_key": "caps:assessment_statement:7.CA.4.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.4.2.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_46860a102a96750c5c7aa601",
+      "source_node_key": "caps:subtopic:7.CA.4.2.1",
+      "target_node_key": "caps:assessment_statement:7.CA.4.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.4.2.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_77d76d51c2e097751c3cb5ae",
+      "source_node_key": "caps:subtopic:7.CA.4.2.1",
+      "target_node_key": "caps:misconception:7.CA.4.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.4.2.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_541b9c2c1a0b63a355fd10d2",
+      "source_node_key": "caps:subtopic:7.CA.4.2.1",
+      "target_node_key": "caps:misconception:7.CA.4.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.4.2.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c32dcdd65cf219cf1306bf20",
+      "source_node_key": "caps:subtopic:7.CA.4.3.1",
+      "target_node_key": "caps:assessment_statement:7.CA.4.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.4.3.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_36455cfa7994120e5923a986",
+      "source_node_key": "caps:subtopic:7.CA.4.3.1",
+      "target_node_key": "caps:assessment_statement:7.CA.4.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.4.3.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_cb7deff3671d08dca33970ce",
+      "source_node_key": "caps:subtopic:7.CA.4.3.1",
+      "target_node_key": "caps:assessment_statement:7.CA.4.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.4.3.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_028d1570e11f0751ac88c0fa",
+      "source_node_key": "caps:subtopic:7.CA.4.3.1",
+      "target_node_key": "caps:misconception:7.CA.4.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.4.3.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_35897a2249b8b0aaaaa91bf6",
+      "source_node_key": "caps:subtopic:7.CA.4.3.1",
+      "target_node_key": "caps:misconception:7.CA.4.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.4.3.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2873e5543423783433e35dbd",
+      "source_node_key": "caps:subtopic:7.CA.4.4.1",
+      "target_node_key": "caps:assessment_statement:7.CA.4.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.4.4.1#assessment:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f8226ccffcc33f6dec8b074f",
+      "source_node_key": "caps:subtopic:7.CA.4.4.1",
+      "target_node_key": "caps:assessment_statement:7.CA.4.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.4.4.1#assessment:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fa55db09d1bafe9f62db0e45",
+      "source_node_key": "caps:subtopic:7.CA.4.4.1",
+      "target_node_key": "caps:assessment_statement:7.CA.4.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.CA.4.4.1#assessment:3",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5ba6d8ac540cf6004b93e0b8",
+      "source_node_key": "caps:subtopic:7.CA.4.4.1",
+      "target_node_key": "caps:misconception:7.CA.4.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.4.4.1#misconception:2",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_52b1d242c8ede620efb7c14f",
+      "source_node_key": "caps:subtopic:7.CA.4.4.1",
+      "target_node_key": "caps:misconception:7.CA.4.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.CA.4.4.1#misconception:1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0d68f59ee3b840fbddd86fe3",
+      "source_node_key": "caps:topic:7.CA.1.1",
+      "target_node_key": "caps:subtopic:7.CA.1.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.CA.1.1.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a607dfe13cac859837f9b3d3",
+      "source_node_key": "caps:topic:7.CA.1.1",
+      "target_node_key": "caps:subtopic:7.CA.1.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.CA.1.2.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.CA.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_c512290ff2e2585b1e486600",
+      "source_node_key": "caps:topic:7.CA.1.1",
+      "target_node_key": "caps:subtopic:7.CA.1.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.CA.1.3.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.CA.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_1897284aefaa3d35f1e6dbb1",
+      "source_node_key": "caps:topic:7.CA.1.1",
+      "target_node_key": "caps:subtopic:7.CA.1.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.CA.1.4.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.CA.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_7f1912779b708ed543878c9c",
+      "source_node_key": "caps:topic:7.CA.1.1",
+      "target_node_key": "caps:subtopic:7.CA.2.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.CA.2.1.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.CA.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_0aa75e8038b379f40cc0a075",
+      "source_node_key": "caps:topic:7.CA.1.1",
+      "target_node_key": "caps:subtopic:7.CA.2.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.CA.2.2.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.CA.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_f7d3a28a1753612867cad99c",
+      "source_node_key": "caps:topic:7.CA.1.1",
+      "target_node_key": "caps:subtopic:7.CA.2.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.CA.2.3.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.CA.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_ef942bb94902b8c9cf1d4783",
+      "source_node_key": "caps:topic:7.CA.1.1",
+      "target_node_key": "caps:subtopic:7.CA.2.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.CA.2.4.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.CA.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_e3192f01440dc4e0a4d5fbf0",
+      "source_node_key": "caps:topic:7.CA.1.2",
+      "target_node_key": "caps:subtopic:7.CA.1.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.CA.1.2.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7fe78314862e5fc469389892",
+      "source_node_key": "caps:topic:7.CA.1.3",
+      "target_node_key": "caps:subtopic:7.CA.1.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.CA.1.3.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e9ad12ce42ab9b3e579e22d9",
+      "source_node_key": "caps:topic:7.CA.1.4",
+      "target_node_key": "caps:subtopic:7.CA.1.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.CA.1.4.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_13ab724f764fb8b463ecfb85",
+      "source_node_key": "caps:topic:7.CA.2.1",
+      "target_node_key": "caps:subtopic:7.CA.2.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.CA.2.1.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6ce5bf4a2092f1bc79d941cc",
+      "source_node_key": "caps:topic:7.CA.2.1",
+      "target_node_key": "caps:subtopic:7.CA.3.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.CA.3.1.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.CA.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_a6fc3f7ff2d975470dd5c698",
+      "source_node_key": "caps:topic:7.CA.2.1",
+      "target_node_key": "caps:subtopic:7.CA.3.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.CA.3.2.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.CA.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_41f97cb83e04474de67cde58",
+      "source_node_key": "caps:topic:7.CA.2.1",
+      "target_node_key": "caps:subtopic:7.CA.3.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.CA.3.3.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.CA.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_e402a5c275a2c59048144854",
+      "source_node_key": "caps:topic:7.CA.2.1",
+      "target_node_key": "caps:subtopic:7.CA.3.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.CA.3.4.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.CA.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_ef368e5a9ac71793b9d076e1",
+      "source_node_key": "caps:topic:7.CA.2.2",
+      "target_node_key": "caps:subtopic:7.CA.2.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.CA.2.2.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3611a0d0969c319250c9c497",
+      "source_node_key": "caps:topic:7.CA.2.3",
+      "target_node_key": "caps:subtopic:7.CA.2.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.CA.2.3.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6b0084fe3cd60a20d03afe4b",
+      "source_node_key": "caps:topic:7.CA.2.4",
+      "target_node_key": "caps:subtopic:7.CA.2.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.CA.2.4.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9d90a77960b6e20d580a534e",
+      "source_node_key": "caps:topic:7.CA.3.1",
+      "target_node_key": "caps:subtopic:7.CA.3.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.CA.3.1.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_93dfed8fea042a9639b73afb",
+      "source_node_key": "caps:topic:7.CA.3.1",
+      "target_node_key": "caps:subtopic:7.CA.4.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.CA.4.1.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.CA.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_54bff994dab3ab88cc6fe898",
+      "source_node_key": "caps:topic:7.CA.3.1",
+      "target_node_key": "caps:subtopic:7.CA.4.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.CA.4.2.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.CA.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_626acdad12bf00372b6f0101",
+      "source_node_key": "caps:topic:7.CA.3.1",
+      "target_node_key": "caps:subtopic:7.CA.4.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.CA.4.3.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.CA.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_80ff081c583a5a65fd9774ad",
+      "source_node_key": "caps:topic:7.CA.3.1",
+      "target_node_key": "caps:subtopic:7.CA.4.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.CA.4.4.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.CA.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_b1bee624074c7765b7bc6cf9",
+      "source_node_key": "caps:topic:7.CA.3.2",
+      "target_node_key": "caps:subtopic:7.CA.3.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.CA.3.2.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5e42ae41791a70d541adae28",
+      "source_node_key": "caps:topic:7.CA.3.3",
+      "target_node_key": "caps:subtopic:7.CA.3.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.CA.3.3.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_cba7b44dc2dc3a030ff7a86b",
+      "source_node_key": "caps:topic:7.CA.3.4",
+      "target_node_key": "caps:subtopic:7.CA.3.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.CA.3.4.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f966061d5ab14b5181d24fe5",
+      "source_node_key": "caps:topic:7.CA.4.1",
+      "target_node_key": "caps:subtopic:7.CA.4.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.CA.4.1.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_17de0eff1e361f712c212e3b",
+      "source_node_key": "caps:topic:7.CA.4.2",
+      "target_node_key": "caps:subtopic:7.CA.4.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.CA.4.2.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_713c93037a000efd25ebb26d",
+      "source_node_key": "caps:topic:7.CA.4.3",
+      "target_node_key": "caps:subtopic:7.CA.4.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.CA.4.3.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a03e0bf7a8c959a414412510",
+      "source_node_key": "caps:topic:7.CA.4.4",
+      "target_node_key": "caps:subtopic:7.CA.4.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.CA.4.4.1",
+      "source_sha256": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    }
+  ],
+  "boundary": {
+    "runtime_kg_implementation_claimed": false,
+    "runtime_kg_authority_switch_authorised": false,
+    "database_schema_migration_authorised": false,
+    "learner_facing_model_change_authorised": false,
+    "learner_graph_implementation_authorised": false,
+    "production_release_authorised": false,
+    "deployment_authorised": false,
+    "release_tag_authorised": false,
+    "public_beta_authorised": false
+  }
+}
