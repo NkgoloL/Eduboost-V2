@@ -8,13 +8,10 @@ attestations are cryptographically registered.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime, timezone
-import json
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 
 from app.domain.educational_validation_schemas import (
-    DecisionScope,
     MAX_CONFIDENCE_THRESHOLD,
     UseAuthorizationStatus,
 )

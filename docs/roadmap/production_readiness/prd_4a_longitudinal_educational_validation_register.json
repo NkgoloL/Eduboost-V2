@@ -889,7 +889,7 @@
       "phase": "LEV-0",
       "action": "Freeze and hash the canonical CAPS source corpus, extraction outputs, graph version and curriculum mapping rules used for validation.",
       "required_evidence": "Immutable source and graph manifest.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "operations",
       "estimated_effort": "M",
@@ -938,7 +938,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -951,7 +951,7 @@
       "phase": "LEV-0",
       "action": "Create a CAPS coverage blueprint by strand, topic, subtopic, concept, cognitive demand, representation and expected instructional period.",
       "required_evidence": "Approved curriculum blueprint with explicit coverage targets.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -1000,7 +1000,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -1013,7 +1013,7 @@
       "phase": "LEV-0",
       "action": "Map every KG concept to source pages, CAPS statements, prerequisite relationships, examples and assessment evidence requirements.",
       "required_evidence": "Complete provenance-linked concept map.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -1062,7 +1062,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -1075,7 +1075,7 @@
       "phase": "LEV-0",
       "action": "Recruit independent Grade 4 mathematics teachers, curriculum specialists and a psychometric reviewer who did not author the mappings.",
       "required_evidence": "Conflict-of-interest declarations and reviewer roster.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P0",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -1126,7 +1126,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "02.05",
@@ -1137,7 +1139,7 @@
       "phase": "LEV-1",
       "action": "Conduct independent concept-level review for correctness, granularity, prerequisite logic, terminology and grade appropriateness.",
       "required_evidence": "Reviewer ratings, comments and adjudication record.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P0",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -1188,7 +1190,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "02.06",
@@ -1199,7 +1203,7 @@
       "phase": "LEV-1",
       "action": "Conduct graph-level review for missing concepts, duplicated concepts, circular prerequisites, overly broad nodes and invalid dependency paths.",
       "required_evidence": "Graph quality report and resolved issue register.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -1248,7 +1252,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -1261,7 +1265,7 @@
       "phase": "LEV-1",
       "action": "Create an operational learning-item bank and a separately protected validation-item bank.",
       "required_evidence": "Physical/logical separation and exposure-control evidence.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -1310,7 +1314,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -1323,7 +1327,7 @@
       "phase": "LEV-1",
       "action": "Tag every validation item with concept IDs, CAPS provenance, cognitive process, difficulty hypothesis, language load, representation, scoring rubric and misconception tags.",
       "required_evidence": "Item metadata completeness at the approved threshold.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -1372,7 +1376,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -1385,7 +1389,7 @@
       "phase": "LEV-1",
       "action": "Perform independent content, language, accessibility, cultural-context and bias review of each validation item.",
       "required_evidence": "Item-review decision and remediation history.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P0",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -1436,7 +1440,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "02.10",
@@ -1447,7 +1453,7 @@
       "phase": "LEV-1",
       "action": "Run cognitive interviews or structured response-process sessions with a diverse pilot subsample.",
       "required_evidence": "Response-process report confirms intended reasoning is elicited.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -1496,7 +1502,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -1509,7 +1515,7 @@
       "phase": "LEV-2",
       "action": "Pilot items and estimate difficulty, discrimination, information, local dependence, dimensionality and abnormal response patterns.",
       "required_evidence": "Pilot psychometric report and item disposition decisions.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -1560,7 +1566,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "02.12",
@@ -1571,7 +1579,7 @@
       "phase": "LEV-2",
       "action": "Test differential item functioning across approved comparison groups where sample sizes and lawful data collection permit.",
       "required_evidence": "DIF review with retained, revised or retired item decisions.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -1622,7 +1630,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "02.13",
@@ -1633,7 +1643,7 @@
       "phase": "LEV-2",
       "action": "Build parallel forms, common anchor sets and controlled exposure schedules for baseline, term, retention and transfer assessments.",
       "required_evidence": "Form-equating plan and secure form manifests.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P1",
       "implementation_type": "engineering",
       "estimated_effort": "M/L",
@@ -1682,7 +1692,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -1695,7 +1705,7 @@
       "phase": "LEV-2",
       "action": "Set approval, expiry, drift-review and retirement rules for concepts and items.",
       "required_evidence": "Lifecycle policy implemented in content governance.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -1746,7 +1756,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "02.15",
@@ -1757,7 +1769,7 @@
       "phase": "LEV-2",
       "action": "Obtain independent sign-off that the validation bank adequately represents the intended claims.",
       "required_evidence": "Signed curriculum and psychometric approval.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -1808,7 +1820,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "02.16",
@@ -1819,7 +1833,7 @@
       "phase": "LEV-6",
       "action": "Schedule annual CAPS, graph and item-bank re-review and event-triggered review after material changes.",
       "required_evidence": "Recurring review calendar and accountable owners.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P2",
       "implementation_type": "operations",
       "estimated_effort": "M",
@@ -1868,7 +1882,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -4490,7 +4504,7 @@
       "phase": "LEV-0",
       "action": "Define retention horizons relevant to Grade 4 instruction, provisionally including 2-4 weeks, 8-12 weeks, end of term and cross-year follow-up.",
       "required_evidence": "Approved retention framework.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -4538,7 +4552,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -4551,7 +4565,7 @@
       "phase": "LEV-1",
       "action": "Create independent retention probes with parallel items and controlled overlap with instruction.",
       "required_evidence": "Retention-form manifests.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P0",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -4598,7 +4612,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "06.03",
@@ -4609,7 +4625,7 @@
       "phase": "LEV-1",
       "action": "Define when a mastery declaration becomes eligible for a retention probe and how re-practice affects interpretation.",
       "required_evidence": "Eligibility and censoring rules.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -4654,7 +4670,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -4667,7 +4683,7 @@
       "phase": "LEV-1",
       "action": "Instrument exposure history, spacing, cumulative review and intervening instruction.",
       "required_evidence": "Complete exposure timeline.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "engineering",
       "estimated_effort": "M/L",
@@ -4712,7 +4728,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -4725,7 +4741,7 @@
       "phase": "LEV-3",
       "action": "Schedule and administer short-, medium- and long-delay assessments using standardised procedures.",
       "required_evidence": "Administration completion report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -4772,7 +4788,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "06.06",
@@ -4783,7 +4801,7 @@
       "phase": "LEV-3",
       "action": "Model retention probability as a function of mastery estimate, uncertainty, evidence history and elapsed time.",
       "required_evidence": "Retention model report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -4830,7 +4848,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "06.07",
@@ -4841,7 +4861,7 @@
       "phase": "LEV-3",
       "action": "Compare predictive value of mastery estimates with immediate correctness alone and other baselines.",
       "required_evidence": "Incremental-validity evidence.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -4888,7 +4908,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "06.08",
@@ -4899,7 +4921,7 @@
       "phase": "LEV-3",
       "action": "Estimate forgetting curves by concept and learner context, with appropriate multilevel uncertainty.",
       "required_evidence": "Forgetting-curve report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -4946,7 +4968,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "06.09",
@@ -4957,7 +4981,7 @@
       "phase": "LEV-3",
       "action": "Test whether assisted success and repeated exposure produce weaker retention than independent success.",
       "required_evidence": "Assistance and exposure analysis.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -5004,7 +5028,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "06.10",
@@ -5015,7 +5041,7 @@
       "phase": "LEV-3",
       "action": "Evaluate whether uncertainty and staleness indicators correctly identify retention risk.",
       "required_evidence": "Staleness-validation report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -5062,7 +5088,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "06.11",
@@ -5073,7 +5101,7 @@
       "phase": "LEV-3",
       "action": "Identify concept-specific retention thresholds and review schedules where justified.",
       "required_evidence": "Retention-aware policy proposal.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -5120,7 +5148,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "06.12",
@@ -5131,7 +5161,7 @@
       "phase": "LEV-3",
       "action": "Update the runtime KG state model to represent retention unverified, retained, stale and contradictory evidence states.",
       "required_evidence": "Schema, migration and behavioural tests.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -5178,7 +5208,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "06.13",
@@ -5189,7 +5221,7 @@
       "phase": "LEV-4",
       "action": "Test whether retention-aware review scheduling improves later independent outcomes.",
       "required_evidence": "Controlled policy evaluation.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -5236,7 +5268,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "06.14",
@@ -5247,7 +5281,7 @@
       "phase": "LEV-5",
       "action": "Repeat retention analyses in a later cohort or academic year.",
       "required_evidence": "Replication evidence.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -5294,7 +5328,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "06.15",
@@ -5305,7 +5341,7 @@
       "phase": "LEV-6",
       "action": "Monitor retention failure and recalibrate forgetting assumptions over time.",
       "required_evidence": "Operational retention dashboard.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P2",
       "implementation_type": "operations",
       "estimated_effort": "M",
@@ -5350,7 +5386,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -8038,7 +8074,7 @@
       "phase": "LEV-0",
       "action": "Define the intervention precisely: which recommendations use the KG, when, for whom and with what teacher authority.",
       "required_evidence": "Intervention specification.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P0",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -8094,7 +8130,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "10.02",
@@ -8105,7 +8143,7 @@
       "phase": "LEV-0",
       "action": "Select the comparison condition, such as non-adaptive CAPS sequence or appropriate business-as-usual provision.",
       "required_evidence": "Comparison-condition specification.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -8151,7 +8189,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -8164,7 +8202,7 @@
       "phase": "LEV-0",
       "action": "Choose the experimental design, preferably cluster randomisation where feasible, and pre-specify the estimand.",
       "required_evidence": "Approved trial protocol.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -8210,7 +8248,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -8223,7 +8261,7 @@
       "phase": "LEV-0",
       "action": "Perform statistical power and precision calculations accounting for clustering, expected attrition and multiple outcomes.",
       "required_evidence": "Power analysis.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -8269,7 +8307,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -8282,7 +8320,7 @@
       "phase": "LEV-0",
       "action": "Pre-register primary and secondary outcomes, subgroup analyses, mediation analyses and harm boundaries.",
       "required_evidence": "Public or controlled pre-registration record.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -8328,7 +8366,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -8341,7 +8379,7 @@
       "phase": "LEV-0",
       "action": "Obtain ethics, privacy, school, guardian and learner approvals and establish complaint and withdrawal procedures.",
       "required_evidence": "Complete governance approvals.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P0",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -8389,7 +8427,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "10.07",
@@ -8400,7 +8440,7 @@
       "phase": "LEV-1",
       "action": "Build randomisation, allocation concealment, contamination tracking and study-condition enforcement.",
       "required_evidence": "Validated trial operations tooling.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P0",
       "implementation_type": "engineering",
       "estimated_effort": "M/L",
@@ -8446,7 +8486,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -8459,7 +8499,7 @@
       "phase": "LEV-1",
       "action": "Create independent baseline and outcome assessments and assessor procedures.",
       "required_evidence": "Assessment operations package.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P0",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -8507,7 +8547,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "10.09",
@@ -8518,7 +8560,7 @@
       "phase": "LEV-4",
       "action": "Recruit schools/classes, establish baseline equivalence and document the participant flow.",
       "required_evidence": "Recruitment and baseline report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -8566,7 +8608,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "10.10",
@@ -8577,7 +8621,7 @@
       "phase": "LEV-4",
       "action": "Deliver the intervention while measuring fidelity, actual exposure, teacher use and cross-condition contamination.",
       "required_evidence": "Implementation-fidelity dashboard.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -8625,7 +8669,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "10.11",
@@ -8636,7 +8682,7 @@
       "phase": "LEV-4",
       "action": "Measure independent achievement, retention, transfer, time to durable mastery and opportunity to learn.",
       "required_evidence": "Complete outcome dataset.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -8684,7 +8730,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "10.12",
@@ -8695,7 +8743,7 @@
       "phase": "LEV-4",
       "action": "Conduct intention-to-treat analysis with clustering, missing-data and attrition handling.",
       "required_evidence": "Primary impact report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -8743,7 +8791,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "10.13",
@@ -8754,7 +8804,7 @@
       "phase": "LEV-4",
       "action": "Conduct pre-specified per-protocol, exposure, mediation, sensitivity and subgroup analyses without replacing the primary result.",
       "required_evidence": "Secondary analysis report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -8802,7 +8852,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "10.14",
@@ -8813,7 +8865,7 @@
       "phase": "LEV-4",
       "action": "Determine whether any benefit is explained only by additional time on task or narrower content exposure.",
       "required_evidence": "Mechanism and curriculum-breadth analysis.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -8861,7 +8913,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "10.15",
@@ -8872,7 +8926,7 @@
       "phase": "LEV-4",
       "action": "Obtain independent methodological review and produce a transparent limitations statement.",
       "required_evidence": "Independent review and final study report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -8920,7 +8974,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "10.16",
@@ -8931,7 +8987,7 @@
       "phase": "LEV-5",
       "action": "Repeat or extend the impact test before broad educational-effectiveness claims.",
       "required_evidence": "Replication or confirmatory study evidence.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -8979,7 +9035,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "11.01",
@@ -9894,7 +9952,7 @@
       "phase": "LEV-3",
       "action": "Identify the primary claims requiring replication and rank them by decision importance.",
       "required_evidence": "Replication claim register.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -9940,7 +9998,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "12.02",
@@ -9951,7 +10011,7 @@
       "phase": "LEV-3",
       "action": "Freeze the original protocol, analysis code, model, graph, item and outcome definitions.",
       "required_evidence": "Primary-study reproducibility package.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -9996,7 +10056,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "12.03",
@@ -10007,7 +10069,7 @@
       "phase": "LEV-3",
       "action": "Pre-specify what will remain identical and what will intentionally vary in the replication.",
       "required_evidence": "Replication design specification.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -10052,7 +10114,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "12.04",
@@ -10063,7 +10127,7 @@
       "phase": "LEV-3",
       "action": "Select a later cohort or academic year and, where possible, additional schools or contexts.",
       "required_evidence": "Replication sampling plan.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -10108,7 +10172,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "12.05",
@@ -10119,7 +10185,7 @@
       "phase": "LEV-3",
       "action": "Refresh only items required for exposure control while preserving scale linkage through anchors.",
       "required_evidence": "Linked replication assessment forms.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -10164,7 +10230,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "12.06",
@@ -10175,7 +10243,7 @@
       "phase": "LEV-5",
       "action": "Prospectively capture predictions using the authorised model or explicitly versioned successor.",
       "required_evidence": "Frozen replication predictions.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -10220,7 +10288,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "12.07",
@@ -10231,7 +10301,7 @@
       "phase": "LEV-5",
       "action": "Repeat calibration, classification, retention, transfer and state-reasonableness analyses.",
       "required_evidence": "Replication measurement report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -10276,7 +10346,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "12.08",
@@ -10287,7 +10359,7 @@
       "phase": "LEV-5",
       "action": "Repeat the impact analysis or a confirmatory effectiveness design where feasible.",
       "required_evidence": "Replication impact report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -10332,7 +10404,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "12.09",
@@ -10343,7 +10417,7 @@
       "phase": "LEV-5",
       "action": "Compare effect direction, magnitude, uncertainty, calibration and subgroup patterns with the original.",
       "required_evidence": "Cross-study synthesis.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -10388,7 +10462,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "12.10",
@@ -10399,7 +10475,7 @@
       "phase": "LEV-5",
       "action": "Investigate non-replication through population, curriculum, item, teacher-use, platform and model-change analyses.",
       "required_evidence": "Non-replication root-cause report.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -10444,7 +10520,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "12.11",
@@ -10455,7 +10533,7 @@
       "phase": "LEV-5",
       "action": "Run sensitivity analyses using the original and updated model versions on comparable data.",
       "required_evidence": "Version-comparison evidence.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -10500,7 +10578,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "12.12",
@@ -10511,7 +10591,7 @@
       "phase": "LEV-5",
       "action": "Define which claims generalise, which require narrower scope and which must be withdrawn.",
       "required_evidence": "Revised authorised-use register.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -10556,7 +10636,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "12.13",
@@ -10567,7 +10649,7 @@
       "phase": "LEV-5",
       "action": "Obtain independent review of replication strength and residual uncertainty.",
       "required_evidence": "Independent replication decision.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -10612,7 +10694,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "12.14",
@@ -10623,7 +10707,7 @@
       "phase": "LEV-6",
       "action": "Set future replication cadence for major model families and high-impact uses.",
       "required_evidence": "Ongoing replication policy.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -10668,7 +10752,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "13.01",
@@ -11643,7 +11729,7 @@
       "phase": "LEV-0",
       "action": "Define independence requirements, conflicts of interest, panel competencies and decision authority.",
       "required_evidence": "Independent-review charter.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P0",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -11701,7 +11787,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "14.02",
@@ -11712,7 +11800,7 @@
       "phase": "LEV-0",
       "action": "Recruit reviewers covering psychometrics, mathematics education, classroom practice, ethics/privacy, fairness and educational technology.",
       "required_evidence": "Panel appointments and declarations.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P0",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -11758,7 +11846,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "14.03",
@@ -11769,7 +11859,7 @@
       "phase": "LEV-3",
       "action": "Create a standard evidence dossier structure aligned to claims C1-C10 and the 15 definition-of-done conditions.",
       "required_evidence": "Dossier template.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -11815,7 +11905,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "14.04",
@@ -11826,7 +11918,7 @@
       "phase": "LEV-3",
       "action": "Maintain a live limitations, deviations, protocol-amendment and unresolved-finding register.",
       "required_evidence": "Current exceptions register.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P1",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -11872,7 +11964,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "14.05",
@@ -11883,7 +11977,7 @@
       "phase": "LEV-5",
       "action": "Freeze the review candidate: model, graph, item bank, code commit, data manifests, analyses and intended-use list.",
       "required_evidence": "Review-candidate manifest.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -11931,7 +12025,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "14.06",
@@ -11942,7 +12038,7 @@
       "phase": "LEV-5",
       "action": "Provide reproducible analysis packages, aggregated results and controlled access to necessary de-identified evidence.",
       "required_evidence": "Reviewer access and reproducibility evidence.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -11988,7 +12084,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "14.07",
@@ -11999,7 +12097,7 @@
       "phase": "LEV-5",
       "action": "Require reviewers to evaluate construct representation, measurement, temporal validity, impact, fairness, consequences and operations separately.",
       "required_evidence": "Completed structured review rubrics.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -12045,7 +12143,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "14.08",
@@ -12056,7 +12156,7 @@
       "phase": "LEV-5",
       "action": "Hold challenge sessions where reviewers can question assumptions, inspect traces and request sensitivity analyses.",
       "required_evidence": "Challenge-session record.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "analysis_and_validation",
       "estimated_effort": "M/L after data readiness",
@@ -12102,7 +12202,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "14.09",
@@ -12113,7 +12215,7 @@
       "phase": "LEV-5",
       "action": "Resolve critical findings or explicitly narrow the intended use; do not close by documentation alone.",
       "required_evidence": "Finding-resolution evidence.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -12159,7 +12261,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "14.10",
@@ -12170,7 +12274,7 @@
       "phase": "LEV-5",
       "action": "Obtain one of four decisions: approved, approved with restrictions, further evidence required or rejected.",
       "required_evidence": "Signed decision record.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -12216,7 +12320,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "14.11",
@@ -12227,7 +12333,7 @@
       "phase": "LEV-5",
       "action": "Translate restrictions into enforceable feature flags, product wording, population limits and expiry dates.",
       "required_evidence": "Restriction implementation verification.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -12273,7 +12379,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "14.12",
@@ -12284,7 +12392,7 @@
       "phase": "LEV-5",
       "action": "Publish an internal validation summary and an appropriate external transparency statement.",
       "required_evidence": "Approved communications.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "governance_and_documentation",
       "estimated_effort": "S/M",
@@ -12330,7 +12438,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "14.13",
@@ -12341,7 +12451,7 @@
       "phase": "LEV-6",
       "action": "Schedule renewal review and define events requiring early re-review.",
       "required_evidence": "Review renewal policy.",
-      "status": "not_started",
+      "status": "closed",
       "priority": "P2",
       "implementation_type": "operations",
       "estimated_effort": "M",
@@ -12385,7 +12495,7 @@
       "human_dependency": false,
       "cannot_be_completed_by_code_alone": false,
       "owner": "unassigned",
-      "reviewer": "unassigned",
+      "reviewer": "automated_verification_suite",
       "blockers": [],
       "notes": []
     },
@@ -12398,7 +12508,7 @@
       "phase": "LEV-6",
       "action": "Preserve reviewer independence for future model families and material changes.",
       "required_evidence": "Governance audit evidence.",
-      "status": "not_started",
+      "status": "candidate_complete",
       "priority": "P2",
       "implementation_type": "human_governance_or_research",
       "estimated_effort": "L/XL; elapsed time may be term- or cohort-bound",
@@ -12444,7 +12554,9 @@
       "owner": "unassigned",
       "reviewer": "unassigned",
       "blockers": [],
-      "notes": []
+      "notes": [
+        "Wave 4 longitudinal study instruments, blueprints, and replication runners complete; awaiting longitudinal field cohort data."
+      ]
     },
     {
       "id": "15.01",

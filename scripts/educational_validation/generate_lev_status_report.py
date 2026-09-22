@@ -4,7 +4,7 @@ import argparse,json
 from collections import Counter,defaultdict
 from pathlib import Path
 def main():
- p=argparse.ArgumentParser();p.add_argument('--repo-root',default='.');p.add_argument('--output');a=p.parse_args();r=Path(a.repo_root).resolve();d=json.loads((r/'docs/roadmap/production_readiness/prd_4a_longitudinal_educational_validation_register.json').read_text());
+ p=argparse.ArgumentParser();p.add_argument('--repo-root',default='.');p.add_argument('--output');a=p.parse_args();r=Path(a.repo_root).resolve();d=json.loads((r/'docs/roadmap/production_readiness/prd_4a_longitudinal_educational_validation_register.json').read_text())
  by=defaultdict(Counter)
  for t in d['tasks']:by[t['workstream_id']][t['status']]+=1
  lines=['# LEV Status Report','',f"Total tasks: {len(d['tasks'])}",'','| Workstream | Not started | Blocked | In progress | Candidate | Evidence | Review | Closed | Waived |','|---|---:|---:|---:|---:|---:|---:|---:|---:|']

@@ -7,9 +7,8 @@ calculates transfer efficiency ratios, and flags unsupported cross-domain infere
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from enum import Enum
-import math
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
 import numpy as np

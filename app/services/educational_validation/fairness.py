@@ -10,9 +10,8 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 import math
-from typing import Any, Dict, List, Optional, Sequence, Tuple
+from typing import Any, Dict, List, Sequence
 
-import numpy as np
 
 
 @dataclass(frozen=True)
@@ -124,7 +123,7 @@ def compute_mantel_haenszel_dif(
     for item, strata in items.items():
         numerator = 0.0
         denominator = 0.0
-        for stratum, counts in strata.items():
+        for counts in strata.values():
             a = counts["A"]
             b = counts["B"]
             c = counts["C"]
