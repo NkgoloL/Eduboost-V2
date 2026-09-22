@@ -44,3 +44,26 @@ def test_compute_transfer_matrix():
     matrix = compute_transfer_matrix(records)
     assert matrix["total_pairs_evaluated"] == 1
     assert len(matrix["transfer_evaluations"]) == 1
+
+
+def test_evaluate_transfer_validity_validation_errors_and_to_dict():
+    # Fewer than 5 observations
+    with pytest.raises(ValueError, match="At least 5 paired observations"):
+        evaluate_transfer_validity([0.5, 0.6], [0.5, 0.6], "c1", "c2")
+
+    # Mismatched lengths
+    with pytest.raises(ValueError, match="matching lengths"):
+        evaluate_transfer_validity([0.5] * 6, [0.5] * 5, "c1", "c2")
+
+    # to_dict verification
+    res = evaluate_transfer_validity(
+        [0.5, 0.6, 0.7, 0.8, 0.9],
+        [0.55, 0.65, 0.75, 0.85, 0.95],
+        "c1",
+        "c2",
+        TransferType.FAR,
+    )
+    d = res.to_dict()
+    assert d["transfer_type"] == "far"
+    assert "pearson_r" in d
+    assert d["evidence_type"] == "synthetic_fixture"

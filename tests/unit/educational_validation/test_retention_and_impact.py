@@ -66,3 +66,48 @@ def test_run_comprehensive_impact_evaluation():
     assert rep.total_learners == 20
     assert rep.cluster_count == 4
     assert rep.treatment_learner_count == 10
+    d = rep.to_dict()
+    assert "primary_crt_ancova" in d
+    assert "secondary_did" in d
+    assert d["evidence_type"] == "synthetic_fixture"
+
+
+def test_fit_multi_model_retention_validation_errors():
+    with pytest.raises(ValueError, match="At least 4 paired retention observations"):
+        fit_multi_model_retention([14, 30], [0.8, 0.6])
+    with pytest.raises(ValueError, match="At least 4 paired retention observations"):
+        fit_multi_model_retention([14, 30, 60, 90], [0.8, 0.6, 0.4])
+
+
+def test_retention_report_to_dict():
+    days = [14, 30, 60, 90] * 5
+    scores = [0.8, 0.6, 0.4, 0.2] * 5
+    rep = fit_multi_model_retention(days, scores)
+    d = rep.to_dict()
+    assert "best_model_name" in d
+    assert "mean_retention_by_interval" in d
+    assert d["evidence_type"] == "synthetic_fixture"
+
+
+def test_compute_icc_edge_cases():
+    # Single cluster -> returns default conservative ICC (0.05)
+    scores = np.array([10.0, 11.0, 12.0])
+    clusters = ["c1", "c1", "c1"]
+    assert compute_intra_cluster_correlation(scores, clusters) == 0.05
+
+    # Zero total variance -> 0.0
+    scores_const = np.array([10.0, 10.0, 10.0, 10.0])
+    clusters_2 = ["c1", "c1", "c2", "c2"]
+    assert compute_intra_cluster_correlation(scores_const, clusters_2) == 0.0
+
+
+def test_evaluate_did_fallback_edge_cases():
+    # Single observation per group
+    pre = [40.0, 50.0]
+    post = [50.0, 51.0]
+    treat = [1, 0]
+    did_res = evaluate_did_fallback(pre, post, treat)
+    assert did_res.did_estimate == pytest.approx(9.0)
+    assert did_res.std_error >= 0.0
+    d = did_res.to_dict()
+    assert "did_estimate" in d

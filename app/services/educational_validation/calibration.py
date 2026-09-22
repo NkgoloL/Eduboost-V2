@@ -49,8 +49,8 @@ class CalibrationMetrics:
 
 
 def compute_ece(
-    probabilities: Sequence[float],
-    outcomes: Sequence[int],
+    probabilities: Sequence[float] | np.ndarray,
+    outcomes: Sequence[int] | np.ndarray,
     num_bins: int = 10,
 ) -> Tuple[float, float, List[BinDetail]]:
     """Compute Expected Calibration Error (ECE) and Maximum Calibration Error (MCE)."""
@@ -105,8 +105,8 @@ def compute_ece(
 
 
 def compute_brier_score(
-    probabilities: Sequence[float],
-    outcomes: Sequence[int],
+    probabilities: Sequence[float] | np.ndarray,
+    outcomes: Sequence[int] | np.ndarray,
 ) -> float:
     """Compute mean squared difference between predicted probability and binary outcome."""
     if len(probabilities) != len(outcomes) or len(probabilities) == 0:
@@ -116,7 +116,7 @@ def compute_brier_score(
     return float(np.mean((probs - outs) ** 2))
 
 
-def compute_cronbach_alpha(item_scores_matrix: Sequence[Sequence[float]]) -> float:
+def compute_cronbach_alpha(item_scores_matrix: Sequence[Sequence[float]] | np.ndarray) -> float:
     """Compute Cronbach's alpha internal consistency coefficient for an assessment instrument.
 
     Args:
@@ -145,9 +145,9 @@ def compute_cronbach_alpha(item_scores_matrix: Sequence[Sequence[float]]) -> flo
 
 
 def evaluate_model_calibration(
-    probabilities: Sequence[float],
-    outcomes: Sequence[int],
-    item_scores_matrix: Sequence[Sequence[float]] | None = None,
+    probabilities: Sequence[float] | np.ndarray,
+    outcomes: Sequence[int] | np.ndarray,
+    item_scores_matrix: Sequence[Sequence[float]] | np.ndarray | None = None,
     ece_tolerance: float = 0.15,
 ) -> CalibrationMetrics:
     """Run full calibration assessment returning ECE, MCE, Brier score, and reliability."""

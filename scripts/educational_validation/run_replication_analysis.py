@@ -22,7 +22,7 @@ from app.services.educational_validation.classification import evaluate_classifi
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run cross-cohort replication analysis.")
-    parser.add_argument("--cohort", required=True, help="Path to replication cohort JSON dataset")
+    parser.add_argument("--cohort", "--data", dest="cohort", required=True, help="Path to replication cohort JSON dataset")
     parser.add_argument("--output", help="Optional output JSON path")
     args = parser.parse_args()
 

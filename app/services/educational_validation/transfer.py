@@ -54,8 +54,8 @@ class TransferEvaluationResult:
 
 
 def evaluate_transfer_validity(
-    source_scores: Sequence[float],
-    target_scores: Sequence[float],
+    source_scores: Sequence[float] | np.ndarray,
+    target_scores: Sequence[float] | np.ndarray,
     source_concept_id: str,
     target_concept_id: str,
     transfer_type: TransferType = TransferType.NEAR,

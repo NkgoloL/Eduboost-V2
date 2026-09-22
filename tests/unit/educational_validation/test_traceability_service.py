@@ -22,13 +22,16 @@ from app.services.educational_validation.traceability import (
 )
 
 
+from typing import cast
+import sqlalchemy as sa
+
 @pytest_asyncio.fixture
 async def async_db_session():
     engine = create_async_engine("sqlite+aiosqlite:///:memory:", echo=False)
     tables = [
-        LEVInteractionEvent.__table__,
-        LEVMasteryStateTransition.__table__,
-        LEVValidationRun.__table__,
+        cast(sa.Table, LEVInteractionEvent.__table__),
+        cast(sa.Table, LEVMasteryStateTransition.__table__),
+        cast(sa.Table, LEVValidationRun.__table__),
     ]
     async with engine.begin() as conn:
         await conn.run_sync(lambda sync_conn: Base.metadata.create_all(sync_conn, tables=tables))
@@ -81,6 +84,12 @@ async def test_traceability_service_ingest_and_query(async_db_session):
     assert len(events) == 1
     assert events[0].item_id == "item-test-01"
 
+    # Query with specific concept_id
+    filtered = await repo.get_learner_events(async_db_session, "lrn-test-01", concept_id="caps.math.gr4.add")
+    assert len(filtered) == 1
+    empty_filtered = await repo.get_learner_events(async_db_session, "lrn-test-01", concept_id="nonexistent")
+    assert len(empty_filtered) == 0
+
 
 @pytest.mark.asyncio
 async def test_traceability_service_transition_with_hash(async_db_session):
@@ -105,3 +114,62 @@ async def test_traceability_service_transition_with_hash(async_db_session):
     transitions = await repo.get_learner_transitions(async_db_session, "lrn-test-02")
     assert len(transitions) == 1
     assert transitions[0].state_hash == saved_trans.state_hash
+
+    # Filter by concept_id
+    transitions_by_concept = await repo.get_learner_transitions(
+        async_db_session, "lrn-test-02", concept_id="caps.math.gr4.add"
+    )
+    assert len(transitions_by_concept) == 1
+    transitions_empty = await repo.get_learner_transitions(
+        async_db_session, "lrn-test-02", concept_id="other.concept"
+    )
+    assert len(transitions_empty) == 0
+
+
+@pytest.mark.asyncio
+async def test_repository_batch_and_validation_runs(async_db_session):
+    repo = EducationalValidationRepository()
+    service = EducationalTraceabilityService(repository=repo)
+
+    # Test batch interaction events
+    import uuid
+    ev1 = LEVInteractionEvent(
+        event_id=uuid.uuid4(),
+        occurred_at=datetime.now(timezone.utc),
+        learner_pseudonym="lrn-batch-01",
+        concept_id="caps.math.gr4.mul",
+        item_id="item-batch-01",
+        first_attempt_correct=True,
+    )
+    ev2 = LEVInteractionEvent(
+        event_id=uuid.uuid4(),
+        occurred_at=datetime.now(timezone.utc),
+        learner_pseudonym="lrn-batch-01",
+        concept_id="caps.math.gr4.mul",
+        item_id="item-batch-02",
+        first_attempt_correct=False,
+    )
+    batch = await repo.record_interaction_events_batch(async_db_session, [ev1, ev2])
+    assert len(batch) == 2
+
+    stored = await repo.get_learner_events(async_db_session, "lrn-batch-01")
+    assert len(stored) == 2
+
+    # Test validation run recording & querying
+    run = await service.record_validation_run(
+        async_db_session,
+        run_type="calibration",
+        model_version="lev-1.0",
+        metrics={"ece": 0.05, "brier_score": 0.12},
+        manifest_id="manifest-test-001",
+    )
+    assert run.run_id is not None
+    assert run.metrics["ece"] == 0.05
+
+    latest = await repo.get_latest_validation_run(async_db_session, "calibration")
+    assert latest is not None
+    assert latest.run_id == run.run_id
+    assert latest.manifest_id == "manifest-test-001"
+
+    nonexistent_run = await repo.get_latest_validation_run(async_db_session, "nonexistent")
+    assert nonexistent_run is None

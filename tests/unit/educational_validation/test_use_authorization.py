@@ -55,3 +55,20 @@ def test_evaluate_use_authorization_invalid_grade():
     assert not decision.is_authorized
     assert decision.status == "unsupported"
     assert "Intermediate Phase" in decision.reason
+
+
+def test_evaluate_use_authorization_unknown_scope_and_to_dict():
+    decision = evaluate_use_authorization(
+        decision_scope="unknown_custom_scope",
+        requested_confidence=0.50,
+        content_grade=5,
+    )
+    assert not decision.is_authorized
+    assert decision.status == "restricted"
+    assert "unrecognized" in decision.reason
+
+    d = decision.to_dict()
+    assert d["is_authorized"] is False
+    assert d["decision_scope"] == "unknown_custom_scope"
+    assert d["status"] == "restricted"
+    assert d["evidence_type"] == "synthetic_fixture"

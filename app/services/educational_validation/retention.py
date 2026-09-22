@@ -74,8 +74,8 @@ def _two_component_decay(t: np.ndarray, w: float, s1: float, s2: float) -> np.nd
 
 
 def fit_multi_model_retention(
-    days: Sequence[int],
-    retention_scores: Sequence[float],
+    days: Sequence[int] | Sequence[float] | np.ndarray,
+    retention_scores: Sequence[float] | np.ndarray,
 ) -> RetentionAnalysisReport:
     """Fit exponential, power-law, and two-component retention decay models and rank by AIC/BIC."""
     if len(days) < 4 or len(days) != len(retention_scores):

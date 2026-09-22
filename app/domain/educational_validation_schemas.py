@@ -122,6 +122,18 @@ class UseAuthorizationSchema(StrictModel):
     limitations: List[str]
     expires_at: str
 
+DEFAULT_AUTHORIZED_DECISION_SCOPES: List[DecisionScope] = [
+    "low_stakes_practice",
+    "formative_hinting",
+    "diagnostic_remediation",
+]
+
+DEFAULT_PROHIBITED_DECISION_SCOPES: List[DecisionScope] = [
+    "formal_grading",
+    "grade_progression",
+    "high_stakes_streaming",
+]
+
 
 class MasteryClaimDefinition(StrictModel):
     claim_id: str
@@ -132,8 +144,8 @@ class MasteryClaimDefinition(StrictModel):
     mastery_threshold: float = Field(default=0.75, ge=0.5, le=1.0)
     max_confidence_threshold: float = Field(default=MAX_CONFIDENCE_THRESHOLD)
     authorized_decision_scopes: List[DecisionScope] = Field(
-        default_factory=lambda: ["low_stakes_practice", "formative_hinting", "diagnostic_remediation"]
+        default_factory=lambda: list(DEFAULT_AUTHORIZED_DECISION_SCOPES)
     )
     prohibited_decision_scopes: List[DecisionScope] = Field(
-        default_factory=lambda: ["formal_grading", "grade_progression", "high_stakes_streaming"]
+        default_factory=lambda: list(DEFAULT_PROHIBITED_DECISION_SCOPES)
     )

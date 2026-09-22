@@ -33,6 +33,20 @@ class CRTImpactResult:
     baseline_adjusted_r2: float
     statistical_power_achieved: float
 
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "treatment_effect_beta": round(self.treatment_effect_beta, 4),
+            "std_error": round(self.std_error, 4),
+            "t_statistic": round(self.t_statistic, 4),
+            "p_value": round(self.p_value, 6),
+            "hedges_g": round(self.hedges_g, 4),
+            "intra_cluster_correlation": round(self.intra_cluster_correlation, 4),
+            "variance_inflation_factor": round(self.variance_inflation_factor, 4),
+            "effective_sample_size": round(self.effective_sample_size, 1),
+            "baseline_adjusted_r2": round(self.baseline_adjusted_r2, 4),
+            "statistical_power_achieved": round(self.statistical_power_achieved, 4),
+        }
+
 
 @dataclass(frozen=True)
 class DiDImpactResult:
@@ -42,6 +56,16 @@ class DiDImpactResult:
     p_value: float
     ci_95_lower: float
     ci_95_upper: float
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "did_estimate": round(self.did_estimate, 4),
+            "std_error": round(self.std_error, 4),
+            "t_statistic": round(self.t_statistic, 4),
+            "p_value": round(self.p_value, 6),
+            "ci_95_lower": round(self.ci_95_lower, 4),
+            "ci_95_upper": round(self.ci_95_upper, 4),
+        }
 
 
 @dataclass(frozen=True)
@@ -109,9 +133,9 @@ def compute_intra_cluster_correlation(
 
 
 def evaluate_cluster_rct_ancova(
-    pre_scores: Sequence[float],
-    post_scores: Sequence[float],
-    treatment: Sequence[int],
+    pre_scores: Sequence[float] | np.ndarray,
+    post_scores: Sequence[float] | np.ndarray,
+    treatment: Sequence[int] | np.ndarray,
     cluster_ids: Sequence[str],
 ) -> CRTImpactResult:
     """Run Primary Cluster-Randomized Trial (CRT) ITT ANCOVA with cluster adjustment."""
@@ -169,9 +193,9 @@ def evaluate_cluster_rct_ancova(
 
 
 def evaluate_did_fallback(
-    pre_scores: Sequence[float],
-    post_scores: Sequence[float],
-    treatment: Sequence[int],
+    pre_scores: Sequence[float] | np.ndarray,
+    post_scores: Sequence[float] | np.ndarray,
+    treatment: Sequence[int] | np.ndarray,
 ) -> DiDImpactResult:
     """Run Secondary Difference-in-Differences (DiD) estimation."""
     y_pre = np.asarray(pre_scores, dtype=float)
@@ -184,16 +208,16 @@ def evaluate_did_fallback(
     delta_treat = y_post[treat_mask] - y_pre[treat_mask]
     delta_ctrl = y_post[ctrl_mask] - y_pre[ctrl_mask]
 
-    mean_dt = float(np.mean(delta_treat))
-    mean_dc = float(np.mean(delta_ctrl))
+    mean_dt = float(np.mean(delta_treat)) if len(delta_treat) > 0 else 0.0
+    mean_dc = float(np.mean(delta_ctrl)) if len(delta_ctrl) > 0 else 0.0
     did = mean_dt - mean_dc
 
-    var_dt = float(np.var(delta_treat, ddof=1)) / max(1, len(delta_treat))
-    var_dc = float(np.var(delta_ctrl, ddof=1)) / max(1, len(delta_ctrl))
-    se_did = math.sqrt(var_dt + var_dc)
+    var_dt = float(np.var(delta_treat, ddof=1)) / len(delta_treat) if len(delta_treat) > 1 else 0.0
+    var_dc = float(np.var(delta_ctrl, ddof=1)) / len(delta_ctrl) if len(delta_ctrl) > 1 else 0.0
+    se_did = math.sqrt(max(1e-8, var_dt + var_dc))
 
     t_stat = did / max(1e-6, se_did)
-    df = len(delta_treat) + len(delta_ctrl) - 2
+    df = max(1, len(delta_treat) + len(delta_ctrl) - 2)
     p_val = float(2.0 * (1.0 - stats.t.cdf(abs(t_stat), df=df)))
 
     ci_lower = did - 1.96 * se_did

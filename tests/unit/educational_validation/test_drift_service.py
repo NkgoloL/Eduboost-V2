@@ -52,3 +52,26 @@ def test_check_item_parameter_drift():
     assert drift_report["items_checked"] == 3
     assert drift_report["items_drifted_count"] == 1
     assert drift_report["flagged_items"][0]["item_id"] == "item_2"
+
+
+def test_drift_metrics_to_dict_and_edge_cases():
+    with pytest.raises(ValueError, match="must not be empty"):
+        calculate_psi([], [1.0])
+    with pytest.raises(ValueError, match="must not be empty"):
+        calculate_psi([1.0], [])
+
+    # Constant baseline -> unique edges < 2 branch
+    psi, buckets = calculate_psi([0.5, 0.5, 0.5, 0.5], [0.5, 0.5, 0.5, 0.5])
+    assert psi == pytest.approx(0.0, abs=1e-3)
+
+    # Moderate drift
+    np.random.seed(42)
+    b = np.random.normal(0.5, 0.1, 500)
+    c = np.random.normal(0.54, 0.1, 500)
+    res = evaluate_model_drift(b, c, psi_warning=0.01, psi_critical=0.50)
+    assert res.drift_level in (DriftLevel.MODERATE_DRIFT, DriftLevel.CRITICAL_DRIFT)
+
+    d = res.to_dict()
+    assert "psi" in d
+    assert "ks_statistic" in d
+    assert "drift_level" in d

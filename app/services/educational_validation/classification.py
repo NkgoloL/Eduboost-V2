@@ -10,6 +10,7 @@ from dataclasses import dataclass
 import math
 from typing import Any, Dict, Sequence
 
+import numpy as np
 from scipy import stats
 from sklearn import metrics as sk_metrics
 
@@ -88,9 +89,9 @@ def compute_wilson_ci(
 
 
 def evaluate_classification_risk(
-    predicted_mastery: Sequence[bool],
-    true_mastery: Sequence[bool],
-    mastery_scores: Sequence[float] | None = None,
+    predicted_mastery: Sequence[bool] | Sequence[float] | np.ndarray,
+    true_mastery: Sequence[bool] | Sequence[float] | np.ndarray,
+    mastery_scores: Sequence[float] | np.ndarray | None = None,
     cost_false_mastery: float = 5.0,
     cost_false_non_mastery: float = 1.0,
 ) -> ClassificationRiskMetrics:

@@ -34,6 +34,11 @@ def test_mastery_state_confidence_capped():
     state = MasteryStatePayload(mastery_level=0.85, confidence=0.95)
     assert state.confidence == MAX_CONFIDENCE_THRESHOLD
 
+    # Confidence below MAX_CONFIDENCE_THRESHOLD should remain unchanged
+    state_low = MasteryStatePayload(mastery_level=0.50, confidence=0.45)
+    assert state_low.confidence == 0.45
+
+
 
 def test_mastery_transition_schema_valid():
     transition = MasteryStateTransitionSchema(

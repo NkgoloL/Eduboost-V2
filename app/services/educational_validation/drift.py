@@ -61,8 +61,8 @@ class DriftMetrics:
 
 
 def calculate_psi(
-    baseline: Sequence[float],
-    current: Sequence[float],
+    baseline: Sequence[float] | np.ndarray,
+    current: Sequence[float] | np.ndarray,
     num_buckets: int = 10,
     epsilon: float = 1e-4,
 ) -> Tuple[float, List[BucketDetail]]:
@@ -127,8 +127,8 @@ def calculate_psi(
 
 
 def evaluate_model_drift(
-    baseline: Sequence[float],
-    current: Sequence[float],
+    baseline: Sequence[float] | np.ndarray,
+    current: Sequence[float] | np.ndarray,
     psi_warning: float = 0.10,
     psi_critical: float = 0.20,
     ks_alpha: float = 0.05,
