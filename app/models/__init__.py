@@ -888,3 +888,10 @@ from app.models.runtime_kg import (  # noqa: E402, F401
     RuntimeKGGraphLoad,
     RuntimeKGNode,
 )
+
+# Longitudinal Educational Validation models (LEV-WS03)
+from app.models.educational_validation import (  # noqa: E402, F401
+    LEVInteractionEvent,
+    LEVMasteryStateTransition,
+    LEVValidationRun,
+)
