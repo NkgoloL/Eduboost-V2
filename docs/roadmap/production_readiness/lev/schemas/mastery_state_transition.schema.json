@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mastery State Transition",
+  "type": "object",
+  "required": [
+    "transition_id",
+    "learner_pseudonym",
+    "concept_id",
+    "occurred_at",
+    "pre_state",
+    "post_state",
+    "evidence_event_ids",
+    "model_version",
+    "graph_version"
+  ],
+  "properties": {
+    "transition_id": {
+      "type": "string"
+    },
+    "learner_pseudonym": {
+      "type": "string"
+    },
+    "concept_id": {
+      "type": "string"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "pre_state": {
+      "type": "object"
+    },
+    "post_state": {
+      "type": "object"
+    },
+    "evidence_event_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "model_version": {
+      "type": "string"
+    },
+    "graph_version": {
+      "type": "string"
+    },
+    "update_rationale": {
+      "type": "string"
+    }
+  }
+}

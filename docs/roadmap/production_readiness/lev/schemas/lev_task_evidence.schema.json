@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LEV Task Evidence",
+  "type": "object",
+  "required": [
+    "task_id",
+    "canonical_id",
+    "status",
+    "evidence_files",
+    "commands_run",
+    "approvals",
+    "blockers",
+    "limitations"
+  ],
+  "properties": {
+    "task_id": {
+      "pattern": "^[0-9]{2}\\.[0-9]{2}$"
+    },
+    "canonical_id": {
+      "pattern": "^LEV-[0-9]{2}\\.[0-9]{2}$"
+    },
+    "status": {
+      "enum": [
+        "not_started",
+        "blocked",
+        "in_progress",
+        "candidate_complete",
+        "evidence_recorded",
+        "independent_review",
+        "closed",
+        "waived"
+      ]
+    },
+    "evidence_files": {
+      "type": "array"
+    },
+    "commands_run": {
+      "type": "array"
+    },
+    "approvals": {
+      "type": "array"
+    },
+    "evidence_type": {
+      "type": ["string", "null"],
+      "enum": ["synthetic_fixture", "empirical_field", null]
+    }
+  }
+}

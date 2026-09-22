@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Educational Model Snapshot",
+  "type": "object",
+  "required": [
+    "model_id",
+    "version",
+    "code_commit",
+    "training_data_manifest",
+    "feature_manifest",
+    "authorised_population",
+    "authorised_uses",
+    "prohibited_uses",
+    "valid_until"
+  ],
+  "properties": {
+    "model_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "code_commit": {
+      "type": "string"
+    },
+    "training_data_manifest": {
+      "type": "string"
+    },
+    "feature_manifest": {
+      "type": "string"
+    },
+    "authorised_population": {
+      "type": "array"
+    },
+    "authorised_uses": {
+      "type": "array"
+    },
+    "prohibited_uses": {
+      "type": "array"
+    },
+    "valid_until": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

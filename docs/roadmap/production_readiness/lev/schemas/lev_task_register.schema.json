@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EduBoost LEV Task Register",
+  "type": "object",
+  "required": [
+    "programme",
+    "version",
+    "task_count",
+    "tasks"
+  ],
+  "properties": {
+    "programme": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "task_count": {
+      "const": 222
+    },
+    "tasks": {
+      "type": "array",
+      "minItems": 222,
+      "maxItems": 222,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "canonical_id",
+          "workstream_id",
+          "phase",
+          "action",
+          "status",
+          "depends_on",
+          "implementation_steps",
+          "acceptance_criteria",
+          "task_evidence_record"
+        ],
+        "properties": {
+          "id": {
+            "pattern": "^[0-9]{2}\\.[0-9]{2}$"
+          },
+          "canonical_id": {
+            "pattern": "^LEV-[0-9]{2}\\.[0-9]{2}$"
+          },
+          "status": {
+            "enum": [
+              "not_started",
+              "blocked",
+              "in_progress",
+              "candidate_complete",
+              "evidence_recorded",
+              "independent_review",
+              "closed",
+              "waived"
+            ]
+          },
+          "depends_on": {
+            "type": "array",
+            "items": {
+              "pattern": "^[0-9]{2}\\.[0-9]{2}$"
+            }
+          }
+        }
+      }
+    }
+  }
+}
