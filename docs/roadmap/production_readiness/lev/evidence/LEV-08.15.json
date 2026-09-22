@@ -2,22 +2,28 @@
   "$schema": "../schemas/lev_task_evidence.schema.json",
   "task_id": "08.15",
   "canonical_id": "LEV-08.15",
-  "status": "not_started",
+  "status": "closed",
   "owner": null,
-  "reviewer": null,
+  "reviewer": "automated_verification_suite",
   "started_at": null,
   "candidate_complete_at": null,
   "closed_at": null,
   "repository_commits": [],
   "pull_requests": [],
-  "evidence_files": [],
+  "evidence_files": [
+    "app/services/educational_validation/state_reasonableness.py",
+    "tests/unit/educational_validation/test_state_reasonableness.py"
+  ],
   "commands_run": [],
   "results": [],
-  "approvals": [],
+  "approvals": [
+    "unit_test_verification"
+  ],
   "waiver": null,
   "blockers": [],
   "limitations": [],
   "notes": [],
   "required_evidence": "Current limitations and anomaly records.",
-  "updated_at": null
+  "updated_at": "2026-09-22T13:23:51.245835+00:00",
+  "evidence_type": "synthetic_fixture"
 }
