@@ -1,12 +1,24 @@
 {
-  "proof_code": "PROOF-CAPS-FULL-CURRICULUM-MAPPING-V1",
+  "proof_code": "PROOF-CAPS-FULL-CURRICULUM-VERIFICATION-V2",
   "verified": true,
   "coverage_percentage": 100.0,
+  "versioning": {
+    "graph_version": "2.0.0",
+    "schema_version": "1.0",
+    "graph_sha256": "21d612d3f006134435904d2bbf943d98165ff769c1425d86a78962eecca294f2",
+    "generated_at": "2026-09-22T22:15:00.892277+00:00",
+    "is_valid_version": true
+  },
+  "performance_benchmark": {
+    "load_duration_ms": 38.75,
+    "threshold_ms": 150.0,
+    "passed": true
+  },
   "graph_artifact": {
     "path": "data/knowledge_graph/caps_graph_foundation/all_caps_curriculum_graph.json",
-    "sha256": "c24035fa255c426fd136afa67cdbdfb72b8361bd754a167ac26fe8a0bcfd6fa1",
+    "sha256": "666bbbb56b18fa10d9ceeebaeeb96f54b5190ad6eea17d5e69fdc6ee61e55071",
     "graph_id": "KG-CAPS-FULL-CURRICULUM-ALL-SCOPES",
-    "graph_version": "kg-caps-curriculum-v1"
+    "graph_version": "2.0.0"
   },
   "curriculum_scope_proof": {
     "total_registered_scopes": 51,
@@ -44,11 +56,15 @@
       "expected": 795,
       "mapped": 795,
       "unmapped_count": 0
+    },
+    "cross_grade_progression_edges": {
+      "count": 42,
+      "verified_forward_flow": true
     }
   },
   "mathematical_graph_properties": {
     "total_nodes": 6152,
-    "total_edges": 6946,
+    "total_edges": 6988,
     "duplicate_node_keys": 0,
     "orphan_edges_count": 0,
     "is_directed_acyclic_graph": true,

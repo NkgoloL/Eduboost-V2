@@ -49,11 +49,19 @@ import dataclasses
 import json
 import os
 import sys
+import warnings
 from pathlib import Path
 from typing import Optional
 
 from tools.etl.mcp_compat import FastMCP
 from pydantic import BaseModel, Field, ConfigDict
+
+warnings.warn(
+    "tools.etl.etl_mcp_server_v2 is deprecated and will be removed in Release 2.1 (2026-10-31). "
+    "Use tools.etl.etl_mcp_server as the canonical entry point instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 sys.path.insert(0, str(Path(__file__).parent))
 
@@ -551,16 +559,16 @@ async def etl_run_stage(params: RunStageInput) -> str:
     try:
         doc = p._load_document(params.document_id)
         if params.stage == "extract":
-            p.extract_document(params.document_id)
+            p.extract(params.document_id)
             msg = "Extraction complete."
         elif params.stage == "normalize":
-            p.normalize_document(params.document_id)
+            p.normalize(params.document_id)
             msg = "Normalisation complete."
         elif params.stage == "chunk":
-            n = p.chunk_document(params.document_id)
+            n = p.chunk(params.document_id)
             msg = f"{n} chunks produced."
         elif params.stage == "validate":
-            result = p.validate_document(params.document_id)
+            result = p.validate(params.document_id)
             return json.dumps({
                 "success": True, "stage": "validate",
                 "quality_check": dataclasses.asdict(result),
@@ -1291,21 +1299,21 @@ async def etl_get_metric_window(params: GetMetricWindowInput) -> str:
 
 def _next_steps(status: str) -> list[str]:
     return {
-        ProcessingStatus.validated: [
+        ProcessingStatus.validated.value: [
             "Call etl_approve_document to promote to production.",
             "Optionally call etl_create_document_version to snapshot this state.",
         ],
-        ProcessingStatus.needs_review: [
+        ProcessingStatus.needs_review.value: [
             "Call etl_get_review_queue to see open tasks.",
             "Call etl_get_quality_report for detailed issue breakdown.",
             "Call etl_update_metadata to fix incomplete fields.",
             "Then call etl_approve_document or etl_reject_document.",
         ],
-        ProcessingStatus.rejected: [
+        ProcessingStatus.rejected.value: [
             "Investigate issues. Fix source file or metadata.",
             "Call etl_reprocess_document after fixing.",
         ],
-        ProcessingStatus.approved: [
+        ProcessingStatus.approved.value: [
             "Call etl_generate_training_data to build training examples.",
             "Index chunks with an embedding model then call etl_search_fulltext to verify.",
         ],

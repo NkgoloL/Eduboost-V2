@@ -7,6 +7,7 @@ scope until authorized in later KG runtime gates.
 """
 from __future__ import annotations
 
+import datetime
 import hashlib
 import json
 from dataclasses import dataclass, field
@@ -16,7 +17,7 @@ from typing import Any
 KG1_GRAPH_ID = "KG-1-CAPS-GRAPH-FOUNDATION-GRADE-4-MATHEMATICS"
 KG1_GRAPH_VERSION = "kg1-caps-graph-foundation-v1"
 FULL_CURRICULUM_GRAPH_ID = "KG-CAPS-FULL-CURRICULUM-ALL-SCOPES"
-FULL_CURRICULUM_GRAPH_VERSION = "kg-caps-curriculum-v1"
+FULL_CURRICULUM_GRAPH_VERSION = "2.0.0"
 DEFAULT_SOURCE = Path("data/caps/topic_maps/caps_topic_map_grade4_maths.json")
 DEFAULT_TOPIC_MAPS_DIR = Path("data/caps/topic_maps")
 
@@ -157,11 +158,11 @@ def _edge(
 
 
 def check_prerequisite_dag_acyclic(edges: list[dict[str, Any]]) -> tuple[bool, list[str]]:
-    """Verify that prerequisite edges form a Directed Acyclic Graph (zero cycles)."""
+    """Verify that prerequisite and progression edges form a Directed Acyclic Graph (zero cycles)."""
     adj: dict[str, list[str]] = {}
     nodes: set[str] = set()
     for e in edges:
-        if e.get("edge_type") == "prerequisite_of":
+        if e.get("edge_type") in ("prerequisite_of", "progresses_to"):
             src = e["source_node_key"]
             tgt = e["target_node_key"]
             nodes.add(src)
@@ -474,9 +475,69 @@ def build_whole_curriculum_caps_graph(
                                 prerequisite_ref=prereq_ref,
                             ))
 
+    # Third pass: Register cross-grade strand progression edges (progresses_to)
+    subject_term_subtopics: dict[tuple[str, int, int], list[str]] = {}
+    for data, _ in loaded_topic_maps:
+        g = int(data["grade"])
+        s_norm = norm(data["subject"])
+        for term_obj in data.get("terms", []):
+            t_num = int(term_obj["term"])
+            sub_keys: list[str] = []
+            for topic in term_obj.get("topics", []):
+                for subtopic in topic.get("subtopics", []):
+                    sub_ref = subtopic["caps_ref"]
+                    if sub_ref in subtopic_by_ref:
+                        sub_keys.append(subtopic_by_ref[sub_ref])
+            if sub_keys:
+                subject_term_subtopics[(s_norm, g, t_num)] = sub_keys
+
+    cross_grade_count = 0
+    progression_subject_pairs = [
+        ("mathematics", "mathematics"),
+        ("coding and robotics", "coding and robotics"),
+        ("home language", "home language"),
+        ("sepedi first additional language", "sepedi first additional language"),
+        ("social sciences", "social sciences"),
+        ("life skills", "life skills"),
+        ("life skills", "life orientation"),
+        ("natural sciences and technology", "natural sciences and technology"),
+        ("natural sciences and technology", "natural sciences"),
+        ("natural sciences and technology", "technology"),
+    ]
+
+    for g in range(0, 7):
+        g_next = g + 1
+        for s_curr, s_next in progression_subject_pairs:
+            t4_subs = subject_term_subtopics.get((s_curr, g, 4), [])
+            t1_subs = subject_term_subtopics.get((s_next, g_next, 1), [])
+            if t4_subs and t1_subs:
+                src_key = t4_subs[0]
+                tgt_key = t1_subs[0]
+                cross_grade_count += 1
+                add_edge(_edge(
+                    src_key, tgt_key, "progresses_to",
+                    f"Curriculum strand progression: Grade {g} to Grade {g_next}",
+                    f"grade:{g}->grade:{g_next}", manifest_hash,
+                    version=FULL_CURRICULUM_GRAPH_VERSION,
+                    progression_level="cross_grade",
+                    source_grade=g,
+                    target_grade=g_next,
+                    subject=s_curr,
+                ))
+
+    # Compute deterministic graph content hash
+    graph_content_for_hash = json.dumps({
+        "nodes": [n.node_key for n in sorted(nodes.values(), key=lambda x: x.node_key)],
+        "edges": [(e.source_node_key, e.edge_type, e.target_node_key) for e in sorted(edges.values(), key=lambda x: (x.source_node_key, x.edge_type, x.target_node_key))],
+    }, sort_keys=True)
+    graph_sha256 = hashlib.sha256(graph_content_for_hash.encode("utf-8")).hexdigest()
+
     graph = {
         "graph_id": FULL_CURRICULUM_GRAPH_ID,
         "graph_version": FULL_CURRICULUM_GRAPH_VERSION,
+        "schema_version": "1.0",
+        "generated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "graph_sha256": graph_sha256,
         "status": "caps_full_curriculum_graph_generated",
         "scope": {
             "curriculum": "CAPS",
@@ -504,6 +565,7 @@ def build_whole_curriculum_caps_graph(
             "assessment_statements": assessment_count,
             "misconceptions": misconception_count,
             "prerequisite_edges": prerequisite_count,
+            "cross_grade_progression_edges": cross_grade_count,
             "nodes": len(nodes),
             "edges": len(edges),
         },
@@ -557,6 +619,12 @@ def validate_caps_graph(graph: dict[str, Any]) -> dict[str, Any]:
             errors.append(f"Full curriculum CAPS graph must contain at least 1600 misconceptions (found {counts.get('misconceptions')})")
         if counts.get("prerequisite_edges", 0) < 700:
             errors.append(f"Full curriculum CAPS graph must contain at least 700 prerequisite edges (found {counts.get('prerequisite_edges')})")
+        if counts.get("cross_grade_progression_edges", 0) < 1:
+            errors.append(f"Full curriculum CAPS graph must contain at least 1 cross-grade progression edge (found {counts.get('cross_grade_progression_edges')})")
+        if not graph.get("graph_sha256"):
+            errors.append("Full curriculum CAPS graph missing graph_sha256")
+        if not graph.get("schema_version"):
+            errors.append("Full curriculum CAPS graph missing schema_version")
     else:
         if counts.get("terms", 0) != 4:
             errors.append(f"Scope CAPS graph must contain 4 terms (found {counts.get('terms')})")
@@ -581,11 +649,28 @@ def validate_caps_graph(graph: dict[str, Any]) -> dict[str, Any]:
         if value is not False:
             errors.append(f"boundary flag must be false: {key}")
 
-    # Mathematical DAG acyclicity verification
+    # DAG acyclicity verification across both prerequisite and cross-grade progression edges
     is_dag, cycle_nodes = check_prerequisite_dag_acyclic(edges)
     if not is_dag:
-        errors.append(f"Cycle detected in prerequisite DAG: {' -> '.join(cycle_nodes)}")
+        errors.append(f"Cycle detected in prerequisite/progression DAG: {' -> '.join(cycle_nodes)}")
 
     if errors:
         raise ValueError("; ".join(errors))
     return {"valid": True, "node_count": len(nodes), "edge_count": len(edges), "counts": counts}
+
+
+def verify_graph_artifact_version(
+    graph_data: dict[str, Any],
+    expected_version: str = "2.0.0",
+) -> bool:
+    """Validate that graph artifact satisfies expected version and structural schema."""
+    version = graph_data.get("graph_version")
+    if version != expected_version:
+        return False
+    if "nodes" not in graph_data or "edges" not in graph_data:
+        return False
+    if not graph_data.get("graph_sha256"):
+        return False
+    if not graph_data.get("schema_version"):
+        return False
+    return True

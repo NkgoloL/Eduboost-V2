@@ -40,7 +40,6 @@ import dataclasses
 import json
 from typing import Optional
 
-from tools.etl.mcp_compat import FastMCP
 from pydantic import BaseModel, Field, ConfigDict
 
 # ── Re-use the server singleton from v2 ───────────────────────────────────

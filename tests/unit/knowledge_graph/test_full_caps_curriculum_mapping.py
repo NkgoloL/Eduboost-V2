@@ -8,10 +8,12 @@ import pytest
 
 from app.domain.knowledge_graph_caps import (
     FULL_CURRICULUM_GRAPH_ID,
+    FULL_CURRICULUM_GRAPH_VERSION,
     build_caps_graph,
     build_whole_curriculum_caps_graph,
     check_prerequisite_dag_acyclic,
     validate_caps_graph,
+    verify_graph_artifact_version,
 )
 from scripts.knowledge_graph.prove_caps_curriculum_mapping import run_curriculum_mapping_proof
 
@@ -19,6 +21,8 @@ from scripts.knowledge_graph.prove_caps_curriculum_mapping import run_curriculum
 def test_build_whole_curriculum_caps_graph_structure():
     graph = build_whole_curriculum_caps_graph()
     assert graph["graph_id"] == FULL_CURRICULUM_GRAPH_ID
+    assert graph["graph_version"] == FULL_CURRICULUM_GRAPH_VERSION
+    assert graph["schema_version"] == "1.0"
     assert graph["counts"]["scopes"] == 51
     assert graph["counts"]["terms"] == 204
     assert graph["counts"]["topics"] == 823
@@ -26,8 +30,9 @@ def test_build_whole_curriculum_caps_graph_structure():
     assert graph["counts"]["assessment_statements"] == 2532
     assert graph["counts"]["misconceptions"] == 1690
     assert graph["counts"]["prerequisite_edges"] == 795
+    assert graph["counts"]["cross_grade_progression_edges"] == 42
     assert graph["counts"]["nodes"] == 6152
-    assert graph["counts"]["edges"] == 6946
+    assert graph["counts"]["edges"] == 6988
 
     # Verify root nodes and phases exist
     node_keys = {n["node_key"] for n in graph["nodes"]}
@@ -44,7 +49,7 @@ def test_validate_caps_graph_passes_cleanly():
     res = validate_caps_graph(graph)
     assert res["valid"] is True
     assert res["node_count"] == 6152
-    assert res["edge_count"] == 6946
+    assert res["edge_count"] == 6988
 
 
 def test_prerequisite_dag_acyclicity_proof():
@@ -88,3 +93,46 @@ def test_individual_scope_graph_build():
     assert scope_graph["counts"]["nodes"] > 20
     validation = validate_caps_graph(scope_graph)
     assert validation["valid"] is True
+
+
+def test_cross_grade_progression_edges_exist_and_acyclic():
+    graph = build_whole_curriculum_caps_graph()
+    prog_edges = [e for e in graph["edges"] if e.get("edge_type") == "progresses_to"]
+    assert len(prog_edges) >= 1
+    assert len(prog_edges) == 42
+
+    # Assert strictly forward progression (lower to higher grade)
+    for e in prog_edges:
+        src_g = e.get("metadata", {}).get("source_grade")
+        tgt_g = e.get("metadata", {}).get("target_grade")
+        assert src_g is not None and tgt_g is not None
+        assert src_g < tgt_g, f"Progression edge does not advance grade: {src_g} -> {tgt_g}"
+
+    is_dag, cycles = check_prerequisite_dag_acyclic(graph["edges"])
+    assert is_dag is True
+    assert len(cycles) == 0
+
+
+def test_graph_versioning_and_metadata():
+    graph = build_whole_curriculum_caps_graph()
+    assert graph.get("graph_version") == "2.0.0"
+    assert graph.get("schema_version") == "1.0"
+    assert graph.get("graph_sha256") is not None
+    assert len(graph["graph_sha256"]) == 64
+    assert verify_graph_artifact_version(graph, "2.0.0") is True
+    assert verify_graph_artifact_version(graph, "1.0.0") is False
+
+
+def test_knowledge_graph_loading_performance_benchmark():
+    import time
+    graph_path = Path("data/knowledge_graph/caps_graph_foundation/all_caps_curriculum_graph.json")
+    assert graph_path.exists()
+
+    t0 = time.perf_counter()
+    raw = graph_path.read_text(encoding="utf-8")
+    data = json.loads(raw)
+    t1 = time.perf_counter()
+
+    duration_ms = (t1 - t0) * 1000
+    assert duration_ms < 150.0, f"Graph loading exceeded 150ms benchmark: {duration_ms:.2f}ms"
+    assert len(data.get("nodes", [])) == 6152

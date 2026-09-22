@@ -111,3 +111,62 @@ def test_run_batch_ingestion_directory(tmp_path: Path):
     assert summary["total_chunks"] >= 3
     assert summary["average_quality_score"] >= 0.70
     assert report_file.exists()
+
+
+def test_batch_runner_scopes_filter(tmp_path: Path):
+    db_file = tmp_path / "test_etl.db"
+    storage = tmp_path / "storage"
+    in_dir = tmp_path / "input"
+    in_dir.mkdir(parents=True)
+
+    for i in range(1, 4):
+        file_path = in_dir / f"grade{i}_mathematics_en.json"
+        doc = _create_sample_topic_map(i, "Mathematics")
+        file_path.write_text(json.dumps(doc), encoding="utf-8")
+
+    # Ingest only grade2
+    summary = run_batch_ingestion(
+        input_dir=str(in_dir),
+        db_url=f"sqlite:///{db_file}",
+        storage_root=str(storage),
+        auto_approve=True,
+        scopes=["grade2_mathematics_en"],
+    )
+
+    assert summary["total_files"] == 1
+    assert summary["successful_ingestions"] == 1
+    assert summary["results"][0]["filename"] == "grade2_mathematics_en.json"
+
+
+def test_batch_runner_resumability_and_idempotency(tmp_path: Path):
+    db_file = tmp_path / "test_etl.db"
+    storage = tmp_path / "storage"
+    in_dir = tmp_path / "input"
+    in_dir.mkdir(parents=True)
+
+    for i in range(1, 4):
+        file_path = in_dir / f"grade{i}_mathematics_en.json"
+        doc = _create_sample_topic_map(i, "Mathematics")
+        file_path.write_text(json.dumps(doc), encoding="utf-8")
+
+    # First pass: processes all 3
+    summary1 = run_batch_ingestion(
+        input_dir=str(in_dir),
+        db_url=f"sqlite:///{db_file}",
+        storage_root=str(storage),
+        auto_approve=True,
+    )
+    assert summary1["total_files"] == 3
+    assert summary1["already_existing"] == 0
+
+    # Second pass: resumable skip
+    summary2 = run_batch_ingestion(
+        input_dir=str(in_dir),
+        db_url=f"sqlite:///{db_file}",
+        storage_root=str(storage),
+        auto_approve=True,
+    )
+    assert summary2["total_files"] == 3
+    assert summary2["already_existing"] == 3
+    assert summary2["successful_ingestions"] == 3
+    assert summary2["failed_count"] == 0

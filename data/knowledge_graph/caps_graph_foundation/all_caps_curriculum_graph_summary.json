@@ -1,10 +1,10 @@
 {
   "graph_id": "KG-CAPS-FULL-CURRICULUM-ALL-SCOPES",
-  "graph_version": "kg-caps-curriculum-v1",
+  "graph_version": "2.0.0",
   "status": "caps_full_curriculum_graph_generated",
   "output": "data/knowledge_graph/caps_graph_foundation/all_caps_curriculum_graph.json",
   "source_sha256": "88e020bb34841f4fc369e89cfb2022f30e0a29a045a8c94379cb35dea1c57a6d",
-  "artifact_sha256": "c24035fa255c426fd136afa67cdbdfb72b8361bd754a167ac26fe8a0bcfd6fa1",
+  "artifact_sha256": "666bbbb56b18fa10d9ceeebaeeb96f54b5190ad6eea17d5e69fdc6ee61e55071",
   "valid": true,
   "counts": {
     "scopes": 51,
@@ -14,13 +14,14 @@
     "assessment_statements": 2532,
     "misconceptions": 1690,
     "prerequisite_edges": 795,
+    "cross_grade_progression_edges": 42,
     "nodes": 6152,
-    "edges": 6946
+    "edges": 6988
   },
   "validation": {
     "valid": true,
     "node_count": 6152,
-    "edge_count": 6946,
+    "edge_count": 6988,
     "counts": {
       "scopes": 51,
       "terms": 204,
@@ -29,8 +30,9 @@
       "assessment_statements": 2532,
       "misconceptions": 1690,
       "prerequisite_edges": 795,
+      "cross_grade_progression_edges": 42,
       "nodes": 6152,
-      "edges": 6946
+      "edges": 6988
     }
   }
 }

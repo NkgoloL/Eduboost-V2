@@ -4,8 +4,13 @@ batch_runner.py — Eduboost ETL Batch Ingestion Runner
 Automated batch execution driver for ingesting, extracting, normalizing,
 chunking, validating, and approving CAPS curriculum documents and topic maps.
 
+Database Targets:
+- SQLite (eduboost_etl.db): Canonical local development and CI testing target with FTS5.
+- PostgreSQL: Production deployment target with standard schema constraints.
+
 Usage (CLI):
     python -m tools.etl.batch_runner --input-dir data/caps/topic_maps
+    python -m tools.etl.batch_runner --scopes grade1_mathematics_en,grade4_mathematics_en,grade7_mathematics_en
     python -m tools.etl.batch_runner --input-dir data/caps/topic_maps --db-url sqlite:///eduboost_etl.db --auto-approve
 """
 from __future__ import annotations
@@ -50,6 +55,7 @@ class BatchDocumentResult:
     quality_score: float = 0.0
     chunks_count: int = 0
     approved: bool = False
+    already_existing: bool = False
     error: Optional[str] = None
     duration_ms: float = 0.0
 
@@ -181,30 +187,48 @@ class ETLBatchRunner:
                 res.document_id = doc_id
                 status_str = existing["processing_status"]
                 res.quality_score = float(existing["quality_score"] or 0.0)
-
-                if reprocess or status_str in (ProcessingStatus.raw.value, ProcessingStatus.acquired.value, ProcessingStatus.extracted.value):
-                    q_res = self.etl.run_full_pipeline(doc_id)
-                    res.status = q_res.status.value if hasattr(q_res.status, "value") else str(q_res.status)
-                    res.quality_score = q_res.quality_score
-                else:
-                    res.status = status_str
-
                 chunks = self.etl.get_document_chunks(doc_id)
                 res.chunks_count = len(chunks)
 
-                if self.auto_approve and res.status == ProcessingStatus.validated.value:
-                    try:
-                        self.etl.approve_document(
-                            doc_id,
-                            reviewer="batch_runner",
-                            notes="Automated CAPS batch ingestion approval",
-                        )
+                # Resumable skip: if already validated or approved with intact chunks and not reprocessing
+                if not reprocess and status_str in (ProcessingStatus.validated.value, ProcessingStatus.approved.value) and res.chunks_count > 0:
+                    res.already_existing = True
+                    res.status = status_str
+                    res.approved = (status_str == ProcessingStatus.approved.value)
+                    if self.auto_approve and not res.approved:
+                        try:
+                            self.etl.approve_document(
+                                doc_id,
+                                reviewer="batch_runner",
+                                notes="Automated CAPS batch ingestion approval",
+                            )
+                            res.approved = True
+                            res.status = ProcessingStatus.approved.value
+                        except Exception:
+                            pass
+                else:
+                    if reprocess or status_str in (ProcessingStatus.raw.value, ProcessingStatus.acquired.value, ProcessingStatus.extracted.value):
+                        q_res = self.etl.run_full_pipeline(doc_id)
+                        res.status = q_res.status.value if hasattr(q_res.status, "value") else str(q_res.status)
+                        res.quality_score = q_res.quality_score
+                        chunks = self.etl.get_document_chunks(doc_id)
+                        res.chunks_count = len(chunks)
+                    else:
+                        res.status = status_str
+
+                    if self.auto_approve and res.status == ProcessingStatus.validated.value:
+                        try:
+                            self.etl.approve_document(
+                                doc_id,
+                                reviewer="batch_runner",
+                                notes="Automated CAPS batch ingestion approval",
+                            )
+                            res.approved = True
+                            res.status = ProcessingStatus.approved.value
+                        except Exception:
+                            pass
+                    elif res.status == ProcessingStatus.approved.value:
                         res.approved = True
-                        res.status = ProcessingStatus.approved.value
-                    except Exception:
-                        pass
-                elif res.status == ProcessingStatus.approved.value:
-                    res.approved = True
 
             else:
                 # Ingest new document
@@ -253,11 +277,32 @@ class ETLBatchRunner:
         input_dir: Path,
         pattern: str = "*.json",
         reprocess: bool = False,
+        scopes: list[str] | None = None,
     ) -> BatchRunSummary:
         start_ts = time.time()
         started_at = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(start_ts))
 
         files = sorted(list(input_dir.glob(pattern)))
+        if scopes:
+            normalized_scopes = [s.strip().lower() for s in scopes if s.strip()]
+            target_filenames = set()
+            scopes_manifest = Path("data/content_factory/scopes.json")
+            if scopes_manifest.exists():
+                try:
+                    scopes_data = json.loads(scopes_manifest.read_text(encoding="utf-8")).get("scopes", [])
+                    for s in scopes_data:
+                        if s.get("scope_id", "").lower() in normalized_scopes:
+                            tm_p = s.get("topic_map_path")
+                            if tm_p:
+                                target_filenames.add(Path(tm_p).name.lower())
+                except Exception:
+                    pass
+
+            files = [
+                p for p in files
+                if p.name.lower() in target_filenames or any(ns in p.stem.lower() for ns in normalized_scopes)
+            ]
+
         results: list[BatchDocumentResult] = []
 
         for p in files:
@@ -274,6 +319,7 @@ class ETLBatchRunner:
             1 for r in results
             if r.status in (ProcessingStatus.validated.value, ProcessingStatus.approved.value)
         )
+        already_existing_count = sum(1 for r in results if r.already_existing)
         total_chunks = sum(r.chunks_count for r in results)
         valid_scores = [r.quality_score for r in results if r.quality_score > 0]
         avg_score = round(sum(valid_scores) / len(valid_scores), 4) if valid_scores else 0.0
@@ -284,7 +330,7 @@ class ETLBatchRunner:
             duration_seconds=round(end_ts - start_ts, 2),
             total_files=total_files,
             successful_ingestions=total_files - failed_count,
-            already_existing=0,
+            already_existing=already_existing_count,
             validated_count=validated_count,
             approved_count=approved_count,
             failed_count=failed_count,
@@ -302,6 +348,7 @@ def run_batch_ingestion(
     output_report: Optional[str] = "docs/etl/caps_batch_ingestion_report.json",
     auto_approve: bool = True,
     reprocess: bool = False,
+    scopes: Optional[list[str]] = None,
 ) -> dict[str, Any]:
     in_dir = Path(input_dir)
     if not in_dir.exists():
@@ -312,7 +359,7 @@ def run_batch_ingestion(
         storage_root=storage_root,
         auto_approve=auto_approve,
     )
-    summary = runner.process_directory(in_dir, pattern="*.json", reprocess=reprocess)
+    summary = runner.process_directory(in_dir, pattern="*.json", reprocess=reprocess, scopes=scopes)
     summary_dict = summary.to_dict()
 
     if output_report:
@@ -327,6 +374,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Eduboost ETL Batch Runner")
     parser.add_argument("--input-dir", default="data/caps/topic_maps",
                         help="Directory containing JSON files to ingest (default: data/caps/topic_maps)")
+    parser.add_argument("--scopes", default=None,
+                        help="Comma-separated scope IDs to filter ingestion (e.g. grade1_mathematics_en,grade4_mathematics_en)")
     parser.add_argument("--db-url", default=os.getenv("ETL_DB_URL", "sqlite:///eduboost_etl.db"),
                         help="Database URL")
     parser.add_argument("--storage-root", default=os.getenv("ETL_STORAGE_ROOT", "./data"),
@@ -339,6 +388,7 @@ def main() -> None:
                         help="Force re-running pipeline even if document exists")
 
     args = parser.parse_args()
+    scope_list = [s.strip() for s in args.scopes.split(",") if s.strip()] if args.scopes else None
     summary = run_batch_ingestion(
         input_dir=args.input_dir,
         db_url=args.db_url,
@@ -346,9 +396,11 @@ def main() -> None:
         output_report=args.output_report,
         auto_approve=not args.no_auto_approve,
         reprocess=args.reprocess,
+        scopes=scope_list,
     )
 
     print(f"Batch Ingestion Complete: {summary['successful_ingestions']}/{summary['total_files']} succeeded.")
+    print(f"Already Existing (Skipped): {summary['already_existing']}")
     print(f"Validated: {summary['validated_count']}, Approved: {summary['approved_count']}, Chunks: {summary['total_chunks']}")
     print(f"Average Quality Score: {summary['average_quality_score']}")
     if args.output_report:

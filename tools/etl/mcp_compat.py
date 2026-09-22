@@ -93,12 +93,12 @@ except (ImportError, ModuleNotFoundError):
     try:
         from fastmcp import FastMCP as FastMCP
         FASTMCP_BACKEND = "fastmcp"
-    except (ImportError, ModuleNotFoundError):
+    except (ImportError, ModuleNotFoundError) as err:
         if not _ALLOW_TEST_STUB:
             raise RuntimeError(
                 "FastMCP is unavailable. Install the supported MCP dependency or set "
                 "EDUBOOST_ALLOW_MCP_TEST_STUB=1 for local test-only stub execution."
-            )
+            ) from err
         FastMCP = _build_test_stub()
         FASTMCP_BACKEND = "test-stub"
 
