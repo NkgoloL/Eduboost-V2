@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Educational Model Use Authorization",
+  "type": "object",
+  "required": [
+    "use_id",
+    "status",
+    "model_versions",
+    "population",
+    "content_scope",
+    "decision_scope",
+    "limitations",
+    "expires_at"
+  ],
+  "properties": {
+    "use_id": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "unsupported",
+        "research_only",
+        "shadow_only",
+        "restricted",
+        "authorised",
+        "suspended",
+        "expired"
+      ]
+    },
+    "model_versions": {
+      "type": "array"
+    },
+    "population": {
+      "type": "object"
+    },
+    "content_scope": {
+      "type": "object"
+    },
+    "decision_scope": {
+      "type": "array"
+    },
+    "limitations": {
+      "type": "array"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Educational Validation Interaction Event",
+  "type": "object",
+  "required": [
+    "event_id",
+    "occurred_at",
+    "learner_pseudonym",
+    "concept_id",
+    "item_id",
+    "item_version",
+    "graph_version",
+    "model_version",
+    "consent_state"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "learner_pseudonym": {
+      "type": "string"
+    },
+    "concept_id": {
+      "type": "string"
+    },
+    "item_id": {
+      "type": "string"
+    },
+    "item_version": {
+      "type": "string"
+    },
+    "graph_version": {
+      "type": "string"
+    },
+    "model_version": {
+      "type": "string"
+    },
+    "consent_state": {
+      "type": "string"
+    },
+    "first_attempt_correct": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "attempt_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "hint_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "response_latency_ms": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "teacher_assistance": {
+      "type": "boolean"
+    }
+  }
+}

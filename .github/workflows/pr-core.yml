@@ -110,5 +110,7 @@ jobs:
         run: |
           make docs-housekeeping-check
           make readiness-register-consistency-check
+      - name: Verify LEV Task Register Integrity
+        run: python3 scripts/educational_validation/verify_lev_task_register.py --repo-root . --json
       - name: Verify Coverage Threshold Alignment
         run: PYTHONPATH=. python3 scripts/coverage_suites/verify_coverage_contract.py --threshold-only

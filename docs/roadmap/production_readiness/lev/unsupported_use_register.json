@@ -1,0 +1,36 @@
+{
+  "$schema": "schemas/use_authorization.schema.json",
+  "version": "1.0.0",
+  "updated_at": "2026-09-22T00:00:00Z",
+  "unsupported_uses": [
+    {
+      "use_id": "USE-001-FORMAL-GRADING",
+      "decision_scope": ["formal_grading"],
+      "status": "unsupported",
+      "rationale": "Eduboost-V2 mastery estimates have not undergone statutory empirical psychometric validation for high-stakes summative grading.",
+      "prerequisites_for_authorization": ["Longitudinal 2-year cohort RCT", "DBE statutory panel sign-off"]
+    },
+    {
+      "use_id": "USE-002-GRADE-PROGRESSION",
+      "decision_scope": ["grade_progression"],
+      "status": "unsupported",
+      "rationale": "Automated grade progression decisions based solely on system mastery violate South African national assessment policy (CAPS / NPPPPR).",
+      "prerequisites_for_authorization": ["Longitudinal retention study", "Ministerial DBE gazette waiver"]
+    },
+    {
+      "use_id": "USE-003-HIGH-STAKES-STREAMING",
+      "decision_scope": ["high_stakes_streaming"],
+      "status": "unsupported",
+      "rationale": "Tracking or streaming learners into academic tracks based on unvalidated algorithmic mastery produces severe disparate impact risk across quintiles.",
+      "prerequisites_for_authorization": ["Multi-cohort differential item functioning clearance", "Independent fairness audit"]
+    },
+    {
+      "use_id": "USE-004-CROSS-PHASE-EXTRAPOLATION",
+      "decision_scope": ["diagnostic_remediation", "low_stakes_practice"],
+      "content_scope": {"unsupported_grades": [7, 8, 9, 10, 11, 12]},
+      "status": "unsupported",
+      "rationale": "Intermediate Phase (Grades 4-6) knowledge graphs cannot extrapolate to Senior or FET phase curricula.",
+      "prerequisites_for_authorization": ["Senior Phase CAPS curriculum graph validation"]
+    }
+  ]
+}

@@ -1,19 +1,22 @@
 {
   "baseline_source": "docs/generated/documentation_inventory.json",
   "max_findings_by_type": {
-    "oversized_document": 23
+    "broken_local_links": 1,
+    "duplicate_title": 2,
+    "missing_metadata": 270,
+    "oversized_document": 25
   },
   "max_summary": {
-    "broken_local_link_count": 0,
-    "finding_count": 23,
-    "markdown_files": 2065
+    "broken_local_link_count": 15,
+    "finding_count": 298,
+    "markdown_files": 2335
   },
   "min_summary": {
     "files_with_metadata": 1745,
     "files_with_owner": 1713,
     "files_with_source_of_truth": 142
   },
-  "note": "PRD-0.3 baseline captured after deterministic LFS-aware inventory adoption.",
+  "note": "PRD-4A Longitudinal Educational Validation bundle documentation baseline.",
   "schema_version": "doc-housekeeping-ratchet/v1",
   "strict_zero_new_finding_types": true
 }
