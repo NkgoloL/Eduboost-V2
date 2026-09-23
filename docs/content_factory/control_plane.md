@@ -7,10 +7,10 @@ audience: "developer"
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-06-24"
+last_reviewed: "2026-09-23"
 review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage5-check"
-code_anchors: "[app/services/content_factory, data/content_factory, docs/content_factory]"
+evidence_command: "make content-factory-stage4-check"
+code_anchors: "[app/services/content_factory.py, data/content_factory, docs/content_factory]"
 ---
 
 # Content Factory Control Plane

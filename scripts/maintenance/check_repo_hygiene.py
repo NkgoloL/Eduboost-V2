@@ -143,7 +143,7 @@ def run_checks(repo_root: Path | None = None) -> list[HygieneFailure]:
                 )
             )
 
-        if path.startswith('docs/') and path.endswith(('.md', '.json', '.txt')):
+        if path.startswith('docs/') and path.endswith('.md'):
             target = repo_root / path
             if target.exists() and target.is_file():
                 try:

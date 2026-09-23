@@ -148,7 +148,7 @@ docs/adr/ADR-024-frontend-rollback-plan.md,markdown,,0,ADR-024: Frontend Rollbac
 docs/adr/ADR-025-frontend-upgrade-backlog-metadata.md,markdown,,0,ADR-025: Frontend Upgrade Backlog Metadata,ADR-025: Frontend Upgrade Backlog Metadata,active,architecture,developer,False,2026-06-23,180,219,5965,,0,True
 docs/adr/ADR-026-python-version-alignment.md,markdown,,0,ADR-026 — Phase 4 Python Version Alignment,ADR-026 — Phase 4 Python Version Alignment,active,architecture,developer,False,2026-06-23,180,58,2528,,0,True
 docs/adr/ADR-027-observability-endpoint-access-control.md,markdown,,0,ADR-027 — Observability Endpoint Access Control,ADR-027 — Observability Endpoint Access Control,active,architecture,developer,False,2026-06-23,180,79,2525,,0,True
-docs/adr/ADR-028-authoritative-deployment-target.md,markdown,,0,ADR-028 — Authoritative Production Deployment Target,ADR-028 — Authoritative Production Deployment Target,active,architecture,developer,False,2026-06-23,180,97,3145,,0,True
+docs/adr/ADR-028-authoritative-deployment-target.md,markdown,,0,ADR-028 — Authoritative Production Deployment Target,ADR-028 — Authoritative Production Deployment Target,active,architecture,developer,True,2026-09-22,180,95,3697,,0,True
 docs/adr/ADR-029-supabase-auth-strategy.md,markdown,,0,ADR-029: Supabase Auth Strategy,ADR-029: Supabase Auth Strategy,active,architecture,developer,False,2026-06-23,180,67,2157,,0,True
 docs/adr/ADR-030-content-review-governance.md,markdown,,0,ADR-030 — Educator Consensus and Content Governance,ADR-030 — Educator Consensus and Content Governance,active,architecture,developer,False,2026-06-23,180,69,2524,,0,True
 docs/adr/ADR-031-durable-ai-operations-budget-authority.md,markdown,,0,ADR-031 — Durable AI Operations and Budget Authority,ADR-031 — Durable AI Operations and Budget Authority,active,architecture,developer,False,2026-06-23,180,39,1821,,0,True
@@ -156,7 +156,7 @@ docs/adr/ADR-032-curriculum-expansion-training-governance.md,markdown,,0,ADR-032
 docs/adr/ADR-033-learner-tutor-safety-boundary.md,markdown,,0,ADR-033 — Learner Tutor Safety and Context Boundary,ADR-033 — Learner Tutor Safety and Context Boundary,active,architecture,developer,False,2026-06-23,180,41,1771,,0,True
 docs/adr/ADR-034-irt-quality-self-healing.md,markdown,,0,ADR-034 — IRT Quality and Self-Healing Controls,ADR-034 — IRT Quality and Self-Healing Controls,active,architecture,developer,False,2026-06-23,180,43,2135,,0,True
 docs/adr/ADR-035-supabase-vs-raw-postgres-product-quality-gate.md,markdown,,0,ADR-035 — Supabase versus Raw Postgres Product Quality Gate,ADR-035 — Supabase versus Raw Postgres Product Quality Gate,proposed,architecture,developer,False,2026-07-02,180,42,1740,,0,True
-docs/adr/ADR-036-knowledge-graph-learning-state-core.md,markdown,,0,ADR-036 Knowledge Graph Learning-State Core,ADR-036: Knowledge Graph Learning-State Core,active,architecture,developer,False,2026-07-05,60,153,8229,,0,True
+docs/adr/ADR-036-knowledge-graph-learning-state-core.md,markdown,,0,ADR-036 Knowledge Graph Learning-State Core,ADR-036: Knowledge Graph Learning-State Core,active,architecture,developer,False,2026-09-23,60,153,8464,,0,True
 docs/adr/README.md,markdown,,0,Architectural Decision Records (ADR),Architectural Decision Records (ADR),active,architecture,developer,False,2026-07-02,180,106,9077,,0,True
 docs/adr/frontend/ADR-001-auth-model.md,markdown,,0,ADR-001 — Frontend Auth Model (FastAPI JWT + httpOnly cookie),ADR-001 — Frontend Auth Model (FastAPI JWT + httpOnly cookie),active,frontend,developer,False,2026-06-23,180,64,3162,,0,True
 docs/adr/frontend/ADR-001-rollback.md,markdown,,0,ADR-001 Rollback Plan — Supabase Auth Restoration,ADR-001 Rollback Plan — Supabase Auth Restoration,active,frontend,developer,False,2026-06-23,180,57,2616,,0,True
@@ -180,7 +180,7 @@ docs/ai/ai_prompt_input_contract.md,markdown,,0,AI Prompt Input Contract,AI Prom
 docs/ai/ai_prompt_secret_leakage_guard.md,markdown,,0,AI Prompt Secret Leakage Guard,AI Prompt Secret Leakage Guard,active,ai-safety,safety-reviewer,False,2026-06-24,60,53,1101,,0,True
 docs/ai/ai_prompt_surface_inventory.md,markdown,,0,AI Prompt Surface Inventory,AI Prompt Surface Inventory,current-evidence,ai-safety,safety-reviewer,False,2026-06-24,60,541,36504,,0,True
 docs/ai/ai_refusal_regression_fixtures.md,markdown,,0,AI Refusal Regression Fixtures,AI Refusal Regression Fixtures,active,ai-safety,safety-reviewer,False,2026-06-24,60,44,874,,0,True
-docs/ai/ai_safety_boundary_contract.md,markdown,,0,AI Safety Boundary Contract,AI Safety Boundary Contract,active,ai-safety,safety-reviewer,True,2026-06-24,60,49,1274,,0,True
+docs/ai/ai_safety_boundary_contract.md,markdown,,0,AI Safety Boundary Contract,AI Safety Boundary Contract,active,ai-safety,safety-reviewer,True,2026-09-23,60,49,1268,,0,True
 docs/ai/ai_safety_evidence_index.md,markdown,,0,AI Safety Evidence Index,AI Safety Evidence Index,current-evidence,ai-safety,safety-reviewer,False,2026-06-24,60,64,1724,,0,True
 docs/ai/ai_safety_release_evidence.md,markdown,,0,AI Safety Release Evidence,AI Safety Release Evidence,current-evidence,ai-safety,safety-reviewer,False,2026-06-24,60,29,757,,0,True
 docs/ai/caps_ai_safety_evidence_2026-05-11.md,markdown,,0,CAPS And AI Safety Evidence,CAPS And AI Safety Evidence,current-evidence,ai-safety,safety-reviewer,False,2026-06-24,60,97,4095,,0,True
@@ -196,11 +196,11 @@ docs/ai/production_llm_gateway_contract.md,markdown,,0,Production LLM Gateway Co
 docs/ai/remediation_safety_contract.md,markdown,,0,Remediation Safety Contract,Remediation Safety Contract,active,ai-safety,safety-reviewer,False,2026-06-24,60,57,1550,,0,True
 docs/ai_lesson_safety.md,markdown,,0,AI Lesson Safety Baseline,AI Lesson Safety Baseline,active,engineering,internal,False,2026-09-13,90,50,1452,,0,True
 docs/analytics/learning_event_schema.md,markdown,,0,POPIA-safe learning event schema,POPIA-safe learning event schema,active,privacy,developer,True,2026-09-13,90,37,1276,,0,True
-docs/api/README.md,markdown,,0,API Documentation,API Documentation,active,backend,developer,True,2026-06-23,30,21,605,,0,True
+docs/api/README.md,markdown,,0,API Contract & Route Documentation,API Contract & Route Documentation,active,backend,developer,True,2026-09-22,30,62,2422,,0,True
 docs/api/_build/README.md,markdown,,0,Archived API _build Redirect,Archived API _build Redirect,archived,documentation-governance,reviewer,False,2026-06-23,180,25,766,,0,True
 docs/api_envelope_contract.md,markdown,,0,API Envelope Contract,API Envelope Contract,active,api-governance,developer,True,2026-09-13,90,116,2366,,0,True
 docs/api_v2.md,markdown,,0,API V2 Overview,API V2 Overview,active,api-governance,developer,True,2026-09-13,90,191,4392,,0,True
-docs/api_versioning_policy.md,markdown,,0,API Versioning Policy,EduBoost API Versioning Policy,active,api-governance,developer,True,2026-09-13,90,150,4437,,0,True
+docs/api_versioning_policy.md,markdown,,0,API Versioning Policy,EduBoost API Versioning Policy,active,api-governance,developer,True,2026-09-22,90,151,4620,,0,True
 docs/approvals/rr015_caps_content_review_attestation.md,markdown,,0,RR-015 CAPS Content Review Attestation,RR-015 CAPS Content Review Attestation,active,curriculum,developer,True,2026-07-04,60,31,882,,0,True
 docs/approvals/rr015_caps_content_review_attestation.template.md,markdown,,0,RR-015 CAPS Content Review Attestation Template,RR-015 CAPS Content Review Attestation Template,template,curriculum,developer,False,2026-07-04,60,22,572,,0,True
 docs/approvals/rr015_external_approval_boundary.md,markdown,,0,RR-015 External Approval Boundary,RR-015 External Approval Boundary,active,release,developer,True,2026-07-04,60,32,1046,,0,True
@@ -215,37 +215,37 @@ docs/approvals/rr015_release_owner_go_no_go_signoff.template.md,markdown,,0,RR-0
 docs/approvals/rr015_security_review_attestation.md,markdown,,0,RR-015 Security Review Attestation,RR-015 Security Review Attestation,active,security,developer,True,2026-07-04,60,31,840,,0,True
 docs/approvals/rr015_security_review_attestation.template.md,markdown,,0,RR-015 Security Review Attestation Template,RR-015 Security Review Attestation Template,template,security,developer,False,2026-07-04,60,22,536,,0,True
 docs/architecture.md,markdown,,0,Architecture,Active Architecture Overview,active,architecture,developer,True,2026-09-13,90,54,1525,,0,True
-docs/architecture/ARCHITECTURE.md,markdown,,0,EduBoost SA — Recommended Architecture,EduBoost SA — Recommended Architecture,active,architecture,developer,False,2026-06-23,60,311,14660,,0,True
+docs/architecture/ARCHITECTURE.md,markdown,,0,EduBoost SA — Recommended Architecture,EduBoost SA — Recommended Architecture,archived,architecture,developer,False,2026-09-23,,320,15393,,0,True
 docs/architecture/CORE_TECHNICAL_AUDIT_2026-05-17.md,markdown,,0,EduBoost V2 Core Technical Audit,EduBoost V2 Core Technical Audit,current-evidence,architecture,developer,False,2026-06-23,60,702,29331,,0,True
-docs/architecture/README.md,markdown,,0,Architecture Documentation,Architecture Documentation,active,architecture,developer,True,2026-07-07,60,64,2614,,0,True
+docs/architecture/README.md,markdown,,0,Architecture Documentation,Architecture Documentation,active,architecture,developer,True,2026-09-22,60,80,3753,,0,True
 docs/architecture/architectural_debt_register.md,markdown,,0,Architectural Debt Register,Architectural Debt Register (TSR-6.1),active,architecture,developer,False,2026-09-03,60,33,1519,,0,True
-docs/architecture/architecture_decisions.md,markdown,,0,Architecture Decisions Index,Architecture Decisions Index,active,architecture,developer,False,2026-06-23,60,51,1185,,0,True
-docs/architecture/architecture_diagram.md,markdown,,0,EduBoost SA V2 — Architecture Diagram,EduBoost SA V2 — Architecture Diagram,active,architecture,developer,False,2026-06-23,60,155,4390,,0,True
+docs/architecture/architecture_decisions.md,markdown,,0,Architecture Decisions Index,Architecture Decisions Index,active,architecture,developer,False,2026-09-23,60,51,1158,,0,True
+docs/architecture/architecture_diagram.md,markdown,,0,EduBoost SA V2 — Architecture Diagram,EduBoost SA V2 — Architecture Diagram,active,architecture,developer,False,2026-09-22,60,176,5527,,0,True
 docs/architecture/auth_boundary_debt_report.md,markdown,,0,Auth Boundary Debt Report,Auth Boundary Debt Report,active,architecture,developer,False,2026-09-03,60,31,784,,0,True
-docs/architecture/auth_lifecycle_extraction_report.md,markdown,,0,Auth Lifecycle Extraction Report,Auth Lifecycle Extraction Report,current-evidence,architecture,developer,False,2026-06-23,60,38,973,,0,True
+docs/architecture/auth_lifecycle_extraction_report.md,markdown,,0,Auth Lifecycle Extraction Report,Auth Lifecycle Extraction Report,archived,architecture,developer,False,2026-09-23,,38,934,,0,True
 docs/architecture/auth_service_extraction_followup.md,markdown,,0,Auth Service Extraction Follow-up,Auth Service Extraction Follow-up,active,architecture,developer,False,2026-09-03,60,29,735,,0,True
 docs/architecture/auth_service_extraction_report.md,markdown,,0,Auth Service Extraction Report,Auth Service Extraction Report,active,architecture,developer,False,2026-09-03,60,32,899,,0,True
-docs/architecture/auth_service_ownership_report.md,markdown,,0,Auth Service Ownership Report,Auth Service Ownership Report,current-evidence,architecture,developer,False,2026-06-23,60,42,903,,0,True
+docs/architecture/auth_service_ownership_report.md,markdown,,0,Auth Service Ownership Report,Auth Service Ownership Report,archived,architecture,developer,False,2026-09-23,,42,864,,0,True
 docs/architecture/authorization_consolidation_matrix.md,markdown,,0,Authorization Consolidation Matrix,"Authorization Consolidation Matrix (TSR-6.10, TSR-6.11)",active,architecture,developer,False,2026-09-03,60,29,1234,,0,True
-docs/architecture/boundary_debt_queue.md,markdown,,0,Boundary Debt Queue,Boundary Debt Queue,active,architecture,developer,False,2026-06-23,60,38,1029,,0,True
-docs/architecture/boundary_enforcement_policy.md,markdown,,0,Boundary Enforcement Policy,Boundary Enforcement Policy,active,architecture,developer,False,2026-06-23,60,36,988,,0,True
+docs/architecture/boundary_debt_queue.md,markdown,,0,Boundary Debt Queue,Boundary Debt Queue,active,architecture,developer,False,2026-09-23,60,38,1223,,0,True
+docs/architecture/boundary_enforcement_policy.md,markdown,,0,Boundary Enforcement Policy,Boundary Enforcement Policy,active,architecture,developer,False,2026-09-23,60,36,1012,,0,True
 docs/architecture/complexity_budgets_and_dispositions.md,markdown,,0,Complexity Budgets and Dispositions,"Complexity Budgets and Dispositions (TSR-6.14, TSR-6.15, TSR-6.17)",active,architecture,developer,False,2026-09-03,60,26,1016,,0,True
 docs/architecture/content_factory_capability_decomposition.md,markdown,,0,Content Factory Capability Decomposition,"Content Factory Capability Decomposition (TSR-6.2, TSR-6.6)",active,architecture,developer,False,2026-09-03,60,32,1302,,0,True
 docs/architecture/etl_consolidation_matrix.md,markdown,,0,ETL Consolidation Matrix,ETL Consolidation Matrix (TSR-6.3),active,architecture,developer,False,2026-09-03,60,28,1116,,0,True
-docs/architecture/import_boundaries.md,markdown,,0,Import Boundaries,Import Boundaries,active,architecture,developer,False,2026-06-23,60,92,2701,,0,True
+docs/architecture/import_boundaries.md,markdown,,0,Import Boundaries,Import Boundaries,active,architecture,developer,False,2026-09-23,60,92,2725,,0,True
 docs/architecture/import_linter_availability.md,markdown,,0,Import-Linter Availability,Import-Linter Availability,active,architecture,developer,False,2026-09-03,60,25,465,,0,True
 docs/architecture/import_linter_contract_run.md,markdown,,0,Import-Linter Contract Run,Import-Linter Contract Run,active,architecture,developer,False,2026-09-03,60,48,1526,,0,True
-docs/architecture/knowledge_graph_data_model.md,markdown,,0,Knowledge Graph Data Model,Knowledge Graph Data Model,active,architecture,developer,False,2026-07-05,60,110,5617,,0,True
-docs/architecture/knowledge_graph_learning_state_architecture.md,markdown,,0,Knowledge Graph Learning-State Architecture,Knowledge Graph Learning-State Architecture,active,architecture,developer,False,2026-07-05,60,122,6381,,0,True
-docs/architecture/knowledge_graph_transition_plan.md,markdown,,0,Knowledge Graph Transition Plan,Knowledge Graph Transition Plan,active,architecture,developer,False,2026-07-05,60,94,5284,,0,True
-docs/architecture/legacy_learner_access_guard_report.md,markdown,,0,Legacy Learner Access Guard Report,Legacy Learner Access Guard Report,current-evidence,architecture,developer,False,2026-07-02,60,26,651,,0,True
+docs/architecture/knowledge_graph_data_model.md,markdown,,0,Knowledge Graph Data Model,Knowledge Graph Data Model,active,architecture,developer,False,2026-09-23,60,110,5800,,0,True
+docs/architecture/knowledge_graph_learning_state_architecture.md,markdown,,0,Knowledge Graph Learning-State Architecture,Knowledge Graph Learning-State Architecture,active,architecture,developer,False,2026-09-23,60,122,6529,,0,True
+docs/architecture/knowledge_graph_transition_plan.md,markdown,,0,Knowledge Graph Transition Plan,Knowledge Graph Transition Plan,active,architecture,developer,False,2026-09-23,60,94,5437,,0,True
+docs/architecture/legacy_learner_access_guard_report.md,markdown,,0,Legacy Learner Access Guard Report,Legacy Learner Access Guard Report,archived,architecture,developer,False,2026-09-23,,26,612,,0,True
 docs/architecture/legacy_quarantine_boundary.md,markdown,,0,Legacy Quarantine Boundary,Legacy Quarantine Boundary (TSR-6.12),active,architecture,developer,False,2026-09-03,60,28,1087,,0,True
-docs/architecture/metaphor_glossary.md,markdown,,0,Metaphor → Domain Name Glossary,Metaphor → Domain Name Glossary,active,architecture,developer,False,2026-06-23,60,55,1567,,0,True
+docs/architecture/metaphor_glossary.md,markdown,,0,Metaphor → Domain Name Glossary,Metaphor → Domain Name Glossary,archived,architecture,developer,False,2026-09-23,,55,1538,,0,True
 docs/architecture/popia_orchestration_boundaries.md,markdown,,0,POPIA Orchestration Boundaries,POPIA Orchestration Boundaries (TSR-6.4),active,architecture,developer,False,2026-09-03,60,32,1325,,0,True
-docs/architecture/router_repository_boundary_inventory.md,markdown,,0,Router Repository Boundary Inventory,Router Repository Boundary Inventory,current-evidence,architecture,developer,False,2026-06-23,60,23,742,,0,True
+docs/architecture/router_repository_boundary_inventory.md,markdown,,0,Router Repository Boundary Inventory,Router Repository Boundary Inventory,current-evidence,architecture,developer,False,2026-09-23,60,23,819,,0,True
 docs/architecture/router_repository_boundary_matrix.md,markdown,,0,Router Repository Boundary Matrix,Router Repository Boundary Matrix,active,architecture,developer,False,2026-09-03,60,61,2877,,0,True
 docs/architecture/router_service_dependency_map.md,markdown,,0,Router Service Dependency Map,Router Service Dependency Map,active,architecture,developer,False,2026-09-03,60,61,7466,,0,True
-docs/architecture/service_boundary_classification_policy.md,markdown,,0,Service Boundary Classification Policy,Service Boundary Classification Policy,active,architecture,developer,False,2026-06-23,60,39,1489,,0,True
+docs/architecture/service_boundary_classification_policy.md,markdown,,0,Service Boundary Classification Policy,Service Boundary Classification Policy,active,architecture,developer,False,2026-09-23,60,39,1513,,0,True
 docs/architecture/service_boundary_inventory.md,markdown,,0,Service Boundary Inventory,Service Boundary Inventory,active,architecture,developer,False,2026-09-03,60,282,18072,,0,True
 docs/architecture/service_family_map.md,markdown,,0,Service Family Map,Service Family Map,active,architecture,developer,False,2026-09-03,60,286,39345,,0,True
 docs/architecture/transaction_boundary_inventory.md,markdown,,0,Transaction Boundary Inventory,Transaction Boundary Inventory,active,architecture,developer,False,2026-09-03,60,422,53301,,0,True
@@ -350,7 +350,7 @@ docs/audits/reports/audit_report_2026_09_03_true_state_verification.md,markdown,
 docs/audits/reports/independent_technical_audit_2026-09-10.md,markdown,,0,EduBoost V2 - Independent Technical Audit,EduBoost V2 — Independent Technical Audit,active,engineering,internal,False,2026-09-10,90,334,34882,,0,True
 docs/audits/reports/independent_technical_audit_second_pass_2026-09-13.md,markdown,,0,EduBoost V2 - Independent Technical Audit - Second Pass,EduBoost V2 — Independent Technical Audit — Second Pass,active,engineering,internal,False,2026-09-13,90,289,30813,,0,True
 docs/audits/reports/true_state_technical_audit_report_2026-09-13.md,markdown,,0,EduBoost V2 Comprehensive True State Technical Audit Report,Comprehensive Technical Audit Report: The True State of EduBoost V2,active,engineering,internal,False,2026-09-13,90,236,24471,,0,True
-docs/backend/README.md,markdown,,0,Backend,Backend,active,backend,developer,True,2026-06-24,60,43,1265,,0,True
+docs/backend/README.md,markdown,,0,Backend,Backend,active,backend,developer,True,2026-09-23,60,43,1272,,0,True
 docs/backlog/PR_chore_docs_governance_body.md,markdown,,0,Backlog — Pr Chore Docs Governance Body,,active,product,internal,False,2026-09-13,90,36,1476,,0,True
 docs/backlog/backlog_audit.md,markdown,,0,Backlog — TODO.md Repository Audit,TODO.md Repository Audit,active,product,internal,False,2026-09-13,90,320,42416,,0,True
 docs/backlog/critical_path.md,markdown,,0,Backlog — Critical Path,Critical Path,active,product,internal,False,2026-09-13,90,70,5611,,0,True
@@ -462,14 +462,14 @@ docs/codemaps/19_documentation_adrs_repository_governance_and_maintenance.md,mar
 docs/codemaps/CODEMAP_COVERAGE_REPORT.md,markdown,,0,EduBoost V2 Codemap Coverage Report,EduBoost V2 Codemap Coverage Report,active,architecture,developer,True,2026-09-13,90,74,3609,,0,True
 docs/codemaps/README.md,markdown,,0,EduBoost V2 Canonical Codemaps,EduBoost V2 Canonical Codemaps,active,architecture,developer,True,2026-09-13,90,107,9447,,0,True
 docs/codemaps/SUPERSESSION_MAP.md,markdown,,0,Codemap Supersession Map,Codemap Supersession Map,active,architecture,developer,True,2026-09-13,90,57,8353,,0,True
-docs/compliance/README.md,markdown,,0,Compliance Documentation,Compliance Documentation,active,privacy,privacy,True,2026-06-23,45,21,685,,0,True
+docs/compliance/README.md,markdown,,0,Compliance Documentation,Compliance Documentation,active,privacy,privacy,True,2026-09-23,45,21,819,,0,True
 docs/compliance/data_retention_policy.md,markdown,,0,Data retention policy,Compliance Data Retention Policy,active,privacy,compliance-reviewer,False,2026-06-23,60,30,1734,,0,True
 docs/compliance/popia_data_rights.md,markdown,,0,POPIA data-subject-rights workflow,POPIA Data-Subject-Rights Workflow (Compliance),active,privacy,compliance-reviewer,False,2026-06-23,60,44,1947,,0,True
 docs/compliance/pr_004_implementation_summary.md,markdown,,0,PR-004 POPIA consent/data-rights/audit compliance implementation summary,PR-004 POPIA consent/data-rights/audit implementation summary,active,privacy,compliance-reviewer,False,2026-06-23,60,40,1832,,0,True
 docs/compliance/subprocessor_register.md,markdown,,0,Subprocessor register,Subprocessor register,active,privacy,compliance-reviewer,False,2026-06-23,60,29,1494,,0,True
 docs/content_factory/CONTENT_GENERATION_CONFIG.md,markdown,,0,Content Generation Configuration,Content Generation Configuration,active,content-factory,developer,False,2026-06-24,60,446,12563,,0,True
 docs/content_factory/admin_api.md,markdown,,0,Content Factory Admin API,Content Factory Admin API,active,content-factory,developer,False,2026-06-24,60,29,1121,,0,True
-docs/content_factory/control_plane.md,markdown,,0,Content Factory Control Plane,Content Factory Control Plane,active,content-factory,developer,True,2026-06-24,60,29,1086,,0,True
+docs/content_factory/control_plane.md,markdown,,0,Content Factory Control Plane,Content Factory Control Plane,active,content-factory,developer,True,2026-09-23,60,29,1087,,0,True
 docs/content_factory/controlled_generation.md,markdown,,0,Content Factory Controlled Generation,Content Factory Controlled Generation,active,content-factory,developer,False,2026-06-24,60,64,2506,,0,True
 docs/content_factory/full_generation_runner.md,markdown,,0,Full Generation Runner,Full Generation Runner,active,content-factory,developer,False,2026-06-24,60,230,5902,,0,True
 docs/content_factory/promotion_gates.md,markdown,,0,Content Factory Promotion Gates,Content Factory Promotion Gates,active,content-factory,developer,False,2026-06-24,60,28,941,,0,True
@@ -478,11 +478,11 @@ docs/content_factory/staging_seed_execution.md,markdown,,0,Content Factory Stagi
 docs/content_factory/staging_verification.md,markdown,,0,Content Factory Staging Verification,Content Factory Staging Verification,active,content-factory,developer,False,2026-06-24,60,52,1959,,0,True
 docs/content_factory_overnight_batch_pipeline.md,markdown,,0,Content Factory Full Generation System: Overnight Batch Pipeline — Complete Trace Text,Content Factory Full Generation System: Overnight Batch Pipeline — Complete Trace Text,active,engineering,internal,False,2026-09-13,90,1043,50265,,0,True
 docs/coverage-improvement-handover.md,markdown,,0,Code Coverage Improvement Handover,Code Coverage Improvement Handover,active,engineering,internal,False,2026-09-13,90,207,7010,,0,True
-docs/current_state.md,markdown,,0,EduBoost Current State,EduBoost Current State,active,release-management,developer,True,2026-09-13,45,115,5751,,0,True
+docs/current_state.md,markdown,,0,EduBoost Current State,EduBoost Current State,active,release-management,developer,True,2026-09-22,14,87,5610,,0,True
 docs/curriculum/StudyMaterialExpansionPlan.md,markdown,,0,Study Material Expansion Implementation Plan,Study Material Expansion Implementation Plan,active,curriculum,curriculum-reviewer,False,2026-06-24,60,609,25111,,0,True
 docs/curriculum/TOPIC_MAP_REVIEW_CHECKLIST.md,markdown,,0,Topic Map Review Checklist,Topic Map Review Checklist,current-evidence,curriculum,curriculum-reviewer,False,2026-06-24,60,379,11534,,0,True
 docs/curriculum/caps_topic_map.md,markdown,,0,CAPS Topic Map MVP,CAPS Topic Map MVP,active,curriculum,curriculum-reviewer,False,2026-06-24,60,58,1539,,0,True
-docs/curriculum/caps_topic_map_production_contract.md,markdown,,0,CAPS Topic Map Production Contract,CAPS Topic Map Production Contract,active,curriculum,curriculum-reviewer,True,2026-06-24,60,45,1392,,0,True
+docs/curriculum/caps_topic_map_production_contract.md,markdown,,0,CAPS Topic Map Production Contract,CAPS Topic Map Production Contract,active,curriculum,curriculum-reviewer,True,2026-09-23,60,45,1394,,0,True
 docs/curriculum/pedagogical_validity_review.md,markdown,,0,Pedagogical Validity and Baseline Mastery Configuration (TSR-9.1),Pedagogical Validity and Baseline Mastery Configuration (TSR-9.1),active,curriculum,curriculum-reviewer,False,2026-06-24,60,33,1640,,0,True
 docs/curriculum/post_launch_educational_limitations_memo.md,markdown,,0,EduBoost V2: Post-Remediation Educational Validity & Limitations Memo,EduBoost V2: Post-Remediation Educational Validity & Limitations Memo,active,curriculum,curriculum-reviewer,False,2026-06-24,60,49,2103,,0,True
 docs/curriculum/rr007_content_expansion_roadmap.md,markdown,,0,RR-007 Content Expansion Roadmap,RR-007 Content Expansion Roadmap,active,engineering,developer,False,2026-06-24,60,34,981,,0,True
@@ -494,25 +494,25 @@ docs/data/table_field_data_inventory.md,markdown,,0,Table and Field Data Invento
 docs/data/transaction_ownership_and_isolation_policy.md,markdown,,0,Data — Transaction Ownership and Isolation Policy (TSR-7.8),Transaction Ownership and Isolation Policy (TSR-7.8),active,data,developer,False,2026-09-13,90,25,1006,,0,True
 docs/data_inventory.md,markdown,,0,Data Inventory,Data Inventory,active,engineering,internal,False,2026-09-13,90,97,4091,,0,True
 docs/data_retention_policy.md,markdown,,0,Active Data Retention Policy,Active Data Retention Policy,active,compliance,internal,False,2026-09-13,90,29,1705,,0,True
-docs/database/db_repository_evidence.md,markdown,,0,Database Repository Evidence,Database Repository Evidence,current-evidence,database,developer,False,2026-06-24,60,36,1101,,0,True
-docs/database/migration_audit.md,markdown,,0,Migration Audit,Migration Audit,current-evidence,database,developer,False,2026-06-24,60,61,1817,,0,True
-docs/database/migration_discipline.md,markdown,,0,Database migration discipline,Database migration discipline,active,database,developer,False,2026-06-24,60,77,3009,,0,True
-docs/database/migration_release_discipline_contract.md,markdown,,0,Migration Release Discipline Contract,Migration Release Discipline Contract,active,database,developer,False,2026-06-24,60,57,2168,,0,True
-docs/database/repository_transaction_performance_contract.md,markdown,,0,"Repository, Transaction, and Performance Contract","Repository, Transaction, and Performance Contract",active,database,developer,False,2026-06-24,60,77,2896,,0,True
-docs/database/schema_integrity.md,markdown,,0,Schema integrity baseline,Schema integrity baseline,active,database,developer,True,2026-06-24,60,60,2229,,0,True
-docs/database/schema_readiness_contract.md,markdown,,0,Database Schema Readiness Contract,Database Schema Readiness Contract,active,database,developer,False,2026-06-24,60,65,2520,,0,True
+docs/database/db_repository_evidence.md,markdown,,0,Database Repository Evidence,Database Repository Evidence,current-evidence,database,developer,False,2026-09-23,60,36,1132,,0,True
+docs/database/migration_audit.md,markdown,,0,Migration Audit,Migration Audit,archived,database,developer,False,2026-09-23,,62,1804,,0,True
+docs/database/migration_discipline.md,markdown,,0,Database migration discipline,Database migration discipline,active,database,developer,False,2026-09-23,60,77,3024,,0,True
+docs/database/migration_release_discipline_contract.md,markdown,,0,Migration Release Discipline Contract,Migration Release Discipline Contract,active,database,developer,False,2026-09-23,60,57,2183,,0,True
+docs/database/repository_transaction_performance_contract.md,markdown,,0,"Repository, Transaction, and Performance Contract","Repository, Transaction, and Performance Contract",active,database,developer,False,2026-09-23,60,77,2927,,0,True
+docs/database/schema_integrity.md,markdown,,0,Schema Integrity Baseline & Migration Graph,Schema Integrity Baseline & Migration Graph,active,database,developer,True,2026-09-22,60,81,3678,,0,True
+docs/database/schema_readiness_contract.md,markdown,,0,Database Schema Readiness Contract,Database Schema Readiness Contract,active,database,developer,False,2026-09-23,60,65,2535,,0,True
 docs/db_rollback.md,markdown,,0,Runbook: Database Rollback,Runbook: Database Rollback,active,operations,developer,False,2026-09-13,90,100,2144,,0,True
 docs/dependency_management.md,markdown,,0,Dependency Management,Dependency Management,active,engineering,developer,True,2026-09-13,90,51,2157,,0,True
-docs/deployment/README.md,markdown,,0,Deployment And Operations,Deployment And Operations,active,release-management,operator,True,2026-06-24,60,44,1856,,0,True
+docs/deployment/README.md,markdown,,0,Deployment And Operations,Deployment And Operations,active,release-management,operator,True,2026-09-22,60,44,1909,,0,True
 docs/deployment/artifact_provenance_and_release_contract.md,markdown,,0,Artifact Provenance and Release Contract,Artifact Provenance and Release Contract,active,release-management,operator,False,2026-06-24,60,49,1243,,0,True
 docs/deployment/ci_pipeline_contract.md,markdown,,0,CI Pipeline Contract,CI Pipeline Contract,active,release-management,operator,False,2026-06-24,60,49,1287,,0,True
 docs/deployment/deployment_gate_and_rollback_contract.md,markdown,,0,Deployment Gate and Rollback Contract,Deployment Gate and Rollback Contract,active,release-management,operator,False,2026-06-24,60,59,1376,,0,True
 docs/deployment/docker_runtime_hardening_contract.md,markdown,,0,Docker Runtime Hardening Contract,Docker Runtime Hardening Contract,active,release-management,operator,False,2026-06-24,60,48,1110,,0,True
 docs/deployment/environment_configuration_contract.md,markdown,,0,Environment Configuration Contract,Environment Configuration Contract,active,release-management,operator,False,2026-06-24,60,56,1361,,0,True
-docs/deployment/production_deployment_architecture_contract.md,markdown,,0,Production Deployment Architecture Contract,Production Deployment Architecture Contract,active,release-management,operator,False,2026-06-24,60,40,1331,,0,True
+docs/deployment/production_deployment_architecture_contract.md,markdown,,0,Production Deployment Architecture Contract,Production Deployment Architecture Contract,active,release-management,operator,False,2026-09-22,60,40,1325,,0,True
 docs/development/e2e_testing.md,markdown,,0,Development — E2E Testing Guide,E2E Testing Guide,active,engineering,developer,False,2026-09-13,90,224,4772,,0,True
 docs/development/pwa_offline_plan.md,markdown,,0,Development — PWA Offline Behavior Plan,PWA Offline Behavior Plan,active,engineering,developer,False,2026-09-13,90,170,3681,,0,True
-docs/diagnostics/README.md,markdown,,0,Diagnostics And Assessment,Diagnostics And Assessment,active,diagnostics,developer,True,2026-06-24,60,41,1523,,0,True
+docs/diagnostics/README.md,markdown,,0,Diagnostics And Assessment,Diagnostics And Assessment,active,diagnostics,developer,True,2026-09-23,60,41,1521,,0,True
 docs/diagnostics/assessment_quality_fairness_contract.md,markdown,,0,Assessment Quality and Fairness Contract,Assessment Quality and Fairness Contract,active,diagnostics,developer,False,2026-06-24,60,54,1633,,0,True
 docs/diagnostics/item_bank_launch_coverage_contract.md,markdown,,0,Item Bank Launch Coverage Contract,Item Bank Launch Coverage Contract,active,diagnostics,developer,False,2026-06-24,60,67,2065,,0,True
 docs/diagnostics/item_contract.md,markdown,,0,Diagnostic Item Contract,Diagnostic Item Contract,active,diagnostics,developer,False,2026-06-24,60,58,1261,,0,True
@@ -520,7 +520,7 @@ docs/diagnostics/mastery_model_assessment_contract.md,markdown,,0,Mastery Model 
 docs/diagnostics/production_diagnostics_assessment_readiness_contract.md,markdown,,0,Production Diagnostics and Assessment Readiness Contract,Production Diagnostics and Assessment Readiness Contract,active,diagnostics,developer,False,2026-06-24,60,55,2331,,0,True
 docs/disaster_recovery.md,markdown,,0,Disaster Recovery Plan,Disaster recovery plan,active,platform-operations,operator,False,2026-09-13,90,90,3397,,0,True
 docs/disaster_recovery/backup_policy_retention_contract.md,markdown,,0,Backup Policy and Retention Contract,Backup Policy and Retention Contract,active,operations,operator,False,2026-06-24,60,47,1207,,0,True
-docs/disaster_recovery/backup_restore_architecture_contract.md,markdown,,0,Backup Restore Architecture Contract,Backup Restore Architecture Contract,active,operations,operator,True,2026-06-24,60,50,1210,,0,True
+docs/disaster_recovery/backup_restore_architecture_contract.md,markdown,,0,Backup Restore Architecture Contract,Backup Restore Architecture Contract,active,operations,operator,True,2026-09-23,60,50,1210,,0,True
 docs/disaster_recovery/business_continuity_contract.md,markdown,,0,Business Continuity Contract,Business Continuity Contract,active,operations,operator,False,2026-06-24,60,38,1042,,0,True
 docs/disaster_recovery/dr_escalation_matrix.md,markdown,,0,Disaster Recovery Escalation Matrix,Disaster Recovery Escalation Matrix,current-evidence,operations,operator,False,2026-06-24,60,40,1067,,0,True
 docs/disaster_recovery/evidence/restore_drill_001.md,markdown,,0,Restore Drill Evidence 001,Restore Drill Evidence 001,current-evidence,operations,operator,False,2026-06-24,60,34,805,,0,True
@@ -529,13 +529,14 @@ docs/disaster_recovery/restore_drill_evidence_contract.md,markdown,,0,Restore Dr
 docs/disaster_recovery/restore_runbook_contract.md,markdown,,0,Restore Runbook Contract,Restore Runbook Contract,active-runbook,operations,operator,False,2026-06-24,60,47,1048,,0,True
 docs/disaster_recovery/runbooks/database_restore.md,markdown,,0,Database Restore Runbook,Database Restore Runbook,active-runbook,operations,operator,False,2026-06-24,60,48,1149,,0,True
 docs/disaster_recovery/runbooks/object_storage_restore.md,markdown,,0,Object Storage Restore Runbook,Object Storage Restore Runbook,active-runbook,operations,operator,False,2026-06-24,60,48,1059,,0,True
-docs/docs_gap_report.md,markdown,,0,Documentation Gap Report,Documentation Gap Report,active,engineering,internal,False,2026-09-13,90,38,1126,,0,True
-docs/docs_generation_plan.md,markdown,,0,Documentation Generation Plan,Documentation Generation Plan,active,engineering,internal,False,2026-09-13,90,27,672,,0,True
-docs/docs_inventory.md,markdown,,0,Documentation Inventory,Documentation Inventory,active,engineering,internal,False,2026-09-13,90,3039,431321,,0,True
-docs/documentation/README.md,markdown,,0,Documentation Governance Index,Documentation Governance,active,documentation-governance,developer,True,2026-06-22,30,33,980,,0,True
+docs/docs_gap_report.md,markdown,,0,Documentation Gap Report,Documentation Gap Report,active,engineering,internal,False,2026-09-23,90,38,1126,,0,True
+docs/docs_generation_plan.md,markdown,,0,Documentation Generation Plan,Documentation Generation Plan,active,engineering,internal,False,2026-09-23,90,27,672,,0,True
+docs/docs_inventory.md,markdown,,0,Documentation Inventory,Documentation Inventory,active,engineering,internal,False,2026-09-23,90,3548,494645,,0,True
+docs/documentation/README.md,markdown,,0,Documentation Governance Index,Documentation Governance,active,documentation-governance,developer,True,2026-09-23,30,33,980,,0,True
 docs/documentation/adr_lifecycle_contract.md,markdown,,0,ADR Lifecycle Contract,ADR Lifecycle Contract,active,documentation-governance,developer,False,2026-06-23,180,46,937,,0,True
 docs/documentation/claim_discipline_contract.md,markdown,,0,Claim Discipline Contract,Claim Discipline Contract,active,documentation-governance,developer,False,2026-06-23,180,62,1491,,0,True
 docs/documentation/claim_discipline_policy.md,markdown,,0,Documentation Claim Discipline Policy,Documentation Claim Discipline Policy,active,documentation-governance,developer,True,2026-06-22,30,58,1619,,0,True
+docs/documentation/comprehensive_documentation_remediation_plan.md,markdown,,0,EduBoost V2 Comprehensive Documentation Staleness Remediation Plan,EduBoost V2 Comprehensive Documentation Staleness Remediation Plan,active,documentation-governance,developer,False,2026-09-22,30,217,16200,,0,True
 docs/documentation/documentation_adrs_claim_discipline_architecture_contract.md,markdown,,0,Documentation ADRs Claim Discipline Architecture Contract,Documentation ADRs Claim Discipline Architecture Contract,active,documentation-governance,developer,False,2026-06-23,180,62,1385,,0,True
 docs/documentation/documentation_alignment_plan.md,markdown,,0,EduBoost Documentation Alignment Plan,EduBoost Documentation Alignment Plan,active,documentation-governance,developer,False,2026-09-03,14,383,23412,,0,True
 docs/documentation/documentation_debt_baseline.md,markdown,,0,Documentation Debt Baseline,Documentation Debt Baseline,active,documentation-governance,engineering,False,2026-06-22,30,39,1334,,0,True
@@ -549,9 +550,10 @@ docs/documentation/stage_3_documentation_housekeeping.md,markdown,,0,Stage 3 Doc
 docs/documentation/stage_4_deep_housekeeping.md,markdown,,0,Stage 4 Documentation Deep Housekeeping,Stage 4 Documentation Deep Housekeeping,active,documentation-governance,developer,False,2026-06-23,30,42,1286,,0,True
 docs/documentation/stage_5_technical_delivery_housekeeping.md,markdown,,0,Stage 5 Technical Delivery and Learning-Engine Documentation Housekeeping,Stage 5 Technical Delivery and Learning-Engine Documentation Housekeeping,active,documentation-governance,developer,False,2026-06-24,30,51,1426,,0,True
 docs/documentation/stale_documentation_register.md,markdown,,0,Stale Documentation Register,Stale Documentation Register,active,documentation-governance,developer,False,2026-06-22,30,44,1971,,0,True
-docs/documentation/stale_documentation_review_register.md,markdown,,0,Stale Documentation Review Register,Stale Documentation Review Register,active,documentation-governance,developer,False,2026-06-23,180,40,968,,0,True
+docs/documentation/stale_documentation_review_plan.md,markdown,,0,Stale Documentation Phased Review Plan,Stale Documentation Phased Review Plan (489 Documents),active,architecture_governance,"['maintainers', 'auditors', 'engineering']",True,2026-09-22,14,219,11805,,0,True
+docs/documentation/stale_documentation_review_register.md,markdown,,0,Stale Documentation Review Register,Stale Documentation Review Register,active,architecture_governance,"['maintainers', 'auditors']",True,2026-09-22,14,569,94841,,0,True
 docs/documentation_intelligence_pipeline.md,markdown,,0,Documentation Intelligence Pipeline,Documentation Intelligence Pipeline,active,engineering,internal,False,2026-09-13,90,144,5171,,0,True
-docs/engineering/README.md,markdown,,0,Engineering Documentation Index,Engineering Documentation,active,engineering,developer,True,2026-06-22,45,21,596,,0,True
+docs/engineering/README.md,markdown,,0,Engineering Documentation Index,Engineering Documentation,active,engineering,developer,True,2026-09-23,45,21,596,,0,True
 docs/engineering/audits/bandit_finding_disposition_B01_2026-07-20.md,markdown,,0,Audits — Bandit Finding Disposition — B01-TSR-2026,Bandit Finding Disposition — B01-TSR-2026,active,engineering,developer,False,2026-09-13,90,154,5504,,0,True
 docs/engineering/audits/true_state_technical_report_2026-07-13.md,markdown,,0,Audits — EduBoost V2 — Comprehensive True-State Technical Report,EduBoost V2 — Comprehensive True-State Technical Report,active,engineering,developer,False,2026-09-13,90,876,42775,,0,True
 docs/engineering/branching.md,markdown,,0,Engineering — Branching and Release Naming Policy,Branching and Release Naming Policy,active,engineering,developer,False,2026-09-13,90,94,3251,,0,True
@@ -643,7 +645,7 @@ docs/frontend/FE-SPIKE-004-web-speech.md,markdown,,0,FE-SPIKE-004: Web Speech AP
 docs/frontend/FE-SPIKE-005-ai-tutor.md,markdown,,0,FE-SPIKE-005: AI Tutor Streaming Safety and Latency,FE-SPIKE-005: AI Tutor Streaming Safety and Latency,active,frontend,developer,False,2026-06-24,60,64,3170,,0,True
 docs/frontend/FE-SPIKE-006-service-worker-spike.md,markdown,,0,FE-SPIKE-006 \u2014 Service Worker + App Router Cache Interaction Spike,FE-SPIKE-006 — Service Worker + App Router Cache Interaction Spike,active,frontend,developer,False,2026-06-24,60,317,10726,,0,True
 docs/frontend/RC5-release-evidence.md,markdown,,0,RC5 Release Evidence,RC5 Release Evidence,current-evidence,frontend,developer,False,2026-06-24,60,60,2288,,0,True
-docs/frontend/README.md,markdown,,0,Frontend,Frontend,active,frontend,developer,True,2026-06-24,60,46,1266,,0,True
+docs/frontend/README.md,markdown,,0,Frontend Architecture & Client Operations,Frontend Architecture & Client Operations,active,frontend,developer,True,2026-09-22,60,67,2429,,0,True
 docs/frontend/accessibility_pwa_e2e_evidence.md,markdown,,0,"Accessibility, PWA, And E2E Evidence","Accessibility, PWA, And E2E Evidence",current-evidence,frontend,developer,False,2026-06-24,60,29,712,,0,True
 docs/frontend/frontend_accessibility_contract.md,markdown,,0,Frontend Accessibility Contract,Frontend Accessibility Contract,active,frontend,developer,False,2026-06-24,60,53,1473,,0,True
 docs/frontend/frontend_accessibility_static_scan.md,markdown,,0,Frontend Accessibility Static Scan,Frontend Accessibility Static Scan,active,frontend,developer,False,2026-06-24,60,40,1012,,0,True
@@ -771,7 +773,7 @@ docs/observability/alerting_incident_routing_contract.md,markdown,,0,Alerting an
 docs/observability/dashboard_runbook_contract.md,markdown,,0,Dashboard and Runbook Contract,Dashboard and Runbook Contract,active-runbook,operations,operator,False,2026-06-24,60,56,1180,,0,True
 docs/observability/logging_tracing_contract.md,markdown,,0,Logging and Tracing Contract,Logging and Tracing Contract,active,operations,operator,False,2026-06-24,60,61,1284,,0,True
 docs/observability/metrics_slo_contract.md,markdown,,0,Metrics and SLO Contract,Metrics and SLO Contract,active,operations,operator,False,2026-06-24,60,56,1366,,0,True
-docs/observability/production_observability_architecture_contract.md,markdown,,0,Production Observability Architecture Contract,Production Observability Architecture Contract,active,operations,operator,True,2026-06-24,60,52,1396,,0,True
+docs/observability/production_observability_architecture_contract.md,markdown,,0,Production Observability Architecture Contract,Production Observability Architecture Contract,active,operations,operator,True,2026-09-23,60,52,1396,,0,True
 docs/observability/runbooks/api_error_rate_high.md,markdown,,0,Runbook: api_error_rate_high,Runbook: api_error_rate_high,active-runbook,operations,operator,False,2026-06-24,60,41,1014,,0,True
 docs/observability/runbooks/llm_provider_failure_spike.md,markdown,,0,Runbook: llm_provider_failure_spike,Runbook: llm_provider_failure_spike,active-runbook,operations,operator,False,2026-06-24,60,41,1035,,0,True
 docs/observability/runbooks/notification_dead_letter_spike.md,markdown,,0,Runbook: notification_dead_letter_spike,Runbook: notification_dead_letter_spike,active-runbook,operations,operator,False,2026-06-24,60,41,1047,,0,True
@@ -780,7 +782,7 @@ docs/observability/telemetry_privacy_retention_contract.md,markdown,,0,Telemetry
 docs/operations/CLUSTER_D_CLOSURE.md,markdown,,0,Operations — Cluster D CI/Deployment/Environment Closure,Cluster D CI/Deployment/Environment Closure,active,operations,internal,False,2026-09-13,90,57,1613,,0,True
 docs/operations/CLUSTER_E_CLOSURE.md,markdown,,0,Operations — Cluster E Data Resilience Closure,Cluster E Data Resilience Closure,active,operations,internal,False,2026-09-13,90,68,1987,,0,True
 docs/operations/CLUSTER_H_CLOSURE.md,markdown,,0,Operations — Cluster H Staging and Beta Release Closure,Cluster H Staging and Beta Release Closure,active,operations,internal,False,2026-09-13,90,224,7728,,0,True
-docs/operations/README.md,markdown,,0,Operations Documentation Index,Operations Documentation,active,operations,operator,True,2026-06-22,60,21,614,,0,True
+docs/operations/README.md,markdown,,0,Operations Documentation Index,Operations Documentation,active,operations,operator,True,2026-09-23,60,21,610,,0,True
 docs/operations/SYSTEM_STARTUP_GUIDE.md,markdown,,0,EduBoost V2 End-to-End System Startup Guide,EduBoost V2 End-to-End System Startup Guide,active,platform-operations,operator,False,2026-09-13,90,293,8086,,0,True
 docs/operations/SYSTEM_STARTUP_REPORT.md,markdown,,0,EduBoost V2 End-to-End System Startup Report,EduBoost V2 End-to-End System - Startup Report,historical,platform-operations,operator,False,2026-09-13,180,409,11270,,0,True
 docs/operations/access_and_evidence_custody_report.md,markdown,,0,"Operations — EduBoost V2: Evidence, Secrets & Access Custody Report","EduBoost V2: Evidence, Secrets & Access Custody Report",active,operations,internal,False,2026-09-13,90,47,2086,,0,True
@@ -892,6 +894,7 @@ docs/operations/final_reviewer_pack_checklist.md,markdown,,0,Operations — Fina
 docs/operations/final_sealed_package_manifest.md,markdown,,0,Operations — Final Sealed Package Manifest,Final Sealed Package Manifest,active,operations,internal,False,2026-09-13,90,74,2265,,0,True
 docs/operations/frozen_scope_variance_register.md,markdown,,0,Operations — Frozen Scope Variance Register,Frozen Scope Variance Register,active,operations,internal,False,2026-09-13,90,70,2321,,0,True
 docs/operations/generated_artifact_hygiene_contract.md,markdown,,0,Operations — Generated Artifact Hygiene Contract,Generated Artifact Hygiene Contract,active,operations,internal,False,2026-09-13,90,66,1391,,0,True
+docs/operations/git_history_packfile_remediation_runbook.md,markdown,,0,Git History & Packfile Remediation Runbook,Git History & Packfile Remediation Runbook,active,devops,operator,True,2026-09-22,90,212,7291,,0,True
 docs/operations/health.md,markdown,,0,Operations — Health & Readiness Contract,Health & Readiness Contract,active,operations,internal,False,2026-09-13,90,133,5120,,0,True
 docs/operations/merge_control_evidence_gate.md,markdown,,0,Operations — Merge-Control Evidence Gate,Merge-Control Evidence Gate,active,operations,internal,False,2026-09-13,90,70,2359,,0,True
 docs/operations/observability.md,markdown,,0,Operations — Observability Runbook,Observability Runbook,active,operations,internal,False,2026-09-13,90,81,3156,,0,True
@@ -992,7 +995,7 @@ docs/pr/first_audit_runtime_wiring_pr_checklist.md,markdown,,0,First Audit Runti
 docs/pr/runtime_integration_pr_template.md,markdown,,0,Runtime Integration PR Template (Runtime Integration Pr Template),Runtime Integration PR Template,active,engineering,developer,False,2026-09-13,90,30,803,,0,True
 docs/privacy/information_officer.md,markdown,,0,Privacy — Information Officer Contact,Information Officer Contact,active,compliance,developer,False,2026-09-13,90,93,3692,,0,True
 docs/privacy/popia_legal_architecture_review.md,markdown,,0,Legal and Privacy Architecture Review (TSR-8.1) (Popia Legal Architecture Review),Legal and Privacy Architecture Review (TSR-8.1),active,compliance,developer,False,2026-09-13,90,32,1652,,0,True
-docs/product/README.md,markdown,,0,Product Documentation,Product Documentation,active,product,product,True,2026-06-23,60,21,712,,0,True
+docs/product/README.md,markdown,,0,Product Documentation,Product Documentation,active,product,product,True,2026-09-23,60,21,705,,0,True
 docs/product/ai_transparency_faq.md,markdown,,0,AI Transparency FAQ — EduBoost,AI Transparency FAQ — EduBoost,active,product,stakeholder,False,2026-06-23,60,171,4871,,0,True
 docs/product/differentiation_strategy.md,markdown,,0,Future differentiation strategy,Future differentiation strategy,active,product,stakeholder,False,2026-06-23,60,37,1132,,0,True
 docs/product/faq.md,markdown,,0,Frequently Asked Questions — EduBoost,Frequently Asked Questions — EduBoost,active,product,stakeholder,False,2026-06-23,60,162,4231,,0,True
@@ -1279,7 +1282,7 @@ docs/release/backend_consolidation_terminal_packet.md,markdown,,0,Release — Ba
 docs/release/backend_consolidation_terminal_report.md,markdown,,0,Release — Backend Consolidation Terminal Report,Backend Consolidation Terminal Report,active,release,internal,False,2026-09-13,90,185,10089,,0,True
 docs/release/backend_data_retention_approval_update.md,markdown,,0,Release — Backend Data Retention Approval Update,Backend Data Retention Approval Update,active,release,developer,False,2026-09-13,90,29,743,,0,True
 docs/release/backend_data_retention_decision_checklist.md,markdown,,0,Release — Backend Data Retention Decision Checklist,Backend Data Retention Decision Checklist,active,release,developer,False,2026-09-13,90,44,1748,,0,True
-docs/release/backend_deletion_candidate_inventory.md,git_lfs_tracked_skipped_content,124c6c1de8fa5abf8179726fb70268966008c8502d4156ba8bbae6e00a38e2ea,126883471,,,,,,,,,0,126883471,,0,False
+docs/release/backend_deletion_candidate_inventory.md,git_lfs_tracked_skipped_content,da344022763019ae6c04569336c316c27714170253374497492643f4eaaa3007,201267,,,,,,,,,0,201267,,0,False
 docs/release/backend_first_wiring_candidate_registry.md,markdown,,0,Release — Backend First Wiring Candidate Registry,Backend First Wiring Candidate Registry,active,release,internal,False,2026-09-13,90,30,713,,0,True
 docs/release/backend_first_wiring_candidates_report.md,markdown,,0,Release — Backend First Wiring Candidates Report,Backend First Wiring Candidates Report,active,release,internal,False,2026-09-13,90,96,6702,,0,True
 docs/release/backend_implementation_371_375_report.md,markdown,,0,Release — Backend Implementation 371-375 Report,Backend Implementation 371-375 Report,active,release,internal,False,2026-09-13,90,101,4497,,0,True
@@ -1333,7 +1336,7 @@ docs/release/consent_service_compatibility_contract.md,markdown,,0,Release — C
 docs/release/content_factory_refreshed_status.md,markdown,,0,Release — Content Factory Refreshed Status,Content Factory Refreshed Status,active,release,internal,False,2026-09-13,90,64,4824,,0,True
 docs/release/content_readiness_status.md,markdown,,0,Release — Content Readiness Status,Content Readiness Status,active,release,internal,False,2026-09-13,90,41,1713,,0,True
 docs/release/coverage_ci_route_authority.md,markdown,,0,"Release — Coverage, CI, and Route Authority","Coverage, CI, and Route Authority",active,release,internal,False,2026-09-13,90,50,1709,,0,True
-docs/release/current/README.md,markdown,,0,Current Release Documentation Index,Current Release Documentation,active,release-management,reviewer,True,2026-07-02,14,27,1007,,0,True
+docs/release/current/README.md,markdown,,0,Current Release Documentation Index,Current Release Documentation,active,release-management,reviewer,True,2026-09-23,14,27,1007,,0,True
 docs/release/current/branch_protection_evidence.md,markdown,,0,Branch Protection Evidence Linkage,Branch Protection Evidence Linkage,active,release-management,reviewer,True,2026-07-02,14,37,1606,,0,True
 docs/release/db_backup_restore_rollback_evidence_status.md,markdown,,0,Release — DB Backup / Restore / Rollback Evidence Status,DB Backup / Restore / Rollback Evidence Status,active,release,internal,False,2026-09-13,90,68,1697,,0,True
 docs/release/db_live_only_table_ownership_status.md,markdown,,0,Release — DB Live-Only Table Ownership Status,DB Live-Only Table Ownership Status,active,release,internal,False,2026-09-17,90,46,2057,,0,True
@@ -2107,7 +2110,7 @@ docs/roadmap/production_readiness/prd_102_104_required_checks_workflow_release_g
 docs/roadmap/production_readiness/prd_105_109_ci_convergence_release_readiness_handoff.md,markdown,,0,"PRD-1.5-1.9 — CI Convergence, Release Readiness, Final Evidence, and PRD-2 Handoff","PRD-1.5-1.9 — CI Convergence, Release Readiness, Final Evidence, and PRD-2 Handoff",active,product,internal,False,2026-09-13,90,34,1567,,0,True
 docs/roadmap/production_readiness/prd_200_203_runtime_kg_persistence_foundation.md,markdown,,0,PRD-2.0-2.3 — Runtime KG Persistence Foundation,PRD-2.0-2.3 — Runtime KG Persistence Foundation,active,product,internal,False,2026-09-13,90,42,1126,,0,True
 docs/roadmap/production_readiness/prd_4a_longitudinal_educational_validation_execution_plan.md,markdown,,0,PRD-4A Longitudinal Educational Validation — Implementation Execution Plan,PRD-4A Longitudinal Educational Validation — Implementation Execution Plan,,,,,,,33,1596,,0,False
-docs/roadmap/production_readiness/prd_4a_longitudinal_educational_validation_todo.md,markdown,,0,EduBoost V2 — Longitudinal Educational Validation Implementation TODO,EduBoost V2 — Longitudinal Educational Validation Implementation TODO,,,,,,,2637,173154,,15,False
+docs/roadmap/production_readiness/prd_4a_longitudinal_educational_validation_todo.md,markdown,,0,EduBoost V2 — Longitudinal Educational Validation Implementation TODO,EduBoost V2 — Longitudinal Educational Validation Implementation TODO,,,,,,,2637,172644,,0,False
 docs/roadmap/production_readiness/production_readiness_boundary_contract.md,markdown,,0,Production Readiness Boundary Contract,Production Readiness Boundary Contract,active,product,internal,False,2026-09-13,90,57,1565,,0,True
 docs/roadmap/production_readiness/repository_hygiene_generated_local_artifact_audit.schema.md,markdown,,0,Repository hygiene generated/local artifact audit schema,Repository hygiene generated/local artifact audit schema,active,product,internal,False,2026-09-13,90,39,1696,,0,True
 docs/roadmap/production_readiness/repository_hygiene_generated_local_artifact_audit_plan.md,markdown,,0,Repository hygiene and generated/local artifact audit plan,Repository hygiene and generated/local artifact audit plan,active,product,internal,False,2026-09-13,90,44,1439,,0,True
@@ -2162,7 +2165,7 @@ docs/roadmap_domains/domain_11_billing-payments_execution_report.md,markdown,,0,
 docs/roadmap_domains/domain_12_notifications-communication_execution_report.md,markdown,,0,Domain 12 Notifications Communication Execution Report,,active,engineering,internal,False,2026-09-13,90,73,2707,,0,True
 docs/roadmap_domains/domain_13_infrastructure-devops_execution_report.md,markdown,,0,Domain 13 Infrastructure Devops Execution Report,,active,engineering,internal,False,2026-09-13,90,79,2597,,0,True
 docs/roadmap_domains/domain_14_legal-privacy-documentation_execution_report.md,markdown,,0,Domain 14 Legal Privacy Documentation Execution Report,,active,engineering,internal,False,2026-09-13,90,75,2686,,0,True
-docs/route_inventory.md,markdown,,0,EduBoost V2 Route Inventory,EduBoost V2 Route Inventory,active,engineering,developer,False,2026-09-13,90,552,74403,,0,True
+docs/route_inventory.md,markdown,,0,EduBoost V2 Route Inventory,EduBoost V2 Route Inventory,active,engineering,developer,False,2026-09-13,90,316,39273,,0,True
 docs/runbooks/ai_operations_and_budgets.md,markdown,,0,AI Operations and Budget Runbook,AI Operations and Budget Runbook,active-runbook,operations,operator,False,2026-06-24,60,65,2417,,0,True
 docs/runbooks/content_review_governance.md,markdown,,0,Content Review Governance Runbook,Content Review Governance Runbook,active-runbook,operations,operator,False,2026-06-24,60,62,2403,,0,True
 docs/runbooks/curriculum_expansion_and_training_governance.md,markdown,,0,Curriculum Expansion and Training Dataset Governance Runbook,Curriculum Expansion and Training Dataset Governance Runbook,active-runbook,operations,operator,False,2026-06-24,60,71,2623,,0,True
@@ -2171,9 +2174,9 @@ docs/runbooks/learner_tutor.md,markdown,,0,Learner Tutor Operations Runbook,Lear
 docs/safety/content_policy.md,markdown,,0,Content Safety Policy (Content Policy),Content Safety Policy,active,engineering,internal,False,2026-09-13,90,208,9527,,0,True
 docs/secrets.md,markdown,,0,Secrets Management (starter guidance),Secrets Management (starter guidance),active,security,internal,False,2026-09-13,90,42,1440,,0,True
 docs/security/PHASE2_AUTHORIZATION_CLOSURE.md,markdown,,0,Phase 2 Authorization Closure Report,Phase 2 Authorization Closure Report,active,security,developer,False,2026-09-03,45,81,2778,,0,True
-docs/security/POPIA_CONSENT_AUDIT_BASELINE.md,markdown,,0,POPIA Consent and Audit Baseline,POPIA Consent and Audit Baseline,current-evidence,security,security-reviewer,False,2026-06-23,60,115,3766,,0,True
+docs/security/POPIA_CONSENT_AUDIT_BASELINE.md,markdown,,0,POPIA Consent and Audit Baseline,POPIA Consent and Audit Baseline,archived,security,security-reviewer,False,2026-09-23,,115,3731,,0,True
 docs/security/POPIA_CONSENT_GATE_CLOSURE.md,markdown,,0,POPIA Consent Gate Closure Report,POPIA Consent Gate Closure Report,current-evidence,security,security-reviewer,False,2026-06-23,60,96,2894,,0,True
-docs/security/README.md,markdown,,0,Security Documentation,Security Documentation,active,security,security,True,2026-06-23,45,21,624,,0,True
+docs/security/README.md,markdown,,0,Security Documentation,Security Documentation,active,security,security,True,2026-09-23,45,21,720,,0,True
 docs/security/active_consent_route_order.md,markdown,,0,Active Consent Route Order,Active Consent Route Order,active,security,security-reviewer,False,2026-06-23,60,40,834,,0,True
 docs/security/active_consent_route_sources.md,markdown,,0,Active Consent Route Sources,Active Consent Route Sources,active,security,security-reviewer,False,2026-06-23,60,41,880,,0,True
 docs/security/assessment_attempt_authorization_wiring.md,markdown,,0,Assessment Attempt Authorization Wiring,Assessment Attempt Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,42,1079,,0,True
@@ -2182,8 +2185,8 @@ docs/security/assessment_consent_gate.md,markdown,,0,Assessment Consent Gate,Ass
 docs/security/assessment_list_auth_boundary.md,markdown,,0,Assessment List Authentication Boundary,Assessment List Authentication Boundary,active,security,security-reviewer,False,2026-06-23,60,35,769,,0,True
 docs/security/audit_event_contracts.md,markdown,,0,Audit Event Contracts,Audit Event Contracts,current-evidence,security,security-reviewer,False,2026-06-23,60,38,921,,0,True
 docs/security/auth_boundary_evidence.md,markdown,,0,Auth Boundary Evidence,Auth Boundary Evidence,current-evidence,security,security-reviewer,False,2026-06-23,60,71,2029,,0,True
-docs/security/auth_hardening_status.md,markdown,,0,Auth Hardening Status,Auth Hardening Status,active,security,developer,False,2026-09-03,45,24,496,,0,True
-docs/security/auth_session_policy.md,markdown,,0,"Auth, session, and RBAC policy baseline","Auth, session, and RBAC policy baseline",active,security,security-reviewer,False,2026-06-23,60,88,3248,,0,True
+docs/security/auth_hardening_status.md,markdown,,0,Auth Hardening Status,Auth Hardening Status,archived,security,developer,False,2026-09-23,,24,480,,0,True
+docs/security/auth_session_policy.md,markdown,,0,"Auth, session, and RBAC policy baseline","Auth, session, and RBAC policy baseline",active,security,security-reviewer,False,2026-09-23,60,88,3324,,0,True
 docs/security/authorization_dependencies.md,markdown,,0,Authorization Dependency Adapter,Authorization Dependency Adapter,active,security,security-reviewer,False,2026-06-23,60,239,7831,,0,True
 docs/security/consent_dependency_adapter.md,markdown,,0,POPIA Consent Dependency Adapter,POPIA Consent Dependency Adapter,active,security,security-reviewer,False,2026-06-23,60,47,1055,,0,True
 docs/security/consent_dependency_denial_paths.md,markdown,,0,Consent Dependency Denial Paths,Consent Dependency Denial Paths,active,security,security-reviewer,False,2026-06-23,60,39,994,,0,True
@@ -2193,29 +2196,29 @@ docs/security/consent_renewal_admin_auth_boundary.md,markdown,,0,Consent Renewal
 docs/security/consent_revoke_authorization_wiring.md,markdown,,0,Consent Revoke Authorization Wiring,Consent Revoke Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,43,917,,0,True
 docs/security/consent_status_authorization_wiring.md,markdown,,0,Consent Status Authorization Wiring,Consent Status Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,43,899,,0,True
 docs/security/dependency_constraints_snapshot.md,markdown,,0,Dependency Constraints Snapshot,Dependency Constraints Snapshot,active,engineering,developer,False,2026-08-26,60,25,614,,0,True
-docs/security/dependency_pin_report.md,markdown,,0,Dependency Pin Report,Dependency Pin Report,active,security,developer,False,2026-09-03,45,26,540,,0,True
+docs/security/dependency_pin_report.md,markdown,,0,Dependency Pin Report,Dependency Pin Report,archived,security,developer,False,2026-09-23,,26,524,,0,True
 docs/security/dev_only_endpoint_exposure.md,markdown,,0,Dev-Only Endpoint Exposure Guard,Dev-Only Endpoint Exposure Guard,active,security,security-reviewer,False,2026-06-23,60,45,920,,0,True
 docs/security/dev_session_environment_gate.md,markdown,,0,Dev Session Environment Gate,Dev Session Environment Gate,active,security,security-reviewer,False,2026-06-23,60,44,946,,0,True
 docs/security/diagnostic_items_authorization_wiring.md,markdown,,0,Diagnostic Items Authorization Wiring,Diagnostic Items Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,54,1217,,0,True
 docs/security/diagnostic_submit_authorization_wiring.md,markdown,,0,Diagnostic Submit Authorization Wiring,Diagnostic Submit Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,55,1273,,0,True
 docs/security/diagnostics_central_consent_source.md,markdown,,0,Diagnostics Central Consent Source,Diagnostics Central Consent Source,active,security,security-reviewer,False,2026-06-23,60,36,820,,0,True
 docs/security/diagnostics_consent_gate.md,markdown,,0,Diagnostics Consent Gate,Diagnostics Consent Gate,active,security,security-reviewer,False,2026-06-23,60,37,751,,0,True
-docs/security/environment_security_contract.md,markdown,,0,Environment Security Contract,Environment Security Contract,active,security,security-reviewer,False,2026-06-23,60,47,1049,,0,True
+docs/security/environment_security_contract.md,markdown,,0,Environment Security Contract,Environment Security Contract,active,security,security-reviewer,False,2026-09-23,60,47,1125,,0,True
 docs/security/ether_onboarding_consent_gate.md,markdown,,0,Ether Onboarding Consent Boundary,Ether Onboarding Consent Boundary,active,security,security-reviewer,False,2026-06-23,60,45,1053,,0,True
 docs/security/ether_onboarding_questions_auth_boundary.md,markdown,,0,Ether Onboarding Questions Authentication Boundary,Ether Onboarding Questions Authentication Boundary,active,security,security-reviewer,False,2026-06-23,60,41,888,,0,True
 docs/security/frontend_token_storage_audit.md,markdown,,0,Frontend Token Storage Audit,Frontend Token Storage Audit,current-evidence,security,security-reviewer,False,2026-06-23,60,102,3593,,0,True
 docs/security/gamification_award_xp_authorization_wiring.md,markdown,,0,Gamification Award XP Authorization Wiring,Gamification Award XP Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,37,861,,0,True
 docs/security/gamification_consent_gate.md,markdown,,0,Gamification Consent Gate,Gamification Consent Gate,active,security,security-reviewer,False,2026-06-23,60,37,760,,0,True
 docs/security/gamification_profile_authorization_wiring.md,markdown,,0,Gamification Profile Authorization Wiring,Gamification Profile Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,43,974,,0,True
-docs/security/jwt_pyjwt_migration_report.md,markdown,,0,JWT PyJWT Migration Report,JWT PyJWT Migration Report,active,engineering,developer,False,2026-08-26,60,26,792,,0,True
+docs/security/jwt_pyjwt_migration_report.md,markdown,,0,JWT PyJWT Migration Report,JWT PyJWT Migration Report,archived,engineering,developer,False,2026-09-23,,26,770,,0,True
 docs/security/jwt_rotation_introspection.md,markdown,,0,JWT Rotation Introspection,JWT Rotation Introspection,active,security,developer,False,2026-09-03,45,29,678,,0,True
-docs/security/jwt_rotation_plan.md,markdown,,0,JWT Rotation Plan,JWT Rotation Plan,active,security,security-reviewer,False,2026-06-23,60,51,1159,,0,True
-docs/security/jwt_rotation_repair_report.md,markdown,,0,JWT Rotation Repair Report,JWT Rotation Repair Report,active,security,developer,False,2026-09-03,45,26,590,,0,True
-docs/security/jwt_secret_resolution_policy.md,markdown,,0,JWT Secret Resolution Policy,JWT Secret Resolution Policy,active,security,security-reviewer,False,2026-06-23,60,41,906,,0,True
-docs/security/knowledge_graph_privacy_and_popia_contract.md,markdown,,0,Knowledge Graph Privacy and POPIA Contract,Knowledge Graph Privacy and POPIA Contract,active,privacy,developer,False,2026-07-05,60,66,3638,,0,True
+docs/security/jwt_rotation_plan.md,markdown,,0,JWT Rotation Plan,JWT Rotation Plan,active,security,security-reviewer,False,2026-09-23,60,51,1235,,0,True
+docs/security/jwt_rotation_repair_report.md,markdown,,0,JWT Rotation Repair Report,JWT Rotation Repair Report,archived,security,developer,False,2026-09-23,,26,574,,0,True
+docs/security/jwt_secret_resolution_policy.md,markdown,,0,JWT Secret Resolution Policy,JWT Secret Resolution Policy,active,security,security-reviewer,False,2026-09-23,60,41,982,,0,True
+docs/security/knowledge_graph_privacy_and_popia_contract.md,markdown,,0,Knowledge Graph Privacy and POPIA Contract,Knowledge Graph Privacy and POPIA Contract,active,privacy,developer,False,2026-09-23,60,66,3708,,0,True
 docs/security/learner_authz_ci.md,markdown,,0,Learner Authorization Coverage CI,Learner Authorization Coverage CI,active,security,security-reviewer,False,2026-06-23,60,39,723,,0,True
 docs/security/learner_authz_coverage_check.md,markdown,,0,Learner Authorization Coverage Check,Learner Authorization Coverage Check,active,security,security-reviewer,False,2026-06-23,60,55,1299,,0,True
-docs/security/learner_authz_matrix.md,markdown,,0,Learner Authorization Coverage Matrix,Learner Authorization Coverage Matrix,current-evidence,security,security-reviewer,False,2026-06-23,60,101,8865,,0,True
+docs/security/learner_authz_matrix.md,markdown,,0,Learner Authorization Coverage Matrix,Learner Authorization Coverage Matrix,current-evidence,security,security-reviewer,False,2026-09-23,60,101,8941,,0,True
 docs/security/learner_mastery_authorization_wiring.md,markdown,,0,Learner Mastery Authorization Wiring,Learner Mastery Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,60,1378,,0,True
 docs/security/learner_read_authorization_http_tests.md,markdown,,0,Learner Read Authorization HTTP Tests,Learner Read Authorization HTTP Tests,active,security,security-reviewer,False,2026-06-23,60,58,1340,,0,True
 docs/security/learner_read_consent_gate.md,markdown,,0,Learner Read Consent Gate,Learner Read Consent Gate,active,security,security-reviewer,False,2026-06-23,60,40,870,,0,True
@@ -2224,11 +2227,11 @@ docs/security/learner_route_authorization_wiring.md,markdown,,0,Learner Route Au
 docs/security/lesson_generation_authorization_wiring.md,markdown,,0,Lesson Generation Authorization Wiring,Lesson Generation Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,52,1231,,0,True
 docs/security/lesson_generation_consent_gate.md,markdown,,0,Lesson Generation Consent Gate,Lesson Generation Consent Gate,active,security,security-reviewer,False,2026-06-23,60,38,856,,0,True
 docs/security/lesson_stream_authorization_wiring.md,markdown,,0,Lesson Stream Authorization Wiring,Lesson Stream Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,37,872,,0,True
-docs/security/object_authorization.md,markdown,,0,Object-Level Authorization Baseline,Object-Level Authorization Baseline,active,security,security-reviewer,False,2026-06-23,60,98,2482,,0,True
+docs/security/object_authorization.md,markdown,,0,Object-Level Authorization Baseline,Object-Level Authorization Baseline,active,security,security-reviewer,False,2026-09-23,60,98,2558,,0,True
 docs/security/onboarding_authorization_wiring.md,markdown,,0,Onboarding Authorization Wiring,Onboarding Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,39,827,,0,True
 docs/security/onboarding_consent_gate.md,markdown,,0,Onboarding Consent Gate,Onboarding Consent Gate,active,security,security-reviewer,False,2026-06-23,60,44,945,,0,True
 docs/security/onboarding_questions_auth_boundary.md,markdown,,0,Onboarding Questions Authentication Boundary,Onboarding Questions Authentication Boundary,active,security,security-reviewer,False,2026-06-23,60,35,789,,0,True
-docs/security/operational_auth_boundaries.md,markdown,,0,Operational Auth Boundaries,Operational Auth Boundaries,active,security,security-reviewer,False,2026-06-23,60,38,1057,,0,True
+docs/security/operational_auth_boundaries.md,markdown,,0,Operational Auth Boundaries,Operational Auth Boundaries,active,security,security-reviewer,False,2026-09-23,60,38,1133,,0,True
 docs/security/parent_dashboard_authorization_wiring.md,markdown,,0,Parent Dashboard Authorization Wiring,Parent Dashboard Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,40,890,,0,True
 docs/security/parent_erasure_authorization_wiring.md,markdown,,0,Parent Learner Erasure Authorization Wiring,Parent Learner Erasure Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,43,989,,0,True
 docs/security/parent_export_authorization_wiring.md,markdown,,0,Parent Access-Bundle Export Authorization Wiring,Parent Access-Bundle Export Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,43,985,,0,True
@@ -2239,44 +2242,44 @@ docs/security/phase2_authorization_closure_check.md,markdown,,0,Phase 2 Authoriz
 docs/security/phase2_authorization_closure_report.md,markdown,,0,Phase 2 Authorization Closure Report Generator,Phase 2 Authorization Closure Report Generator,current-evidence,security,security-reviewer,False,2026-06-23,60,45,992,,0,True
 docs/security/phase2_authorization_evidence_check.md,markdown,,0,Phase 2 Authorization Evidence Check,Phase 2 Authorization Evidence Check,current-evidence,security,security-reviewer,False,2026-06-23,60,73,3035,,0,True
 docs/security/phase2_router_import_smoke.md,markdown,,0,Phase 2 Router Import Smoke,Phase 2 Router Import Smoke,active,security,security-reviewer,False,2026-06-23,60,43,744,,0,True
-docs/security/pii_secret_redaction_contract.md,markdown,,0,PII and Secret Redaction Contract,PII and Secret Redaction Contract,active,security,security-reviewer,False,2026-06-23,60,33,906,,0,True
-docs/security/pip_audit_report.md,markdown,,0,pip-audit Report,pip-audit Report,current-evidence,security,security-reviewer,False,2026-06-23,60,28,565,,0,True
+docs/security/pii_secret_redaction_contract.md,markdown,,0,PII and Secret Redaction Contract,PII and Secret Redaction Contract,active,security,security-reviewer,False,2026-09-23,60,33,982,,0,True
+docs/security/pip_audit_report.md,markdown,,0,pip-audit Report,pip-audit Report,archived,security,security-reviewer,False,2026-09-23,,28,530,,0,True
 docs/security/popia_consent_audit_ci.md,markdown,,0,POPIA Consent Audit CI,POPIA Consent Audit CI,current-evidence,security,security-reviewer,False,2026-06-23,60,46,1001,,0,True
 docs/security/popia_consent_audit_evidence_check.md,markdown,,0,POPIA Consent Audit Evidence Check,POPIA Consent Audit Evidence Check,current-evidence,security,security-reviewer,False,2026-06-23,60,59,1273,,0,True
 docs/security/popia_consent_boundary_check.md,markdown,,0,POPIA Consent Boundary Check,POPIA Consent Boundary Check,active,security,security-reviewer,False,2026-06-23,60,36,924,,0,True
-docs/security/popia_consent_boundary_matrix.md,markdown,,0,POPIA Consent Boundary Matrix,POPIA Consent Boundary Matrix,active,security,developer,False,2026-09-03,45,252,26510,,0,True
+docs/security/popia_consent_boundary_matrix.md,markdown,,0,POPIA Consent Boundary Matrix,POPIA Consent Boundary Matrix,active,security,developer,False,2026-09-23,45,252,26595,,0,True
 docs/security/popia_consent_closure_check.md,markdown,,0,POPIA Consent Closure Check,POPIA Consent Closure Check,current-evidence,security,security-reviewer,False,2026-06-23,60,46,1056,,0,True
 docs/security/popia_consent_closure_ci.md,markdown,,0,POPIA Consent Closure CI,POPIA Consent Closure CI,current-evidence,security,security-reviewer,False,2026-06-23,60,34,699,,0,True
 docs/security/popia_consent_gate_check.md,markdown,,0,POPIA Consent Gate Check,POPIA Consent Gate Check,active,security,security-reviewer,False,2026-06-23,60,65,1477,,0,True
-docs/security/popia_consent_gate_inventory.md,markdown,,0,POPIA Consent Gate Inventory,POPIA Consent Gate Inventory,active,security,developer,False,2026-09-03,45,219,21015,,0,True
+docs/security/popia_consent_gate_inventory.md,markdown,,0,POPIA Consent Gate Inventory,POPIA Consent Gate Inventory,active,security,developer,False,2026-09-23,45,219,21100,,0,True
 docs/security/popia_correction_request_authorization_wiring.md,markdown,,0,POPIA Correction Request Authorization Wiring,POPIA Correction Request Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,43,995,,0,True
 docs/security/popia_data_export_authorization_wiring.md,markdown,,0,POPIA Data Export Authorization Wiring,POPIA Data Export Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,54,1197,,0,True
-docs/security/popia_data_rights_consent_boundary.md,markdown,,0,POPIA Data-Rights Consent Boundary,POPIA Data-Rights Consent Boundary,active,security,security-reviewer,False,2026-06-23,60,52,1347,,0,True
+docs/security/popia_data_rights_consent_boundary.md,markdown,,0,POPIA Data-Rights Consent Boundary,POPIA Data-Rights Consent Boundary,active,security,security-reviewer,False,2026-09-23,60,52,1423,,0,True
 docs/security/popia_deletion_cancel_authorization_wiring.md,markdown,,0,POPIA Deletion Cancel Authorization Wiring,POPIA Deletion Cancel Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,43,969,,0,True
 docs/security/popia_deletion_request_authorization_wiring.md,markdown,,0,POPIA Deletion Request Authorization Wiring,POPIA Deletion Request Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,43,979,,0,True
 docs/security/popia_restriction_request_authorization_wiring.md,markdown,,0,POPIA Restriction Request Authorization Wiring,POPIA Restriction Request Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,44,1053,,0,True
 docs/security/privacy_boundary_evidence.md,markdown,,0,Privacy Boundary Evidence,Privacy Boundary Evidence,current-evidence,security,security-reviewer,False,2026-06-23,60,76,2709,,0,True
 docs/security/production_key_vault_behavior.md,markdown,,0,Production Key Vault Behavior,Production Key Vault Behavior,active,security,security-reviewer,False,2026-06-23,60,34,845,,0,True
 docs/security/production_secret_placeholder_guard.md,markdown,,0,Production Secret Placeholder Guard,Production Secret Placeholder Guard,active,security,security-reviewer,False,2026-06-23,60,56,1279,,0,True
-docs/security/python_dependency_audit_policy.md,markdown,,0,Python Dependency Audit Policy,Python Dependency Audit Policy,active,security,security-reviewer,False,2026-07-02,60,47,1385,,0,True
-docs/security/risk_acceptance_register.md,markdown,,0,Risk Acceptance Register,Risk Acceptance Register,active,security,security-reviewer,False,2026-06-23,60,42,985,,0,True
-docs/security/route_policy_matrix.md,markdown,,0,Route Policy Matrix,Route Policy Matrix,current-evidence,security,security-reviewer,False,2026-06-23,60,244,9763,,0,True
-docs/security/rr006_security_posture_control_map.md,markdown,,0,RR-006 Security Posture Control Map,RR-006 Security Posture Control Map,active,security,security-reviewer,False,2026-07-02,60,37,2006,,0,True
-docs/security/rr006_threat_model_review.md,markdown,,0,RR-006 Threat Model Review,RR-006 Threat Model Review,current-evidence,security,security-reviewer,False,2026-07-02,60,47,1479,,0,True
+docs/security/python_dependency_audit_policy.md,markdown,,0,Python Dependency Audit Policy,Python Dependency Audit Policy,active,security,security-reviewer,False,2026-09-23,60,47,1461,,0,True
+docs/security/risk_acceptance_register.md,markdown,,0,Risk Acceptance Register,Risk Acceptance Register,active,security,security-reviewer,False,2026-09-23,60,42,1061,,0,True
+docs/security/route_policy_matrix.md,markdown,,0,Route Policy Matrix,Route Policy Matrix,archived,security,security-reviewer,False,2026-09-23,,244,9728,,0,True
+docs/security/rr006_security_posture_control_map.md,markdown,,0,RR-006 Security Posture Control Map,RR-006 Security Posture Control Map,active,security,security-reviewer,False,2026-09-23,60,37,2082,,0,True
+docs/security/rr006_threat_model_review.md,markdown,,0,RR-006 Threat Model Review,RR-006 Threat Model Review,archived,security,security-reviewer,False,2026-09-23,,47,1444,,0,True
 docs/security/runbooks/security_incident_response.md,markdown,,0,Security Incident Response Runbook,Security Incident Response Runbook,active,security,security-reviewer,False,2026-06-23,60,56,1246,,0,True
-docs/security/secret_hygiene_contract.md,markdown,,0,Secret Hygiene Contract,Secret Hygiene Contract,active,security,security-reviewer,False,2026-06-23,60,37,969,,0,True
+docs/security/secret_hygiene_contract.md,markdown,,0,Secret Hygiene Contract,Secret Hygiene Contract,active,security,security-reviewer,False,2026-09-23,60,37,1045,,0,True
 docs/security/secrets_scanning_enforcement.md,markdown,,0,Secrets Scanning Enforcement,Secrets Scanning Enforcement,active,security,security-reviewer,False,2026-07-02,60,38,1143,,0,True
-docs/security/security_control_register.md,markdown,,0,Security Control Register,Security Control Register,active,security,security-reviewer,False,2026-06-23,60,43,924,,0,True
+docs/security/security_control_register.md,markdown,,0,Security Control Register,Security Control Register,active,security,security-reviewer,False,2026-09-23,60,43,1000,,0,True
 docs/security/security_headers_policy.md,markdown,,0,Security Headers Policy,Security Headers Policy,active,security,security-reviewer,False,2026-06-23,60,37,866,,0,True
-docs/security/security_posture_architecture_contract.md,markdown,,0,Security Posture Architecture Contract,Security Posture Architecture Contract,active,security,security-reviewer,False,2026-06-23,60,51,1196,,0,True
-docs/security/security_test_strategy_contract.md,markdown,,0,Security Test Strategy Contract,Security Test Strategy Contract,active,security,security-reviewer,False,2026-06-23,60,45,1063,,0,True
+docs/security/security_posture_architecture_contract.md,markdown,,0,Security Posture Architecture Contract,Security Posture Architecture Contract,active,security,security-reviewer,False,2026-09-23,60,51,1272,,0,True
+docs/security/security_test_strategy_contract.md,markdown,,0,Security Test Strategy Contract,Security Test Strategy Contract,active,security,security-reviewer,False,2026-09-23,60,45,1139,,0,True
 docs/security/study_plan_authorization_wiring.md,markdown,,0,Study Plan Authorization Wiring,Study Plan Authorization Wiring,active,security,security-reviewer,False,2026-06-23,60,67,1682,,0,True
 docs/security/study_plan_consent_gate.md,markdown,,0,Study Plan Consent Gate,Study Plan Consent Gate,active,security,security-reviewer,False,2026-06-23,60,39,802,,0,True
-docs/security/supply_chain_security_contract.md,markdown,,0,Supply Chain Security Contract,Supply Chain Security Contract,active,security,security-reviewer,False,2026-06-23,60,37,948,,0,True
-docs/security/threat_model_register.md,markdown,,0,Threat Model Register,Threat Model Register,active,security,security-reviewer,False,2026-06-23,60,45,856,,0,True
-docs/security/threat_model_v2.md,markdown,,0,EduBoost V2 Threat Model,EduBoost V2 Threat Model,active,security,security-reviewer,False,2026-06-23,60,242,10529,,0,True
+docs/security/supply_chain_security_contract.md,markdown,,0,Supply Chain Security Contract,Supply Chain Security Contract,active,security,security-reviewer,False,2026-09-23,60,37,1024,,0,True
+docs/security/threat_model_register.md,markdown,,0,Threat Model Register,Threat Model Register,active,security,security-reviewer,False,2026-09-23,60,45,932,,0,True
+docs/security/threat_model_v2.md,markdown,,0,EduBoost V2 Threat Model,EduBoost V2 Threat Model,active,security,security-reviewer,False,2026-09-23,60,242,10605,,0,True
 docs/security/v2_pen_test_checklist.md,markdown,,0,V2 Pen-Test Checklist,V2 Pen-Test Checklist,active,security,security-reviewer,False,2026-07-02,60,87,3154,,0,True
-docs/security/vulnerability_management_policy.md,markdown,,0,Vulnerability Management Policy,Vulnerability Management Policy,active,security,security-reviewer,False,2026-06-23,60,36,1097,,0,True
+docs/security/vulnerability_management_policy.md,markdown,,0,Vulnerability Management Policy,Vulnerability Management Policy,active,security,security-reviewer,False,2026-09-23,60,36,1173,,0,True
 docs/spikes/FE-SPIKE-001-next-react-compat.md,markdown,,0,Spikes — FE-SPIKE-001 — Next 15 + React 19 compatibility in the Docker runner,FE-SPIKE-001 — Next 15 + React 19 compatibility in the Docker runner,active,engineering,internal,False,2026-09-13,90,51,2927,,0,True
 docs/spikes/FE-SPIKE-002-initial-bundle-budget.md,markdown,,0,Spikes — FE-SPIKE-002 — Initial bundle budget (≤120KB gzipped),FE-SPIKE-002 — Initial bundle budget (≤120KB gzipped),active,engineering,internal,False,2026-09-13,90,33,1124,,0,True
 docs/spikes/FE-SPIKE-003-ppr-deployment-viability.md,markdown,,0,Spikes — FE-SPIKE-003 — Partial Prerendering + deployment viability,FE-SPIKE-003 — Partial Prerendering + deployment viability,active,engineering,developer,False,2026-09-13,90,95,5558,,0,True
@@ -2293,7 +2296,7 @@ docs/telemetry/rr012_production_telemetry_dashboard_attestation.template.md,mark
 docs/telemetry/rr012_production_telemetry_dashboard_policy.md,markdown,,0,RR-012 Production Telemetry Dashboard Policy,,pending-evidence,operations,operator,False,2026-07-03,30,64,2446,,0,True
 docs/telemetry/rr012_slo_dashboard_validation.md,markdown,,0,RR-012 SLO Dashboard Validation,RR-012 SLO Dashboard Validation,active,operations,operator,True,2026-07-03,30,24,726,,0,True
 docs/telemetry/rr012_slo_dashboard_validation.template.md,markdown,,0,RR-012 SLO Dashboard Validation Template,,pending-evidence,operations,operator,False,2026-07-03,30,25,781,,0,True
-docs/testing/README.md,markdown,,0,Backend testing,Backend testing,active,quality,quality-reviewer,True,2026-06-24,60,41,1478,,0,True
+docs/testing/README.md,markdown,,0,Backend testing,Backend testing,active,quality,quality-reviewer,True,2026-09-23,60,41,1457,,0,True
 docs/testing/beta_release_quality_gate_checklist.md,markdown,,0,Beta Release Quality Gate Checklist,Beta Release Quality Gate Checklist,current-evidence,quality,quality-reviewer,False,2026-06-24,60,34,879,,0,True
 docs/testing/coverage_baseline_stabilisation.md,markdown,,0,Execution-7 Coverage Baseline Stabilisation,Execution-7 Coverage Baseline Stabilisation,active,quality,developer,False,2026-06-24,60,111,4194,,0,True
 docs/testing/coverage_frontend_advisory_gate_contract.md,markdown,,0,"Coverage, Frontend Quality, and Advisory Gate Contract","Coverage, Frontend Quality, and Advisory Gate Contract",active,quality,developer,False,2026-06-24,60,36,1750,,0,True

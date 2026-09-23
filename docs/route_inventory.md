@@ -7,10 +7,10 @@ audience: "developer"
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-09-22"
+last_reviewed: "2026-09-13"
 review_interval_days: 90
 evidence_command: "make docs-housekeeping-check"
-code_anchors: "[app/api_v2.py, scripts/generate_route_inventory.py]"
+code_anchors: "[]"
 ---
 # EduBoost V2 Route Inventory
 
@@ -21,7 +21,7 @@ code_anchors: "[app/api_v2.py, scripts/generate_route_inventory.py]"
 - Canonical runtime: `app.api_v2:app`
 - Application title: `EduBoost SA V2`
 - Application version: `1.0.0-rc1`
-- Total route entries: `234`
+- Total route entries: `236`
 
 ## Contract Checks
 
@@ -227,7 +227,8 @@ The canonical runtime is app.api_v2:app; no compatibility API entrypoint is reta
 | `/api/v2/content-review/content-review/assignments/{assignment_id}/reassign` | `POST` | `reassign_review` | yes | `app.api_v2_routers.content_review.reassign_review` |
 | `/api/v2/controlled-beta/controlled-beta/final-authorisation` | `GET` | `get_controlled_beta_final_authorisation` | yes | `app.api_v2_routers.controlled_beta.get_controlled_beta_final_authorisation` |
 | `/api/v2/controlled-beta/controlled-beta/preflight` | `GET` | `get_controlled_beta_preflight` | yes | `app.api_v2_routers.controlled_beta.get_controlled_beta_preflight` |
-| `/api/v2/diagnostics` | `-` | `-` | no | `_IncludedRouter` |
+| `/api/v2/diagnostics/diagnostics/admin/items/bias-review-queue` | `GET` | `bias_review_queue` | yes | `app.modules.diagnostics.bias_review_router.bias_review_queue` |
+| `/api/v2/diagnostics/diagnostics/admin/items/{item_id}/bias-review` | `POST` | `record_bias_review` | yes | `app.modules.diagnostics.bias_review_router.record_bias_review` |
 | `/api/v2/diagnostics/diagnostics/coverage` | `GET` | `get_item_bank_coverage` | yes | `app.api_v2_routers.diagnostics.get_item_bank_coverage` |
 | `/api/v2/diagnostics/diagnostics/item-bank/items/{item_id}` | `GET` | `get_item_bank_item` | yes | `app.api_v2_routers.diagnostics.get_item_bank_item` |
 | `/api/v2/diagnostics/diagnostics/item-bank/items/{item_id}/review` | `POST` | `review_item_bank_item` | yes | `app.api_v2_routers.diagnostics.review_item_bank_item` |
@@ -253,14 +254,15 @@ The canonical runtime is app.api_v2:app; no compatibility API entrypoint is reta
 | `/api/v2/learners/learners/{learner_id}/mastery` | `GET` | `get_mastery` | yes | `app.api_v2_routers.learners.get_mastery` |
 | `/api/v2/learners/learners/{learner_id}/mastery/summary` | `GET` | `get_mastery_summary` | yes | `app.api_v2_routers.learners.get_mastery_summary` |
 | `/api/v2/learners/learners/{learner_id}/mastery/{caps_ref}` | `GET` | `get_topic_mastery` | yes | `app.api_v2_routers.learners.get_topic_mastery` |
-| `/api/v2/lessons` | `-` | `-` | no | `_IncludedRouter` |
-| `/api/v2/lessons` | `-` | `-` | no | `_IncludedRouter` |
 | `/api/v2/lessons/lessons` | `POST` | `generate_lesson` | yes | `app.api_v2_routers.lessons.generate_lesson` |
+| `/api/v2/lessons/lessons/coverage` | `GET` | `get_lesson_coverage` | yes | `app.modules.lessons.lesson_coverage_router.get_lesson_coverage` |
 | `/api/v2/lessons/lessons/generate` | `POST` | `generate_lesson` | yes | `app.api_v2_routers.lessons.generate_lesson` |
 | `/api/v2/lessons/lessons/generate/stream` | `POST` | `generate_lesson_stream` | yes | `app.api_v2_routers.lessons.generate_lesson_stream` |
+| `/api/v2/lessons/lessons/review/queue` | `GET` | `get_review_queue` | yes | `app.modules.lessons.lesson_review_router.get_review_queue` |
 | `/api/v2/lessons/lessons/sync` | `POST` | `sync_lessons` | yes | `app.api_v2_routers.lessons.sync_lessons` |
 | `/api/v2/lessons/lessons/{lesson_id}` | `GET` | `get_lesson` | yes | `app.api_v2_routers.lessons.get_lesson` |
 | `/api/v2/lessons/lessons/{lesson_id}/complete` | `POST` | `complete_lesson` | yes | `app.api_v2_routers.lessons.complete_lesson` |
+| `/api/v2/lessons/lessons/{lesson_id}/review` | `POST` | `review_lesson` | yes | `app.modules.lessons.lesson_review_router.review_lesson` |
 | `/api/v2/observability-sre/observability-sre/final-assurance` | `GET` | `get_observability_sre_final_assurance` | yes | `app.api_v2_routers.observability_sre.get_observability_sre_final_assurance` |
 | `/api/v2/observability-sre/observability-sre/readiness` | `GET` | `get_observability_sre_readiness` | yes | `app.api_v2_routers.observability_sre.get_observability_sre_readiness` |
 | `/api/v2/onboarding/onboarding/archetype` | `POST` | `submit_onboarding` | yes | `app.api_v2_routers.onboarding.submit_onboarding` |

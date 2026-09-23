@@ -7,10 +7,10 @@ audience: "curriculum-reviewer"
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-06-24"
+last_reviewed: "2026-09-23"
 review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage5-check"
-code_anchors: "[docs/curriculum, app/services/content_factory]"
+evidence_command: "make caps-alignment-contract-check"
+code_anchors: "[docs/curriculum, app/services/content_factory.py]"
 ---
 
 # CAPS Topic Map Production Contract

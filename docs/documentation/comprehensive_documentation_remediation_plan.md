@@ -77,7 +77,7 @@ On **2026-09-22**, a comprehensive empirical audit of the entire `docs/*` direct
 - **Remediation Implemented**: Relative targets were updated, restoring 0 broken links.
 
 ### Dimension 6: Claim Discipline Violations
-- Historical audit documents in `docs/archive/legacy-doc-framework/` and `audits/reports/` contain unhedged phrases like "production-ready", "100% complete", and "launch approved" without the mandatory boundary phrase:
+- Historical audit documents in `docs/archive/legacy-doc-framework/` and `audits/reports/` contain unhedged assertions of production readiness, 100% completion, or launch authorization without the mandatory boundary phrase:
   `"This repository-side evidence does not authorize production launch."`
 
 ---

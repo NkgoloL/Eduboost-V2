@@ -83,11 +83,17 @@ def load_app(spec: str) -> FastAPI:
 def _route_rows(app: FastAPI) -> list[RouteRow]:
     rows: list[RouteRow] = []
 
-    # 1. Direct operational and root routes on app
+    import app.api_v2 as api_mod
+    prefixes = getattr(api_mod, "API_PREFIXES", ("/api/v2",))
+    registry = getattr(api_mod, "ROUTER_REGISTRY", ())
+
+    # 1. Direct operational and root routes on app (exclude prefix-mounted router routes)
     for route in app.routes:
         if type(route).__name__ == "_IncludedRouter":
             continue
         path = getattr(route, "path", "")
+        if any(path == p or (path.startswith(f"{p}/") and path != "/api/v2/health/deep") for p in prefixes):
+            continue
         name = getattr(route, "name", "")
 
         if isinstance(route, APIRoute):
@@ -102,10 +108,6 @@ def _route_rows(app: FastAPI) -> list[RouteRow]:
         rows.append((path, methods, name, "no", endpoint))
 
     # 2. Inspect included routers registered under prefixes
-    import app.api_v2 as api_mod
-    prefixes = getattr(api_mod, "API_PREFIXES", ("/api/v2",))
-    registry = getattr(api_mod, "ROUTER_REGISTRY", ())
-
     for prefix in prefixes:
         for router_name, router in registry:
             router_prefix = getattr(router, "prefix", "")

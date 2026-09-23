@@ -19,7 +19,7 @@ code_anchors: ["docs/documentation/stale_documentation_review_register.md"]
 
 An audit of the EduBoost V2 repository conducted on **2026-09-22** identified that out of 597 total documentation files, **489 documents** are currently review-overdue according to their declared `last_reviewed` dates and `review_interval_days` policies.
 
-The full catalog of affected files is recorded in [`docs/documentation/stale_documentation_review_register.md`](file:///home/nkgolol/Dev/Development/Eduboost-V2/docs/documentation/stale_documentation_review_register.md).
+The full catalog of affected files is recorded in [`docs/documentation/stale_documentation_review_register.md`](stale_documentation_review_register.md).
 
 This document establishes a **rigorous, multi-wave operational execution plan** to audit, update, re-align, or archive all 489 overdue documents. In accordance with the project's **Anti-Theatre Governance Directive**, blanket resetting of review dates without active code inspection and technical verification is strictly forbidden.
 
@@ -214,5 +214,5 @@ For every document under review, the assigned auditor must complete this checkli
 | **Release Manager** | Wave 4 Archival | Archival classification of milestone ledgers and release notes. |
 
 ### Tracking Progress
-Progress will be tracked by updating [`docs/documentation/stale_documentation_review_register.md`](file:///home/nkgolol/Dev/Development/Eduboost-V2/docs/documentation/stale_documentation_review_register.md) at the conclusion of each weekly wave.
+Progress will be tracked by updating [`docs/documentation/stale_documentation_review_register.md`](stale_documentation_review_register.md) at the conclusion of each weekly wave.
 The CI check `make docs-housekeeping-check` serves as the automated ratchet preventing newly overdue documents from entering the repository.

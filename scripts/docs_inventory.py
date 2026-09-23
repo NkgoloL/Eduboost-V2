@@ -298,8 +298,27 @@ def render_json(inventory: DocumentInventory) -> str:
     return json.dumps(asdict(inventory), indent=2, sort_keys=True) + "\n"
 
 
+def _doc_front_matter(title: str) -> list[str]:
+    return [
+        "---",
+        f'title: "{title}"',
+        'status: "active"',
+        'owner: "engineering"',
+        "reviewers: ['engineering', 'architecture']",
+        'audience: "internal"',
+        "source_of_truth: false",
+        "supersedes: []",
+        "superseded_by: null",
+        'last_reviewed: "2026-09-23"',
+        "review_interval_days: 90",
+        'evidence_command: "make docs-housekeeping-check"',
+        'code_anchors: "[]"',
+        "---",
+    ]
+
+
 def render_md(inventory: DocumentInventory) -> str:
-    lines = [
+    lines = _doc_front_matter("Documentation Inventory") + [
         "# Documentation Inventory",
         "",
         f"Generated at: `{inventory.generated_at}`",
@@ -324,7 +343,7 @@ def render_md(inventory: DocumentInventory) -> str:
 
 
 def render_gap(inventory: DocumentInventory) -> str:
-    lines = [
+    lines = _doc_front_matter("Documentation Gap Report") + [
         "# Documentation Gap Report",
         "",
         f"Generated at: `{inventory.generated_at}`",
@@ -358,7 +377,7 @@ def render_gap(inventory: DocumentInventory) -> str:
 
 
 def render_generation_plan(inventory: DocumentInventory) -> str:
-    lines = [
+    lines = _doc_front_matter("Documentation Generation Plan") + [
         "# Documentation Generation Plan",
         "",
         "## Inputs",

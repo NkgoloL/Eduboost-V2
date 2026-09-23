@@ -56,7 +56,7 @@ def test_v2_runtime_exposes_required_operational_routes() -> None:
         "/health",
         "/ready",
         "/metrics",
-        "/v2/health/deep",
+        "/api/v2/health/deep",
         "/docs",
         "/redoc",
         "/openapi.json",

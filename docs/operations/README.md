@@ -7,10 +7,10 @@ audience: operator
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-22
+last_reviewed: 2026-09-23
 review_interval_days: 60
 evidence_command: make docs-housekeeping-check
-code_anchors: [docker-compose.yml, docker-compose.prod.yml, deployment, k8s]
+code_anchors: [render.yaml, docker-compose.yml, docker-compose.prod.yml]
 ---
 
 # Operations Documentation

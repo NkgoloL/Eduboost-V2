@@ -1,8 +1,22 @@
+---
+title: "Documentation Generation Plan"
+status: "active"
+owner: "engineering"
+reviewers: ['engineering', 'architecture']
+audience: "internal"
+source_of_truth: false
+supersedes: []
+superseded_by: null
+last_reviewed: "2026-09-23"
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[]"
+---
 # Documentation Generation Plan
 
 ## Inputs
 
-- Files scanned: `3507`
+- Files scanned: `3510`
 - Generated docs: `4`
 
 ## Next Artifacts

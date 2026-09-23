@@ -21,7 +21,7 @@ client = TestClient(app)
 LEARNER_ID = "00000000-0000-0000-0000-000000000001"
 
 
-def _set_user(sub: str, role: str = "guardian"):
+def _set_user(sub: str, role: str = "parent"):
     async def fake_current_user():
         return {"sub": sub, "role": role}
     app.dependency_overrides[core_security.get_current_user] = fake_current_user

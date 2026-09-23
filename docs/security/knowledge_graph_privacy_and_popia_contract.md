@@ -7,9 +7,9 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-05
+last_reviewed: "2026-09-23"
 review_interval_days: 60
-evidence_command: make kg000-formal-kg-roadmap-approval-check
+evidence_command: "PYTHONPATH=. .venv/bin/python -m pytest tests/test_popia_negative.py tests/smoke/test_v2_smoke.py -q --no-cov"
 code_anchors: []
 ---
 

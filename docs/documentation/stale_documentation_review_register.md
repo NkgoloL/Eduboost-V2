@@ -5,8 +5,12 @@ owner: architecture_governance
 reviewers: [tech_lead, devops_lead]
 audience: [maintainers, auditors]
 source_of_truth: true
+supersedes: []
+superseded_by: null
 last_reviewed: '2026-09-22'
 review_interval_days: 14
+evidence_command: "make docs-housekeeping-check"
+code_anchors: "[docs/documentation/stale_documentation_review_register.md]"
 ---
 
 # Stale Documentation Review Register

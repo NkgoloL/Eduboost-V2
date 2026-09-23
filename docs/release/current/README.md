@@ -7,7 +7,7 @@ audience: reviewer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-02
+last_reviewed: 2026-09-23
 review_interval_days: 14
 evidence_command: make rr009-governance-process-check
 code_anchors: [docs/release, docs/release-evidence]

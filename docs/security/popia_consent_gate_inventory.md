@@ -7,9 +7,9 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-09-03
+last_reviewed: "2026-09-23"
 review_interval_days: 45
-evidence_command: make docs-housekeeping-check
+evidence_command: "PYTHONPATH=. .venv/bin/python -m pytest tests/test_popia_negative.py tests/smoke/test_v2_smoke.py -q --no-cov"
 code_anchors: [docs/security/popia_consent_gate_inventory.md]
 ---
 
