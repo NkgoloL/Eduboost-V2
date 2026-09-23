@@ -7,10 +7,10 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-23
+last_reviewed: 2026-09-23
 review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage4-check"
-code_anchors: [docs/architecture/README.md]
+evidence_command: "PYTHONPATH=. python3 scripts/run_import_linter_contracts.py"
+code_anchors: [".importlinter", "Makefile", "scripts/run_import_linter_contracts.py"]
 ---
 
 # Boundary Debt Queue
@@ -28,7 +28,7 @@ code_anchors: [docs/architecture/README.md]
    - diagnostics
    - lessons
 4. Replace legacy `assert_can_access_learner` references with explicit read/write helpers.
-5. Enable import-linter in CI once the environment includes `import-linter`.
+5. ~~Enable import-linter in CI once the environment includes `import-linter`.~~ **COMPLETED 2026-09-23** — `.importlinter` contracts active; `make import-linter-contracts-run` registered in `Makefile`.
 
 ## Non-goals
 

@@ -7,10 +7,10 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-05
+last_reviewed: 2026-09-23
 review_interval_days: 60
 evidence_command: make kg000-formal-kg-roadmap-approval-check
-code_anchors: []
+code_anchors: ["app/domain/knowledge_graph_target.py", "app/domain/knowledge_graph_learner_shadow.py", "app/domain/knowledge_graph_gap_engine.py", "app/domain/knowledge_graph_grounded_generation.py", "app/domain/knowledge_graph_runtime_activation.py"]
 ---
 
 # ADR-036: Knowledge Graph Learning-State Core

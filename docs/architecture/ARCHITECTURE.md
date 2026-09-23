@@ -1,21 +1,30 @@
 ---
 title: "EduBoost SA — Recommended Architecture"
-status: active
+status: archived
 owner: architecture
 reviewers: [architecture, engineering]
 audience: developer
 source_of_truth: false
 supersedes: []
-superseded_by: null
-last_reviewed: 2026-06-23
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage4-check"
+superseded_by: "docs/architecture/README.md"
+last_reviewed: 2026-09-23
+review_interval_days: null
+archived_at: "2026-09-23"
+evidence_command: null
 code_anchors: [docs/architecture/README.md]
 ---
 
 # EduBoost SA — Recommended Architecture
 
-**Version:** 1.0 | **Date:** 2 May 2026 | **Context:** V2 Migration, No Legacy Clients
+> [!NOTE]
+> **Status: ARCHIVED — 2026-09-23**
+> This document is the original architectural recommendation authored on 2 May 2026, proposing the Azure Container Apps (ACA) modular monolith design. This proposal has been fully executed and superseded:
+> - **Deployment target**: Render is the authoritative primary deployment platform (see [ADR-028](../adr/ADR-028-authoritative-deployment-target.md)).
+> - **Active architecture**: See [docs/architecture/README.md](README.md) for the current authoritative system design.
+> - **Background job engine**: ARQ (async Redis queue) replaced Celery — complete.
+> - This file is retained as a historical decision record only. Do not update it.
+
+**Version:** 1.0 | **Date:** 2 May 2026 | **Context:** V2 Migration, No Legacy Clients (Historical Record)
 
 ---
 

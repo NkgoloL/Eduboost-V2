@@ -7,10 +7,10 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-05
+last_reviewed: 2026-09-23
 review_interval_days: 60
 evidence_command: make kg000-formal-kg-roadmap-approval-check
-code_anchors: []
+code_anchors: ["app/domain/knowledge_graph_runtime_activation.py", "app/domain/knowledge_graph_product_alignment.py", "app/domain/knowledge_graph_post_switch_review.py"]
 ---
 
 # Knowledge Graph Transition Plan

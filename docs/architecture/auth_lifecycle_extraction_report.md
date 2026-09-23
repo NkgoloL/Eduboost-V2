@@ -1,15 +1,15 @@
 ---
 title: "Auth Lifecycle Extraction Report"
-status: current-evidence
+status: archived
 owner: architecture
 reviewers: [architecture, engineering]
 audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-23
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage4-check"
+last_reviewed: 2026-09-23
+review_interval_days: null
+evidence_command: null
 code_anchors: [docs/architecture/README.md]
 ---
 
