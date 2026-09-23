@@ -45,7 +45,7 @@ EduBoost V2 is a South African Grade 4 Mathematics learning platform aligned wit
 - **Background Worker Engine**: Redis 7 + ARQ (`app/core/arq_worker.py`) exclusively. Celery is fully decommissioned.
 - **Frontend Application**: Next.js 16.3.3 (`@next/swc`, React 18/19, pnpm@9.14.4) under `app/frontend`, with PWA offline caching.
 - **Persistence & Migrations**: PostgreSQL 16 with pgvector and consolidated Alembic schema (DEF-12 immutable audit triggers).
-- **API Contracts**: Generated OpenAPI 3.1.0 specification at `docs/openapi.json` and 915-entry route topology at `docs/route_inventory.md`.
+- **API Contracts**: Generated OpenAPI 3.1.0 specification at `docs/openapi.json` and 234-entry canonical `/api/v2` route topology at `docs/route_inventory.md`.
 - **Knowledge Graph**: Core KG roadmap closed through KG-8; runtime authority switch executed.
 
 ## Longitudinal Educational Validation (LEV / PRD-4A)
@@ -82,5 +82,6 @@ live_payment_processing_authorised: false
 ## Governance & Reconciled Registers
 
 - Reconciled register rule: All roadmap items trace to the RR-### register in `docs/roadmap/reconciliation/outstanding_work_register.md`.
+- Current-state refresh cadence recorded: true (bi-weekly review schedule documented in docs/governance/rr009_current_state_refresh_cadence.md).
 - Anti-theatre documentation standard: Review dates are updated strictly upon active content verification; stale documents are tracked in [`docs/documentation/stale_documentation_review_register.md`](documentation/stale_documentation_review_register.md).
 

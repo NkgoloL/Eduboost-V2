@@ -18,6 +18,11 @@ code_anchors: [docs/documentation/stale_documentation_review_plan.md, scripts/ma
 > [!IMPORTANT]
 > **Anti-Theatre Governance Rule: No Blanket Date Resets**
 > Batch-updating `last_reviewed` dates in YAML front matter without active code inspection and content rewrite is strictly prohibited. Stale documents cataloged here retain their true `last_reviewed` date and `days_stale` counter until substantively audited and verified against active code.
+>
+> **Governance Rules**:
+> - days stale cannot be negative
+> - stale documentation owner is required
+> - release blocker stale docs must block release
 
 **Baseline Audit Date**: 2026-09-22
 **Total Review-Expired Documents**: 325
