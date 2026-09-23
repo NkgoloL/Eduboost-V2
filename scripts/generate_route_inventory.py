@@ -27,7 +27,7 @@ REQUIRED_OPERATIONAL_ROUTES = (
     "/health",
     "/ready",
     "/metrics",
-    "/v2/health/deep",
+    "/api/v2/health/deep",
     "/docs",
     "/redoc",
     "/openapi.json",
@@ -35,7 +35,6 @@ REQUIRED_OPERATIONAL_ROUTES = (
 
 REQUIRED_V2_PREFIXES = (
     "/api/v2",
-    "/v2",
 )
 
 REQUIRED_ROUTER_FRAGMENTS = (
@@ -104,7 +103,7 @@ def _route_rows(app: FastAPI) -> list[RouteRow]:
 
     # 2. Inspect included routers registered under prefixes
     import app.api_v2 as api_mod
-    prefixes = getattr(api_mod, "API_PREFIXES", ("/api/v2", "/v2"))
+    prefixes = getattr(api_mod, "API_PREFIXES", ("/api/v2",))
     registry = getattr(api_mod, "ROUTER_REGISTRY", ())
 
     for prefix in prefixes:

@@ -1,21 +1,7 @@
----
-title: "Documentation Gap Report"
-status: "active"
-owner: "engineering"
-reviewers: ['engineering', 'architecture']
-audience: "internal"
-source_of_truth: false
-supersedes: []
-superseded_by: null
-last_reviewed: "2026-09-13"
-review_interval_days: 90
-evidence_command: "make docs-housekeeping-check"
-code_anchors: "[]"
----
 # Documentation Gap Report
 
-Generated at: `2026-08-29T09:36:48Z`
-Commit: `d81bc05b230256f6c4ab39540ccb03ed4b52bcfd`
+Generated at: `2026-09-22T20:32:42Z`
+Commit: `ff0e09bc7c96e1effad822a45448e4b8a99e8c55`
 
 ## Important document coverage
 

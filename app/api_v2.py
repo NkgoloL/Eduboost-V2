@@ -22,7 +22,6 @@ from app.core.metrics import REGISTRY
 from app.core.middleware import RequestIDMiddleware, StructuredLoggingMiddleware, TimingMiddleware
 from app.core.rate_limit import limiter
 from app.core.secret_rotation import key_vault_rotation_loop
-from app.middleware.api_deprecation import APIDeprecationMiddleware
 from app.middleware.security_headers import SecurityHeadersMiddleware
 from app.services.consent_expiry_service import consent_expiry_loop
 from app.services.launch_content_seed import seed_launch_content_if_needed
@@ -138,7 +137,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-app.add_middleware(APIDeprecationMiddleware)
 app.add_middleware(SecurityHeadersMiddleware)
 app.add_middleware(StructuredLoggingMiddleware)
 app.add_middleware(TimingMiddleware)
@@ -187,7 +185,7 @@ from app.api_v2_routers import (  # noqa: E402
 )
 
 API_V2 = "/api/v2"
-API_PREFIXES = (API_V2, "/v2")
+API_PREFIXES = (API_V2,)
 ROUTER_REGISTRY = (
     ("curriculum_expansion", curriculum_expansion.router),
     ("ai_operations", ai_operations.router),
@@ -240,7 +238,6 @@ async def health():
 
 
 @app.get("/ready", tags=["ops"])
-@app.get("/v2/health/deep", tags=["ops"])
 @app.get("/api/v2/health/deep", tags=["ops"])
 async def ready():
     # Perform deep health checks and return appropriate status.

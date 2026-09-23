@@ -33,7 +33,6 @@ def test_route_inventory_renders_canonical_runtime_in_isolated_process(tmp_path:
     assert "Canonical runtime: `app.api_v2:app`" in content
     assert "Legacy route prefixes present in canonical runtime: `no`" in content
     assert "/api/v2" in content
-    assert "/v2" in content
     assert "/system" in content
 
 

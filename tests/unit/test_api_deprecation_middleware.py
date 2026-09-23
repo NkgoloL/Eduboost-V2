@@ -50,10 +50,9 @@ def test_legacy_route_receives_deprecation_and_canonical_link_headers(test_app: 
 
 @pytest.mark.unit
 def test_live_application_has_deprecation_middleware_registered():
-    """Verify the middleware is registered in the live FastAPI application."""
+    """Verify the deprecated middleware is no longer registered in live app now that /v2 is retired."""
     from app.api_v2 import app as live_app
-    from starlette.middleware.base import BaseHTTPMiddleware
 
     middleware_types = [m.cls if hasattr(m, "cls") else m for m in live_app.user_middleware]
-    assert APIDeprecationMiddleware in middleware_types
+    assert APIDeprecationMiddleware not in middleware_types
 

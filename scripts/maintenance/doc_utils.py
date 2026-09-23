@@ -227,6 +227,9 @@ def stable_lfs_identity(path: Path, root: Path) -> tuple[str, int]:
     return hashlib.sha256(raw_bytes).hexdigest(), len(raw_bytes)
 
 
+MAX_DOC_FILE_SIZE = 1_000_000  # 1MB guard against runaway generated files
+
+
 def read_markdown_document(path: Path, root: Path, lfs_patterns: set[str] | None = None) -> MarkdownDocument:
     rel = relpath(path, root)
     if is_lfs_tracked(rel, root, lfs_patterns):
@@ -237,6 +240,19 @@ def read_markdown_document(path: Path, root: Path, lfs_patterns: set[str] | None
             text="",
             content_kind="git_lfs_tracked_skipped_content",
             lfs_sha256=sha256,
+            lfs_size=size,
+        )
+    try:
+        size = path.stat().st_size
+    except OSError:
+        size = 0
+    if size > MAX_DOC_FILE_SIZE:
+        return MarkdownDocument(
+            path=path,
+            rel=rel,
+            text="",
+            content_kind="oversized_skipped_content",
+            lfs_sha256=hashlib.sha256(path.read_bytes()[:65536]).hexdigest(),
             lfs_size=size,
         )
     return MarkdownDocument(

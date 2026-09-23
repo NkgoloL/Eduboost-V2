@@ -7,75 +7,66 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-09-13
-review_interval_days: 45
-evidence_command: PYTHONPATH=. python3 scripts/true_state_remediation/verify_final_program.py --json
-code_anchors: [app/api_v2.py, app/frontend/package.json, docs/roadmap/production_readiness/true_state_remediation_register.json]
+last_reviewed: '2026-09-22'
+review_interval_days: 14
+evidence_command: "make runtime-check && make openapi-check && make route-inventory-check"
+code_anchors:
+  - app/api_v2.py
+  - app/core/arq_worker.py
+  - app/frontend/package.json
+  - docs/roadmap/production_readiness/coverage_contract.json
+  - docs/roadmap/production_readiness/prd_4a_longitudinal_educational_validation_register.json
+  - docs/roadmap/production_readiness/prd11_production_release_register.json
 ---
 
 # EduBoost Current State
 
-This file is the canonical current-state summary for EduBoost V2 generated deterministically from single-source register state on 2026-09-13.
+This file is the canonical current-state summary for EduBoost V2, reconciled against active code, database migrations, CI contracts, and governance registers on 2026-09-22.
 
-It is intentionally conservative. It records what is true now and what remains unauthorised before production, deployment, public beta, billing, live learner traffic, or further production-readiness implementation work can proceed.
+It is intentionally conservative. It records empirical repository truth and enforces strict, fails-closed release boundaries: production deployment, public beta, billing, live learner traffic, and unverified mastery claims remain blocked until their authoritative prerequisites are satisfied.
 
-## Product identity
+## Product Identity
 
-EduBoost V2 is a South African Grade 4 Mathematics learning platform. Its active launch product scope is:
+EduBoost V2 is a South African Grade 4 Mathematics learning platform aligned with the Curriculum and Assessment Policy Statement (CAPS). Its active launch product scope is:
 
-- **Launch-Active Scope**: South African Grade 4 Mathematics (CAPS-aligned).
-- **Planned / Inactive Scope**: Grades R–3 and Grades 5–7, and subjects other than Mathematics remain in planning and are not active for launch.
+- **Launch-Active Scope**: South African Grade 4 Mathematics (`grade4_mathematics_en`, CAPS-aligned).
+- **Planned / Inactive Scope**: Grades R–3 and Grades 5–7, and subjects other than Mathematics remain in planning and are strictly inactive for launch.
 - Diagnostic assessment and adaptive learner support.
 - Knowledge-graph-grounded learning-state modelling.
-- AI-assisted tutoring through controlled and grounded service boundaries.
+- AI-assisted tutoring through controlled, prompt-bounded service layers.
 - Parent/guardian visibility into progress, consent history, and reports.
 - Personalised study plans based on curriculum coverage and mastery gaps.
 - Gamification through achievements, points, and badges.
-- POPIA-aware privacy, consent, audit, and data-rights workflows.
+- POPIA-compliant privacy, consent, audit, and data-rights workflows.
 
-## Technical identity
+## Technical Identity & Architecture
 
-The active technical direction is:
+- **Backend Modular Monolith**: FastAPI (`app.api_v2:app`) with typed service boundaries and strict repository isolation.
+- **Background Worker Engine**: Redis 7 + ARQ (`app/core/arq_worker.py`) exclusively. Celery is fully decommissioned.
+- **Frontend Application**: Next.js 16.3.3 (`@next/swc`, React 18/19, pnpm@9.14.4) under `app/frontend`, with PWA offline caching.
+- **Persistence & Migrations**: PostgreSQL 16 with pgvector and consolidated Alembic schema (DEF-12 immutable audit triggers).
+- **API Contracts**: Generated OpenAPI 3.1.0 specification at `docs/openapi.json` and 915-entry route topology at `docs/route_inventory.md`.
+- **Knowledge Graph**: Core KG roadmap closed through KG-8; runtime authority switch executed.
 
-- FastAPI V2 backend.
-- Next.js frontend under `app/frontend`.
-- PostgreSQL 16 persistence with pgvector and Alembic migrations.
-- Redis 7 backend for sessions, cache, and ARQ background workers.
-- Content Factory and curriculum tooling for controlled source ingestion.
-- Generated canonical OpenAPI contract under `docs/openapi.json` and `docs/openapi.yaml`.
-- Deterministic Route Inventory under `docs/route_inventory.md`.
-- True-State Remediation automation under `scripts/true_state_remediation/`.
+## Longitudinal Educational Validation (LEV / PRD-4A)
 
-## Canonical remediation state
+Educational validity is fundamentally distinct from technical execution: a test passing without errors does not prove that an algorithm improves learning.
 
-```text
-Remediation program: EduBoost V2 True-State Remediation (Completed)
-Active implementation bundle: completed (Bundles B01-B07 verified and closed)
-Bundle B01 (Release Gate Recovery): verified and closed
-Bundle B02 (Canonical Truth and Toolchain): verified and closed
-Bundle B03 (CI Authority & Test-System Taxonomy Consolidation): verified and closed
-Bundle B04 (Architecture & Schema Lifecycle): verified and closed
-Bundle B05 (Security, Privacy & Educational Validity): verified and closed
-Bundle B06 (API Rationalisation & Operations): verified and closed
-Bundle B07 (Release Candidate Pilot & Stabilisation): verified and closed
-Feature freeze: active
-Controlled beta operational hold: active
-Active production-readiness item: PRD-11.0R.RUNTIME-RESTORE.EXECUTION-8
-```
+All pedagogical and mastery models are governed under the **PRD-4A Longitudinal Educational Validation (LEV)** framework:
+- **Authoritative Register**: [`docs/roadmap/production_readiness/prd_4a_longitudinal_educational_validation_register.json`](roadmap/production_readiness/prd_4a_longitudinal_educational_validation_register.json) (222 tasks across 15 workstreams).
+- **Task Implementation**: Managed under [`docs/roadmap/production_readiness/lev/`](roadmap/production_readiness/lev/).
+- **Mathematical Confidence Bounds**: Mastery algorithms enforce `MAX_CONFIDENCE_THRESHOLD`. Unvalidated mastery states remain programmatically tagged as *tentative* or *inferred* until field-validated through longitudinal empirical research.
+- **Verification Script**: `.venv/bin/python scripts/educational_validation/verify_lev_task_register.py --repo-root .` (asserts 222 tasks, valid evidence records, acyclic DAG).
 
-## Controlled beta semantics
+## Test Suite & Coverage Contract
 
-Controlled-beta fields are distinct and independently enforced:
+- **CI & Contract Floor**: **90%** minimum line coverage enforced in `coverage_contract.json` and `.github/workflows/pr-core.yml`.
+- **Coverage Contract Enforcement**: Validated across all 4 required classes (`product`, `runtime`, `governance`, `advisory`) via `.venv/bin/python -m pytest tests/unit/coverage_suites/test_coverage_contract.py -q --no-cov`.
+- **Historical Milestone Statement**: ~95.7% statement coverage was achieved and documented on the `feature/coverage-target-90` branch across 17 test batches (`docs/reports/coverage_target_90_completion_report.md`). Continuous CI actively guards the 90% floor fails-closed.
 
-- **Governance Authorization**: Authorized under controlled remediation scope.
-- **Operational Safety**: Internal / staging verification only.
-- **Activation Hold**: `active` (live external traffic prohibited).
-- **Cohort Limits**: Staging cohort only (<50 test accounts).
-- **Kill-Switch State**: Enabled (`FEATURE_FLAG_MAINTENANCE_MODE=true` fails closed).
+## Release Authority Boundaries (Fail-Closed)
 
-## Release authority boundaries (fail-closed)
-
-These remain strictly unauthorized:
+Live learner access, external traffic, and payment processing are fail-closed and strictly unauthorized (`docs/roadmap/production_readiness/prd11_production_release_register.json`):
 
 ```text
 production_release_authorised: false
@@ -88,27 +79,8 @@ billing_launch_authorised: false
 live_payment_processing_authorised: false
 ```
 
-## Test Suite & Coverage Baseline
-
-- **Repository Statement Coverage**: ~95.7% across `app/` (Target: >90.9% achieved and exceeded; CI and Contract Floor strictly enforced at 90%).
-- **Enforced CI & Contract Floor**: **90%** minimum line coverage enforced in `.github/workflows/pr-core.yml`, `Makefile`, and `coverage_contract.json`.
-- **Package-Level Verified Coverage**:
-  - `app/core`: **97.7%** statement coverage (2,534 statements)
-  - `app/domain`: **96.2%** statement coverage (2,977 statements)
-  - `app/security`: **100.0%** statement coverage (272 statements)
-  - `app/repositories`: **98.5%** statement coverage (1,139 statements)
-  - `app/models`: **97.8%** statement coverage (2,135 statements)
-  - `app/api_v2_routers`: **97.2%** statement coverage (2,261 statements)
-  - `app/api_v2_deps`: **99.4%** statement coverage (271 statements)
-  - `app/modules`: **97.3%** statement coverage (8,043 statements)
-  - `app/services`: **92.9%** statement coverage (16,106 statements)
-  - `app/middleware, utils, jobs`: **100.0%** statement coverage (244 statements)
-- **Deterministic Evidence**: Batches 412 through 428 passing with 1,500+ unit tests and 0 failures. Full report at [`docs/reports/coverage_target_90_completion_report.md`](reports/coverage_target_90_completion_report.md).
-
 ## Governance & Reconciled Registers
 
-- Current-state refresh cadence recorded: true
-- Reconciled register rule: All roadmap items follow the RR-### register structure in `docs/roadmap/reconciliation/outstanding_work_register.md`.
-- Historical caveats: RR-003 fallback coverage baseline resolved (>90.9% target achieved at 95.7%); RR-006 evidence merged with non-required checks non-blocking; RR-010 beta outcome reporting outstanding; RR-016 operational drills outstanding.
+- Reconciled register rule: All roadmap items trace to the RR-### register in `docs/roadmap/reconciliation/outstanding_work_register.md`.
+- Anti-theatre documentation standard: Review dates are updated strictly upon active content verification; stale documents are tracked in [`docs/documentation/stale_documentation_review_register.md`](documentation/stale_documentation_review_register.md).
 
-**Generation timestamp: 2026-09-13T13:38:00.000000+00:00**

@@ -25,21 +25,21 @@
 
 ## Workstream index
 
-- [LEV-WS01 — Define mastery claims precisely](docs/roadmap/production_readiness/lev/workstreams/LEV-WS01.md) — 14 tasks
-- [LEV-WS02 — Independently review CAPS concepts and assessment items](docs/roadmap/production_readiness/lev/workstreams/LEV-WS02.md) — 16 tasks
-- [LEV-WS03 — Make learner evidence and state changes fully traceable](docs/roadmap/production_readiness/lev/workstreams/LEV-WS03.md) — 14 tasks
-- [LEV-WS04 — Calibrate mastery estimates against independent outcomes](docs/roadmap/production_readiness/lev/workstreams/LEV-WS04.md) — 15 tasks
-- [LEV-WS05 — Quantify false-mastery and false-non-mastery risk](docs/roadmap/production_readiness/lev/workstreams/LEV-WS05.md) — 14 tasks
-- [LEV-WS06 — Demonstrate delayed-retention validity](docs/roadmap/production_readiness/lev/workstreams/LEV-WS06.md) — 15 tasks
-- [LEV-WS07 — Demonstrate transfer validity](docs/roadmap/production_readiness/lev/workstreams/LEV-WS07.md) — 15 tasks
-- [LEV-WS08 — Validate educational plausibility of state transitions](docs/roadmap/production_readiness/lev/workstreams/LEV-WS08.md) — 15 tasks
-- [LEV-WS09 — Establish validity across relevant learner contexts](docs/roadmap/production_readiness/lev/workstreams/LEV-WS09.md) — 15 tasks
-- [LEV-WS10 — Demonstrate that mastery-informed recommendations improve learning](docs/roadmap/production_readiness/lev/workstreams/LEV-WS10.md) — 16 tasks
-- [LEV-WS11 — Measure and control adverse educational effects](docs/roadmap/production_readiness/lev/workstreams/LEV-WS11.md) — 15 tasks
-- [LEV-WS12 — Replicate findings in another cohort or academic year](docs/roadmap/production_readiness/lev/workstreams/LEV-WS12.md) — 14 tasks
-- [LEV-WS13 — Operate drift detection and revalidation controls](docs/roadmap/production_readiness/lev/workstreams/LEV-WS13.md) — 15 tasks
-- [LEV-WS14 — Obtain independent approval of intended uses](docs/roadmap/production_readiness/lev/workstreams/LEV-WS14.md) — 14 tasks
-- [LEV-WS15 — Document unsupported uses and residual limitations](docs/roadmap/production_readiness/lev/workstreams/LEV-WS15.md) — 15 tasks
+- [LEV-WS01 — Define mastery claims precisely](lev/workstreams/LEV-WS01.md) — 14 tasks
+- [LEV-WS02 — Independently review CAPS concepts and assessment items](lev/workstreams/LEV-WS02.md) — 16 tasks
+- [LEV-WS03 — Make learner evidence and state changes fully traceable](lev/workstreams/LEV-WS03.md) — 14 tasks
+- [LEV-WS04 — Calibrate mastery estimates against independent outcomes](lev/workstreams/LEV-WS04.md) — 15 tasks
+- [LEV-WS05 — Quantify false-mastery and false-non-mastery risk](lev/workstreams/LEV-WS05.md) — 14 tasks
+- [LEV-WS06 — Demonstrate delayed-retention validity](lev/workstreams/LEV-WS06.md) — 15 tasks
+- [LEV-WS07 — Demonstrate transfer validity](lev/workstreams/LEV-WS07.md) — 15 tasks
+- [LEV-WS08 — Validate educational plausibility of state transitions](lev/workstreams/LEV-WS08.md) — 15 tasks
+- [LEV-WS09 — Establish validity across relevant learner contexts](lev/workstreams/LEV-WS09.md) — 15 tasks
+- [LEV-WS10 — Demonstrate that mastery-informed recommendations improve learning](lev/workstreams/LEV-WS10.md) — 16 tasks
+- [LEV-WS11 — Measure and control adverse educational effects](lev/workstreams/LEV-WS11.md) — 15 tasks
+- [LEV-WS12 — Replicate findings in another cohort or academic year](lev/workstreams/LEV-WS12.md) — 14 tasks
+- [LEV-WS13 — Operate drift detection and revalidation controls](lev/workstreams/LEV-WS13.md) — 15 tasks
+- [LEV-WS14 — Obtain independent approval of intended uses](lev/workstreams/LEV-WS14.md) — 14 tasks
+- [LEV-WS15 — Document unsupported uses and residual limitations](lev/workstreams/LEV-WS15.md) — 15 tasks
 
 ---
 

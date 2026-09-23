@@ -12,7 +12,6 @@ from fastapi.responses import JSONResponse
 
 from app.core.config import settings
 from app.core.logging import configure_logging, get_logger
-from app.middleware.api_deprecation import APIDeprecationMiddleware
 
 configure_logging()
 log = get_logger(__name__)
@@ -42,7 +41,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-app.add_middleware(APIDeprecationMiddleware)
 
 
 # ── Routers ───────────────────────────────────────────────────────────────────

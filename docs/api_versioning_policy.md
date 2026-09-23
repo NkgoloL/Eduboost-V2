@@ -7,7 +7,7 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-09-13
+last_reviewed: 2026-09-22
 review_interval_days: 90
 evidence_command: make openapi-check
 code_anchors: [app/api_v2.py, scripts/generate_openapi.py]
@@ -31,12 +31,13 @@ app.api_v2:app
 
 ## Supported Prefixes
 
-During the current migration window, production V2 routers are exposed under both prefixes:
+Production V2 routers are exposed exclusively under the canonical prefix:
 
 ```text
 /api/v2
-/v2
 ```
+
+> **Note**: The legacy `/v2` alias prefix has been retired and removed from the active runtime routing table in accordance with architectural deprecation policy. All client traffic must target `/api/v2`.
 
 ## Versioning Rules
 

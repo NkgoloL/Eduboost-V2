@@ -47,13 +47,13 @@ def teardown_function():
 
 def test_erasure_requires_auth():
     app.dependency_overrides.clear()
-    r = client.post("/v2/popia/erasure", json={"learner_id": LEARNER_ID, "reason": "test"})
+    r = client.post("/api/v2/popia/erasure", json={"learner_id": LEARNER_ID, "reason": "test"})
     assert r.status_code == 401
 
 
 def test_export_requires_auth():
     app.dependency_overrides.clear()
-    r = client.post("/v2/popia/exports", json={"learner_id": LEARNER_ID})
+    r = client.post("/api/v2/popia/exports", json={"learner_id": LEARNER_ID})
     assert r.status_code == 401
 
 
@@ -67,7 +67,7 @@ def test_erasure_404_when_learner_not_found():
     mock_svc.request_erasure.side_effect = HTTPException(status_code=404, detail="Learner not found")
     _set_service(mock_svc)
 
-    r = client.post("/v2/popia/erasure", json={"learner_id": LEARNER_ID, "reason": "test"})
+    r = client.post("/api/v2/popia/erasure", json={"learner_id": LEARNER_ID, "reason": "test"})
     assert r.status_code == 404
 
 
@@ -83,7 +83,7 @@ def test_erasure_409_when_already_requested():
     )
     _set_service(mock_svc)
 
-    r = client.post("/v2/popia/erasure", json={"learner_id": LEARNER_ID, "reason": "test"})
+    r = client.post("/api/v2/popia/erasure", json={"learner_id": LEARNER_ID, "reason": "test"})
     assert r.status_code == 409
 
 
@@ -99,7 +99,7 @@ def test_cancel_erasure_409_when_no_pending_request():
     )
     _set_service(mock_svc)
 
-    r = client.post(f"/v2/popia/erasure/{LEARNER_ID}/cancel")
+    r = client.post(f"/api/v2/popia/erasure/{LEARNER_ID}/cancel")
     assert r.status_code == 409
 
 
@@ -115,7 +115,7 @@ def test_erasure_403_for_wrong_guardian():
     )
     _set_service(mock_svc)
 
-    r = client.post("/v2/popia/erasure", json={"learner_id": LEARNER_ID, "reason": "test"})
+    r = client.post("/api/v2/popia/erasure", json={"learner_id": LEARNER_ID, "reason": "test"})
     assert r.status_code == 403
 
 
@@ -128,7 +128,7 @@ def test_erasure_422_missing_learner_id():
     mock_svc = AsyncMock()
     _set_service(mock_svc)
 
-    r = client.post("/v2/popia/erasure", json={"reason": "test"})
+    r = client.post("/api/v2/popia/erasure", json={"reason": "test"})
     assert r.status_code == 422
 
 
@@ -137,5 +137,5 @@ def test_export_422_missing_learner_id():
     mock_svc = AsyncMock()
     _set_service(mock_svc)
 
-    r = client.post("/v2/popia/exports", json={})
+    r = client.post("/api/v2/popia/exports", json={})
     assert r.status_code == 422

@@ -7,10 +7,14 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-23
+last_reviewed: '2026-09-22'
 review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage4-check"
-code_anchors: [docs/architecture/README.md]
+evidence_command: "make docs-housekeeping-check"
+code_anchors:
+  - app/core/arq_worker.py
+  - app/frontend/package.json
+  - app/jobs/
+  - docs/architecture/README.md
 ---
 
 # EduBoost SA V2 — Architecture Diagram
@@ -26,15 +30,15 @@ code_anchors: [docs/architecture/README.md]
 ```mermaid
 graph TD
     subgraph Client["Client Layer"]
-        Browser["Browser / Mobile"]
+        Browser["Browser / Mobile PWA"]
     end
 
     subgraph Frontend["Frontend Process (port 3050)"]
-        NextJS["Next.js (Node 20)"]
+        NextJS["Next.js 16.3.3 (React 19 · Node 20 · @next/swc)"]
     end
 
     subgraph Nginx["Reverse Proxy"]
-        nginx["nginx"]
+        nginx["nginx (Proxy & TLS Termination)"]
     end
 
     subgraph Backend["Backend Process — Modular Monolith (port 8000)"]
@@ -87,9 +91,13 @@ graph TD
         end
     end
 
+    subgraph Worker["Background Worker Process"]
+        ARQWorker["ARQ Worker Process (arq app.core.arq_worker.WorkerSettings)"]
+    end
+
     subgraph Infra["Infrastructure"]
         PG["PostgreSQL 16 / pgvector"]
-        Redis["Redis 7"]
+        Redis["Redis 7 (Jobs Queue & Cache)"]
         Prom["Prometheus"]
         Grafana["Grafana"]
     end
@@ -107,6 +115,9 @@ graph TD
     Routers --> Domain
     Repos --> PG
     Repos --> Redis
+    Services --> Redis
+    Redis --> ARQWorker
+    ARQWorker --> Services
     Core --> Prom
     Prom --> Grafana
 ```
@@ -123,7 +134,7 @@ graph LR
     D --> E["stdlib · third-party"]
 ```
 
-Arrows represent **allowed import direction** only. No upward imports permitted.
+Arrows represent **allowed import direction** only. No upward imports permitted. Routers must never import directly from repositories (enforced via `.importlinter`).
 
 ---
 
@@ -141,8 +152,17 @@ Arrows represent **allowed import direction** only. No upward imports permitted.
 | parent_portal | `parents.py` | `parent_service.py` | — |
 | popia | `popia.py` | `popia_service.py` | — |
 | billing | `billing.py` | `billing_service.py` | — |
-| jobs | `jobs.py` | `job_service.py` | — |
+| jobs | `jobs.py` | `job_service.py` | `app/jobs/` (ARQ tasks) |
 | observability | `system.py` | — | `core/observability.py` |
+
+---
+
+## Background Worker Architecture: ARQ (No Celery)
+
+EduBoost V2 uses **Redis 7 + ARQ** (`app/core/arq_worker.py`) exclusively for background job execution, async content staging, and periodic maintenance tasks.
+- **Worker Configuration**: Defined in `app/core/arq_worker.py` via `WorkerSettings` (Redis pool, cron jobs, retry policies).
+- **Task Definitions**: Managed under `app/jobs/` with typed parameters and structured error handling.
+- **Decommissioning**: Celery and Celery Beat have been completely decommissioned. Zero Celery imports are permitted across `app/` (enforced via `test $(git grep -rlE "^\s*(import|from)\s+celery\b" app/ | wc -l) -eq 0`).
 
 ---
 
@@ -152,3 +172,4 @@ The inference ML sidecar (`modules/ml_sidecar/`) is:
 - Loaded in-process via `requirements-ml.txt` extras.
 - Gated behind feature flags — **not active in production today**.
 - Not a separately deployed microservice. Any future extraction requires a new ADR.
+

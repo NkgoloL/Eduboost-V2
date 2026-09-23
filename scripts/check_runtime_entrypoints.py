@@ -22,13 +22,12 @@ REQUIRED_CANONICAL_ROUTES = (
     "/health",
     "/ready",
     "/metrics",
-    "/v2/health/deep",
+    "/api/v2/health/deep",
     "/openapi.json",
 )
 
 REQUIRED_V2_PREFIXES = (
     "/api/v2",
-    "/v2",
 )
 
 

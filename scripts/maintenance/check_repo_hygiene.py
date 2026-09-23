@@ -143,6 +143,25 @@ def run_checks(repo_root: Path | None = None) -> list[HygieneFailure]:
                 )
             )
 
+        if path.startswith('docs/') and path.endswith(('.md', '.json', '.txt')):
+            target = repo_root / path
+            if target.exists() and target.is_file():
+                try:
+                    sz = target.stat().st_size
+                    if sz > 1_000_000:
+                        head = target.read_bytes()[:64]
+                        if not head.startswith(b'version https://git-lfs.github.com/spec/v1'):
+                            failures.append(
+                                HygieneFailure(
+                                    'OVERSIZED_DOCUMENT',
+                                    path,
+                                    f'tracked document exceeds 1MB limit ({sz} bytes); must be pruned or tracked via Git LFS',
+                                )
+                            )
+                except OSError:
+                    pass
+
+
     return failures
 
 

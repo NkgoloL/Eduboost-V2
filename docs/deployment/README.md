@@ -7,17 +7,17 @@ audience: "operator"
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-06-24"
+last_reviewed: "2026-09-22"
 review_interval_days: 60
 evidence_command: "make docs-housekeeping-stage5-check"
-code_anchors: "[Dockerfile, docker-compose.yml, docker-compose.prod.yml, .github/workflows]"
+code_anchors: "[render.yaml, Dockerfile, docker-compose.yml, docker-compose.prod.yml]"
 ---
 
 # Deployment And Operations
 
-Deployment covers local compose, production-like compose smoke checks, Azure/IaC assets, runtime health, observability, backup/restore, and release evidence.
+Deployment covers local compose, production-like compose smoke checks, cloud blueprint assets, runtime health, observability, backup/restore, and release evidence.
 
-**Authoritative deployment hierarchy:** Azure Container Apps via `bicep/container_apps.bicep` is the production target (ADR-028). Render is limited to previews/early-beta, Docker Compose is local development or smoke testing, and Kubernetes files are legacy exploratory material.
+**Authoritative deployment hierarchy:** Render via `render.yaml` is the authoritative primary production and staging deployment target (ADR-028). Azure Container Apps via `bicep/container_apps.bicep` is secondary/legacy, Docker Compose is for local development or smoke testing, and Kubernetes files are legacy exploratory material.
 
 ## Runtime map
 

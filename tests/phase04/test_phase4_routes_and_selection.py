@@ -7,15 +7,15 @@ from app.api_v2 import app
 from app.modules.diagnostics.item_bank_service import ItemBankService
 
 
-def test_phase4_routes_are_registered_under_both_prefixes():
+def test_phase4_routes_are_registered_under_canonical_prefix():
     paths = {route.path for route in app.routes}
     expected = {
         "/api/v2/admin/irt-quality/runs",
-        "/v2/admin/irt-quality/runs",
         "/api/v2/admin/irt-quality/items/{item_id}",
         "/api/v2/admin/irt-quality/items/{item_id}/override",
     }
     assert expected <= paths
+    assert "/v2/admin/irt-quality/runs" not in paths
 
 
 class _Repo:

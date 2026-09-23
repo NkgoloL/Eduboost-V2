@@ -8,7 +8,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = REPO_ROOT / "docs" / "release" / "backend_deletion_candidate_inventory.md"
-SCAN_ROOTS = ("app", "tests", "scripts", "alembic", "docs/release")
+SCAN_ROOTS = ("app", "tests", "scripts", "alembic")
 CANDIDATE_PATTERNS = [
     ("legacy_audit", re.compile(r"audit_logs|AuditLog|legacy audit", re.IGNORECASE)),
     ("legacy_consent", re.compile(r"parental_consents|ParentalConsent|legacy consent", re.IGNORECASE)),
@@ -23,15 +23,32 @@ class Candidate:
     category: str
     text: str
 
+EXCLUDED_DIRS = {
+    "node_modules",
+    ".next",
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    "coverage_html",
+    "dist",
+    "build",
+    "frontend",
+}
+
 def _iter_files() -> list[Path]:
+    import os
     files: list[Path] = []
     for root_name in SCAN_ROOTS:
-        root = REPO_ROOT / root_name
-        if not root.exists():
+        base = REPO_ROOT / root_name
+        if not base.exists():
             continue
-        for path in root.rglob("*"):
-            if path.is_file() and path.suffix in {".py", ".md", ".sql"}:
-                files.append(path)
+        for root, dirs, filenames in os.walk(base):
+            dirs[:] = [d for d in dirs if d not in EXCLUDED_DIRS]
+            for f in filenames:
+                ext = os.path.splitext(f)[1].lower()
+                if ext in {".py", ".sql"}:
+                    files.append(Path(root) / f)
     return sorted(files)
 
 def collect_candidates() -> list[Candidate]:

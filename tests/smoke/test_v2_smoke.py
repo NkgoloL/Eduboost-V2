@@ -40,7 +40,7 @@ class TestHealthEndpoints:
 
 class TestAuthEndpoints:
     def test_register_validates_email(self) -> None:
-        r = client.post("/v2/auth/register", json={
+        r = client.post("/api/v2/auth/register", json={
             "email": "not-an-email",
             "password": "securepassword123",
             "display_name": "Test Guardian",
@@ -48,11 +48,11 @@ class TestAuthEndpoints:
         assert r.status_code == 422
 
     def test_register_requires_all_fields(self) -> None:
-        r = client.post("/v2/auth/register", json={"email": "test@example.com"})
+        r = client.post("/api/v2/auth/register", json={"email": "test@example.com"})
         assert r.status_code == 422
 
     def test_login_returns_401_for_invalid_credentials(self) -> None:
-        r = client.post("/v2/auth/login", json={
+        r = client.post("/api/v2/auth/login", json={
             "email": "nobody@example.com",
             "password": "wrongpassword",
         })
@@ -60,17 +60,17 @@ class TestAuthEndpoints:
         assert r.status_code in (401, 503, 500)
 
     def test_protected_endpoint_requires_auth(self) -> None:
-        r = client.get("/v2/auth/me")
+        r = client.get("/api/v2/auth/me")
         assert r.status_code == 401
 
     def test_invalid_token_returns_401(self) -> None:
-        r = client.get("/v2/auth/me", headers={"Authorization": "Bearer invalid.token.here"})
+        r = client.get("/api/v2/auth/me", headers={"Authorization": "Bearer invalid.token.here"})
         assert r.status_code == 401
 
 
 class TestConsentGate:
     def test_lessons_endpoint_requires_auth(self) -> None:
-        r = client.post("/v2/lessons/", json={
+        r = client.post("/api/v2/lessons/", json={
             "learner_id": "00000000-0000-0000-0000-000000000001",
             "subject": "Mathematics",
             "topic": "Fractions",
@@ -78,7 +78,7 @@ class TestConsentGate:
         assert r.status_code == 401
 
     def test_lessons_generate_requires_auth(self) -> None:
-        r = client.post("/v2/lessons/generate", json={
+        r = client.post("/api/v2/lessons/generate", json={
             "learner_id": "00000000-0000-0000-0000-000000000001",
             "subject": "Mathematics",
             "topic": "Fractions",
@@ -86,7 +86,7 @@ class TestConsentGate:
         assert r.status_code == 401
 
     def test_consent_grant_requires_auth(self) -> None:
-        r = client.post("/v2/consent/grant", json={
+        r = client.post("/api/v2/consent/grant", json={
             "learner_id": "00000000-0000-0000-0000-000000000001",
         })
         assert r.status_code == 401
@@ -103,7 +103,7 @@ class TestErrorHandling:
         assert "error" in data or "detail" in data
 
     def test_invalid_uuid_returns_422(self) -> None:
-        r = client.get("/v2/consent/status/not-a-uuid", headers={
+        r = client.get("/api/v2/consent/status/not-a-uuid", headers={
             "Authorization": "Bearer fake.token"
         })
         assert r.status_code in (401, 422)

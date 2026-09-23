@@ -64,12 +64,12 @@ def test_v2_runtime_exposes_required_operational_routes() -> None:
 
 
 @pytest.mark.unit
-def test_v2_runtime_registers_dual_api_prefixes() -> None:
-    """During migration, V2 routers must be reachable under both supported prefixes."""
+def test_v2_runtime_registers_canonical_api_prefix_only() -> None:
+    """Canonical V2 routers must be reachable under /api/v2 and /v2 alias must be absent."""
     app = _load_app("app.api_v2:app")
     route_paths = set(app.openapi().get("paths", {}))
 
-    required_prefixes = ("/api/v2", "/v2")
+    required_prefixes = ("/api/v2",)
     required_router_fragments = (
         "/auth",
         "/learners",
@@ -93,6 +93,8 @@ def test_v2_runtime_registers_dual_api_prefixes() -> None:
                 missing.append(f"{prefix}{fragment}")
 
     assert missing == []
+    # Assert that no deprecated /v2 alias routes exist in the OpenAPI paths
+    assert not any(path == "/v2" or path.startswith("/v2/") for path in route_paths)
 
 
 

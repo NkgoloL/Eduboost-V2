@@ -194,8 +194,13 @@ def _category(path: Path) -> str:
     return "general"
 
 
+MAX_DOC_FILE_SIZE = 1_000_000
+
+
 def _read_text(path: Path) -> str:
     try:
+        if path.stat().st_size > MAX_DOC_FILE_SIZE:
+            return ""
         return path.read_text(encoding="utf-8", errors="ignore")
     except OSError:
         return ""

@@ -43,7 +43,7 @@ def test_canonical_runtime_contains_required_routes() -> None:
         assert route in paths
 
     assert any(path == "/api/v2" or path.startswith("/api/v2/") for path in paths)
-    assert any(path == "/v2" or path.startswith("/v2/") for path in paths)
+    assert not any(path == "/v2" or path.startswith("/v2/") for path in paths)
 
 
 @pytest.mark.unit
