@@ -7,12 +7,11 @@ audience: operator
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-03
-review_interval_days: 30
-evidence_command: "PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py --json"
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
 code_anchors: [docs/telemetry, docs/observability, app/core/metrics.py, prometheus/alerts.yml, alertmanager/alertmanager.yml]
 ---
-
 # RR-012 Production Telemetry Dashboard
 
 **RR ID:** RR-012  

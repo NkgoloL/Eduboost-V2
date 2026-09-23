@@ -7,12 +7,11 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-23
-review_interval_days: 30
-evidence_command: make docs-housekeeping-stage3-check
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
 code_anchors: [scripts/maintenance/check_doc_stage3_strict_scope.py, docs/documentation/stage_3_strict_scope.json]
 ---
-
 # Stage 3 Documentation Housekeeping
 
 Stage 3 converts the documentation cleanup programme from global ratchets into the first passing strict tranche.

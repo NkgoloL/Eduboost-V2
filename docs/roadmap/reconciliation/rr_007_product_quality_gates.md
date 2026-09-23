@@ -4,11 +4,9 @@ status: active
 owner: engineering
 audience: developer
 source_of_truth: false
-last_reviewed: 2026-07-02
-review_interval_days: 60
+last_reviewed: '2026-09-23'
+review_interval_days: 90
 ---
-
-
 # RR-007 Product Completeness / Quality Gates
 
 **RR item:** RR-007  

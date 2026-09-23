@@ -1,19 +1,24 @@
 ---
 title: "AI Safety Release Evidence"
-status: "current-evidence"
+status: archived
 owner: "ai-safety"
 reviewers: ["ai-safety", "curriculum", "privacy"]
 audience: "safety-reviewer"
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-06-24"
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage5-check"
-code_anchors: "[app/services, docs/ai]"
+last_reviewed: '2026-09-23'
+review_interval_days: null
+evidence_command: null
+code_anchors: "[app/services, docs/ai/README.md]"
+archived_at: '2026-09-23'
 ---
-
 # AI Safety Release Evidence
+> [!NOTE]
+> **Status: ARCHIVED — 2026-09-23**
+> Historical milestone evidence, review audit, or point-in-time record; retained for audit lineage.
+
+
 
 This index links the LLM gateway, PII redaction/sweeps, prompt contracts, output
 schema validation, provider fallback, remediation safety, and refusal fixtures.

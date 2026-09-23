@@ -1,19 +1,24 @@
 ---
 title: "V2 Pen-Test Checklist"
-status: active
+status: archived
 owner: security
 reviewers: [security, engineering, privacy]
 audience: security-reviewer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-02
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage4-check"
+last_reviewed: '2026-09-23'
+review_interval_days: null
+evidence_command: null
 code_anchors: [docs/security/README.md, docs/security/threat_model_v2.md]
+archived_at: '2026-09-23'
 ---
-
 # V2 Pen-Test Checklist
+> [!NOTE]
+> **Status: ARCHIVED — 2026-09-23**
+> Historical milestone evidence, review audit, or point-in-time record; retained for audit lineage.
+
+
 
 **Status:** RR-006 required checklist  
 **Scope:** EduBoost V2 controlled-beta and release-readiness surfaces.  

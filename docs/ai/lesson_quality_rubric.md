@@ -1,18 +1,17 @@
 ---
 title: "Lesson Quality Rubric \u2014 Human Reviewer Checklist"
-status: "active"
+status: active
 owner: "ai-safety"
 reviewers: ["ai-safety", "curriculum", "privacy"]
 audience: "safety-reviewer"
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-06-24"
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage5-check"
-code_anchors: "[app/services, docs/ai]"
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
+code_anchors: "[app/services, docs/ai/README.md]"
 ---
-
 # Lesson Quality Rubric — Human Reviewer Checklist
 
 **EduBoost SA · AI-Generated Lesson Review · Grade 4 Mathematics (Launch Scope)**

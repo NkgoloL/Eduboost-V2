@@ -1,18 +1,24 @@
 ---
 title: Branch Protection Evidence Linkage
-status: active
+status: archived
 owner: release-management
 reviewers: [engineering, security]
 audience: reviewer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-02
-review_interval_days: 14
-evidence_command: make rr009-governance-process-check
+last_reviewed: '2026-09-23'
+review_interval_days: null
+evidence_command: null
 code_anchors: [.github/workflows]
+archived_at: '2026-09-23'
 ---
 # Branch Protection Evidence Linkage
+> [!NOTE]
+> **Status: ARCHIVED — 2026-09-23**
+> Historical milestone evidence, review audit, or point-in-time record; retained for audit lineage.
+
+
 
 RR-009 records where branch protection and repository-governance evidence is reflected in canonical release documentation.
 

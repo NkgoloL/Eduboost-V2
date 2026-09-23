@@ -1,19 +1,24 @@
 ---
 title: "PR-002R Evidence Check"
-status: "current-evidence"
+status: archived
 owner: "quality"
 reviewers: ["quality", "engineering", "release-management"]
 audience: "quality-reviewer"
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-06-24"
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage5-check"
+last_reviewed: '2026-09-23'
+review_interval_days: null
+evidence_command: null
 code_anchors: "[tests, pytest.ini, Makefile]"
+archived_at: '2026-09-23'
 ---
-
 # PR-002R Evidence Check
+> [!NOTE]
+> **Status: ARCHIVED — 2026-09-23**
+> Historical milestone evidence, review audit, or point-in-time record; retained for audit lineage.
+
+
 
 ## Purpose
 

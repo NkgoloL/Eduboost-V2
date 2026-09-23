@@ -7,12 +7,11 @@ audience: engineering
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-22
-review_interval_days: 30
+last_reviewed: '2026-09-23'
+review_interval_days: 90
 evidence_command: make docs-housekeeping-check
 code_anchors: [scripts/maintenance, Makefile, docs/generated]
 ---
-
 # Stage 2 Documentation Housekeeping
 
 Stage 2 turns the Stage 1 documentation governance scaffolding into an executable ratchet.

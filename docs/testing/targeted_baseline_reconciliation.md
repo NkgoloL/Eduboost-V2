@@ -1,18 +1,17 @@
 ---
 title: "Execution-7 Targeted Baseline Reconciliation"
-status: "active"
+status: active
 owner: "quality"
 reviewers: ["quality", "engineering"]
 audience: "developer"
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-06-24"
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage5-check"
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
 code_anchors: "[tests, pytest.ini, Makefile]"
 ---
-
 # Execution-7 Targeted Baseline Reconciliation
 
 This remediation slice addresses the deterministic root causes isolated by the

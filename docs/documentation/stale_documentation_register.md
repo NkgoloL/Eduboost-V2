@@ -7,12 +7,11 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-22
-review_interval_days: 30
-evidence_command: python3 scripts/maintenance/audit_documentation_inventory.py --root . --out-json docs/generated/documentation_inventory.json --out-csv docs/generated/documentation_inventory.csv --out-findings docs/generated/documentation_findings.csv
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
 code_anchors: [docs/generated/documentation_findings.csv]
 ---
-
 # Stale Documentation Register
 
 This register is the human triage companion to the generated documentation inventory.

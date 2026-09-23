@@ -7,9 +7,9 @@ audience: compliance-reviewer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-23
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage4-check"
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
 code_anchors: [docs/compliance/README.md]
 ---
 # PR-004 POPIA consent/data-rights/audit implementation summary

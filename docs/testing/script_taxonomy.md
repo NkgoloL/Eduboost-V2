@@ -1,18 +1,17 @@
 ---
 title: "PRD-11.2R Script Taxonomy and Functional Overhaul"
-status: "active"
+status: active
 owner: "quality"
 reviewers: ["quality", "engineering"]
 audience: "developer"
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-06-24"
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage5-check"
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
 code_anchors: "[tests, pytest.ini, Makefile]"
 ---
-
 # PRD-11.2R Script Taxonomy and Functional Overhaul
 
 PRD-11.2R groups repository scripts by both evidence domain and functional role so that scripts are no longer treated as interchangeable helpers.

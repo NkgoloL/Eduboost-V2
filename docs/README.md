@@ -7,12 +7,11 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-07
-review_interval_days: 30
-evidence_command: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd001_canonical_current_state_documentation_refresh.py --json
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
 code_anchors: [docs/current_state.md, docs/roadmap/production_readiness/production_readiness_register.json]
 ---
-
 # EduBoost Documentation Index
 
 This directory contains the curated documentation for EduBoost V2.

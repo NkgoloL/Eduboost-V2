@@ -7,12 +7,11 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-03
-review_interval_days: 30
-evidence_command: make rr011-live-billing-provider-check
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
 code_anchors: [docs/billing, scripts/roadmap_reconciliation/verify_rr011_live_billing_provider_integration.py]
 ---
-
 # RR-011 Live Billing Provider Integration
 
 RR-011 clears the `Live billing provider integration` item from the reconciled outstanding-work register.

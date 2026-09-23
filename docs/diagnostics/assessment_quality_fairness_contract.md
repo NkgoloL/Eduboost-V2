@@ -1,18 +1,17 @@
 ---
 title: "Assessment Quality and Fairness Contract"
-status: "active"
+status: active
 owner: "diagnostics"
 reviewers: ["diagnostics", "learning-science", "backend"]
 audience: "developer"
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-06-24"
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage5-check"
-code_anchors: "[app/modules/diagnostics, docs/diagnostics]"
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
+code_anchors: "[app/modules/diagnostics, docs/diagnostics/README.md]"
 ---
-
 # Assessment Quality and Fairness Contract
 
 ## Purpose

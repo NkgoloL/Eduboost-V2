@@ -7,12 +7,11 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-23
-review_interval_days: 30
-evidence_command: make docs-housekeeping-stage4-check
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
 code_anchors: [scripts/maintenance/check_doc_stage4_strict_scope.py, docs/documentation/stage_4_strict_scope.json]
 ---
-
 # Stage 4 Documentation Deep Housekeeping
 
 Stage 4 expands strict documentation enforcement from the Stage 3 governance/ADR scope into the first active product and engineering documentation areas.

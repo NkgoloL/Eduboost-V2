@@ -7,12 +7,11 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-02
-review_interval_days: 30
-evidence_command: make rr010-beta-outcome-check
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
 code_anchors: [docs/beta_outcomes, scripts/roadmap_reconciliation/verify_rr010_beta_outcome_reporting.py]
 ---
-
 # RR-010 Beta Outcome Reporting Policy
 
 RR-010 records the controlled beta outcome report required by the reconciled roadmap before any public beta or production-release discussion.

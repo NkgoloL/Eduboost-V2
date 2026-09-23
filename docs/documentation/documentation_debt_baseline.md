@@ -7,12 +7,11 @@ audience: engineering
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-22
-review_interval_days: 30
+last_reviewed: '2026-09-23'
+review_interval_days: 90
 evidence_command: make docs-housekeeping-check
 code_anchors: [docs/documentation/housekeeping_ratchet_baseline.json, docs/generated/documentation_inventory.json]
 ---
-
 # Documentation Debt Baseline
 
 EduBoost Stage 2 does not claim the documentation corpus is clean. It records the known debt and prevents regression.

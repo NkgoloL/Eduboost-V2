@@ -1,15 +1,19 @@
 ---
 title: "RR-007 Accessibility Audit Plan"
-status: active
+status: archived
 owner: engineering
 audience: developer
 source_of_truth: false
-last_reviewed: 2026-07-02
-review_interval_days: 60
+last_reviewed: '2026-09-23'
+review_interval_days: null
+archived_at: '2026-09-23'
 ---
-
-
 # RR-007 Accessibility Audit Plan
+> [!NOTE]
+> **Status: ARCHIVED — 2026-09-23**
+> Historical milestone evidence, review audit, or point-in-time record; retained for audit lineage.
+
+
 
 Accessibility audit planned: true
 

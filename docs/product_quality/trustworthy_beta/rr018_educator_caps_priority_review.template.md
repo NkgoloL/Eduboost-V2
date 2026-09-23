@@ -4,8 +4,8 @@ status: active
 owner: product-quality
 audience: developer
 source_of_truth: false
-last_reviewed: 2026-07-05
-review_interval_days: 60
+last_reviewed: '2026-09-23'
+review_interval_days: 90
 ---
 # RR-018 Educator CAPS Priority Review
 

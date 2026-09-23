@@ -1,18 +1,17 @@
 ---
 title: "Documentation-defined Coverage Contract"
-status: "active"
+status: active
 owner: "quality"
 reviewers: ["quality", "engineering"]
 audience: "developer"
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-06-24"
-review_interval_days: 21
-evidence_command: "make docs-housekeeping-stage5-check"
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
 code_anchors: "[tests, pytest.ini, Makefile]"
 ---
-
 # Documentation-defined Coverage Contract
 
 PRD-11.3R aligns coverage with the PRD-11.1R test taxonomy and PRD-11.2R script taxonomy.

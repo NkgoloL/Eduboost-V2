@@ -7,12 +7,11 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-07
-review_interval_days: 30
-evidence_command: PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_prd001_canonical_current_state_documentation_refresh.py --json
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
 code_anchors: [docs/current_state.md, README.md, docs/README.md, docs/roadmap/README.md, docs/architecture/README.md]
 ---
-
 # PRD-0.1 — Canonical Current-State Documentation Refresh
 
 ## Purpose

@@ -7,12 +7,11 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-03
-review_interval_days: 60
-evidence_command: "PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr014_public_beta_expansion.py --json"
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
 code_anchors: [docs/public_beta]
 ---
-
 # RR-014 Public Beta Launch Boundary Template
 
 Public beta launch boundary recorded: false

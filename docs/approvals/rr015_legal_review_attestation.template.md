@@ -7,11 +7,10 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-04
-review_interval_days: 60
+last_reviewed: '2026-09-23'
+review_interval_days: 90
 code_anchors: [docs/approvals]
 ---
-
 # RR-015 Legal Review Attestation Template
 
 Legal review approved: <true|false>

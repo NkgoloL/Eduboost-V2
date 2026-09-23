@@ -7,9 +7,9 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-02
-review_interval_days: 30
-evidence_command: make rr009-governance-process-check
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
 code_anchors: [docs/current_state.md, docs/adr/README.md, docs/release/current/README.md]
 ---
 # RR-009 Governance Process Reconciliation

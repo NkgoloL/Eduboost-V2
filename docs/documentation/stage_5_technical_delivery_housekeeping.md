@@ -7,12 +7,11 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-24
-review_interval_days: 30
-evidence_command: "make docs-housekeeping-stage5-check"
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
 code_anchors: [docs/documentation/stage_5_strict_scope.json, scripts/maintenance/check_doc_stage5_strict_scope.py]
 ---
-
 # Stage 5 Technical Delivery and Learning-Engine Documentation Housekeeping
 
 Stage 5 expands strict documentation housekeeping beyond the Stage 4 canonical architecture/product/API/compliance/security tranche.

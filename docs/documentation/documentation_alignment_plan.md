@@ -7,12 +7,11 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-09-03
-review_interval_days: 14
+last_reviewed: '2026-09-23'
+review_interval_days: 90
 evidence_command: make docs-housekeeping-check
 code_anchors: [docs/current_state.md, docs/documentation/source_of_truth.yml, docs/roadmap/production_readiness/prd11_production_release_register.json, docs/roadmap/production_readiness/production_readiness_register.json]
 ---
-
 # EduBoost Documentation Alignment Plan
 
 ## Purpose
