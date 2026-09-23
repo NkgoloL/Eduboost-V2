@@ -4,7 +4,6 @@ status: authority
 owner: operations
 audience: developer, operator
 ---
-
 # RR-008 Operational Readiness Policy
 
 **RR item:** RR-008

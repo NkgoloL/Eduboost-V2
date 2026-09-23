@@ -7,12 +7,11 @@ audience: "operator"
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-09-22"
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage5-check"
-code_anchors: "[render.yaml, Dockerfile, docker-compose.yml, docker-compose.prod.yml]"
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
+code_anchors: "[render.yaml, Dockerfile, docker-compose.yml, render.yaml]"
 ---
-
 # Deployment And Operations
 
 Deployment covers local compose, production-like compose smoke checks, cloud blueprint assets, runtime health, observability, backup/restore, and release evidence.

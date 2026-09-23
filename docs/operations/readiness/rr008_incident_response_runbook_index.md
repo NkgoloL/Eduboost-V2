@@ -3,7 +3,6 @@ title: "RR-008 Incident Response Runbook Index"
 status: authority
 owner: operations
 ---
-
 # RR-008 Incident Response Runbook Index
 
 Incident response runbook index recorded: true

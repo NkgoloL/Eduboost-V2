@@ -7,12 +7,11 @@ audience: operator
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-09-13
+last_reviewed: '2026-09-23'
 review_interval_days: 90
-evidence_command: make runtime-check
+evidence_command: make docs-housekeeping-check
 code_anchors: [app/api_v2.py, docker-compose.yml]
 ---
-
 # EduBoost V2 End-to-End System Startup Guide
 
 **Last Updated:** 2026-06-05  

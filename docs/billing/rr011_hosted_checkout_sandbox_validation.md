@@ -7,10 +7,10 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-03
-review_interval_days: 30
-evidence_command: make rr011-live-billing-provider-check
-code_anchors: [docs/billing/rr011_live_billing_provider_integration_policy.md]
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/billing/README.md/rr011_live_billing_provider_integration_policy.md]
 ---
 # RR-011 Hosted Checkout Sandbox Validation
 

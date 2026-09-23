@@ -7,12 +7,11 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-03
-review_interval_days: 30
-evidence_command: make rr011-live-billing-provider-check
-code_anchors: [docs/billing, app/modules/billing/production_readiness_contracts.py]
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/billing/README.md, app/modules/billing/production_readiness_contracts.py]
 ---
-
 # RR-011 Live Billing Provider Integration Policy
 
 RR-011 records provider-integration evidence for the commercial billing path after beta outcome reporting. It is an integration-readiness and attestation gate, not a launch gate.

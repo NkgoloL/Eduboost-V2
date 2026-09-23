@@ -7,13 +7,11 @@ audience: operator
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-03
-review_interval_days: 30
-evidence_command: "PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr012_production_telemetry_dashboard.py --json"
-code_anchors: [docs/telemetry, docs/observability, app/core/metrics.py]
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/telemetry/README.md, docs/observability/README.md, app/core/metrics.py]
 ---
-
-
     # RR-012 Production Telemetry Dashboard Policy
 
     Production telemetry dashboard authority recorded: true

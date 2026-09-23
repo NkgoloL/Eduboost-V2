@@ -7,12 +7,11 @@ audience: "operator"
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-06-24"
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage5-check"
-code_anchors: "[docs/runbooks, docs/operations]"
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
+code_anchors: "[docs/runbooks/README.md, docs/operations]"
 ---
-
 # Learner Tutor Operations Runbook
 
 ## Safety-first behaviour

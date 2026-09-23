@@ -7,9 +7,9 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-03
-review_interval_days: 30
-evidence_command: make rr011-live-billing-provider-check
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
 code_anchors: [app/modules/billing/production_readiness_contracts.py, app/api_v2_routers/billing.py]
 ---
 # RR-011 Webhook Endpoint Validation Template

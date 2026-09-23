@@ -3,7 +3,6 @@ title: "RR-008 Capacity Planning"
 status: authority
 owner: operations
 ---
-
 # RR-008 Capacity Planning
 
 Capacity planning recorded: true

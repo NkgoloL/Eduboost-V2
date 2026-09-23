@@ -7,13 +7,11 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-04
-review_interval_days: 60
-evidence_command: "PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr017_release_safety_controls.py --json"
-code_anchors: [docs/release_safety]
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: make docs-housekeeping-check
+code_anchors: [docs/release_safety/README.md]
 ---
-
-
 # RR-017 Prohibited Operations Register Template
 
 Prohibited operations register recorded: true

@@ -3,7 +3,6 @@ title: "RR-008 LLM Cost Model"
 status: authority
 owner: operations
 ---
-
 # RR-008 LLM Cost Model
 
 LLM cost model recorded: true

@@ -3,7 +3,6 @@ title: "RR-008 SLO Definitions"
 status: authority
 owner: operations
 ---
-
 # RR-008 SLO Definitions
 
 SLO definitions recorded: true

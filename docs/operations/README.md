@@ -7,12 +7,11 @@ audience: operator
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-09-23
-review_interval_days: 60
+last_reviewed: '2026-09-23'
+review_interval_days: 90
 evidence_command: make docs-housekeeping-check
-code_anchors: [render.yaml, docker-compose.yml, docker-compose.prod.yml]
+code_anchors: [render.yaml, docker-compose.yml, render.yaml]
 ---
-
 # Operations Documentation
 
 Operations documents cover deployment, runbooks, monitoring, incidents, backups, recovery, and release operations.

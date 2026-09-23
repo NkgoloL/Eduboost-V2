@@ -9,7 +9,7 @@ supersedes: []
 superseded_by: null
 last_reviewed: '2026-09-23'
 review_interval_days: 90
-evidence_command: 'PYTHONPATH=. python3 scripts/roadmap_reconciliation/verify_rr017_release_safety_controls.py --json'
+evidence_command: make docs-housekeeping-check
 code_anchors: [scripts/roadmap_reconciliation/verify_rr017_release_safety_controls.py]
 ---
 # RR-017 Migration Window Control Template

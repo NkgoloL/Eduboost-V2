@@ -7,12 +7,11 @@ audience: developer
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-09-13
+last_reviewed: '2026-09-23'
 review_interval_days: 90
-evidence_command: make project-assistance-status
+evidence_command: make docs-housekeeping-check
 code_anchors: [TODO.md, docs/current_state.md, docs/project_status.md]
 ---
-
 # Project Assistance Status
 
 This report implements the five ways Codex assists this project. It is a

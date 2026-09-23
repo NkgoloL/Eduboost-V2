@@ -3,7 +3,6 @@ title: "RR-008 Grafana Alert Linkage"
 status: authority
 owner: operations
 ---
-
 # RR-008 Grafana Alert Linkage
 
 Grafana alert linkage recorded: true
