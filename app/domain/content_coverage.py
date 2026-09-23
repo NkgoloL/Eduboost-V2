@@ -19,6 +19,8 @@ class CoverageTarget(BaseModel):
 
     scope_id: str = Field(min_length=1)
     caps_ref: str = Field(min_length=1)
+    topic: str | None = None
+    term: int | None = None
     targets: dict[str, int] = Field(default_factory=dict)
 
 
@@ -26,6 +28,9 @@ class CoverageTargetRegistryDocument(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     schema_version: str
+    description: str | None = None
+    total_targets: int | None = None
+    total_scopes: int | None = None
     targets: list[CoverageTarget]
 
 

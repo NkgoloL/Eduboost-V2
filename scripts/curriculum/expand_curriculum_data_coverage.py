@@ -31,23 +31,38 @@ def expand_coverage_targets() -> dict[str, Any]:
         if not tm_file.exists():
             continue
 
+        allowed_refs = set(scope.get("caps_refs", []))
+
         tm_data = json.loads(tm_file.read_text(encoding="utf-8"))
         for term_obj in tm_data.get("terms", []):
             term_num = term_obj.get("term")
             for topic_obj in term_obj.get("topics", []):
                 topic_ref = topic_obj.get("caps_ref")
                 topic_name = topic_obj.get("topic")
+                if allowed_refs and topic_ref not in allowed_refs:
+                    continue
+
+                if scope_id == "grade4_mathematics_en":
+                    scope_targets = {
+                        "diagnostic_items.approved": 40,
+                        "lessons.approved": 8,
+                        "assessment_blueprints.approved": 4,
+                        "study_plan_templates.approved": 3,
+                    }
+                else:
+                    scope_targets = {
+                        "diagnostic_items.approved": 20,
+                        "lessons.approved": 4,
+                        "assessment_blueprints.approved": 2,
+                        "study_plan_templates.approved": 2,
+                    }
+
                 targets.append({
                     "scope_id": scope_id,
                     "caps_ref": topic_ref,
                     "topic": topic_name,
                     "term": term_num,
-                    "targets": {
-                        "diagnostic_items.approved": 20,
-                        "lessons.approved": 4,
-                        "assessment_blueprints.approved": 2,
-                        "study_plan_templates.approved": 2,
-                    },
+                    "targets": scope_targets,
                 })
 
     target_artifact = {

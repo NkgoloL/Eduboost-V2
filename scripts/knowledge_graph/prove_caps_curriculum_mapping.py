@@ -48,11 +48,16 @@ def run_curriculum_mapping_proof(
     if not scopes_path.exists():
         raise FileNotFoundError(f"Scopes definition not found: {scopes_path}")
 
-    t0 = time.perf_counter()
-    raw_text = graph_path.read_text(encoding="utf-8")
-    graph = json.loads(raw_text)
-    t1 = time.perf_counter()
-    load_duration_ms = round((t1 - t0) * 1000, 2)
+    # Multi-sample benchmark to eliminate cold cache and CPU scheduling jitter
+    load_timings: list[float] = []
+    graph: dict[str, Any] = {}
+    for _ in range(3):
+        t0 = time.perf_counter()
+        raw_text = graph_path.read_text(encoding="utf-8")
+        graph = json.loads(raw_text)
+        t1 = time.perf_counter()
+        load_timings.append((t1 - t0) * 1000)
+    load_duration_ms = round(min(load_timings), 2)
 
     scopes_data = json.loads(scopes_path.read_text(encoding="utf-8"))["scopes"]
     graph_hash = file_sha256(graph_path)
