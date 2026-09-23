@@ -1,0 +1,131 @@
+{
+  "proof_code": "PROOF-CAPS-FULL-CURRICULUM-VERIFICATION-V2",
+  "verified": true,
+  "coverage_percentage": 100.0,
+  "versioning": {
+    "graph_version": "2.0.0",
+    "schema_version": "1.0",
+    "graph_sha256": "21d612d3f006134435904d2bbf943d98165ff769c1425d86a78962eecca294f2",
+    "generated_at": "2026-09-22T22:15:00.892277+00:00",
+    "is_valid_version": true
+  },
+  "performance_benchmark": {
+    "load_duration_ms": 40.18,
+    "threshold_ms": 250.0,
+    "passed": true
+  },
+  "graph_artifact": {
+    "path": "data/knowledge_graph/caps_graph_foundation/all_caps_curriculum_graph.json",
+    "sha256": "666bbbb56b18fa10d9ceeebaeeb96f54b5190ad6eea17d5e69fdc6ee61e55071",
+    "graph_id": "KG-CAPS-FULL-CURRICULUM-ALL-SCOPES",
+    "graph_version": "2.0.0"
+  },
+  "curriculum_scope_proof": {
+    "total_registered_scopes": 51,
+    "mapped_scopes": 51,
+    "missing_scopes": [],
+    "all_51_scopes_mapped": true
+  },
+  "curriculum_elements_proof": {
+    "terms": {
+      "expected": 204,
+      "mapped": 204,
+      "unmapped_count": 0
+    },
+    "topics": {
+      "expected": 823,
+      "mapped": 823,
+      "unmapped_count": 0
+    },
+    "subtopics": {
+      "expected": 840,
+      "mapped": 840,
+      "unmapped_count": 0
+    },
+    "assessment_standards": {
+      "expected": 2532,
+      "mapped": 2532,
+      "unmapped_count": 0
+    },
+    "misconceptions": {
+      "expected": 1690,
+      "mapped": 1690,
+      "unmapped_count": 0
+    },
+    "prerequisites": {
+      "expected": 795,
+      "mapped": 795,
+      "unmapped_count": 0
+    },
+    "cross_grade_progression_edges": {
+      "count": 42,
+      "verified_forward_flow": true
+    }
+  },
+  "mathematical_graph_properties": {
+    "total_nodes": 6152,
+    "total_edges": 6988,
+    "duplicate_node_keys": 0,
+    "orphan_edges_count": 0,
+    "is_directed_acyclic_graph": true,
+    "cycles_detected": 0,
+    "unapproved_nodes": 0,
+    "unapproved_edges": 0,
+    "provenance_mismatches": 0,
+    "boundary_isolation_verified": true
+  },
+  "source_topic_map_checksums": {
+    "caps_topic_map_grade4_maths.json": "6263dac7eab672bb7499047f3bc0b868baad486cb749143b9128b5543a61736f",
+    "grade1_coding_and_robotics_en.json": "b10d26868f876cd0a9bfcefe47e93e39a58caa0168112fe873e2ffdc488a37ec",
+    "grade1_home_language_en.json": "dfdb236b61d16add232b9558871766da944dd7f72c611d656a32a82a9d9428e1",
+    "grade1_life_skills_en.json": "b254ac5df0ec87f567dad8bfcf78d1450a9a8d79e2bf71c504825e6ca6fe18b4",
+    "grade1_mathematics_en.json": "978e15e3f115db016bc9797889f08f92c11e0e5ee9df86ba5d79022eecd81e7f",
+    "grade1_sepedi_first_additional_language_en.json": "49999c95adbf583301cd750fe6e48c801ae718433192b4d0dd8f8b2e5cc67e6d",
+    "grade2_coding_and_robotics_en.json": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+    "grade2_home_language_en.json": "4c29573a22a33be702b0c4f67c635354dc8d89511c88c24da45bf67af761f66c",
+    "grade2_life_skills_en.json": "4f2bc7d108bd56acf86283b779afea83f116ced5f37ba520f94ec2aac0cd41d2",
+    "grade2_mathematics_en.json": "6311c512f52e7d5df2dcc00157b2d59b084cba92d3a56ba1271393b71d6844ce",
+    "grade2_sepedi_first_additional_language_en.json": "0fd3405c67ca44ff90eb242f314b664bc2ab6bade27968312b44fbab0b4680b0",
+    "grade3_coding_and_robotics_en.json": "ec76c017a6649d8222a80160a3c72d26b4402a85cba02c33e0462df3c797c541",
+    "grade3_home_language_en.json": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+    "grade3_life_skills_en.json": "504cec01711a0e0559fc940cc0d0026be5a0e05883bfde28ae28847e964ba409",
+    "grade3_mathematics_en.json": "f094ec404f11d6a41fe2d21a3d41c1de52edbdd1ffcbfb16ce0349d00c1c5401",
+    "grade3_sepedi_first_additional_language_en.json": "433dcdebe7bc6d5ff2d8a684be0b3eb7ef364c0db83688cc026a71e6c0973e35",
+    "grade4_coding_and_robotics_en.json": "d81c8d6c0f1eab602f12dba508efdf03b139e8e3378d5f0b837f31723727f90b",
+    "grade4_home_language_en.json": "c6e3711231b665d6397f334adae91c593b2ddba233d5336984f1e28f8364759f",
+    "grade4_life_skills_en.json": "3a3b17b6b4cc3e0104a748b22e1e1a72521ca7f58e88b3626f826521abac3fb4",
+    "grade4_natural_sciences_and_technology_en.json": "5aaadd31ed927153856aeba6d4c9748b904193498c6c07e9cd597ca5aada65d1",
+    "grade4_sepedi_first_additional_language_en.json": "3eaf83c4a0ef1b670fb7aded41dbfbd07304ba25b8eee7ceb16c0118960acb5c",
+    "grade4_social_sciences_en.json": "2f92da38ca5d0708287d8ef289c8efa450f0729ebc4573a2329345dda5e83d68",
+    "grade5_coding_and_robotics_en.json": "fe6b9e306aeb7544d030557f45dca012587d0a82b7f478a769895921d1915236",
+    "grade5_home_language_en.json": "f5c0c3c52ad04c9b63251be7f213c40befb67fa95a0b811c73c3f6135f1d475a",
+    "grade5_life_skills_en.json": "b3578c820b0f0629b823e8ac99f588e94d7a32fef203e18e4e4d7bbc835f3923",
+    "grade5_mathematics_en.json": "faf65611b0faabd0a22e0cd0b62bdede6fd939e82acb68309d46d2614d547d01",
+    "grade5_natural_sciences_and_technology_en.json": "78e554e8c1fb4348616e3b2b664419b53744c2937c3c49d6216d59bef66b1fb1",
+    "grade5_sepedi_first_additional_language_en.json": "8332b6db150cd0510028638f64f70aeaa613eb440796792b4911b6fcdaeef0af",
+    "grade5_social_sciences_en.json": "485a525e8045747cb6cb8ee9aa98888fd38266b46d4ab3f9b5a72f2823eb34d5",
+    "grade6_coding_and_robotics_en.json": "0fce307e26a56b95b16b28aba92948a03926db5692601aeda359c2999dd02267",
+    "grade6_home_language_en.json": "fc340d39f14a5c0dde5c915f82c35149e45c586e9c3309748271e6891cc89c04",
+    "grade6_life_skills_en.json": "0435830759c60af7489b47c2c55f86347353cbe280b71c58517377f43d92368b",
+    "grade6_mathematics_en.json": "5b6cc2768d788c76b1ec1aa47fd3a159c3d7e4c5934a224f650ef05e3bf6f946",
+    "grade6_natural_sciences_and_technology_en.json": "d3278563a85683772ca9354ceab3b6aad936a2ebfb48f2c395eb8870e3a10ad1",
+    "grade6_sepedi_first_additional_language_en.json": "a8cab19cfe80271f98875235d5f77f8408aa69f60f7848d97f4629b7f25b0f13",
+    "grade6_social_sciences_en.json": "3ae70ce939504395d8fa8ed4ac8c276c50c6259b66afd2cb68f063c0c0790505",
+    "grade7_coding_and_robotics_en.json": "761f5e8b150cecf809d89d1f1590624341954b139220d72a3f393e7e8a3f75ca",
+    "grade7_creative_arts_en.json": "96be46ff6f1cdb979e1821be91997830b0f7cf2d91cfdc546062396561de9534",
+    "grade7_economic_management_sciences_en.json": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+    "grade7_home_language_en.json": "ae832a7fc5d0bce99e9b41876ee0824c7350c83d6c5a57ca29236c2757434ee8",
+    "grade7_life_orientation_en.json": "14806316af8d4d269fd4ed9738ffd8631eedea5ee054cfc0aedb9f982fa17f93",
+    "grade7_mathematics_en.json": "e9e04c48a820443c323465e99c5e50e0bb2895a0c5e8e3e7ce2fd3b554db7dd2",
+    "grade7_natural_sciences_en.json": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+    "grade7_sepedi_first_additional_language_en.json": "adf19a5502c8e64e27fe305f94ee3e12fce44f11671923d8d0f4878879c18d81",
+    "grade7_social_sciences_en.json": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+    "grade7_technology_en.json": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+    "grader_coding_and_robotics_en.json": "67320d7cab4d45df2dfa91f446a9ddbfef5e63b906be80c52cd4d29ec5a6da43",
+    "grader_home_language_en.json": "c016ce330bf708566da1a0175ae62ffe3c81f8e5c511b6fe88e596284859aacd",
+    "grader_life_skills_en.json": "5cb39438d260c4139d8f730e0a7c1bbbe83fd4b0c00e6e9c1a3e6fb481368a1b",
+    "grader_mathematics_en.json": "e30bebc9208c25f8a12adb110c4c23dcf182a526813e8718b3ed1df68407a0fe",
+    "grader_sepedi_first_additional_language_en.json": "40653c22d2b4ae62dd69fa7f8e3c3fd3e4623cd6367eed5518c6c2a5e04c4ac0"
+  },
+  "defects": []
+}

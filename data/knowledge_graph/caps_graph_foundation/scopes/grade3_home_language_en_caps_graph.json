@@ -1,0 +1,3694 @@
+{
+  "graph_id": "KG-CAPS-GRAPH-GRADE-3-HOME-LANGUAGE",
+  "graph_version": "kg1-caps-graph-foundation-v1",
+  "status": "caps_graph_foundation_generated",
+  "scope": {
+    "curriculum": "CAPS",
+    "grade": 3,
+    "subject": "home language",
+    "language": "en"
+  },
+  "source": {
+    "source_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/data/caps/topic_maps/grade3_home_language_en.json",
+    "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+    "source_ref": "Official DBE CAPS source document linked in source_documents manifest.",
+    "schema_version": "1.0.0"
+  },
+  "review": {
+    "node_review_status": "approved",
+    "edge_review_status": "approved",
+    "runtime_authority": "read_model_only"
+  },
+  "counts": {
+    "terms": 4,
+    "topics": 16,
+    "subtopics": 16,
+    "assessment_statements": 48,
+    "misconceptions": 32,
+    "prerequisite_edges": 15,
+    "nodes": 119,
+    "edges": 133
+  },
+  "nodes": [
+    {
+      "node_id": "kgn_a831629c1c6ec187f1fd78b6",
+      "node_key": "caps:assessment_statement:3.HL.1.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Engage with listening and speaking tasks appropriate to the grade and language level.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.1.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_464149d87cce1118d141735e",
+      "node_key": "caps:assessment_statement:3.HL.1.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use vocabulary, comprehension strategies and conventions from the CAPS source document.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.1.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_0c8b3295d4a9b8d2dd0c9e35",
+      "node_key": "caps:assessment_statement:3.HL.1.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Produce oral, written or visual responses with increasing accuracy and confidence.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.1.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_2e2ccb66f8ce1453473ca5d2",
+      "node_key": "caps:assessment_statement:3.HL.1.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Engage with reading and viewing tasks appropriate to the grade and language level.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.2.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_1de063cff93d0bd2fee0eeec",
+      "node_key": "caps:assessment_statement:3.HL.1.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use vocabulary, comprehension strategies and conventions from the CAPS source document.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.2.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_349de3e04e8c30343b38a5bd",
+      "node_key": "caps:assessment_statement:3.HL.1.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Produce oral, written or visual responses with increasing accuracy and confidence.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.2.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_52e5041ade9843777e494807",
+      "node_key": "caps:assessment_statement:3.HL.1.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Engage with writing and presenting tasks appropriate to the grade and language level.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.3.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_3951dbd6328aa8f8cbfde419",
+      "node_key": "caps:assessment_statement:3.HL.1.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use vocabulary, comprehension strategies and conventions from the CAPS source document.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.3.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_a4d7d086997dbb2cc4158257",
+      "node_key": "caps:assessment_statement:3.HL.1.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Produce oral, written or visual responses with increasing accuracy and confidence.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.3.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_201d8d76d2a67f07dca38fb9",
+      "node_key": "caps:assessment_statement:3.HL.1.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Engage with language structures and conventions tasks appropriate to the grade and language level.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.4.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_cf041d62875d0e76bc713ab9",
+      "node_key": "caps:assessment_statement:3.HL.1.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use vocabulary, comprehension strategies and conventions from the CAPS source document.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.4.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_c210da636eb84ce62bf4391a",
+      "node_key": "caps:assessment_statement:3.HL.1.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Produce oral, written or visual responses with increasing accuracy and confidence.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.4.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_bd66f3221c628bfe7950251e",
+      "node_key": "caps:assessment_statement:3.HL.2.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Engage with listening and speaking tasks appropriate to the grade and language level.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.1.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_7e611fcc1b41dc16c743d99f",
+      "node_key": "caps:assessment_statement:3.HL.2.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use vocabulary, comprehension strategies and conventions from the CAPS source document.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.1.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_eeb9c23221143f6d1e7eb1b3",
+      "node_key": "caps:assessment_statement:3.HL.2.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Produce oral, written or visual responses with increasing accuracy and confidence.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.1.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_d6651896bf4f3186bcde13a7",
+      "node_key": "caps:assessment_statement:3.HL.2.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Engage with reading and viewing tasks appropriate to the grade and language level.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.2.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_a20758723b9fafb4020554d4",
+      "node_key": "caps:assessment_statement:3.HL.2.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use vocabulary, comprehension strategies and conventions from the CAPS source document.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.2.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_e231f9f65a2e11734ace973e",
+      "node_key": "caps:assessment_statement:3.HL.2.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Produce oral, written or visual responses with increasing accuracy and confidence.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.2.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_1101d757a7a3100771fb5abc",
+      "node_key": "caps:assessment_statement:3.HL.2.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Engage with writing and presenting tasks appropriate to the grade and language level.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.3.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_d3e7946f865a8ce792f97a8b",
+      "node_key": "caps:assessment_statement:3.HL.2.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use vocabulary, comprehension strategies and conventions from the CAPS source document.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.3.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_2a5c60cadd30d8678e68702b",
+      "node_key": "caps:assessment_statement:3.HL.2.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Produce oral, written or visual responses with increasing accuracy and confidence.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.3.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_0a08a51ba7f0e225e8213992",
+      "node_key": "caps:assessment_statement:3.HL.2.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Engage with language structures and conventions tasks appropriate to the grade and language level.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.4.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_1b7863a4001b86c5bdad7338",
+      "node_key": "caps:assessment_statement:3.HL.2.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use vocabulary, comprehension strategies and conventions from the CAPS source document.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.4.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_fd0a86d73d93f4f1aa4a76b1",
+      "node_key": "caps:assessment_statement:3.HL.2.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Produce oral, written or visual responses with increasing accuracy and confidence.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.4.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_f732b17926939c52442f3e0f",
+      "node_key": "caps:assessment_statement:3.HL.3.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Engage with listening and speaking tasks appropriate to the grade and language level.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.1.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_c0b3accff2cc87cc382a65fe",
+      "node_key": "caps:assessment_statement:3.HL.3.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use vocabulary, comprehension strategies and conventions from the CAPS source document.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.1.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_cf068d953b93bb690b23951a",
+      "node_key": "caps:assessment_statement:3.HL.3.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Produce oral, written or visual responses with increasing accuracy and confidence.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.1.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_f59bf56cc4a9fe7e8d6d9ae7",
+      "node_key": "caps:assessment_statement:3.HL.3.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Engage with reading and viewing tasks appropriate to the grade and language level.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.2.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_bd6cc7274bce01e631d03ee4",
+      "node_key": "caps:assessment_statement:3.HL.3.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use vocabulary, comprehension strategies and conventions from the CAPS source document.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.2.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_893c472d9618e2f506197b6a",
+      "node_key": "caps:assessment_statement:3.HL.3.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Produce oral, written or visual responses with increasing accuracy and confidence.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.2.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_821ab1d624ea71126560fb09",
+      "node_key": "caps:assessment_statement:3.HL.3.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Engage with writing and presenting tasks appropriate to the grade and language level.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.3.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_3b460949f3edb42296053719",
+      "node_key": "caps:assessment_statement:3.HL.3.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use vocabulary, comprehension strategies and conventions from the CAPS source document.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.3.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_5411aeed5e09059af546b5be",
+      "node_key": "caps:assessment_statement:3.HL.3.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Produce oral, written or visual responses with increasing accuracy and confidence.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.3.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_a3a168031ed1ecea5b543a6c",
+      "node_key": "caps:assessment_statement:3.HL.3.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Engage with language structures and conventions tasks appropriate to the grade and language level.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.4.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_cf858ca3737071c5a885293a",
+      "node_key": "caps:assessment_statement:3.HL.3.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use vocabulary, comprehension strategies and conventions from the CAPS source document.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.4.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_57bce69a4f979dec98550886",
+      "node_key": "caps:assessment_statement:3.HL.3.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Produce oral, written or visual responses with increasing accuracy and confidence.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.4.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_e635f3daa773fb79123590ff",
+      "node_key": "caps:assessment_statement:3.HL.4.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Engage with listening and speaking tasks appropriate to the grade and language level.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.1.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_555f3eca7e17f2c2f7b45543",
+      "node_key": "caps:assessment_statement:3.HL.4.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use vocabulary, comprehension strategies and conventions from the CAPS source document.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.1.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_afd8c390179f53f94a313761",
+      "node_key": "caps:assessment_statement:3.HL.4.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Produce oral, written or visual responses with increasing accuracy and confidence.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.1.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_1e0af3d966ea49a1bd60cc40",
+      "node_key": "caps:assessment_statement:3.HL.4.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Engage with reading and viewing tasks appropriate to the grade and language level.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.2.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_a350bb5b9071e771fa856ed5",
+      "node_key": "caps:assessment_statement:3.HL.4.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use vocabulary, comprehension strategies and conventions from the CAPS source document.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.2.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_48fc8e7794b7b74365610efb",
+      "node_key": "caps:assessment_statement:3.HL.4.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Produce oral, written or visual responses with increasing accuracy and confidence.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.2.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_701727ab3667bf07f1a335fd",
+      "node_key": "caps:assessment_statement:3.HL.4.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Engage with writing and presenting tasks appropriate to the grade and language level.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.3.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_3196635e1f6af34ba04a7e18",
+      "node_key": "caps:assessment_statement:3.HL.4.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use vocabulary, comprehension strategies and conventions from the CAPS source document.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.3.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_790d359e181efc0aed9b42f3",
+      "node_key": "caps:assessment_statement:3.HL.4.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Produce oral, written or visual responses with increasing accuracy and confidence.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.3.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_c2102d69b6fb3d2b972bbd72",
+      "node_key": "caps:assessment_statement:3.HL.4.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Engage with language structures and conventions tasks appropriate to the grade and language level.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.4.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_9483007d93a3f0a81efdb580",
+      "node_key": "caps:assessment_statement:3.HL.4.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use vocabulary, comprehension strategies and conventions from the CAPS source document.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.4.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_af2b53b40d5759f89bccb6f9",
+      "node_key": "caps:assessment_statement:3.HL.4.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Produce oral, written or visual responses with increasing accuracy and confidence.",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.4.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_c8a2e47bc28572931f00d59e",
+      "node_key": "caps:curriculum",
+      "node_type": "curriculum",
+      "label": "CAPS",
+      "description": "South African CAPS curriculum",
+      "grade": null,
+      "subject": null,
+      "term": null,
+      "source_ref": "CAPS",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "source_file": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/data/caps/topic_maps/grade3_home_language_en.json"
+      }
+    },
+    {
+      "node_id": "kgn_3e4ae07bd442f82e0a703229",
+      "node_key": "caps:grade:3",
+      "node_type": "grade",
+      "label": "Grade 3",
+      "description": "CAPS Grade 3",
+      "grade": 3,
+      "subject": null,
+      "term": null,
+      "source_ref": "grade:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "node_id": "kgn_e3df26763b3a64c86e779645",
+      "node_key": "caps:grade:3:subject:home language",
+      "node_type": "subject",
+      "label": "Home Language",
+      "description": "CAPS Grade 3 Home Language",
+      "grade": 3,
+      "subject": "home language",
+      "term": null,
+      "source_ref": "grade:3:subject:HL",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subject_code": "HL"
+      }
+    },
+    {
+      "node_id": "kgn_0c2a144f867c416dc7a7967c",
+      "node_key": "caps:grade:3:subject:home language:term:1",
+      "node_type": "term",
+      "label": "Term 1",
+      "description": "Grade 3 Home Language Term 1",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "term:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_1eda5793980dbc40fbf21be1",
+      "node_key": "caps:grade:3:subject:home language:term:2",
+      "node_type": "term",
+      "label": "Term 2",
+      "description": "Grade 3 Home Language Term 2",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "term:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_7e56c0bcad4bb39b7ab1dd29",
+      "node_key": "caps:grade:3:subject:home language:term:3",
+      "node_type": "term",
+      "label": "Term 3",
+      "description": "Grade 3 Home Language Term 3",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "term:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_6b0e46fcc66f4937a30bcae5",
+      "node_key": "caps:grade:3:subject:home language:term:4",
+      "node_type": "term",
+      "label": "Term 4",
+      "description": "Grade 3 Home Language Term 4",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "term:4",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-8"
+      }
+    },
+    {
+      "node_id": "kgn_5226ccff097f4c64306a733a",
+      "node_key": "caps:misconception:3.HL.1.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.1.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_d6e67b2e859cb3ed79f32454",
+      "node_key": "caps:misconception:3.HL.1.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.1.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_8e8386348908d9e51d042daa",
+      "node_key": "caps:misconception:3.HL.1.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.2.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_4ddbaf837c88ad58ed3ac5d0",
+      "node_key": "caps:misconception:3.HL.1.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.2.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_43563e270b670f9477f53725",
+      "node_key": "caps:misconception:3.HL.1.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.3.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_f922e601c6ab9d1f8f5eeed6",
+      "node_key": "caps:misconception:3.HL.1.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.3.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_92dc565e57f7c8f4bb69b793",
+      "node_key": "caps:misconception:3.HL.1.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.4.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_70567f267de20054698e4821",
+      "node_key": "caps:misconception:3.HL.1.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.4.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_aa589ac9b7305209198db710",
+      "node_key": "caps:misconception:3.HL.2.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.1.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_eea471d2fa3aed58e2abb4a1",
+      "node_key": "caps:misconception:3.HL.2.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.1.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_70bf11db459c78d3c394b88d",
+      "node_key": "caps:misconception:3.HL.2.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.2.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_00c34cc8b619942d99f19bd7",
+      "node_key": "caps:misconception:3.HL.2.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.2.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_b8f481b317bf74f43632290f",
+      "node_key": "caps:misconception:3.HL.2.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.3.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_cb8e9f66b5850aafec9f1e73",
+      "node_key": "caps:misconception:3.HL.2.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.3.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_59819933a89b7de908ba6f3c",
+      "node_key": "caps:misconception:3.HL.2.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.4.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_d34cf953d2f04840ad2f7dac",
+      "node_key": "caps:misconception:3.HL.2.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.4.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_c27ff5bf1f4d818cd7f79a80",
+      "node_key": "caps:misconception:3.HL.3.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.1.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_6808549e3c6b0ae652bd4187",
+      "node_key": "caps:misconception:3.HL.3.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.1.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_bd18641f50dfac54905e177e",
+      "node_key": "caps:misconception:3.HL.3.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.2.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_19a04705f12c84d16526aab4",
+      "node_key": "caps:misconception:3.HL.3.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.2.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_1fb1f51e892ceb12a25ce4dd",
+      "node_key": "caps:misconception:3.HL.3.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.3.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_ec087ad2867f94b1776a4882",
+      "node_key": "caps:misconception:3.HL.3.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.3.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_a55e1ab9eda6f7a8d30845af",
+      "node_key": "caps:misconception:3.HL.3.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.4.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_0ea5e2a6ba4ff1d550976196",
+      "node_key": "caps:misconception:3.HL.3.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.4.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_bede87a944934c486e4c56e9",
+      "node_key": "caps:misconception:3.HL.4.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.1.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_0e6428013189fa98fc9d2e3b",
+      "node_key": "caps:misconception:3.HL.4.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.1.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_76477a629f3e42d8e1dddedb",
+      "node_key": "caps:misconception:3.HL.4.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.2.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_9df2d414f5b4e55633cda0ea",
+      "node_key": "caps:misconception:3.HL.4.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.2.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_6dcc10e97600dc30b1b42e5e",
+      "node_key": "caps:misconception:3.HL.4.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.3.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_8f2572be40d0ae04bcce7aed",
+      "node_key": "caps:misconception:3.HL.4.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.3.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_2c59d7790aaa6078e33297a1",
+      "node_key": "caps:misconception:3.HL.4.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.4.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_dda7cc63930e30bc5890e501",
+      "node_key": "caps:misconception:3.HL.4.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.4.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "3.HL.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_63572d64412c14f5a307d5b2",
+      "node_key": "caps:subtopic:3.HL.1.1.1",
+      "node_type": "subtopic",
+      "label": "Listening and speaking",
+      "description": "Listening and speaking",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.1.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_cd0013b36dac9eae2df6c315",
+      "node_key": "caps:subtopic:3.HL.1.2.1",
+      "node_type": "subtopic",
+      "label": "Reading and viewing",
+      "description": "Reading and viewing",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.2.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_0bd400728d2df548d413f43d",
+      "node_key": "caps:subtopic:3.HL.1.3.1",
+      "node_type": "subtopic",
+      "label": "Writing and presenting",
+      "description": "Writing and presenting",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.3.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_862758650bd23aa5ab52a790",
+      "node_key": "caps:subtopic:3.HL.1.4.1",
+      "node_type": "subtopic",
+      "label": "Language structures and conventions",
+      "description": "Language structures and conventions",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.4.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_e206cd1e42c772cd650fe096",
+      "node_key": "caps:subtopic:3.HL.2.1.1",
+      "node_type": "subtopic",
+      "label": "Listening and speaking",
+      "description": "Listening and speaking",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.1.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_02aa8f64392eae888e900585",
+      "node_key": "caps:subtopic:3.HL.2.2.1",
+      "node_type": "subtopic",
+      "label": "Reading and viewing",
+      "description": "Reading and viewing",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.2.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_f4a842e736f23f0635b6cb72",
+      "node_key": "caps:subtopic:3.HL.2.3.1",
+      "node_type": "subtopic",
+      "label": "Writing and presenting",
+      "description": "Writing and presenting",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.3.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_4ad3347b833cd6a3ac1cf90d",
+      "node_key": "caps:subtopic:3.HL.2.4.1",
+      "node_type": "subtopic",
+      "label": "Language structures and conventions",
+      "description": "Language structures and conventions",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.4.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_2b27a3d1507fe05bf5f15047",
+      "node_key": "caps:subtopic:3.HL.3.1.1",
+      "node_type": "subtopic",
+      "label": "Listening and speaking",
+      "description": "Listening and speaking",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.1.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_c34a307c4d1c8f5d64d11674",
+      "node_key": "caps:subtopic:3.HL.3.2.1",
+      "node_type": "subtopic",
+      "label": "Reading and viewing",
+      "description": "Reading and viewing",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.2.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_e014f0e92230089c1ef51642",
+      "node_key": "caps:subtopic:3.HL.3.3.1",
+      "node_type": "subtopic",
+      "label": "Writing and presenting",
+      "description": "Writing and presenting",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.3.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_57a00217808de611dca77133",
+      "node_key": "caps:subtopic:3.HL.3.4.1",
+      "node_type": "subtopic",
+      "label": "Language structures and conventions",
+      "description": "Language structures and conventions",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.4.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_4477decd925ef4b475e9ca63",
+      "node_key": "caps:subtopic:3.HL.4.1.1",
+      "node_type": "subtopic",
+      "label": "Listening and speaking",
+      "description": "Listening and speaking",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.1.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_2de40a9f924079fd57bd17d5",
+      "node_key": "caps:subtopic:3.HL.4.2.1",
+      "node_type": "subtopic",
+      "label": "Reading and viewing",
+      "description": "Reading and viewing",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.2.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_c189699bd797841fac4cb98e",
+      "node_key": "caps:subtopic:3.HL.4.3.1",
+      "node_type": "subtopic",
+      "label": "Writing and presenting",
+      "description": "Writing and presenting",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.3.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_8d6746c69e595fbf38229fb9",
+      "node_key": "caps:subtopic:3.HL.4.4.1",
+      "node_type": "subtopic",
+      "label": "Language structures and conventions",
+      "description": "Language structures and conventions",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.4.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_0b8b9775ef377d007d90bbfc",
+      "node_key": "caps:topic:3.HL.1.1",
+      "node_type": "topic",
+      "label": "Listening and speaking",
+      "description": "Listening and speaking",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_7d513f15ae3eee39d561960d",
+      "node_key": "caps:topic:3.HL.1.2",
+      "node_type": "topic",
+      "label": "Reading and viewing",
+      "description": "Reading and viewing",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_0f647703f16d625cc2813322",
+      "node_key": "caps:topic:3.HL.1.3",
+      "node_type": "topic",
+      "label": "Writing and presenting",
+      "description": "Writing and presenting",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_9565f87761bcfce182b05740",
+      "node_key": "caps:topic:3.HL.1.4",
+      "node_type": "topic",
+      "label": "Language structures and conventions",
+      "description": "Language structures and conventions",
+      "grade": 3,
+      "subject": "home language",
+      "term": 1,
+      "source_ref": "3.HL.1.4",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_3a54b665af0bba40c0354bea",
+      "node_key": "caps:topic:3.HL.2.1",
+      "node_type": "topic",
+      "label": "Listening and speaking",
+      "description": "Listening and speaking",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_c23f2e02b7a1ae29db6264c2",
+      "node_key": "caps:topic:3.HL.2.2",
+      "node_type": "topic",
+      "label": "Reading and viewing",
+      "description": "Reading and viewing",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_81770b5bf49d76f749b65f99",
+      "node_key": "caps:topic:3.HL.2.3",
+      "node_type": "topic",
+      "label": "Writing and presenting",
+      "description": "Writing and presenting",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_70e97a37f7822d394801628b",
+      "node_key": "caps:topic:3.HL.2.4",
+      "node_type": "topic",
+      "label": "Language structures and conventions",
+      "description": "Language structures and conventions",
+      "grade": 3,
+      "subject": "home language",
+      "term": 2,
+      "source_ref": "3.HL.2.4",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_7ad16d2b8bd2876fbd398484",
+      "node_key": "caps:topic:3.HL.3.1",
+      "node_type": "topic",
+      "label": "Listening and speaking",
+      "description": "Listening and speaking",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_14f57a60319a47642d2241b4",
+      "node_key": "caps:topic:3.HL.3.2",
+      "node_type": "topic",
+      "label": "Reading and viewing",
+      "description": "Reading and viewing",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_af90913a5eceed91a16eb8cc",
+      "node_key": "caps:topic:3.HL.3.3",
+      "node_type": "topic",
+      "label": "Writing and presenting",
+      "description": "Writing and presenting",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_31fdf1425c16ca918c294914",
+      "node_key": "caps:topic:3.HL.3.4",
+      "node_type": "topic",
+      "label": "Language structures and conventions",
+      "description": "Language structures and conventions",
+      "grade": 3,
+      "subject": "home language",
+      "term": 3,
+      "source_ref": "3.HL.3.4",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_20945d456e5f48584e1f113a",
+      "node_key": "caps:topic:3.HL.4.1",
+      "node_type": "topic",
+      "label": "Listening and speaking",
+      "description": "Listening and speaking",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_8842ab185e6ea775b63a2799",
+      "node_key": "caps:topic:3.HL.4.2",
+      "node_type": "topic",
+      "label": "Reading and viewing",
+      "description": "Reading and viewing",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_09b97e871ae5045842149c5c",
+      "node_key": "caps:topic:3.HL.4.3",
+      "node_type": "topic",
+      "label": "Writing and presenting",
+      "description": "Writing and presenting",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_40842d3e90e99e64035115c7",
+      "node_key": "caps:topic:3.HL.4.4",
+      "node_type": "topic",
+      "label": "Language structures and conventions",
+      "description": "Language structures and conventions",
+      "grade": 3,
+      "subject": "home language",
+      "term": 4,
+      "source_ref": "3.HL.4.4",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "kge_1a3d1f62172aaf3e88103ca4",
+      "source_node_key": "caps:curriculum",
+      "target_node_key": "caps:grade:3",
+      "edge_type": "contains",
+      "label": "CAPS contains grade",
+      "source_ref": "CAPS",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9dd696452908f504ac3df078",
+      "source_node_key": "caps:grade:3",
+      "target_node_key": "caps:grade:3:subject:home language",
+      "edge_type": "contains",
+      "label": "Grade contains subject",
+      "source_ref": "grade:3:subject:HL",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d29e6ca57ea1b71347063f1a",
+      "source_node_key": "caps:grade:3:subject:home language",
+      "target_node_key": "caps:grade:3:subject:home language:term:1",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_57730f652885cdb960583ecf",
+      "source_node_key": "caps:grade:3:subject:home language",
+      "target_node_key": "caps:grade:3:subject:home language:term:2",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_03b8ced3c6bc6626b1e23296",
+      "source_node_key": "caps:grade:3:subject:home language",
+      "target_node_key": "caps:grade:3:subject:home language:term:3",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a930de87bd1b77011e2e0730",
+      "source_node_key": "caps:grade:3:subject:home language",
+      "target_node_key": "caps:grade:3:subject:home language:term:4",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:4",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_592a65535a4cd31baba70d5c",
+      "source_node_key": "caps:grade:3:subject:home language:term:1",
+      "target_node_key": "caps:topic:3.HL.1.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "3.HL.1.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c04dc8a29490591f7615cc84",
+      "source_node_key": "caps:grade:3:subject:home language:term:1",
+      "target_node_key": "caps:topic:3.HL.1.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "3.HL.1.2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4fe74e1864aec0d604a59222",
+      "source_node_key": "caps:grade:3:subject:home language:term:1",
+      "target_node_key": "caps:topic:3.HL.1.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "3.HL.1.3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6916207db78872f56531f118",
+      "source_node_key": "caps:grade:3:subject:home language:term:1",
+      "target_node_key": "caps:topic:3.HL.1.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "3.HL.1.4",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7bbde961623535e843f238cd",
+      "source_node_key": "caps:grade:3:subject:home language:term:2",
+      "target_node_key": "caps:topic:3.HL.2.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "3.HL.2.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_222c82946a0694a3d790f8b5",
+      "source_node_key": "caps:grade:3:subject:home language:term:2",
+      "target_node_key": "caps:topic:3.HL.2.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "3.HL.2.2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_71e04a3a1feb31860cee8599",
+      "source_node_key": "caps:grade:3:subject:home language:term:2",
+      "target_node_key": "caps:topic:3.HL.2.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "3.HL.2.3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fc1813931b3b0ec8cc1ef0a8",
+      "source_node_key": "caps:grade:3:subject:home language:term:2",
+      "target_node_key": "caps:topic:3.HL.2.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "3.HL.2.4",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3c3ff1d25a766a40d5a518e3",
+      "source_node_key": "caps:grade:3:subject:home language:term:3",
+      "target_node_key": "caps:topic:3.HL.3.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "3.HL.3.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9f6c14f44779de5a23addb9c",
+      "source_node_key": "caps:grade:3:subject:home language:term:3",
+      "target_node_key": "caps:topic:3.HL.3.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "3.HL.3.2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2a7f4f4a0307812e545b1eab",
+      "source_node_key": "caps:grade:3:subject:home language:term:3",
+      "target_node_key": "caps:topic:3.HL.3.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "3.HL.3.3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0d6bb902e2254053ea4aaf1a",
+      "source_node_key": "caps:grade:3:subject:home language:term:3",
+      "target_node_key": "caps:topic:3.HL.3.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "3.HL.3.4",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1cc9eb7bcd757302fd1034ed",
+      "source_node_key": "caps:grade:3:subject:home language:term:4",
+      "target_node_key": "caps:topic:3.HL.4.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "3.HL.4.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8a35e192539dbe791c9996b5",
+      "source_node_key": "caps:grade:3:subject:home language:term:4",
+      "target_node_key": "caps:topic:3.HL.4.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "3.HL.4.2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b398acf1030689a7f248dbfd",
+      "source_node_key": "caps:grade:3:subject:home language:term:4",
+      "target_node_key": "caps:topic:3.HL.4.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "3.HL.4.3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_18c4af9483e387154d353ce4",
+      "source_node_key": "caps:grade:3:subject:home language:term:4",
+      "target_node_key": "caps:topic:3.HL.4.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "3.HL.4.4",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5cd9f5a45f97a617bd4fc13e",
+      "source_node_key": "caps:subtopic:3.HL.1.1.1",
+      "target_node_key": "caps:assessment_statement:3.HL.1.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.1.1.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6b326e17f53253737bb3ed9a",
+      "source_node_key": "caps:subtopic:3.HL.1.1.1",
+      "target_node_key": "caps:assessment_statement:3.HL.1.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.1.1.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6bbce7e685f3b38ff8dda618",
+      "source_node_key": "caps:subtopic:3.HL.1.1.1",
+      "target_node_key": "caps:assessment_statement:3.HL.1.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.1.1.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_28da1fd860619ddfee09107e",
+      "source_node_key": "caps:subtopic:3.HL.1.1.1",
+      "target_node_key": "caps:misconception:3.HL.1.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.1.1.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c5c63de729d3bced31ffac32",
+      "source_node_key": "caps:subtopic:3.HL.1.1.1",
+      "target_node_key": "caps:misconception:3.HL.1.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.1.1.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3f040a4215fef0f8b24d10a4",
+      "source_node_key": "caps:subtopic:3.HL.1.2.1",
+      "target_node_key": "caps:assessment_statement:3.HL.1.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.1.2.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_42edfe51a6027ecefc618f4b",
+      "source_node_key": "caps:subtopic:3.HL.1.2.1",
+      "target_node_key": "caps:assessment_statement:3.HL.1.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.1.2.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_32cd352ccb9e4db312bc04bb",
+      "source_node_key": "caps:subtopic:3.HL.1.2.1",
+      "target_node_key": "caps:assessment_statement:3.HL.1.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.1.2.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4b10e3bad64bc39fdaa52070",
+      "source_node_key": "caps:subtopic:3.HL.1.2.1",
+      "target_node_key": "caps:misconception:3.HL.1.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.1.2.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5f16ed306ee05871377c3a0b",
+      "source_node_key": "caps:subtopic:3.HL.1.2.1",
+      "target_node_key": "caps:misconception:3.HL.1.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.1.2.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0b4432b37c1d3ffe1ea87150",
+      "source_node_key": "caps:subtopic:3.HL.1.3.1",
+      "target_node_key": "caps:assessment_statement:3.HL.1.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.1.3.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_182cb1d318e98d18e51eaeb9",
+      "source_node_key": "caps:subtopic:3.HL.1.3.1",
+      "target_node_key": "caps:assessment_statement:3.HL.1.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.1.3.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5dd53e6b1680b0b4309420d5",
+      "source_node_key": "caps:subtopic:3.HL.1.3.1",
+      "target_node_key": "caps:assessment_statement:3.HL.1.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.1.3.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fe824ff356b986e7355453e4",
+      "source_node_key": "caps:subtopic:3.HL.1.3.1",
+      "target_node_key": "caps:misconception:3.HL.1.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.1.3.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d67cc71e64b0e12213bf597c",
+      "source_node_key": "caps:subtopic:3.HL.1.3.1",
+      "target_node_key": "caps:misconception:3.HL.1.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.1.3.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b5de271901951e0a29673ccd",
+      "source_node_key": "caps:subtopic:3.HL.1.4.1",
+      "target_node_key": "caps:assessment_statement:3.HL.1.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.1.4.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ac51b2a064ee8f1136f2bca6",
+      "source_node_key": "caps:subtopic:3.HL.1.4.1",
+      "target_node_key": "caps:assessment_statement:3.HL.1.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.1.4.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_191cb94099fd88f90714e410",
+      "source_node_key": "caps:subtopic:3.HL.1.4.1",
+      "target_node_key": "caps:assessment_statement:3.HL.1.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.1.4.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b02b46d058e78c6d4933cc5f",
+      "source_node_key": "caps:subtopic:3.HL.1.4.1",
+      "target_node_key": "caps:misconception:3.HL.1.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.1.4.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e5bc9e8cfb8c24eedc89bfa1",
+      "source_node_key": "caps:subtopic:3.HL.1.4.1",
+      "target_node_key": "caps:misconception:3.HL.1.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.1.4.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_022cd8cf71f0504179c3301d",
+      "source_node_key": "caps:subtopic:3.HL.2.1.1",
+      "target_node_key": "caps:assessment_statement:3.HL.2.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.2.1.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_260568f63db77204755fec84",
+      "source_node_key": "caps:subtopic:3.HL.2.1.1",
+      "target_node_key": "caps:assessment_statement:3.HL.2.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.2.1.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0619adcf3084b198e7c18008",
+      "source_node_key": "caps:subtopic:3.HL.2.1.1",
+      "target_node_key": "caps:assessment_statement:3.HL.2.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.2.1.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0dca22d0dcef213f231f59f1",
+      "source_node_key": "caps:subtopic:3.HL.2.1.1",
+      "target_node_key": "caps:misconception:3.HL.2.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.2.1.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_02206e7456519b6780d2106e",
+      "source_node_key": "caps:subtopic:3.HL.2.1.1",
+      "target_node_key": "caps:misconception:3.HL.2.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.2.1.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_464e0b1ac81b8c223c6ab45e",
+      "source_node_key": "caps:subtopic:3.HL.2.2.1",
+      "target_node_key": "caps:assessment_statement:3.HL.2.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.2.2.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_57b1fbc237ef2971e76be278",
+      "source_node_key": "caps:subtopic:3.HL.2.2.1",
+      "target_node_key": "caps:assessment_statement:3.HL.2.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.2.2.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_19c66741586b294006a5b4dc",
+      "source_node_key": "caps:subtopic:3.HL.2.2.1",
+      "target_node_key": "caps:assessment_statement:3.HL.2.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.2.2.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_35773e395fc96351d166056b",
+      "source_node_key": "caps:subtopic:3.HL.2.2.1",
+      "target_node_key": "caps:misconception:3.HL.2.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.2.2.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_932280d30027067036275265",
+      "source_node_key": "caps:subtopic:3.HL.2.2.1",
+      "target_node_key": "caps:misconception:3.HL.2.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.2.2.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5acee436aa1e404336361149",
+      "source_node_key": "caps:subtopic:3.HL.2.3.1",
+      "target_node_key": "caps:assessment_statement:3.HL.2.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.2.3.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2e794d962206b061a0728c93",
+      "source_node_key": "caps:subtopic:3.HL.2.3.1",
+      "target_node_key": "caps:assessment_statement:3.HL.2.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.2.3.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a83326963091888d352dca66",
+      "source_node_key": "caps:subtopic:3.HL.2.3.1",
+      "target_node_key": "caps:assessment_statement:3.HL.2.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.2.3.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_559a0ae4b6d34116c356f6ff",
+      "source_node_key": "caps:subtopic:3.HL.2.3.1",
+      "target_node_key": "caps:misconception:3.HL.2.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.2.3.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_41dfb8f70fade8cc8292cdf9",
+      "source_node_key": "caps:subtopic:3.HL.2.3.1",
+      "target_node_key": "caps:misconception:3.HL.2.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.2.3.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_653e6405f6efc2494a19a817",
+      "source_node_key": "caps:subtopic:3.HL.2.4.1",
+      "target_node_key": "caps:assessment_statement:3.HL.2.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.2.4.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9efdef88f9fa9cedce8d38bc",
+      "source_node_key": "caps:subtopic:3.HL.2.4.1",
+      "target_node_key": "caps:assessment_statement:3.HL.2.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.2.4.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0b0c032edfef82d9479ba7b1",
+      "source_node_key": "caps:subtopic:3.HL.2.4.1",
+      "target_node_key": "caps:assessment_statement:3.HL.2.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.2.4.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_705ebfe0fad006bb13f74c0c",
+      "source_node_key": "caps:subtopic:3.HL.2.4.1",
+      "target_node_key": "caps:misconception:3.HL.2.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.2.4.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_be604f121656d86602245ee6",
+      "source_node_key": "caps:subtopic:3.HL.2.4.1",
+      "target_node_key": "caps:misconception:3.HL.2.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.2.4.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_faf5416d86386a869e0e5a3d",
+      "source_node_key": "caps:subtopic:3.HL.3.1.1",
+      "target_node_key": "caps:assessment_statement:3.HL.3.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.3.1.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_79425bf2baca53f7d4ced8f9",
+      "source_node_key": "caps:subtopic:3.HL.3.1.1",
+      "target_node_key": "caps:assessment_statement:3.HL.3.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.3.1.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c005d6529fab974e707db074",
+      "source_node_key": "caps:subtopic:3.HL.3.1.1",
+      "target_node_key": "caps:assessment_statement:3.HL.3.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.3.1.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7fb1bade8b5ef4d77a11f0ef",
+      "source_node_key": "caps:subtopic:3.HL.3.1.1",
+      "target_node_key": "caps:misconception:3.HL.3.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.3.1.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0c2dd416427720bf0bb39448",
+      "source_node_key": "caps:subtopic:3.HL.3.1.1",
+      "target_node_key": "caps:misconception:3.HL.3.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.3.1.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a5c5a4918f2e0a8396f630d9",
+      "source_node_key": "caps:subtopic:3.HL.3.2.1",
+      "target_node_key": "caps:assessment_statement:3.HL.3.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.3.2.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9f29365a5df6bf82d04a9494",
+      "source_node_key": "caps:subtopic:3.HL.3.2.1",
+      "target_node_key": "caps:assessment_statement:3.HL.3.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.3.2.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f610047088adba52fb0d207e",
+      "source_node_key": "caps:subtopic:3.HL.3.2.1",
+      "target_node_key": "caps:assessment_statement:3.HL.3.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.3.2.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_dbe043cf11f969a4bedd21c9",
+      "source_node_key": "caps:subtopic:3.HL.3.2.1",
+      "target_node_key": "caps:misconception:3.HL.3.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.3.2.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9896c043e3418260b08a0d4f",
+      "source_node_key": "caps:subtopic:3.HL.3.2.1",
+      "target_node_key": "caps:misconception:3.HL.3.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.3.2.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_58167d979d85f63a4a54bf1a",
+      "source_node_key": "caps:subtopic:3.HL.3.3.1",
+      "target_node_key": "caps:assessment_statement:3.HL.3.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.3.3.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a1cd5ca87fecfc4927edcc9c",
+      "source_node_key": "caps:subtopic:3.HL.3.3.1",
+      "target_node_key": "caps:assessment_statement:3.HL.3.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.3.3.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_081792b183e1dd503483fe16",
+      "source_node_key": "caps:subtopic:3.HL.3.3.1",
+      "target_node_key": "caps:assessment_statement:3.HL.3.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.3.3.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e31177415b64e97bdae43b2f",
+      "source_node_key": "caps:subtopic:3.HL.3.3.1",
+      "target_node_key": "caps:misconception:3.HL.3.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.3.3.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8c83796dbcd19d29965ebae6",
+      "source_node_key": "caps:subtopic:3.HL.3.3.1",
+      "target_node_key": "caps:misconception:3.HL.3.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.3.3.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5e3ae652760df35411d5c743",
+      "source_node_key": "caps:subtopic:3.HL.3.4.1",
+      "target_node_key": "caps:assessment_statement:3.HL.3.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.3.4.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_69a17c8ced3f7d4171b05334",
+      "source_node_key": "caps:subtopic:3.HL.3.4.1",
+      "target_node_key": "caps:assessment_statement:3.HL.3.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.3.4.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_13c18da602e1ca75bab1cdc2",
+      "source_node_key": "caps:subtopic:3.HL.3.4.1",
+      "target_node_key": "caps:assessment_statement:3.HL.3.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.3.4.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_58fd2bab1cf0e0faf5d1d455",
+      "source_node_key": "caps:subtopic:3.HL.3.4.1",
+      "target_node_key": "caps:misconception:3.HL.3.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.3.4.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d370d24cdc727c19700e86f0",
+      "source_node_key": "caps:subtopic:3.HL.3.4.1",
+      "target_node_key": "caps:misconception:3.HL.3.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.3.4.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4fd3450aacef2080452aa178",
+      "source_node_key": "caps:subtopic:3.HL.4.1.1",
+      "target_node_key": "caps:assessment_statement:3.HL.4.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.4.1.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7c99d8d2f6bffe6fbb47a208",
+      "source_node_key": "caps:subtopic:3.HL.4.1.1",
+      "target_node_key": "caps:assessment_statement:3.HL.4.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.4.1.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8b64a3ca24fa5e75f8e44a70",
+      "source_node_key": "caps:subtopic:3.HL.4.1.1",
+      "target_node_key": "caps:assessment_statement:3.HL.4.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.4.1.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b095c2b981cb355e703033e1",
+      "source_node_key": "caps:subtopic:3.HL.4.1.1",
+      "target_node_key": "caps:misconception:3.HL.4.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.4.1.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6ccfc58ffab327da6bff44b5",
+      "source_node_key": "caps:subtopic:3.HL.4.1.1",
+      "target_node_key": "caps:misconception:3.HL.4.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.4.1.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_12cab2f282175fb297c85ae5",
+      "source_node_key": "caps:subtopic:3.HL.4.2.1",
+      "target_node_key": "caps:assessment_statement:3.HL.4.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.4.2.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ebe1d617d3cb8545eb6ac97e",
+      "source_node_key": "caps:subtopic:3.HL.4.2.1",
+      "target_node_key": "caps:assessment_statement:3.HL.4.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.4.2.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bb987d908858df35dd7d14a4",
+      "source_node_key": "caps:subtopic:3.HL.4.2.1",
+      "target_node_key": "caps:assessment_statement:3.HL.4.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.4.2.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b66a6d9f2be1eb889f5e0f6a",
+      "source_node_key": "caps:subtopic:3.HL.4.2.1",
+      "target_node_key": "caps:misconception:3.HL.4.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.4.2.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0de3bacd2d96891347f832ef",
+      "source_node_key": "caps:subtopic:3.HL.4.2.1",
+      "target_node_key": "caps:misconception:3.HL.4.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.4.2.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6489f56c513d44d13aa66c96",
+      "source_node_key": "caps:subtopic:3.HL.4.3.1",
+      "target_node_key": "caps:assessment_statement:3.HL.4.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.4.3.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9e11d689ca531e72eb564a08",
+      "source_node_key": "caps:subtopic:3.HL.4.3.1",
+      "target_node_key": "caps:assessment_statement:3.HL.4.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.4.3.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8381049753504aaf44e46b28",
+      "source_node_key": "caps:subtopic:3.HL.4.3.1",
+      "target_node_key": "caps:assessment_statement:3.HL.4.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.4.3.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_394c847771bd6021ac8ebdd8",
+      "source_node_key": "caps:subtopic:3.HL.4.3.1",
+      "target_node_key": "caps:misconception:3.HL.4.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.4.3.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a8a9145dcf845b1023ee45e2",
+      "source_node_key": "caps:subtopic:3.HL.4.3.1",
+      "target_node_key": "caps:misconception:3.HL.4.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.4.3.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bfd5d494475cab3fae3d3217",
+      "source_node_key": "caps:subtopic:3.HL.4.4.1",
+      "target_node_key": "caps:assessment_statement:3.HL.4.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.4.4.1#assessment:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_334cb586caee7584956fecd4",
+      "source_node_key": "caps:subtopic:3.HL.4.4.1",
+      "target_node_key": "caps:assessment_statement:3.HL.4.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.4.4.1#assessment:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f8bd2ac8fee91c1881abc9f2",
+      "source_node_key": "caps:subtopic:3.HL.4.4.1",
+      "target_node_key": "caps:assessment_statement:3.HL.4.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "3.HL.4.4.1#assessment:3",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bac5b14e78a5e4f4b679f79c",
+      "source_node_key": "caps:subtopic:3.HL.4.4.1",
+      "target_node_key": "caps:misconception:3.HL.4.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.4.4.1#misconception:2",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a2453f7d5e198e10d26f113d",
+      "source_node_key": "caps:subtopic:3.HL.4.4.1",
+      "target_node_key": "caps:misconception:3.HL.4.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "3.HL.4.4.1#misconception:1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_72710ac53dfff7070386a720",
+      "source_node_key": "caps:topic:3.HL.1.1",
+      "target_node_key": "caps:subtopic:3.HL.1.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "3.HL.1.1.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7146b3e91953b8ad6ffc9f8a",
+      "source_node_key": "caps:topic:3.HL.1.1",
+      "target_node_key": "caps:subtopic:3.HL.1.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "3.HL.1.2.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "3.HL.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_e8ccb867e763c50700a91658",
+      "source_node_key": "caps:topic:3.HL.1.1",
+      "target_node_key": "caps:subtopic:3.HL.1.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "3.HL.1.3.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "3.HL.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_e1383f8ee2abdc2bb6261dba",
+      "source_node_key": "caps:topic:3.HL.1.1",
+      "target_node_key": "caps:subtopic:3.HL.1.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "3.HL.1.4.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "3.HL.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_8abc05ecf84bb3397fc01732",
+      "source_node_key": "caps:topic:3.HL.1.1",
+      "target_node_key": "caps:subtopic:3.HL.2.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "3.HL.2.1.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "3.HL.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_0dc35ba6d1ffdf7226b9a9e9",
+      "source_node_key": "caps:topic:3.HL.1.1",
+      "target_node_key": "caps:subtopic:3.HL.2.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "3.HL.2.2.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "3.HL.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_d49807c94f86044a375a566b",
+      "source_node_key": "caps:topic:3.HL.1.1",
+      "target_node_key": "caps:subtopic:3.HL.2.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "3.HL.2.3.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "3.HL.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_543f728fbc99f6b767b676e0",
+      "source_node_key": "caps:topic:3.HL.1.1",
+      "target_node_key": "caps:subtopic:3.HL.2.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "3.HL.2.4.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "3.HL.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_5bfe1a4afe98e56efca38069",
+      "source_node_key": "caps:topic:3.HL.1.2",
+      "target_node_key": "caps:subtopic:3.HL.1.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "3.HL.1.2.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ed2d0617e3a0c7975736aedf",
+      "source_node_key": "caps:topic:3.HL.1.3",
+      "target_node_key": "caps:subtopic:3.HL.1.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "3.HL.1.3.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1de06db60dd10204b3abf286",
+      "source_node_key": "caps:topic:3.HL.1.4",
+      "target_node_key": "caps:subtopic:3.HL.1.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "3.HL.1.4.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9f174b7b4051155eb6e9e37e",
+      "source_node_key": "caps:topic:3.HL.2.1",
+      "target_node_key": "caps:subtopic:3.HL.2.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "3.HL.2.1.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2b19b9f48942d927b86ebceb",
+      "source_node_key": "caps:topic:3.HL.2.1",
+      "target_node_key": "caps:subtopic:3.HL.3.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "3.HL.3.1.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "3.HL.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_d6657db691789cae45ff0019",
+      "source_node_key": "caps:topic:3.HL.2.1",
+      "target_node_key": "caps:subtopic:3.HL.3.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "3.HL.3.2.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "3.HL.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_d98c24e41320249cec98bf40",
+      "source_node_key": "caps:topic:3.HL.2.1",
+      "target_node_key": "caps:subtopic:3.HL.3.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "3.HL.3.3.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "3.HL.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_0e298a59e43e33cf649631b3",
+      "source_node_key": "caps:topic:3.HL.2.1",
+      "target_node_key": "caps:subtopic:3.HL.3.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "3.HL.3.4.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "3.HL.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_452903fb213adf21f26932a9",
+      "source_node_key": "caps:topic:3.HL.2.2",
+      "target_node_key": "caps:subtopic:3.HL.2.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "3.HL.2.2.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_33bc979baea9bec152e462bf",
+      "source_node_key": "caps:topic:3.HL.2.3",
+      "target_node_key": "caps:subtopic:3.HL.2.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "3.HL.2.3.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c42f8f30ada57d162085fa51",
+      "source_node_key": "caps:topic:3.HL.2.4",
+      "target_node_key": "caps:subtopic:3.HL.2.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "3.HL.2.4.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ea37a30f818f5d793814d6bb",
+      "source_node_key": "caps:topic:3.HL.3.1",
+      "target_node_key": "caps:subtopic:3.HL.3.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "3.HL.3.1.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_50da1529d4bf0ae048feee29",
+      "source_node_key": "caps:topic:3.HL.3.1",
+      "target_node_key": "caps:subtopic:3.HL.4.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "3.HL.4.1.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "3.HL.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_6551911194d6efb9802c9d10",
+      "source_node_key": "caps:topic:3.HL.3.1",
+      "target_node_key": "caps:subtopic:3.HL.4.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "3.HL.4.2.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "3.HL.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_3d6f240fc3994d88ee57369a",
+      "source_node_key": "caps:topic:3.HL.3.1",
+      "target_node_key": "caps:subtopic:3.HL.4.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "3.HL.4.3.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "3.HL.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_646f2caa194e524601aa8809",
+      "source_node_key": "caps:topic:3.HL.3.1",
+      "target_node_key": "caps:subtopic:3.HL.4.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "3.HL.4.4.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "3.HL.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_d67a186a921a321906699d51",
+      "source_node_key": "caps:topic:3.HL.3.2",
+      "target_node_key": "caps:subtopic:3.HL.3.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "3.HL.3.2.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a9a068d55f1b347dc12e5f2f",
+      "source_node_key": "caps:topic:3.HL.3.3",
+      "target_node_key": "caps:subtopic:3.HL.3.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "3.HL.3.3.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_767a42cadc4e273e4bb74bc2",
+      "source_node_key": "caps:topic:3.HL.3.4",
+      "target_node_key": "caps:subtopic:3.HL.3.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "3.HL.3.4.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5e8059a5da6f80bc2ba747de",
+      "source_node_key": "caps:topic:3.HL.4.1",
+      "target_node_key": "caps:subtopic:3.HL.4.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "3.HL.4.1.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_80e35eb0db42b80effa627ce",
+      "source_node_key": "caps:topic:3.HL.4.2",
+      "target_node_key": "caps:subtopic:3.HL.4.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "3.HL.4.2.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0941c9301ef1bea896ed9597",
+      "source_node_key": "caps:topic:3.HL.4.3",
+      "target_node_key": "caps:subtopic:3.HL.4.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "3.HL.4.3.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c663d1370951f8dc92a9e2bd",
+      "source_node_key": "caps:topic:3.HL.4.4",
+      "target_node_key": "caps:subtopic:3.HL.4.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "3.HL.4.4.1",
+      "source_sha256": "a27de8c84596bdd50ab2266a536b401df3ea7b00ed2598eca6c16988eb4024d3",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    }
+  ],
+  "boundary": {
+    "runtime_kg_implementation_claimed": false,
+    "runtime_kg_authority_switch_authorised": false,
+    "database_schema_migration_authorised": false,
+    "learner_facing_model_change_authorised": false,
+    "learner_graph_implementation_authorised": false,
+    "production_release_authorised": false,
+    "deployment_authorised": false,
+    "release_tag_authorised": false,
+    "public_beta_authorised": false
+  }
+}

@@ -1,16 +1,501 @@
 {
   "schema_version": "1.0",
+  "description": "Source text extracts and provenance manifest for all 23 official DBE CAPS curriculum documents.",
+  "total_documents": 23,
   "records": [
     {
+      "document_id": "caps_foundation_coding_and_robotics_en",
+      "title": "CAPS Foundation Phase Coding and Robotics",
+      "phase": "foundation",
+      "grades": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "subjects": [
+        "Coding and Robotics"
+      ],
+      "scope_ids": [
+        "grade1_coding_and_robotics_en",
+        "grade2_coding_and_robotics_en",
+        "grade3_coding_and_robotics_en",
+        "grader_coding_and_robotics_en"
+      ],
+      "source_sha256": "570e1d87f30d06646940851ebfd2aa58639a3fe91e576a62853f1bbc084f08fe",
+      "text_sha256": "b22fbe28e9ab09bd85539e1062e72473059edc8d6e8a24b725b1e421ff6f9c95",
+      "text_extract_path": "data/caps/source_documents/text/caps_foundation_coding_and_robotics_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_foundation_home_language_en",
+      "title": "CAPS Foundation Phase Home Language",
+      "phase": "foundation",
+      "grades": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "subjects": [
+        "Home Language"
+      ],
+      "scope_ids": [
+        "grade1_home_language_en",
+        "grade2_home_language_en",
+        "grade3_home_language_en",
+        "grader_home_language_en"
+      ],
+      "source_sha256": "c939a3a9dcce92ed61d970f4599ced6f2ddc425d1220eeeab9828472b878d24d",
+      "text_sha256": "905a050d465b6d82fd25e0d90498d737374e5fe02a82bc40d9fc4977540fae41",
+      "text_extract_path": "data/caps/source_documents/text/caps_foundation_home_language_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_foundation_life_skills_en",
+      "title": "CAPS Foundation Phase Life Skills",
+      "phase": "foundation",
+      "grades": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "subjects": [
+        "Life Skills"
+      ],
+      "scope_ids": [
+        "grade1_life_skills_en",
+        "grade2_life_skills_en",
+        "grade3_life_skills_en",
+        "grader_life_skills_en"
+      ],
+      "source_sha256": "4d4df1e5c4eb7db4157cd80f2a3b0cdb0a22b155474e432a3578c9a798845c1d",
+      "text_sha256": "24344b141eebb8e9641c2c275421ee6127e6df6e43109f6a6fa2e77c66c0cfba",
+      "text_extract_path": "data/caps/source_documents/text/caps_foundation_life_skills_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_foundation_mathematics_en",
+      "title": "CAPS Foundation Phase Mathematics",
+      "phase": "foundation",
+      "grades": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "subjects": [
+        "Mathematics"
+      ],
+      "scope_ids": [
+        "grade1_mathematics_en",
+        "grade2_mathematics_en",
+        "grade3_mathematics_en"
+      ],
+      "source_sha256": "e3b5bc415912b6f0eb13ca8d18a57d7c951d23b399e20f38315fc13f2feed011",
+      "text_sha256": "412850fb59e863bf2fc80de7a3fb16e8cd6a012870c9dbacdb1043c1f23f58c9",
+      "text_extract_path": "data/caps/source_documents/text/caps_foundation_mathematics_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_foundation_mathematics_grade_r_en",
+      "title": "CAPS Foundation Phase Mathematics Grade R",
+      "phase": "foundation",
+      "grades": [
+        0
+      ],
+      "subjects": [
+        "Mathematics"
+      ],
+      "scope_ids": [
+        "grader_mathematics_en"
+      ],
+      "source_sha256": "946fb1ac29386a3bf6db7a77437ab3d7126ed67961780c24fe6f4b34733d20aa",
+      "text_sha256": "62640f63728d5830d27c5c98e9f51094b7745953dc087ce2495b628eb3fbb38f",
+      "text_extract_path": "data/caps/source_documents/text/caps_foundation_mathematics_grade_r_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_foundation_sepedi_first_additional_language_en",
+      "title": "CAPS Foundation Phase Sepedi First Additional Language",
+      "phase": "foundation",
+      "grades": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "subjects": [
+        "Sepedi First Additional Language"
+      ],
+      "scope_ids": [
+        "grade1_sepedi_first_additional_language_en",
+        "grade2_sepedi_first_additional_language_en",
+        "grade3_sepedi_first_additional_language_en",
+        "grader_sepedi_first_additional_language_en"
+      ],
+      "source_sha256": "0ed523790e54016c2665cfd2999288a15f412b3dee4b41f8ed855d59ee9c3825",
+      "text_sha256": "6b0b8ae1613c830dd5c6787e0454a08fc288093324dd2dd3c51e731a5b1d8d67",
+      "text_extract_path": "data/caps/source_documents/text/caps_foundation_sepedi_first_additional_language_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_intermediate_coding_and_robotics_en",
+      "title": "CAPS Intermediate Phase Coding and Robotics",
+      "phase": "intermediate",
+      "grades": [
+        4,
+        5,
+        6
+      ],
+      "subjects": [
+        "Coding and Robotics"
+      ],
+      "scope_ids": [
+        "grade4_coding_and_robotics_en",
+        "grade5_coding_and_robotics_en",
+        "grade6_coding_and_robotics_en"
+      ],
+      "source_sha256": "0d87e20bcc5d3ea8f09db31a07c9b6d6bf5de2f837455c4f048aa2362ff272d8",
+      "text_sha256": "4733d42c6ba335cbeaf1f914f4bc2717a0ad44a51f122e8b38fe953fec3c959d",
+      "text_extract_path": "data/caps/source_documents/text/caps_intermediate_coding_and_robotics_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_intermediate_home_language_en",
+      "title": "CAPS Intermediate Phase Home Language",
+      "phase": "intermediate",
+      "grades": [
+        4,
+        5,
+        6
+      ],
+      "subjects": [
+        "Home Language"
+      ],
+      "scope_ids": [
+        "grade4_home_language_en",
+        "grade5_home_language_en",
+        "grade6_home_language_en"
+      ],
+      "source_sha256": "b3c330f27b30be425c8dd9027e1496e162be71d8a062c124c719af80220fa039",
+      "text_sha256": "19c78b01fd4fe1ed3abfb0ab9770b2c223e3412777323d047d1f1274452f051d",
+      "text_extract_path": "data/caps/source_documents/text/caps_intermediate_home_language_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_intermediate_life_skills_en",
+      "title": "CAPS Intermediate Phase Life Skills",
+      "phase": "intermediate",
+      "grades": [
+        4,
+        5,
+        6
+      ],
+      "subjects": [
+        "Life Skills"
+      ],
+      "scope_ids": [
+        "grade4_life_skills_en",
+        "grade5_life_skills_en",
+        "grade6_life_skills_en"
+      ],
+      "source_sha256": "4113b006498494cd90bc5203c88ca2d5a1a1856c42b0274a31cc3f1442412317",
+      "text_sha256": "1aa10302db0e31b53068240372929439a3709be55c6d350cbcb63f3b7f04ec0f",
+      "text_extract_path": "data/caps/source_documents/text/caps_intermediate_life_skills_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_intermediate_natural_sciences_and_technology_en",
+      "title": "CAPS Intermediate Phase Natural Sciences and Technology",
+      "phase": "intermediate",
+      "grades": [
+        4,
+        5,
+        6
+      ],
+      "subjects": [
+        "Natural Sciences and Technology"
+      ],
+      "scope_ids": [
+        "grade4_natural_sciences_and_technology_en",
+        "grade5_natural_sciences_and_technology_en",
+        "grade6_natural_sciences_and_technology_en"
+      ],
+      "source_sha256": "4bf95cdcc20b1b7902a9ea65826d83624012b17f39b9d96287e1f18d40105b69",
+      "text_sha256": "234d9969bfda8e948f2908c9cfc880072755759382b4eb60419ca5391d2958e1",
+      "text_extract_path": "data/caps/source_documents/text/caps_intermediate_natural_sciences_and_technology_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_intermediate_phase_mathematics_grade4_6",
+      "title": "CAPS Intermediate Phase Mathematics",
+      "phase": "intermediate",
+      "grades": [
+        4,
+        5,
+        6
+      ],
+      "subjects": [
+        "Mathematics"
+      ],
+      "scope_ids": [
+        "grade4_mathematics_en",
+        "grade5_mathematics_en",
+        "grade6_mathematics_en"
+      ],
+      "source_sha256": "7fec668a6d3b0ed4ae6974a9739970a2128a80553589f682ff5d5bffc02a783e",
+      "text_sha256": "e291455486c67cd2da7f4c76ee815d47a498a7d4886f397385cea07c73b7c390",
+      "text_extract_path": "data/caps/source_documents/text/caps_intermediate_phase_mathematics_grade4_6.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_intermediate_sepedi_first_additional_language_en",
+      "title": "CAPS Intermediate Phase Sepedi First Additional Language",
+      "phase": "intermediate",
+      "grades": [
+        4,
+        5,
+        6
+      ],
+      "subjects": [
+        "Sepedi First Additional Language"
+      ],
+      "scope_ids": [
+        "grade4_sepedi_first_additional_language_en",
+        "grade5_sepedi_first_additional_language_en",
+        "grade6_sepedi_first_additional_language_en"
+      ],
+      "source_sha256": "0e8e45bcefc2ca8415744021863c70961d9024e65c84000f073ec31fd66ae0a7",
+      "text_sha256": "24a857650c7352e5415897e74c1c50ab085c51f7ad9f709ffd58b5a62ca92fd5",
+      "text_extract_path": "data/caps/source_documents/text/caps_intermediate_sepedi_first_additional_language_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_intermediate_social_sciences_en",
+      "title": "CAPS Intermediate Phase Social Sciences",
+      "phase": "intermediate",
+      "grades": [
+        4,
+        5,
+        6
+      ],
+      "subjects": [
+        "Social Sciences"
+      ],
+      "scope_ids": [
+        "grade4_social_sciences_en",
+        "grade5_social_sciences_en",
+        "grade6_social_sciences_en"
+      ],
+      "source_sha256": "8f3d900799c699ba95aa86a38182948fcd970288c4c933006e59ab0122846222",
+      "text_sha256": "53a4bf180026586db6a0fe22fa0f5a0657c6c74cc485e6f8ee1aec5c49545c42",
+      "text_extract_path": "data/caps/source_documents/text/caps_intermediate_social_sciences_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_senior_coding_and_robotics_en",
+      "title": "CAPS Senior Phase Coding and Robotics",
+      "phase": "senior",
+      "grades": [
+        7
+      ],
+      "subjects": [
+        "Coding and Robotics"
+      ],
+      "scope_ids": [
+        "grade7_coding_and_robotics_en"
+      ],
+      "source_sha256": "04ae21e3899fa9df3c52c243c0b5d876fccadd89c8af63ab66d02d40c5ac6036",
+      "text_sha256": "efedbdecb16a8e94a05b24baed59741095017e8125fe42ebdab3d4035b84c36c",
+      "text_extract_path": "data/caps/source_documents/text/caps_senior_coding_and_robotics_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_senior_creative_arts_en",
+      "title": "CAPS Senior Phase Creative Arts",
+      "phase": "senior",
+      "grades": [
+        7
+      ],
+      "subjects": [
+        "Creative Arts"
+      ],
+      "scope_ids": [
+        "grade7_creative_arts_en"
+      ],
+      "source_sha256": "eabc3325fc1569737f31c4e694e27bfc271bca3c2a6be4eb4de049b46cd30f14",
+      "text_sha256": "5fffa3b64dc5d1f7df98f59159aefdd07536df2e5e2223bc4945c412d8273534",
+      "text_extract_path": "data/caps/source_documents/text/caps_senior_creative_arts_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_senior_economic_management_sciences_en",
+      "title": "CAPS Senior Phase Economic Management Sciences",
+      "phase": "senior",
+      "grades": [
+        7
+      ],
+      "subjects": [
+        "Economic Management Sciences"
+      ],
+      "scope_ids": [
+        "grade7_economic_management_sciences_en"
+      ],
+      "source_sha256": "313a25bf38f59a24df8180453aab57aa573d8aaf2564af4a342d0df2456ad8ea",
+      "text_sha256": "0e834513fe59049b33f5f2dc7478d11b592903dbe5c94c8cc5e9f6d46e600873",
+      "text_extract_path": "data/caps/source_documents/text/caps_senior_economic_management_sciences_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_senior_home_language_en",
+      "title": "CAPS Senior Phase Home Language",
+      "phase": "senior",
+      "grades": [
+        7
+      ],
+      "subjects": [
+        "Home Language"
+      ],
+      "scope_ids": [
+        "grade7_home_language_en"
+      ],
+      "source_sha256": "813b0169129ac04412e13c4afbc466210de903eb3a798a3adada0abe195c3f42",
+      "text_sha256": "d59d2f2862a0445241867ca137a9ffaf4bc55f6831e9a748908340b164ff7a39",
+      "text_extract_path": "data/caps/source_documents/text/caps_senior_home_language_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_senior_life_orientation_en",
+      "title": "CAPS Senior Phase Life Orientation",
+      "phase": "senior",
+      "grades": [
+        7
+      ],
+      "subjects": [
+        "Life Orientation"
+      ],
+      "scope_ids": [
+        "grade7_life_orientation_en"
+      ],
+      "source_sha256": "7904a388b6dfda1c3b265638d7f91298e2290e50eda65f9625fa3a764356dca3",
+      "text_sha256": "f47c2ff9f780eefb3a43486bbf0a6b6ab15b146a090c05591002eef78d1b4d7f",
+      "text_extract_path": "data/caps/source_documents/text/caps_senior_life_orientation_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
       "document_id": "caps_senior_mathematics_en",
+      "title": "CAPS Senior Phase Mathematics",
+      "phase": "senior",
+      "grades": [
+        7
+      ],
+      "subjects": [
+        "Mathematics"
+      ],
       "scope_ids": [
         "grade7_mathematics_en"
       ],
       "source_sha256": "64dcd19ee1d67109ff4172d9b098259954a2e77a55aeae0d11ee7ec033b0d8f8",
       "text_sha256": "881f88f60186856703767333a0c3f2331b8aeebb52dd11fcf46c2f25c90d3c33",
       "text_extract_path": "data/caps/source_documents/text/caps_senior_mathematics_en.txt",
-      "status": "reviewed_metadata_only",
-      "provenance": "Phase 02I/02J backend-fast topic-map worklist contract repair. Path is tracked as metadata; source text file remains local/source-controlled according to CAPS acquisition policy."
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_senior_natural_sciences_en",
+      "title": "CAPS Senior Phase Natural Sciences",
+      "phase": "senior",
+      "grades": [
+        7
+      ],
+      "subjects": [
+        "Natural Sciences"
+      ],
+      "scope_ids": [
+        "grade7_natural_sciences_en"
+      ],
+      "source_sha256": "8699f105ebee604a9b0a0aebcbd7e9ebac27f5e034b00559a19f8418e1615e9f",
+      "text_sha256": "b7c9ea0bfbb4760ae612dd5a16b8848dd579a7ff28f64d5dc5b50cc2a2a2d455",
+      "text_extract_path": "data/caps/source_documents/text/caps_senior_natural_sciences_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_senior_sepedi_first_additional_language_en",
+      "title": "CAPS Senior Phase Sepedi First Additional Language",
+      "phase": "senior",
+      "grades": [
+        7
+      ],
+      "subjects": [
+        "Sepedi First Additional Language"
+      ],
+      "scope_ids": [
+        "grade7_sepedi_first_additional_language_en"
+      ],
+      "source_sha256": "d1e0e400d811af125f31e7ebe9c0f0bc781770d55afed9c3a10a2c5639bc5488",
+      "text_sha256": "1c6afca6d7a33ee328d9cac896a0c4473ab1e2a1817f6216fabb9c53ab970944",
+      "text_extract_path": "data/caps/source_documents/text/caps_senior_sepedi_first_additional_language_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_senior_social_sciences_en",
+      "title": "CAPS Senior Phase Social Sciences",
+      "phase": "senior",
+      "grades": [
+        7
+      ],
+      "subjects": [
+        "Social Sciences"
+      ],
+      "scope_ids": [
+        "grade7_social_sciences_en"
+      ],
+      "source_sha256": "a2c858ef3870dd8aace43bbb3db7ba345e05ca00f8c989041bae1a9e01b1fbe0",
+      "text_sha256": "3063b27aeec6f29d6da2b3912bc176177881fa16e30a9e6cce0abe2f2086fdd9",
+      "text_extract_path": "data/caps/source_documents/text/caps_senior_social_sciences_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
+    },
+    {
+      "document_id": "caps_senior_technology_en",
+      "title": "CAPS Senior Phase Technology",
+      "phase": "senior",
+      "grades": [
+        7
+      ],
+      "subjects": [
+        "Technology"
+      ],
+      "scope_ids": [
+        "grade7_technology_en"
+      ],
+      "source_sha256": "89898067efff5d97f4016e46e1185d06a3c8c47e4f2da7d15f74707f78ac4853",
+      "text_sha256": "050cda29cd6443243e53be18087da31ecfc6c46e3c3c69fe20cb724086118c50",
+      "text_extract_path": "data/caps/source_documents/text/caps_senior_technology_en.txt",
+      "status": "reviewed_metadata_and_topic_map_grounded",
+      "provenance": "Official Department of Basic Education (DBE) Curriculum and Assessment Policy Statement (CAPS)"
     }
   ]
 }

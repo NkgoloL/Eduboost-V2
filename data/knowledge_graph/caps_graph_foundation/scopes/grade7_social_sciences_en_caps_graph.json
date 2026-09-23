@@ -1,0 +1,3694 @@
+{
+  "graph_id": "KG-CAPS-GRAPH-GRADE-7-SOCIAL-SCIENCES",
+  "graph_version": "kg1-caps-graph-foundation-v1",
+  "status": "caps_graph_foundation_generated",
+  "scope": {
+    "curriculum": "CAPS",
+    "grade": 7,
+    "subject": "social sciences",
+    "language": "en"
+  },
+  "source": {
+    "source_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/data/caps/topic_maps/grade7_social_sciences_en.json",
+    "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+    "source_ref": "Official DBE CAPS source document linked in source_documents manifest.",
+    "schema_version": "1.0.0"
+  },
+  "review": {
+    "node_review_status": "approved",
+    "edge_review_status": "approved",
+    "runtime_authority": "read_model_only"
+  },
+  "counts": {
+    "terms": 4,
+    "topics": 16,
+    "subtopics": 16,
+    "assessment_statements": 48,
+    "misconceptions": 32,
+    "prerequisite_edges": 15,
+    "nodes": 119,
+    "edges": 133
+  },
+  "nodes": [
+    {
+      "node_id": "kgn_65955b57090282d90acdc360",
+      "node_key": "caps:assessment_statement:7.SS.1.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to geography: map skills and local places.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.1.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_37db1e4afdc90a72cd1b0a23",
+      "node_key": "caps:assessment_statement:7.SS.1.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.1.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_cf6b82b40ebc8f2f321e8f61",
+      "node_key": "caps:assessment_statement:7.SS.1.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.1.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_32f9148c3d91a24cc9c47fed",
+      "node_key": "caps:assessment_statement:7.SS.1.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to history: local history and sources.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.2.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_4d99c81dfee4ffc854570e22",
+      "node_key": "caps:assessment_statement:7.SS.1.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.2.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_2ede04508d4aa2ac13722d0c",
+      "node_key": "caps:assessment_statement:7.SS.1.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.2.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_3da9c7b922a10f8efe0a8cd6",
+      "node_key": "caps:assessment_statement:7.SS.1.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to social sciences enquiry skills.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.3.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_0b06e2cb6a77b222e6a68c7a",
+      "node_key": "caps:assessment_statement:7.SS.1.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.3.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_ce8c13c922745fe8b5e6066e",
+      "node_key": "caps:assessment_statement:7.SS.1.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.3.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_6c62312e896ce78f077fb0b4",
+      "node_key": "caps:assessment_statement:7.SS.1.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to assessment.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.4.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_816eb9aaa0eedd9a44a6366f",
+      "node_key": "caps:assessment_statement:7.SS.1.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.4.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_b9843edb28df64fc4db72cef",
+      "node_key": "caps:assessment_statement:7.SS.1.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.4.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_7bb1d7f3dad21eaa9c7b86d2",
+      "node_key": "caps:assessment_statement:7.SS.2.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to geography: physical features and resources.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.1.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_1a308e3eaf909284ba478e63",
+      "node_key": "caps:assessment_statement:7.SS.2.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.1.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_ddcc534f181751ecd2223498",
+      "node_key": "caps:assessment_statement:7.SS.2.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.1.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_2153245718ddab62423c36a7",
+      "node_key": "caps:assessment_statement:7.SS.2.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to history: societies and change.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.2.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_f3fc3a19463825a81837ae6c",
+      "node_key": "caps:assessment_statement:7.SS.2.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.2.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_b5e32d3e1568b6521e4eb092",
+      "node_key": "caps:assessment_statement:7.SS.2.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.2.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_2ed1df3b6ac2dac4ebc367d2",
+      "node_key": "caps:assessment_statement:7.SS.2.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to source work and map work.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.3.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_e13c62366e902b0e405caf34",
+      "node_key": "caps:assessment_statement:7.SS.2.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.3.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_f07bb44b83cde013450d3a0c",
+      "node_key": "caps:assessment_statement:7.SS.2.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.3.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_eafa50a4426681f0c15ffb3b",
+      "node_key": "caps:assessment_statement:7.SS.2.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to assessment.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.4.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_0e641a6dd9061a9a72a158d7",
+      "node_key": "caps:assessment_statement:7.SS.2.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.4.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_7775490b211b4a7f656b65cb",
+      "node_key": "caps:assessment_statement:7.SS.2.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.4.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_5ef07338bdec24a1881ae1f6",
+      "node_key": "caps:assessment_statement:7.SS.3.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to geography: people and places.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.1.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_a8d1fd056396be02497fe36b",
+      "node_key": "caps:assessment_statement:7.SS.3.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.1.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_5c318b967290e19384ae7848",
+      "node_key": "caps:assessment_statement:7.SS.3.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.1.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_6bd215b1564d07461f6c99b5",
+      "node_key": "caps:assessment_statement:7.SS.3.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to history: trade, leadership and heritage.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.2.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_583d4e6bcddbb984ad4a4558",
+      "node_key": "caps:assessment_statement:7.SS.3.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.2.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_9350a1dc461d42c720ad2c12",
+      "node_key": "caps:assessment_statement:7.SS.3.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.2.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_4253380a6b27ef4048bd8a40",
+      "node_key": "caps:assessment_statement:7.SS.3.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to fieldwork and source work.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.3.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_0592221d874c9d2f80ea3171",
+      "node_key": "caps:assessment_statement:7.SS.3.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.3.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_1596db27f4fd0eb335e2907c",
+      "node_key": "caps:assessment_statement:7.SS.3.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.3.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_69a65b9f879d7482cfc4b23a",
+      "node_key": "caps:assessment_statement:7.SS.3.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to assessment.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.4.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_1082d1136366e70279dc3be2",
+      "node_key": "caps:assessment_statement:7.SS.3.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.4.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_1d01f06a4e6799de1fe81fd2",
+      "node_key": "caps:assessment_statement:7.SS.3.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.4.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_22b3696687d77a74544ee2d4",
+      "node_key": "caps:assessment_statement:7.SS.4.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to geography and history consolidation.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.1.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_da6f84a04fe6ce58eca06af2",
+      "node_key": "caps:assessment_statement:7.SS.4.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.1.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_3f7586b1b8714f8037b78923",
+      "node_key": "caps:assessment_statement:7.SS.4.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.1.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_c0fefcf6717673b172ae8a05",
+      "node_key": "caps:assessment_statement:7.SS.4.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to projects and investigations.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.2.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_c2cf11bab1caec2bff21a058",
+      "node_key": "caps:assessment_statement:7.SS.4.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.2.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_e505ae029931263b6585cf4e",
+      "node_key": "caps:assessment_statement:7.SS.4.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.2.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_f3fe6c9eb158980331b5eec1",
+      "node_key": "caps:assessment_statement:7.SS.4.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to revision.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.3.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_263793391821567257b8d3f6",
+      "node_key": "caps:assessment_statement:7.SS.4.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.3.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_5cecc0c18d5ce77b708d32b0",
+      "node_key": "caps:assessment_statement:7.SS.4.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.3.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_01f79b00a760cb6cb6f389cd",
+      "node_key": "caps:assessment_statement:7.SS.4.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to assessment.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.4.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_34ce299321e53a05cbec93d2",
+      "node_key": "caps:assessment_statement:7.SS.4.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.4.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_0d74a77fa266b89d60281b5c",
+      "node_key": "caps:assessment_statement:7.SS.4.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.4.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_c8a2e47bc28572931f00d59e",
+      "node_key": "caps:curriculum",
+      "node_type": "curriculum",
+      "label": "CAPS",
+      "description": "South African CAPS curriculum",
+      "grade": null,
+      "subject": null,
+      "term": null,
+      "source_ref": "CAPS",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "source_file": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/data/caps/topic_maps/grade7_social_sciences_en.json"
+      }
+    },
+    {
+      "node_id": "kgn_75eaf84a4563217d33ca777a",
+      "node_key": "caps:grade:7",
+      "node_type": "grade",
+      "label": "Grade 7",
+      "description": "CAPS Grade 7",
+      "grade": 7,
+      "subject": null,
+      "term": null,
+      "source_ref": "grade:7",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "node_id": "kgn_7ec1364ea47498d641a38691",
+      "node_key": "caps:grade:7:subject:social sciences",
+      "node_type": "subject",
+      "label": "Social Sciences",
+      "description": "CAPS Grade 7 Social Sciences",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": null,
+      "source_ref": "grade:7:subject:SS",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subject_code": "SS"
+      }
+    },
+    {
+      "node_id": "kgn_224fc9f37b272d64c7631145",
+      "node_key": "caps:grade:7:subject:social sciences:term:1",
+      "node_type": "term",
+      "label": "Term 1",
+      "description": "Grade 7 Social Sciences Term 1",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "term:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_6535768aaf59f0726dd22108",
+      "node_key": "caps:grade:7:subject:social sciences:term:2",
+      "node_type": "term",
+      "label": "Term 2",
+      "description": "Grade 7 Social Sciences Term 2",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "term:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_c99d980182339eae4032102d",
+      "node_key": "caps:grade:7:subject:social sciences:term:3",
+      "node_type": "term",
+      "label": "Term 3",
+      "description": "Grade 7 Social Sciences Term 3",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "term:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_2066848ad510622f49f12391",
+      "node_key": "caps:grade:7:subject:social sciences:term:4",
+      "node_type": "term",
+      "label": "Term 4",
+      "description": "Grade 7 Social Sciences Term 4",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "term:4",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-8"
+      }
+    },
+    {
+      "node_id": "kgn_c6f34eeb6d8006ee85b7c604",
+      "node_key": "caps:misconception:7.SS.1.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.1.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_780ce141236cd4d80681efb5",
+      "node_key": "caps:misconception:7.SS.1.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.1.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_701bff82277d401ae1f9e11b",
+      "node_key": "caps:misconception:7.SS.1.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.2.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_eb8e37fc3eae3c872a0a7cfb",
+      "node_key": "caps:misconception:7.SS.1.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.2.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_0d6e09c46bbe6456236801a5",
+      "node_key": "caps:misconception:7.SS.1.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.3.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_b05c4d2b2e1fc5f3cee7398d",
+      "node_key": "caps:misconception:7.SS.1.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.3.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_19b64bb05198de2bdb038999",
+      "node_key": "caps:misconception:7.SS.1.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.4.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_6ac6d14fcd46f11eaa8a1925",
+      "node_key": "caps:misconception:7.SS.1.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.4.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_d5e4c19d97d68efcdf1c8080",
+      "node_key": "caps:misconception:7.SS.2.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.1.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_1796f462d01e7b7162756926",
+      "node_key": "caps:misconception:7.SS.2.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.1.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_1eda483cc93b1fec171aba7e",
+      "node_key": "caps:misconception:7.SS.2.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.2.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_a3b861fd984a9a27ac18e188",
+      "node_key": "caps:misconception:7.SS.2.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.2.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_7c24cafcb926740169b40f05",
+      "node_key": "caps:misconception:7.SS.2.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.3.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_993c5f1c207f0a37a30413f4",
+      "node_key": "caps:misconception:7.SS.2.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.3.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_784dd4df258307694f38dd1b",
+      "node_key": "caps:misconception:7.SS.2.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.4.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_1694694e5da35c8c972db3f4",
+      "node_key": "caps:misconception:7.SS.2.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.4.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_82f356c0f83e1505e14f9a71",
+      "node_key": "caps:misconception:7.SS.3.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.1.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_24bf94688af46f2545717e8b",
+      "node_key": "caps:misconception:7.SS.3.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.1.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_432d8a0e09eefd3e6ddf8ecf",
+      "node_key": "caps:misconception:7.SS.3.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.2.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_be8982ce3db6cfa511c12ce9",
+      "node_key": "caps:misconception:7.SS.3.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.2.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_6440168ab8cd624d98e94de6",
+      "node_key": "caps:misconception:7.SS.3.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.3.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_2cc945d6180cb92a7c853e61",
+      "node_key": "caps:misconception:7.SS.3.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.3.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_f4856592466fdfc31d8f7256",
+      "node_key": "caps:misconception:7.SS.3.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.4.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_14bff0d5c410d19bb5e7f918",
+      "node_key": "caps:misconception:7.SS.3.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.4.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_ea5b3c075c6c4cdb0dcfc922",
+      "node_key": "caps:misconception:7.SS.4.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.1.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_a04867e51ca1b398d4b5e64b",
+      "node_key": "caps:misconception:7.SS.4.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.1.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_1474e27696a5c12b182cf6fd",
+      "node_key": "caps:misconception:7.SS.4.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.2.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_490ceb8f8225d92028dd464d",
+      "node_key": "caps:misconception:7.SS.4.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.2.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_f0e39ac09b66aada6c991286",
+      "node_key": "caps:misconception:7.SS.4.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.3.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_38269722903c656d2235266e",
+      "node_key": "caps:misconception:7.SS.4.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.3.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_967c024d47ed491efc05eba7",
+      "node_key": "caps:misconception:7.SS.4.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.4.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_b29da765eac12d62bad0f814",
+      "node_key": "caps:misconception:7.SS.4.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.4.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.SS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_9299d621882f340d309e1d1b",
+      "node_key": "caps:subtopic:7.SS.1.1.1",
+      "node_type": "subtopic",
+      "label": "Geography: map skills and local places",
+      "description": "Geography: map skills and local places",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.1.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_b9b542aa32f02b6ebbe33621",
+      "node_key": "caps:subtopic:7.SS.1.2.1",
+      "node_type": "subtopic",
+      "label": "History: local history and sources",
+      "description": "History: local history and sources",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.2.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_2d0efa66fd7492822525317b",
+      "node_key": "caps:subtopic:7.SS.1.3.1",
+      "node_type": "subtopic",
+      "label": "Social Sciences enquiry skills",
+      "description": "Social Sciences enquiry skills",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.3.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_9c087c04bf4ec4faf90edf31",
+      "node_key": "caps:subtopic:7.SS.1.4.1",
+      "node_type": "subtopic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.4.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_9f622814c82f3ff8fbdfd510",
+      "node_key": "caps:subtopic:7.SS.2.1.1",
+      "node_type": "subtopic",
+      "label": "Geography: physical features and resources",
+      "description": "Geography: physical features and resources",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.1.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_657d471602a642c74ed7363a",
+      "node_key": "caps:subtopic:7.SS.2.2.1",
+      "node_type": "subtopic",
+      "label": "History: societies and change",
+      "description": "History: societies and change",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.2.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_b84a104e8ccd430c0775ce58",
+      "node_key": "caps:subtopic:7.SS.2.3.1",
+      "node_type": "subtopic",
+      "label": "Source work and map work",
+      "description": "Source work and map work",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.3.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_295241d778c2c5d3652f9084",
+      "node_key": "caps:subtopic:7.SS.2.4.1",
+      "node_type": "subtopic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.4.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_52b01d4104c64b51af61e0a0",
+      "node_key": "caps:subtopic:7.SS.3.1.1",
+      "node_type": "subtopic",
+      "label": "Geography: people and places",
+      "description": "Geography: people and places",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.1.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_3a617ca37c4d28a53b3396a6",
+      "node_key": "caps:subtopic:7.SS.3.2.1",
+      "node_type": "subtopic",
+      "label": "History: trade, leadership and heritage",
+      "description": "History: trade, leadership and heritage",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.2.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_bb16a14c65d950e827aa8400",
+      "node_key": "caps:subtopic:7.SS.3.3.1",
+      "node_type": "subtopic",
+      "label": "Fieldwork and source work",
+      "description": "Fieldwork and source work",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.3.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_820ae0f2e4e859a1811eed80",
+      "node_key": "caps:subtopic:7.SS.3.4.1",
+      "node_type": "subtopic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.4.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_a088adf259961d7bdc0d044e",
+      "node_key": "caps:subtopic:7.SS.4.1.1",
+      "node_type": "subtopic",
+      "label": "Geography and History consolidation",
+      "description": "Geography and History consolidation",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.1.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_363687ff4dc20417c2eb6991",
+      "node_key": "caps:subtopic:7.SS.4.2.1",
+      "node_type": "subtopic",
+      "label": "Projects and investigations",
+      "description": "Projects and investigations",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.2.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_d9ee6bc62725d22e4dcbbdf5",
+      "node_key": "caps:subtopic:7.SS.4.3.1",
+      "node_type": "subtopic",
+      "label": "Revision",
+      "description": "Revision",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.3.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_f10f4f082e2f2a95a880560b",
+      "node_key": "caps:subtopic:7.SS.4.4.1",
+      "node_type": "subtopic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.4.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_24c1226cdadf96f5ef95663d",
+      "node_key": "caps:topic:7.SS.1.1",
+      "node_type": "topic",
+      "label": "Geography: map skills and local places",
+      "description": "Geography: map skills and local places",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_bb9c55e1ec634ad0acaf2dcb",
+      "node_key": "caps:topic:7.SS.1.2",
+      "node_type": "topic",
+      "label": "History: local history and sources",
+      "description": "History: local history and sources",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_df23a091c09b1259712d116a",
+      "node_key": "caps:topic:7.SS.1.3",
+      "node_type": "topic",
+      "label": "Social Sciences enquiry skills",
+      "description": "Social Sciences enquiry skills",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_b7c95f49d7eb316c98549084",
+      "node_key": "caps:topic:7.SS.1.4",
+      "node_type": "topic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 1,
+      "source_ref": "7.SS.1.4",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_617563411b15c16a24c6e72b",
+      "node_key": "caps:topic:7.SS.2.1",
+      "node_type": "topic",
+      "label": "Geography: physical features and resources",
+      "description": "Geography: physical features and resources",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_3edae11dcfecf5d05abf4281",
+      "node_key": "caps:topic:7.SS.2.2",
+      "node_type": "topic",
+      "label": "History: societies and change",
+      "description": "History: societies and change",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_4c1d47229b9c2652b2d7ab77",
+      "node_key": "caps:topic:7.SS.2.3",
+      "node_type": "topic",
+      "label": "Source work and map work",
+      "description": "Source work and map work",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_3c2af048924bcaf5d4ff52d9",
+      "node_key": "caps:topic:7.SS.2.4",
+      "node_type": "topic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 2,
+      "source_ref": "7.SS.2.4",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_adf12bfef95f2cce3a3b5353",
+      "node_key": "caps:topic:7.SS.3.1",
+      "node_type": "topic",
+      "label": "Geography: people and places",
+      "description": "Geography: people and places",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_ca32e1f0e93e20a97eeb48d9",
+      "node_key": "caps:topic:7.SS.3.2",
+      "node_type": "topic",
+      "label": "History: trade, leadership and heritage",
+      "description": "History: trade, leadership and heritage",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_c78790155ab726bd1b812c30",
+      "node_key": "caps:topic:7.SS.3.3",
+      "node_type": "topic",
+      "label": "Fieldwork and source work",
+      "description": "Fieldwork and source work",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_35c2be8c70403f97c5b089aa",
+      "node_key": "caps:topic:7.SS.3.4",
+      "node_type": "topic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 3,
+      "source_ref": "7.SS.3.4",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_6b4d19183de52797466a1eca",
+      "node_key": "caps:topic:7.SS.4.1",
+      "node_type": "topic",
+      "label": "Geography and History consolidation",
+      "description": "Geography and History consolidation",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_58bc40939ab189eba8d607f4",
+      "node_key": "caps:topic:7.SS.4.2",
+      "node_type": "topic",
+      "label": "Projects and investigations",
+      "description": "Projects and investigations",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_e0f0b0143e2356c850db53c7",
+      "node_key": "caps:topic:7.SS.4.3",
+      "node_type": "topic",
+      "label": "Revision",
+      "description": "Revision",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_0da90935245dfabc49283055",
+      "node_key": "caps:topic:7.SS.4.4",
+      "node_type": "topic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "social sciences",
+      "term": 4,
+      "source_ref": "7.SS.4.4",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "kge_8de3252b449e05142dae8603",
+      "source_node_key": "caps:curriculum",
+      "target_node_key": "caps:grade:7",
+      "edge_type": "contains",
+      "label": "CAPS contains grade",
+      "source_ref": "CAPS",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_14e26d592c1978d694e9cda8",
+      "source_node_key": "caps:grade:7",
+      "target_node_key": "caps:grade:7:subject:social sciences",
+      "edge_type": "contains",
+      "label": "Grade contains subject",
+      "source_ref": "grade:7:subject:SS",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_53227c50e9317f5e84d43b1d",
+      "source_node_key": "caps:grade:7:subject:social sciences",
+      "target_node_key": "caps:grade:7:subject:social sciences:term:1",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_47a6a81d68ed6124f1b6a8f2",
+      "source_node_key": "caps:grade:7:subject:social sciences",
+      "target_node_key": "caps:grade:7:subject:social sciences:term:2",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9b652632a9455a9f7f9ce83e",
+      "source_node_key": "caps:grade:7:subject:social sciences",
+      "target_node_key": "caps:grade:7:subject:social sciences:term:3",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c625bcb3519f1beabcc20bae",
+      "source_node_key": "caps:grade:7:subject:social sciences",
+      "target_node_key": "caps:grade:7:subject:social sciences:term:4",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:4",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6c77a5b4032e608970bfb320",
+      "source_node_key": "caps:grade:7:subject:social sciences:term:1",
+      "target_node_key": "caps:topic:7.SS.1.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.SS.1.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f9bd1e2e9acd4e5f98207e3b",
+      "source_node_key": "caps:grade:7:subject:social sciences:term:1",
+      "target_node_key": "caps:topic:7.SS.1.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.SS.1.2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7c055bc974ff2e36cada3429",
+      "source_node_key": "caps:grade:7:subject:social sciences:term:1",
+      "target_node_key": "caps:topic:7.SS.1.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.SS.1.3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ba6059d233eac17c5860df69",
+      "source_node_key": "caps:grade:7:subject:social sciences:term:1",
+      "target_node_key": "caps:topic:7.SS.1.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.SS.1.4",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9533d6e61f507b1be467659b",
+      "source_node_key": "caps:grade:7:subject:social sciences:term:2",
+      "target_node_key": "caps:topic:7.SS.2.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.SS.2.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2e918461cb61c328cb7312c0",
+      "source_node_key": "caps:grade:7:subject:social sciences:term:2",
+      "target_node_key": "caps:topic:7.SS.2.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.SS.2.2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5503f8d0dcce6c3c5f7066c0",
+      "source_node_key": "caps:grade:7:subject:social sciences:term:2",
+      "target_node_key": "caps:topic:7.SS.2.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.SS.2.3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b80f5806799b31239b432af0",
+      "source_node_key": "caps:grade:7:subject:social sciences:term:2",
+      "target_node_key": "caps:topic:7.SS.2.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.SS.2.4",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d8b22a3772196f3085b4d19d",
+      "source_node_key": "caps:grade:7:subject:social sciences:term:3",
+      "target_node_key": "caps:topic:7.SS.3.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.SS.3.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0feb00e1ff4254b904fac239",
+      "source_node_key": "caps:grade:7:subject:social sciences:term:3",
+      "target_node_key": "caps:topic:7.SS.3.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.SS.3.2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a06d3b9eab407473784535ce",
+      "source_node_key": "caps:grade:7:subject:social sciences:term:3",
+      "target_node_key": "caps:topic:7.SS.3.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.SS.3.3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_332c9f5c83a52846d7fc9232",
+      "source_node_key": "caps:grade:7:subject:social sciences:term:3",
+      "target_node_key": "caps:topic:7.SS.3.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.SS.3.4",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7ec6e9941d70014566aa9f20",
+      "source_node_key": "caps:grade:7:subject:social sciences:term:4",
+      "target_node_key": "caps:topic:7.SS.4.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.SS.4.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_572a8684136499dd6fb8e390",
+      "source_node_key": "caps:grade:7:subject:social sciences:term:4",
+      "target_node_key": "caps:topic:7.SS.4.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.SS.4.2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_eb376d2f2edf50347e2dd5b3",
+      "source_node_key": "caps:grade:7:subject:social sciences:term:4",
+      "target_node_key": "caps:topic:7.SS.4.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.SS.4.3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ef0f69e75b8b2bde5874e108",
+      "source_node_key": "caps:grade:7:subject:social sciences:term:4",
+      "target_node_key": "caps:topic:7.SS.4.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.SS.4.4",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_90bf6fb591df3d62fba0b0b7",
+      "source_node_key": "caps:subtopic:7.SS.1.1.1",
+      "target_node_key": "caps:assessment_statement:7.SS.1.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.1.1.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3379c5a09a7af0596feca77a",
+      "source_node_key": "caps:subtopic:7.SS.1.1.1",
+      "target_node_key": "caps:assessment_statement:7.SS.1.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.1.1.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_61a528071591513b20464e2e",
+      "source_node_key": "caps:subtopic:7.SS.1.1.1",
+      "target_node_key": "caps:assessment_statement:7.SS.1.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.1.1.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_15f46ecb23f9f82bef407e6e",
+      "source_node_key": "caps:subtopic:7.SS.1.1.1",
+      "target_node_key": "caps:misconception:7.SS.1.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.1.1.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fbd0c367334f96691e778f98",
+      "source_node_key": "caps:subtopic:7.SS.1.1.1",
+      "target_node_key": "caps:misconception:7.SS.1.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.1.1.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_aa3e3ca10e3eb10d73d38d9b",
+      "source_node_key": "caps:subtopic:7.SS.1.2.1",
+      "target_node_key": "caps:assessment_statement:7.SS.1.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.1.2.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b60b03ed2c44abc350a6fca0",
+      "source_node_key": "caps:subtopic:7.SS.1.2.1",
+      "target_node_key": "caps:assessment_statement:7.SS.1.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.1.2.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5911c4878dcfa150ea0c33bd",
+      "source_node_key": "caps:subtopic:7.SS.1.2.1",
+      "target_node_key": "caps:assessment_statement:7.SS.1.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.1.2.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_135b74f652b48c8084869437",
+      "source_node_key": "caps:subtopic:7.SS.1.2.1",
+      "target_node_key": "caps:misconception:7.SS.1.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.1.2.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a22de52e315e369fedc5c840",
+      "source_node_key": "caps:subtopic:7.SS.1.2.1",
+      "target_node_key": "caps:misconception:7.SS.1.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.1.2.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c61504e3effdd28f3ccd377b",
+      "source_node_key": "caps:subtopic:7.SS.1.3.1",
+      "target_node_key": "caps:assessment_statement:7.SS.1.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.1.3.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_53f8e0d80059c7e5a1405bd2",
+      "source_node_key": "caps:subtopic:7.SS.1.3.1",
+      "target_node_key": "caps:assessment_statement:7.SS.1.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.1.3.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_323521e1907cfce441a08b48",
+      "source_node_key": "caps:subtopic:7.SS.1.3.1",
+      "target_node_key": "caps:assessment_statement:7.SS.1.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.1.3.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_310c19d3b528b9639d6130ac",
+      "source_node_key": "caps:subtopic:7.SS.1.3.1",
+      "target_node_key": "caps:misconception:7.SS.1.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.1.3.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_086f8a9a7b3337eaf5cee055",
+      "source_node_key": "caps:subtopic:7.SS.1.3.1",
+      "target_node_key": "caps:misconception:7.SS.1.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.1.3.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8da6245020e1d83e729d14c8",
+      "source_node_key": "caps:subtopic:7.SS.1.4.1",
+      "target_node_key": "caps:assessment_statement:7.SS.1.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.1.4.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ef7e0b2e49da7cc0c44f70be",
+      "source_node_key": "caps:subtopic:7.SS.1.4.1",
+      "target_node_key": "caps:assessment_statement:7.SS.1.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.1.4.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5ec4eafaf3bf82381db6970d",
+      "source_node_key": "caps:subtopic:7.SS.1.4.1",
+      "target_node_key": "caps:assessment_statement:7.SS.1.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.1.4.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bffa29e0b595173825b42f73",
+      "source_node_key": "caps:subtopic:7.SS.1.4.1",
+      "target_node_key": "caps:misconception:7.SS.1.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.1.4.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_012499644a982c55c0310437",
+      "source_node_key": "caps:subtopic:7.SS.1.4.1",
+      "target_node_key": "caps:misconception:7.SS.1.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.1.4.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_98273499134f632206a787e3",
+      "source_node_key": "caps:subtopic:7.SS.2.1.1",
+      "target_node_key": "caps:assessment_statement:7.SS.2.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.2.1.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_389d3c380fdf151dc8a13ed4",
+      "source_node_key": "caps:subtopic:7.SS.2.1.1",
+      "target_node_key": "caps:assessment_statement:7.SS.2.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.2.1.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6f3c3747384e2b008b07bc88",
+      "source_node_key": "caps:subtopic:7.SS.2.1.1",
+      "target_node_key": "caps:assessment_statement:7.SS.2.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.2.1.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7dbea5874fc5057326db371f",
+      "source_node_key": "caps:subtopic:7.SS.2.1.1",
+      "target_node_key": "caps:misconception:7.SS.2.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.2.1.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d473c039e15d7d3537995be9",
+      "source_node_key": "caps:subtopic:7.SS.2.1.1",
+      "target_node_key": "caps:misconception:7.SS.2.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.2.1.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c0676a6198f015c577e2b8b0",
+      "source_node_key": "caps:subtopic:7.SS.2.2.1",
+      "target_node_key": "caps:assessment_statement:7.SS.2.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.2.2.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_887fd6138bf62079886e0484",
+      "source_node_key": "caps:subtopic:7.SS.2.2.1",
+      "target_node_key": "caps:assessment_statement:7.SS.2.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.2.2.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d5a8a89ec113be51a19a94ea",
+      "source_node_key": "caps:subtopic:7.SS.2.2.1",
+      "target_node_key": "caps:assessment_statement:7.SS.2.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.2.2.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9e323fe030d290bfd6038b07",
+      "source_node_key": "caps:subtopic:7.SS.2.2.1",
+      "target_node_key": "caps:misconception:7.SS.2.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.2.2.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ed235637c7880f3b33374009",
+      "source_node_key": "caps:subtopic:7.SS.2.2.1",
+      "target_node_key": "caps:misconception:7.SS.2.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.2.2.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_be79f1df3015ecc2dde83b4b",
+      "source_node_key": "caps:subtopic:7.SS.2.3.1",
+      "target_node_key": "caps:assessment_statement:7.SS.2.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.2.3.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9af23b8dad552c7353300d5e",
+      "source_node_key": "caps:subtopic:7.SS.2.3.1",
+      "target_node_key": "caps:assessment_statement:7.SS.2.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.2.3.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_146b1fc572e2443d3f83a223",
+      "source_node_key": "caps:subtopic:7.SS.2.3.1",
+      "target_node_key": "caps:assessment_statement:7.SS.2.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.2.3.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7902dbc4c30e44cfeab791f3",
+      "source_node_key": "caps:subtopic:7.SS.2.3.1",
+      "target_node_key": "caps:misconception:7.SS.2.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.2.3.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8b7c14ed7b41ce6579cfe145",
+      "source_node_key": "caps:subtopic:7.SS.2.3.1",
+      "target_node_key": "caps:misconception:7.SS.2.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.2.3.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c15c658dabd6dba0d01fec86",
+      "source_node_key": "caps:subtopic:7.SS.2.4.1",
+      "target_node_key": "caps:assessment_statement:7.SS.2.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.2.4.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_62bbd7c57fe2edf6553e1032",
+      "source_node_key": "caps:subtopic:7.SS.2.4.1",
+      "target_node_key": "caps:assessment_statement:7.SS.2.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.2.4.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_667f908f17c7cc6e19132d09",
+      "source_node_key": "caps:subtopic:7.SS.2.4.1",
+      "target_node_key": "caps:assessment_statement:7.SS.2.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.2.4.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_109d88e4a2c61b3e482e87f1",
+      "source_node_key": "caps:subtopic:7.SS.2.4.1",
+      "target_node_key": "caps:misconception:7.SS.2.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.2.4.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_436a134fcf97e26e143f289b",
+      "source_node_key": "caps:subtopic:7.SS.2.4.1",
+      "target_node_key": "caps:misconception:7.SS.2.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.2.4.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9a0d054ec70fcadfb9dffa03",
+      "source_node_key": "caps:subtopic:7.SS.3.1.1",
+      "target_node_key": "caps:assessment_statement:7.SS.3.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.3.1.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_55263b7e46abc6ce73893356",
+      "source_node_key": "caps:subtopic:7.SS.3.1.1",
+      "target_node_key": "caps:assessment_statement:7.SS.3.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.3.1.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_27aee4d01fc5a3b647987305",
+      "source_node_key": "caps:subtopic:7.SS.3.1.1",
+      "target_node_key": "caps:assessment_statement:7.SS.3.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.3.1.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_570325f5ce7d970287c33344",
+      "source_node_key": "caps:subtopic:7.SS.3.1.1",
+      "target_node_key": "caps:misconception:7.SS.3.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.3.1.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a241f91571c1a7ad12a4585d",
+      "source_node_key": "caps:subtopic:7.SS.3.1.1",
+      "target_node_key": "caps:misconception:7.SS.3.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.3.1.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a0dcb35b4c41d43573d9a5e1",
+      "source_node_key": "caps:subtopic:7.SS.3.2.1",
+      "target_node_key": "caps:assessment_statement:7.SS.3.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.3.2.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c7a8ccaca3841356917e86ce",
+      "source_node_key": "caps:subtopic:7.SS.3.2.1",
+      "target_node_key": "caps:assessment_statement:7.SS.3.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.3.2.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0d528f9e26232eaef74321ba",
+      "source_node_key": "caps:subtopic:7.SS.3.2.1",
+      "target_node_key": "caps:assessment_statement:7.SS.3.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.3.2.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d70edf25609987c038adf36c",
+      "source_node_key": "caps:subtopic:7.SS.3.2.1",
+      "target_node_key": "caps:misconception:7.SS.3.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.3.2.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5009279dec05faa2dba1ece8",
+      "source_node_key": "caps:subtopic:7.SS.3.2.1",
+      "target_node_key": "caps:misconception:7.SS.3.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.3.2.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c0ef7f910c5f5176dad5a15a",
+      "source_node_key": "caps:subtopic:7.SS.3.3.1",
+      "target_node_key": "caps:assessment_statement:7.SS.3.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.3.3.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_38efc489866901f980bb9ce0",
+      "source_node_key": "caps:subtopic:7.SS.3.3.1",
+      "target_node_key": "caps:assessment_statement:7.SS.3.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.3.3.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_046c342a6d79461e447b0d7c",
+      "source_node_key": "caps:subtopic:7.SS.3.3.1",
+      "target_node_key": "caps:assessment_statement:7.SS.3.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.3.3.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_cbf6a328e7b315ee114718d2",
+      "source_node_key": "caps:subtopic:7.SS.3.3.1",
+      "target_node_key": "caps:misconception:7.SS.3.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.3.3.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_19ee33c02a0e8f9c3d48f1b0",
+      "source_node_key": "caps:subtopic:7.SS.3.3.1",
+      "target_node_key": "caps:misconception:7.SS.3.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.3.3.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0810c5f328a0cb88368e452e",
+      "source_node_key": "caps:subtopic:7.SS.3.4.1",
+      "target_node_key": "caps:assessment_statement:7.SS.3.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.3.4.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_89b8a77323e262261aa63dd0",
+      "source_node_key": "caps:subtopic:7.SS.3.4.1",
+      "target_node_key": "caps:assessment_statement:7.SS.3.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.3.4.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f2a9a26656fa560f427f62aa",
+      "source_node_key": "caps:subtopic:7.SS.3.4.1",
+      "target_node_key": "caps:assessment_statement:7.SS.3.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.3.4.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_328f6c8d6a7c2787f685f73e",
+      "source_node_key": "caps:subtopic:7.SS.3.4.1",
+      "target_node_key": "caps:misconception:7.SS.3.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.3.4.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8a1a84b2bbba1ac60feb0492",
+      "source_node_key": "caps:subtopic:7.SS.3.4.1",
+      "target_node_key": "caps:misconception:7.SS.3.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.3.4.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b92bf9ba3506b91995febb2e",
+      "source_node_key": "caps:subtopic:7.SS.4.1.1",
+      "target_node_key": "caps:assessment_statement:7.SS.4.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.4.1.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_92649c37ba63ddb2ddcb6aa2",
+      "source_node_key": "caps:subtopic:7.SS.4.1.1",
+      "target_node_key": "caps:assessment_statement:7.SS.4.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.4.1.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_95e31553a1bc2dc7e1935d28",
+      "source_node_key": "caps:subtopic:7.SS.4.1.1",
+      "target_node_key": "caps:assessment_statement:7.SS.4.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.4.1.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_738373011c3b0f557c2f470f",
+      "source_node_key": "caps:subtopic:7.SS.4.1.1",
+      "target_node_key": "caps:misconception:7.SS.4.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.4.1.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_49ea8699ae45f1948d4b0259",
+      "source_node_key": "caps:subtopic:7.SS.4.1.1",
+      "target_node_key": "caps:misconception:7.SS.4.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.4.1.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_278a7b75a0ed26dbe51a1f86",
+      "source_node_key": "caps:subtopic:7.SS.4.2.1",
+      "target_node_key": "caps:assessment_statement:7.SS.4.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.4.2.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4601bb0c677899eb5e06476f",
+      "source_node_key": "caps:subtopic:7.SS.4.2.1",
+      "target_node_key": "caps:assessment_statement:7.SS.4.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.4.2.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e1615dd4abc757667d2e97a0",
+      "source_node_key": "caps:subtopic:7.SS.4.2.1",
+      "target_node_key": "caps:assessment_statement:7.SS.4.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.4.2.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4e69336d313878591c134128",
+      "source_node_key": "caps:subtopic:7.SS.4.2.1",
+      "target_node_key": "caps:misconception:7.SS.4.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.4.2.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a0e636059a6d94a6fffd75fc",
+      "source_node_key": "caps:subtopic:7.SS.4.2.1",
+      "target_node_key": "caps:misconception:7.SS.4.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.4.2.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_567d88e5929397030990c946",
+      "source_node_key": "caps:subtopic:7.SS.4.3.1",
+      "target_node_key": "caps:assessment_statement:7.SS.4.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.4.3.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_095d826db43ce8f00f1e8a65",
+      "source_node_key": "caps:subtopic:7.SS.4.3.1",
+      "target_node_key": "caps:assessment_statement:7.SS.4.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.4.3.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ea38c8706266e955618465b9",
+      "source_node_key": "caps:subtopic:7.SS.4.3.1",
+      "target_node_key": "caps:assessment_statement:7.SS.4.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.4.3.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e9208c3914441923cc8b268a",
+      "source_node_key": "caps:subtopic:7.SS.4.3.1",
+      "target_node_key": "caps:misconception:7.SS.4.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.4.3.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_42fef27949188ab3f83a971d",
+      "source_node_key": "caps:subtopic:7.SS.4.3.1",
+      "target_node_key": "caps:misconception:7.SS.4.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.4.3.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d11b63b84e15528053b75117",
+      "source_node_key": "caps:subtopic:7.SS.4.4.1",
+      "target_node_key": "caps:assessment_statement:7.SS.4.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.4.4.1#assessment:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_abb397612c60c730d90412af",
+      "source_node_key": "caps:subtopic:7.SS.4.4.1",
+      "target_node_key": "caps:assessment_statement:7.SS.4.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.4.4.1#assessment:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c3a0299601fc3dbfa31825f8",
+      "source_node_key": "caps:subtopic:7.SS.4.4.1",
+      "target_node_key": "caps:assessment_statement:7.SS.4.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.SS.4.4.1#assessment:3",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e472de269dafd28c75293abe",
+      "source_node_key": "caps:subtopic:7.SS.4.4.1",
+      "target_node_key": "caps:misconception:7.SS.4.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.4.4.1#misconception:2",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1afc949564e42f4bfcaddefd",
+      "source_node_key": "caps:subtopic:7.SS.4.4.1",
+      "target_node_key": "caps:misconception:7.SS.4.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.SS.4.4.1#misconception:1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5eac788252aff84a196133c5",
+      "source_node_key": "caps:topic:7.SS.1.1",
+      "target_node_key": "caps:subtopic:7.SS.1.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.SS.1.1.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e38f2bb26a15e96b12b4e76f",
+      "source_node_key": "caps:topic:7.SS.1.1",
+      "target_node_key": "caps:subtopic:7.SS.1.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.SS.1.2.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.SS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_3a669f75e6a3f0fd00c5bf43",
+      "source_node_key": "caps:topic:7.SS.1.1",
+      "target_node_key": "caps:subtopic:7.SS.1.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.SS.1.3.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.SS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_d56a327c495d016917ae66ad",
+      "source_node_key": "caps:topic:7.SS.1.1",
+      "target_node_key": "caps:subtopic:7.SS.1.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.SS.1.4.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.SS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_735e208bed92cd45f7155b93",
+      "source_node_key": "caps:topic:7.SS.1.1",
+      "target_node_key": "caps:subtopic:7.SS.2.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.SS.2.1.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.SS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_a57340f6b992d18146d4a002",
+      "source_node_key": "caps:topic:7.SS.1.1",
+      "target_node_key": "caps:subtopic:7.SS.2.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.SS.2.2.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.SS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_4b237e4b1b5f391984add813",
+      "source_node_key": "caps:topic:7.SS.1.1",
+      "target_node_key": "caps:subtopic:7.SS.2.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.SS.2.3.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.SS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_618aa63d5cbcbf1637130d3b",
+      "source_node_key": "caps:topic:7.SS.1.1",
+      "target_node_key": "caps:subtopic:7.SS.2.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.SS.2.4.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.SS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_74741c3c831ccd5da3089809",
+      "source_node_key": "caps:topic:7.SS.1.2",
+      "target_node_key": "caps:subtopic:7.SS.1.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.SS.1.2.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_29a18739e85f309b46f5f572",
+      "source_node_key": "caps:topic:7.SS.1.3",
+      "target_node_key": "caps:subtopic:7.SS.1.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.SS.1.3.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_743c410cd33b6a98bfdf7b6b",
+      "source_node_key": "caps:topic:7.SS.1.4",
+      "target_node_key": "caps:subtopic:7.SS.1.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.SS.1.4.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ecb82407259873ad7b670d27",
+      "source_node_key": "caps:topic:7.SS.2.1",
+      "target_node_key": "caps:subtopic:7.SS.2.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.SS.2.1.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_cfac0a67180fd3eef57e2a9a",
+      "source_node_key": "caps:topic:7.SS.2.1",
+      "target_node_key": "caps:subtopic:7.SS.3.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.SS.3.1.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.SS.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_f1d895d75560ea4d94685105",
+      "source_node_key": "caps:topic:7.SS.2.1",
+      "target_node_key": "caps:subtopic:7.SS.3.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.SS.3.2.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.SS.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_b9952f33bb6997d2bb8c481f",
+      "source_node_key": "caps:topic:7.SS.2.1",
+      "target_node_key": "caps:subtopic:7.SS.3.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.SS.3.3.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.SS.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_24f6e50c48e7b3d328001c32",
+      "source_node_key": "caps:topic:7.SS.2.1",
+      "target_node_key": "caps:subtopic:7.SS.3.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.SS.3.4.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.SS.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_01d976438576f0b64162f7bc",
+      "source_node_key": "caps:topic:7.SS.2.2",
+      "target_node_key": "caps:subtopic:7.SS.2.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.SS.2.2.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4f0a77740a5502db32645bc3",
+      "source_node_key": "caps:topic:7.SS.2.3",
+      "target_node_key": "caps:subtopic:7.SS.2.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.SS.2.3.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6163093630b58f4042715274",
+      "source_node_key": "caps:topic:7.SS.2.4",
+      "target_node_key": "caps:subtopic:7.SS.2.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.SS.2.4.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7598d5795003c664fa83c22f",
+      "source_node_key": "caps:topic:7.SS.3.1",
+      "target_node_key": "caps:subtopic:7.SS.3.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.SS.3.1.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6193c93790419298783aac07",
+      "source_node_key": "caps:topic:7.SS.3.1",
+      "target_node_key": "caps:subtopic:7.SS.4.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.SS.4.1.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.SS.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_2fed39cce74c27d0b4cc25f6",
+      "source_node_key": "caps:topic:7.SS.3.1",
+      "target_node_key": "caps:subtopic:7.SS.4.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.SS.4.2.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.SS.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_f36384d31115cfa58860814e",
+      "source_node_key": "caps:topic:7.SS.3.1",
+      "target_node_key": "caps:subtopic:7.SS.4.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.SS.4.3.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.SS.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_5d9885282b816a4ba8272c6e",
+      "source_node_key": "caps:topic:7.SS.3.1",
+      "target_node_key": "caps:subtopic:7.SS.4.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.SS.4.4.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.SS.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_1059969e67aa8ea0620f3541",
+      "source_node_key": "caps:topic:7.SS.3.2",
+      "target_node_key": "caps:subtopic:7.SS.3.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.SS.3.2.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8aa23e14cf1682fb437d2817",
+      "source_node_key": "caps:topic:7.SS.3.3",
+      "target_node_key": "caps:subtopic:7.SS.3.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.SS.3.3.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b392c9d559064e02d7308788",
+      "source_node_key": "caps:topic:7.SS.3.4",
+      "target_node_key": "caps:subtopic:7.SS.3.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.SS.3.4.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_98f3ceb8edeea55448744ff3",
+      "source_node_key": "caps:topic:7.SS.4.1",
+      "target_node_key": "caps:subtopic:7.SS.4.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.SS.4.1.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_06e85d9aecea3fe2369c1548",
+      "source_node_key": "caps:topic:7.SS.4.2",
+      "target_node_key": "caps:subtopic:7.SS.4.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.SS.4.2.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_29067eb992d574f9b7570b2a",
+      "source_node_key": "caps:topic:7.SS.4.3",
+      "target_node_key": "caps:subtopic:7.SS.4.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.SS.4.3.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3739dfe5b1ca07eef1d26af6",
+      "source_node_key": "caps:topic:7.SS.4.4",
+      "target_node_key": "caps:subtopic:7.SS.4.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.SS.4.4.1",
+      "source_sha256": "0a02f9716ef931b95cd2215e4f63a5be79eac0da0dfa67ecae7222d48d96637f",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    }
+  ],
+  "boundary": {
+    "runtime_kg_implementation_claimed": false,
+    "runtime_kg_authority_switch_authorised": false,
+    "database_schema_migration_authorised": false,
+    "learner_facing_model_change_authorised": false,
+    "learner_graph_implementation_authorised": false,
+    "production_release_authorised": false,
+    "deployment_authorised": false,
+    "release_tag_authorised": false,
+    "public_beta_authorised": false
+  }
+}

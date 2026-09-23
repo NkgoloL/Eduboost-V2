@@ -1,0 +1,3694 @@
+{
+  "graph_id": "KG-CAPS-GRAPH-GRADE-7-NATURAL-SCIENCES",
+  "graph_version": "kg1-caps-graph-foundation-v1",
+  "status": "caps_graph_foundation_generated",
+  "scope": {
+    "curriculum": "CAPS",
+    "grade": 7,
+    "subject": "natural sciences",
+    "language": "en"
+  },
+  "source": {
+    "source_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/data/caps/topic_maps/grade7_natural_sciences_en.json",
+    "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+    "source_ref": "Official DBE CAPS source document linked in source_documents manifest.",
+    "schema_version": "1.0.0"
+  },
+  "review": {
+    "node_review_status": "approved",
+    "edge_review_status": "approved",
+    "runtime_authority": "read_model_only"
+  },
+  "counts": {
+    "terms": 4,
+    "topics": 16,
+    "subtopics": 16,
+    "assessment_statements": 48,
+    "misconceptions": 32,
+    "prerequisite_edges": 15,
+    "nodes": 119,
+    "edges": 133
+  },
+  "nodes": [
+    {
+      "node_id": "kgn_d64ee370348526b954cc9709",
+      "node_key": "caps:assessment_statement:7.NS.1.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to life and living.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.1.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_c2cf5ebb36310acfc79141de",
+      "node_key": "caps:assessment_statement:7.NS.1.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.1.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_08b9326a49825e934228d510",
+      "node_key": "caps:assessment_statement:7.NS.1.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.1.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_70cd077d812ba958421b0077",
+      "node_key": "caps:assessment_statement:7.NS.1.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to biodiversity and ecosystems.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.2.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_5370bc099eb165ce11595d5d",
+      "node_key": "caps:assessment_statement:7.NS.1.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.2.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_9d59084194301d3450a044d6",
+      "node_key": "caps:assessment_statement:7.NS.1.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.2.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_903245c911fab79d78758344",
+      "node_key": "caps:assessment_statement:7.NS.1.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to scientific investigations.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.3.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_8a6734e3c00bdef12a604b32",
+      "node_key": "caps:assessment_statement:7.NS.1.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.3.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_6147c1519d3c5492aca6a0c7",
+      "node_key": "caps:assessment_statement:7.NS.1.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.3.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_c3a869f489bbdb403559ba39",
+      "node_key": "caps:assessment_statement:7.NS.1.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to assessment.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.4.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_e779a73ddcc4018805076e73",
+      "node_key": "caps:assessment_statement:7.NS.1.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.4.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_7de3262dacbba9000e10dd35",
+      "node_key": "caps:assessment_statement:7.NS.1.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.4.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_ecd8f7aeff07caacb9d1cd6e",
+      "node_key": "caps:assessment_statement:7.NS.2.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to matter and materials.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.1.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_9111d53c8191983a27342730",
+      "node_key": "caps:assessment_statement:7.NS.2.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.1.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_2f94e1a91ab70ccda6149049",
+      "node_key": "caps:assessment_statement:7.NS.2.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.1.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_5e13cb94c13b92a16c865e3a",
+      "node_key": "caps:assessment_statement:7.NS.2.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to mixtures and separation.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.2.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_2af0e05fb8a0a6c87d236e9e",
+      "node_key": "caps:assessment_statement:7.NS.2.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.2.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_3ab0572043792bb28370740e",
+      "node_key": "caps:assessment_statement:7.NS.2.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.2.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_a31c275ba8d2dbb74bfdcfd9",
+      "node_key": "caps:assessment_statement:7.NS.2.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to practical investigations.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.3.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_67799e5ec449871312453549",
+      "node_key": "caps:assessment_statement:7.NS.2.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.3.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_0d205d250985c20950d87fd8",
+      "node_key": "caps:assessment_statement:7.NS.2.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.3.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_a0feb62126fbb2b4bf46464e",
+      "node_key": "caps:assessment_statement:7.NS.2.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to assessment.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.4.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_53f421808f4d257379f7905c",
+      "node_key": "caps:assessment_statement:7.NS.2.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.4.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_ca095b8f12628c312a7afa88",
+      "node_key": "caps:assessment_statement:7.NS.2.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.4.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_86ac086a2350df9fa4ad70ee",
+      "node_key": "caps:assessment_statement:7.NS.3.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to energy and change.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.1.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_0b31c033c92a5aab79a5faae",
+      "node_key": "caps:assessment_statement:7.NS.3.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.1.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_0387ef1ca9f461ce40729d74",
+      "node_key": "caps:assessment_statement:7.NS.3.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.1.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_59ebf9e87df13953c1c46ec0",
+      "node_key": "caps:assessment_statement:7.NS.3.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to heat transfer and systems.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.2.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_45bbdcca8f1a10d726c97e8a",
+      "node_key": "caps:assessment_statement:7.NS.3.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.2.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_1952279a9e302696fe504d94",
+      "node_key": "caps:assessment_statement:7.NS.3.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.2.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_bd949cf3044718e0adf6a400",
+      "node_key": "caps:assessment_statement:7.NS.3.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to practical investigations.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.3.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_d9fe12d888cc9fd6291aa1c4",
+      "node_key": "caps:assessment_statement:7.NS.3.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.3.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_5001c63539c0790c35b34f08",
+      "node_key": "caps:assessment_statement:7.NS.3.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.3.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_56ceb1ec5f7baec55187a9b2",
+      "node_key": "caps:assessment_statement:7.NS.3.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to assessment.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.4.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_8b36fe2a6383d1316bc27f84",
+      "node_key": "caps:assessment_statement:7.NS.3.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.4.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_17c493e0c63681ef21ef4d2f",
+      "node_key": "caps:assessment_statement:7.NS.3.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.4.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_66a97dfc6400cf7d78b0a9fe",
+      "node_key": "caps:assessment_statement:7.NS.4.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to planet earth and beyond.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.1.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_8cc094cdbeaa85dd5b15e2e2",
+      "node_key": "caps:assessment_statement:7.NS.4.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.1.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_a0d566387959be674f8ff088",
+      "node_key": "caps:assessment_statement:7.NS.4.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.1.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_45d35ca914014314a7041bd9",
+      "node_key": "caps:assessment_statement:7.NS.4.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to the solar system and earth systems.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.2.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_21d8ac0ba95a3a0696a46363",
+      "node_key": "caps:assessment_statement:7.NS.4.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.2.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_c415526c9b044f1e0b5ddad6",
+      "node_key": "caps:assessment_statement:7.NS.4.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.2.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_537904bcfc937ec09e9352ee",
+      "node_key": "caps:assessment_statement:7.NS.4.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to scientific models.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.3.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_7d386cec79ddae6cb0e5610f",
+      "node_key": "caps:assessment_statement:7.NS.4.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.3.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_e81994aa855b31f2bb62ef60",
+      "node_key": "caps:assessment_statement:7.NS.4.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.3.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_ff5588cd966c4228d2451d9a",
+      "node_key": "caps:assessment_statement:7.NS.4.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to assessment.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.4.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_b0c8d6cd3b7e966fbd725bdd",
+      "node_key": "caps:assessment_statement:7.NS.4.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.4.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_7ac1dc020af06395c2973c9d",
+      "node_key": "caps:assessment_statement:7.NS.4.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.4.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_c8a2e47bc28572931f00d59e",
+      "node_key": "caps:curriculum",
+      "node_type": "curriculum",
+      "label": "CAPS",
+      "description": "South African CAPS curriculum",
+      "grade": null,
+      "subject": null,
+      "term": null,
+      "source_ref": "CAPS",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "source_file": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/data/caps/topic_maps/grade7_natural_sciences_en.json"
+      }
+    },
+    {
+      "node_id": "kgn_75eaf84a4563217d33ca777a",
+      "node_key": "caps:grade:7",
+      "node_type": "grade",
+      "label": "Grade 7",
+      "description": "CAPS Grade 7",
+      "grade": 7,
+      "subject": null,
+      "term": null,
+      "source_ref": "grade:7",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "node_id": "kgn_15584085c5f43821de167657",
+      "node_key": "caps:grade:7:subject:natural sciences",
+      "node_type": "subject",
+      "label": "Natural Sciences",
+      "description": "CAPS Grade 7 Natural Sciences",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": null,
+      "source_ref": "grade:7:subject:NS",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subject_code": "NS"
+      }
+    },
+    {
+      "node_id": "kgn_5803cd7900a98826bc6c64e0",
+      "node_key": "caps:grade:7:subject:natural sciences:term:1",
+      "node_type": "term",
+      "label": "Term 1",
+      "description": "Grade 7 Natural Sciences Term 1",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "term:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_eafdb5212b2a55159328c2d0",
+      "node_key": "caps:grade:7:subject:natural sciences:term:2",
+      "node_type": "term",
+      "label": "Term 2",
+      "description": "Grade 7 Natural Sciences Term 2",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "term:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_650e9ad64ec73530ee197de9",
+      "node_key": "caps:grade:7:subject:natural sciences:term:3",
+      "node_type": "term",
+      "label": "Term 3",
+      "description": "Grade 7 Natural Sciences Term 3",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "term:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_f565f10a93c6bd625908c92d",
+      "node_key": "caps:grade:7:subject:natural sciences:term:4",
+      "node_type": "term",
+      "label": "Term 4",
+      "description": "Grade 7 Natural Sciences Term 4",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "term:4",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-8"
+      }
+    },
+    {
+      "node_id": "kgn_417d83fd7d951051d237e68c",
+      "node_key": "caps:misconception:7.NS.1.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.1.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_cdf016e205fe9ea8a1a767e3",
+      "node_key": "caps:misconception:7.NS.1.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.1.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_51973c152e395d8b6eefa69e",
+      "node_key": "caps:misconception:7.NS.1.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.2.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_231a0fd7f7740b6f5d1aed83",
+      "node_key": "caps:misconception:7.NS.1.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.2.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_e698f0f3b00507658e244f0e",
+      "node_key": "caps:misconception:7.NS.1.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.3.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_f3be5b30c6251d033eac9fa9",
+      "node_key": "caps:misconception:7.NS.1.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.3.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_81d5985ee4b0b21ffab6c8a4",
+      "node_key": "caps:misconception:7.NS.1.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.4.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_0e3f8263d38a94cc7585a413",
+      "node_key": "caps:misconception:7.NS.1.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.4.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_e1b1bdc185663cac1d9dc099",
+      "node_key": "caps:misconception:7.NS.2.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.1.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_f5f71b29f0014a6457bdbce0",
+      "node_key": "caps:misconception:7.NS.2.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.1.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_68bbab2dc21a7d01b921cd38",
+      "node_key": "caps:misconception:7.NS.2.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.2.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_38d5642295bfe14b9e8e4abc",
+      "node_key": "caps:misconception:7.NS.2.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.2.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_071f5dd7bd6bbd9f076e84ae",
+      "node_key": "caps:misconception:7.NS.2.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.3.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_a68f343ed198eac173c3b2b7",
+      "node_key": "caps:misconception:7.NS.2.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.3.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_820fe96177cc95fa13c57679",
+      "node_key": "caps:misconception:7.NS.2.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.4.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_88f1a69393176d0da346547d",
+      "node_key": "caps:misconception:7.NS.2.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.4.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_e8c6f9e29e1c92eb393562b7",
+      "node_key": "caps:misconception:7.NS.3.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.1.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_499e671f44752e1617591fd8",
+      "node_key": "caps:misconception:7.NS.3.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.1.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_c9d8e0833fd086ff90ba1f42",
+      "node_key": "caps:misconception:7.NS.3.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.2.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_f7ba27a882172489f1c0a25b",
+      "node_key": "caps:misconception:7.NS.3.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.2.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_7fab87007ed1fee9fcc2c434",
+      "node_key": "caps:misconception:7.NS.3.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.3.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_cf9cca2392f9fd3afe19c1e2",
+      "node_key": "caps:misconception:7.NS.3.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.3.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_4de1231027784482a663c6b0",
+      "node_key": "caps:misconception:7.NS.3.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.4.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_6826d0973315d35e5caf2351",
+      "node_key": "caps:misconception:7.NS.3.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.4.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_ec68b8902419b716492f3ab8",
+      "node_key": "caps:misconception:7.NS.4.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.1.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_3b578a645d826b654efeb8fe",
+      "node_key": "caps:misconception:7.NS.4.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.1.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_ff1cf5c034733470eb53d866",
+      "node_key": "caps:misconception:7.NS.4.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.2.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_3b940437cf0408689663e3c8",
+      "node_key": "caps:misconception:7.NS.4.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.2.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_07b62cf7d7e671c5da72a1d3",
+      "node_key": "caps:misconception:7.NS.4.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.3.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_0f8bb960dabf78e4ca78741b",
+      "node_key": "caps:misconception:7.NS.4.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.3.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_890e6bb0e5165439ef0912a7",
+      "node_key": "caps:misconception:7.NS.4.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.4.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_80546d2d3bf16076da40cba6",
+      "node_key": "caps:misconception:7.NS.4.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.4.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.NS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_26b58b0b2dbee43578b24518",
+      "node_key": "caps:subtopic:7.NS.1.1.1",
+      "node_type": "subtopic",
+      "label": "Life and living",
+      "description": "Life and living",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.1.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_54e667e7ee116b9579bb18f0",
+      "node_key": "caps:subtopic:7.NS.1.2.1",
+      "node_type": "subtopic",
+      "label": "Biodiversity and ecosystems",
+      "description": "Biodiversity and ecosystems",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.2.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_b079d37a6af398ef9657dafd",
+      "node_key": "caps:subtopic:7.NS.1.3.1",
+      "node_type": "subtopic",
+      "label": "Scientific investigations",
+      "description": "Scientific investigations",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.3.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_f93f067b0c72efb571a6a529",
+      "node_key": "caps:subtopic:7.NS.1.4.1",
+      "node_type": "subtopic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.4.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_ff20ce83de13e5b8edd31ed2",
+      "node_key": "caps:subtopic:7.NS.2.1.1",
+      "node_type": "subtopic",
+      "label": "Matter and materials",
+      "description": "Matter and materials",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.1.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_bd406799f343caa29b4e2ee4",
+      "node_key": "caps:subtopic:7.NS.2.2.1",
+      "node_type": "subtopic",
+      "label": "Mixtures and separation",
+      "description": "Mixtures and separation",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.2.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_1dd4d30284b32b8e0a80c26b",
+      "node_key": "caps:subtopic:7.NS.2.3.1",
+      "node_type": "subtopic",
+      "label": "Practical investigations",
+      "description": "Practical investigations",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.3.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_53a9bb287de3ca718bb061ed",
+      "node_key": "caps:subtopic:7.NS.2.4.1",
+      "node_type": "subtopic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.4.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_85252a5b9a7f0975a1c4c4cd",
+      "node_key": "caps:subtopic:7.NS.3.1.1",
+      "node_type": "subtopic",
+      "label": "Energy and change",
+      "description": "Energy and change",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.1.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_fa8754a819bf6c83e91adc02",
+      "node_key": "caps:subtopic:7.NS.3.2.1",
+      "node_type": "subtopic",
+      "label": "Heat transfer and systems",
+      "description": "Heat transfer and systems",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.2.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_ea05106168cfcea50f434530",
+      "node_key": "caps:subtopic:7.NS.3.3.1",
+      "node_type": "subtopic",
+      "label": "Practical investigations",
+      "description": "Practical investigations",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.3.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_1a4a366f6ae6140be0c24df0",
+      "node_key": "caps:subtopic:7.NS.3.4.1",
+      "node_type": "subtopic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.4.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_7f3c1a77a7509c1466958d4e",
+      "node_key": "caps:subtopic:7.NS.4.1.1",
+      "node_type": "subtopic",
+      "label": "Planet Earth and beyond",
+      "description": "Planet Earth and beyond",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.1.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_77dffde06103a397273d591a",
+      "node_key": "caps:subtopic:7.NS.4.2.1",
+      "node_type": "subtopic",
+      "label": "The solar system and Earth systems",
+      "description": "The solar system and Earth systems",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.2.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_fbb3b52a5fe2f9f623c3747c",
+      "node_key": "caps:subtopic:7.NS.4.3.1",
+      "node_type": "subtopic",
+      "label": "Scientific models",
+      "description": "Scientific models",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.3.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_2fc960318aa02ef6dc9c5ca0",
+      "node_key": "caps:subtopic:7.NS.4.4.1",
+      "node_type": "subtopic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.4.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_d9fbc7c3b96e445e4261486f",
+      "node_key": "caps:topic:7.NS.1.1",
+      "node_type": "topic",
+      "label": "Life and living",
+      "description": "Life and living",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_6dab9b83f5716ea04b67e325",
+      "node_key": "caps:topic:7.NS.1.2",
+      "node_type": "topic",
+      "label": "Biodiversity and ecosystems",
+      "description": "Biodiversity and ecosystems",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_6a6d03f4eabaa634a5bbebbb",
+      "node_key": "caps:topic:7.NS.1.3",
+      "node_type": "topic",
+      "label": "Scientific investigations",
+      "description": "Scientific investigations",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_b1f05908d72437c0733a87ac",
+      "node_key": "caps:topic:7.NS.1.4",
+      "node_type": "topic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 1,
+      "source_ref": "7.NS.1.4",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_78d1711723c446b2e406bd7c",
+      "node_key": "caps:topic:7.NS.2.1",
+      "node_type": "topic",
+      "label": "Matter and materials",
+      "description": "Matter and materials",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_f6050a3b2c1c9d6c983096cb",
+      "node_key": "caps:topic:7.NS.2.2",
+      "node_type": "topic",
+      "label": "Mixtures and separation",
+      "description": "Mixtures and separation",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_53c0eb98b1279236d8e7d71b",
+      "node_key": "caps:topic:7.NS.2.3",
+      "node_type": "topic",
+      "label": "Practical investigations",
+      "description": "Practical investigations",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_48480997cfe72d9052dfb6c3",
+      "node_key": "caps:topic:7.NS.2.4",
+      "node_type": "topic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 2,
+      "source_ref": "7.NS.2.4",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_7a38924a35498c326ff68b5c",
+      "node_key": "caps:topic:7.NS.3.1",
+      "node_type": "topic",
+      "label": "Energy and change",
+      "description": "Energy and change",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_1060f9be27b4df52418720f5",
+      "node_key": "caps:topic:7.NS.3.2",
+      "node_type": "topic",
+      "label": "Heat transfer and systems",
+      "description": "Heat transfer and systems",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_2f73ba5e7cd39c767e73ecb7",
+      "node_key": "caps:topic:7.NS.3.3",
+      "node_type": "topic",
+      "label": "Practical investigations",
+      "description": "Practical investigations",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_2b5c07efa4f908f297d85321",
+      "node_key": "caps:topic:7.NS.3.4",
+      "node_type": "topic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 3,
+      "source_ref": "7.NS.3.4",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_c86afa1cbd37ab7f219881b4",
+      "node_key": "caps:topic:7.NS.4.1",
+      "node_type": "topic",
+      "label": "Planet Earth and beyond",
+      "description": "Planet Earth and beyond",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_39dc3a60ad7e159f812a2452",
+      "node_key": "caps:topic:7.NS.4.2",
+      "node_type": "topic",
+      "label": "The solar system and Earth systems",
+      "description": "The solar system and Earth systems",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_93fcb50c9244d0df0e6db193",
+      "node_key": "caps:topic:7.NS.4.3",
+      "node_type": "topic",
+      "label": "Scientific models",
+      "description": "Scientific models",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_388dc1d9eadbfd53bf35088d",
+      "node_key": "caps:topic:7.NS.4.4",
+      "node_type": "topic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "natural sciences",
+      "term": 4,
+      "source_ref": "7.NS.4.4",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "kge_8de3252b449e05142dae8603",
+      "source_node_key": "caps:curriculum",
+      "target_node_key": "caps:grade:7",
+      "edge_type": "contains",
+      "label": "CAPS contains grade",
+      "source_ref": "CAPS",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_06c470c23fda7518715edf49",
+      "source_node_key": "caps:grade:7",
+      "target_node_key": "caps:grade:7:subject:natural sciences",
+      "edge_type": "contains",
+      "label": "Grade contains subject",
+      "source_ref": "grade:7:subject:NS",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_13028f8521da58cfe0ea1e45",
+      "source_node_key": "caps:grade:7:subject:natural sciences",
+      "target_node_key": "caps:grade:7:subject:natural sciences:term:1",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_58802cda324d9fcef55d6094",
+      "source_node_key": "caps:grade:7:subject:natural sciences",
+      "target_node_key": "caps:grade:7:subject:natural sciences:term:2",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3516db1433e3e0a52d59e92a",
+      "source_node_key": "caps:grade:7:subject:natural sciences",
+      "target_node_key": "caps:grade:7:subject:natural sciences:term:3",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_dce12b5a03e23811436008b6",
+      "source_node_key": "caps:grade:7:subject:natural sciences",
+      "target_node_key": "caps:grade:7:subject:natural sciences:term:4",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:4",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bdb77b57ed54e1aefdbf4cd1",
+      "source_node_key": "caps:grade:7:subject:natural sciences:term:1",
+      "target_node_key": "caps:topic:7.NS.1.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.NS.1.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b7509aa6fd25960dc3f5987a",
+      "source_node_key": "caps:grade:7:subject:natural sciences:term:1",
+      "target_node_key": "caps:topic:7.NS.1.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.NS.1.2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e034b31073373a0aec64ddce",
+      "source_node_key": "caps:grade:7:subject:natural sciences:term:1",
+      "target_node_key": "caps:topic:7.NS.1.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.NS.1.3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1cca6f9abb3cec3c15e7b011",
+      "source_node_key": "caps:grade:7:subject:natural sciences:term:1",
+      "target_node_key": "caps:topic:7.NS.1.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.NS.1.4",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_47b67cd2238f338176067222",
+      "source_node_key": "caps:grade:7:subject:natural sciences:term:2",
+      "target_node_key": "caps:topic:7.NS.2.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.NS.2.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b22e7ac8c202f498b7381708",
+      "source_node_key": "caps:grade:7:subject:natural sciences:term:2",
+      "target_node_key": "caps:topic:7.NS.2.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.NS.2.2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_08cc12e9b78603965a370230",
+      "source_node_key": "caps:grade:7:subject:natural sciences:term:2",
+      "target_node_key": "caps:topic:7.NS.2.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.NS.2.3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7c773ffcf3d1b6cddc92b1e1",
+      "source_node_key": "caps:grade:7:subject:natural sciences:term:2",
+      "target_node_key": "caps:topic:7.NS.2.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.NS.2.4",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f1a3bab2e12ac584f287a715",
+      "source_node_key": "caps:grade:7:subject:natural sciences:term:3",
+      "target_node_key": "caps:topic:7.NS.3.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.NS.3.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_70b78113362a29965c195842",
+      "source_node_key": "caps:grade:7:subject:natural sciences:term:3",
+      "target_node_key": "caps:topic:7.NS.3.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.NS.3.2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9f3a35e5a03b1a2e4ee8b450",
+      "source_node_key": "caps:grade:7:subject:natural sciences:term:3",
+      "target_node_key": "caps:topic:7.NS.3.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.NS.3.3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_01bf69627bb06c74bf3545f1",
+      "source_node_key": "caps:grade:7:subject:natural sciences:term:3",
+      "target_node_key": "caps:topic:7.NS.3.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.NS.3.4",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_641f4142a480631b0a345e2a",
+      "source_node_key": "caps:grade:7:subject:natural sciences:term:4",
+      "target_node_key": "caps:topic:7.NS.4.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.NS.4.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0152dcfadbedd60bc9f52c27",
+      "source_node_key": "caps:grade:7:subject:natural sciences:term:4",
+      "target_node_key": "caps:topic:7.NS.4.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.NS.4.2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f3a3c5393893199823b09ac0",
+      "source_node_key": "caps:grade:7:subject:natural sciences:term:4",
+      "target_node_key": "caps:topic:7.NS.4.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.NS.4.3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3fec94fddc8dbc44024d1344",
+      "source_node_key": "caps:grade:7:subject:natural sciences:term:4",
+      "target_node_key": "caps:topic:7.NS.4.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.NS.4.4",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b69a9dccc47e78a682e26ae3",
+      "source_node_key": "caps:subtopic:7.NS.1.1.1",
+      "target_node_key": "caps:assessment_statement:7.NS.1.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.1.1.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_37284b8d7db16ad92e6633cd",
+      "source_node_key": "caps:subtopic:7.NS.1.1.1",
+      "target_node_key": "caps:assessment_statement:7.NS.1.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.1.1.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_cd5109d0ac9272da8f632dfe",
+      "source_node_key": "caps:subtopic:7.NS.1.1.1",
+      "target_node_key": "caps:assessment_statement:7.NS.1.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.1.1.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b2f405a75e62773f4c79bfc1",
+      "source_node_key": "caps:subtopic:7.NS.1.1.1",
+      "target_node_key": "caps:misconception:7.NS.1.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.1.1.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_31040a85057c8db9c31e76a7",
+      "source_node_key": "caps:subtopic:7.NS.1.1.1",
+      "target_node_key": "caps:misconception:7.NS.1.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.1.1.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5f5b323c9206444ed086f875",
+      "source_node_key": "caps:subtopic:7.NS.1.2.1",
+      "target_node_key": "caps:assessment_statement:7.NS.1.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.1.2.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4e0a2c6eed5696434fe4687d",
+      "source_node_key": "caps:subtopic:7.NS.1.2.1",
+      "target_node_key": "caps:assessment_statement:7.NS.1.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.1.2.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d78270c9fea88301cc2fd46f",
+      "source_node_key": "caps:subtopic:7.NS.1.2.1",
+      "target_node_key": "caps:assessment_statement:7.NS.1.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.1.2.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e56ee0d2c08b91c3bee30cb7",
+      "source_node_key": "caps:subtopic:7.NS.1.2.1",
+      "target_node_key": "caps:misconception:7.NS.1.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.1.2.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d86f3df74f70309d33e52d04",
+      "source_node_key": "caps:subtopic:7.NS.1.2.1",
+      "target_node_key": "caps:misconception:7.NS.1.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.1.2.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_562e9009935458be29a7e8f4",
+      "source_node_key": "caps:subtopic:7.NS.1.3.1",
+      "target_node_key": "caps:assessment_statement:7.NS.1.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.1.3.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9ec3781d9641877d9a4d7f61",
+      "source_node_key": "caps:subtopic:7.NS.1.3.1",
+      "target_node_key": "caps:assessment_statement:7.NS.1.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.1.3.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0779167f2bcd58785d1d07e6",
+      "source_node_key": "caps:subtopic:7.NS.1.3.1",
+      "target_node_key": "caps:assessment_statement:7.NS.1.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.1.3.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8c0cfd146651f32990e324d4",
+      "source_node_key": "caps:subtopic:7.NS.1.3.1",
+      "target_node_key": "caps:misconception:7.NS.1.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.1.3.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_73365d50ae7590f38ff468e6",
+      "source_node_key": "caps:subtopic:7.NS.1.3.1",
+      "target_node_key": "caps:misconception:7.NS.1.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.1.3.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c4d286efe96910e5e01a8f76",
+      "source_node_key": "caps:subtopic:7.NS.1.4.1",
+      "target_node_key": "caps:assessment_statement:7.NS.1.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.1.4.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7bf72ea19b7e608d2cf22569",
+      "source_node_key": "caps:subtopic:7.NS.1.4.1",
+      "target_node_key": "caps:assessment_statement:7.NS.1.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.1.4.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d30360c6c9e799ab479966db",
+      "source_node_key": "caps:subtopic:7.NS.1.4.1",
+      "target_node_key": "caps:assessment_statement:7.NS.1.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.1.4.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d0425ac5b4110846d51ff958",
+      "source_node_key": "caps:subtopic:7.NS.1.4.1",
+      "target_node_key": "caps:misconception:7.NS.1.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.1.4.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_86d05ea420dc6aada1517dbf",
+      "source_node_key": "caps:subtopic:7.NS.1.4.1",
+      "target_node_key": "caps:misconception:7.NS.1.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.1.4.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_eed870bd3cedc31106573e18",
+      "source_node_key": "caps:subtopic:7.NS.2.1.1",
+      "target_node_key": "caps:assessment_statement:7.NS.2.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.2.1.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_38acfe5d46aab89ea798f95a",
+      "source_node_key": "caps:subtopic:7.NS.2.1.1",
+      "target_node_key": "caps:assessment_statement:7.NS.2.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.2.1.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e54faa91dffae6ad38d4a537",
+      "source_node_key": "caps:subtopic:7.NS.2.1.1",
+      "target_node_key": "caps:assessment_statement:7.NS.2.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.2.1.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e18b18d1534f8e5134bd86ff",
+      "source_node_key": "caps:subtopic:7.NS.2.1.1",
+      "target_node_key": "caps:misconception:7.NS.2.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.2.1.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_75d9be20728bca5fef56037f",
+      "source_node_key": "caps:subtopic:7.NS.2.1.1",
+      "target_node_key": "caps:misconception:7.NS.2.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.2.1.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_69cba256a5d23e23f3793149",
+      "source_node_key": "caps:subtopic:7.NS.2.2.1",
+      "target_node_key": "caps:assessment_statement:7.NS.2.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.2.2.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_534a1a9de604618d501ff3c6",
+      "source_node_key": "caps:subtopic:7.NS.2.2.1",
+      "target_node_key": "caps:assessment_statement:7.NS.2.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.2.2.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3cb9393490fac1381fd94992",
+      "source_node_key": "caps:subtopic:7.NS.2.2.1",
+      "target_node_key": "caps:assessment_statement:7.NS.2.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.2.2.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_caca880d53fade89e9a416e6",
+      "source_node_key": "caps:subtopic:7.NS.2.2.1",
+      "target_node_key": "caps:misconception:7.NS.2.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.2.2.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a23b9e8e3b49be5f1206cdf7",
+      "source_node_key": "caps:subtopic:7.NS.2.2.1",
+      "target_node_key": "caps:misconception:7.NS.2.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.2.2.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_cda3aa10a186cc855b6091c2",
+      "source_node_key": "caps:subtopic:7.NS.2.3.1",
+      "target_node_key": "caps:assessment_statement:7.NS.2.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.2.3.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0e1087fb060979360e62a216",
+      "source_node_key": "caps:subtopic:7.NS.2.3.1",
+      "target_node_key": "caps:assessment_statement:7.NS.2.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.2.3.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_000b991068b35e8bf94b6dc4",
+      "source_node_key": "caps:subtopic:7.NS.2.3.1",
+      "target_node_key": "caps:assessment_statement:7.NS.2.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.2.3.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b7d39a56fc901e16062814b6",
+      "source_node_key": "caps:subtopic:7.NS.2.3.1",
+      "target_node_key": "caps:misconception:7.NS.2.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.2.3.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_199f571608108eb06b36a973",
+      "source_node_key": "caps:subtopic:7.NS.2.3.1",
+      "target_node_key": "caps:misconception:7.NS.2.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.2.3.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6b90ad7616971b4637eeb1f5",
+      "source_node_key": "caps:subtopic:7.NS.2.4.1",
+      "target_node_key": "caps:assessment_statement:7.NS.2.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.2.4.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d5e5d44b02ca758f208b6a99",
+      "source_node_key": "caps:subtopic:7.NS.2.4.1",
+      "target_node_key": "caps:assessment_statement:7.NS.2.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.2.4.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_75faa7262e01b548e8af17b8",
+      "source_node_key": "caps:subtopic:7.NS.2.4.1",
+      "target_node_key": "caps:assessment_statement:7.NS.2.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.2.4.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7d40a826f9aa62961e3b0432",
+      "source_node_key": "caps:subtopic:7.NS.2.4.1",
+      "target_node_key": "caps:misconception:7.NS.2.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.2.4.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d0806e17ae8d35c8a3a09c60",
+      "source_node_key": "caps:subtopic:7.NS.2.4.1",
+      "target_node_key": "caps:misconception:7.NS.2.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.2.4.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_51fb4a665b0a25a19453c508",
+      "source_node_key": "caps:subtopic:7.NS.3.1.1",
+      "target_node_key": "caps:assessment_statement:7.NS.3.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.3.1.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f78f980c5c74e90a23f13b5e",
+      "source_node_key": "caps:subtopic:7.NS.3.1.1",
+      "target_node_key": "caps:assessment_statement:7.NS.3.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.3.1.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3d0cec176ba51d956534732e",
+      "source_node_key": "caps:subtopic:7.NS.3.1.1",
+      "target_node_key": "caps:assessment_statement:7.NS.3.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.3.1.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1d8dd12766cd76d232f52707",
+      "source_node_key": "caps:subtopic:7.NS.3.1.1",
+      "target_node_key": "caps:misconception:7.NS.3.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.3.1.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a8802bcf25809fdae47dfff0",
+      "source_node_key": "caps:subtopic:7.NS.3.1.1",
+      "target_node_key": "caps:misconception:7.NS.3.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.3.1.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_db63b7391b3e5ec5831a56c7",
+      "source_node_key": "caps:subtopic:7.NS.3.2.1",
+      "target_node_key": "caps:assessment_statement:7.NS.3.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.3.2.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_47e2b64fcb2819926f613ec2",
+      "source_node_key": "caps:subtopic:7.NS.3.2.1",
+      "target_node_key": "caps:assessment_statement:7.NS.3.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.3.2.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b6bb83f2777c63f25c5d39af",
+      "source_node_key": "caps:subtopic:7.NS.3.2.1",
+      "target_node_key": "caps:assessment_statement:7.NS.3.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.3.2.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_84ce7889ab4d4878bcb23ea2",
+      "source_node_key": "caps:subtopic:7.NS.3.2.1",
+      "target_node_key": "caps:misconception:7.NS.3.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.3.2.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_cec1feb4eb5ec7da2dadacb8",
+      "source_node_key": "caps:subtopic:7.NS.3.2.1",
+      "target_node_key": "caps:misconception:7.NS.3.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.3.2.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9e976727d95e9784efa931a2",
+      "source_node_key": "caps:subtopic:7.NS.3.3.1",
+      "target_node_key": "caps:assessment_statement:7.NS.3.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.3.3.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4d03649372738630e56171af",
+      "source_node_key": "caps:subtopic:7.NS.3.3.1",
+      "target_node_key": "caps:assessment_statement:7.NS.3.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.3.3.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ac2ac537d70b4f95395afa33",
+      "source_node_key": "caps:subtopic:7.NS.3.3.1",
+      "target_node_key": "caps:assessment_statement:7.NS.3.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.3.3.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1c952483beaade753996b6e8",
+      "source_node_key": "caps:subtopic:7.NS.3.3.1",
+      "target_node_key": "caps:misconception:7.NS.3.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.3.3.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8b97dbae03738ff8faac43a5",
+      "source_node_key": "caps:subtopic:7.NS.3.3.1",
+      "target_node_key": "caps:misconception:7.NS.3.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.3.3.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a0a81d9bbca03e07388b4124",
+      "source_node_key": "caps:subtopic:7.NS.3.4.1",
+      "target_node_key": "caps:assessment_statement:7.NS.3.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.3.4.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_90c8892dccd35ff0fdfd6779",
+      "source_node_key": "caps:subtopic:7.NS.3.4.1",
+      "target_node_key": "caps:assessment_statement:7.NS.3.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.3.4.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b33a87183dba7a0295691f3a",
+      "source_node_key": "caps:subtopic:7.NS.3.4.1",
+      "target_node_key": "caps:assessment_statement:7.NS.3.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.3.4.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ef8275a3ce20472df86b96d4",
+      "source_node_key": "caps:subtopic:7.NS.3.4.1",
+      "target_node_key": "caps:misconception:7.NS.3.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.3.4.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b119b8042136a86a3c7c30d6",
+      "source_node_key": "caps:subtopic:7.NS.3.4.1",
+      "target_node_key": "caps:misconception:7.NS.3.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.3.4.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1cb77f8e151f7f7943f30b01",
+      "source_node_key": "caps:subtopic:7.NS.4.1.1",
+      "target_node_key": "caps:assessment_statement:7.NS.4.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.4.1.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_55914d027971b578e2588045",
+      "source_node_key": "caps:subtopic:7.NS.4.1.1",
+      "target_node_key": "caps:assessment_statement:7.NS.4.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.4.1.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_840dc4a32992031a9e7c3151",
+      "source_node_key": "caps:subtopic:7.NS.4.1.1",
+      "target_node_key": "caps:assessment_statement:7.NS.4.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.4.1.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e0503e3ee5bca9fa4b94faa2",
+      "source_node_key": "caps:subtopic:7.NS.4.1.1",
+      "target_node_key": "caps:misconception:7.NS.4.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.4.1.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5013bc26b8aefe918469e78a",
+      "source_node_key": "caps:subtopic:7.NS.4.1.1",
+      "target_node_key": "caps:misconception:7.NS.4.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.4.1.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_95015eaff85178071c4d0477",
+      "source_node_key": "caps:subtopic:7.NS.4.2.1",
+      "target_node_key": "caps:assessment_statement:7.NS.4.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.4.2.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d8e7822d4009e897d96ba90a",
+      "source_node_key": "caps:subtopic:7.NS.4.2.1",
+      "target_node_key": "caps:assessment_statement:7.NS.4.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.4.2.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_05125d613a6b74ce5102d09c",
+      "source_node_key": "caps:subtopic:7.NS.4.2.1",
+      "target_node_key": "caps:assessment_statement:7.NS.4.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.4.2.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ca606e3464fea85cb0996eba",
+      "source_node_key": "caps:subtopic:7.NS.4.2.1",
+      "target_node_key": "caps:misconception:7.NS.4.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.4.2.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b4db7644535d87d563e4ab57",
+      "source_node_key": "caps:subtopic:7.NS.4.2.1",
+      "target_node_key": "caps:misconception:7.NS.4.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.4.2.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7d0efb60de01c8e36fd4e3b8",
+      "source_node_key": "caps:subtopic:7.NS.4.3.1",
+      "target_node_key": "caps:assessment_statement:7.NS.4.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.4.3.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_415b902dd14ff7674cee36a5",
+      "source_node_key": "caps:subtopic:7.NS.4.3.1",
+      "target_node_key": "caps:assessment_statement:7.NS.4.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.4.3.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c241b70c8a23fe42f7fbb3aa",
+      "source_node_key": "caps:subtopic:7.NS.4.3.1",
+      "target_node_key": "caps:assessment_statement:7.NS.4.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.4.3.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9849c717bdbdaf6e12d9f7b7",
+      "source_node_key": "caps:subtopic:7.NS.4.3.1",
+      "target_node_key": "caps:misconception:7.NS.4.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.4.3.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1e89d6c5aee5f3cc3fe67681",
+      "source_node_key": "caps:subtopic:7.NS.4.3.1",
+      "target_node_key": "caps:misconception:7.NS.4.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.4.3.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d61345511dba193de2020d1f",
+      "source_node_key": "caps:subtopic:7.NS.4.4.1",
+      "target_node_key": "caps:assessment_statement:7.NS.4.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.4.4.1#assessment:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8095475b917384b34f2c99c6",
+      "source_node_key": "caps:subtopic:7.NS.4.4.1",
+      "target_node_key": "caps:assessment_statement:7.NS.4.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.4.4.1#assessment:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0f107e1641ca23dd7bc96b62",
+      "source_node_key": "caps:subtopic:7.NS.4.4.1",
+      "target_node_key": "caps:assessment_statement:7.NS.4.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.NS.4.4.1#assessment:3",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_16579dcbf583b35e62a67cbf",
+      "source_node_key": "caps:subtopic:7.NS.4.4.1",
+      "target_node_key": "caps:misconception:7.NS.4.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.4.4.1#misconception:2",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a56fd212f50f2f13ee1f44b4",
+      "source_node_key": "caps:subtopic:7.NS.4.4.1",
+      "target_node_key": "caps:misconception:7.NS.4.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.NS.4.4.1#misconception:1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6c35549b660e34194c28bd85",
+      "source_node_key": "caps:topic:7.NS.1.1",
+      "target_node_key": "caps:subtopic:7.NS.1.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.NS.1.1.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_22788686820f663915775f17",
+      "source_node_key": "caps:topic:7.NS.1.1",
+      "target_node_key": "caps:subtopic:7.NS.1.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.NS.1.2.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.NS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_b0b20c2e3c767ff80defa256",
+      "source_node_key": "caps:topic:7.NS.1.1",
+      "target_node_key": "caps:subtopic:7.NS.1.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.NS.1.3.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.NS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_3cee3850bfabe29d201a3603",
+      "source_node_key": "caps:topic:7.NS.1.1",
+      "target_node_key": "caps:subtopic:7.NS.1.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.NS.1.4.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.NS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_2efaf9447f42234b81ff22e1",
+      "source_node_key": "caps:topic:7.NS.1.1",
+      "target_node_key": "caps:subtopic:7.NS.2.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.NS.2.1.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.NS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_20a79d9bbff5fed56da55106",
+      "source_node_key": "caps:topic:7.NS.1.1",
+      "target_node_key": "caps:subtopic:7.NS.2.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.NS.2.2.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.NS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_b9fe71dd7b27fe981949bcb4",
+      "source_node_key": "caps:topic:7.NS.1.1",
+      "target_node_key": "caps:subtopic:7.NS.2.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.NS.2.3.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.NS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_5a4b251aa8355ee2d38a6ece",
+      "source_node_key": "caps:topic:7.NS.1.1",
+      "target_node_key": "caps:subtopic:7.NS.2.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.NS.2.4.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.NS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_3808bc399fd25fda34461b21",
+      "source_node_key": "caps:topic:7.NS.1.2",
+      "target_node_key": "caps:subtopic:7.NS.1.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.NS.1.2.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6b2ceb3f3e49cd616c5a6490",
+      "source_node_key": "caps:topic:7.NS.1.3",
+      "target_node_key": "caps:subtopic:7.NS.1.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.NS.1.3.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d22e1cc69cfc7f5172488864",
+      "source_node_key": "caps:topic:7.NS.1.4",
+      "target_node_key": "caps:subtopic:7.NS.1.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.NS.1.4.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5aaf5ceb193b38522c440646",
+      "source_node_key": "caps:topic:7.NS.2.1",
+      "target_node_key": "caps:subtopic:7.NS.2.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.NS.2.1.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_cf6addcc3480b92560e23b5c",
+      "source_node_key": "caps:topic:7.NS.2.1",
+      "target_node_key": "caps:subtopic:7.NS.3.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.NS.3.1.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.NS.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_c0a479b5165b5daf59a8dcca",
+      "source_node_key": "caps:topic:7.NS.2.1",
+      "target_node_key": "caps:subtopic:7.NS.3.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.NS.3.2.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.NS.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_8dee938befcf9f267d7b5868",
+      "source_node_key": "caps:topic:7.NS.2.1",
+      "target_node_key": "caps:subtopic:7.NS.3.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.NS.3.3.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.NS.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_ce9913965afd76094ad7cb62",
+      "source_node_key": "caps:topic:7.NS.2.1",
+      "target_node_key": "caps:subtopic:7.NS.3.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.NS.3.4.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.NS.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_4d1d1001e46cb9a77848e8e4",
+      "source_node_key": "caps:topic:7.NS.2.2",
+      "target_node_key": "caps:subtopic:7.NS.2.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.NS.2.2.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d2827298116a1ea2733fdacb",
+      "source_node_key": "caps:topic:7.NS.2.3",
+      "target_node_key": "caps:subtopic:7.NS.2.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.NS.2.3.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ed8a464792edc7eedc49e15a",
+      "source_node_key": "caps:topic:7.NS.2.4",
+      "target_node_key": "caps:subtopic:7.NS.2.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.NS.2.4.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c9cc109511f2803d02baaf7d",
+      "source_node_key": "caps:topic:7.NS.3.1",
+      "target_node_key": "caps:subtopic:7.NS.3.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.NS.3.1.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0b1de7148deaa1531d0997fd",
+      "source_node_key": "caps:topic:7.NS.3.1",
+      "target_node_key": "caps:subtopic:7.NS.4.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.NS.4.1.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.NS.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_0f4ec442b9334fd725f5b2d0",
+      "source_node_key": "caps:topic:7.NS.3.1",
+      "target_node_key": "caps:subtopic:7.NS.4.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.NS.4.2.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.NS.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_08cdfd4d234b6fbccc280aab",
+      "source_node_key": "caps:topic:7.NS.3.1",
+      "target_node_key": "caps:subtopic:7.NS.4.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.NS.4.3.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.NS.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_de6684fb38e500cd67fc403c",
+      "source_node_key": "caps:topic:7.NS.3.1",
+      "target_node_key": "caps:subtopic:7.NS.4.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.NS.4.4.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.NS.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_60968da674935b448b7700a1",
+      "source_node_key": "caps:topic:7.NS.3.2",
+      "target_node_key": "caps:subtopic:7.NS.3.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.NS.3.2.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bf282540e5eddafaac7b98dd",
+      "source_node_key": "caps:topic:7.NS.3.3",
+      "target_node_key": "caps:subtopic:7.NS.3.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.NS.3.3.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4420c7a3987ddefd7f206110",
+      "source_node_key": "caps:topic:7.NS.3.4",
+      "target_node_key": "caps:subtopic:7.NS.3.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.NS.3.4.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_afdd90555d44d0e12622de30",
+      "source_node_key": "caps:topic:7.NS.4.1",
+      "target_node_key": "caps:subtopic:7.NS.4.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.NS.4.1.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d9d2fab443f32be6d738f9d3",
+      "source_node_key": "caps:topic:7.NS.4.2",
+      "target_node_key": "caps:subtopic:7.NS.4.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.NS.4.2.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8a1ff107a2f91a3b64f2779b",
+      "source_node_key": "caps:topic:7.NS.4.3",
+      "target_node_key": "caps:subtopic:7.NS.4.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.NS.4.3.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9a03f515a74d45dfbb45d93c",
+      "source_node_key": "caps:topic:7.NS.4.4",
+      "target_node_key": "caps:subtopic:7.NS.4.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.NS.4.4.1",
+      "source_sha256": "923948d29f77782388b02f56d1771da7758f9ff8a90b7cd309c8d523062aa182",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    }
+  ],
+  "boundary": {
+    "runtime_kg_implementation_claimed": false,
+    "runtime_kg_authority_switch_authorised": false,
+    "database_schema_migration_authorised": false,
+    "learner_facing_model_change_authorised": false,
+    "learner_graph_implementation_authorised": false,
+    "production_release_authorised": false,
+    "deployment_authorised": false,
+    "release_tag_authorised": false,
+    "public_beta_authorised": false
+  }
+}

@@ -1,0 +1,3694 @@
+{
+  "graph_id": "KG-CAPS-GRAPH-GRADE-7-ECONOMIC-MANAGEMENT-SCIENCES",
+  "graph_version": "kg1-caps-graph-foundation-v1",
+  "status": "caps_graph_foundation_generated",
+  "scope": {
+    "curriculum": "CAPS",
+    "grade": 7,
+    "subject": "economic management sciences",
+    "language": "en"
+  },
+  "source": {
+    "source_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/data/caps/topic_maps/grade7_economic_management_sciences_en.json",
+    "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+    "source_ref": "Official DBE CAPS source document linked in source_documents manifest.",
+    "schema_version": "1.0.0"
+  },
+  "review": {
+    "node_review_status": "approved",
+    "edge_review_status": "approved",
+    "runtime_authority": "read_model_only"
+  },
+  "counts": {
+    "terms": 4,
+    "topics": 16,
+    "subtopics": 16,
+    "assessment_statements": 48,
+    "misconceptions": 32,
+    "prerequisite_edges": 15,
+    "nodes": 119,
+    "edges": 133
+  },
+  "nodes": [
+    {
+      "node_id": "kgn_760e92963290ed8f10e5fe81",
+      "node_key": "caps:assessment_statement:7.EMS.1.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to the economy.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.1.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_d6e87fa013a7620a59c6170f",
+      "node_key": "caps:assessment_statement:7.EMS.1.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.1.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_a699823767e09e0e04ef93f8",
+      "node_key": "caps:assessment_statement:7.EMS.1.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.1.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_4cc0a820c78d89ed896d8883",
+      "node_key": "caps:assessment_statement:7.EMS.1.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to needs and wants.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.2.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_3857dd9407b56decde47aea0",
+      "node_key": "caps:assessment_statement:7.EMS.1.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.2.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_6d81f8f137353b3807476293",
+      "node_key": "caps:assessment_statement:7.EMS.1.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.2.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_f2a3b026b1aa9c17695ee91e",
+      "node_key": "caps:assessment_statement:7.EMS.1.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to goods and services.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.3.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_0abcdfb1fe0f577c4832f538",
+      "node_key": "caps:assessment_statement:7.EMS.1.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.3.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_e359529c6dc8ae308d7d45c7",
+      "node_key": "caps:assessment_statement:7.EMS.1.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.3.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_19255ddfa331535fa1fbf008",
+      "node_key": "caps:assessment_statement:7.EMS.1.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to assessment.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.4.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_e1da7442e4a3b90a7d3c5b0f",
+      "node_key": "caps:assessment_statement:7.EMS.1.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.4.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_86f943e8c33819f136868024",
+      "node_key": "caps:assessment_statement:7.EMS.1.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.4.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_b50ec9896392deab1b0b61da",
+      "node_key": "caps:assessment_statement:7.EMS.2.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to financial literacy.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.1.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_cfce9e811c4a3eb87163df62",
+      "node_key": "caps:assessment_statement:7.EMS.2.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.1.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_76f400a2dc75ad4f695596b9",
+      "node_key": "caps:assessment_statement:7.EMS.2.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.1.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_a80b43c4835425ead81d9709",
+      "node_key": "caps:assessment_statement:7.EMS.2.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to accounting concepts.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.2.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_36c1071733d07e0c06e4bdcd",
+      "node_key": "caps:assessment_statement:7.EMS.2.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.2.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_ad3f7cb3329de064519b5b1d",
+      "node_key": "caps:assessment_statement:7.EMS.2.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.2.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_39e1ea1dad2296e30990d380",
+      "node_key": "caps:assessment_statement:7.EMS.2.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to income and expenses.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.3.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_88b016b66ddd00b3954fe2c8",
+      "node_key": "caps:assessment_statement:7.EMS.2.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.3.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_5fd5aaaea487040bb1d813ee",
+      "node_key": "caps:assessment_statement:7.EMS.2.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.3.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_aea47c3203ce57d2f4b5a551",
+      "node_key": "caps:assessment_statement:7.EMS.2.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to assessment.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.4.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_8f8f2aa121c288eb6ec99b04",
+      "node_key": "caps:assessment_statement:7.EMS.2.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.4.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_44eeb8de14a3cf106dd0ea1a",
+      "node_key": "caps:assessment_statement:7.EMS.2.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.4.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_dea50b5cdf4d8f8f23760f2d",
+      "node_key": "caps:assessment_statement:7.EMS.3.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to entrepreneurship.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.1.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_fdea403a2f4d9bd1e740e8c6",
+      "node_key": "caps:assessment_statement:7.EMS.3.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.1.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_95ff89f6fba63bb31e052a0c",
+      "node_key": "caps:assessment_statement:7.EMS.3.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.1.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_e82bb5569007c8bda0407491",
+      "node_key": "caps:assessment_statement:7.EMS.3.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to businesses and markets.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.2.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_ed22fe128c5b9969344f7311",
+      "node_key": "caps:assessment_statement:7.EMS.3.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.2.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_019ce6e5dbefd622dd57e6fb",
+      "node_key": "caps:assessment_statement:7.EMS.3.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.2.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_bc8cd2302bbcfa9c7bed7387",
+      "node_key": "caps:assessment_statement:7.EMS.3.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to production factors.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.3.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_c1dfcad2bda78a4593d97ccd",
+      "node_key": "caps:assessment_statement:7.EMS.3.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.3.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_5e698a288d90cc09ea6a9ff0",
+      "node_key": "caps:assessment_statement:7.EMS.3.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.3.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_a9b8c4b4834faf499e608530",
+      "node_key": "caps:assessment_statement:7.EMS.3.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to assessment.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.4.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_a57fbf6c5fa20d90026fa85b",
+      "node_key": "caps:assessment_statement:7.EMS.3.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.4.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_fc93dc2aaee7b244ad182e6b",
+      "node_key": "caps:assessment_statement:7.EMS.3.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.4.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_50e3168859ea48104adb9b0c",
+      "node_key": "caps:assessment_statement:7.EMS.4.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to economic and management sciences project.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.1.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_9af148ed8ce20e18ca18800a",
+      "node_key": "caps:assessment_statement:7.EMS.4.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.1.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_0fbfc8ed21f89e6e07d2d8be",
+      "node_key": "caps:assessment_statement:7.EMS.4.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.1.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_0732f8fb13ac567a0271aa54",
+      "node_key": "caps:assessment_statement:7.EMS.4.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to revision.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.2.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_cabf5ff43368f802387ed971",
+      "node_key": "caps:assessment_statement:7.EMS.4.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.2.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_b7e8dabeb2743aa7d30edc25",
+      "node_key": "caps:assessment_statement:7.EMS.4.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.2.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_c96e23557fbe95e2e894909e",
+      "node_key": "caps:assessment_statement:7.EMS.4.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to integrated assessment.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.3.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_199ae69f276c8cb6c26a527c",
+      "node_key": "caps:assessment_statement:7.EMS.4.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.3.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_70b315dfc14e93d1977048da",
+      "node_key": "caps:assessment_statement:7.EMS.4.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.3.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_a9a951efbe1bf8559e9cafd2",
+      "node_key": "caps:assessment_statement:7.EMS.4.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Explain core concepts related to assessment.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.4.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_96aaf4a83c60d22dec66f66f",
+      "node_key": "caps:assessment_statement:7.EMS.4.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Use CAPS enquiry, practical, creative or source-work skills for the topic.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.4.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_b1aac124b9458ca46b0fd070",
+      "node_key": "caps:assessment_statement:7.EMS.4.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Apply the topic in familiar South African classroom and everyday contexts.",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.4.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_c8a2e47bc28572931f00d59e",
+      "node_key": "caps:curriculum",
+      "node_type": "curriculum",
+      "label": "CAPS",
+      "description": "South African CAPS curriculum",
+      "grade": null,
+      "subject": null,
+      "term": null,
+      "source_ref": "CAPS",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "source_file": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/data/caps/topic_maps/grade7_economic_management_sciences_en.json"
+      }
+    },
+    {
+      "node_id": "kgn_75eaf84a4563217d33ca777a",
+      "node_key": "caps:grade:7",
+      "node_type": "grade",
+      "label": "Grade 7",
+      "description": "CAPS Grade 7",
+      "grade": 7,
+      "subject": null,
+      "term": null,
+      "source_ref": "grade:7",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "node_id": "kgn_df222ed43fcf3efa21bc9d8e",
+      "node_key": "caps:grade:7:subject:economic management sciences",
+      "node_type": "subject",
+      "label": "Economic Management Sciences",
+      "description": "CAPS Grade 7 Economic Management Sciences",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": null,
+      "source_ref": "grade:7:subject:EMS",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subject_code": "EMS"
+      }
+    },
+    {
+      "node_id": "kgn_5699948e330cc440d40893e2",
+      "node_key": "caps:grade:7:subject:economic management sciences:term:1",
+      "node_type": "term",
+      "label": "Term 1",
+      "description": "Grade 7 Economic Management Sciences Term 1",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "term:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_407724946a9b2b2f184903bb",
+      "node_key": "caps:grade:7:subject:economic management sciences:term:2",
+      "node_type": "term",
+      "label": "Term 2",
+      "description": "Grade 7 Economic Management Sciences Term 2",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "term:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_2d9b9020b0f7e40b9f585805",
+      "node_key": "caps:grade:7:subject:economic management sciences:term:3",
+      "node_type": "term",
+      "label": "Term 3",
+      "description": "Grade 7 Economic Management Sciences Term 3",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "term:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_0af7457e30c71a0c39684f9f",
+      "node_key": "caps:grade:7:subject:economic management sciences:term:4",
+      "node_type": "term",
+      "label": "Term 4",
+      "description": "Grade 7 Economic Management Sciences Term 4",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "term:4",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-8"
+      }
+    },
+    {
+      "node_id": "kgn_1a6989ec76db4086d41e7aa9",
+      "node_key": "caps:misconception:7.EMS.1.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.1.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_1266a6a92b23336752c33658",
+      "node_key": "caps:misconception:7.EMS.1.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.1.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_910187772d9cab5c7fa17439",
+      "node_key": "caps:misconception:7.EMS.1.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.2.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_3cf5f433f853cb162d36da79",
+      "node_key": "caps:misconception:7.EMS.1.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.2.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_f8a974c4f3308cbe46b4d100",
+      "node_key": "caps:misconception:7.EMS.1.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.3.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_835ca8ee09abd3e168f95d80",
+      "node_key": "caps:misconception:7.EMS.1.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.3.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_d844021fb743d8f2d671e8d7",
+      "node_key": "caps:misconception:7.EMS.1.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.4.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_2abeb353868c0503e41fb345",
+      "node_key": "caps:misconception:7.EMS.1.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.4.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_feecf7a080619f1422f575e9",
+      "node_key": "caps:misconception:7.EMS.2.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.1.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_17c204011373f290ada39ad5",
+      "node_key": "caps:misconception:7.EMS.2.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.1.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_f0f27f4a596e4d00377e3af0",
+      "node_key": "caps:misconception:7.EMS.2.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.2.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_3bd11b4dd680f3e06ef73c10",
+      "node_key": "caps:misconception:7.EMS.2.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.2.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_d71429fcad2bde0a842b239c",
+      "node_key": "caps:misconception:7.EMS.2.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.3.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_4837735c2e06bb1fa7fc6567",
+      "node_key": "caps:misconception:7.EMS.2.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.3.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_5e9c048d2c37efae82a1eb33",
+      "node_key": "caps:misconception:7.EMS.2.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.4.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_ca9e2ffd35cf7b611af472bf",
+      "node_key": "caps:misconception:7.EMS.2.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.4.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_47f7918af0522e42fe45d0be",
+      "node_key": "caps:misconception:7.EMS.3.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.1.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_5f948661ce11d47db626353c",
+      "node_key": "caps:misconception:7.EMS.3.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.1.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_37bf04f8da954998cc9be497",
+      "node_key": "caps:misconception:7.EMS.3.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.2.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_ef510a991d93f91f96afe268",
+      "node_key": "caps:misconception:7.EMS.3.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.2.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_1fca13b301f6fa2a6bc11548",
+      "node_key": "caps:misconception:7.EMS.3.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.3.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_15f94401a4b86280e7e153fc",
+      "node_key": "caps:misconception:7.EMS.3.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.3.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_dcd9be50cf04a69bcc094f8e",
+      "node_key": "caps:misconception:7.EMS.3.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.4.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_6cc09dc49e2916a976df8527",
+      "node_key": "caps:misconception:7.EMS.3.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.4.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_4ed197bbb43855522d639b51",
+      "node_key": "caps:misconception:7.EMS.4.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.1.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_397473f869fce21fab872295",
+      "node_key": "caps:misconception:7.EMS.4.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.1.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_d24289d1f1035bd05d582571",
+      "node_key": "caps:misconception:7.EMS.4.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.2.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_5dff6eb56c14d715990a4074",
+      "node_key": "caps:misconception:7.EMS.4.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.2.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_2433616c7224b9d33f589ff5",
+      "node_key": "caps:misconception:7.EMS.4.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.3.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_5d3991ebd17c22a060f5568b",
+      "node_key": "caps:misconception:7.EMS.4.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.3.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_80d212c04a286324c38476e8",
+      "node_key": "caps:misconception:7.EMS.4.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.4.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_7140d1bca3ce60cac8d86a3d",
+      "node_key": "caps:misconception:7.EMS.4.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.4.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.EMS.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_859cf2ec56b5120141a69945",
+      "node_key": "caps:subtopic:7.EMS.1.1.1",
+      "node_type": "subtopic",
+      "label": "The economy",
+      "description": "The economy",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.1.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_885aad0d583726a0fa2432c5",
+      "node_key": "caps:subtopic:7.EMS.1.2.1",
+      "node_type": "subtopic",
+      "label": "Needs and wants",
+      "description": "Needs and wants",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.2.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_d1ab0b76fbac695aed87d71b",
+      "node_key": "caps:subtopic:7.EMS.1.3.1",
+      "node_type": "subtopic",
+      "label": "Goods and services",
+      "description": "Goods and services",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.3.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_76c452a7229c2e62d169e8fb",
+      "node_key": "caps:subtopic:7.EMS.1.4.1",
+      "node_type": "subtopic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.4.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_7c73ba6800c5c1d1774efd56",
+      "node_key": "caps:subtopic:7.EMS.2.1.1",
+      "node_type": "subtopic",
+      "label": "Financial literacy",
+      "description": "Financial literacy",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.1.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_73fc30df2c4ac352923a1051",
+      "node_key": "caps:subtopic:7.EMS.2.2.1",
+      "node_type": "subtopic",
+      "label": "Accounting concepts",
+      "description": "Accounting concepts",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.2.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_e6d384078db0c9c627212269",
+      "node_key": "caps:subtopic:7.EMS.2.3.1",
+      "node_type": "subtopic",
+      "label": "Income and expenses",
+      "description": "Income and expenses",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.3.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_c17b425d917fefb9e437f9c0",
+      "node_key": "caps:subtopic:7.EMS.2.4.1",
+      "node_type": "subtopic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.4.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_de2e7bde1e254e9791f52a7a",
+      "node_key": "caps:subtopic:7.EMS.3.1.1",
+      "node_type": "subtopic",
+      "label": "Entrepreneurship",
+      "description": "Entrepreneurship",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.1.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_dfd9925fb2111990c3e01614",
+      "node_key": "caps:subtopic:7.EMS.3.2.1",
+      "node_type": "subtopic",
+      "label": "Businesses and markets",
+      "description": "Businesses and markets",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.2.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_f9d9477bffa087922dab7adc",
+      "node_key": "caps:subtopic:7.EMS.3.3.1",
+      "node_type": "subtopic",
+      "label": "Production factors",
+      "description": "Production factors",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.3.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_64bdaf56784966e2fd42fde4",
+      "node_key": "caps:subtopic:7.EMS.3.4.1",
+      "node_type": "subtopic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.4.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_c503fad87ada1344e2221daa",
+      "node_key": "caps:subtopic:7.EMS.4.1.1",
+      "node_type": "subtopic",
+      "label": "Economic and management sciences project",
+      "description": "Economic and management sciences project",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.1.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_cd7785ac0fa563ae184bb6a1",
+      "node_key": "caps:subtopic:7.EMS.4.2.1",
+      "node_type": "subtopic",
+      "label": "Revision",
+      "description": "Revision",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.2.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_c0fc44a056a9debf6b6c4686",
+      "node_key": "caps:subtopic:7.EMS.4.3.1",
+      "node_type": "subtopic",
+      "label": "Integrated assessment",
+      "description": "Integrated assessment",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.3.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_d32eb3baf9fa35d16635a0fa",
+      "node_key": "caps:subtopic:7.EMS.4.4.1",
+      "node_type": "subtopic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.4.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_b57b19937cb43036449cc481",
+      "node_key": "caps:topic:7.EMS.1.1",
+      "node_type": "topic",
+      "label": "The economy",
+      "description": "The economy",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_3b11a668323865d11f23c143",
+      "node_key": "caps:topic:7.EMS.1.2",
+      "node_type": "topic",
+      "label": "Needs and wants",
+      "description": "Needs and wants",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_8ed335cbc5e8057ef5ca8799",
+      "node_key": "caps:topic:7.EMS.1.3",
+      "node_type": "topic",
+      "label": "Goods and services",
+      "description": "Goods and services",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_3f42e90c75ea61f7de7bfa60",
+      "node_key": "caps:topic:7.EMS.1.4",
+      "node_type": "topic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 1,
+      "source_ref": "7.EMS.1.4",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_aa3472026ba36a8f47d9023c",
+      "node_key": "caps:topic:7.EMS.2.1",
+      "node_type": "topic",
+      "label": "Financial literacy",
+      "description": "Financial literacy",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_fa4a772270c18a44e73ee6f6",
+      "node_key": "caps:topic:7.EMS.2.2",
+      "node_type": "topic",
+      "label": "Accounting concepts",
+      "description": "Accounting concepts",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_7d4864c24e8290b8cb842dd9",
+      "node_key": "caps:topic:7.EMS.2.3",
+      "node_type": "topic",
+      "label": "Income and expenses",
+      "description": "Income and expenses",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_d95478060e6beb286cdf9f5d",
+      "node_key": "caps:topic:7.EMS.2.4",
+      "node_type": "topic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 2,
+      "source_ref": "7.EMS.2.4",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_455a73c9d8ad48e6047d14f8",
+      "node_key": "caps:topic:7.EMS.3.1",
+      "node_type": "topic",
+      "label": "Entrepreneurship",
+      "description": "Entrepreneurship",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_aa33c405110fdc9a00da9f14",
+      "node_key": "caps:topic:7.EMS.3.2",
+      "node_type": "topic",
+      "label": "Businesses and markets",
+      "description": "Businesses and markets",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_279b4e9e4b61928818b6b786",
+      "node_key": "caps:topic:7.EMS.3.3",
+      "node_type": "topic",
+      "label": "Production factors",
+      "description": "Production factors",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_3b3adca36a12d59ddcccaa05",
+      "node_key": "caps:topic:7.EMS.3.4",
+      "node_type": "topic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 3,
+      "source_ref": "7.EMS.3.4",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_28ffa3ccd2e9b17559e279a7",
+      "node_key": "caps:topic:7.EMS.4.1",
+      "node_type": "topic",
+      "label": "Economic and management sciences project",
+      "description": "Economic and management sciences project",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_1172bdb8ecf8baa857f434be",
+      "node_key": "caps:topic:7.EMS.4.2",
+      "node_type": "topic",
+      "label": "Revision",
+      "description": "Revision",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_ce4924dab750e906b12569bf",
+      "node_key": "caps:topic:7.EMS.4.3",
+      "node_type": "topic",
+      "label": "Integrated assessment",
+      "description": "Integrated assessment",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_47d45e46040c0eaf221181a4",
+      "node_key": "caps:topic:7.EMS.4.4",
+      "node_type": "topic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "economic management sciences",
+      "term": 4,
+      "source_ref": "7.EMS.4.4",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "kge_8de3252b449e05142dae8603",
+      "source_node_key": "caps:curriculum",
+      "target_node_key": "caps:grade:7",
+      "edge_type": "contains",
+      "label": "CAPS contains grade",
+      "source_ref": "CAPS",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_cfd23071df15b90c807bacc2",
+      "source_node_key": "caps:grade:7",
+      "target_node_key": "caps:grade:7:subject:economic management sciences",
+      "edge_type": "contains",
+      "label": "Grade contains subject",
+      "source_ref": "grade:7:subject:EMS",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_48355de65abfd375fcf51575",
+      "source_node_key": "caps:grade:7:subject:economic management sciences",
+      "target_node_key": "caps:grade:7:subject:economic management sciences:term:1",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f94c369cb6781599f593bfb4",
+      "source_node_key": "caps:grade:7:subject:economic management sciences",
+      "target_node_key": "caps:grade:7:subject:economic management sciences:term:2",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_49b574da4261c189d6282f66",
+      "source_node_key": "caps:grade:7:subject:economic management sciences",
+      "target_node_key": "caps:grade:7:subject:economic management sciences:term:3",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1abd473faf4e0450e5730437",
+      "source_node_key": "caps:grade:7:subject:economic management sciences",
+      "target_node_key": "caps:grade:7:subject:economic management sciences:term:4",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:4",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d1823b0e3f288063d7d211f5",
+      "source_node_key": "caps:grade:7:subject:economic management sciences:term:1",
+      "target_node_key": "caps:topic:7.EMS.1.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.EMS.1.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5bdc8dbb263c16ca7c54eb0c",
+      "source_node_key": "caps:grade:7:subject:economic management sciences:term:1",
+      "target_node_key": "caps:topic:7.EMS.1.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.EMS.1.2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e75f61622b5c1ef978316dd1",
+      "source_node_key": "caps:grade:7:subject:economic management sciences:term:1",
+      "target_node_key": "caps:topic:7.EMS.1.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.EMS.1.3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b7a37f5b8b2faedc1f42f81b",
+      "source_node_key": "caps:grade:7:subject:economic management sciences:term:1",
+      "target_node_key": "caps:topic:7.EMS.1.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.EMS.1.4",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fabea9908ddc3499337ecf2b",
+      "source_node_key": "caps:grade:7:subject:economic management sciences:term:2",
+      "target_node_key": "caps:topic:7.EMS.2.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.EMS.2.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_530a97f4b2a9922f594eab19",
+      "source_node_key": "caps:grade:7:subject:economic management sciences:term:2",
+      "target_node_key": "caps:topic:7.EMS.2.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.EMS.2.2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_64b68e1c0fd80708d5c52e25",
+      "source_node_key": "caps:grade:7:subject:economic management sciences:term:2",
+      "target_node_key": "caps:topic:7.EMS.2.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.EMS.2.3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_58cb2517b98261bcdef39bca",
+      "source_node_key": "caps:grade:7:subject:economic management sciences:term:2",
+      "target_node_key": "caps:topic:7.EMS.2.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.EMS.2.4",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_39327908be535ba4bc54b9fa",
+      "source_node_key": "caps:grade:7:subject:economic management sciences:term:3",
+      "target_node_key": "caps:topic:7.EMS.3.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.EMS.3.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3958ae945a19cf61cda72bd6",
+      "source_node_key": "caps:grade:7:subject:economic management sciences:term:3",
+      "target_node_key": "caps:topic:7.EMS.3.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.EMS.3.2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f8579c727adcb4f4a20fc07a",
+      "source_node_key": "caps:grade:7:subject:economic management sciences:term:3",
+      "target_node_key": "caps:topic:7.EMS.3.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.EMS.3.3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_79b31b3f8fdac0a68da7ba66",
+      "source_node_key": "caps:grade:7:subject:economic management sciences:term:3",
+      "target_node_key": "caps:topic:7.EMS.3.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.EMS.3.4",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_47adb35c664dde3ca6ea4211",
+      "source_node_key": "caps:grade:7:subject:economic management sciences:term:4",
+      "target_node_key": "caps:topic:7.EMS.4.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.EMS.4.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e1d7b9fb3c58a4132442d882",
+      "source_node_key": "caps:grade:7:subject:economic management sciences:term:4",
+      "target_node_key": "caps:topic:7.EMS.4.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.EMS.4.2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e7c7ce71343b382433bc45f8",
+      "source_node_key": "caps:grade:7:subject:economic management sciences:term:4",
+      "target_node_key": "caps:topic:7.EMS.4.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.EMS.4.3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ef6e43fda42888751b28c280",
+      "source_node_key": "caps:grade:7:subject:economic management sciences:term:4",
+      "target_node_key": "caps:topic:7.EMS.4.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.EMS.4.4",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fabd82e0fa8f2e80af7cb9a0",
+      "source_node_key": "caps:subtopic:7.EMS.1.1.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.1.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.1.1.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0060d371ce0c71aca0b4987e",
+      "source_node_key": "caps:subtopic:7.EMS.1.1.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.1.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.1.1.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_cc276ec99e04693bf4831f7b",
+      "source_node_key": "caps:subtopic:7.EMS.1.1.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.1.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.1.1.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bfd36ae626aad0c549f311b4",
+      "source_node_key": "caps:subtopic:7.EMS.1.1.1",
+      "target_node_key": "caps:misconception:7.EMS.1.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.1.1.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b2562ec4055194fcb89857f6",
+      "source_node_key": "caps:subtopic:7.EMS.1.1.1",
+      "target_node_key": "caps:misconception:7.EMS.1.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.1.1.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1a260837a6e602ced7653612",
+      "source_node_key": "caps:subtopic:7.EMS.1.2.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.1.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.1.2.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d49fcc4f1dab2ebf2b83c5f7",
+      "source_node_key": "caps:subtopic:7.EMS.1.2.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.1.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.1.2.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_86a9b9265b2608e1878bdb21",
+      "source_node_key": "caps:subtopic:7.EMS.1.2.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.1.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.1.2.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a55dc91777cb13b5ed61e848",
+      "source_node_key": "caps:subtopic:7.EMS.1.2.1",
+      "target_node_key": "caps:misconception:7.EMS.1.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.1.2.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c97514b8c1a8001cd1b6963e",
+      "source_node_key": "caps:subtopic:7.EMS.1.2.1",
+      "target_node_key": "caps:misconception:7.EMS.1.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.1.2.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_dbf32669ecfe15b267820470",
+      "source_node_key": "caps:subtopic:7.EMS.1.3.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.1.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.1.3.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b55659947a403764eb25c8b5",
+      "source_node_key": "caps:subtopic:7.EMS.1.3.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.1.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.1.3.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_de9092b4a6b7b8047fb6111b",
+      "source_node_key": "caps:subtopic:7.EMS.1.3.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.1.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.1.3.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1ae41a13bed54b886bba3fc0",
+      "source_node_key": "caps:subtopic:7.EMS.1.3.1",
+      "target_node_key": "caps:misconception:7.EMS.1.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.1.3.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8cae1755ede582aeb4758ec3",
+      "source_node_key": "caps:subtopic:7.EMS.1.3.1",
+      "target_node_key": "caps:misconception:7.EMS.1.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.1.3.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_905482dc47d33ac97a32fcf1",
+      "source_node_key": "caps:subtopic:7.EMS.1.4.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.1.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.1.4.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_aa329dbbab116022830382af",
+      "source_node_key": "caps:subtopic:7.EMS.1.4.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.1.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.1.4.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_90eab7c599451ad9f02b1bcc",
+      "source_node_key": "caps:subtopic:7.EMS.1.4.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.1.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.1.4.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_37c2cce6684f9d84eaf6eafa",
+      "source_node_key": "caps:subtopic:7.EMS.1.4.1",
+      "target_node_key": "caps:misconception:7.EMS.1.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.1.4.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a2034ffd873a36f82e83d909",
+      "source_node_key": "caps:subtopic:7.EMS.1.4.1",
+      "target_node_key": "caps:misconception:7.EMS.1.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.1.4.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_46ad936590b0127abc261cfd",
+      "source_node_key": "caps:subtopic:7.EMS.2.1.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.2.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.2.1.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_45143f81a8ba51f932a10c4a",
+      "source_node_key": "caps:subtopic:7.EMS.2.1.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.2.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.2.1.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c96ab359645f6500e9b34f61",
+      "source_node_key": "caps:subtopic:7.EMS.2.1.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.2.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.2.1.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d711cbb331a80d1a1b194672",
+      "source_node_key": "caps:subtopic:7.EMS.2.1.1",
+      "target_node_key": "caps:misconception:7.EMS.2.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.2.1.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6e379be68aea2a7028318423",
+      "source_node_key": "caps:subtopic:7.EMS.2.1.1",
+      "target_node_key": "caps:misconception:7.EMS.2.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.2.1.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_64203347d1998b9f8fbfb49c",
+      "source_node_key": "caps:subtopic:7.EMS.2.2.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.2.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.2.2.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1ecaa36ffcc4edb970773d5f",
+      "source_node_key": "caps:subtopic:7.EMS.2.2.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.2.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.2.2.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_39c1308c0815de079b115114",
+      "source_node_key": "caps:subtopic:7.EMS.2.2.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.2.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.2.2.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d4604c041ac172edb3446f61",
+      "source_node_key": "caps:subtopic:7.EMS.2.2.1",
+      "target_node_key": "caps:misconception:7.EMS.2.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.2.2.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a206b1a083d38696f79a704f",
+      "source_node_key": "caps:subtopic:7.EMS.2.2.1",
+      "target_node_key": "caps:misconception:7.EMS.2.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.2.2.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ad78e3a40d1558bae8375406",
+      "source_node_key": "caps:subtopic:7.EMS.2.3.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.2.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.2.3.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b9678fac8102ca77edf2042d",
+      "source_node_key": "caps:subtopic:7.EMS.2.3.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.2.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.2.3.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ff84ffa1d66ff26bd98ebe36",
+      "source_node_key": "caps:subtopic:7.EMS.2.3.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.2.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.2.3.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7b87e3235c42b70e4ad28070",
+      "source_node_key": "caps:subtopic:7.EMS.2.3.1",
+      "target_node_key": "caps:misconception:7.EMS.2.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.2.3.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2cea758bc3991bd999d7dd8c",
+      "source_node_key": "caps:subtopic:7.EMS.2.3.1",
+      "target_node_key": "caps:misconception:7.EMS.2.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.2.3.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_cc3250939dad5063718bdc51",
+      "source_node_key": "caps:subtopic:7.EMS.2.4.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.2.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.2.4.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_47bc0c76ce86804fec4fd4ca",
+      "source_node_key": "caps:subtopic:7.EMS.2.4.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.2.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.2.4.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_aacb2f21aa5b90772d1d9a7b",
+      "source_node_key": "caps:subtopic:7.EMS.2.4.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.2.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.2.4.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2b2962e48bc0e5489bc91eaf",
+      "source_node_key": "caps:subtopic:7.EMS.2.4.1",
+      "target_node_key": "caps:misconception:7.EMS.2.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.2.4.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f32aa4defc60baecfa11bd69",
+      "source_node_key": "caps:subtopic:7.EMS.2.4.1",
+      "target_node_key": "caps:misconception:7.EMS.2.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.2.4.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_aba10ea218f182da174ed4c8",
+      "source_node_key": "caps:subtopic:7.EMS.3.1.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.3.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.3.1.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_64ecf20a0931a5f7141311c5",
+      "source_node_key": "caps:subtopic:7.EMS.3.1.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.3.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.3.1.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0325ce0ef90d0320a97ed1bd",
+      "source_node_key": "caps:subtopic:7.EMS.3.1.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.3.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.3.1.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_78ba03b6c1693e8631014876",
+      "source_node_key": "caps:subtopic:7.EMS.3.1.1",
+      "target_node_key": "caps:misconception:7.EMS.3.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.3.1.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8b91423db433231a41ff9378",
+      "source_node_key": "caps:subtopic:7.EMS.3.1.1",
+      "target_node_key": "caps:misconception:7.EMS.3.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.3.1.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3e3aaf9a185a6b71c2c1a9cf",
+      "source_node_key": "caps:subtopic:7.EMS.3.2.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.3.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.3.2.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f2ace7c80e09cb14391f4acd",
+      "source_node_key": "caps:subtopic:7.EMS.3.2.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.3.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.3.2.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_def36ed41ca77c7c055821e0",
+      "source_node_key": "caps:subtopic:7.EMS.3.2.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.3.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.3.2.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_63a19f02d56663b6276ed72a",
+      "source_node_key": "caps:subtopic:7.EMS.3.2.1",
+      "target_node_key": "caps:misconception:7.EMS.3.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.3.2.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_774b37374000c0f5b9b815c5",
+      "source_node_key": "caps:subtopic:7.EMS.3.2.1",
+      "target_node_key": "caps:misconception:7.EMS.3.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.3.2.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_57f48f4a0e72ca70c04514e3",
+      "source_node_key": "caps:subtopic:7.EMS.3.3.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.3.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.3.3.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d1d43efac3d44166f1ef2c5a",
+      "source_node_key": "caps:subtopic:7.EMS.3.3.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.3.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.3.3.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0f5c3b99029ce1507fe17d0c",
+      "source_node_key": "caps:subtopic:7.EMS.3.3.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.3.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.3.3.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_31446b68b965fe3bad01dc90",
+      "source_node_key": "caps:subtopic:7.EMS.3.3.1",
+      "target_node_key": "caps:misconception:7.EMS.3.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.3.3.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bc5ee2d0d2345bebf74608a9",
+      "source_node_key": "caps:subtopic:7.EMS.3.3.1",
+      "target_node_key": "caps:misconception:7.EMS.3.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.3.3.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4a8b47a2123d54d1a361d516",
+      "source_node_key": "caps:subtopic:7.EMS.3.4.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.3.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.3.4.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d644f4671143867d5e9a4c76",
+      "source_node_key": "caps:subtopic:7.EMS.3.4.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.3.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.3.4.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f29d62a908c14d07ae0fe92a",
+      "source_node_key": "caps:subtopic:7.EMS.3.4.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.3.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.3.4.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_91092c87040a9b2b2586d0c1",
+      "source_node_key": "caps:subtopic:7.EMS.3.4.1",
+      "target_node_key": "caps:misconception:7.EMS.3.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.3.4.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9bb85d0977b624c48dbb1266",
+      "source_node_key": "caps:subtopic:7.EMS.3.4.1",
+      "target_node_key": "caps:misconception:7.EMS.3.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.3.4.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_82873cf1b5b28c65e02f1a22",
+      "source_node_key": "caps:subtopic:7.EMS.4.1.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.4.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.4.1.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e17cb40dec21954bf1e3bf37",
+      "source_node_key": "caps:subtopic:7.EMS.4.1.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.4.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.4.1.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_33a56c4c34bdf8dc6c67f86a",
+      "source_node_key": "caps:subtopic:7.EMS.4.1.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.4.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.4.1.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f96f70db5ca1f4c2d9ed78f3",
+      "source_node_key": "caps:subtopic:7.EMS.4.1.1",
+      "target_node_key": "caps:misconception:7.EMS.4.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.4.1.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1b54fe6c08c0f9c1afb2e915",
+      "source_node_key": "caps:subtopic:7.EMS.4.1.1",
+      "target_node_key": "caps:misconception:7.EMS.4.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.4.1.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c2dda4b3e23d2018d8a04e1d",
+      "source_node_key": "caps:subtopic:7.EMS.4.2.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.4.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.4.2.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c31c0c81614df24b286ef7af",
+      "source_node_key": "caps:subtopic:7.EMS.4.2.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.4.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.4.2.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_dab0d2ab8ec033f6c5d5c2ae",
+      "source_node_key": "caps:subtopic:7.EMS.4.2.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.4.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.4.2.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1bd9b770a7c7cf172a57943f",
+      "source_node_key": "caps:subtopic:7.EMS.4.2.1",
+      "target_node_key": "caps:misconception:7.EMS.4.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.4.2.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a7fdcfc9f1ddc328c6a186b7",
+      "source_node_key": "caps:subtopic:7.EMS.4.2.1",
+      "target_node_key": "caps:misconception:7.EMS.4.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.4.2.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_80611a8e5cda977696c6dc01",
+      "source_node_key": "caps:subtopic:7.EMS.4.3.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.4.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.4.3.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_db434bd15a84f77b95aa2e89",
+      "source_node_key": "caps:subtopic:7.EMS.4.3.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.4.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.4.3.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d928484fc4f183fd879c56c8",
+      "source_node_key": "caps:subtopic:7.EMS.4.3.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.4.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.4.3.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_269b8f98d94054a4d2bbc2d7",
+      "source_node_key": "caps:subtopic:7.EMS.4.3.1",
+      "target_node_key": "caps:misconception:7.EMS.4.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.4.3.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b6bd7ac27abe915a78aae8c7",
+      "source_node_key": "caps:subtopic:7.EMS.4.3.1",
+      "target_node_key": "caps:misconception:7.EMS.4.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.4.3.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b076604a865c2a5571f27af3",
+      "source_node_key": "caps:subtopic:7.EMS.4.4.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.4.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.4.4.1#assessment:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b7fc6993ef871afd79106dd7",
+      "source_node_key": "caps:subtopic:7.EMS.4.4.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.4.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.4.4.1#assessment:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e850da9c58da6807fc771b70",
+      "source_node_key": "caps:subtopic:7.EMS.4.4.1",
+      "target_node_key": "caps:assessment_statement:7.EMS.4.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.EMS.4.4.1#assessment:3",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_41e149fb2b3bb76a6c97cab3",
+      "source_node_key": "caps:subtopic:7.EMS.4.4.1",
+      "target_node_key": "caps:misconception:7.EMS.4.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.4.4.1#misconception:2",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_655a968bc7303fe295ae84c7",
+      "source_node_key": "caps:subtopic:7.EMS.4.4.1",
+      "target_node_key": "caps:misconception:7.EMS.4.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.EMS.4.4.1#misconception:1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_dea6603752d019472fa45149",
+      "source_node_key": "caps:topic:7.EMS.1.1",
+      "target_node_key": "caps:subtopic:7.EMS.1.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.EMS.1.1.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a2fc1990f591b4b8f5f0a0d7",
+      "source_node_key": "caps:topic:7.EMS.1.1",
+      "target_node_key": "caps:subtopic:7.EMS.1.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.EMS.1.2.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.EMS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_2bb2ebfce99da3fd95df0efa",
+      "source_node_key": "caps:topic:7.EMS.1.1",
+      "target_node_key": "caps:subtopic:7.EMS.1.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.EMS.1.3.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.EMS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_cebcefa9e9f049c521842b63",
+      "source_node_key": "caps:topic:7.EMS.1.1",
+      "target_node_key": "caps:subtopic:7.EMS.1.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.EMS.1.4.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.EMS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_507539f0a72e84bacda91e14",
+      "source_node_key": "caps:topic:7.EMS.1.1",
+      "target_node_key": "caps:subtopic:7.EMS.2.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.EMS.2.1.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.EMS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_05e96f7ba742ee7c9a573ed4",
+      "source_node_key": "caps:topic:7.EMS.1.1",
+      "target_node_key": "caps:subtopic:7.EMS.2.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.EMS.2.2.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.EMS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_df0beb38b62211ddcb591242",
+      "source_node_key": "caps:topic:7.EMS.1.1",
+      "target_node_key": "caps:subtopic:7.EMS.2.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.EMS.2.3.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.EMS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_2ffca47c4b6627888ef77ba1",
+      "source_node_key": "caps:topic:7.EMS.1.1",
+      "target_node_key": "caps:subtopic:7.EMS.2.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.EMS.2.4.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.EMS.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_65df2b25f512f13ee85dff15",
+      "source_node_key": "caps:topic:7.EMS.1.2",
+      "target_node_key": "caps:subtopic:7.EMS.1.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.EMS.1.2.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_46a6331e32aa76cff50e5918",
+      "source_node_key": "caps:topic:7.EMS.1.3",
+      "target_node_key": "caps:subtopic:7.EMS.1.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.EMS.1.3.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2accef787a17c9fa4bf3dda5",
+      "source_node_key": "caps:topic:7.EMS.1.4",
+      "target_node_key": "caps:subtopic:7.EMS.1.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.EMS.1.4.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9b5e1a4c2d22b75b4cfcfe77",
+      "source_node_key": "caps:topic:7.EMS.2.1",
+      "target_node_key": "caps:subtopic:7.EMS.2.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.EMS.2.1.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_cdeb76bc625687092ba456b2",
+      "source_node_key": "caps:topic:7.EMS.2.1",
+      "target_node_key": "caps:subtopic:7.EMS.3.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.EMS.3.1.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.EMS.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_4f47618bb11eb44c5ff9cb68",
+      "source_node_key": "caps:topic:7.EMS.2.1",
+      "target_node_key": "caps:subtopic:7.EMS.3.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.EMS.3.2.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.EMS.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_a898ba8ca813d57637f7feb4",
+      "source_node_key": "caps:topic:7.EMS.2.1",
+      "target_node_key": "caps:subtopic:7.EMS.3.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.EMS.3.3.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.EMS.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_dda27987113e0af7854ce101",
+      "source_node_key": "caps:topic:7.EMS.2.1",
+      "target_node_key": "caps:subtopic:7.EMS.3.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.EMS.3.4.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.EMS.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_d5345dc930942c5ef1c9e854",
+      "source_node_key": "caps:topic:7.EMS.2.2",
+      "target_node_key": "caps:subtopic:7.EMS.2.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.EMS.2.2.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_660cd5daf3ebfdbdfa06d661",
+      "source_node_key": "caps:topic:7.EMS.2.3",
+      "target_node_key": "caps:subtopic:7.EMS.2.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.EMS.2.3.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9da1610eb5c0a1ed4f78d6e6",
+      "source_node_key": "caps:topic:7.EMS.2.4",
+      "target_node_key": "caps:subtopic:7.EMS.2.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.EMS.2.4.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9149cc97ed39d6aac7b798f8",
+      "source_node_key": "caps:topic:7.EMS.3.1",
+      "target_node_key": "caps:subtopic:7.EMS.3.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.EMS.3.1.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_53f1fe97e3cd0e9c0147ee76",
+      "source_node_key": "caps:topic:7.EMS.3.1",
+      "target_node_key": "caps:subtopic:7.EMS.4.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.EMS.4.1.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.EMS.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_d5e70af24120e1efff42a43d",
+      "source_node_key": "caps:topic:7.EMS.3.1",
+      "target_node_key": "caps:subtopic:7.EMS.4.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.EMS.4.2.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.EMS.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_d164d13d67b76d22780dea62",
+      "source_node_key": "caps:topic:7.EMS.3.1",
+      "target_node_key": "caps:subtopic:7.EMS.4.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.EMS.4.3.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.EMS.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_df93e9a3b9a061227cf0561a",
+      "source_node_key": "caps:topic:7.EMS.3.1",
+      "target_node_key": "caps:subtopic:7.EMS.4.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.EMS.4.4.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.EMS.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_8eaa0e32b3e3793326471afe",
+      "source_node_key": "caps:topic:7.EMS.3.2",
+      "target_node_key": "caps:subtopic:7.EMS.3.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.EMS.3.2.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2dd04532a5cb37435a6602e8",
+      "source_node_key": "caps:topic:7.EMS.3.3",
+      "target_node_key": "caps:subtopic:7.EMS.3.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.EMS.3.3.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1a28da557e371b57b714d170",
+      "source_node_key": "caps:topic:7.EMS.3.4",
+      "target_node_key": "caps:subtopic:7.EMS.3.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.EMS.3.4.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_18b38e208dd892d2410f8d78",
+      "source_node_key": "caps:topic:7.EMS.4.1",
+      "target_node_key": "caps:subtopic:7.EMS.4.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.EMS.4.1.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_82095a25195f2a60e293151e",
+      "source_node_key": "caps:topic:7.EMS.4.2",
+      "target_node_key": "caps:subtopic:7.EMS.4.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.EMS.4.2.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_649871a8293e7c70c5335327",
+      "source_node_key": "caps:topic:7.EMS.4.3",
+      "target_node_key": "caps:subtopic:7.EMS.4.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.EMS.4.3.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_11dd9d777b3dd753f83cd401",
+      "source_node_key": "caps:topic:7.EMS.4.4",
+      "target_node_key": "caps:subtopic:7.EMS.4.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.EMS.4.4.1",
+      "source_sha256": "dab833822c509a9152e17dec4a7b996a0574b37d6ed3a0c63440d494c0141aaa",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    }
+  ],
+  "boundary": {
+    "runtime_kg_implementation_claimed": false,
+    "runtime_kg_authority_switch_authorised": false,
+    "database_schema_migration_authorised": false,
+    "learner_facing_model_change_authorised": false,
+    "learner_graph_implementation_authorised": false,
+    "production_release_authorised": false,
+    "deployment_authorised": false,
+    "release_tag_authorised": false,
+    "public_beta_authorised": false
+  }
+}

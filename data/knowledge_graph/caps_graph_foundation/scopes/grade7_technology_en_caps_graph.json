@@ -1,0 +1,3694 @@
+{
+  "graph_id": "KG-CAPS-GRAPH-GRADE-7-TECHNOLOGY",
+  "graph_version": "kg1-caps-graph-foundation-v1",
+  "status": "caps_graph_foundation_generated",
+  "scope": {
+    "curriculum": "CAPS",
+    "grade": 7,
+    "subject": "technology",
+    "language": "en"
+  },
+  "source": {
+    "source_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/data/caps/topic_maps/grade7_technology_en.json",
+    "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+    "source_ref": "Official DBE CAPS source document linked in source_documents manifest.",
+    "schema_version": "1.0.0"
+  },
+  "review": {
+    "node_review_status": "approved",
+    "edge_review_status": "approved",
+    "runtime_authority": "read_model_only"
+  },
+  "counts": {
+    "terms": 4,
+    "topics": 16,
+    "subtopics": 16,
+    "assessment_statements": 48,
+    "misconceptions": 32,
+    "prerequisite_edges": 15,
+    "nodes": 119,
+    "edges": 133
+  },
+  "nodes": [
+    {
+      "node_id": "kgn_183d7f16e300facd9bab9de9",
+      "node_key": "caps:assessment_statement:7.TECH.1.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to the design process.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.1.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_7f2632fe9bf9d65978c98d2d",
+      "node_key": "caps:assessment_statement:7.TECH.1.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.1.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_66a3bd032f4a851d04f15668",
+      "node_key": "caps:assessment_statement:7.TECH.1.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.1.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_59185e19507600b60ef8619c",
+      "node_key": "caps:assessment_statement:7.TECH.1.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to structures.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.2.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_4087a42bbc5be7445109860b",
+      "node_key": "caps:assessment_statement:7.TECH.1.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.2.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_9554cc70c2ffbbb26b8a4a59",
+      "node_key": "caps:assessment_statement:7.TECH.1.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.2.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_4d1debc693c7d68d52771554",
+      "node_key": "caps:assessment_statement:7.TECH.1.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to graphic communication.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.3.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_a0e79e3e2ee91ae180c4203b",
+      "node_key": "caps:assessment_statement:7.TECH.1.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.3.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_5c7a8f1b71eb79a01f0ab4b8",
+      "node_key": "caps:assessment_statement:7.TECH.1.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.3.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_729436d627193dccc132204b",
+      "node_key": "caps:assessment_statement:7.TECH.1.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to assessment.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.4.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_fea8fb895da1efbf137cd1db",
+      "node_key": "caps:assessment_statement:7.TECH.1.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.4.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_efbb7318e01f2714241ecf4b",
+      "node_key": "caps:assessment_statement:7.TECH.1.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.4.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_7b84251e9a9a49ab4fc7248a",
+      "node_key": "caps:assessment_statement:7.TECH.2.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to processing.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.1.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_d63a33cecdd0085ff9213017",
+      "node_key": "caps:assessment_statement:7.TECH.2.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.1.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_96bea0e5f9b64d73a72fe2d5",
+      "node_key": "caps:assessment_statement:7.TECH.2.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.1.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_62476c0795ff68bed051a271",
+      "node_key": "caps:assessment_statement:7.TECH.2.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to materials and tools.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.2.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_bb1ed0939f44184887870250",
+      "node_key": "caps:assessment_statement:7.TECH.2.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.2.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_d904d47780534c2b5654d771",
+      "node_key": "caps:assessment_statement:7.TECH.2.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.2.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_a603b95f01cff16bca27f0ad",
+      "node_key": "caps:assessment_statement:7.TECH.2.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to design and make.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.3.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_a88942ef2936b5b6e39c034d",
+      "node_key": "caps:assessment_statement:7.TECH.2.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.3.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_0a46f40be698faf5908f8113",
+      "node_key": "caps:assessment_statement:7.TECH.2.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.3.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_e1509fda80d2a9dad4e7df4b",
+      "node_key": "caps:assessment_statement:7.TECH.2.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to assessment.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.4.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_3f2e2c888f5d76617a18298c",
+      "node_key": "caps:assessment_statement:7.TECH.2.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.4.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_9af25768b83086a04718c25c",
+      "node_key": "caps:assessment_statement:7.TECH.2.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.4.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_42bb9ea7eaffc13bf151435c",
+      "node_key": "caps:assessment_statement:7.TECH.3.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to systems and control.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.1.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_89f6346bf9e4972f1befd013",
+      "node_key": "caps:assessment_statement:7.TECH.3.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.1.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_03e4cda0526ccad0eef85398",
+      "node_key": "caps:assessment_statement:7.TECH.3.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.1.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_f800e1173aaf0aaf2a8f0254",
+      "node_key": "caps:assessment_statement:7.TECH.3.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to mechanical systems.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.2.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_731be7a20571451317bd27f5",
+      "node_key": "caps:assessment_statement:7.TECH.3.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.2.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_68195ec035ab471b6360f03c",
+      "node_key": "caps:assessment_statement:7.TECH.3.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.2.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_5d87bee2bf66cc9863935252",
+      "node_key": "caps:assessment_statement:7.TECH.3.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to electrical systems.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.3.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_c9a33f4a4874f2ce8ef76efa",
+      "node_key": "caps:assessment_statement:7.TECH.3.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.3.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_7d7b73b9907fbe7a7a00b995",
+      "node_key": "caps:assessment_statement:7.TECH.3.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.3.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_365ff3f325b01f45863f18d6",
+      "node_key": "caps:assessment_statement:7.TECH.3.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to assessment.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.4.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_a9db391771f3e4e97913d2e2",
+      "node_key": "caps:assessment_statement:7.TECH.3.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.4.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_42bd76e17b55c6eb5a48c972",
+      "node_key": "caps:assessment_statement:7.TECH.3.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.4.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_09bc567b69823805f11ffc63",
+      "node_key": "caps:assessment_statement:7.TECH.4.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to technology project.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.1.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_ea6861a6cdfa7df1779747b4",
+      "node_key": "caps:assessment_statement:7.TECH.4.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.1.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_bdbb801ca274e8013d59cf22",
+      "node_key": "caps:assessment_statement:7.TECH.4.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.1.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_dd3c9db6d0ca2dca4204cf3a",
+      "node_key": "caps:assessment_statement:7.TECH.4.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to evaluation and communication.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.2.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_893203748c32baed6d2ea9e0",
+      "node_key": "caps:assessment_statement:7.TECH.4.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.2.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_d77481124759adde948e1726",
+      "node_key": "caps:assessment_statement:7.TECH.4.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.2.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_7981b953188aaddef28be8ef",
+      "node_key": "caps:assessment_statement:7.TECH.4.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to revision.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.3.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_331437c42d467570b1c5bfde",
+      "node_key": "caps:assessment_statement:7.TECH.4.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.3.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_96b00bb0dc76cc856441c97c",
+      "node_key": "caps:assessment_statement:7.TECH.4.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.3.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_99c8c89e66994281c067d2c6",
+      "node_key": "caps:assessment_statement:7.TECH.4.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to assessment.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.4.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_f8e47155b20e4125e42de781",
+      "node_key": "caps:assessment_statement:7.TECH.4.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.4.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_90a52cfb13b67dcb4d0da7ef",
+      "node_key": "caps:assessment_statement:7.TECH.4.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.4.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_c8a2e47bc28572931f00d59e",
+      "node_key": "caps:curriculum",
+      "node_type": "curriculum",
+      "label": "CAPS",
+      "description": "South African CAPS curriculum",
+      "grade": null,
+      "subject": null,
+      "term": null,
+      "source_ref": "CAPS",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "source_file": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/data/caps/topic_maps/grade7_technology_en.json"
+      }
+    },
+    {
+      "node_id": "kgn_75eaf84a4563217d33ca777a",
+      "node_key": "caps:grade:7",
+      "node_type": "grade",
+      "label": "Grade 7",
+      "description": "CAPS Grade 7",
+      "grade": 7,
+      "subject": null,
+      "term": null,
+      "source_ref": "grade:7",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "node_id": "kgn_e83a3fd20db142acc3b35823",
+      "node_key": "caps:grade:7:subject:technology",
+      "node_type": "subject",
+      "label": "Technology",
+      "description": "CAPS Grade 7 Technology",
+      "grade": 7,
+      "subject": "technology",
+      "term": null,
+      "source_ref": "grade:7:subject:TECH",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subject_code": "TECH"
+      }
+    },
+    {
+      "node_id": "kgn_a190013d9fdbc89efa680c8e",
+      "node_key": "caps:grade:7:subject:technology:term:1",
+      "node_type": "term",
+      "label": "Term 1",
+      "description": "Grade 7 Technology Term 1",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "term:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_0bd3323507fa5866db895b1f",
+      "node_key": "caps:grade:7:subject:technology:term:2",
+      "node_type": "term",
+      "label": "Term 2",
+      "description": "Grade 7 Technology Term 2",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "term:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_670e056738954ebcf58b8cd3",
+      "node_key": "caps:grade:7:subject:technology:term:3",
+      "node_type": "term",
+      "label": "Term 3",
+      "description": "Grade 7 Technology Term 3",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "term:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_fa589d0cf68ca06c2fc330b1",
+      "node_key": "caps:grade:7:subject:technology:term:4",
+      "node_type": "term",
+      "label": "Term 4",
+      "description": "Grade 7 Technology Term 4",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "term:4",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-8"
+      }
+    },
+    {
+      "node_id": "kgn_5db23671a14fa4c228bf520d",
+      "node_key": "caps:misconception:7.TECH.1.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.1.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_5de9a593abffeaf6ff500919",
+      "node_key": "caps:misconception:7.TECH.1.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.1.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_4a10b046d5ccc5cb43bdcecf",
+      "node_key": "caps:misconception:7.TECH.1.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.2.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_11973ce6f04578a524aa2693",
+      "node_key": "caps:misconception:7.TECH.1.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.2.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_e568a0fd1e2d2796b41536a5",
+      "node_key": "caps:misconception:7.TECH.1.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.3.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_153721623298f37db59551f7",
+      "node_key": "caps:misconception:7.TECH.1.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.3.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_d44fca6c8972fabbc60f8ccc",
+      "node_key": "caps:misconception:7.TECH.1.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.4.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_0559e09ed61772c52e48c107",
+      "node_key": "caps:misconception:7.TECH.1.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.4.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_6347442ca707455ba29041a7",
+      "node_key": "caps:misconception:7.TECH.2.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.1.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_1c4423e39cc4b5f8c0794419",
+      "node_key": "caps:misconception:7.TECH.2.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.1.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_9072ed566db322e171d62232",
+      "node_key": "caps:misconception:7.TECH.2.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.2.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_edd906c89044c24f7f5ece67",
+      "node_key": "caps:misconception:7.TECH.2.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.2.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_a2d627bb1ceb4f8283f28e27",
+      "node_key": "caps:misconception:7.TECH.2.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.3.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_eb5b056873b1ec3dfeb9f4c1",
+      "node_key": "caps:misconception:7.TECH.2.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.3.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_3b25017ab028b0a3a4afa73b",
+      "node_key": "caps:misconception:7.TECH.2.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.4.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_1408eb1f76ac2386176d35e4",
+      "node_key": "caps:misconception:7.TECH.2.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.4.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_3cdd88c26bd6312e82c3c6e6",
+      "node_key": "caps:misconception:7.TECH.3.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.1.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_4a2f300b919fa009c6f3b255",
+      "node_key": "caps:misconception:7.TECH.3.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.1.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_b91923a167264b50d49a871c",
+      "node_key": "caps:misconception:7.TECH.3.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.2.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_702511d72c4b810909e5a30e",
+      "node_key": "caps:misconception:7.TECH.3.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.2.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_928c4552a2f04d07c4cec5a0",
+      "node_key": "caps:misconception:7.TECH.3.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.3.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_c7b9f31a263b67ebb2f35162",
+      "node_key": "caps:misconception:7.TECH.3.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.3.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_18a0b8ad38e14ad5f076262b",
+      "node_key": "caps:misconception:7.TECH.3.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.4.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_e333c8feb7fe1f1bf0c56b4b",
+      "node_key": "caps:misconception:7.TECH.3.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.4.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_57b301039648404daa0278ab",
+      "node_key": "caps:misconception:7.TECH.4.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.1.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_addb5f5c3d9758a684fc073e",
+      "node_key": "caps:misconception:7.TECH.4.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.1.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_0ce82d20d0662c13e604a76e",
+      "node_key": "caps:misconception:7.TECH.4.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.2.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_9481c301a199ea950e00db4b",
+      "node_key": "caps:misconception:7.TECH.4.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.2.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_02bde36d75fa9d4b9803991a",
+      "node_key": "caps:misconception:7.TECH.4.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.3.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_479fb97d82941dddc687f0fe",
+      "node_key": "caps:misconception:7.TECH.4.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.3.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_d0812ab53013c452bcf058db",
+      "node_key": "caps:misconception:7.TECH.4.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.4.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_0c633467ee8c7df13757e480",
+      "node_key": "caps:misconception:7.TECH.4.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.4.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "7.TECH.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_35c33c66ff5b12b7f7ac79a8",
+      "node_key": "caps:subtopic:7.TECH.1.1.1",
+      "node_type": "subtopic",
+      "label": "The design process",
+      "description": "The design process",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.1.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_0d6bc8a1f48eb916c09003b3",
+      "node_key": "caps:subtopic:7.TECH.1.2.1",
+      "node_type": "subtopic",
+      "label": "Structures",
+      "description": "Structures",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.2.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_f4e39795f21b4e142672fd12",
+      "node_key": "caps:subtopic:7.TECH.1.3.1",
+      "node_type": "subtopic",
+      "label": "Graphic communication",
+      "description": "Graphic communication",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.3.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_f39b53ff661d3db360e0f9c0",
+      "node_key": "caps:subtopic:7.TECH.1.4.1",
+      "node_type": "subtopic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.4.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_4bcb037eeed1c71475f50116",
+      "node_key": "caps:subtopic:7.TECH.2.1.1",
+      "node_type": "subtopic",
+      "label": "Processing",
+      "description": "Processing",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.1.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_86c87db5958154c4933ffd18",
+      "node_key": "caps:subtopic:7.TECH.2.2.1",
+      "node_type": "subtopic",
+      "label": "Materials and tools",
+      "description": "Materials and tools",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.2.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_b115336f6144214a5c8651b6",
+      "node_key": "caps:subtopic:7.TECH.2.3.1",
+      "node_type": "subtopic",
+      "label": "Design and make",
+      "description": "Design and make",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.3.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_35f18d220039f9c679f6091f",
+      "node_key": "caps:subtopic:7.TECH.2.4.1",
+      "node_type": "subtopic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.4.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_1a2c54cdd94c9150435bafe4",
+      "node_key": "caps:subtopic:7.TECH.3.1.1",
+      "node_type": "subtopic",
+      "label": "Systems and control",
+      "description": "Systems and control",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.1.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_0cb8d7d9b34227da9d51e46a",
+      "node_key": "caps:subtopic:7.TECH.3.2.1",
+      "node_type": "subtopic",
+      "label": "Mechanical systems",
+      "description": "Mechanical systems",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.2.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_6286a36f78c2d90bd2c72064",
+      "node_key": "caps:subtopic:7.TECH.3.3.1",
+      "node_type": "subtopic",
+      "label": "Electrical systems",
+      "description": "Electrical systems",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.3.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_a38ea2e4d730c4478a6ee5d2",
+      "node_key": "caps:subtopic:7.TECH.3.4.1",
+      "node_type": "subtopic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.4.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_386e786ffd380dd151f65279",
+      "node_key": "caps:subtopic:7.TECH.4.1.1",
+      "node_type": "subtopic",
+      "label": "Technology project",
+      "description": "Technology project",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.1.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_df9c5735ce1048c90d489009",
+      "node_key": "caps:subtopic:7.TECH.4.2.1",
+      "node_type": "subtopic",
+      "label": "Evaluation and communication",
+      "description": "Evaluation and communication",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.2.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_dacd944157466beadfaa396a",
+      "node_key": "caps:subtopic:7.TECH.4.3.1",
+      "node_type": "subtopic",
+      "label": "Revision",
+      "description": "Revision",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.3.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_07179400bc6aeeb000952457",
+      "node_key": "caps:subtopic:7.TECH.4.4.1",
+      "node_type": "subtopic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.4.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_15bcf4da7cfeca8054f5551f",
+      "node_key": "caps:topic:7.TECH.1.1",
+      "node_type": "topic",
+      "label": "The design process",
+      "description": "The design process",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_80704805b0ae4286a7d2e85a",
+      "node_key": "caps:topic:7.TECH.1.2",
+      "node_type": "topic",
+      "label": "Structures",
+      "description": "Structures",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_e790284e9d3a468bd464626c",
+      "node_key": "caps:topic:7.TECH.1.3",
+      "node_type": "topic",
+      "label": "Graphic communication",
+      "description": "Graphic communication",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_ceaa9490af16fcd487bbe4f0",
+      "node_key": "caps:topic:7.TECH.1.4",
+      "node_type": "topic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "technology",
+      "term": 1,
+      "source_ref": "7.TECH.1.4",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_3848d5b2f4e7051c933d885c",
+      "node_key": "caps:topic:7.TECH.2.1",
+      "node_type": "topic",
+      "label": "Processing",
+      "description": "Processing",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_8a867c799e6ddc291e90236c",
+      "node_key": "caps:topic:7.TECH.2.2",
+      "node_type": "topic",
+      "label": "Materials and tools",
+      "description": "Materials and tools",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_86bc551ac983e5371283ef0b",
+      "node_key": "caps:topic:7.TECH.2.3",
+      "node_type": "topic",
+      "label": "Design and make",
+      "description": "Design and make",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_47e177d645eef68696314a85",
+      "node_key": "caps:topic:7.TECH.2.4",
+      "node_type": "topic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "technology",
+      "term": 2,
+      "source_ref": "7.TECH.2.4",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_e4b3c37808206d99e40ab886",
+      "node_key": "caps:topic:7.TECH.3.1",
+      "node_type": "topic",
+      "label": "Systems and control",
+      "description": "Systems and control",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_df754254b612cd5116825648",
+      "node_key": "caps:topic:7.TECH.3.2",
+      "node_type": "topic",
+      "label": "Mechanical systems",
+      "description": "Mechanical systems",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_0226b6f3e263e994a2cbd241",
+      "node_key": "caps:topic:7.TECH.3.3",
+      "node_type": "topic",
+      "label": "Electrical systems",
+      "description": "Electrical systems",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_6359e24eca8fb94780b73875",
+      "node_key": "caps:topic:7.TECH.3.4",
+      "node_type": "topic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "technology",
+      "term": 3,
+      "source_ref": "7.TECH.3.4",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_9ba856148ad647d396cc4eeb",
+      "node_key": "caps:topic:7.TECH.4.1",
+      "node_type": "topic",
+      "label": "Technology project",
+      "description": "Technology project",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_f3c79b3876f3287b139bf814",
+      "node_key": "caps:topic:7.TECH.4.2",
+      "node_type": "topic",
+      "label": "Evaluation and communication",
+      "description": "Evaluation and communication",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_35dc1870ca11d1325412d303",
+      "node_key": "caps:topic:7.TECH.4.3",
+      "node_type": "topic",
+      "label": "Revision",
+      "description": "Revision",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_e697a66b3668ddaab0b4fca3",
+      "node_key": "caps:topic:7.TECH.4.4",
+      "node_type": "topic",
+      "label": "Assessment",
+      "description": "Assessment",
+      "grade": 7,
+      "subject": "technology",
+      "term": 4,
+      "source_ref": "7.TECH.4.4",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "kge_8de3252b449e05142dae8603",
+      "source_node_key": "caps:curriculum",
+      "target_node_key": "caps:grade:7",
+      "edge_type": "contains",
+      "label": "CAPS contains grade",
+      "source_ref": "CAPS",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1cf2a6721a4d05f67164c92b",
+      "source_node_key": "caps:grade:7",
+      "target_node_key": "caps:grade:7:subject:technology",
+      "edge_type": "contains",
+      "label": "Grade contains subject",
+      "source_ref": "grade:7:subject:TECH",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c08df68ef78dedd4c99ae28d",
+      "source_node_key": "caps:grade:7:subject:technology",
+      "target_node_key": "caps:grade:7:subject:technology:term:1",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_472a867860e9d76e0019c6ba",
+      "source_node_key": "caps:grade:7:subject:technology",
+      "target_node_key": "caps:grade:7:subject:technology:term:2",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c7fbedc00d48c50e4b43013b",
+      "source_node_key": "caps:grade:7:subject:technology",
+      "target_node_key": "caps:grade:7:subject:technology:term:3",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bb61c9bcdebbfaa52aae2da5",
+      "source_node_key": "caps:grade:7:subject:technology",
+      "target_node_key": "caps:grade:7:subject:technology:term:4",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:4",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d1992069778a5e11acb7d1a7",
+      "source_node_key": "caps:grade:7:subject:technology:term:1",
+      "target_node_key": "caps:topic:7.TECH.1.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.TECH.1.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7ff10015b96bdd139cc93f60",
+      "source_node_key": "caps:grade:7:subject:technology:term:1",
+      "target_node_key": "caps:topic:7.TECH.1.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.TECH.1.2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0f8c3d33814503b727ada398",
+      "source_node_key": "caps:grade:7:subject:technology:term:1",
+      "target_node_key": "caps:topic:7.TECH.1.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.TECH.1.3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d45208d0d7a2a5f7181fc33e",
+      "source_node_key": "caps:grade:7:subject:technology:term:1",
+      "target_node_key": "caps:topic:7.TECH.1.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.TECH.1.4",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9d3d980902efb8c21bdc9989",
+      "source_node_key": "caps:grade:7:subject:technology:term:2",
+      "target_node_key": "caps:topic:7.TECH.2.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.TECH.2.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_be1100294b30e1e681e87dd3",
+      "source_node_key": "caps:grade:7:subject:technology:term:2",
+      "target_node_key": "caps:topic:7.TECH.2.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.TECH.2.2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ed2deb465c9a01fabc8d880b",
+      "source_node_key": "caps:grade:7:subject:technology:term:2",
+      "target_node_key": "caps:topic:7.TECH.2.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.TECH.2.3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4fa3a42cf9ef04af2430d996",
+      "source_node_key": "caps:grade:7:subject:technology:term:2",
+      "target_node_key": "caps:topic:7.TECH.2.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.TECH.2.4",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7bc045d8029f4bc09d2985d3",
+      "source_node_key": "caps:grade:7:subject:technology:term:3",
+      "target_node_key": "caps:topic:7.TECH.3.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.TECH.3.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1d1c84ae970128724803bf73",
+      "source_node_key": "caps:grade:7:subject:technology:term:3",
+      "target_node_key": "caps:topic:7.TECH.3.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.TECH.3.2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_73dc67fa3efae848770668a5",
+      "source_node_key": "caps:grade:7:subject:technology:term:3",
+      "target_node_key": "caps:topic:7.TECH.3.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.TECH.3.3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fa541146838b0b0e7471685e",
+      "source_node_key": "caps:grade:7:subject:technology:term:3",
+      "target_node_key": "caps:topic:7.TECH.3.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.TECH.3.4",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_500dd0cb29fe6e8f7f617ba4",
+      "source_node_key": "caps:grade:7:subject:technology:term:4",
+      "target_node_key": "caps:topic:7.TECH.4.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.TECH.4.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2fab5df14f7975f34d9c351a",
+      "source_node_key": "caps:grade:7:subject:technology:term:4",
+      "target_node_key": "caps:topic:7.TECH.4.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.TECH.4.2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e1f8ef5311476b029050cc13",
+      "source_node_key": "caps:grade:7:subject:technology:term:4",
+      "target_node_key": "caps:topic:7.TECH.4.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.TECH.4.3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1fa4407b467e0f45c4cf8d21",
+      "source_node_key": "caps:grade:7:subject:technology:term:4",
+      "target_node_key": "caps:topic:7.TECH.4.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "7.TECH.4.4",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a0b946ee2ef6c652e92647e5",
+      "source_node_key": "caps:subtopic:7.TECH.1.1.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.1.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.1.1.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4a4fa59ec01d96c9503a02e9",
+      "source_node_key": "caps:subtopic:7.TECH.1.1.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.1.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.1.1.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5405f21e798f9e35d4dec48e",
+      "source_node_key": "caps:subtopic:7.TECH.1.1.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.1.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.1.1.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fab499eff521af7e369c037b",
+      "source_node_key": "caps:subtopic:7.TECH.1.1.1",
+      "target_node_key": "caps:misconception:7.TECH.1.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.1.1.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_300d6ee8bb5a04ea97447625",
+      "source_node_key": "caps:subtopic:7.TECH.1.1.1",
+      "target_node_key": "caps:misconception:7.TECH.1.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.1.1.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_cbc9ca4657a4d9e0a93aa272",
+      "source_node_key": "caps:subtopic:7.TECH.1.2.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.1.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.1.2.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fe28753109726bbb11b2e1e3",
+      "source_node_key": "caps:subtopic:7.TECH.1.2.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.1.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.1.2.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e60ab11c0dc382d4b308d949",
+      "source_node_key": "caps:subtopic:7.TECH.1.2.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.1.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.1.2.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9bbf9ed9c1bf5613226a7fe3",
+      "source_node_key": "caps:subtopic:7.TECH.1.2.1",
+      "target_node_key": "caps:misconception:7.TECH.1.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.1.2.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1a580b18e9ecf84241c48d5c",
+      "source_node_key": "caps:subtopic:7.TECH.1.2.1",
+      "target_node_key": "caps:misconception:7.TECH.1.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.1.2.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bc45e90d2001bb09ab1c04c1",
+      "source_node_key": "caps:subtopic:7.TECH.1.3.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.1.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.1.3.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bf00afaf4d7f1122de9b85b7",
+      "source_node_key": "caps:subtopic:7.TECH.1.3.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.1.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.1.3.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_343df435b16a271a2018186b",
+      "source_node_key": "caps:subtopic:7.TECH.1.3.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.1.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.1.3.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9b0ba33d3d8e94cb11297dcb",
+      "source_node_key": "caps:subtopic:7.TECH.1.3.1",
+      "target_node_key": "caps:misconception:7.TECH.1.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.1.3.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_331e32a1750c981f56c1e753",
+      "source_node_key": "caps:subtopic:7.TECH.1.3.1",
+      "target_node_key": "caps:misconception:7.TECH.1.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.1.3.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9ac80d6b9b6c237f12d546aa",
+      "source_node_key": "caps:subtopic:7.TECH.1.4.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.1.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.1.4.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_20b575f44a357b756294c9b2",
+      "source_node_key": "caps:subtopic:7.TECH.1.4.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.1.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.1.4.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_84d28b7b975e8ffa0a9599ff",
+      "source_node_key": "caps:subtopic:7.TECH.1.4.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.1.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.1.4.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4530bd697b878d2690ff2646",
+      "source_node_key": "caps:subtopic:7.TECH.1.4.1",
+      "target_node_key": "caps:misconception:7.TECH.1.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.1.4.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_093904c84da1c487498b7f7a",
+      "source_node_key": "caps:subtopic:7.TECH.1.4.1",
+      "target_node_key": "caps:misconception:7.TECH.1.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.1.4.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7082b3e947a6d48641b22bd2",
+      "source_node_key": "caps:subtopic:7.TECH.2.1.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.2.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.2.1.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d995fe6941384a94b8e9392a",
+      "source_node_key": "caps:subtopic:7.TECH.2.1.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.2.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.2.1.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7839e40813dee8fc6d6612e0",
+      "source_node_key": "caps:subtopic:7.TECH.2.1.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.2.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.2.1.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_095a72e9b4c872dd32a13602",
+      "source_node_key": "caps:subtopic:7.TECH.2.1.1",
+      "target_node_key": "caps:misconception:7.TECH.2.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.2.1.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3165a2999d9ee615d7559389",
+      "source_node_key": "caps:subtopic:7.TECH.2.1.1",
+      "target_node_key": "caps:misconception:7.TECH.2.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.2.1.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b3d10bdbfdcdb46e21a40020",
+      "source_node_key": "caps:subtopic:7.TECH.2.2.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.2.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.2.2.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8545968b2e4259bcd76ab93b",
+      "source_node_key": "caps:subtopic:7.TECH.2.2.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.2.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.2.2.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b79373cca8a4dd6ef3a52a4d",
+      "source_node_key": "caps:subtopic:7.TECH.2.2.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.2.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.2.2.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e3988bf1846238f3d51e978d",
+      "source_node_key": "caps:subtopic:7.TECH.2.2.1",
+      "target_node_key": "caps:misconception:7.TECH.2.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.2.2.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0af89c997ed01efa8408157f",
+      "source_node_key": "caps:subtopic:7.TECH.2.2.1",
+      "target_node_key": "caps:misconception:7.TECH.2.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.2.2.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_df32d7e83dcd34d6615c08b2",
+      "source_node_key": "caps:subtopic:7.TECH.2.3.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.2.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.2.3.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7a6141082dfcccd709668c8d",
+      "source_node_key": "caps:subtopic:7.TECH.2.3.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.2.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.2.3.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7eb33fb06191d697de3075d6",
+      "source_node_key": "caps:subtopic:7.TECH.2.3.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.2.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.2.3.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8a271c9f78064f2cbe4fd373",
+      "source_node_key": "caps:subtopic:7.TECH.2.3.1",
+      "target_node_key": "caps:misconception:7.TECH.2.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.2.3.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b2ac0e56a0bdce2f59a973f4",
+      "source_node_key": "caps:subtopic:7.TECH.2.3.1",
+      "target_node_key": "caps:misconception:7.TECH.2.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.2.3.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8e30365b8f4abaaea2660630",
+      "source_node_key": "caps:subtopic:7.TECH.2.4.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.2.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.2.4.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4357f8e2f6231d0ec8de3aeb",
+      "source_node_key": "caps:subtopic:7.TECH.2.4.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.2.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.2.4.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fa783031d7cb0b97563cc324",
+      "source_node_key": "caps:subtopic:7.TECH.2.4.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.2.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.2.4.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_33e769806bc74fa0cb44a430",
+      "source_node_key": "caps:subtopic:7.TECH.2.4.1",
+      "target_node_key": "caps:misconception:7.TECH.2.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.2.4.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e00302f9873fd1216d7bce90",
+      "source_node_key": "caps:subtopic:7.TECH.2.4.1",
+      "target_node_key": "caps:misconception:7.TECH.2.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.2.4.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_10beca6da634487de5991fbe",
+      "source_node_key": "caps:subtopic:7.TECH.3.1.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.3.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.3.1.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_101ff547ab1e81940cf668f4",
+      "source_node_key": "caps:subtopic:7.TECH.3.1.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.3.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.3.1.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fbabb6cc08ada30f60e80fea",
+      "source_node_key": "caps:subtopic:7.TECH.3.1.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.3.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.3.1.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_57ebab0c154fafc8504f632f",
+      "source_node_key": "caps:subtopic:7.TECH.3.1.1",
+      "target_node_key": "caps:misconception:7.TECH.3.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.3.1.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_048b0232a91ec9e0ef1547a2",
+      "source_node_key": "caps:subtopic:7.TECH.3.1.1",
+      "target_node_key": "caps:misconception:7.TECH.3.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.3.1.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2c386215b569a0fd06a40076",
+      "source_node_key": "caps:subtopic:7.TECH.3.2.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.3.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.3.2.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fb4f994f94749614c4b7136e",
+      "source_node_key": "caps:subtopic:7.TECH.3.2.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.3.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.3.2.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_07e4fdd04f9e338304c07dea",
+      "source_node_key": "caps:subtopic:7.TECH.3.2.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.3.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.3.2.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_259bb20c48d32f405d443216",
+      "source_node_key": "caps:subtopic:7.TECH.3.2.1",
+      "target_node_key": "caps:misconception:7.TECH.3.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.3.2.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3006d39b970ae8c5dc4dd434",
+      "source_node_key": "caps:subtopic:7.TECH.3.2.1",
+      "target_node_key": "caps:misconception:7.TECH.3.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.3.2.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_80fc4b23a1db34cd2ed74b15",
+      "source_node_key": "caps:subtopic:7.TECH.3.3.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.3.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.3.3.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4da12c2559f9598b37bdb5bf",
+      "source_node_key": "caps:subtopic:7.TECH.3.3.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.3.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.3.3.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_959ed060a6f019121bb85f69",
+      "source_node_key": "caps:subtopic:7.TECH.3.3.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.3.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.3.3.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_98aa3762510665c54d9a314c",
+      "source_node_key": "caps:subtopic:7.TECH.3.3.1",
+      "target_node_key": "caps:misconception:7.TECH.3.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.3.3.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_341277f9daa2b78978bc8891",
+      "source_node_key": "caps:subtopic:7.TECH.3.3.1",
+      "target_node_key": "caps:misconception:7.TECH.3.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.3.3.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_d419af2e59d86ade6df511b4",
+      "source_node_key": "caps:subtopic:7.TECH.3.4.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.3.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.3.4.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_27410b769e67acc5c504ed2e",
+      "source_node_key": "caps:subtopic:7.TECH.3.4.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.3.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.3.4.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_efb6980f96649e000b144225",
+      "source_node_key": "caps:subtopic:7.TECH.3.4.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.3.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.3.4.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_71776ec4cf4cebf04967632f",
+      "source_node_key": "caps:subtopic:7.TECH.3.4.1",
+      "target_node_key": "caps:misconception:7.TECH.3.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.3.4.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5f3c56d02ffc408011e66416",
+      "source_node_key": "caps:subtopic:7.TECH.3.4.1",
+      "target_node_key": "caps:misconception:7.TECH.3.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.3.4.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f931c987b977c386d7fd043b",
+      "source_node_key": "caps:subtopic:7.TECH.4.1.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.4.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.4.1.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8a7e22584392ed0132007232",
+      "source_node_key": "caps:subtopic:7.TECH.4.1.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.4.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.4.1.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f9e46f73fe9094f718ba0969",
+      "source_node_key": "caps:subtopic:7.TECH.4.1.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.4.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.4.1.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_16680f688f56ecea17324e13",
+      "source_node_key": "caps:subtopic:7.TECH.4.1.1",
+      "target_node_key": "caps:misconception:7.TECH.4.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.4.1.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2a39558d9f7655c63b7fbef5",
+      "source_node_key": "caps:subtopic:7.TECH.4.1.1",
+      "target_node_key": "caps:misconception:7.TECH.4.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.4.1.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_73214fc17b42dc924c6e5fe8",
+      "source_node_key": "caps:subtopic:7.TECH.4.2.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.4.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.4.2.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2d9f49fcb8ecb396893850af",
+      "source_node_key": "caps:subtopic:7.TECH.4.2.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.4.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.4.2.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2d876ccad0cde9b7c2db6ee4",
+      "source_node_key": "caps:subtopic:7.TECH.4.2.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.4.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.4.2.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2d58457827b3c85b59dc3b65",
+      "source_node_key": "caps:subtopic:7.TECH.4.2.1",
+      "target_node_key": "caps:misconception:7.TECH.4.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.4.2.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_71c910bd74381bf7c2bf76a2",
+      "source_node_key": "caps:subtopic:7.TECH.4.2.1",
+      "target_node_key": "caps:misconception:7.TECH.4.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.4.2.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_08012f39ea4c0f1935aa4418",
+      "source_node_key": "caps:subtopic:7.TECH.4.3.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.4.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.4.3.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bbd425d9d43c070048667d24",
+      "source_node_key": "caps:subtopic:7.TECH.4.3.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.4.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.4.3.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9144e545dbbc707dc1625138",
+      "source_node_key": "caps:subtopic:7.TECH.4.3.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.4.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.4.3.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_66914a9d24ae6d0145a99817",
+      "source_node_key": "caps:subtopic:7.TECH.4.3.1",
+      "target_node_key": "caps:misconception:7.TECH.4.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.4.3.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_aae860fee7e79647de875128",
+      "source_node_key": "caps:subtopic:7.TECH.4.3.1",
+      "target_node_key": "caps:misconception:7.TECH.4.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.4.3.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f1ec05a8f03788a0fbdc53ee",
+      "source_node_key": "caps:subtopic:7.TECH.4.4.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.4.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.4.4.1#assessment:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9a6aee67096739d33aa22ed2",
+      "source_node_key": "caps:subtopic:7.TECH.4.4.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.4.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.4.4.1#assessment:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f08d9f47938663b5c5735321",
+      "source_node_key": "caps:subtopic:7.TECH.4.4.1",
+      "target_node_key": "caps:assessment_statement:7.TECH.4.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "7.TECH.4.4.1#assessment:3",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e0f7e2bf55bad37686a48525",
+      "source_node_key": "caps:subtopic:7.TECH.4.4.1",
+      "target_node_key": "caps:misconception:7.TECH.4.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.4.4.1#misconception:2",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ce5e9ccfd1e94b95bf54b5f9",
+      "source_node_key": "caps:subtopic:7.TECH.4.4.1",
+      "target_node_key": "caps:misconception:7.TECH.4.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "7.TECH.4.4.1#misconception:1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_02e826cce8b3188c8ac09a9f",
+      "source_node_key": "caps:topic:7.TECH.1.1",
+      "target_node_key": "caps:subtopic:7.TECH.1.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.TECH.1.1.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ee82cbe1709e133518071f06",
+      "source_node_key": "caps:topic:7.TECH.1.1",
+      "target_node_key": "caps:subtopic:7.TECH.1.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.TECH.1.2.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.TECH.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_e0bdd681482ff62c7f22ad56",
+      "source_node_key": "caps:topic:7.TECH.1.1",
+      "target_node_key": "caps:subtopic:7.TECH.1.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.TECH.1.3.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.TECH.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_83b9799d7ef4ab02c62c6d7c",
+      "source_node_key": "caps:topic:7.TECH.1.1",
+      "target_node_key": "caps:subtopic:7.TECH.1.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.TECH.1.4.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.TECH.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_f0e312317f56655411caf110",
+      "source_node_key": "caps:topic:7.TECH.1.1",
+      "target_node_key": "caps:subtopic:7.TECH.2.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.TECH.2.1.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.TECH.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_78ef8e720277e9667bef9d0b",
+      "source_node_key": "caps:topic:7.TECH.1.1",
+      "target_node_key": "caps:subtopic:7.TECH.2.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.TECH.2.2.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.TECH.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_d8e370a461cbe47a86902634",
+      "source_node_key": "caps:topic:7.TECH.1.1",
+      "target_node_key": "caps:subtopic:7.TECH.2.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.TECH.2.3.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.TECH.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_a206529c717463ffcf0353e9",
+      "source_node_key": "caps:topic:7.TECH.1.1",
+      "target_node_key": "caps:subtopic:7.TECH.2.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.TECH.2.4.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.TECH.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_d3e4da2a53ff6b3bd913c941",
+      "source_node_key": "caps:topic:7.TECH.1.2",
+      "target_node_key": "caps:subtopic:7.TECH.1.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.TECH.1.2.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_04d5ced79d01c0c66e2a517e",
+      "source_node_key": "caps:topic:7.TECH.1.3",
+      "target_node_key": "caps:subtopic:7.TECH.1.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.TECH.1.3.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5a993e0b96362be88c8874ba",
+      "source_node_key": "caps:topic:7.TECH.1.4",
+      "target_node_key": "caps:subtopic:7.TECH.1.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.TECH.1.4.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bc07ac7e03fc56f9b4ec14eb",
+      "source_node_key": "caps:topic:7.TECH.2.1",
+      "target_node_key": "caps:subtopic:7.TECH.2.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.TECH.2.1.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_059f2eebcbbb701ed13d40bc",
+      "source_node_key": "caps:topic:7.TECH.2.1",
+      "target_node_key": "caps:subtopic:7.TECH.3.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.TECH.3.1.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.TECH.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_b131f6ec55336be913d4e591",
+      "source_node_key": "caps:topic:7.TECH.2.1",
+      "target_node_key": "caps:subtopic:7.TECH.3.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.TECH.3.2.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.TECH.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_e6049b44ae0d98f4c2fa3736",
+      "source_node_key": "caps:topic:7.TECH.2.1",
+      "target_node_key": "caps:subtopic:7.TECH.3.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.TECH.3.3.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.TECH.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_5ecb04614650a7890ddaeeb7",
+      "source_node_key": "caps:topic:7.TECH.2.1",
+      "target_node_key": "caps:subtopic:7.TECH.3.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.TECH.3.4.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.TECH.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_3eba7d7012a288c1da1ff6a6",
+      "source_node_key": "caps:topic:7.TECH.2.2",
+      "target_node_key": "caps:subtopic:7.TECH.2.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.TECH.2.2.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b0d36e109fdfa9200426da83",
+      "source_node_key": "caps:topic:7.TECH.2.3",
+      "target_node_key": "caps:subtopic:7.TECH.2.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.TECH.2.3.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a43304971b392b03358e6fd3",
+      "source_node_key": "caps:topic:7.TECH.2.4",
+      "target_node_key": "caps:subtopic:7.TECH.2.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.TECH.2.4.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_14f03272b69da1e2a2f72d49",
+      "source_node_key": "caps:topic:7.TECH.3.1",
+      "target_node_key": "caps:subtopic:7.TECH.3.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.TECH.3.1.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4bf627cf6b02da708e694ca2",
+      "source_node_key": "caps:topic:7.TECH.3.1",
+      "target_node_key": "caps:subtopic:7.TECH.4.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.TECH.4.1.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.TECH.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_94123d22c966127ab527bb06",
+      "source_node_key": "caps:topic:7.TECH.3.1",
+      "target_node_key": "caps:subtopic:7.TECH.4.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.TECH.4.2.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.TECH.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_c4a7b1924280ef758ca96d3b",
+      "source_node_key": "caps:topic:7.TECH.3.1",
+      "target_node_key": "caps:subtopic:7.TECH.4.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.TECH.4.3.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.TECH.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_d6b3256317f5abba6663293c",
+      "source_node_key": "caps:topic:7.TECH.3.1",
+      "target_node_key": "caps:subtopic:7.TECH.4.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "7.TECH.4.4.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "7.TECH.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_9870f972d67875169ec8c502",
+      "source_node_key": "caps:topic:7.TECH.3.2",
+      "target_node_key": "caps:subtopic:7.TECH.3.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.TECH.3.2.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0bb5286f860dcf1d31f5b3be",
+      "source_node_key": "caps:topic:7.TECH.3.3",
+      "target_node_key": "caps:subtopic:7.TECH.3.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.TECH.3.3.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_85f46e418b5da8dd096b0775",
+      "source_node_key": "caps:topic:7.TECH.3.4",
+      "target_node_key": "caps:subtopic:7.TECH.3.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.TECH.3.4.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3f74dfc48db6f320617e3f26",
+      "source_node_key": "caps:topic:7.TECH.4.1",
+      "target_node_key": "caps:subtopic:7.TECH.4.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.TECH.4.1.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c5d328f61b8ce79f5e70e2c9",
+      "source_node_key": "caps:topic:7.TECH.4.2",
+      "target_node_key": "caps:subtopic:7.TECH.4.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.TECH.4.2.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3f2122abff691ddf34eaf78f",
+      "source_node_key": "caps:topic:7.TECH.4.3",
+      "target_node_key": "caps:subtopic:7.TECH.4.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.TECH.4.3.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2e9c8ff953b4fd3c247a0b42",
+      "source_node_key": "caps:topic:7.TECH.4.4",
+      "target_node_key": "caps:subtopic:7.TECH.4.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "7.TECH.4.4.1",
+      "source_sha256": "750c0f28957ec65cca354f78bfb0f9827b954c3a843dad5e1555f73c99791bf6",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    }
+  ],
+  "boundary": {
+    "runtime_kg_implementation_claimed": false,
+    "runtime_kg_authority_switch_authorised": false,
+    "database_schema_migration_authorised": false,
+    "learner_facing_model_change_authorised": false,
+    "learner_graph_implementation_authorised": false,
+    "production_release_authorised": false,
+    "deployment_authorised": false,
+    "release_tag_authorised": false,
+    "public_beta_authorised": false
+  }
+}

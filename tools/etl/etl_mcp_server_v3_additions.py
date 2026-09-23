@@ -40,13 +40,13 @@ import dataclasses
 import json
 from typing import Optional
 
-from tools.etl.mcp_compat import FastMCP
 from pydantic import BaseModel, Field, ConfigDict
+from tools.etl.mcp_compat import ToolAnnotations
 
-# ── Re-use the server singleton from v2 ───────────────────────────────────
-# In production: import `mcp` and `pipeline` from etl_mcp_server_v2
+# ── Re-use the server singleton from canonical server ───────────────────────
+# In production: import `mcp` and `pipeline` from etl_mcp_server
 # Here shown as standalone for clarity.
-from tools.etl.etl_mcp_server_v2 import mcp, pipeline   # type: ignore
+from tools.etl.etl_mcp_server import mcp, pipeline   # type: ignore
 
 
 # ===========================================================================
@@ -162,11 +162,13 @@ class GetMetricWindowInput(BaseModel):
 # TOOL REGISTRATIONS
 # ===========================================================================
 
-@mcp.tool(name="etl_get_audit_trail", annotations={
-    "title": "Get Document Audit Trail",
-    "readOnlyHint": True, "destructiveHint": False,
-    "idempotentHint": True, "openWorldHint": False,
-})
+@mcp.tool(name="etl_get_audit_trail", annotations=ToolAnnotations(
+
+    title= "Get Document Audit Trail",
+    readOnlyHint= True, destructiveHint= False,
+    idempotentHint= True, openWorldHint= False,
+
+))
 async def etl_get_audit_trail(params: GetAuditTrailInput) -> str:
     """
     Phase 8 — Return the chronological audit trail for a document.
@@ -183,11 +185,13 @@ async def etl_get_audit_trail(params: GetAuditTrailInput) -> str:
                       indent=2)
 
 
-@mcp.tool(name="etl_deprecate_document", annotations={
-    "title": "Deprecate Document",
-    "readOnlyHint": False, "destructiveHint": False,
-    "idempotentHint": True, "openWorldHint": False,
-})
+@mcp.tool(name="etl_deprecate_document", annotations=ToolAnnotations(
+
+    title= "Deprecate Document",
+    readOnlyHint= False, destructiveHint= False,
+    idempotentHint= True, openWorldHint= False,
+
+))
 async def etl_deprecate_document(params: DeprecateDocumentInput) -> str:
     """
     Phase 8 — Soft-deprecate a document (status → archived).
@@ -213,11 +217,13 @@ async def etl_deprecate_document(params: DeprecateDocumentInput) -> str:
         return json.dumps({"success": False, "error": str(e)}, indent=2)
 
 
-@mcp.tool(name="etl_bulk_review", annotations={
-    "title": "Bulk Approve or Reject Documents",
-    "readOnlyHint": False, "destructiveHint": False,
-    "idempotentHint": False, "openWorldHint": False,
-})
+@mcp.tool(name="etl_bulk_review", annotations=ToolAnnotations(
+
+    title= "Bulk Approve or Reject Documents",
+    readOnlyHint= False, destructiveHint= False,
+    idempotentHint= False, openWorldHint= False,
+
+))
 async def etl_bulk_review(params: BulkReviewInput) -> str:
     """
     Phase 11 — Approve or reject up to 200 documents in one call.
@@ -240,11 +246,13 @@ async def etl_bulk_review(params: BulkReviewInput) -> str:
         return json.dumps({"success": False, "error": str(e)}, indent=2)
 
 
-@mcp.tool(name="etl_assign_reviewer", annotations={
-    "title": "Assign Review Task to Reviewer",
-    "readOnlyHint": False, "destructiveHint": False,
-    "idempotentHint": False, "openWorldHint": False,
-})
+@mcp.tool(name="etl_assign_reviewer", annotations=ToolAnnotations(
+
+    title= "Assign Review Task to Reviewer",
+    readOnlyHint= False, destructiveHint= False,
+    idempotentHint= False, openWorldHint= False,
+
+))
 async def etl_assign_reviewer(params: AssignReviewerInput) -> str:
     """
     Phase 11 — Assign an open review task to a specific team member.
@@ -266,11 +274,13 @@ async def etl_assign_reviewer(params: AssignReviewerInput) -> str:
         return json.dumps({"success": False, "error": str(e)}, indent=2)
 
 
-@mcp.tool(name="etl_get_reviewer_workload", annotations={
-    "title": "Get Reviewer Workload",
-    "readOnlyHint": True, "destructiveHint": False,
-    "idempotentHint": True, "openWorldHint": False,
-})
+@mcp.tool(name="etl_get_reviewer_workload", annotations=ToolAnnotations(
+
+    title= "Get Reviewer Workload",
+    readOnlyHint= True, destructiveHint= False,
+    idempotentHint= True, openWorldHint= False,
+
+))
 async def etl_get_reviewer_workload(params: GetReviewerWorkloadInput) -> str:
     """
     Phase 11 — Return open task counts per reviewer.
@@ -287,11 +297,13 @@ async def etl_get_reviewer_workload(params: GetReviewerWorkloadInput) -> str:
         return json.dumps({"success": False, "error": str(e)}, indent=2)
 
 
-@mcp.tool(name="etl_split_dataset", annotations={
-    "title": "Split Training Dataset into Train/Val/Test",
-    "readOnlyHint": False, "destructiveHint": False,
-    "idempotentHint": False, "openWorldHint": False,
-})
+@mcp.tool(name="etl_split_dataset", annotations=ToolAnnotations(
+
+    title= "Split Training Dataset into Train/Val/Test",
+    readOnlyHint= False, destructiveHint= False,
+    idempotentHint= False, openWorldHint= False,
+
+))
 async def etl_split_dataset(params: SplitDatasetInput) -> str:
     """
     Phase 10 — Split a training dataset into train / validation / test subsets.
@@ -316,11 +328,13 @@ async def etl_split_dataset(params: SplitDatasetInput) -> str:
         return json.dumps({"success": False, "error": str(e)}, indent=2)
 
 
-@mcp.tool(name="etl_check_contamination", annotations={
-    "title": "Check Train/Test Contamination",
-    "readOnlyHint": False, "destructiveHint": False,
-    "idempotentHint": True, "openWorldHint": False,
-})
+@mcp.tool(name="etl_check_contamination", annotations=ToolAnnotations(
+
+    title= "Check Train/Test Contamination",
+    readOnlyHint= False, destructiveHint= False,
+    idempotentHint= True, openWorldHint= False,
+
+))
 async def etl_check_contamination(params: CheckContaminationInput) -> str:
     """
     Phase 10 — Detect input_text overlap between train and test datasets.
@@ -344,11 +358,13 @@ async def etl_check_contamination(params: CheckContaminationInput) -> str:
         return json.dumps({"success": False, "error": str(e)}, indent=2)
 
 
-@mcp.tool(name="etl_get_dataset_statistics", annotations={
-    "title": "Get Training Dataset Statistics",
-    "readOnlyHint": True, "destructiveHint": False,
-    "idempotentHint": True, "openWorldHint": False,
-})
+@mcp.tool(name="etl_get_dataset_statistics", annotations=ToolAnnotations(
+
+    title= "Get Training Dataset Statistics",
+    readOnlyHint= True, destructiveHint= False,
+    idempotentHint= True, openWorldHint= False,
+
+))
 async def etl_get_dataset_statistics(params: GetDatasetStatisticsInput) -> str:
     """
     Phase 10 — Detailed statistics for a training dataset.
@@ -369,11 +385,13 @@ async def etl_get_dataset_statistics(params: GetDatasetStatisticsInput) -> str:
         return json.dumps({"success": False, "error": str(e)}, indent=2)
 
 
-@mcp.tool(name="etl_resolve_feedback", annotations={
-    "title": "Resolve User Feedback",
-    "readOnlyHint": False, "destructiveHint": False,
-    "idempotentHint": False, "openWorldHint": False,
-})
+@mcp.tool(name="etl_resolve_feedback", annotations=ToolAnnotations(
+
+    title= "Resolve User Feedback",
+    readOnlyHint= False, destructiveHint= False,
+    idempotentHint= False, openWorldHint= False,
+
+))
 async def etl_resolve_feedback(params: ResolveFeedbackInput) -> str:
     """
     Phase 12 — Mark a user feedback item as resolved.
@@ -398,11 +416,13 @@ async def etl_resolve_feedback(params: ResolveFeedbackInput) -> str:
         return json.dumps({"success": False, "error": str(e)}, indent=2)
 
 
-@mcp.tool(name="etl_get_metric_window", annotations={
-    "title": "Get Pipeline Metric Time Window",
-    "readOnlyHint": True, "destructiveHint": False,
-    "idempotentHint": True, "openWorldHint": False,
-})
+@mcp.tool(name="etl_get_metric_window", annotations=ToolAnnotations(
+
+    title= "Get Pipeline Metric Time Window",
+    readOnlyHint= True, destructiveHint= False,
+    idempotentHint= True, openWorldHint= False,
+
+))
 async def etl_get_metric_window(params: GetMetricWindowInput) -> str:
     """
     Phase 12 — Return time-bucketed metric aggregates for sparkline charts.

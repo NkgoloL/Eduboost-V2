@@ -1,0 +1,3694 @@
+{
+  "graph_id": "KG-CAPS-GRAPH-GRADE-2-CODING-AND-ROBOTICS",
+  "graph_version": "kg1-caps-graph-foundation-v1",
+  "status": "caps_graph_foundation_generated",
+  "scope": {
+    "curriculum": "CAPS",
+    "grade": 2,
+    "subject": "coding and robotics",
+    "language": "en"
+  },
+  "source": {
+    "source_path": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/data/caps/topic_maps/grade2_coding_and_robotics_en.json",
+    "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+    "source_ref": "Official DBE CAPS source document linked in source_documents manifest.",
+    "schema_version": "1.0.0"
+  },
+  "review": {
+    "node_review_status": "approved",
+    "edge_review_status": "approved",
+    "runtime_authority": "read_model_only"
+  },
+  "counts": {
+    "terms": 4,
+    "topics": 16,
+    "subtopics": 16,
+    "assessment_statements": 48,
+    "misconceptions": 32,
+    "prerequisite_edges": 15,
+    "nodes": 119,
+    "edges": 133
+  },
+  "nodes": [
+    {
+      "node_id": "kgn_50fdfcd853bfa1bc6836d762",
+      "node_key": "caps:assessment_statement:2.CR.1.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to pattern recognition and decomposition.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.1.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_57f52b0a75e647a9a76fb881",
+      "node_key": "caps:assessment_statement:2.CR.1.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.1.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_254a987f1a8846466a6ccc4b",
+      "node_key": "caps:assessment_statement:2.CR.1.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.1.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_a63600c83d12a04e651eb2ab",
+      "node_key": "caps:assessment_statement:2.CR.1.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to algorithms and coding.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.2.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_0533d120cc776d7b11238fcd",
+      "node_key": "caps:assessment_statement:2.CR.1.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.2.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_2b1b8cdb3c307b54f4e5f44a",
+      "node_key": "caps:assessment_statement:2.CR.1.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.2.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_c12a782c49d8e827ab3d19dc",
+      "node_key": "caps:assessment_statement:2.CR.1.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to robotics and mechanical systems.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.3.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_8ff0106cc6242f17a76edb1b",
+      "node_key": "caps:assessment_statement:2.CR.1.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.3.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_d64154db4c069298b8661357",
+      "node_key": "caps:assessment_statement:2.CR.1.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.3.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_ec28a953cc47bc55483c9ce0",
+      "node_key": "caps:assessment_statement:2.CR.1.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to digital concepts.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.4.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_d3aa9a83131b6bb96720eb7b",
+      "node_key": "caps:assessment_statement:2.CR.1.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.4.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_c2c25553df765729ef1330de",
+      "node_key": "caps:assessment_statement:2.CR.1.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.4.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_2e985d01dcaf37607cb1cef0",
+      "node_key": "caps:assessment_statement:2.CR.2.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to algorithms and coding.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.1.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_992af423b7839d42873fc412",
+      "node_key": "caps:assessment_statement:2.CR.2.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.1.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_bf1362e19beff29ce54fa721",
+      "node_key": "caps:assessment_statement:2.CR.2.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.1.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_5568b3a6baf5d73fc86cbb48",
+      "node_key": "caps:assessment_statement:2.CR.2.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to robotics and sensors.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.2.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_7cdf7cfe3bf111deeab15387",
+      "node_key": "caps:assessment_statement:2.CR.2.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.2.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_cc6ddd59b817f467a46d4579",
+      "node_key": "caps:assessment_statement:2.CR.2.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.2.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_cf587ad12edd473b22f34540",
+      "node_key": "caps:assessment_statement:2.CR.2.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to data and digital systems.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.3.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_3a736f5c65065cc66059aab7",
+      "node_key": "caps:assessment_statement:2.CR.2.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.3.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_80ae7c6abf622049ca57ef36",
+      "node_key": "caps:assessment_statement:2.CR.2.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.3.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_c93b2d4b80eb7a437e487236",
+      "node_key": "caps:assessment_statement:2.CR.2.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to problem solving.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.4.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_d5a67348d52e50f8f51eae50",
+      "node_key": "caps:assessment_statement:2.CR.2.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.4.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_956e903939b854c58bae691c",
+      "node_key": "caps:assessment_statement:2.CR.2.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.4.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_1b7ff8ee14685b7315cd90ee",
+      "node_key": "caps:assessment_statement:2.CR.3.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to coding projects.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.1.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_3bf30e3e589695661f32d9f6",
+      "node_key": "caps:assessment_statement:2.CR.3.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.1.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_758d1d5a3b20478258b1c8e3",
+      "node_key": "caps:assessment_statement:2.CR.3.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.1.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_b9aa288e8b0b6991a7a85f9f",
+      "node_key": "caps:assessment_statement:2.CR.3.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to robotics projects.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.2.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_b34e814030395693fd01b431",
+      "node_key": "caps:assessment_statement:2.CR.3.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.2.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_badbf9f818697da32bd4708e",
+      "node_key": "caps:assessment_statement:2.CR.3.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.2.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_56cd26cd1cbbbacd09fbd5c7",
+      "node_key": "caps:assessment_statement:2.CR.3.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to internet and digital citizenship.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.3.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_76beeed06b0904d5aa5d4af6",
+      "node_key": "caps:assessment_statement:2.CR.3.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.3.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_deee61f4613751c2fee02ff0",
+      "node_key": "caps:assessment_statement:2.CR.3.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.3.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_70b6fb4357ba15d3cac3506e",
+      "node_key": "caps:assessment_statement:2.CR.3.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to integrated design challenge.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.4.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_816517b48c89e668b36a4937",
+      "node_key": "caps:assessment_statement:2.CR.3.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.4.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_24537aa07ece821c4c9a726e",
+      "node_key": "caps:assessment_statement:2.CR.3.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.4.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_287710506e894fbf35b3aa9a",
+      "node_key": "caps:assessment_statement:2.CR.4.1.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to consolidation, debugging and assessment.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.1.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_356cf50a2606f1c2918df5a5",
+      "node_key": "caps:assessment_statement:2.CR.4.1.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.1.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_9e009e4e8608f6a8776e74ec",
+      "node_key": "caps:assessment_statement:2.CR.4.1.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.1.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_e415d12f9afc20b70192f9ae",
+      "node_key": "caps:assessment_statement:2.CR.4.2.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to robotics control.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.2.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_b94e451e81f9cfd4be91430e",
+      "node_key": "caps:assessment_statement:2.CR.4.2.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.2.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_4cf2697da36bc935815bc23a",
+      "node_key": "caps:assessment_statement:2.CR.4.2.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.2.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_43932b6ba2be13f832cf7996",
+      "node_key": "caps:assessment_statement:2.CR.4.3.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to data representation.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.3.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_2cb632673ebcebd130f4a87e",
+      "node_key": "caps:assessment_statement:2.CR.4.3.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.3.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_080b2daa514253f88a4601cd",
+      "node_key": "caps:assessment_statement:2.CR.4.3.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.3.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_38f48090c5651fee5573d48f",
+      "node_key": "caps:assessment_statement:2.CR.4.4.1:1",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 1",
+      "description": "Apply the design/problem-solving process to integrated project.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.4.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_ea4725bebc9e68f9fe1faae8",
+      "node_key": "caps:assessment_statement:2.CR.4.4.1:2",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 2",
+      "description": "Build, test, debug or evaluate a solution using appropriate tools and terminology.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.4.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_d2ecfc6e236aab9c0b7cadaf",
+      "node_key": "caps:assessment_statement:2.CR.4.4.1:3",
+      "node_type": "assessment_statement",
+      "label": "Assessment statement 3",
+      "description": "Communicate decisions, results and improvements clearly.",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.4.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_c8a2e47bc28572931f00d59e",
+      "node_key": "caps:curriculum",
+      "node_type": "curriculum",
+      "label": "CAPS",
+      "description": "South African CAPS curriculum",
+      "grade": null,
+      "subject": null,
+      "term": null,
+      "source_ref": "CAPS",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "source_file": "/home/nkgolol/Dev/SandBox/Eduboost-V2-coverage-clean-20260817/data/caps/topic_maps/grade2_coding_and_robotics_en.json"
+      }
+    },
+    {
+      "node_id": "kgn_d15b8e04ad832adc759f55ca",
+      "node_key": "caps:grade:2",
+      "node_type": "grade",
+      "label": "Grade 2",
+      "description": "CAPS Grade 2",
+      "grade": 2,
+      "subject": null,
+      "term": null,
+      "source_ref": "grade:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "node_id": "kgn_082cce19f2f0e4579f37432f",
+      "node_key": "caps:grade:2:subject:coding and robotics",
+      "node_type": "subject",
+      "label": "Coding and Robotics",
+      "description": "CAPS Grade 2 Coding and Robotics",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": null,
+      "source_ref": "grade:2:subject:CR",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subject_code": "CR"
+      }
+    },
+    {
+      "node_id": "kgn_d15aa07bb9faae8a902b07e2",
+      "node_key": "caps:grade:2:subject:coding and robotics:term:1",
+      "node_type": "term",
+      "label": "Term 1",
+      "description": "Grade 2 Coding and Robotics Term 1",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "term:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_370f6330d9d56e6f12767f58",
+      "node_key": "caps:grade:2:subject:coding and robotics:term:2",
+      "node_type": "term",
+      "label": "Term 2",
+      "description": "Grade 2 Coding and Robotics Term 2",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "term:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_c246e962fffd359badb5c67c",
+      "node_key": "caps:grade:2:subject:coding and robotics:term:3",
+      "node_type": "term",
+      "label": "Term 3",
+      "description": "Grade 2 Coding and Robotics Term 3",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "term:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-10"
+      }
+    },
+    {
+      "node_id": "kgn_adf05db966633517512244ac",
+      "node_key": "caps:grade:2:subject:coding and robotics:term:4",
+      "node_type": "term",
+      "label": "Term 4",
+      "description": "Grade 2 Coding and Robotics Term 4",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "term:4",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "weeks": "1-8"
+      }
+    },
+    {
+      "node_id": "kgn_59736761325dd491940ef1fb",
+      "node_key": "caps:misconception:2.CR.1.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.1.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_763664a3e983e1955e43bbe9",
+      "node_key": "caps:misconception:2.CR.1.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.1.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_c3dd7de23f475132f36d4fd5",
+      "node_key": "caps:misconception:2.CR.1.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.2.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_30386dd8133227b94b7e4a7d",
+      "node_key": "caps:misconception:2.CR.1.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.2.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_197bacd4c5402cd50153ae9c",
+      "node_key": "caps:misconception:2.CR.1.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.3.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_5ce812caaa774bc8943e501f",
+      "node_key": "caps:misconception:2.CR.1.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.3.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_d27ee75c9fa46658677121f7",
+      "node_key": "caps:misconception:2.CR.1.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.4.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_a7593ceaccb852fb3e6d8316",
+      "node_key": "caps:misconception:2.CR.1.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.4.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.1.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_2626edff0c5d9701a32e27db",
+      "node_key": "caps:misconception:2.CR.2.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.1.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_98ae911f243e6f24ac9b7aa0",
+      "node_key": "caps:misconception:2.CR.2.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.1.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_7a16190037a198d46ad3cb50",
+      "node_key": "caps:misconception:2.CR.2.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.2.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_ac084ce719303ce989bad425",
+      "node_key": "caps:misconception:2.CR.2.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.2.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_ea34baaf8e4ff57892f17785",
+      "node_key": "caps:misconception:2.CR.2.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.3.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_d6ffe45acbfc910dbfe89274",
+      "node_key": "caps:misconception:2.CR.2.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.3.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_1c4e15d79abc0dd10deb07ea",
+      "node_key": "caps:misconception:2.CR.2.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.4.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_51cce5da46f64bfed1528ad8",
+      "node_key": "caps:misconception:2.CR.2.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.4.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.2.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_14b5af7cca62b42450d5d491",
+      "node_key": "caps:misconception:2.CR.3.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.1.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_706e4edc17a8be92fb31d9f9",
+      "node_key": "caps:misconception:2.CR.3.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.1.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_ae1d352ea2ed2dd176726403",
+      "node_key": "caps:misconception:2.CR.3.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.2.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_d359a69379c48c5c79cedc94",
+      "node_key": "caps:misconception:2.CR.3.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.2.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_9607520c6e888155bc512eee",
+      "node_key": "caps:misconception:2.CR.3.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.3.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_638cce2fd189a265f47d734a",
+      "node_key": "caps:misconception:2.CR.3.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.3.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_cb9352eab0cb6e0237564193",
+      "node_key": "caps:misconception:2.CR.3.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.4.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_84647c494c77b86d480a3c77",
+      "node_key": "caps:misconception:2.CR.3.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.4.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.3.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_36d9c46cccaf791ff949a421",
+      "node_key": "caps:misconception:2.CR.4.1.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.1.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_63385ffa4c1b3c5376615cd9",
+      "node_key": "caps:misconception:2.CR.4.1.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.1.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.1.1"
+      }
+    },
+    {
+      "node_id": "kgn_a57e87c894f798575388f5f1",
+      "node_key": "caps:misconception:2.CR.4.2.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.2.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_6cf0d16ef8a94941d82309a6",
+      "node_key": "caps:misconception:2.CR.4.2.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.2.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.2.1"
+      }
+    },
+    {
+      "node_id": "kgn_a27751a695dc5c6944300d80",
+      "node_key": "caps:misconception:2.CR.4.3.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.3.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_c3f6e0c40d2101b93fd687fd",
+      "node_key": "caps:misconception:2.CR.4.3.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.3.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.3.1"
+      }
+    },
+    {
+      "node_id": "kgn_841b6484071549a197a75c2d",
+      "node_key": "caps:misconception:2.CR.4.4.1:procedure_without_conceptual_understanding",
+      "node_type": "misconception",
+      "label": "procedure without conceptual understanding",
+      "description": "procedure_without_conceptual_understanding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.4.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_9fd959cba629164aec049886",
+      "node_key": "caps:misconception:2.CR.4.4.1:topic_vocabulary_confusion",
+      "node_type": "misconception",
+      "label": "topic vocabulary confusion",
+      "description": "topic_vocabulary_confusion",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.4.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "parent_caps_ref": "2.CR.4.4.1"
+      }
+    },
+    {
+      "node_id": "kgn_7af77e23fb7d47de4979153a",
+      "node_key": "caps:subtopic:2.CR.1.1.1",
+      "node_type": "subtopic",
+      "label": "Pattern recognition and decomposition",
+      "description": "Pattern recognition and decomposition",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.1.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_611735f3537fc9e99c817942",
+      "node_key": "caps:subtopic:2.CR.1.2.1",
+      "node_type": "subtopic",
+      "label": "Algorithms and coding",
+      "description": "Algorithms and coding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.2.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_aa83b5ce974b14aa80f5d4ae",
+      "node_key": "caps:subtopic:2.CR.1.3.1",
+      "node_type": "subtopic",
+      "label": "Robotics and mechanical systems",
+      "description": "Robotics and mechanical systems",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.3.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_590ad51b009d9bcfa51a018f",
+      "node_key": "caps:subtopic:2.CR.1.4.1",
+      "node_type": "subtopic",
+      "label": "Digital concepts",
+      "description": "Digital concepts",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.4.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_8d18e23fe9f6401b060774e5",
+      "node_key": "caps:subtopic:2.CR.2.1.1",
+      "node_type": "subtopic",
+      "label": "Algorithms and coding",
+      "description": "Algorithms and coding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.1.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_a9a8415e21253650a49c95f0",
+      "node_key": "caps:subtopic:2.CR.2.2.1",
+      "node_type": "subtopic",
+      "label": "Robotics and sensors",
+      "description": "Robotics and sensors",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.2.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_6fee07b6155186fcaf895b27",
+      "node_key": "caps:subtopic:2.CR.2.3.1",
+      "node_type": "subtopic",
+      "label": "Data and digital systems",
+      "description": "Data and digital systems",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.3.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_11385093f083aaf81b472226",
+      "node_key": "caps:subtopic:2.CR.2.4.1",
+      "node_type": "subtopic",
+      "label": "Problem solving",
+      "description": "Problem solving",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.4.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_3775f16f7e543e2a98d6b554",
+      "node_key": "caps:subtopic:2.CR.3.1.1",
+      "node_type": "subtopic",
+      "label": "Coding projects",
+      "description": "Coding projects",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.1.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_0210c04adeed72b0281817a7",
+      "node_key": "caps:subtopic:2.CR.3.2.1",
+      "node_type": "subtopic",
+      "label": "Robotics projects",
+      "description": "Robotics projects",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.2.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_e07949afb7c26eb2f3f1895b",
+      "node_key": "caps:subtopic:2.CR.3.3.1",
+      "node_type": "subtopic",
+      "label": "Internet and digital citizenship",
+      "description": "Internet and digital citizenship",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.3.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_b52f6e049a8e370e11a39026",
+      "node_key": "caps:subtopic:2.CR.3.4.1",
+      "node_type": "subtopic",
+      "label": "Integrated design challenge",
+      "description": "Integrated design challenge",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.4.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_a8051b02f7ad9d9141645982",
+      "node_key": "caps:subtopic:2.CR.4.1.1",
+      "node_type": "subtopic",
+      "label": "Consolidation, debugging and assessment",
+      "description": "Consolidation, debugging and assessment",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.1.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_d2bd5d6b09dbe22feb339f7f",
+      "node_key": "caps:subtopic:2.CR.4.2.1",
+      "node_type": "subtopic",
+      "label": "Robotics control",
+      "description": "Robotics control",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.2.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_6a270cbd879add7e5ee10fc3",
+      "node_key": "caps:subtopic:2.CR.4.3.1",
+      "node_type": "subtopic",
+      "label": "Data representation",
+      "description": "Data representation",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.3.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_25684a2a742cfda0c22b7ebe",
+      "node_key": "caps:subtopic:2.CR.4.4.1",
+      "node_type": "subtopic",
+      "label": "Integrated project",
+      "description": "Integrated project",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.4.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "subtopic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_cb9f09a90ec1415df343a438",
+      "node_key": "caps:topic:2.CR.1.1",
+      "node_type": "topic",
+      "label": "Pattern recognition and decomposition",
+      "description": "Pattern recognition and decomposition",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_5ebe3ba382d947410c79346a",
+      "node_key": "caps:topic:2.CR.1.2",
+      "node_type": "topic",
+      "label": "Algorithms and coding",
+      "description": "Algorithms and coding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_4e36adec291a6973faa3904a",
+      "node_key": "caps:topic:2.CR.1.3",
+      "node_type": "topic",
+      "label": "Robotics and mechanical systems",
+      "description": "Robotics and mechanical systems",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_8fefb8ab9e7c9938b38e2d67",
+      "node_key": "caps:topic:2.CR.1.4",
+      "node_type": "topic",
+      "label": "Digital concepts",
+      "description": "Digital concepts",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 1,
+      "source_ref": "2.CR.1.4",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_fd599b68e7a8caed2e5878f3",
+      "node_key": "caps:topic:2.CR.2.1",
+      "node_type": "topic",
+      "label": "Algorithms and coding",
+      "description": "Algorithms and coding",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_4c8bfc2149f174a73d76aeaa",
+      "node_key": "caps:topic:2.CR.2.2",
+      "node_type": "topic",
+      "label": "Robotics and sensors",
+      "description": "Robotics and sensors",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_08b6767364db26521e9762b2",
+      "node_key": "caps:topic:2.CR.2.3",
+      "node_type": "topic",
+      "label": "Data and digital systems",
+      "description": "Data and digital systems",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_7edb1eff5e7545b981992611",
+      "node_key": "caps:topic:2.CR.2.4",
+      "node_type": "topic",
+      "label": "Problem solving",
+      "description": "Problem solving",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 2,
+      "source_ref": "2.CR.2.4",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_ebc604e94667085f467aaada",
+      "node_key": "caps:topic:2.CR.3.1",
+      "node_type": "topic",
+      "label": "Coding projects",
+      "description": "Coding projects",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_e589580f554293624717be1b",
+      "node_key": "caps:topic:2.CR.3.2",
+      "node_type": "topic",
+      "label": "Robotics projects",
+      "description": "Robotics projects",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_7b5b56db6248ee5e2988caac",
+      "node_key": "caps:topic:2.CR.3.3",
+      "node_type": "topic",
+      "label": "Internet and digital citizenship",
+      "description": "Internet and digital citizenship",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_d0f3f5b81b33081019bbd93c",
+      "node_key": "caps:topic:2.CR.3.4",
+      "node_type": "topic",
+      "label": "Integrated design challenge",
+      "description": "Integrated design challenge",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 3,
+      "source_ref": "2.CR.3.4",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    },
+    {
+      "node_id": "kgn_359e344e96c731e9ab5f98bd",
+      "node_key": "caps:topic:2.CR.4.1",
+      "node_type": "topic",
+      "label": "Consolidation, debugging and assessment",
+      "description": "Consolidation, debugging and assessment",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 1
+      }
+    },
+    {
+      "node_id": "kgn_67df3fb52d63c819839e595f",
+      "node_key": "caps:topic:2.CR.4.2",
+      "node_type": "topic",
+      "label": "Robotics control",
+      "description": "Robotics control",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 2
+      }
+    },
+    {
+      "node_id": "kgn_05d5f13cc750abb650261d18",
+      "node_key": "caps:topic:2.CR.4.3",
+      "node_type": "topic",
+      "label": "Data representation",
+      "description": "Data representation",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 3
+      }
+    },
+    {
+      "node_id": "kgn_44099ca1cd4f5c7946168bb9",
+      "node_key": "caps:topic:2.CR.4.4",
+      "node_type": "topic",
+      "label": "Integrated project",
+      "description": "Integrated project",
+      "grade": 2,
+      "subject": "coding and robotics",
+      "term": 4,
+      "source_ref": "2.CR.4.4",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "topic_index": 4
+      }
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "kge_42e6b4b08d27485f289c6364",
+      "source_node_key": "caps:curriculum",
+      "target_node_key": "caps:grade:2",
+      "edge_type": "contains",
+      "label": "CAPS contains grade",
+      "source_ref": "CAPS",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b453083ba44b89f5f3ece35c",
+      "source_node_key": "caps:grade:2",
+      "target_node_key": "caps:grade:2:subject:coding and robotics",
+      "edge_type": "contains",
+      "label": "Grade contains subject",
+      "source_ref": "grade:2:subject:CR",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6242623e118c922cbb44ea85",
+      "source_node_key": "caps:grade:2:subject:coding and robotics",
+      "target_node_key": "caps:grade:2:subject:coding and robotics:term:1",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_39ff4223ea708862f2d761cc",
+      "source_node_key": "caps:grade:2:subject:coding and robotics",
+      "target_node_key": "caps:grade:2:subject:coding and robotics:term:2",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9ceffd584e6b2be71485848f",
+      "source_node_key": "caps:grade:2:subject:coding and robotics",
+      "target_node_key": "caps:grade:2:subject:coding and robotics:term:3",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_65c5e916f42131cadfceac11",
+      "source_node_key": "caps:grade:2:subject:coding and robotics",
+      "target_node_key": "caps:grade:2:subject:coding and robotics:term:4",
+      "edge_type": "contains",
+      "label": "Subject contains term",
+      "source_ref": "term:4",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_22b7ca218f30e5c4034c72bf",
+      "source_node_key": "caps:grade:2:subject:coding and robotics:term:1",
+      "target_node_key": "caps:topic:2.CR.1.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "2.CR.1.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_bd329820f24b145babac678b",
+      "source_node_key": "caps:grade:2:subject:coding and robotics:term:1",
+      "target_node_key": "caps:topic:2.CR.1.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "2.CR.1.2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5264ad31999a63de332b74d8",
+      "source_node_key": "caps:grade:2:subject:coding and robotics:term:1",
+      "target_node_key": "caps:topic:2.CR.1.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "2.CR.1.3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_55b8dd9a8e7b034210928e36",
+      "source_node_key": "caps:grade:2:subject:coding and robotics:term:1",
+      "target_node_key": "caps:topic:2.CR.1.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "2.CR.1.4",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_249b6f36e464a3f734a3d069",
+      "source_node_key": "caps:grade:2:subject:coding and robotics:term:2",
+      "target_node_key": "caps:topic:2.CR.2.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "2.CR.2.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8792f2a7b2abe9a27d757d01",
+      "source_node_key": "caps:grade:2:subject:coding and robotics:term:2",
+      "target_node_key": "caps:topic:2.CR.2.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "2.CR.2.2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_60f9c2ee349e83e2d7a97c09",
+      "source_node_key": "caps:grade:2:subject:coding and robotics:term:2",
+      "target_node_key": "caps:topic:2.CR.2.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "2.CR.2.3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_936ce589fe8fcabb45ef7820",
+      "source_node_key": "caps:grade:2:subject:coding and robotics:term:2",
+      "target_node_key": "caps:topic:2.CR.2.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "2.CR.2.4",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5118fb6f2f11c876a8a047fc",
+      "source_node_key": "caps:grade:2:subject:coding and robotics:term:3",
+      "target_node_key": "caps:topic:2.CR.3.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "2.CR.3.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_654fd2b1b437ffd0358e2805",
+      "source_node_key": "caps:grade:2:subject:coding and robotics:term:3",
+      "target_node_key": "caps:topic:2.CR.3.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "2.CR.3.2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f23d386d335a28953e1e5efa",
+      "source_node_key": "caps:grade:2:subject:coding and robotics:term:3",
+      "target_node_key": "caps:topic:2.CR.3.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "2.CR.3.3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_adb710b0d645eb5dd9d8b1b2",
+      "source_node_key": "caps:grade:2:subject:coding and robotics:term:3",
+      "target_node_key": "caps:topic:2.CR.3.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "2.CR.3.4",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_896490b8ccdafedd620d88aa",
+      "source_node_key": "caps:grade:2:subject:coding and robotics:term:4",
+      "target_node_key": "caps:topic:2.CR.4.1",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "2.CR.4.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_26124214a65befb216e24b8a",
+      "source_node_key": "caps:grade:2:subject:coding and robotics:term:4",
+      "target_node_key": "caps:topic:2.CR.4.2",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "2.CR.4.2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_89557a37cf7762aeb4747d8a",
+      "source_node_key": "caps:grade:2:subject:coding and robotics:term:4",
+      "target_node_key": "caps:topic:2.CR.4.3",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "2.CR.4.3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e671e6f80b639013a4f025c4",
+      "source_node_key": "caps:grade:2:subject:coding and robotics:term:4",
+      "target_node_key": "caps:topic:2.CR.4.4",
+      "edge_type": "contains",
+      "label": "Term contains topic",
+      "source_ref": "2.CR.4.4",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_917ab25c2770633ac3b1cbcc",
+      "source_node_key": "caps:subtopic:2.CR.1.1.1",
+      "target_node_key": "caps:assessment_statement:2.CR.1.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.1.1.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ebe34242b0bc92c37cd10494",
+      "source_node_key": "caps:subtopic:2.CR.1.1.1",
+      "target_node_key": "caps:assessment_statement:2.CR.1.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.1.1.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fd8a6f5f75dae4ba973ce52d",
+      "source_node_key": "caps:subtopic:2.CR.1.1.1",
+      "target_node_key": "caps:assessment_statement:2.CR.1.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.1.1.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1d588e205912062f656ef4c1",
+      "source_node_key": "caps:subtopic:2.CR.1.1.1",
+      "target_node_key": "caps:misconception:2.CR.1.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.1.1.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_21301a3bac8b2ca4a87740ba",
+      "source_node_key": "caps:subtopic:2.CR.1.1.1",
+      "target_node_key": "caps:misconception:2.CR.1.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.1.1.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fa4c8d812b1e4abfd39b6182",
+      "source_node_key": "caps:subtopic:2.CR.1.2.1",
+      "target_node_key": "caps:assessment_statement:2.CR.1.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.1.2.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_07a62883f105302b90d58f4d",
+      "source_node_key": "caps:subtopic:2.CR.1.2.1",
+      "target_node_key": "caps:assessment_statement:2.CR.1.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.1.2.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e9640b6898488093ff7b2f1b",
+      "source_node_key": "caps:subtopic:2.CR.1.2.1",
+      "target_node_key": "caps:assessment_statement:2.CR.1.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.1.2.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6a71c19e1e117c6b6398cd17",
+      "source_node_key": "caps:subtopic:2.CR.1.2.1",
+      "target_node_key": "caps:misconception:2.CR.1.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.1.2.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7ce078520c69d39765f11009",
+      "source_node_key": "caps:subtopic:2.CR.1.2.1",
+      "target_node_key": "caps:misconception:2.CR.1.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.1.2.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_74ae41228cb517c8e4ac6f1a",
+      "source_node_key": "caps:subtopic:2.CR.1.3.1",
+      "target_node_key": "caps:assessment_statement:2.CR.1.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.1.3.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_dd31743cd28ae164dd3242bf",
+      "source_node_key": "caps:subtopic:2.CR.1.3.1",
+      "target_node_key": "caps:assessment_statement:2.CR.1.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.1.3.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8d2bb31f1e27af318b05fc20",
+      "source_node_key": "caps:subtopic:2.CR.1.3.1",
+      "target_node_key": "caps:assessment_statement:2.CR.1.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.1.3.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e91c22c39efdcbfa7fb98e7e",
+      "source_node_key": "caps:subtopic:2.CR.1.3.1",
+      "target_node_key": "caps:misconception:2.CR.1.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.1.3.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_71c68f2edca78d5322d74967",
+      "source_node_key": "caps:subtopic:2.CR.1.3.1",
+      "target_node_key": "caps:misconception:2.CR.1.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.1.3.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ba44403ceb6f5f225e36db95",
+      "source_node_key": "caps:subtopic:2.CR.1.4.1",
+      "target_node_key": "caps:assessment_statement:2.CR.1.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.1.4.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e9a9a17dd7799b7e2901d6d5",
+      "source_node_key": "caps:subtopic:2.CR.1.4.1",
+      "target_node_key": "caps:assessment_statement:2.CR.1.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.1.4.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c8df9d01efbddf5520466459",
+      "source_node_key": "caps:subtopic:2.CR.1.4.1",
+      "target_node_key": "caps:assessment_statement:2.CR.1.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.1.4.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_20a66d27692512bc006647e4",
+      "source_node_key": "caps:subtopic:2.CR.1.4.1",
+      "target_node_key": "caps:misconception:2.CR.1.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.1.4.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_55a5937e5e471da3b0452f13",
+      "source_node_key": "caps:subtopic:2.CR.1.4.1",
+      "target_node_key": "caps:misconception:2.CR.1.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.1.4.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9eedecc995469693fd4fec90",
+      "source_node_key": "caps:subtopic:2.CR.2.1.1",
+      "target_node_key": "caps:assessment_statement:2.CR.2.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.2.1.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f5fcb3f86dffe484b367adc5",
+      "source_node_key": "caps:subtopic:2.CR.2.1.1",
+      "target_node_key": "caps:assessment_statement:2.CR.2.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.2.1.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ea78f256874e464db6af20ce",
+      "source_node_key": "caps:subtopic:2.CR.2.1.1",
+      "target_node_key": "caps:assessment_statement:2.CR.2.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.2.1.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_963516b259d2ef59d8f4ec7f",
+      "source_node_key": "caps:subtopic:2.CR.2.1.1",
+      "target_node_key": "caps:misconception:2.CR.2.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.2.1.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f9ef222d17c350e970fa76da",
+      "source_node_key": "caps:subtopic:2.CR.2.1.1",
+      "target_node_key": "caps:misconception:2.CR.2.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.2.1.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_da7acb910f6467735a3d6af8",
+      "source_node_key": "caps:subtopic:2.CR.2.2.1",
+      "target_node_key": "caps:assessment_statement:2.CR.2.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.2.2.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_eb74222cedea52742d5a6e1b",
+      "source_node_key": "caps:subtopic:2.CR.2.2.1",
+      "target_node_key": "caps:assessment_statement:2.CR.2.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.2.2.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_23cd89aaf3eb493497cd2b8d",
+      "source_node_key": "caps:subtopic:2.CR.2.2.1",
+      "target_node_key": "caps:assessment_statement:2.CR.2.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.2.2.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e682f74ae53a1b5a44cd24d0",
+      "source_node_key": "caps:subtopic:2.CR.2.2.1",
+      "target_node_key": "caps:misconception:2.CR.2.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.2.2.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_37e53680e7c7f2a707c86a16",
+      "source_node_key": "caps:subtopic:2.CR.2.2.1",
+      "target_node_key": "caps:misconception:2.CR.2.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.2.2.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_298a326b807eb977f10951c5",
+      "source_node_key": "caps:subtopic:2.CR.2.3.1",
+      "target_node_key": "caps:assessment_statement:2.CR.2.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.2.3.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f51525caaeb4b80afd901094",
+      "source_node_key": "caps:subtopic:2.CR.2.3.1",
+      "target_node_key": "caps:assessment_statement:2.CR.2.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.2.3.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1cf52873bd8e141b40f4e775",
+      "source_node_key": "caps:subtopic:2.CR.2.3.1",
+      "target_node_key": "caps:assessment_statement:2.CR.2.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.2.3.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_25c7b38847ffd9480d55b533",
+      "source_node_key": "caps:subtopic:2.CR.2.3.1",
+      "target_node_key": "caps:misconception:2.CR.2.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.2.3.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2582312d4c214aa4284b826c",
+      "source_node_key": "caps:subtopic:2.CR.2.3.1",
+      "target_node_key": "caps:misconception:2.CR.2.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.2.3.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b6042d606b6615cb3161c9f4",
+      "source_node_key": "caps:subtopic:2.CR.2.4.1",
+      "target_node_key": "caps:assessment_statement:2.CR.2.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.2.4.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8d53ed80730f912b79f3aa9b",
+      "source_node_key": "caps:subtopic:2.CR.2.4.1",
+      "target_node_key": "caps:assessment_statement:2.CR.2.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.2.4.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_185eafd7e4efc081906d46b5",
+      "source_node_key": "caps:subtopic:2.CR.2.4.1",
+      "target_node_key": "caps:assessment_statement:2.CR.2.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.2.4.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4e45b9c3f4197583dcc2243b",
+      "source_node_key": "caps:subtopic:2.CR.2.4.1",
+      "target_node_key": "caps:misconception:2.CR.2.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.2.4.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f75a823d0eed24ffc13a51c8",
+      "source_node_key": "caps:subtopic:2.CR.2.4.1",
+      "target_node_key": "caps:misconception:2.CR.2.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.2.4.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2f9d6091525581aa3656a409",
+      "source_node_key": "caps:subtopic:2.CR.3.1.1",
+      "target_node_key": "caps:assessment_statement:2.CR.3.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.3.1.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_77abd72d79d7ee0e1b05d012",
+      "source_node_key": "caps:subtopic:2.CR.3.1.1",
+      "target_node_key": "caps:assessment_statement:2.CR.3.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.3.1.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_6cdb79e19d1805db35a259b8",
+      "source_node_key": "caps:subtopic:2.CR.3.1.1",
+      "target_node_key": "caps:assessment_statement:2.CR.3.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.3.1.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b87964f7208503d1e9f5c54c",
+      "source_node_key": "caps:subtopic:2.CR.3.1.1",
+      "target_node_key": "caps:misconception:2.CR.3.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.3.1.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_de09eea3e54334882b1bfa49",
+      "source_node_key": "caps:subtopic:2.CR.3.1.1",
+      "target_node_key": "caps:misconception:2.CR.3.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.3.1.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e346a73d77315dc2cd5f10da",
+      "source_node_key": "caps:subtopic:2.CR.3.2.1",
+      "target_node_key": "caps:assessment_statement:2.CR.3.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.3.2.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_83cb28806a34ee1b2d9505a3",
+      "source_node_key": "caps:subtopic:2.CR.3.2.1",
+      "target_node_key": "caps:assessment_statement:2.CR.3.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.3.2.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_41d94b0abb6c9d8c5b7a1bbe",
+      "source_node_key": "caps:subtopic:2.CR.3.2.1",
+      "target_node_key": "caps:assessment_statement:2.CR.3.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.3.2.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_ddca6964c237141a4904e589",
+      "source_node_key": "caps:subtopic:2.CR.3.2.1",
+      "target_node_key": "caps:misconception:2.CR.3.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.3.2.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0fe5918db45d8b9215a3488e",
+      "source_node_key": "caps:subtopic:2.CR.3.2.1",
+      "target_node_key": "caps:misconception:2.CR.3.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.3.2.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5c0ba295a80e177db2523286",
+      "source_node_key": "caps:subtopic:2.CR.3.3.1",
+      "target_node_key": "caps:assessment_statement:2.CR.3.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.3.3.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5deea34a62e2db4340034629",
+      "source_node_key": "caps:subtopic:2.CR.3.3.1",
+      "target_node_key": "caps:assessment_statement:2.CR.3.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.3.3.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_246e05e8d098ca6f5947ebe6",
+      "source_node_key": "caps:subtopic:2.CR.3.3.1",
+      "target_node_key": "caps:assessment_statement:2.CR.3.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.3.3.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_923420031e20477e7856566d",
+      "source_node_key": "caps:subtopic:2.CR.3.3.1",
+      "target_node_key": "caps:misconception:2.CR.3.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.3.3.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8e9e4f421a67f7b1c943238a",
+      "source_node_key": "caps:subtopic:2.CR.3.3.1",
+      "target_node_key": "caps:misconception:2.CR.3.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.3.3.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b81e547f019236be8638b21b",
+      "source_node_key": "caps:subtopic:2.CR.3.4.1",
+      "target_node_key": "caps:assessment_statement:2.CR.3.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.3.4.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_77065c21ab5c31cbe42bf9d6",
+      "source_node_key": "caps:subtopic:2.CR.3.4.1",
+      "target_node_key": "caps:assessment_statement:2.CR.3.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.3.4.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5309e3b923a9d5f2522de420",
+      "source_node_key": "caps:subtopic:2.CR.3.4.1",
+      "target_node_key": "caps:assessment_statement:2.CR.3.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.3.4.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_00614ab6491b4a95cc710f8a",
+      "source_node_key": "caps:subtopic:2.CR.3.4.1",
+      "target_node_key": "caps:misconception:2.CR.3.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.3.4.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_599cc28c727c5719e4e19ccf",
+      "source_node_key": "caps:subtopic:2.CR.3.4.1",
+      "target_node_key": "caps:misconception:2.CR.3.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.3.4.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_658b9da2c1c26927652897fd",
+      "source_node_key": "caps:subtopic:2.CR.4.1.1",
+      "target_node_key": "caps:assessment_statement:2.CR.4.1.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.4.1.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_15a4b6cc019f41729dde767d",
+      "source_node_key": "caps:subtopic:2.CR.4.1.1",
+      "target_node_key": "caps:assessment_statement:2.CR.4.1.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.4.1.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2313c286821903318bd8c58a",
+      "source_node_key": "caps:subtopic:2.CR.4.1.1",
+      "target_node_key": "caps:assessment_statement:2.CR.4.1.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.4.1.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_b5766d757140c3f66ed61bef",
+      "source_node_key": "caps:subtopic:2.CR.4.1.1",
+      "target_node_key": "caps:misconception:2.CR.4.1.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.4.1.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_8b5f127c2ba54cb3048d6fa8",
+      "source_node_key": "caps:subtopic:2.CR.4.1.1",
+      "target_node_key": "caps:misconception:2.CR.4.1.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.4.1.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2535eb0a075374e0e17a3e46",
+      "source_node_key": "caps:subtopic:2.CR.4.2.1",
+      "target_node_key": "caps:assessment_statement:2.CR.4.2.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.4.2.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_30800fb85bb2da85f705f677",
+      "source_node_key": "caps:subtopic:2.CR.4.2.1",
+      "target_node_key": "caps:assessment_statement:2.CR.4.2.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.4.2.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c315c538a4e8c4ca143785eb",
+      "source_node_key": "caps:subtopic:2.CR.4.2.1",
+      "target_node_key": "caps:assessment_statement:2.CR.4.2.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.4.2.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_9c4864b603979afc574369d0",
+      "source_node_key": "caps:subtopic:2.CR.4.2.1",
+      "target_node_key": "caps:misconception:2.CR.4.2.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.4.2.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_5fccdd2e215b05f273b068de",
+      "source_node_key": "caps:subtopic:2.CR.4.2.1",
+      "target_node_key": "caps:misconception:2.CR.4.2.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.4.2.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c16b5070ac91bf407dd3970d",
+      "source_node_key": "caps:subtopic:2.CR.4.3.1",
+      "target_node_key": "caps:assessment_statement:2.CR.4.3.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.4.3.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7f4a71c138fa1ca54e80d6e3",
+      "source_node_key": "caps:subtopic:2.CR.4.3.1",
+      "target_node_key": "caps:assessment_statement:2.CR.4.3.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.4.3.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_e5618cefe80fb324b1be029f",
+      "source_node_key": "caps:subtopic:2.CR.4.3.1",
+      "target_node_key": "caps:assessment_statement:2.CR.4.3.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.4.3.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_4273dce6bc11d452a562989d",
+      "source_node_key": "caps:subtopic:2.CR.4.3.1",
+      "target_node_key": "caps:misconception:2.CR.4.3.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.4.3.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0f975c41927f16a5d433577a",
+      "source_node_key": "caps:subtopic:2.CR.4.3.1",
+      "target_node_key": "caps:misconception:2.CR.4.3.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.4.3.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_1682f8c5cb33bc04336860dd",
+      "source_node_key": "caps:subtopic:2.CR.4.4.1",
+      "target_node_key": "caps:assessment_statement:2.CR.4.4.1:1",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.4.4.1#assessment:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_c6db0052eb518fc5dcb13029",
+      "source_node_key": "caps:subtopic:2.CR.4.4.1",
+      "target_node_key": "caps:assessment_statement:2.CR.4.4.1:2",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.4.4.1#assessment:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_813f133efff791952bedd939",
+      "source_node_key": "caps:subtopic:2.CR.4.4.1",
+      "target_node_key": "caps:assessment_statement:2.CR.4.4.1:3",
+      "edge_type": "assesses",
+      "label": "Subtopic assessed by statement",
+      "source_ref": "2.CR.4.4.1#assessment:3",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f40ba1ba81eb6ab4b77b07de",
+      "source_node_key": "caps:subtopic:2.CR.4.4.1",
+      "target_node_key": "caps:misconception:2.CR.4.4.1:procedure_without_conceptual_understanding",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.4.4.1#misconception:2",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_fa93872d709223aa477ca4df",
+      "source_node_key": "caps:subtopic:2.CR.4.4.1",
+      "target_node_key": "caps:misconception:2.CR.4.4.1:topic_vocabulary_confusion",
+      "edge_type": "has_misconception",
+      "label": "Subtopic has common misconception",
+      "source_ref": "2.CR.4.4.1#misconception:1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_30330d06d8c72aed424140cd",
+      "source_node_key": "caps:topic:2.CR.1.1",
+      "target_node_key": "caps:subtopic:2.CR.1.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "2.CR.1.1.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_83a572e2e85f750b12baf363",
+      "source_node_key": "caps:topic:2.CR.1.1",
+      "target_node_key": "caps:subtopic:2.CR.1.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "2.CR.1.2.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "2.CR.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_3840c7d19afad43449988b5a",
+      "source_node_key": "caps:topic:2.CR.1.1",
+      "target_node_key": "caps:subtopic:2.CR.1.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "2.CR.1.3.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "2.CR.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_724140bc9b96165b38d0cea4",
+      "source_node_key": "caps:topic:2.CR.1.1",
+      "target_node_key": "caps:subtopic:2.CR.1.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "2.CR.1.4.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "2.CR.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_c73ae6305a00e8b4a2bfb39f",
+      "source_node_key": "caps:topic:2.CR.1.1",
+      "target_node_key": "caps:subtopic:2.CR.2.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "2.CR.2.1.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "2.CR.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_7a4e188737b97e98a7238468",
+      "source_node_key": "caps:topic:2.CR.1.1",
+      "target_node_key": "caps:subtopic:2.CR.2.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "2.CR.2.2.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "2.CR.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_52f19a1bef6d604677cb4654",
+      "source_node_key": "caps:topic:2.CR.1.1",
+      "target_node_key": "caps:subtopic:2.CR.2.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "2.CR.2.3.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "2.CR.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_cb0544d43549692eb4d2e457",
+      "source_node_key": "caps:topic:2.CR.1.1",
+      "target_node_key": "caps:subtopic:2.CR.2.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "2.CR.2.4.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "2.CR.1.1"
+      }
+    },
+    {
+      "edge_id": "kge_dcf6ee01802080cb17800fd8",
+      "source_node_key": "caps:topic:2.CR.1.2",
+      "target_node_key": "caps:subtopic:2.CR.1.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "2.CR.1.2.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_0ffd7478bc766d9f6a358398",
+      "source_node_key": "caps:topic:2.CR.1.3",
+      "target_node_key": "caps:subtopic:2.CR.1.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "2.CR.1.3.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_28dccf3f7c79f35815578e6c",
+      "source_node_key": "caps:topic:2.CR.1.4",
+      "target_node_key": "caps:subtopic:2.CR.1.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "2.CR.1.4.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_16fe74336f75206c41116682",
+      "source_node_key": "caps:topic:2.CR.2.1",
+      "target_node_key": "caps:subtopic:2.CR.2.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "2.CR.2.1.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_a9dc1c313cee40429c76de66",
+      "source_node_key": "caps:topic:2.CR.2.1",
+      "target_node_key": "caps:subtopic:2.CR.3.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "2.CR.3.1.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "2.CR.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_552eb66f3059384cb005f4e5",
+      "source_node_key": "caps:topic:2.CR.2.1",
+      "target_node_key": "caps:subtopic:2.CR.3.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "2.CR.3.2.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "2.CR.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_d801be934f7a69a882b26b5c",
+      "source_node_key": "caps:topic:2.CR.2.1",
+      "target_node_key": "caps:subtopic:2.CR.3.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "2.CR.3.3.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "2.CR.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_ee03984290e5f9cea789aff4",
+      "source_node_key": "caps:topic:2.CR.2.1",
+      "target_node_key": "caps:subtopic:2.CR.3.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "2.CR.3.4.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "2.CR.2.1"
+      }
+    },
+    {
+      "edge_id": "kge_86d1b17d61afff6b8f2e4ad3",
+      "source_node_key": "caps:topic:2.CR.2.2",
+      "target_node_key": "caps:subtopic:2.CR.2.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "2.CR.2.2.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_7addf0bf8d1d1be8aa42e11a",
+      "source_node_key": "caps:topic:2.CR.2.3",
+      "target_node_key": "caps:subtopic:2.CR.2.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "2.CR.2.3.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_f79a886bf485138091d9cb05",
+      "source_node_key": "caps:topic:2.CR.2.4",
+      "target_node_key": "caps:subtopic:2.CR.2.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "2.CR.2.4.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3a799c4f06817163cfbefef3",
+      "source_node_key": "caps:topic:2.CR.3.1",
+      "target_node_key": "caps:subtopic:2.CR.3.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "2.CR.3.1.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_987ebb187de41bbe70646b3b",
+      "source_node_key": "caps:topic:2.CR.3.1",
+      "target_node_key": "caps:subtopic:2.CR.4.1.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "2.CR.4.1.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "2.CR.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_fabc3905ff27c0e64058aaa3",
+      "source_node_key": "caps:topic:2.CR.3.1",
+      "target_node_key": "caps:subtopic:2.CR.4.2.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "2.CR.4.2.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "2.CR.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_ad34be748fb1d612898443b5",
+      "source_node_key": "caps:topic:2.CR.3.1",
+      "target_node_key": "caps:subtopic:2.CR.4.3.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "2.CR.4.3.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "2.CR.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_a5ed60706037066b347a2093",
+      "source_node_key": "caps:topic:2.CR.3.1",
+      "target_node_key": "caps:subtopic:2.CR.4.4.1",
+      "edge_type": "prerequisite_of",
+      "label": "Prerequisite relationship",
+      "source_ref": "2.CR.4.4.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {
+        "prerequisite_ref": "2.CR.3.1"
+      }
+    },
+    {
+      "edge_id": "kge_3519131a79fc9fecb7554773",
+      "source_node_key": "caps:topic:2.CR.3.2",
+      "target_node_key": "caps:subtopic:2.CR.3.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "2.CR.3.2.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_dcf25c8254e4b60bed0e2b37",
+      "source_node_key": "caps:topic:2.CR.3.3",
+      "target_node_key": "caps:subtopic:2.CR.3.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "2.CR.3.3.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_2f7ae52f03cb89d0346485e0",
+      "source_node_key": "caps:topic:2.CR.3.4",
+      "target_node_key": "caps:subtopic:2.CR.3.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "2.CR.3.4.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_3b80eb00b08a6f612b6f9f60",
+      "source_node_key": "caps:topic:2.CR.4.1",
+      "target_node_key": "caps:subtopic:2.CR.4.1.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "2.CR.4.1.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_72f4c39618bd7d50b3e0d07a",
+      "source_node_key": "caps:topic:2.CR.4.2",
+      "target_node_key": "caps:subtopic:2.CR.4.2.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "2.CR.4.2.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_144c3f417ee2b4aa7889328e",
+      "source_node_key": "caps:topic:2.CR.4.3",
+      "target_node_key": "caps:subtopic:2.CR.4.3.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "2.CR.4.3.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    },
+    {
+      "edge_id": "kge_17214b9e549cc0932766b69e",
+      "source_node_key": "caps:topic:2.CR.4.4",
+      "target_node_key": "caps:subtopic:2.CR.4.4.1",
+      "edge_type": "contains",
+      "label": "Topic contains subtopic",
+      "source_ref": "2.CR.4.4.1",
+      "source_sha256": "aee04a5769958e58c485f23d3afdc55f99f8ef79f614d938d7207cc32189179d",
+      "review_status": "approved",
+      "version": "kg1-caps-graph-foundation-v1",
+      "metadata": {}
+    }
+  ],
+  "boundary": {
+    "runtime_kg_implementation_claimed": false,
+    "runtime_kg_authority_switch_authorised": false,
+    "database_schema_migration_authorised": false,
+    "learner_facing_model_change_authorised": false,
+    "learner_graph_implementation_authorised": false,
+    "production_release_authorised": false,
+    "deployment_authorised": false,
+    "release_tag_authorised": false,
+    "public_beta_authorised": false
+  }
+}

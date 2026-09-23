@@ -475,6 +475,7 @@ class Extractor:
             ".csv":  self._csv,
             ".xlsx": self._xlsx,
             ".xls":  self._xlsx,
+            ".json": self._json,
         }
         handler = dispatch.get(suffix, self._txt)
         try:
@@ -596,6 +597,94 @@ class Extractor:
             page_count=1,
             mime_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             ocr_confidence=None, extraction_ok=True
+        )
+
+    def _json(self, path: str) -> ExtractionResult:
+        with open(path, "r", encoding="utf-8", errors="replace") as f:
+            data = json.load(f)
+        headings: list[str] = []
+        text_lines: list[str] = []
+        pages: list[dict[str, Any]] = []
+
+        if isinstance(data, dict):
+            if "terms" in data and isinstance(data["terms"], list):
+                subject = data.get("subject", "Curriculum")
+                grade = data.get("grade", "")
+                main_heading = f"Grade {grade} {subject} Curriculum".strip()
+                headings.append(main_heading)
+                text_lines.append(f"# {main_heading}\n")
+                page_idx = 1
+                for term_obj in data["terms"]:
+                    term_num = term_obj.get("term")
+                    t_heading = f"Term {term_num}"
+                    headings.append(t_heading)
+                    text_lines.append(f"## {t_heading}\n")
+                    term_lines = [f"## {t_heading}\n"]
+                    for topic_obj in term_obj.get("topics", []):
+                        topic_name = topic_obj.get("topic", "")
+                        caps_ref = topic_obj.get("caps_ref", "")
+                        top_heading = f"{caps_ref} {topic_name}".strip()
+                        headings.append(top_heading)
+                        text_lines.append(f"### {top_heading}\n")
+                        term_lines.append(f"### {top_heading}\n")
+                        for sub_obj in topic_obj.get("subtopics", []):
+                            sub_name = sub_obj.get("subtopic", "")
+                            sub_ref = sub_obj.get("caps_ref", "")
+                            sub_heading = f"{sub_ref} {sub_name}".strip()
+                            headings.append(sub_heading)
+                            text_lines.append(f"#### {sub_heading}\n")
+                            term_lines.append(f"#### {sub_heading}\n")
+                            for std in sub_obj.get("assessment_standards", []):
+                                text_lines.append(f"- Assessment Standard: {std}")
+                                term_lines.append(f"- Assessment Standard: {std}")
+                            for misc in sub_obj.get("common_misconceptions", []):
+                                text_lines.append(f"- Common Misconception: {misc}")
+                                term_lines.append(f"- Common Misconception: {misc}")
+                            for prereq in sub_obj.get("prerequisites", []):
+                                text_lines.append(f"- Prerequisite: {prereq}")
+                                term_lines.append(f"- Prerequisite: {prereq}")
+                    pages.append({"page_num": page_idx, "text": "\n".join(term_lines), "headings": list(headings)})
+                    page_idx += 1
+            elif "items" in data and isinstance(data["items"], list):
+                headings.append("Assessment Items")
+                for i, itm in enumerate(data["items"], start=1):
+                    item_id = itm.get("item_id", f"Item {i}")
+                    headings.append(item_id)
+                    text_lines.append(f"### {item_id}\n{itm.get('prompt', '')}\n")
+                pages = [{"page_num": 1, "text": "\n".join(text_lines), "headings": headings}]
+            elif "lessons" in data and isinstance(data["lessons"], list):
+                headings.append("Lessons")
+                for i, lsn in enumerate(data["lessons"], start=1):
+                    lsn_title = lsn.get("title", f"Lesson {i}")
+                    headings.append(lsn_title)
+                    text_lines.append(f"### {lsn_title}\n{lsn.get('content', '')}\n")
+                pages = [{"page_num": 1, "text": "\n".join(text_lines), "headings": headings}]
+            else:
+                raw_text = json.dumps(data, indent=2)
+                text_lines = [raw_text]
+                pages = [{"page_num": 1, "text": raw_text, "headings": []}]
+        elif isinstance(data, list):
+            raw_text = json.dumps(data, indent=2)
+            text_lines = [raw_text]
+            pages = [{"page_num": 1, "text": raw_text, "headings": []}]
+        else:
+            raw_text = str(data)
+            text_lines = [raw_text]
+            pages = [{"page_num": 1, "text": raw_text, "headings": []}]
+
+        raw_text = "\n".join(text_lines)
+        if not pages:
+            pages = [{"page_num": 1, "text": raw_text, "headings": headings}]
+
+        return ExtractionResult(
+            raw_text=raw_text,
+            pages=pages,
+            tables=[],
+            headings=headings,
+            page_count=len(pages),
+            mime_type="application/json",
+            ocr_confidence=None,
+            extraction_ok=True,
         )
 
 
