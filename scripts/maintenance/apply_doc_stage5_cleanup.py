@@ -253,23 +253,23 @@ def build_front_matter(rel: str, title: str, existing: dict[str, object] | None)
     prefix = target_prefix(rel)
     if prefix is None:
         raise ValueError(f"No Stage 5 metadata mapping for {rel}")
-    data = {
+    data: dict[str, object] = {
         "title": title,
-        "status": status_for(rel),
-        "owner": OWNER_MAP[prefix],
-        "reviewers": REVIEWER_MAP[prefix],
-        "audience": AUDIENCE_MAP[prefix],
+        "status": (existing.get("status") if existing and existing.get("status") else status_for(rel)),
+        "owner": (existing.get("owner") if existing and existing.get("owner") else OWNER_MAP[prefix]),
+        "reviewers": (existing.get("reviewers") if existing and existing.get("reviewers") else REVIEWER_MAP[prefix]),
+        "audience": (existing.get("audience") if existing and existing.get("audience") else AUDIENCE_MAP[prefix]),
         "source_of_truth": rel in CANONICAL_PATHS,
         "supersedes": [],
         "superseded_by": None,
-        "last_reviewed": LAST_REVIEWED,
-        "review_interval_days": 60,
-        "evidence_command": "make docs-housekeeping-stage5-check",
-        "code_anchors": CODE_ANCHORS_MAP[prefix],
+        "last_reviewed": (existing.get("last_reviewed") if existing and existing.get("last_reviewed") else LAST_REVIEWED),
+        "review_interval_days": (existing.get("review_interval_days") if existing and existing.get("review_interval_days") else 90),
+        "evidence_command": (existing.get("evidence_command") if existing and existing.get("evidence_command") else "make docs-housekeeping-stage5-check"),
+        "code_anchors": (existing.get("code_anchors") if existing and existing.get("code_anchors") else CODE_ANCHORS_MAP[prefix]),
     }
     if existing:
         for key, value in existing.items():
-            if key in data and value is not None and value != "" and key not in {"title", "evidence_command", "code_anchors", "last_reviewed"}:
+            if key in data and value is not None and value != "" and key != "title":
                 data[key] = value
     lines = ["---"]
     for key in REQUIRED_METADATA_FIELDS:

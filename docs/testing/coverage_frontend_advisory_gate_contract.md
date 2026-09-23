@@ -7,12 +7,11 @@ audience: "developer"
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-06-24"
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage5-check"
-code_anchors: "[tests, pytest.ini, Makefile]"
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: 'make docs-housekeeping-stage5-check'
+code_anchors: [app/frontend/package.json, Makefile, scripts/generate_openapi.py, scripts/generate_route_inventory.py]
 ---
-
 # Coverage, Frontend Quality, and Advisory Gate Contract
 
 **PRD:** PRD-11.0R.RUNTIME-RESTORE-5

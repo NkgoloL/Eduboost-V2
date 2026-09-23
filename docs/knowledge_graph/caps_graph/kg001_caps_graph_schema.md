@@ -7,12 +7,11 @@ audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-07-05
-review_interval_days: 60
-evidence_command: make kg001-caps-graph-foundation-check
-code_anchors: []
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: 'make kg001-caps-graph-foundation-check'
+code_anchors: [scripts/roadmap_reconciliation/verify_kg001_caps_graph_foundation.py, data/knowledge_graph/caps_graph_foundation/grade4_mathematics_caps_graph.json]
 ---
-
 # KG-1 CAPS Graph Schema
 
 The KG-1 graph artifact contains:

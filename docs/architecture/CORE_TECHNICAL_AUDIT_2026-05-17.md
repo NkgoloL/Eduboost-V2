@@ -1,18 +1,17 @@
 ---
 title: "EduBoost V2 Core Technical Audit"
-status: current-evidence
+status: archived
 owner: architecture
 reviewers: [architecture, engineering]
 audience: developer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-23
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage4-check"
-code_anchors: [docs/architecture/README.md]
+last_reviewed: '2026-09-23'
+review_interval_days: null
+evidence_command: null
+code_anchors: [app/api_v2.py, app/main.py]
 ---
-
 # EduBoost V2 Core Technical Audit
 
 Date: 2026-05-17  

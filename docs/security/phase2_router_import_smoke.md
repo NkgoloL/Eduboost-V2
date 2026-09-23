@@ -7,12 +7,11 @@ audience: security-reviewer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-23
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage4-check"
-code_anchors: [docs/security/README.md, app/security]
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: 'PYTHONPATH=. .venv/bin/python -m pytest tests/unit/test_phase2_router_import_smoke.py'
+code_anchors: [app/api_v2.py, tests/unit/test_phase2_router_import_smoke.py]
 ---
-
 # Phase 2 Router Import Smoke
 
 ## Purpose

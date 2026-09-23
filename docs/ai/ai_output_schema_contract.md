@@ -7,12 +7,11 @@ audience: "safety-reviewer"
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-06-24"
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage5-check"
-code_anchors: "[app/services, docs/ai]"
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: 'PYTHON=.venv/bin/python make ai-output-schema-contract-check'
+code_anchors: [scripts/check_ai_output_schema_contract.py, app/services/content_generation_service.py]
 ---
-
 # AI Output Schema Contract
 
 ## Purpose

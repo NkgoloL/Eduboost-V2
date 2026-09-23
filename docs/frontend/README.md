@@ -7,15 +7,11 @@ audience: "developer"
 source_of_truth: true
 supersedes: []
 superseded_by: null
-last_reviewed: '2026-09-22'
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-check"
-code_anchors:
-  - app/frontend/package.json
-  - playwright.config.ts
-  - app/frontend/src/app/
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: "make docs-housekeeping-stage5-check"
+code_anchors: "[app/frontend, docs/frontend/README.md]"
 ---
-
 # Frontend Architecture & Client Operations
 
 The frontend is a Next.js web application located in `app/frontend`, built with Next.js 16.3.3 (`@next/swc`) and managed via `pnpm@9.14.4`. It serves learner, parent, auth, and administrative experiences, with PWA offline caching via Serwist.

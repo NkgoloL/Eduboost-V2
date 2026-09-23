@@ -7,12 +7,11 @@ audience: security-reviewer
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-23
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage4-check"
-code_anchors: [docs/security/README.md, app/security]
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: 'make docs-housekeeping-stage4-check'
+code_anchors: [app/frontend/src/lib/auth/cookies.ts, docs/security/README.md]
 ---
-
 # Frontend Token Storage Audit
 
 **Status:** ✅ No violations found  

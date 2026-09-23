@@ -7,12 +7,11 @@ audience: "learning-science-reviewer"
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: "2026-06-24"
-review_interval_days: 60
-evidence_command: "make docs-housekeeping-stage5-check"
-code_anchors: "[docs/learning_science, docs/diagnostics]"
+last_reviewed: '2026-09-23'
+review_interval_days: 90
+evidence_command: 'PYTHON=.venv/bin/python make diagnostics-assessment-check'
+code_anchors: [app/modules/diagnostics/irt_engine.py, app/modules/diagnostics/irt_params.py, tests/unit/modules/diagnostics/test_irt_engine_complete_coverage.py]
 ---
-
 # IRT Diagnostic Model
 
 EduBoost diagnostics use a three-parameter logistic model for approved CAPS diagnostic items:

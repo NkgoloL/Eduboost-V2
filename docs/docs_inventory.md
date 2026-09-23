@@ -14,8 +14,8 @@ code_anchors: "[]"
 ---
 # Documentation Inventory
 
-Generated at: `2026-09-23T08:50:49Z`
-Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
+Generated at: `2026-09-23T09:46:23Z`
+Commit: `b0c493dc8126ab1455f503fdf421f93f10f31fcf`
 
 - Documents: `3510`
 - Generated docs: `4`
@@ -105,12 +105,12 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/ai/CLUSTER_F_CLOSURE.md` | `general` | Cluster F AI/CAPS/Diagnostics Safety Closure | 2382 | False |
 | `docs/ai/ai_fixture_coverage_matrix.md` | `general` | AI Fixture Coverage Matrix | 1546 | False |
 | `docs/ai/ai_output_fixtures.md` | `general` | AI Output Fixtures | 1039 | False |
-| `docs/ai/ai_output_schema_contract.md` | `general` | AI Output Schema Contract | 1236 | False |
+| `docs/ai/ai_output_schema_contract.md` | `general` | AI Output Schema Contract | 1323 | False |
 | `docs/ai/ai_prompt_input_contract.md` | `general` | AI Prompt Input Contract | 1340 | False |
 | `docs/ai/ai_prompt_secret_leakage_guard.md` | `general` | AI Prompt Secret Leakage Guard | 1101 | False |
 | `docs/ai/ai_prompt_surface_inventory.md` | `general` | AI Prompt Surface Inventory | 36504 | False |
 | `docs/ai/ai_refusal_regression_fixtures.md` | `general` | AI Refusal Regression Fixtures | 874 | False |
-| `docs/ai/ai_safety_boundary_contract.md` | `general` | AI Safety Boundary Contract | 1274 | False |
+| `docs/ai/ai_safety_boundary_contract.md` | `general` | AI Safety Boundary Contract | 1268 | False |
 | `docs/ai/ai_safety_evidence_index.md` | `general` | AI Safety Evidence Index | 1724 | False |
 | `docs/ai/ai_safety_release_evidence.md` | `general` | AI Safety Release Evidence | 757 | False |
 | `docs/ai/caps_ai_safety_evidence_2026-05-11.md` | `general` | CAPS And AI Safety Evidence | 4095 | False |
@@ -126,7 +126,7 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/ai/remediation_safety_contract.md` | `general` | Remediation Safety Contract | 1550 | False |
 | `docs/ai_lesson_safety.md` | `general` | AI Lesson Safety Baseline | 1452 | False |
 | `docs/analytics/learning_event_schema.md` | `general` | POPIA-safe learning event schema | 1276 | False |
-| `docs/api/README.md` | `api` | API Contract & Route Documentation | 2422 | False |
+| `docs/api/README.md` | `api` | API Contract & Route Documentation | 2257 | False |
 | `docs/api/_build/README.md` | `api` | Archived API _build Redirect | 766 | False |
 | `docs/api/build/README.md` | `api` | Archived API build Redirect | 761 | False |
 | `docs/api_envelope_contract.md` | `api` | API Envelope Contract | 2366 | False |
@@ -147,7 +147,7 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/approvals/rr015_security_review_attestation.md` | `general` | RR-015 Security Review Attestation | 840 | False |
 | `docs/approvals/rr015_security_review_attestation.template.md` | `general` | RR-015 Security Review Attestation Template | 536 | False |
 | `docs/architecture/ARCHITECTURE.md` | `architecture` | EduBoost SA — Recommended Architecture | 15393 | False |
-| `docs/architecture/CORE_TECHNICAL_AUDIT_2026-05-17.md` | `architecture` | EduBoost V2 Core Technical Audit | 29331 | False |
+| `docs/architecture/CORE_TECHNICAL_AUDIT_2026-05-17.md` | `architecture` | EduBoost V2 Core Technical Audit | 29292 | False |
 | `docs/architecture/README.md` | `architecture` | Architecture Documentation | 3753 | False |
 | `docs/architecture/architectural_debt_register.json` | `architecture` | Architectural Debt Register | 2457 | False |
 | `docs/architecture/architectural_debt_register.md` | `architecture` | Architectural Debt Register (TSR-6.1) | 1519 | False |
@@ -300,7 +300,7 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/audits/reports/independent_technical_audit_2026-09-10.md` | `general` | EduBoost V2 — Independent Technical Audit | 34882 | False |
 | `docs/audits/reports/independent_technical_audit_second_pass_2026-09-13.md` | `general` | EduBoost V2 — Independent Technical Audit — Second Pass | 30813 | False |
 | `docs/audits/reports/true_state_technical_audit_report_2026-09-13.md` | `general` | Comprehensive Technical Audit Report: The True State of EduBoost V2 | 24471 | False |
-| `docs/backend/README.md` | `general` | Backend | 1265 | False |
+| `docs/backend/README.md` | `general` | Backend | 1272 | False |
 | `docs/backlog/PR_chore_docs_governance_body.md` | `general` | Pr Chore Docs Governance Body | 1476 | False |
 | `docs/backlog/backlog_audit.md` | `general` | TODO.md Repository Audit | 42416 | False |
 | `docs/backlog/critical_path.md` | `general` | Critical Path | 5611 | False |
@@ -420,14 +420,14 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/codemaps/README.md` | `general` | EduBoost V2 Canonical Codemaps | 9447 | False |
 | `docs/codemaps/SUPERSESSION_MAP.md` | `general` | Codemap Supersession Map | 8353 | False |
 | `docs/codemaps/codemap_coverage_manifest.json` | `general` | Codemap Coverage Manifest | 1356390 | False |
-| `docs/compliance/README.md` | `general` | Compliance Documentation | 685 | False |
+| `docs/compliance/README.md` | `general` | Compliance Documentation | 819 | False |
 | `docs/compliance/data_retention_policy.md` | `general` | Compliance Data Retention Policy | 1734 | False |
 | `docs/compliance/popia_data_rights.md` | `general` | POPIA Data-Subject-Rights Workflow (Compliance) | 1947 | False |
 | `docs/compliance/pr_004_implementation_summary.md` | `general` | PR-004 POPIA consent/data-rights/audit implementation summary | 1832 | False |
 | `docs/compliance/subprocessor_register.md` | `general` | Subprocessor register | 1494 | False |
 | `docs/content_factory/CONTENT_GENERATION_CONFIG.md` | `general` | Content Generation Configuration | 12563 | False |
 | `docs/content_factory/admin_api.md` | `general` | Content Factory Admin API | 1121 | False |
-| `docs/content_factory/control_plane.md` | `general` | Content Factory Control Plane | 1086 | False |
+| `docs/content_factory/control_plane.md` | `general` | Content Factory Control Plane | 1087 | False |
 | `docs/content_factory/controlled_generation.md` | `general` | Content Factory Controlled Generation | 2506 | False |
 | `docs/content_factory/full_generation_runner.md` | `general` | Full Generation Runner | 5902 | False |
 | `docs/content_factory/promotion_gates.md` | `general` | Content Factory Promotion Gates | 941 | False |
@@ -440,7 +440,7 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/curriculum/StudyMaterialExpansionPlan.md` | `general` | Study Material Expansion Implementation Plan | 25111 | False |
 | `docs/curriculum/TOPIC_MAP_REVIEW_CHECKLIST.md` | `general` | Topic Map Review Checklist | 11534 | False |
 | `docs/curriculum/caps_topic_map.md` | `general` | CAPS Topic Map MVP | 1539 | False |
-| `docs/curriculum/caps_topic_map_production_contract.md` | `general` | CAPS Topic Map Production Contract | 1392 | False |
+| `docs/curriculum/caps_topic_map_production_contract.md` | `general` | CAPS Topic Map Production Contract | 1394 | False |
 | `docs/curriculum/pedagogical_validity_review.md` | `general` | Pedagogical Validity and Baseline Mastery Configuration (TSR-9.1) | 1640 | False |
 | `docs/curriculum/post_launch_educational_limitations_memo.md` | `general` | EduBoost V2: Post-Remediation Educational Validity & Limitations Memo | 2103 | False |
 | `docs/curriculum/rr007_content_expansion_roadmap.md` | `general` | RR-007 Content Expansion Roadmap | 981 | False |
@@ -471,7 +471,7 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/deployment/production_deployment_architecture_contract.md` | `general` | Production Deployment Architecture Contract | 1325 | False |
 | `docs/development/e2e_testing.md` | `general` | E2E Testing Guide | 4772 | False |
 | `docs/development/pwa_offline_plan.md` | `general` | PWA Offline Behavior Plan | 3681 | False |
-| `docs/diagnostics/README.md` | `general` | Diagnostics And Assessment | 1523 | False |
+| `docs/diagnostics/README.md` | `general` | Diagnostics And Assessment | 1521 | False |
 | `docs/diagnostics/assessment_quality_fairness_contract.md` | `general` | Assessment Quality and Fairness Contract | 1633 | False |
 | `docs/diagnostics/item_bank_launch_coverage_contract.md` | `general` | Item Bank Launch Coverage Contract | 2065 | False |
 | `docs/diagnostics/item_contract.md` | `general` | Diagnostic Item Contract | 1261 | False |
@@ -504,7 +504,7 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/documentation/documentation_housekeeping_policy.md` | `general` | Documentation Housekeeping Policy | 2835 | False |
 | `docs/documentation/documentation_inventory_contract.md` | `general` | Documentation Inventory Contract | 1115 | False |
 | `docs/documentation/documentation_review_gate_contract.md` | `general` | Documentation Review Gate Contract | 1017 | False |
-| `docs/documentation/housekeeping_ratchet_baseline.json` | `general` | Housekeeping Ratchet Baseline | 633 | False |
+| `docs/documentation/housekeeping_ratchet_baseline.json` | `general` | Housekeeping Ratchet Baseline | 605 | False |
 | `docs/documentation/migration_manifests/20260622T193052Z.json` | `general` | 20260622T193052Z | 6527 | False |
 | `docs/documentation/production_claim_boundary_policy.md` | `general` | Production Claim Boundary Policy | 1171 | False |
 | `docs/documentation/release_notes_discipline_contract.md` | `general` | Release Notes Discipline Contract | 1015 | False |
@@ -518,7 +518,7 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/documentation/stage_5_technical_delivery_housekeeping.md` | `general` | Stage 5 Technical Delivery and Learning-Engine Documentation Housekeeping | 1426 | False |
 | `docs/documentation/stale_documentation_register.md` | `general` | Stale Documentation Register | 1971 | False |
 | `docs/documentation/stale_documentation_review_plan.md` | `general` | Stale Documentation Phased Review Plan (489 Documents) | 11805 | False |
-| `docs/documentation/stale_documentation_review_register.md` | `general` | Stale Documentation Review Register | 94681 | False |
+| `docs/documentation/stale_documentation_review_register.md` | `general` | Stale Documentation Review Register | 64185 | False |
 | `docs/documentation/stale_term_baseline.json` | `general` | Stale Term Baseline | 207 | False |
 | `docs/documentation_intelligence_pipeline.md` | `general` | Documentation Intelligence Pipeline | 5171 | False |
 | `docs/engineering/README.md` | `general` | Engineering Documentation | 596 | False |
@@ -585,73 +585,73 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/evidence/registry.yaml` | `general` | Registry | 875 | False |
 | `docs/experimentation/ethics_for_minors.md` | `general` | Ethical experimentation guidelines for minors | 1384 | False |
 | `docs/five_pillars.md` | `general` | EduBoost SA — Five-Pillar Architecture | 8241 | False |
-| `docs/frontend/CLUSTER_G_CLOSURE.md` | `general` | Cluster G Frontend Vertical Journey Closure | 2844 | False |
-| `docs/frontend/FE-PR-002-handover.md` | `general` | FE-PR-002 Handover Report | 9921 | False |
-| `docs/frontend/FE-PR-003-handover.md` | `general` | FE-PR-003 Handover Report | 5126 | False |
-| `docs/frontend/FE-PR-004-handover.md` | `general` | FE-PR-004 Handover — Design Tokens, Root Layout, Validation Baseline | 2599 | False |
-| `docs/frontend/FE-PR-005-handover.md` | `general` | FE-PR-005 Handover — Typed API Client, Auth Proxy, Middleware | 4298 | False |
-| `docs/frontend/FE-PR-006-handover.md` | `general` | FE-PR-006 Handover — Learner Dashboard/Diagnostic/Lesson Server Shells | 4668 | False |
-| `docs/frontend/FE-PR-007-handover.md` | `general` | FE-PR-007 Handover — Lesson completion + XP boundary | 4237 | False |
-| `docs/frontend/FE-PR-008-audit.md` | `general` | FE-PR-008 Audit — Parent Portal, Consent Flows, Info Officer Evidence | 7179 | False |
-| `docs/frontend/FE-PR-008-handover.md` | `general` | FE-PR-008 Handover — Parent Portal, Consent Flows, Info Officer Evidence | 5579 | False |
-| `docs/frontend/FE-PR-010-handover.md` | `general` | FE-PR-010 Handover: PWA / Lighthouse Staging Evidence | 10274 | False |
-| `docs/frontend/FE-PR-011-handover.md` | `general` | FE-PR-011 — Read‑only Offline Lesson Shell Cache & Loadshedding UI | 3026 | False |
-| `docs/frontend/FE-PR-012-accessibility-evidence.md` | `general` | FE-PR-012 Accessibility Evidence | 1408 | False |
-| `docs/frontend/FE-PR-012-handover.md` | `general` | FE-PR-012 Handover | 1364 | False |
-| `docs/frontend/FE-PR-013-A-handover.md` | `general` | FE-PR-013-A Handover | 3160 | False |
-| `docs/frontend/FE-PR-013-B-handover.md` | `general` | FE-PR-013-B Handover — Parent-review retention boundary | 1285 | False |
-| `docs/frontend/FE-PR-013-B-retention-evidence.md` | `general` | FE-PR-013-B Retention Evidence | 829 | False |
-| `docs/frontend/FE-PR-013-C-handover.md` | `general` | FE-PR-013-C Handover — Parent-review API integration | 1211 | False |
-| `docs/frontend/FE-PR-013-D-handover.md` | `general` | FE-PR-013-D Handover — Voice progressive enhancement boundary | 1217 | False |
-| `docs/frontend/FE-PR-013-D-voice-consent-evidence.md` | `general` | FE-PR-013-D Voice Consent Evidence | 802 | False |
-| `docs/frontend/FE-PR-013-E-implementation-handover.md` | `general` | FE-PR-013-E Implementation Handover — Guardian WhatsApp Share (client-only) | 2844 | False |
-| `docs/frontend/FE-PR-013-E-whatsapp-sharing-boundary.md` | `general` | FE-PR-013-E — Guardian-triggered WhatsApp sharing boundary | 6165 | False |
-| `docs/frontend/FE-PR-013-implementation-plan.md` | `general` | FE-PR-013 Implementation Plan | 6035 | False |
-| `docs/frontend/FE-PR-013-parent-review-retention.md` | `general` | FE-PR-013 Parent Review and Retention | 2676 | False |
-| `docs/frontend/FE-PR-013-safety-and-compliance-boundary.md` | `general` | FE-PR-013 Safety and Compliance Boundary | 3158 | False |
-| `docs/frontend/FE-PWA-MANIFEST-ICON-001-validation.md` | `general` | FE-PWA-MANIFEST-ICON-001: PWA Manifest & Icon Asset Validation | 6125 | False |
-| `docs/frontend/FE-SPIKE-004-web-speech.md` | `general` | FE-SPIKE-004: Web Speech API & South African Accent Reliability | 3240 | False |
-| `docs/frontend/FE-SPIKE-005-ai-tutor.md` | `general` | FE-SPIKE-005: AI Tutor Streaming Safety and Latency | 3170 | False |
-| `docs/frontend/FE-SPIKE-006-service-worker-spike.md` | `general` | FE-SPIKE-006 — Service Worker + App Router Cache Interaction Spike | 10726 | False |
-| `docs/frontend/RC5-release-evidence.md` | `general` | RC5 Release Evidence | 2288 | False |
-| `docs/frontend/README.md` | `general` | Frontend Architecture & Client Operations | 2429 | False |
-| `docs/frontend/accessibility_pwa_e2e_evidence.md` | `general` | Accessibility, PWA, And E2E Evidence | 712 | False |
-| `docs/frontend/frontend_accessibility_contract.md` | `general` | Frontend Accessibility Contract | 1473 | False |
-| `docs/frontend/frontend_accessibility_static_scan.md` | `general` | Frontend Accessibility Static Scan | 1012 | False |
-| `docs/frontend/frontend_api_client_inventory.md` | `general` | Frontend API Client Inventory | 975 | False |
-| `docs/frontend/frontend_auth_consent_denial_contract.md` | `general` | Frontend Auth Consent Denial Contract | 1617 | False |
-| `docs/frontend/frontend_build_test_lint_contract.md` | `general` | Frontend Build Test Lint Contract | 1479 | False |
-| `docs/frontend/frontend_e2e_environment_contract.md` | `general` | Frontend E2E Environment Contract | 1264 | False |
-| `docs/frontend/frontend_e2e_opt_in_workflow.md` | `general` | Frontend E2E Opt-In Workflow | 999 | False |
-| `docs/frontend/frontend_e2e_runtime_commands.md` | `general` | Frontend E2E Runtime Commands | 1205 | False |
-| `docs/frontend/frontend_evidence_index.md` | `general` | Frontend Evidence Index | 1990 | False |
-| `docs/frontend/frontend_journey_evidence.md` | `general` | Frontend Journey Evidence | 676 | False |
-| `docs/frontend/frontend_route_inventory.md` | `general` | Frontend Route Inventory | 47535 | False |
-| `docs/frontend/frontend_runtime_inventory.md` | `general` | Frontend Runtime Inventory | 1033 | False |
-| `docs/frontend/frontend_verification_evidence_2026-05-11.md` | `general` | Frontend Verification Evidence | 2375 | False |
-| `docs/frontend/learner_vertical_journey_contract.md` | `general` | Learner Vertical Journey Contract | 1494 | False |
-| `docs/frontend/parent_vertical_journey_contract.md` | `general` | Parent Vertical Journey Contract | 1655 | False |
-| `docs/frontend/playwright_e2e_scaffold.md` | `general` | Playwright E2E Scaffold | 1261 | False |
-| `docs/frontend/playwright_journey_fixture_contract.md` | `general` | Playwright Journey Fixture Contract | 1052 | False |
-| `docs/frontend/playwright_mock_api_fixtures.md` | `general` | Playwright Mock API Fixtures | 1219 | False |
-| `docs/frontend/playwright_mock_route_helpers.md` | `general` | Playwright Mock Route Helpers | 1028 | False |
-| `docs/frontend/playwright_mocked_journey_specs.md` | `general` | Playwright Mocked Journey Specs | 991 | False |
-| `docs/frontend/playwright_vertical_journey_specs.md` | `general` | Playwright Vertical Journey Specs | 959 | False |
-| `docs/frontend/post-rc5-dependency-maintenance.md` | `general` | Post-RC5 Dependency Maintenance Triage | 6931 | False |
-| `docs/frontend/pr_checklist_FE-PR-001-013.md` | `general` | PR Checklist — FE-PR-001 through FE-PR-013 | 3060 | False |
-| `docs/frontend/production_auth_onboarding_ux_contract.md` | `general` | Production Auth and Onboarding UX Contract | 1606 | False |
-| `docs/frontend/production_frontend_api_client_contract.md` | `general` | Production Frontend API Client Contract | 1564 | False |
-| `docs/frontend/production_frontend_env_security_contract.md` | `general` | Production Frontend Environment Security Contract | 1595 | False |
-| `docs/frontend/production_frontend_pwa_low_data_contract.md` | `general` | Production Frontend PWA Low-Data Contract | 1159 | False |
-| `docs/frontend/production_frontend_ux_accessibility_mobile_contract.md` | `general` | Production Frontend UX Accessibility Mobile Contract | 1564 | False |
-| `docs/frontend/production_learner_parent_ux_contract.md` | `general` | Production Learner and Parent UX Contract | 2206 | False |
-| `docs/frontend/production_parent_privacy_controls_contract.md` | `general` | Production Parent Privacy Controls Contract | 1144 | False |
-| `docs/frontend/production_protected_route_guard_contract.md` | `general` | Production Protected Route Guard Contract | 1334 | False |
-| `docs/frontend/production_teacher_admin_scope_contract.md` | `general` | Production Teacher/Admin Scope Contract | 1246 | False |
-| `docs/frontend/spike_report_template.md` | `general` | Frontend Spike Report Template | 1375 | False |
-| `docs/frontend/task_metadata_template.md` | `general` | Frontend Task Metadata Template | 1582 | False |
+| `docs/frontend/CLUSTER_G_CLOSURE.md` | `general` | Cluster G Frontend Vertical Journey Closure | 2843 | False |
+| `docs/frontend/FE-PR-002-handover.md` | `general` | FE-PR-002 Handover Report | 9920 | False |
+| `docs/frontend/FE-PR-003-handover.md` | `general` | FE-PR-003 Handover Report | 5125 | False |
+| `docs/frontend/FE-PR-004-handover.md` | `general` | FE-PR-004 Handover — Design Tokens, Root Layout, Validation Baseline | 2598 | False |
+| `docs/frontend/FE-PR-005-handover.md` | `general` | FE-PR-005 Handover — Typed API Client, Auth Proxy, Middleware | 4297 | False |
+| `docs/frontend/FE-PR-006-handover.md` | `general` | FE-PR-006 Handover — Learner Dashboard/Diagnostic/Lesson Server Shells | 4667 | False |
+| `docs/frontend/FE-PR-007-handover.md` | `general` | FE-PR-007 Handover — Lesson completion + XP boundary | 4236 | False |
+| `docs/frontend/FE-PR-008-audit.md` | `general` | FE-PR-008 Audit — Parent Portal, Consent Flows, Info Officer Evidence | 7178 | False |
+| `docs/frontend/FE-PR-008-handover.md` | `general` | FE-PR-008 Handover — Parent Portal, Consent Flows, Info Officer Evidence | 5578 | False |
+| `docs/frontend/FE-PR-010-handover.md` | `general` | FE-PR-010 Handover: PWA / Lighthouse Staging Evidence | 10273 | False |
+| `docs/frontend/FE-PR-011-handover.md` | `general` | FE-PR-011 — Read‑only Offline Lesson Shell Cache & Loadshedding UI | 3025 | False |
+| `docs/frontend/FE-PR-012-accessibility-evidence.md` | `general` | FE-PR-012 Accessibility Evidence | 1407 | False |
+| `docs/frontend/FE-PR-012-handover.md` | `general` | FE-PR-012 Handover | 1363 | False |
+| `docs/frontend/FE-PR-013-A-handover.md` | `general` | FE-PR-013-A Handover | 3159 | False |
+| `docs/frontend/FE-PR-013-B-handover.md` | `general` | FE-PR-013-B Handover — Parent-review retention boundary | 1284 | False |
+| `docs/frontend/FE-PR-013-B-retention-evidence.md` | `general` | FE-PR-013-B Retention Evidence | 828 | False |
+| `docs/frontend/FE-PR-013-C-handover.md` | `general` | FE-PR-013-C Handover — Parent-review API integration | 1210 | False |
+| `docs/frontend/FE-PR-013-D-handover.md` | `general` | FE-PR-013-D Handover — Voice progressive enhancement boundary | 1216 | False |
+| `docs/frontend/FE-PR-013-D-voice-consent-evidence.md` | `general` | FE-PR-013-D Voice Consent Evidence | 801 | False |
+| `docs/frontend/FE-PR-013-E-implementation-handover.md` | `general` | FE-PR-013-E Implementation Handover — Guardian WhatsApp Share (client-only) | 2843 | False |
+| `docs/frontend/FE-PR-013-E-whatsapp-sharing-boundary.md` | `general` | FE-PR-013-E — Guardian-triggered WhatsApp sharing boundary | 6164 | False |
+| `docs/frontend/FE-PR-013-implementation-plan.md` | `general` | FE-PR-013 Implementation Plan | 6034 | False |
+| `docs/frontend/FE-PR-013-parent-review-retention.md` | `general` | FE-PR-013 Parent Review and Retention | 2675 | False |
+| `docs/frontend/FE-PR-013-safety-and-compliance-boundary.md` | `general` | FE-PR-013 Safety and Compliance Boundary | 3157 | False |
+| `docs/frontend/FE-PWA-MANIFEST-ICON-001-validation.md` | `general` | FE-PWA-MANIFEST-ICON-001: PWA Manifest & Icon Asset Validation | 6124 | False |
+| `docs/frontend/FE-SPIKE-004-web-speech.md` | `general` | FE-SPIKE-004: Web Speech API & South African Accent Reliability | 3239 | False |
+| `docs/frontend/FE-SPIKE-005-ai-tutor.md` | `general` | FE-SPIKE-005: AI Tutor Streaming Safety and Latency | 3169 | False |
+| `docs/frontend/FE-SPIKE-006-service-worker-spike.md` | `general` | FE-SPIKE-006 — Service Worker + App Router Cache Interaction Spike | 10725 | False |
+| `docs/frontend/RC5-release-evidence.md` | `general` | RC5 Release Evidence | 2287 | False |
+| `docs/frontend/README.md` | `general` | Frontend Architecture & Client Operations | 2396 | False |
+| `docs/frontend/accessibility_pwa_e2e_evidence.md` | `general` | Accessibility, PWA, And E2E Evidence | 711 | False |
+| `docs/frontend/frontend_accessibility_contract.md` | `general` | Frontend Accessibility Contract | 1472 | False |
+| `docs/frontend/frontend_accessibility_static_scan.md` | `general` | Frontend Accessibility Static Scan | 1011 | False |
+| `docs/frontend/frontend_api_client_inventory.md` | `general` | Frontend API Client Inventory | 974 | False |
+| `docs/frontend/frontend_auth_consent_denial_contract.md` | `general` | Frontend Auth Consent Denial Contract | 1616 | False |
+| `docs/frontend/frontend_build_test_lint_contract.md` | `general` | Frontend Build Test Lint Contract | 1478 | False |
+| `docs/frontend/frontend_e2e_environment_contract.md` | `general` | Frontend E2E Environment Contract | 1263 | False |
+| `docs/frontend/frontend_e2e_opt_in_workflow.md` | `general` | Frontend E2E Opt-In Workflow | 998 | False |
+| `docs/frontend/frontend_e2e_runtime_commands.md` | `general` | Frontend E2E Runtime Commands | 1204 | False |
+| `docs/frontend/frontend_evidence_index.md` | `general` | Frontend Evidence Index | 1989 | False |
+| `docs/frontend/frontend_journey_evidence.md` | `general` | Frontend Journey Evidence | 675 | False |
+| `docs/frontend/frontend_route_inventory.md` | `general` | Frontend Route Inventory | 15221 | False |
+| `docs/frontend/frontend_runtime_inventory.md` | `general` | Frontend Runtime Inventory | 1032 | False |
+| `docs/frontend/frontend_verification_evidence_2026-05-11.md` | `general` | Frontend Verification Evidence | 2374 | False |
+| `docs/frontend/learner_vertical_journey_contract.md` | `general` | Learner Vertical Journey Contract | 1493 | False |
+| `docs/frontend/parent_vertical_journey_contract.md` | `general` | Parent Vertical Journey Contract | 1654 | False |
+| `docs/frontend/playwright_e2e_scaffold.md` | `general` | Playwright E2E Scaffold | 1260 | False |
+| `docs/frontend/playwright_journey_fixture_contract.md` | `general` | Playwright Journey Fixture Contract | 1051 | False |
+| `docs/frontend/playwright_mock_api_fixtures.md` | `general` | Playwright Mock API Fixtures | 1218 | False |
+| `docs/frontend/playwright_mock_route_helpers.md` | `general` | Playwright Mock Route Helpers | 1027 | False |
+| `docs/frontend/playwright_mocked_journey_specs.md` | `general` | Playwright Mocked Journey Specs | 990 | False |
+| `docs/frontend/playwright_vertical_journey_specs.md` | `general` | Playwright Vertical Journey Specs | 958 | False |
+| `docs/frontend/post-rc5-dependency-maintenance.md` | `general` | Post-RC5 Dependency Maintenance Triage | 6930 | False |
+| `docs/frontend/pr_checklist_FE-PR-001-013.md` | `general` | PR Checklist — FE-PR-001 through FE-PR-013 | 3059 | False |
+| `docs/frontend/production_auth_onboarding_ux_contract.md` | `general` | Production Auth and Onboarding UX Contract | 1605 | False |
+| `docs/frontend/production_frontend_api_client_contract.md` | `general` | Production Frontend API Client Contract | 1563 | False |
+| `docs/frontend/production_frontend_env_security_contract.md` | `general` | Production Frontend Environment Security Contract | 1594 | False |
+| `docs/frontend/production_frontend_pwa_low_data_contract.md` | `general` | Production Frontend PWA Low-Data Contract | 1158 | False |
+| `docs/frontend/production_frontend_ux_accessibility_mobile_contract.md` | `general` | Production Frontend UX Accessibility Mobile Contract | 1563 | False |
+| `docs/frontend/production_learner_parent_ux_contract.md` | `general` | Production Learner and Parent UX Contract | 2205 | False |
+| `docs/frontend/production_parent_privacy_controls_contract.md` | `general` | Production Parent Privacy Controls Contract | 1143 | False |
+| `docs/frontend/production_protected_route_guard_contract.md` | `general` | Production Protected Route Guard Contract | 1333 | False |
+| `docs/frontend/production_teacher_admin_scope_contract.md` | `general` | Production Teacher/Admin Scope Contract | 1245 | False |
+| `docs/frontend/spike_report_template.md` | `general` | Frontend Spike Report Template | 1374 | False |
+| `docs/frontend/task_metadata_template.md` | `general` | Frontend Task Metadata Template | 1581 | False |
 | `docs/generated/README.md` | `general` | Generated Documentation Inventory and Findings | 995 | False |
-| `docs/generated/documentation_inventory.json` | `general` | Documentation Inventory | 1485615 | False |
+| `docs/generated/documentation_inventory.json` | `general` | Documentation Inventory | 1484740 | False |
 | `docs/governance/rr009_adr_index_completion.md` | `general` | RR-009 ADR Index Completion | 650 | False |
 | `docs/governance/rr009_branch_protection_release_docs.md` | `general` | RR-009 Branch Protection Release Documentation | 891 | False |
 | `docs/governance/rr009_current_state_refresh_cadence.md` | `general` | RR-009 Current State Refresh Cadence | 1038 | False |
@@ -675,7 +675,7 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/knowledge_graph/caps_graph/kg001_caps_graph_manifest.json` | `general` | Kg001 Caps Graph Manifest | 1195 | False |
 | `docs/knowledge_graph/caps_graph/kg001_caps_graph_review_manifest.json` | `general` | Kg001 Caps Graph Review Manifest | 555 | False |
 | `docs/knowledge_graph/caps_graph/kg001_caps_graph_runtime_boundary.md` | `general` | KG-1 CAPS Graph Runtime Boundary | 978 | False |
-| `docs/knowledge_graph/caps_graph/kg001_caps_graph_schema.md` | `general` | KG-1 CAPS Graph Schema | 1151 | False |
+| `docs/knowledge_graph/caps_graph/kg001_caps_graph_schema.md` | `general` | KG-1 CAPS Graph Schema | 1301 | False |
 | `docs/knowledge_graph/gap_engine/kg004_gap_engine_advisory_boundary.md` | `general` | KG-4 Gap Engine Advisory Boundary | 865 | False |
 | `docs/knowledge_graph/gap_engine/kg004_gap_engine_manifest.json` | `general` | Kg004 Gap Engine Manifest | 657 | False |
 | `docs/knowledge_graph/gap_engine/kg004_gap_engine_policy.md` | `general` | KG-4 Gap Engine Policy | 780 | False |
@@ -742,11 +742,11 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/knowledge_graph/target_graph/kg002_target_graph_policy_contract.md` | `general` | KG-2 Target Graph Policy Contract | 900 | False |
 | `docs/knowledge_graph/target_graph/kg002_target_graph_review_manifest.json` | `general` | Kg002 Target Graph Review Manifest | 390 | False |
 | `docs/knowledge_graph/target_graph/kg002_target_graph_runtime_boundary.md` | `general` | KG-2 Target Graph Runtime Boundary | 980 | False |
-| `docs/knowledge_graph/target_graph/kg002_target_graph_schema.md` | `general` | KG-2 Target Graph Schema | 939 | False |
+| `docs/knowledge_graph/target_graph/kg002_target_graph_schema.md` | `general` | KG-2 Target Graph Schema | 1090 | False |
 | `docs/launch_scope.md` | `general` | Production Launch Scope (v1.0) | 1972 | False |
-| `docs/learning_science/irt_model.md` | `general` | IRT Diagnostic Model | 1344 | False |
-| `docs/learning_science/learning_evidence.md` | `general` | Learning Evidence | 3372 | False |
-| `docs/learning_science/mastery_model.md` | `general` | Mastery Model | 1098 | False |
+| `docs/learning_science/irt_model.md` | `general` | IRT Diagnostic Model | 1469 | False |
+| `docs/learning_science/learning_evidence.md` | `general` | Learning Evidence | 3459 | False |
+| `docs/learning_science/mastery_model.md` | `general` | Mastery Model | 1204 | False |
 | `docs/legacy_compatibility.md` | `general` | Legacy Compatibility — Route Classification | 3689 | False |
 | `docs/legal/legal_documents_index.md` | `general` | Legal document index | 1269 | False |
 | `docs/legal/policy_versioning.md` | `general` | Policy versioning and notification workflow | 1056 | False |
@@ -776,7 +776,7 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/operations/CLUSTER_D_CLOSURE.md` | `general` | Cluster D CI/Deployment/Environment Closure | 1613 | False |
 | `docs/operations/CLUSTER_E_CLOSURE.md` | `general` | Cluster E Data Resilience Closure | 1987 | False |
 | `docs/operations/CLUSTER_H_CLOSURE.md` | `general` | Cluster H Staging and Beta Release Closure | 7728 | False |
-| `docs/operations/README.md` | `general` | Operations Documentation | 614 | False |
+| `docs/operations/README.md` | `general` | Operations Documentation | 610 | False |
 | `docs/operations/SYSTEM_STARTUP_GUIDE.md` | `general` | EduBoost V2 End-to-End System Startup Guide | 8086 | False |
 | `docs/operations/SYSTEM_STARTUP_REPORT.md` | `general` | EduBoost V2 End-to-End System - Startup Report | 11270 | False |
 | `docs/operations/access_and_evidence_custody_report.md` | `general` | EduBoost V2: Evidence, Secrets & Access Custody Report | 2086 | False |
@@ -1001,7 +1001,7 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/pr/runtime_integration_pr_template.md` | `general` | Runtime Integration PR Template | 803 | False |
 | `docs/privacy/information_officer.md` | `general` | Information Officer Contact | 3692 | False |
 | `docs/privacy/popia_legal_architecture_review.md` | `general` | Legal and Privacy Architecture Review (TSR-8.1) | 1652 | False |
-| `docs/product/README.md` | `general` | Product Documentation | 712 | False |
+| `docs/product/README.md` | `general` | Product Documentation | 705 | False |
 | `docs/product/ai_transparency_faq.md` | `general` | AI Transparency FAQ — EduBoost | 4871 | False |
 | `docs/product/differentiation_strategy.md` | `general` | Future differentiation strategy | 1132 | False |
 | `docs/product/faq.md` | `general` | Frequently Asked Questions — EduBoost | 4231 | False |
@@ -2417,8 +2417,8 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/release_checklist.md` | `general` | Release Checklist | 3091 | False |
 | `docs/release_safety/rr017_health_probe_immutability_validation.md` | `general` | RR-017 Health Probe Immutability Validation | 1200 | False |
 | `docs/release_safety/rr017_health_probe_immutability_validation.template.md` | `general` | RR-017 Health Probe Immutability Validation Template | 1075 | False |
-| `docs/release_safety/rr017_migration_window_control.md` | `general` | RR-017 Migration Window Control | 1192 | False |
-| `docs/release_safety/rr017_migration_window_control.template.md` | `general` | RR-017 Migration Window Control Template | 1049 | False |
+| `docs/release_safety/rr017_migration_window_control.md` | `general` | RR-017 Migration Window Control | 1244 | False |
+| `docs/release_safety/rr017_migration_window_control.template.md` | `general` | RR-017 Migration Window Control Template | 1100 | False |
 | `docs/release_safety/rr017_prohibited_operations_register.md` | `general` | RR-017 Prohibited Operations Register | 1234 | False |
 | `docs/release_safety/rr017_prohibited_operations_register.template.md` | `general` | RR-017 Prohibited Operations Register Template | 1067 | False |
 | `docs/release_safety/rr017_release_change_control_boundary.md` | `general` | RR-017 Release Change-Control Boundary | 1203 | False |
@@ -2439,19 +2439,19 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/research/longitudinal_validation/impact_study_protocol.md` | `general` | Longitudinal Controlled Impact Study Protocol (LEV-WS10) | 1661 | False |
 | `docs/research/longitudinal_validation/independent_review_dossier.md` | `general` | Independent Review Dossier Specification (LEV-WS14) | 1914 | False |
 | `docs/research/longitudinal_validation/replication_protocol.md` | `general` | Cross-Cohort Replication Protocol (LEV-WS12) | 739 | False |
-| `docs/research/mastery_model/rr013_candidate_model_comparison.md` | `general` | RR-013 Candidate Model Comparison | 1441 | False |
-| `docs/research/mastery_model/rr013_candidate_model_comparison.template.md` | `general` | RR-013 Candidate Model Comparison | 989 | False |
-| `docs/research/mastery_model/rr013_data_readiness_and_ethics_review.md` | `general` | RR-013 Data Readiness and Ethics Review | 1057 | False |
-| `docs/research/mastery_model/rr013_data_readiness_and_ethics_review.template.md` | `general` | RR-013 Data Readiness and Ethics Review | 778 | False |
-| `docs/research/mastery_model/rr013_evaluation_protocol.md` | `general` | RR-013 Evaluation Protocol | 1049 | False |
-| `docs/research/mastery_model/rr013_evaluation_protocol.template.md` | `general` | RR-013 Evaluation Protocol | 876 | False |
-| `docs/research/mastery_model/rr013_literature_review.template.md` | `general` | RR-013 Literature Review | 717 | False |
-| `docs/research/mastery_model/rr013_mastery_model_literature_review.md` | `general` | RR-013 Mastery Model Literature Review | 1518 | False |
-| `docs/research/mastery_model/rr013_mastery_model_research_agenda.md` | `general` | RR-013 Mastery Model Research Agenda | 1242 | False |
+| `docs/research/mastery_model/rr013_candidate_model_comparison.md` | `general` | RR-013 Candidate Model Comparison | 1540 | False |
+| `docs/research/mastery_model/rr013_candidate_model_comparison.template.md` | `general` | RR-013 Candidate Model Comparison | 1088 | False |
+| `docs/research/mastery_model/rr013_data_readiness_and_ethics_review.md` | `general` | RR-013 Data Readiness and Ethics Review | 1156 | False |
+| `docs/research/mastery_model/rr013_data_readiness_and_ethics_review.template.md` | `general` | RR-013 Data Readiness and Ethics Review | 877 | False |
+| `docs/research/mastery_model/rr013_evaluation_protocol.md` | `general` | RR-013 Evaluation Protocol | 1148 | False |
+| `docs/research/mastery_model/rr013_evaluation_protocol.template.md` | `general` | RR-013 Evaluation Protocol | 975 | False |
+| `docs/research/mastery_model/rr013_literature_review.template.md` | `general` | RR-013 Literature Review | 816 | False |
+| `docs/research/mastery_model/rr013_mastery_model_literature_review.md` | `general` | RR-013 Mastery Model Literature Review | 1617 | False |
+| `docs/research/mastery_model/rr013_mastery_model_research_agenda.md` | `general` | RR-013 Mastery Model Research Agenda | 1341 | False |
 | `docs/research/mastery_model/rr013_mastery_model_research_manifest.json` | `general` | Rr013 Mastery Model Research Manifest | 1269 | False |
-| `docs/research/mastery_model/rr013_mastery_model_research_policy.md` | `general` | RR-013 Mastery Model Research Policy | 1630 | False |
-| `docs/research/mastery_model/rr013_research_decision_memo.md` | `general` | RR-013 Research Decision Memo | 1052 | False |
-| `docs/research/mastery_model/rr013_research_decision_memo.template.md` | `general` | RR-013 Research Decision Memo | 715 | False |
+| `docs/research/mastery_model/rr013_mastery_model_research_policy.md` | `general` | RR-013 Mastery Model Research Policy | 1729 | False |
+| `docs/research/mastery_model/rr013_research_decision_memo.md` | `general` | RR-013 Research Decision Memo | 1151 | False |
+| `docs/research/mastery_model/rr013_research_decision_memo.template.md` | `general` | RR-013 Research Decision Memo | 814 | False |
 | `docs/roadmap/EduBoost_Full_Lifecycle_Delivery_and_Beta_Readiness_Plan.md` | `general` | EduBoost Full-Lifecycle Delivery and Beta Readiness Plan | 114478 | False |
 | `docs/roadmap/PHASE_QUICK_REFERENCE.md` | `general` | EduBoost 13-Phase Quick Reference | 5179 | False |
 | `docs/roadmap/PHASE_STATUS_REGISTER.md` | `general` | EduBoost Phase Status Register | 5227 | False |
@@ -3372,7 +3372,7 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/roadmap_domains/domain_12_notifications-communication_execution_report.md` | `general` | Domain 12 Notifications Communication Execution Report | 2707 | False |
 | `docs/roadmap_domains/domain_13_infrastructure-devops_execution_report.md` | `general` | Domain 13 Infrastructure Devops Execution Report | 2597 | False |
 | `docs/roadmap_domains/domain_14_legal-privacy-documentation_execution_report.md` | `general` | Domain 14 Legal Privacy Documentation Execution Report | 2686 | False |
-| `docs/route_inventory.md` | `general` | EduBoost V2 Route Inventory | 38734 | False |
+| `docs/route_inventory.md` | `general` | EduBoost V2 Route Inventory | 39273 | False |
 | `docs/runbooks/ai_operations_and_budgets.md` | `general` | AI Operations and Budget Runbook | 2417 | False |
 | `docs/runbooks/content_review_governance.md` | `general` | Content Review Governance Runbook | 2403 | False |
 | `docs/runbooks/curriculum_expansion_and_training_governance.md` | `general` | Curriculum Expansion and Training Dataset Governance Runbook | 2623 | False |
@@ -3383,9 +3383,9 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/security/PHASE2_AUTHORIZATION_CLOSURE.md` | `security` | Phase 2 Authorization Closure Report | 2778 | False |
 | `docs/security/POPIA_CONSENT_AUDIT_BASELINE.md` | `security` | POPIA Consent and Audit Baseline | 3731 | False |
 | `docs/security/POPIA_CONSENT_GATE_CLOSURE.md` | `security` | POPIA Consent Gate Closure Report | 2894 | False |
-| `docs/security/README.md` | `security` | Security Documentation | 624 | False |
-| `docs/security/active_consent_route_order.md` | `security` | Active Consent Route Order | 834 | False |
-| `docs/security/active_consent_route_sources.md` | `security` | Active Consent Route Sources | 880 | False |
+| `docs/security/README.md` | `security` | Security Documentation | 720 | False |
+| `docs/security/active_consent_route_order.md` | `security` | Active Consent Route Order | 894 | False |
+| `docs/security/active_consent_route_sources.md` | `security` | Active Consent Route Sources | 943 | False |
 | `docs/security/assessment_attempt_authorization_wiring.md` | `security` | Assessment Attempt Authorization Wiring | 1079 | False |
 | `docs/security/assessment_attempt_model_contract.md` | `security` | Assessment Attempt Model Contract | 838 | False |
 | `docs/security/assessment_consent_gate.md` | `security` | Assessment Consent Gate | 925 | False |
@@ -3414,7 +3414,7 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/security/environment_security_contract.md` | `security` | Environment Security Contract | 1125 | False |
 | `docs/security/ether_onboarding_consent_gate.md` | `security` | Ether Onboarding Consent Boundary | 1053 | False |
 | `docs/security/ether_onboarding_questions_auth_boundary.md` | `security` | Ether Onboarding Questions Authentication Boundary | 888 | False |
-| `docs/security/frontend_token_storage_audit.md` | `security` | Frontend Token Storage Audit | 3593 | False |
+| `docs/security/frontend_token_storage_audit.md` | `security` | Frontend Token Storage Audit | 3618 | False |
 | `docs/security/gamification_award_xp_authorization_wiring.md` | `security` | Gamification Award XP Authorization Wiring | 861 | False |
 | `docs/security/gamification_consent_gate.md` | `security` | Gamification Consent Gate | 760 | False |
 | `docs/security/gamification_profile_authorization_wiring.md` | `security` | Gamification Profile Authorization Wiring | 974 | False |
@@ -3432,8 +3432,8 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/security/learner_mastery_authorization_wiring.md` | `security` | Learner Mastery Authorization Wiring | 1378 | False |
 | `docs/security/learner_read_authorization_http_tests.md` | `security` | Learner Read Authorization HTTP Tests | 1340 | False |
 | `docs/security/learner_read_consent_gate.md` | `security` | Learner Read Consent Gate | 870 | False |
-| `docs/security/learner_route_authorization_inspection.md` | `security` | Learner Route Authorization Inspection | 25104 | False |
-| `docs/security/learner_route_authorization_wiring.md` | `security` | Learner Route Authorization Wiring | 2107 | False |
+| `docs/security/learner_route_authorization_inspection.md` | `security` | Learner Route Authorization Inspection | 25199 | False |
+| `docs/security/learner_route_authorization_wiring.md` | `security` | Learner Route Authorization Wiring | 2214 | False |
 | `docs/security/lesson_generation_authorization_wiring.md` | `security` | Lesson Generation Authorization Wiring | 1231 | False |
 | `docs/security/lesson_generation_consent_gate.md` | `security` | Lesson Generation Consent Gate | 856 | False |
 | `docs/security/lesson_stream_authorization_wiring.md` | `security` | Lesson Stream Authorization Wiring | 872 | False |
@@ -3446,12 +3446,12 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/security/parent_erasure_authorization_wiring.md` | `security` | Parent Learner Erasure Authorization Wiring | 989 | False |
 | `docs/security/parent_export_authorization_wiring.md` | `security` | Parent Access-Bundle Export Authorization Wiring | 985 | False |
 | `docs/security/parent_progress_authorization_wiring.md` | `security` | Parent Learner Progress Authorization Wiring | 1219 | False |
-| `docs/security/parent_routes_consent_gate.md` | `security` | Parent Routes Consent Gate | 938 | False |
+| `docs/security/parent_routes_consent_gate.md` | `security` | Parent Routes Consent Gate | 1003 | False |
 | `docs/security/parent_trust_dashboard_authorization_wiring.md` | `security` | Parent Trust Dashboard Authorization Wiring | 937 | False |
 | `docs/security/phase2_authorization_closure_check.md` | `security` | Phase 2 Authorization Closure Check | 936 | False |
 | `docs/security/phase2_authorization_closure_report.md` | `security` | Phase 2 Authorization Closure Report Generator | 992 | False |
 | `docs/security/phase2_authorization_evidence_check.md` | `security` | Phase 2 Authorization Evidence Check | 3035 | False |
-| `docs/security/phase2_router_import_smoke.md` | `security` | Phase 2 Router Import Smoke | 744 | False |
+| `docs/security/phase2_router_import_smoke.md` | `security` | Phase 2 Router Import Smoke | 818 | False |
 | `docs/security/pii_secret_redaction_contract.md` | `security` | PII and Secret Redaction Contract | 982 | False |
 | `docs/security/pip_audit_report.md` | `security` | pip-audit Report | 530 | False |
 | `docs/security/popia_consent_audit_ci.md` | `security` | POPIA Consent Audit CI | 1001 | False |
@@ -3509,19 +3509,19 @@ Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
 | `docs/telemetry/rr012_production_telemetry_manifest.json` | `general` | Rr012 Production Telemetry Manifest | 2118 | False |
 | `docs/telemetry/rr012_slo_dashboard_validation.md` | `general` | RR-012 SLO Dashboard Validation | 726 | False |
 | `docs/telemetry/rr012_slo_dashboard_validation.template.md` | `general` | Rr012 Slo Dashboard Validation.Template | 781 | False |
-| `docs/testing/README.md` | `general` | Backend testing | 1478 | False |
+| `docs/testing/README.md` | `general` | Backend testing | 1457 | False |
 | `docs/testing/beta_release_quality_gate_checklist.md` | `general` | Beta Release Quality Gate Checklist | 879 | False |
 | `docs/testing/coverage_baseline_stabilisation.md` | `general` | Execution-7 Coverage Baseline Stabilisation | 4194 | False |
-| `docs/testing/coverage_frontend_advisory_gate_contract.md` | `general` | Coverage, Frontend Quality, and Advisory Gate Contract | 1750 | False |
+| `docs/testing/coverage_frontend_advisory_gate_contract.md` | `general` | Coverage, Frontend Quality, and Advisory Gate Contract | 1821 | False |
 | `docs/testing/coverage_quality_threshold_contract.md` | `general` | Coverage Quality Threshold Contract | 1805 | False |
 | `docs/testing/coverage_static_security_green_execution.md` | `general` | Coverage, Static Quality, Dependency Security, and Secret Baseline Green Execution | 1611 | False |
 | `docs/testing/defect_triage_release_blocker_contract.md` | `general` | Defect Triage and Release Blocker Contract | 998 | False |
 | `docs/testing/documentation_defined_coverage.md` | `general` | Documentation-defined Coverage Contract | 1753 | False |
 | `docs/testing/final_true_state_baseline_handoff_contract.md` | `general` | Final True-State Baseline Handoff Contract | 1431 | False |
 | `docs/testing/flake_policy_and_quarantine_register.md` | `general` | Flake Policy and Quarantine Register | 1182 | False |
-| `docs/testing/generated_contract_frontend_quality_execution.md` | `general` | Generated Contract Regeneration and Frontend Quality Execution Contract | 1833 | False |
-| `docs/testing/generated_contract_frontend_quality_green_evidence.md` | `general` | Generated Contract and Frontend Quality Green Evidence | 2051 | False |
-| `docs/testing/generated_contract_frontend_quality_green_run.md` | `general` | Generated Contract and Frontend Quality Green Run Contract | 1498 | False |
+| `docs/testing/generated_contract_frontend_quality_execution.md` | `general` | Generated Contract Regeneration and Frontend Quality Execution Contract | 1904 | False |
+| `docs/testing/generated_contract_frontend_quality_green_evidence.md` | `general` | Generated Contract and Frontend Quality Green Evidence | 2122 | False |
+| `docs/testing/generated_contract_frontend_quality_green_run.md` | `general` | Generated Contract and Frontend Quality Green Run Contract | 1569 | False |
 | `docs/testing/knowledge_graph_verification_plan.md` | `general` | Knowledge Graph Verification Plan | 3738 | False |
 | `docs/testing/known_issues_release_register.md` | `general` | Known Issues Release Register | 1031 | False |
 | `docs/testing/pr002r_evidence_check.md` | `general` | PR-002R Evidence Check | 1555 | False |

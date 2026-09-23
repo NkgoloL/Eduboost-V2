@@ -14,8 +14,8 @@ code_anchors: "[]"
 ---
 # Documentation Gap Report
 
-Generated at: `2026-09-23T08:50:49Z`
-Commit: `2816e06e619500bb0bf287cc7cb871ad766b91bc`
+Generated at: `2026-09-23T09:46:23Z`
+Commit: `b0c493dc8126ab1455f503fdf421f93f10f31fcf`
 
 ## Important document coverage
 
