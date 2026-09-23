@@ -345,7 +345,7 @@ def run_batch_ingestion(
     input_dir: str = "data/caps/topic_maps",
     db_url: str = "sqlite:///eduboost_etl.db",
     storage_root: str = "./data",
-    output_report: Optional[str] = "docs/etl/caps_batch_ingestion_report.json",
+    output_report: Optional[str] = None,
     auto_approve: bool = True,
     reprocess: bool = False,
     scopes: Optional[list[str]] = None,

@@ -4,6 +4,7 @@ from __future__ import annotations
 import importlib.util
 import os
 from types import SimpleNamespace
+from typing import Any
 
 _ALLOW_TEST_STUB = os.getenv("EDUBOOST_ALLOW_MCP_TEST_STUB") == "1"
 
@@ -88,10 +89,11 @@ def _build_test_stub() -> type:
 
 try:
     from mcp.server.fastmcp import FastMCP as FastMCP
+    from mcp.types import ToolAnnotations as ToolAnnotations
     FASTMCP_BACKEND = "mcp.server.fastmcp"
 except (ImportError, ModuleNotFoundError):
     try:
-        from fastmcp import FastMCP as FastMCP
+        from fastmcp import FastMCP as FastMCP  # type: ignore[no-redef]
         FASTMCP_BACKEND = "fastmcp"
     except (ImportError, ModuleNotFoundError) as err:
         if not _ALLOW_TEST_STUB:
@@ -99,11 +101,17 @@ except (ImportError, ModuleNotFoundError):
                 "FastMCP is unavailable. Install the supported MCP dependency or set "
                 "EDUBOOST_ALLOW_MCP_TEST_STUB=1 for local test-only stub execution."
             ) from err
-        FastMCP = _build_test_stub()
+        FastMCP = _build_test_stub()  # type: ignore[misc,assignment]
         FASTMCP_BACKEND = "test-stub"
+
+    class ToolAnnotations(dict):  # type: ignore[no-redef]
+        def __init__(self, **kwargs: Any) -> None:
+            super().__init__(**kwargs)
+            self.__dict__ = self
 
 __all__ = [
     "FastMCP",
+    "ToolAnnotations",
     "FASTMCP_BACKEND",
     "resolve_supported_fastmcp_backend",
 ]

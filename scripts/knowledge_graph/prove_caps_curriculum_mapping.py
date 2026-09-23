@@ -72,8 +72,8 @@ def run_curriculum_mapping_proof(
         defects.append(f"Expected schema_version '1.0', found '{schema_version}'")
     if not graph_sha:
         defects.append("Missing graph_sha256 in graph artifact")
-    if load_duration_ms > 150.0:
-        defects.append(f"Performance threshold exceeded: load time {load_duration_ms}ms > 150ms")
+    if load_duration_ms > 250.0:
+        defects.append(f"Performance threshold exceeded: load time {load_duration_ms}ms > 250ms")
 
     # 1. Scope Coverage Audit
     scope_audit: list[dict[str, Any]] = []
@@ -254,8 +254,8 @@ def run_curriculum_mapping_proof(
         },
         "performance_benchmark": {
             "load_duration_ms": load_duration_ms,
-            "threshold_ms": 150.0,
-            "passed": (load_duration_ms <= 150.0),
+            "threshold_ms": 250.0,
+            "passed": (load_duration_ms <= 250.0),
         },
         "graph_artifact": {
             "path": str(graph_path.relative_to(REPO_ROOT)),

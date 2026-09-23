@@ -56,7 +56,7 @@ def forced_mcp_test_stub(monkeypatch: pytest.MonkeyPatch):
     monkeypatch.setenv("EDUBOOST_ALLOW_MCP_TEST_STUB", "1")
     with _blocked_mcp_imports(monkeypatch):
         _clear_mcp_modules()
-        server = importlib.import_module("tools.etl.etl_mcp_server_v2")
+        server = importlib.import_module("tools.etl.etl_mcp_server")
         compat = importlib.import_module("tools.etl.mcp_compat")
 
         assert compat.FASTMCP_BACKEND == "test-stub"
@@ -129,3 +129,21 @@ def test_etl_mcp_server_pipeline_is_v3(forced_mcp_test_stub, monkeypatch, tmp_pa
     from app.services.etl.etl_pipeline_v3_additions import EduboostETLv3
     pipe = server.pipeline()
     assert isinstance(pipe, EduboostETLv3)
+
+
+def test_etl_mcp_server_v2_shim_deprecation_warning(forced_mcp_test_stub):
+    import warnings
+    import importlib
+
+    with warnings.catch_warnings(record=True) as recorded:
+        warnings.simplefilter("always")
+        # Ensure fresh import to observe module-level warning
+        if "tools.etl.etl_mcp_server_v2" in sys.modules:
+            del sys.modules["tools.etl.etl_mcp_server_v2"]
+        v2_module = importlib.import_module("tools.etl.etl_mcp_server_v2")
+
+        dep_warnings = [w for w in recorded if issubclass(w.category, DeprecationWarning)]
+        assert len(dep_warnings) >= 1
+        assert "tools.etl.etl_mcp_server_v2 is deprecated" in str(dep_warnings[0].message)
+        assert v2_module.mcp is forced_mcp_test_stub.mcp
+        assert hasattr(v2_module, "etl_get_metric_window")

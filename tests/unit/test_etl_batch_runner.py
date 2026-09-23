@@ -125,10 +125,12 @@ def test_batch_runner_scopes_filter(tmp_path: Path):
         file_path.write_text(json.dumps(doc), encoding="utf-8")
 
     # Ingest only grade2
+    report_file = tmp_path / "filter_report.json"
     summary = run_batch_ingestion(
         input_dir=str(in_dir),
         db_url=f"sqlite:///{db_file}",
         storage_root=str(storage),
+        output_report=str(report_file),
         auto_approve=True,
         scopes=["grade2_mathematics_en"],
     )
@@ -136,6 +138,7 @@ def test_batch_runner_scopes_filter(tmp_path: Path):
     assert summary["total_files"] == 1
     assert summary["successful_ingestions"] == 1
     assert summary["results"][0]["filename"] == "grade2_mathematics_en.json"
+    assert report_file.exists()
 
 
 def test_batch_runner_resumability_and_idempotency(tmp_path: Path):
@@ -150,20 +153,24 @@ def test_batch_runner_resumability_and_idempotency(tmp_path: Path):
         file_path.write_text(json.dumps(doc), encoding="utf-8")
 
     # First pass: processes all 3
+    report_file = tmp_path / "resumable_report.json"
     summary1 = run_batch_ingestion(
         input_dir=str(in_dir),
         db_url=f"sqlite:///{db_file}",
         storage_root=str(storage),
+        output_report=str(report_file),
         auto_approve=True,
     )
     assert summary1["total_files"] == 3
     assert summary1["already_existing"] == 0
+    assert report_file.exists()
 
     # Second pass: resumable skip
     summary2 = run_batch_ingestion(
         input_dir=str(in_dir),
         db_url=f"sqlite:///{db_file}",
         storage_root=str(storage),
+        output_report=str(report_file),
         auto_approve=True,
     )
     assert summary2["total_files"] == 3
