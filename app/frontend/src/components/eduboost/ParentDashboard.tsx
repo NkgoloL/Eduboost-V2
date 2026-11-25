@@ -132,12 +132,20 @@ export function ParentDashboard({ onBack }: ParentDashboardProps) {
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-3xl font-['Baloo_2'] text-white">Parent Trust Dashboard</h1>
-            <p className="text-blue-100">Progress summaries, knowledge gaps, and export links for your learners.</p>
+            <p className="text-blue-100">Lesson activity, consent controls, and privacy tools for your learners.</p>
           </div>
           <Button variant="secondary" onClick={onBack}>Return to App</Button>
         </div>
 
-        {error && <div className="bg-red-500/20 text-red-200 p-4 rounded-xl mb-6 border border-red-500/30">{error}</div>}
+        {error && (
+          <div className={error.toLowerCase().includes("disabled")
+            ? "bg-blue-500/15 text-blue-100 p-4 rounded-xl mb-6 border border-blue-300/30"
+            : "bg-red-500/20 text-red-200 p-4 rounded-xl mb-6 border border-red-500/30"} role="status">
+            {error.toLowerCase().includes("disabled")
+              ? "Learning progress summaries are temporarily unavailable while measurement tools are reviewed. Consent and privacy controls remain available when a learner roster is present."
+              : error}
+          </div>
+        )}
 
         <InfoOfficerNotice variant="card" className="mb-6" />
 
@@ -188,46 +196,11 @@ export function ParentDashboard({ onBack }: ParentDashboardProps) {
                   <div className="flex justify-between items-start gap-4 mb-5">
                     <div>
                       <h3 className="text-2xl font-bold text-white">{learner.display_name}</h3>
-                      <p className="text-blue-200 text-sm">
-                        Grade {learner.grade_level} · {learner.archetype || "General"} archetype
-                      </p>
+                      <p className="text-blue-200 text-sm">Grade {learner.grade_level}</p>
                     </div>
                     <div className="rounded-full bg-blue-500/20 px-3 py-1 text-sm font-bold text-blue-100">
                       {learner.lesson_completion_rate_7d}% complete
                     </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4 mb-5">
-                    <div className="rounded-2xl bg-black/10 p-4">
-                      <div className="text-xs uppercase tracking-widest text-blue-200 mb-1">IRT Theta</div>
-                      <div className="text-2xl font-black text-white">{learner.irt_theta.toFixed(2)}</div>
-                    </div>
-                    <div className="rounded-2xl bg-black/10 p-4">
-                      <div className="text-xs uppercase tracking-widest text-blue-200 mb-1">Streak</div>
-                      <div className="text-2xl font-black text-white">{learner.streak_days} days</div>
-                    </div>
-                  </div>
-
-                  <div className="mb-5">
-                    <div className="text-xs uppercase tracking-widest text-blue-200 mb-2">Top Knowledge Gaps</div>
-                    <div className="flex flex-wrap gap-2">
-                      {learner.top_knowledge_gaps.length > 0 ? (
-                        learner.top_knowledge_gaps.map((gap) => (
-                          <span key={gap} className="rounded-full bg-white/10 px-3 py-1 text-sm text-white">
-                            {gap}
-                          </span>
-                        ))
-                      ) : (
-                        <span className="rounded-full bg-green-500/20 px-3 py-1 text-sm text-green-100">
-                          No unresolved gaps
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="rounded-2xl bg-white/10 p-4 mb-4">
-                    <div className="text-xs uppercase tracking-widest text-blue-200 mb-2">AI Progress Summary</div>
-                    <p className="text-blue-50 leading-relaxed">{learner.ai_progress_summary}</p>
                   </div>
 
                   <div className="rounded-2xl bg-black/10 p-4 mb-4" aria-label={`Consent status for ${learner.display_name}`}>

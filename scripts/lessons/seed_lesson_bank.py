@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Seed approved lesson-bank artifacts into the lessons table for a learner."""
+"""Seed independently reviewed lesson-bank artifacts for a learner."""
 from __future__ import annotations
 
 import argparse
@@ -22,6 +22,44 @@ from app.modules.lessons.lesson_validator import LessonValidator
 from sqlalchemy import select
 
 DEFAULT_INPUT = ROOT / "data" / "generated" / "lessons" / "grade4_maths_launch_lessons.json"
+DEFAULT_REVIEW_REGISTER = ROOT / "data" / "caps" / "external_content_review_register.json"
+SYNTHETIC_REVIEWER_IDS = {
+    "00000000-0000-0000-0000-000000000001",
+    "00000000-0000-0000-0000-000000000002",
+}
+
+
+def validate_lesson_review_register(lessons: list[dict], register_path: Path) -> None:
+    approved = [lesson for lesson in lessons if lesson.get("review_status") == "approved"]
+    if len(approved) != len(lessons):
+        raise ValueError(
+            f"Refusing to seed {len(lessons) - len(approved)} non-approved lesson(s) into the learner lesson bank."
+        )
+    if not approved:
+        return
+    if not register_path.is_file():
+        raise ValueError(f"Refusing to seed approved lessons: independent review register is absent ({register_path}).")
+    data = json.loads(register_path.read_text(encoding="utf-8"))
+    entries = data.get("entries", []) if isinstance(data, dict) else []
+    allowed = {
+        (str(entry.get("item_id") or entry.get("lesson_id")), str(entry.get("reviewer_id")))
+        for entry in entries
+        if isinstance(entry, dict)
+        and entry.get("decision") == "approved"
+        and entry.get("independent") is True
+        and entry.get("reviewer_id")
+        and str(entry.get("reviewer_id")) not in SYNTHETIC_REVIEWER_IDS
+    }
+    missing = [
+        lesson for lesson in approved
+        if (str(lesson.get("lesson_id")), str(lesson.get("reviewer_id"))) not in allowed
+        or not lesson.get("reviewed_at")
+        or str(lesson.get("reviewer_id")) in SYNTHETIC_REVIEWER_IDS
+    ]
+    if missing:
+        raise ValueError(
+            f"Refusing to seed {len(missing)} approved lesson(s) without matching independent review evidence."
+        )
 
 
 def lesson_row(lesson: dict, learner_id: str) -> dict:
@@ -50,7 +88,7 @@ def lesson_row(lesson: dict, learner_id: str) -> dict:
         "alignment_confidence": float(lesson.get("alignment_confidence") or 0.0),
         "quality_score": float(lesson.get("quality_score") or 0.0),
         "trust_label": lesson.get("trust_label", {}),
-        "review_status": lesson.get("review_status", "approved"),
+        "review_status": lesson.get("review_status", "ai_generated"),
         "reviewer_id": UUID(lesson["reviewer_id"]) if lesson.get("reviewer_id") else None,
         "prompt_template_version": lesson.get("prompt_template_version"),
         "provider": lesson.get("provider"),
@@ -108,6 +146,7 @@ async def resolve_seed_learner_id(session, args: argparse.Namespace) -> str:
 async def seed(args: argparse.Namespace) -> int:
     payload = json.loads(args.input.read_text(encoding="utf-8"))
     lessons = payload.get("lessons", [])
+    validate_lesson_review_register(lessons, args.review_register)
     validator = LessonValidator()
     for lesson in lessons:
         result = validator.validate(lesson, require_verified=True)
@@ -134,6 +173,7 @@ async def seed(args: argparse.Namespace) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
+    parser.add_argument("--review-register", type=Path, default=DEFAULT_REVIEW_REGISTER)
     parser.add_argument("--learner-id")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--guardian-email", help="Guardian/admin email used to create or reuse a seed learner when --learner-id is omitted")

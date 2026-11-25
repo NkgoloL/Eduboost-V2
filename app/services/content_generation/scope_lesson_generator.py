@@ -13,7 +13,6 @@ from app.services.content_generation.scope_mcq_templates import (
 )
 from app.services.content_generation.topic_map_source_context import TopicMapSourceContext
 
-AUTO_REVIEWER_ID = "00000000-0000-0000-0000-000000000002"
 LESSON_DIFFICULTY_LEVELS = ("foundational", "developing", "on_level", "extending")
 
 
@@ -85,9 +84,9 @@ class ScopeLessonGenerator:
             "model_version": "scope-lesson-generator-v2",
             "generation_latency_ms": 0,
             "token_usage": {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0},
-            "review_status": "approved",
-            "reviewer_id": AUTO_REVIEWER_ID,
-            "reviewed_at": "2026-06-03T00:00:00Z",
+            "review_status": "ai_generated",
+            "reviewer_id": None,
+            "reviewed_at": None,
             "trust_label": {
                 "ai_generated": True,
                 "caps_linked": True,

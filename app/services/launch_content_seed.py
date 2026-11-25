@@ -39,6 +39,9 @@ async def seed_launch_content_if_needed() -> None:
     if not settings.CONTENT_STARTUP_SEED_ENABLED:
         log.info("launch_content_seed_skipped_disabled")
         return
+    if not settings.LEARNER_DIAGNOSTIC_ENABLED:
+        log.info("launch_content_seed_skipped_diagnostics_disabled")
+        return
     if not settings.is_production():
         return
     log.warning("launch_content_seed_enabled_explicitly")

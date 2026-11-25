@@ -79,7 +79,6 @@ SEED_SCHEMA_HEADER = {
 TOPIC_MAP_PATH = REPO_ROOT / "data" / "caps" / "caps_topic_map_grade4_maths.json"
 DEFAULT_OUTPUT  = REPO_ROOT / "data" / "caps" / "grade4_maths_item_bank.json"
 DEFAULT_MANIFEST_DIR = REPO_ROOT / "data" / "generated" / "run_manifests"
-AUTO_APPROVAL_REVIEWER_ID = "00000000-0000-0000-0000-000000000002"
 
 
 # ---------------------------------------------------------------------------
@@ -111,15 +110,15 @@ def load_topic_context(caps_ref: str) -> dict:
 def apply_review_policy(item: dict, validator: ItemValidator, scorer: QualityScorer) -> dict:
     errors = validator.validate_all(item)
     scored = scorer.score(item)
-    now = datetime.now(timezone.utc).isoformat()
-    if not errors and scored.get("safety_passed") is True and float(scored.get("quality_score") or 0) >= 0.85:
-        scored["review_status"] = "approved"
-        scored["reviewer_id"] = scored.get("reviewer_id") or AUTO_APPROVAL_REVIEWER_ID
-        scored["reviewed_at"] = scored.get("reviewed_at") or now
-    elif not errors and float(scored.get("quality_score") or 0) >= 0.70:
-        scored["review_status"] = "ai_generated"
-    else:
-        scored["review_status"] = "retired"
+    # Validation and scoring can reject a candidate, but cannot substitute for
+    # independent educator review. This generator must never mark content approved.
+    scored["review_status"] = "retired" if errors else "ai_generated"
+    scored["reviewer_id"] = None
+    scored["reviewed_at"] = None
+    if errors:
+        scored["validation_errors"] = [
+            {"rule": error.rule, "detail": error.detail} for error in errors
+        ]
     return scored
 
 

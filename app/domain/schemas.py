@@ -65,8 +65,8 @@ class LearnerResponse(OrmBase):
     display_name: str
     grade: int
     language: str
-    archetype: str | None
-    theta: float
+    archetype: str | None = Field(default=None, exclude=True)
+    theta: float = Field(exclude=True)
     xp: int
     streak_days: int
     created_at: datetime
@@ -87,7 +87,7 @@ class LessonResponse(OrmBase):
     topic: str
     language: str
     content: str
-    archetype: str | None
+    archetype: str | None = Field(default=None, exclude=True)
     served_from_cache: bool
     cache_hit: bool = False
     caps_aligned: bool = True
@@ -145,7 +145,7 @@ class OnboardingSubmit(BaseModel):
 
 class OnboardingResult(BaseModel):
     learner_id: str
-    archetype: str
+    archetype: str = Field(exclude=True)
     description: str
     probabilities: dict[str, float] = Field(default_factory=dict)
 

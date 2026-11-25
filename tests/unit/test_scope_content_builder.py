@@ -70,7 +70,7 @@ def test_generic_scope_builder_generates_valid_launch_slice(tmp_path: Path) -> N
 
     for item in item_payload["items"]:
         assert not item_validator.validate_all(item)
-        assert item["review_status"] == "approved"
+        assert item["review_status"] == "ai_generated"
 
     for lesson in lesson_payload["lessons"]:
         validation = lesson_validator.validate(lesson, require_verified=True)
@@ -83,7 +83,7 @@ def test_generic_scope_builder_generates_valid_launch_slice(tmp_path: Path) -> N
             source_document_ids=list(scope.source_documents or []),
         )
         assert not quality_issues, quality_issues
-        assert lesson["review_status"] == "approved"
+        assert lesson["review_status"] == "ai_generated"
 
 
 def test_generic_scope_builder_generates_valid_review_scope(tmp_path: Path) -> None:
@@ -107,7 +107,8 @@ def test_scope_aware_item_bank_coverage_uses_registry_targets() -> None:
 
     assert set(coverage) == {"4.M.1.1", "4.M.1.2", "4.M.1.3"}
     assert coverage["4.M.1.1"]["target"] == 40
-    assert coverage["4.M.1.1"]["met"] is True
+    assert coverage["4.M.1.1"]["met"] is False
+    assert coverage["4.M.1.1"]["approved"] == 0
 
 
 def test_all_generation_ready_scopes_have_generated_artifact_layers() -> None:

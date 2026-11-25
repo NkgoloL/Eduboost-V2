@@ -119,7 +119,6 @@ const mockLearner = {
 
 const dashboardShell = {
   initialLearner: mockLearner,
-  initialMastery: { MATH: 70 },
   initialGamification: {
     learner_id: mockLearner.learner_id,
     total_xp: 120,
@@ -210,7 +209,7 @@ describe("Routing Integration", () => {
     offlineSyncMocks.queueLessonSync.mockReset();
   });
 
-  it("Dashboard routes to /lesson and /diagnostic (NOT /learner/*)", async () => {
+  it("Dashboard routes to lessons and does not offer the disabled assessment", async () => {
     render(
       <LearnerWrapper>
         <DashboardClient {...dashboardShell} />
@@ -220,8 +219,8 @@ describe("Routing Integration", () => {
     fireEvent.click(await screen.findByText("Start New Lesson"));
     expect(mockPush).toHaveBeenCalledWith("/lesson");
 
-    fireEvent.click(screen.getByText("Take Assessment"));
-    expect(mockPush).toHaveBeenCalledWith("/diagnostic");
+    expect(screen.queryByText("Take Assessment")).not.toBeInTheDocument();
+    expect(serviceMocks.getMastery).not.toHaveBeenCalled();
   });
 
   afterEach(() => {
@@ -282,18 +281,17 @@ describe("Routing Integration", () => {
     expect(mockPush).toHaveBeenCalledWith("/dashboard");
   });
 
-  it("Diagnostic page routes to /plan and /dashboard", () => {
+  it("Diagnostic page explains the pause and returns to the dashboard", () => {
     render(
       <LearnerWrapper>
         <DiagnosticEntryClient {...diagnosticShell} />
       </LearnerWrapper>
     );
 
-    fireEvent.click(screen.getByText("Back"));
+    expect(screen.getByText(/Check-ins are temporarily unavailable/i)).toBeInTheDocument();
+    expect(screen.queryByText("Complete Diagnostic")).not.toBeInTheDocument();
+    fireEvent.click(screen.getByText("Return to dashboard"));
     expect(mockPush).toHaveBeenCalledWith("/dashboard");
-
-    fireEvent.click(screen.getByText("Complete Diagnostic"));
-    expect(mockPush).toHaveBeenCalledWith("/plan");
   });
 
   afterAll(() => {

@@ -328,7 +328,7 @@ def build_scope_content_artifacts(
         "generated_at": _now_utc(),
         "scope": scope_id,
         "language": scope.language,
-        "approval_policy": "auto_approved_when_schema_caps_safety_answer_quality_pass",
+        "approval_policy": "generator_never_approves_external_review_required",
         "generator_version": "scope_content_v2",
         "items": generated_items,
     }
@@ -337,7 +337,7 @@ def build_scope_content_artifacts(
         "generated_at": _now_utc(),
         "scope": scope_id,
         "language": scope.language,
-        "approval_policy": "auto_approved_when_schema_caps_safety_answer_quality_pass",
+        "approval_policy": "generator_never_approves_external_review_required",
         "generator_version": "scope_content_v2",
         "lessons": generated_lessons,
     }

@@ -48,6 +48,7 @@ TOPIC_MAP_PATHS = [
     REPO_ROOT / "data" / "caps" / "caps_topic_map_grade4_maths.json",
 ]
 DEFAULT_INPUT  = REPO_ROOT / "data" / "caps" / "grade4_maths_item_bank.json"
+DEFAULT_REVIEW_REGISTER = REPO_ROOT / "data" / "caps" / "external_content_review_register.json"
 DEFAULT_SCOPE_ID = "grade4_mathematics_en"
 DEFAULT_TARGET = 40
 
@@ -83,14 +84,72 @@ def load_seed(input_path: Path) -> list[dict]:
     return items
 
 
+SYNTHETIC_REVIEWER_IDS = {
+    "00000000-0000-0000-0000-000000000001",
+    "00000000-0000-0000-0000-000000000002",
+}
+
+
 def filter_items(items: list[dict], status: Optional[str]) -> list[dict]:
-    if status:
-        filtered = [i for i in items if i.get("review_status") == status]
-        logger.info(
-            "Filtered to %d items with review_status='%s'", len(filtered), status
+    filtered = [item for item in items if not status or item.get("review_status") == status]
+    if status == "approved":
+        invalid = [
+            item for item in filtered
+            if not item.get("reviewer_id")
+            or str(item.get("reviewer_id")) in SYNTHETIC_REVIEWER_IDS
+            or not item.get("reviewed_at")
+        ]
+        if invalid:
+            raise ValueError(
+                f"Refusing to seed {len(invalid)} approved item(s) without a non-synthetic "
+                "reviewer_id and reviewed_at. Generated quality checks do not count as educator review."
+            )
+    logger.info(
+        "Filtered to %d items%s", len(filtered),
+        f" with review_status='{status}'" if status else "",
+    )
+    return filtered
+
+
+def require_approved_for_seeding(items: list[dict]) -> None:
+    non_approved = [item for item in items if item.get("review_status") != "approved"]
+    if non_approved:
+        raise ValueError(
+            f"Refusing to seed {len(non_approved)} non-approved item(s) into the learner item bank."
         )
-        return filtered
-    return items
+
+
+def validate_external_review_register(
+    items: list[dict], register_path: Path
+) -> None:
+    """Require independently reviewed item/reviewer pairs before any DB seed."""
+    approved = [item for item in items if item.get("review_status") == "approved"]
+    if not approved:
+        return
+    if not register_path.is_file():
+        raise ValueError(
+            f"Refusing to seed approved content: independent review register is absent ({register_path})."
+        )
+    data = json.loads(register_path.read_text(encoding="utf-8"))
+    entries = data.get("entries", []) if isinstance(data, dict) else []
+    allowed = {
+        (str(entry.get("item_id")), str(entry.get("reviewer_id")))
+        for entry in entries
+        if isinstance(entry, dict)
+        and entry.get("decision") == "approved"
+        and entry.get("independent") is True
+        and entry.get("reviewer_id")
+        and str(entry.get("reviewer_id")) not in SYNTHETIC_REVIEWER_IDS
+    }
+    missing = [
+        item for item in approved
+        if (str(item.get("item_id")), str(item.get("reviewer_id"))) not in allowed
+    ]
+    if missing:
+        raise ValueError(
+            f"Refusing to seed {len(missing)} approved item(s) without a matching "
+            "independent approval entry in the external review register."
+        )
 
 
 def run_validation(
@@ -199,6 +258,8 @@ async def run(args: argparse.Namespace) -> None:
     topic_map = load_topic_map(scope_id=args.scope_id, registry=registry)
     all_items = load_seed(args.input)
     items     = filter_items(all_items, args.status)
+    require_approved_for_seeding(items)
+    validate_external_review_register(items, args.review_register)
 
     if not items:
         logger.warning("No items to seed after filtering.")
@@ -244,6 +305,12 @@ def parse_args() -> argparse.Namespace:
         description="Validate and seed the CAPS item bank into PostgreSQL."
     )
     parser.add_argument("--input", "--path", dest="input", type=Path, default=DEFAULT_INPUT)
+    parser.add_argument(
+        "--review-register",
+        type=Path,
+        default=DEFAULT_REVIEW_REGISTER,
+        help="Read-only independent educator approval register; the generator/seeder never writes this file.",
+    )
     parser.add_argument(
         "--scope-id",
         default=DEFAULT_SCOPE_ID,

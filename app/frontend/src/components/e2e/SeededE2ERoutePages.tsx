@@ -66,58 +66,19 @@ export function LearnerLandingPage({ learnerId }: { learnerId: string }) {
 
 export function DiagnosticResultsPage({ learnerId }: { learnerId: string }) {
   return (
-    <main className="max-w-3xl mx-auto p-8">
-      <span data-testid="seeded-e2e-route-pages-version" hidden>
-        phase16b-hydration-repair
-      </span>
-      <h1 className="text-4xl font-bold mb-6">Diagnostic Results</h1>
-      <div data-testid="irt-theta-score">θ 0.00</div>
-      <section data-testid="knowledge-gaps-list">
-        <div data-testid="knowledge-gap-item">Numbers and operations</div>
-      </section>
+    <main className="max-w-3xl mx-auto p-8" data-testid="diagnostic-disabled">
+      <h1 className="text-4xl font-bold mb-6">Diagnostic results unavailable</h1>
+      <p>Adaptive check-ins and placement results are paused while the question bank and scoring are reviewed.</p>
+      <p className="sr-only">Learner reference: {learnerId}</p>
     </main>
   );
 }
 
 export function SeededDiagnosticPage() {
-  const hydrated = useHydrated();
-  const [stage, setStage] = useState<"subject" | "ready" | "question" | "complete">("subject");
-  const [answered, setAnswered] = useState(0);
-  const [selected, setSelected] = useState<string | null>(null);
-
-  const chooseSubject = () => setStage("ready");
-  const selectOption = (opt: string) => setSelected(opt);
-  const answerQuestion = () => {
-    const next = answered + 1;
-    setAnswered(next);
-    setSelected(null);
-    setStage(next >= 5 ? "complete" : "question");
-  };
-
   return (
-    <main className="max-w-4xl mx-auto p-8">
-      <span data-testid="seeded-e2e-route-pages-version" hidden>
-        phase16b-hydration-repair
-      </span>
-      {hydrated ? (
-        <span data-testid="diagnostic-hydrated" hidden />
-      ) : null}
-      <h1 className="text-4xl font-bold mb-6">Diagnostic Assessment</h1>
-      {stage === "subject" && (
-        <div className="flex gap-4">
-          <button type="button" onClick={chooseSubject}>Mathematics</button>
-          <button type="button" onClick={chooseSubject}>English</button>
-        </div>
-      )}
-      {stage === "ready" && <button type="button" onClick={() => setStage("question")}>Start Assessment</button>}
-      {stage === "question" && (
-        <section data-testid="diagnostic-question">
-          <h2>Question {answered + 1}</h2>
-          <button type="button" data-testid="answer-option" className={selected === "A" ? "active" : ""} onClick={() => selectOption("A")}>Answer A</button>
-          <button type="button" onClick={answerQuestion}>Next</button>
-        </section>
-      )}
-      {stage === "complete" && <div data-testid="diagnostic-complete">Diagnostic complete</div>}
+    <main className="max-w-3xl mx-auto p-8" data-testid="diagnostic-disabled">
+      <h1 className="text-4xl font-bold mb-6">Check-ins are temporarily unavailable</h1>
+      <p>The adaptive check-in is paused while its questions and scoring are reviewed. You can continue with available lessons and practice.</p>
     </main>
   );
 }
@@ -127,14 +88,11 @@ export function ParentLearnerReportPage({ learnerId }: { learnerId: string }) {
   useEffect(() => setLearner(readLearner(learnerId)), [learnerId]);
   return (
     <main className="max-w-4xl mx-auto p-8">
-      <span data-testid="seeded-e2e-route-pages-version" hidden>
-        phase16b-hydration-repair
-      </span>
       <h1>Parent Portal Report</h1>
       <h2>{learner.display_name}</h2>
       <div data-testid="learner-grade">Grade {learner.grade || 4}</div>
-      <div data-testid="subject-progress">Mathematics progress tracked from seeded learner profile.</div>
-      <div data-testid="recent-activity">Recent activity: diagnostic and study-plan smoke paths executed.</div>
+      <div data-testid="learning-summary-disabled">Learning level, mastery, and placement summaries are temporarily unavailable.</div>
+      <div data-testid="recent-activity">Available lesson and game activity only.</div>
     </main>
   );
 }

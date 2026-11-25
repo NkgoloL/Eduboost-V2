@@ -6,6 +6,7 @@ from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.feature_gates import require_learner_mastery_view_enabled
 from app.api_v2_deps.auth import AuthContext, require_auth_context
 from app.core.security import get_current_user  # noqa: F401
 from app.domain.schemas import OnboardingResult, OnboardingSubmit
@@ -17,13 +18,13 @@ router = APIRouter(route_class=EnvelopedRoute, prefix="/onboarding", tags=["onbo
 _ether = EtherService()
 
 
-@router.get("/questions")
+@router.get("/questions", dependencies=[Depends(require_learner_mastery_view_enabled)])
 async def get_onboarding_questions(current_user: AuthContext = Depends(require_auth_context)):
     return _ether.get_onboarding_questions()
 
 
-@router.post("/submit", response_model=OnboardingResult)
-@router.post("/archetype", response_model=OnboardingResult)
+@router.post("/submit", response_model=OnboardingResult, dependencies=[Depends(require_learner_mastery_view_enabled)])
+@router.post("/archetype", response_model=OnboardingResult, dependencies=[Depends(require_learner_mastery_view_enabled)])
 async def submit_onboarding(
     body: OnboardingSubmit,
     db: AsyncSession = Depends(get_db),

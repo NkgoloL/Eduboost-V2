@@ -11,6 +11,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api_v2_deps.auth import AuthContext, require_parent_or_admin
 from app.core.database import get_db
+from app.core.feature_gates import require_learner_mastery_view_enabled
 from app.domain.schemas import (
     ParentDashboardLearner,
     ParentDashboardResponse,
@@ -27,7 +28,7 @@ router = APIRouter(route_class=EnvelopedRoute, prefix="/parents", tags=["parents
 _executive = ExecutiveService()
 
 
-@router.get("/dashboard", response_model=ParentDashboardResponse)
+@router.get("/dashboard", response_model=ParentDashboardResponse, dependencies=[Depends(require_learner_mastery_view_enabled)])
 async def get_parent_dashboard(
     request: Request,
     db: AsyncSession = Depends(get_db),
@@ -100,7 +101,7 @@ async def get_parent_dashboard(
     )
 
 
-@router.get("/{guardian_id}/dashboard", response_model=ParentTrustDashboardResponse)
+@router.get("/{guardian_id}/dashboard", response_model=ParentTrustDashboardResponse, dependencies=[Depends(require_learner_mastery_view_enabled)])
 async def get_parent_trust_dashboard(
     guardian_id: str,
     request: Request,
@@ -214,7 +215,7 @@ async def export_parent_access_bundle(
     }
 
 
-@router.get("/learners/{learner_id}/progress")
+@router.get("/learners/{learner_id}/progress", dependencies=[Depends(require_learner_mastery_view_enabled)])
 async def get_learner_progress(
     learner_id: str,
     db: AsyncSession = Depends(get_db),

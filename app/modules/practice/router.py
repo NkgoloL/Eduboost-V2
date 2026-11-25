@@ -7,6 +7,7 @@ from pydantic import BaseModel, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.feature_gates import require_learner_diagnostic_enabled
 from app.core.security import get_current_user
 from app.modules.practice.service import PracticeService
 from app.security.dependencies import actor_id_from_current_user, require_active_consent_for_current_user, require_learner_write_for_current_user
@@ -30,7 +31,7 @@ class PracticeResponseRequest(BaseModel):
     response: str | None = None
 
 
-@router.post("/sessions", status_code=status.HTTP_201_CREATED)
+@router.post("/sessions", status_code=status.HTTP_201_CREATED, dependencies=[Depends(require_learner_diagnostic_enabled)])
 async def create_practice_session(
     body: PracticeSessionRequest,
     current_user: dict = Depends(get_current_user),
@@ -51,7 +52,7 @@ async def create_practice_session(
     return {"session_id": session_id, "item_count": item_count}
 
 
-@router.get("/sessions/{session_id}/next-item")
+@router.get("/sessions/{session_id}/next-item", dependencies=[Depends(require_learner_diagnostic_enabled)])
 async def next_practice_item(
     session_id: str,
     current_user: dict = Depends(get_current_user),
@@ -79,7 +80,7 @@ async def next_practice_item(
     return {"completed": False, "item_id": item_id}
 
 
-@router.post("/sessions/{session_id}/respond")
+@router.post("/sessions/{session_id}/respond", dependencies=[Depends(require_learner_diagnostic_enabled)])
 async def respond_practice(
     session_id: str,
     body: PracticeResponseRequest,

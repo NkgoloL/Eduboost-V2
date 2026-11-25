@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from app.core.envelope_route import EnvelopedRoute
+from app.core.feature_gates import require_learner_mastery_view_enabled
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -23,7 +24,7 @@ async def _count(db: AsyncSession, statement) -> int:
     return int(await db.scalar(statement) or 0)
 
 
-@router.get("/learners/{learner_id}")
+@router.get("/learners/{learner_id}", dependencies=[Depends(require_learner_mastery_view_enabled)])
 async def get_learner_vertical_journey(
     learner_id: str,
     db: AsyncSession = Depends(get_db),

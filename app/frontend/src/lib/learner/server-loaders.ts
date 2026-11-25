@@ -17,7 +17,6 @@ export type ShellDataSource = "api" | "fixture";
 
 export interface DashboardShellData {
   initialLearner: ActiveLearner | null;
-  initialMastery: Record<string, number>;
   initialGamification: GamificationProfile | null;
   fetchedAt: string;
   source: ShellDataSource;
@@ -49,7 +48,6 @@ const LEARNER_FIXTURE: ActiveLearner = {
   language: "en",
   avatar: 2,
   streak_days: 4,
-  archetype: "trailblazer",
 };
 
 const LESSON_COMPLETION_CONTRACT_FIXTURE: LessonCompletionContract = {
@@ -72,13 +70,6 @@ const GAMIFICATION_FIXTURE: GamificationProfile = {
   ],
 };
 
-const MASTERY_FIXTURE: Record<string, number> = {
-  MATH: 74,
-  ENG: 63,
-  LIFE: 58,
-  NS: 69,
-  SS: 61,
-};
 
 const LESSON_FIXTURE: LessonPayload = {
   id: "lesson-fixture-001",
@@ -104,7 +95,6 @@ const AVAILABLE_SUBJECTS_FIXTURE: SubjectCode[] = ["MATH", "ENG", "NS", "SS", "L
 export async function getLearnerDashboardShellData(): Promise<DashboardShellData> {
   return {
     initialLearner: LEARNER_FIXTURE,
-    initialMastery: { ...MASTERY_FIXTURE },
     initialGamification: GAMIFICATION_FIXTURE,
     fetchedAt: new Date().toISOString(),
     source: "fixture",

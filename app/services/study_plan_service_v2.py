@@ -16,8 +16,8 @@ class StudyPlanServiceV2:
         learner = await self.learner_repository.get_by_id(learner_id)
         if learner is None:
             raise ValueError("Learner not found")
-        mastery = await self.study_plan_repository.get_subject_mastery(learner_id)
-        weak = sorted(mastery, key=lambda m: m.get("mastery_score", 1.0))[:2]
+        # Adaptive mastery estimates are disabled; keep plans balanced and non-adaptive.
+        weak: list[dict] = []
         week_focus = "Balanced revision and grade-level progress"
         if weak:
             week_focus = "Focus on " + ", ".join(item.get("subject_code", "subject") for item in weak)
@@ -26,7 +26,7 @@ class StudyPlanServiceV2:
         plan = await self.study_plan_repository.create(
             learner_id=learner_id,
             schedule=schedule,
-            gap_ratio=gap_ratio if weak else min(gap_ratio, 0.2),
+            gap_ratio=0.0,
             week_focus=week_focus,
         )
         await AuditService().log_event("STUDY_PLAN_CREATED", {"week_focus": week_focus}, learner_id)
@@ -65,12 +65,8 @@ _LAUNCH_TEMPLATE_PATH = _REPO_ROOT / "data" / "generated" / "study_plans" / "gra
 
 
 def _load_launch_template() -> dict | None:
-    if not _LAUNCH_TEMPLATE_PATH.exists():
-        return None
-    try:
-        return json.loads(_LAUNCH_TEMPLATE_PATH.read_text(encoding="utf-8"))
-    except Exception:
-        return None
+    # The generated launch template stays unavailable pending independent review.
+    return None
 
 
 def _weak_caps_refs(weak: list[dict]) -> set[str]:
@@ -118,10 +114,6 @@ def _build_template_schedule(weak: list[dict], learner_grade: int | None) -> dic
 
 
 def _build_schedule(weak: list[dict], learner_grade: int | None = None) -> dict[str, list[dict]]:
-    template_schedule = _build_template_schedule(weak, learner_grade)
-    if template_schedule:
-        return template_schedule
-
     gap_subjects = [item.get("subject_code", "General Review") for item in weak if item.get("subject_code")]
     if not gap_subjects:
         gap_subjects = ["English", "Mathematics"]

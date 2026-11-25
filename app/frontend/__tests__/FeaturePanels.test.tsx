@@ -13,7 +13,7 @@ vi.mock("../src/components/eduboost/api", () => ({
 }));
 
 describe("DashboardPanel", () => {
-  it("renders the welcome message and overall mastery", () => {
+  it("renders the welcome message without learner mastery estimates", () => {
     const mockLearner = { nickname: "TestUser", grade: 4 };
     const mockMastery = { MATH: 50, ENG: 70 };
 
@@ -29,13 +29,13 @@ describe("DashboardPanel", () => {
     );
 
     expect(screen.getByText(/Welcome, TestUser!/i)).toBeInTheDocument();
-    expect(screen.getByText(/Overall mastery:/i)).toBeInTheDocument();
-    expect(screen.getAllByText("60%").length).toBeGreaterThan(0); // (50+70)/2
+    expect(screen.getByText(/Mastery estimates and adaptive check-ins are temporarily unavailable/i)).toBeInTheDocument();
+    expect(screen.queryByText("60%")).not.toBeInTheDocument();
   });
 });
 
 describe("DiagnosticPanel", () => {
-  it("allows selecting a subject and submitting", async () => {
+  it("shows a disabled message instead of an assessment flow", async () => {
     const mockLearner = { nickname: "TestUser", grade: 4 };
     const mockOnComplete = vi.fn();
 
@@ -49,17 +49,10 @@ describe("DiagnosticPanel", () => {
       </LearnerProvider>
     );
 
-    // Click Math subject
-    const mathButton = screen.getByText("Mathematics");
-    fireEvent.click(mathButton);
-
-    // Verify it allows running diagnostic
-    const runButton = screen.getByText("Run Diagnostic");
-    expect(runButton).not.toBeDisabled();
-    
-    // Simulate clicking
-    fireEvent.click(runButton);
-    expect(screen.getByText("Running IRT...")).toBeInTheDocument();
+    expect(screen.getByText(/Check-in unavailable/i)).toBeInTheDocument();
+    expect(screen.getByText(/question bank is being rebuilt/i)).toBeInTheDocument();
+    expect(mockOnComplete).not.toHaveBeenCalled();
+    expect(screen.queryByText("Mathematics")).not.toBeInTheDocument();
   });
 });
 
@@ -73,6 +66,6 @@ describe("LessonPanel and default export", () => {
     );
 
     expect(screen.getByText("Lesson")).toBeInTheDocument();
-    expect(screen.getAllByText("Diagnostic").length).toBeGreaterThan(0);
+    expect(screen.getByText("Check-in unavailable")).toBeInTheDocument();
   });
 });

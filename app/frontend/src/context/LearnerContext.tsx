@@ -2,7 +2,7 @@
 
 import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { LearnerService } from "../lib/api/services";
-import type { ActiveLearner, GamificationProfile, MasteryEntry } from "../lib/api/types";
+import type { ActiveLearner, GamificationProfile } from "../lib/api/types";
 
 interface LearnerContextValue {
   learner: ActiveLearner | null;
@@ -60,20 +60,10 @@ export function LearnerProvider({ children }: { children: React.ReactNode }) {
   const refreshState = useCallback(async () => {
     if (!learner?.learner_id) return;
     try {
-      const [masteryRes, gamificationRes] = await Promise.all([
-        LearnerService.getMastery(learner.learner_id),
-        LearnerService.getGamificationProfile(learner.learner_id),
-      ]);
-
-      const masteryRows = (masteryRes as { mastery?: MasteryEntry[] } | null)?.mastery;
-      if (masteryRows) {
-        const newMastery: Record<string, number> = {};
-        masteryRows.forEach((m) => {
-          newMastery[m.subject_code] = Math.round(m.mastery_score * 100);
-        });
-        setMasteryData(newMastery);
-      }
+      setMasteryData({});
+      const gamificationRes = await LearnerService.getGamificationProfile(learner.learner_id);
       setGamification((gamificationRes as GamificationProfile) || null);
+      setMasteryData({});
     } catch (err) {
       console.error("Failed to refresh learner state:", err);
     }

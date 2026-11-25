@@ -80,7 +80,7 @@ def test_scope_item_generator_components():
         assert item["difficulty_band"] == band
         assert len(item["options"]) == 4
         assert item["answer_key"] in {"A", "B", "C", "D"}
-        assert item["review_status"] == "approved"
+        assert item["review_status"] == "ai_generated"
         assert item["stem"].startswith(f"Q{idx + 2}.")
 
 

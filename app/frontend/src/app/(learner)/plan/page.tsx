@@ -101,7 +101,7 @@ export default function StudyPlanPage() {
       <header className="mb-12">
         <h1 className="text-4xl font-['Baloo_2'] font-bold text-[var(--text)] mb-2">Your Study Plan</h1>
         <p className="text-[var(--muted)] font-medium">
-          A personalized schedule built just for you based on your goals and progress.
+          Available lessons and practice ideas for your grade.
         </p>
       </header>
 
@@ -111,7 +111,7 @@ export default function StudyPlanPage() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div>
             <h2 className="text-2xl font-bold mb-2">Weekly Focus</h2>
-            <p className="text-[var(--muted)] text-lg">{plan?.week_focus || "General Grade Review & Mastery Boost"}</p>
+            <p className="text-[var(--muted)] text-lg">{plan?.week_focus || "General Grade Practice"}</p>
           </div>
           <div className="bg-[var(--surface2)] px-6 py-3 rounded-2xl border border-[var(--border)] text-center">
             <div className="text-xs font-bold uppercase tracking-widest opacity-80 mb-1">Target Grade</div>
@@ -125,7 +125,7 @@ export default function StudyPlanPage() {
           <div className="text-6xl mb-4">📅</div>
           <h3 className="text-2xl font-bold mb-2">No study blocks yet</h3>
           <p className="text-[var(--muted)] text-lg mb-8 max-w-md mx-auto">
-            Take a quick assessment or start your first lesson so we can build your personalized learning path.
+            Start an available lesson while adaptive check-ins and placement features are paused.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button onClick={() => router.push("/diagnostic")} className="px-10">

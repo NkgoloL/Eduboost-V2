@@ -14,6 +14,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.feature_gates import require_learner_diagnostic_enabled
 from app.api_v2_deps.auth import AuthContext, require_auth_context
 from app.core.security import get_current_user  # noqa: F401
 from app.services.content_learner_read_service import (
@@ -49,7 +50,7 @@ async def get_scope_summary(
     return await service.get_scope_content_summary(session, scope_id)
 
 
-@router.get("/scopes/{scope_id}/diagnostic-items")
+@router.get("/scopes/{scope_id}/diagnostic-items", dependencies=[Depends(require_learner_diagnostic_enabled)])
 async def get_diagnostic_items(
     scope_id: str,
     current_user: Annotated[AuthContext, Depends(require_auth_context)],
@@ -103,7 +104,7 @@ async def get_lessons(
     )
 
 
-@router.get("/scopes/{scope_id}/caps/{caps_ref}/diagnostic-items")
+@router.get("/scopes/{scope_id}/caps/{caps_ref}/diagnostic-items", dependencies=[Depends(require_learner_diagnostic_enabled)])
 async def get_diagnostic_items_by_caps_ref(
     scope_id: str,
     caps_ref: str,

@@ -7,7 +7,7 @@ audience: stakeholder
 source_of_truth: false
 supersedes: []
 superseded_by: null
-last_reviewed: 2026-06-23
+last_reviewed: 2026-11-23
 review_interval_days: 60
 evidence_command: "make docs-housekeeping-stage4-check"
 code_anchors: [docs/product/README.md]
@@ -15,14 +15,14 @@ code_anchors: [docs/product/README.md]
 
 # Learner Guide — EduBoost
 
-**Last Updated**: 2026-06-12  
+**Last Updated**: 2026-11-23
 **Audience**: Students using EduBoost for learning
 
 ---
 
 ## Welcome to EduBoost!
 
-You're about to start an exciting learning adventure. EduBoost helps you learn at your own pace by figuring out what you already know and what you need to practice.
+You're about to start an exciting learning adventure. EduBoost is being developed to support learning with curriculum-linked practice and lessons. Progress estimates and adaptive check-ins are currently turned off while the question bank is rebuilt and reviewed.
 
 ---
 
@@ -35,36 +35,30 @@ You're about to start an exciting learning adventure. EduBoost helps you learn a
 3. They'll give you permission to start learning
 4. You'll log in with your special username and password
 
-### Your First Diagnostic
+### Check-ins are temporarily unavailable
 
-When you first log in, EduBoost will ask you some questions. This helps us understand what you already know. Don't worry — there are no wrong answers, just answer as best you can!
+The adaptive check-in is switched off while its questions and scoring are reviewed. You can use available lessons, but the app will not show a mastery score, learning level, or placement result.
 
 ---
 
 ## How EduBoost Works
 
-### 1. Complete a Diagnostic
+### 1. Start Your Lesson
 
-- Answer questions about your current topic
-- The computer figures out your level
-- You'll get a mastery score for each topic
-
-### 2. Start Your Lesson
-
-- Based on your diagnostic, EduBoost creates a lesson just for you
+- Choose an available lesson or topic
 - Lessons are short and interactive
 - Complete each question to unlock the next one
 
-### 3. Earn XP and Badges
+### 2. Earn XP and Badges
 
 - **XP (Experience Points)**: Earn XP for every lesson and question answered correctly
-- **Badges**: Unlock badges for achievements like "5 Day Streak" or "Topic Master"
+- **Badges**: Unlock game badges for activities such as a learning streak
 - **Streaks**: Come back every day to keep your streak alive!
 
-### 4. Track Your Progress
+### 3. Track Game Progress
 
 - Check your dashboard to see how many XP you have
-- See which topics you've mastered
+- Mastery and placement views are temporarily unavailable
 - View your badges in your trophy cabinet
 
 ---
@@ -73,11 +67,11 @@ When you first log in, EduBoost will ask you some questions. This helps us under
 
 | Tip | Why It Helps |
 |-----|--------------|
-| **Complete one topic before moving on** | Mastery takes practice! |
-| **Answer every question** | Even wrong answers help us learn about you |
+| **Take your time with each activity** | Practice is for learning, not a test or placement decision. |
+| **Answer every question** | Wrong answers are part of practice; they do not assign you a level |
 | **Come back every day** | Daily streaks earn bonus XP |
 | **Read questions carefully** | Take your time — there's no rush |
-| **Ask for help from a parent** | They can check your progress anytime |
+| **Ask for help from a parent** | Some learning progress summaries are unavailable while they are being reviewed |
 
 ---
 
@@ -85,9 +79,10 @@ When you first log in, EduBoost will ask you some questions. This helps us under
 
 ### Main Screen
 
-- **XP Counter**: Your total experience points (top right)
+- **XP Counter**: Your game experience points (top right)
 - **Current Streak**: Days in a row you've learned (flame icon)
-- **Topic Buttons**: Click a topic to start learning
+- **Game level**: A game-progress label only; it is not a learning or mastery level
+- **Topic Buttons**: Click a topic to start an available lesson
 - **Badge Tray**: Your recent badges
 
 ### After Starting a Lesson
@@ -127,7 +122,7 @@ EduBoost covers these subjects:
 | 📚 Scholar | Complete 10 lessons |
 | 🔥 On Fire | 7-day learning streak |
 | 🏆 Champion | Earn 1000 XP |
-| ⭐ Star Student | Master 5 topics |
+| ⭐ Star Student | Complete practice in 5 topics |
 | 🎯 Sharp Shooter | 100% score on a lesson |
 
 ---
@@ -158,9 +153,9 @@ EduBoost covers these subjects:
 
 If you're using EduBoost with a parent or guardian's account:
 
-- They can see your progress
+- They can see available activity and game progress
 - They control what you can access
-- They get reports on how you're doing
+- Mastery, learning level, and placement summaries are unavailable while they are being reviewed
 
 ---
 

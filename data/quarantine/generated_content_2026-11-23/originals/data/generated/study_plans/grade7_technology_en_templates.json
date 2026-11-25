@@ -1,0 +1,869 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T20:13:28Z",
+  "scope": "grade7_technology_en",
+  "grade": 7,
+  "subject": "Technology",
+  "weekly_template": [
+    {
+      "day": "Mon",
+      "caps_ref": "7.TECH.1.1",
+      "topic": "The design process",
+      "activity_type": "lesson",
+      "lesson_variant": "standard",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-1-1-short-practice-v2",
+      "minutes": 40,
+      "teacher_cue": "Teach The design process using the worked examples, then set the short practice blueprint."
+    },
+    {
+      "day": "Tue",
+      "caps_ref": "7.TECH.1.2",
+      "topic": "Structures",
+      "activity_type": "practice",
+      "lesson_variant": "visual",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-1-2-short-practice-v2",
+      "minutes": 25,
+      "teacher_cue": "Run the short practice quiz for Structures and note missed misconception tags."
+    },
+    {
+      "day": "Wed",
+      "caps_ref": "7.TECH.1.3",
+      "topic": "Graphic communication",
+      "activity_type": "lesson",
+      "lesson_variant": "story",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-1-3-short-practice-v2",
+      "minutes": 40,
+      "teacher_cue": "Teach Graphic communication using the worked examples, then set the short practice blueprint."
+    },
+    {
+      "day": "Thu",
+      "caps_ref": "7.TECH.1.4",
+      "topic": "Assessment",
+      "activity_type": "practice",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-1-4-short-practice-v2",
+      "minutes": 25,
+      "teacher_cue": "Run the short practice quiz for Assessment and note missed misconception tags."
+    },
+    {
+      "day": "Fri",
+      "caps_ref": "7.TECH.2.1",
+      "topic": "Processing",
+      "activity_type": "review",
+      "lesson_variant": "real_world_sa",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-2-1-recheck-v2",
+      "minutes": 25,
+      "teacher_cue": "Use the recheck blueprint for Processing and assign step-by-step remediation where needed."
+    }
+  ],
+  "topic_sequence": [
+    {
+      "caps_ref": "7.TECH.1.1",
+      "topic": "The design process",
+      "subtopic": "The design process",
+      "term": 1,
+      "prerequisites": [],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to the design process.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:74042c118884091cbdbd90a3c73733db9a94b508097ad30e8507f43e5738f8f9",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.TECH.1.2",
+      "topic": "Structures",
+      "subtopic": "Structures",
+      "term": 1,
+      "prerequisites": [
+        "7.TECH.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to structures.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:479817608ca3dfda7c36b28cf264f7562f7bbc3ac1a809610ebfa9a6ddc51b50",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.TECH.1.3",
+      "topic": "Graphic communication",
+      "subtopic": "Graphic communication",
+      "term": 1,
+      "prerequisites": [
+        "7.TECH.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to graphic communication.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:93148b4448d651ad3f20275bb8d788fc164d3b6c31528cda8642c0866a5e6a20",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.TECH.1.4",
+      "topic": "Assessment",
+      "subtopic": "Assessment",
+      "term": 1,
+      "prerequisites": [
+        "7.TECH.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to assessment.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:547479ac3297f6da2c828306074ba79912d9d9d6c699614aad0a57b3fc4ba681",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.TECH.2.1",
+      "topic": "Processing",
+      "subtopic": "Processing",
+      "term": 2,
+      "prerequisites": [
+        "7.TECH.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to processing.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:af78f14ed411238cc7e8384d1ca7bf3a9557da48457dde0e7ec140009fd094b9",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.TECH.2.2",
+      "topic": "Materials and tools",
+      "subtopic": "Materials and tools",
+      "term": 2,
+      "prerequisites": [
+        "7.TECH.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to materials and tools.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:5c3054f0b656d35e1cdffea356d4f60092cbca1ab94bf26c7edcd15c42371289",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.TECH.2.3",
+      "topic": "Design and make",
+      "subtopic": "Design and make",
+      "term": 2,
+      "prerequisites": [
+        "7.TECH.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to design and make.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:1b48ee343a98187a2fc8ef62ec8c34d5f45f65f1e98d0211ef45f7b9d04ed8d9",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.TECH.2.4",
+      "topic": "Assessment",
+      "subtopic": "Assessment",
+      "term": 2,
+      "prerequisites": [
+        "7.TECH.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to assessment.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:2391e4b253828ac28e02569b2e67227e475d2bad90713065ec045ccec825377a",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.TECH.3.1",
+      "topic": "Systems and control",
+      "subtopic": "Systems and control",
+      "term": 3,
+      "prerequisites": [
+        "7.TECH.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to systems and control.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:1fbae9df9beb28049e9ddbc355e344dc73ffccad6c56830ec950f4328ca7742b",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.TECH.3.2",
+      "topic": "Mechanical systems",
+      "subtopic": "Mechanical systems",
+      "term": 3,
+      "prerequisites": [
+        "7.TECH.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to mechanical systems.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:013e7570be068bab3021e8ec725c031e93480117f5a4bfc461aa7ab1a47fa21f",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.TECH.3.3",
+      "topic": "Electrical systems",
+      "subtopic": "Electrical systems",
+      "term": 3,
+      "prerequisites": [
+        "7.TECH.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to electrical systems.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:ed4e3b362eb15ed142cf1559fe22551d038e15309ad24d7a5aaf5b65c7209ea5",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.TECH.3.4",
+      "topic": "Assessment",
+      "subtopic": "Assessment",
+      "term": 3,
+      "prerequisites": [
+        "7.TECH.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to assessment.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:84b0fd58d738888dad3c1fe2250c476824310ac67647fe4e28d310fa52638811",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.TECH.4.1",
+      "topic": "Technology project",
+      "subtopic": "Technology project",
+      "term": 4,
+      "prerequisites": [
+        "7.TECH.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to technology project.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:bd8dc407f273d1b83c280061abf92115552eaf3396a2b1f6981a3ac72cfdd35f",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.TECH.4.2",
+      "topic": "Evaluation and communication",
+      "subtopic": "Evaluation and communication",
+      "term": 4,
+      "prerequisites": [
+        "7.TECH.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to evaluation and communication.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:8a971d02a5ab6527d01f5237e760ab3b5788cc8a1ef8ba035387c05fc7f4c57f",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.TECH.4.3",
+      "topic": "Revision",
+      "subtopic": "Revision",
+      "term": 4,
+      "prerequisites": [
+        "7.TECH.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to revision.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:abadd7e36f70af151cac71c0a415b20de94a4a3542411b2e6e99a6c4b0d3c6a1",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "7.TECH.4.4",
+      "topic": "Assessment",
+      "subtopic": "Assessment",
+      "term": 4,
+      "prerequisites": [
+        "7.TECH.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Apply the design/problem-solving process to assessment.",
+        "Build, test, debug or evaluate a solution using appropriate tools and terminology."
+      ],
+      "source_context_hash": "sha256:59b97e3794c9b34fd26f68c32881c155396f3642712df740db23a7421385479f",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    }
+  ],
+  "remediation_mappings": [
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.TECH.1.1",
+      "topic": "The design process",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.TECH.1.1",
+      "topic": "The design process",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.TECH.1.2",
+      "topic": "Structures",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-1-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.TECH.1.2",
+      "topic": "Structures",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-1-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.TECH.1.3",
+      "topic": "Graphic communication",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-1-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.TECH.1.3",
+      "topic": "Graphic communication",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-1-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.TECH.1.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-1-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.TECH.1.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-1-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.TECH.2.1",
+      "topic": "Processing",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-2-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.TECH.2.1",
+      "topic": "Processing",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-2-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.TECH.2.2",
+      "topic": "Materials and tools",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-2-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.TECH.2.2",
+      "topic": "Materials and tools",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-2-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.TECH.2.3",
+      "topic": "Design and make",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-2-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.TECH.2.3",
+      "topic": "Design and make",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-2-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.TECH.2.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-2-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.TECH.2.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-2-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.TECH.3.1",
+      "topic": "Systems and control",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-3-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.TECH.3.1",
+      "topic": "Systems and control",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-3-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.TECH.3.2",
+      "topic": "Mechanical systems",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-3-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.TECH.3.2",
+      "topic": "Mechanical systems",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-3-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.TECH.3.3",
+      "topic": "Electrical systems",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-3-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.TECH.3.3",
+      "topic": "Electrical systems",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-3-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.TECH.3.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-3-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.TECH.3.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-3-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.TECH.4.1",
+      "topic": "Technology project",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-4-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.TECH.4.1",
+      "topic": "Technology project",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-4-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.TECH.4.2",
+      "topic": "Evaluation and communication",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-4-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.TECH.4.2",
+      "topic": "Evaluation and communication",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-4-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.TECH.4.3",
+      "topic": "Revision",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-4-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.TECH.4.3",
+      "topic": "Revision",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-4-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "7.TECH.4.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-4-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "7.TECH.4.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-4-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    }
+  ],
+  "extension_mappings": [
+    {
+      "caps_ref": "7.TECH.1.1",
+      "topic": "The design process",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-1-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.TECH.1.2",
+      "topic": "Structures",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-1-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.TECH.1.3",
+      "topic": "Graphic communication",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-1-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.TECH.1.4",
+      "topic": "Assessment",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-1-4-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.TECH.2.1",
+      "topic": "Processing",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-2-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.TECH.2.2",
+      "topic": "Materials and tools",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-2-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.TECH.2.3",
+      "topic": "Design and make",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-2-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.TECH.2.4",
+      "topic": "Assessment",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-2-4-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.TECH.3.1",
+      "topic": "Systems and control",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-3-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.TECH.3.2",
+      "topic": "Mechanical systems",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-3-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.TECH.3.3",
+      "topic": "Electrical systems",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-3-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.TECH.3.4",
+      "topic": "Assessment",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-3-4-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.TECH.4.1",
+      "topic": "Technology project",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-4-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.TECH.4.2",
+      "topic": "Evaluation and communication",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-4-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.TECH.4.3",
+      "topic": "Revision",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-4-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "7.TECH.4.4",
+      "topic": "Assessment",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade7-technology-en-7-TECH-4-4-mastery-check-v2",
+      "minutes": 25
+    }
+  ],
+  "pacing_guidance": {
+    "lesson_block_minutes": 25,
+    "practice_block_minutes": 15,
+    "review_day": "Fri",
+    "notes": "Alternate lesson and practice days. Use recheck blueprints after practice when misconception tags were missed."
+  }
+}

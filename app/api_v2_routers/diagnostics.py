@@ -10,6 +10,7 @@ from pydantic import BaseModel, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.feature_gates import require_learner_diagnostic_enabled
 from app.core.rate_limiter import check_ai_quota
 from app.api_v2_deps.auth import AuthContext, require_auth_context
 from app.core.security import get_current_user  # noqa: F401
@@ -111,7 +112,7 @@ def _require_item_bank_admin(current_user: AuthContext) -> None:
             detail="Item bank administration requires admin role",
         )
 
-@router.get("/items/{learner_id}")
+@router.get("/items/{learner_id}", dependencies=[Depends(require_learner_diagnostic_enabled)])
 async def get_diagnostic_items(
     learner_id: str,
     request: Request,
@@ -154,7 +155,7 @@ async def get_diagnostic_items(
         for i in items
     ]
 
-@router.post("/submit", response_model=DiagnosticResult)
+@router.post("/submit", response_model=DiagnosticResult, dependencies=[Depends(require_learner_diagnostic_enabled)])
 async def submit_diagnostic(
     body: DiagnosticSubmit,
     request: Request,
@@ -349,7 +350,7 @@ class DiagnosticSessionResponseRequest(BaseModel):
     response: str | None = None
     caps_ref: str | None = None
 
-@router.post("/sessions", status_code=status.HTTP_201_CREATED)
+@router.post("/sessions", status_code=status.HTTP_201_CREATED, dependencies=[Depends(require_learner_diagnostic_enabled)])
 async def start_diagnostic_session(
     body: DiagnosticSessionStartRequest,
     db: AsyncSession = Depends(get_db),
@@ -363,7 +364,7 @@ async def start_diagnostic_session(
     snap = await service.start_session(body.learner_id, body.caps_ref, theta=body.theta)
     return snap.__dict__
 
-@router.get("/sessions/{session_id}/recover")
+@router.get("/sessions/{session_id}/recover", dependencies=[Depends(require_learner_diagnostic_enabled)])
 async def recover_diagnostic_session(
     session_id: UUID,
     db: AsyncSession = Depends(get_db),
@@ -382,7 +383,7 @@ async def recover_diagnostic_session(
     await require_active_consent_for_current_user(db, current_user, snap.learner_id)
     return snap.__dict__
 
-@router.get("/sessions/{session_id}/next-item")
+@router.get("/sessions/{session_id}/next-item", dependencies=[Depends(require_learner_diagnostic_enabled)])
 async def diagnostic_next_item(
     session_id: UUID,
     caps_ref: str,
@@ -415,7 +416,7 @@ async def diagnostic_next_item(
         "options": item.options,
     }
 
-@router.post("/sessions/{session_id}/respond")
+@router.post("/sessions/{session_id}/respond", dependencies=[Depends(require_learner_diagnostic_enabled)])
 async def diagnostic_respond(
     session_id: UUID,
     body: DiagnosticSessionResponseRequest,

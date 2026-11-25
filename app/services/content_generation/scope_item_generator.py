@@ -14,7 +14,6 @@ from app.services.content_generation.scope_mcq_templates import (
 )
 from app.services.content_generation.topic_map_source_context import TopicMapSourceContext
 
-AUTO_REVIEWER_ID = "00000000-0000-0000-0000-000000000002"
 
 # Align with DB difficultyband enum and blueprint difficulty_mix keys.
 ITEM_DIFFICULTY_BANDS = ("easy", "moderate", "on_level", "challenging")
@@ -226,8 +225,8 @@ class ScopeItemGenerator:
             "discrimination_a": round(0.95 + (index % 5) * 0.08, 2),
             "guessing_c": 0.25,
             "difficulty_band": band,
-            "review_status": "approved",
-            "reviewer_id": AUTO_REVIEWER_ID,
+            "review_status": "ai_generated",
+            "reviewer_id": None,
             "reviewed_at": "2026-06-03T00:00:00Z",
             "exposure_count": 0,
             "max_exposure": 50,

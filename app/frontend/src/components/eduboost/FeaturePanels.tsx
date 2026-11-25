@@ -2,14 +2,12 @@ import React from 'react'
 
 interface DashboardPanelProps {
   learner?: { nickname?: string; grade?: number } | null;
-  masteryData?: Record<string, number>;
   onStartLesson?: () => void;
   onStartDiag?: () => void;
 }
 
 interface DiagnosticPanelProps {
   learner?: { nickname?: string; grade?: number } | null;
-  onComplete?: (subject: string, mastery: number) => void;
   onBack?: () => void;
 }
 
@@ -18,36 +16,22 @@ interface LessonPanelProps {
   onBack?: () => void;
 }
 
-export function DashboardPanel({ learner, masteryData, onStartLesson, onStartDiag }: DashboardPanelProps) {
-  const masteryValues = masteryData ? Object.values(masteryData) : [];
-  const average = masteryValues.length
-    ? Math.round(masteryValues.reduce((total, value) => total + value, 0) / masteryValues.length)
-    : 60;
+export function DashboardPanel({ learner, onStartLesson }: DashboardPanelProps) {
   return (
     <div>
       <h2>Dashboard</h2>
       <p>Welcome, {learner?.nickname || "TestUser"}!</p>
-      <p>Overall mastery: <strong>60%</strong></p>
-      <p>{average}%</p>
+      <p>Mastery estimates and adaptive check-ins are temporarily unavailable while the question bank is reviewed.</p>
       <button onClick={onStartLesson}>Start lesson</button>
-      <button onClick={onStartDiag}>Open diagnostic</button>
     </div>
   )
 }
 
-export function DiagnosticPanel({ onComplete, onBack }: DiagnosticPanelProps) {
-  const [subject, setSubject] = React.useState<string | null>(null)
-  const [running, setRunning] = React.useState(false)
-
+export function DiagnosticPanel({ onBack }: DiagnosticPanelProps) {
   return (
     <div>
-      <h2>Diagnostic</h2>
-      <div>
-        <button onClick={() => setSubject('MATH')}>Mathematics</button>
-        <button onClick={() => setSubject('ENG')}>English</button>
-      </div>
-      <button disabled={!subject} onClick={() => { setRunning(true); if (subject) onComplete?.(subject, 80); }}>Run Diagnostic</button>
-      {running && <div>Running IRT...</div>}
+      <h2>Check-in unavailable</h2>
+      <p>The question bank is being rebuilt and independently reviewed.</p>
       <button onClick={onBack}>Back</button>
     </div>
   )

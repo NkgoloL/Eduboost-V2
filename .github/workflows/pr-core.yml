@@ -36,6 +36,8 @@ jobs:
         run: python3 -m compileall -q app tests scripts alembic
       - name: Ruff Check
         run: python3 -m ruff check app tests scripts
+      - name: Enforce fail-closed learner feature deployment flags
+        run: python3 scripts/check_learner_feature_flags.py
       - name: Test Import Integrity Audit
         run: PYTHONPATH=. python3 scripts/audit_test_imports.py
       - name: Pytest Blanket Test Collection Gate

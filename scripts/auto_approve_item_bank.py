@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-"""Apply launch auto-approval policy to a diagnostic item-bank JSON file."""
+"""Score a diagnostic item bank without creating human-review approvals."""
 from __future__ import annotations
 
 import argparse
 import json
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,7 +17,6 @@ from app.modules.diagnostics.quality_scorer import QualityScorer
 DEFAULT_INPUT = ROOT / "data" / "caps" / "grade4_maths_item_bank.json"
 DEFAULT_TOPIC_MAP = ROOT / "data" / "caps" / "caps_topic_map_grade4_maths.json"
 DEFAULT_MANIFEST_DIR = ROOT / "data" / "generated" / "run_manifests"
-AUTO_REVIEWER_ID = "00000000-0000-0000-0000-000000000002"
 
 
 def load_json(path: Path) -> dict:
@@ -39,8 +37,7 @@ def main() -> int:
     topic_map = load_json(args.topic_map)
     validator = ItemValidator(topic_map=topic_map)
     scorer = QualityScorer(topic_map=topic_map)
-    now = datetime.now(timezone.utc).isoformat()
-    stats = {"approved": 0, "review": 0, "unchanged_approved": 0, "failed": 0, "total": 0}
+    stats = {"ai_generated": 0, "requires_review": 0, "failed": 0, "total": 0}
 
     for item in seed.get("items", []):
         stats["total"] += 1
@@ -51,24 +48,29 @@ def main() -> int:
         if errors:
             stats["failed"] += 1
             item.setdefault("validation_errors", [{"rule": e.rule, "detail": e.detail} for e in errors])
+        # Automated checks never constitute human approval, including candidates
+        # that fail validation and items previously carrying a synthetic label.
+        item["review_status"] = "ai_generated"
+        item["reviewer_id"] = None
+        item["reviewed_at"] = None
+        if errors:
             continue
-        if item.get("review_status") == "approved" and score < args.threshold:
-            stats["unchanged_approved"] += 1
-            continue
-        if item.get("safety_passed") is True and score >= args.threshold:
-            item["review_status"] = "approved"
-            item["reviewer_id"] = item.get("reviewer_id") or AUTO_REVIEWER_ID
-            item["reviewed_at"] = item.get("reviewed_at") or now
-            stats["approved"] += 1
-        elif score >= args.review_threshold:
+        # Automated quality/safety checks are not educator review. Never let
+        # this script create an approval claim or synthetic reviewer identity.
+        item["reviewer_id"] = None
+        item["reviewed_at"] = None
+        if not errors and item.get("safety_passed") is True and score >= args.threshold:
             item["review_status"] = "ai_generated"
-            stats["review"] += 1
+            stats["ai_generated"] += 1
+        elif not errors and score >= args.review_threshold:
+            item["review_status"] = "ai_generated"
+            stats["requires_review"] += 1
         else:
+            item["review_status"] = "ai_generated"
             stats["failed"] += 1
 
     manifest = {
-        "operation": "auto_approve_item_bank",
-        "generated_at": now,
+        "operation": "score_item_bank_no_approval",
         "input": str(args.input),
         "threshold": args.threshold,
         "review_threshold": args.review_threshold,
@@ -76,7 +78,8 @@ def main() -> int:
         "stats": stats,
     }
     if not args.dry_run:
-        seed["generated_at"] = now
+        from datetime import datetime, timezone
+        seed["generated_at"] = datetime.now(timezone.utc).isoformat()
         args.input.write_text(json.dumps(seed, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         args.manifest_dir.mkdir(parents=True, exist_ok=True)
         (args.manifest_dir / "auto_approve_item_bank.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")

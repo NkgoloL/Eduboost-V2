@@ -5,6 +5,7 @@ from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.feature_gates import require_learner_diagnostic_enabled
 from app.api_v2_deps.auth import AuthContext, require_auth_context
 from app.core.security import get_current_user  # noqa: F401
 from app.domain.api_v2_models import AssessmentAttemptRequest
@@ -15,7 +16,7 @@ from app.security.dependencies import require_active_consent_for_current_user, r
 router = APIRouter(route_class=EnvelopedRoute, prefix="/assessments", tags=["V2 Assessments"])
 
 
-@router.get("")
+@router.get("", dependencies=[Depends(require_learner_diagnostic_enabled)])
 async def list_assessments(
     limit: int = 50,
     offset: int = 0,
@@ -28,7 +29,7 @@ async def list_assessments(
     return await service.list_assessments(limit=limit, offset=offset)
 
 
-@router.post("/{assessment_id}/attempt")
+@router.post("/{assessment_id}/attempt", dependencies=[Depends(require_learner_diagnostic_enabled)])
 async def submit_attempt(
     assessment_id: str,
     request: AssessmentAttemptRequest,

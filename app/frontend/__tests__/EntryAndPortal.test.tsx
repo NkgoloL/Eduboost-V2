@@ -91,7 +91,9 @@ describe("Entry and portal components", () => {
 
     render(<ParentDashboard onBack={vi.fn()} />);
     await waitFor(() => screen.getByText(/Parent Trust Dashboard/i));
-    await waitFor(() => screen.getByText("Great momentum this week."));
+    await waitFor(() => screen.getByText(/Parent Trust Dashboard/i));
+    expect(screen.queryByText("Great momentum this week.")).not.toBeInTheDocument();
+    expect(screen.queryByText(/Fractions/)).not.toBeInTheDocument();
 
     render(
       <InteractiveLesson
@@ -201,8 +203,10 @@ describe("Entry and portal components", () => {
     });
 
     render(<ParentDashboard onBack={vi.fn()} />);
-    await waitFor(() => screen.getByText(/No unresolved gaps/i));
-    expect(screen.getByText(/General archetype/i)).toBeInTheDocument();
+    await waitFor(() => expect(screen.getAllByText("Lebo").length).toBeGreaterThan(0));
+    expect(screen.queryByText(/No unresolved gaps/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/General archetype/i)).not.toBeInTheDocument();
+    expect(screen.queryByText("Steady and confident.")).not.toBeInTheDocument();
 
     vi.spyOn(context, "useLearner").mockReturnValue({
       learner: { learner_id: "learner-2", id: "learner-2", nickname: "Lebo", grade: 5 },

@@ -102,12 +102,12 @@ class ScopeBlueprintGenerator:
             "selection_rules": {
                 "caps_refs": refs,
                 "item_count": min(24, len(refs) * 2),
-                "review_status": "approved",
+                "review_status": "ai_generated",
                 "difficulty_mix": {"easy": 6, "moderate": 6, "on_level": 6, "challenging": 6},
                 "require_unique_stems": True,
                 "max_items_per_caps_ref": 2,
             },
-            "review_status": "approved",
+            "review_status": "ai_generated",
         }
 
     def _topic_diagnostic(
@@ -129,14 +129,14 @@ class ScopeBlueprintGenerator:
             "selection_rules": {
                 "caps_refs": [ref],
                 "item_count": 12,
-                "review_status": "approved",
+                "review_status": "ai_generated",
                 "difficulty_mix": {"easy": 3, "moderate": 3, "on_level": 3, "challenging": 3},
                 "misconception_tags": misconception_tags,
                 "require_unique_stems": True,
                 "source_context_hash": source_hash,
             },
             "linked_lesson_variant": "standard",
-            "review_status": "approved",
+            "review_status": "ai_generated",
         }
 
     def _short_practice(
@@ -157,12 +157,12 @@ class ScopeBlueprintGenerator:
             "selection_rules": {
                 "caps_refs": [ref],
                 "item_count": 8,
-                "review_status": "approved",
+                "review_status": "ai_generated",
                 "difficulty_mix": {"easy": 2, "moderate": 2, "on_level": 2, "challenging": 2},
                 "require_unique_stems": True,
             },
             "linked_lesson_variant": lesson_variant,
-            "review_status": "approved",
+            "review_status": "ai_generated",
         }
 
     def _recheck(
@@ -183,14 +183,14 @@ class ScopeBlueprintGenerator:
             "selection_rules": {
                 "caps_refs": [ref],
                 "item_count": 8,
-                "review_status": "approved",
+                "review_status": "ai_generated",
                 "difficulty_mix": {"moderate": 2, "on_level": 3, "challenging": 3},
                 "prefer_previously_missed_misconception_tags": True,
                 "misconception_tags": misconception_tags,
                 "require_unique_stems": True,
             },
             "linked_lesson_variant": "step_by_step",
-            "review_status": "approved",
+            "review_status": "ai_generated",
         }
 
     def _mastery_check(
@@ -210,10 +210,10 @@ class ScopeBlueprintGenerator:
             "selection_rules": {
                 "caps_refs": [ref],
                 "item_count": 6,
-                "review_status": "approved",
+                "review_status": "ai_generated",
                 "difficulty_mix": {"on_level": 3, "challenging": 3},
                 "require_unique_stems": True,
             },
             "linked_lesson_variant": "exam_style",
-            "review_status": "approved",
+            "review_status": "ai_generated",
         }

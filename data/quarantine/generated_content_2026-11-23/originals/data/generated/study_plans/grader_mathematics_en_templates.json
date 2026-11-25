@@ -1,0 +1,869 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T20:13:34Z",
+  "scope": "grader_mathematics_en",
+  "grade": 0,
+  "subject": "Mathematics",
+  "weekly_template": [
+    {
+      "day": "Mon",
+      "caps_ref": "R.M.1.1",
+      "topic": "Numbers, operations and relationships",
+      "activity_type": "lesson",
+      "lesson_variant": "standard",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-1-1-short-practice-v2",
+      "minutes": 40,
+      "teacher_cue": "Teach Numbers, operations and relationships using the worked examples, then set the short practice blueprint."
+    },
+    {
+      "day": "Tue",
+      "caps_ref": "R.M.1.2",
+      "topic": "Number patterns",
+      "activity_type": "practice",
+      "lesson_variant": "visual",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-1-2-short-practice-v2",
+      "minutes": 25,
+      "teacher_cue": "Run the short practice quiz for Number patterns and note missed misconception tags."
+    },
+    {
+      "day": "Wed",
+      "caps_ref": "R.M.1.3",
+      "topic": "Space and shape",
+      "activity_type": "lesson",
+      "lesson_variant": "story",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-1-3-short-practice-v2",
+      "minutes": 40,
+      "teacher_cue": "Teach Space and shape using the worked examples, then set the short practice blueprint."
+    },
+    {
+      "day": "Thu",
+      "caps_ref": "R.M.1.4",
+      "topic": "Measurement",
+      "activity_type": "practice",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-1-4-short-practice-v2",
+      "minutes": 25,
+      "teacher_cue": "Run the short practice quiz for Measurement and note missed misconception tags."
+    },
+    {
+      "day": "Fri",
+      "caps_ref": "R.M.2.1",
+      "topic": "Numbers, operations and relationships",
+      "activity_type": "review",
+      "lesson_variant": "real_world_sa",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-2-1-recheck-v2",
+      "minutes": 25,
+      "teacher_cue": "Use the recheck blueprint for Numbers, operations and relationships and assign step-by-step remediation where needed."
+    }
+  ],
+  "topic_sequence": [
+    {
+      "caps_ref": "R.M.1.1",
+      "topic": "Numbers, operations and relationships",
+      "subtopic": "Numbers, operations and relationships",
+      "term": 1,
+      "prerequisites": [],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Solve grade-appropriate problems involving numbers, operations and relationships.",
+        "Use mathematical language, representations and strategies accurately."
+      ],
+      "source_context_hash": "sha256:be7aed792174b3766d6b708cf4440eddb6465bb48165d36241d1aec00d0984f3",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "R.M.1.2",
+      "topic": "Number patterns",
+      "subtopic": "Number patterns",
+      "term": 1,
+      "prerequisites": [
+        "R.M.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Solve grade-appropriate problems involving number patterns.",
+        "Use mathematical language, representations and strategies accurately."
+      ],
+      "source_context_hash": "sha256:c534aff86b27af7f6ef5359fe27feb3583dbe66196166caff101d4e57eb92855",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "R.M.1.3",
+      "topic": "Space and shape",
+      "subtopic": "Space and shape",
+      "term": 1,
+      "prerequisites": [
+        "R.M.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Solve grade-appropriate problems involving space and shape.",
+        "Use mathematical language, representations and strategies accurately."
+      ],
+      "source_context_hash": "sha256:65dce8c4ac86a374ae3efbb6d8ffd69d8eccc10406ff8d27522bd248c8d60efe",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "R.M.1.4",
+      "topic": "Measurement",
+      "subtopic": "Measurement",
+      "term": 1,
+      "prerequisites": [
+        "R.M.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Solve grade-appropriate problems involving measurement.",
+        "Use mathematical language, representations and strategies accurately."
+      ],
+      "source_context_hash": "sha256:68cc0de1bd970cc26a5ad98d7e11d9297c4062554af2eccea8cae9e343ea4b49",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "R.M.2.1",
+      "topic": "Numbers, operations and relationships",
+      "subtopic": "Numbers, operations and relationships",
+      "term": 2,
+      "prerequisites": [
+        "R.M.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Solve grade-appropriate problems involving numbers, operations and relationships.",
+        "Use mathematical language, representations and strategies accurately."
+      ],
+      "source_context_hash": "sha256:746ffca2394521d95847dfd4ce1445a63b08499efa9b789b70fc714a89260e9c",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "R.M.2.2",
+      "topic": "Fractions",
+      "subtopic": "Fractions",
+      "term": 2,
+      "prerequisites": [
+        "R.M.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Solve grade-appropriate problems involving fractions.",
+        "Use mathematical language, representations and strategies accurately."
+      ],
+      "source_context_hash": "sha256:be197f056be864caac044dbdcafbd94ff86f0d20b365ba4d2c2c2551572a6ee5",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "R.M.2.3",
+      "topic": "Space and shape",
+      "subtopic": "Space and shape",
+      "term": 2,
+      "prerequisites": [
+        "R.M.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Solve grade-appropriate problems involving space and shape.",
+        "Use mathematical language, representations and strategies accurately."
+      ],
+      "source_context_hash": "sha256:7d2ec5b551b110966be26213f813289062939d49cfc071ba3b9cbf0a4e305483",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "R.M.2.4",
+      "topic": "Data handling",
+      "subtopic": "Data handling",
+      "term": 2,
+      "prerequisites": [
+        "R.M.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Solve grade-appropriate problems involving data handling.",
+        "Use mathematical language, representations and strategies accurately."
+      ],
+      "source_context_hash": "sha256:d46ddfe7fa36e6fe9ad4bee44f7b885934243f2e33e4f8ad23b594fce3b60b39",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "R.M.3.1",
+      "topic": "Numbers, operations and relationships",
+      "subtopic": "Numbers, operations and relationships",
+      "term": 3,
+      "prerequisites": [
+        "R.M.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Solve grade-appropriate problems involving numbers, operations and relationships.",
+        "Use mathematical language, representations and strategies accurately."
+      ],
+      "source_context_hash": "sha256:ae4c17cc385d5fe6acdc67914e7ba9428e70f60c1675f0fc7f31877eb78c0e78",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "R.M.3.2",
+      "topic": "Numeric and geometric patterns",
+      "subtopic": "Numeric and geometric patterns",
+      "term": 3,
+      "prerequisites": [
+        "R.M.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Solve grade-appropriate problems involving numeric and geometric patterns.",
+        "Use mathematical language, representations and strategies accurately."
+      ],
+      "source_context_hash": "sha256:ff7e912399f9117a91033e8806733092b4eb5299dacd302c4900aebb5a23d143",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "R.M.3.3",
+      "topic": "Measurement",
+      "subtopic": "Measurement",
+      "term": 3,
+      "prerequisites": [
+        "R.M.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Solve grade-appropriate problems involving measurement.",
+        "Use mathematical language, representations and strategies accurately."
+      ],
+      "source_context_hash": "sha256:24a22362e0a0830812a1cdeba5ee370329240060d904b1eb39477e7de40efaab",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "R.M.3.4",
+      "topic": "Data handling",
+      "subtopic": "Data handling",
+      "term": 3,
+      "prerequisites": [
+        "R.M.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Solve grade-appropriate problems involving data handling.",
+        "Use mathematical language, representations and strategies accurately."
+      ],
+      "source_context_hash": "sha256:93090470e0c6b1088f51235b12a20b87f916706c32386197b9fc7b94a4d35190",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "R.M.4.1",
+      "topic": "Whole numbers and calculations",
+      "subtopic": "Whole numbers and calculations",
+      "term": 4,
+      "prerequisites": [
+        "R.M.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Solve grade-appropriate problems involving whole numbers and calculations.",
+        "Use mathematical language, representations and strategies accurately."
+      ],
+      "source_context_hash": "sha256:9cf0333744f736b0ac2d90ab67f048fb2c15e1eae2ab2f741686057afb734c39",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "R.M.4.2",
+      "topic": "Common fractions",
+      "subtopic": "Common fractions",
+      "term": 4,
+      "prerequisites": [
+        "R.M.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Solve grade-appropriate problems involving common fractions.",
+        "Use mathematical language, representations and strategies accurately."
+      ],
+      "source_context_hash": "sha256:3a2551144661929b61bf17e91feacb9d7beb983d6df4db523dc21ee697e2f637",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "R.M.4.3",
+      "topic": "Geometry of 2-D and 3-D objects",
+      "subtopic": "Geometry of 2-D and 3-D objects",
+      "term": 4,
+      "prerequisites": [
+        "R.M.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Solve grade-appropriate problems involving geometry of 2-d and 3-d objects.",
+        "Use mathematical language, representations and strategies accurately."
+      ],
+      "source_context_hash": "sha256:a2ab2b5e3d3b327826bda51a0a1499a8c4c3b224ce9c4d1084ac4ae3f84d94d1",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "R.M.4.4",
+      "topic": "Measurement and data",
+      "subtopic": "Measurement and data",
+      "term": 4,
+      "prerequisites": [
+        "R.M.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Solve grade-appropriate problems involving measurement and data.",
+        "Use mathematical language, representations and strategies accurately."
+      ],
+      "source_context_hash": "sha256:09d2c1f301e1ca837cdf585e057c390eba06145db25b50912384b50c16c9bcaf",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    }
+  ],
+  "remediation_mappings": [
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "R.M.1.1",
+      "topic": "Numbers, operations and relationships",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "R.M.1.1",
+      "topic": "Numbers, operations and relationships",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "R.M.1.2",
+      "topic": "Number patterns",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-1-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "R.M.1.2",
+      "topic": "Number patterns",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-1-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "R.M.1.3",
+      "topic": "Space and shape",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-1-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "R.M.1.3",
+      "topic": "Space and shape",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-1-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "R.M.1.4",
+      "topic": "Measurement",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-1-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "R.M.1.4",
+      "topic": "Measurement",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-1-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "R.M.2.1",
+      "topic": "Numbers, operations and relationships",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-2-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "R.M.2.1",
+      "topic": "Numbers, operations and relationships",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-2-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "R.M.2.2",
+      "topic": "Fractions",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-2-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "R.M.2.2",
+      "topic": "Fractions",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-2-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "R.M.2.3",
+      "topic": "Space and shape",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-2-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "R.M.2.3",
+      "topic": "Space and shape",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-2-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "R.M.2.4",
+      "topic": "Data handling",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-2-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "R.M.2.4",
+      "topic": "Data handling",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-2-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "R.M.3.1",
+      "topic": "Numbers, operations and relationships",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-3-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "R.M.3.1",
+      "topic": "Numbers, operations and relationships",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-3-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "R.M.3.2",
+      "topic": "Numeric and geometric patterns",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-3-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "R.M.3.2",
+      "topic": "Numeric and geometric patterns",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-3-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "R.M.3.3",
+      "topic": "Measurement",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-3-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "R.M.3.3",
+      "topic": "Measurement",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-3-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "R.M.3.4",
+      "topic": "Data handling",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-3-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "R.M.3.4",
+      "topic": "Data handling",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-3-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "R.M.4.1",
+      "topic": "Whole numbers and calculations",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-4-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "R.M.4.1",
+      "topic": "Whole numbers and calculations",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-4-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "R.M.4.2",
+      "topic": "Common fractions",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-4-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "R.M.4.2",
+      "topic": "Common fractions",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-4-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "R.M.4.3",
+      "topic": "Geometry of 2-D and 3-D objects",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-4-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "R.M.4.3",
+      "topic": "Geometry of 2-D and 3-D objects",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-4-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "R.M.4.4",
+      "topic": "Measurement and data",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-4-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "R.M.4.4",
+      "topic": "Measurement and data",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-4-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    }
+  ],
+  "extension_mappings": [
+    {
+      "caps_ref": "R.M.1.1",
+      "topic": "Numbers, operations and relationships",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-1-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "R.M.1.2",
+      "topic": "Number patterns",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-1-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "R.M.1.3",
+      "topic": "Space and shape",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-1-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "R.M.1.4",
+      "topic": "Measurement",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-1-4-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "R.M.2.1",
+      "topic": "Numbers, operations and relationships",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-2-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "R.M.2.2",
+      "topic": "Fractions",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-2-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "R.M.2.3",
+      "topic": "Space and shape",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-2-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "R.M.2.4",
+      "topic": "Data handling",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-2-4-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "R.M.3.1",
+      "topic": "Numbers, operations and relationships",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-3-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "R.M.3.2",
+      "topic": "Numeric and geometric patterns",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-3-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "R.M.3.3",
+      "topic": "Measurement",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-3-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "R.M.3.4",
+      "topic": "Data handling",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-3-4-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "R.M.4.1",
+      "topic": "Whole numbers and calculations",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-4-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "R.M.4.2",
+      "topic": "Common fractions",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-4-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "R.M.4.3",
+      "topic": "Geometry of 2-D and 3-D objects",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-4-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "R.M.4.4",
+      "topic": "Measurement and data",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grader-mathematics-en-R-M-4-4-mastery-check-v2",
+      "minutes": 25
+    }
+  ],
+  "pacing_guidance": {
+    "lesson_block_minutes": 25,
+    "practice_block_minutes": 15,
+    "review_day": "Fri",
+    "notes": "Alternate lesson and practice days. Use recheck blueprints after practice when misconception tags were missed."
+  }
+}

@@ -1,0 +1,1801 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T19:39:35Z",
+  "scope": "grade4_natural_sciences_and_technology_en",
+  "grade": 4,
+  "subject": "Natural Sciences and Technology",
+  "source_item_bank": "diagnostic_items",
+  "item_difficulty_bands": [
+    "easy",
+    "moderate",
+    "on_level",
+    "challenging"
+  ],
+  "blueprints": [
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-baseline-diagnostic-v2",
+      "type": "baseline_diagnostic",
+      "title": "Grade 4 Natural Sciences and Technology Baseline Diagnostic",
+      "description": "Samples approved items across all 18 CAPS topics in grade4_natural_sciences_and_technology_en to establish a starting mastery profile.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.1",
+          "4.NST.1.2",
+          "4.NST.1.3",
+          "4.NST.1.4",
+          "4.NST.1.5",
+          "4.NST.2.1",
+          "4.NST.2.2",
+          "4.NST.2.3",
+          "4.NST.2.4",
+          "4.NST.3.1",
+          "4.NST.3.2",
+          "4.NST.3.3",
+          "4.NST.3.4",
+          "4.NST.4.1",
+          "4.NST.4.2",
+          "4.NST.4.3",
+          "4.NST.4.4",
+          "4.NST.4.5"
+        ],
+        "item_count": 24,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 6,
+          "moderate": 6,
+          "on_level": 6,
+          "challenging": 6
+        },
+        "require_unique_stems": true,
+        "max_items_per_caps_ref": 2
+      },
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-1-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Living and non-living things Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.NST.1.1 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.1"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "germs_not_recognised_as_living",
+          "dormant_seeds_classified_as_non_living",
+          "fire_or_rivers_classified_as_living",
+          "dead_plant_material_classified_as_never_living"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:fb46cdefaf1e8376772a803b9ddf25a06ffb92351c2f1c4f8fbccba20e9522d3"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-1-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Living and non-living things Short Practice",
+      "description": "Short practice quiz after the standard lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-1-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Living and non-living things Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "germs_not_recognised_as_living",
+          "dormant_seeds_classified_as_non_living",
+          "fire_or_rivers_classified_as_living",
+          "dead_plant_material_classified_as_never_living"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-1-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Living and non-living things Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.1"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-2-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Structure of plants and animals Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.NST.1.2 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.2"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "fruit_not_understood_as_plant_part",
+          "roots_ignored_because_they_are_not_visible",
+          "all_animals_assumed_to_have_same_limbs",
+          "body_covering_confused_with_habitat"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:bb5b7ae4d22ee0f9093956a02729bd1d0ec7bb45232295b0605fa779a3705a10"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-2-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Structure of plants and animals Short Practice",
+      "description": "Short practice quiz after the visual lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "visual",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-2-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Structure of plants and animals Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "fruit_not_understood_as_plant_part",
+          "roots_ignored_because_they_are_not_visible",
+          "all_animals_assumed_to_have_same_limbs",
+          "body_covering_confused_with_habitat"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-2-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Structure of plants and animals Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.2"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-3-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "What plants need to grow Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.NST.1.3 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.3"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "soil_seen_as_only_requirement_for_growth",
+          "germination_confused_with_flowering"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:8b948f671ecd2a287e6f78631ab326c1755a40c8b46d1c12683f9b27934bccf1"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-3-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "What plants need to grow Short Practice",
+      "description": "Short practice quiz after the story lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "story",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-3-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "What plants need to grow Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "soil_seen_as_only_requirement_for_growth",
+          "germination_confused_with_flowering"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-3-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "What plants need to grow Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.3"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-4-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Habitats of animals Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.NST.1.4 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.4"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "habitat_seen_as_only_a_house",
+          "animals_assumed_to_survive_in_any_habitat"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:e5d3adf53f223ca6c6b941ba48da8cfab1618a92735824884ae1625c484a4804"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-4-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Habitats of animals Short Practice",
+      "description": "Short practice quiz after the step by step lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-4-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Habitats of animals Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "habitat_seen_as_only_a_house",
+          "animals_assumed_to_survive_in_any_habitat"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-4-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Habitats of animals Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.4"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-5-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Structures for animal shelters Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.NST.1.5 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.5"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "all_shelters_seen_as_human_made",
+          "structure_type_confused_with_material",
+          "design_judged_only_by_appearance",
+          "materials_selected_without_link_to_purpose"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:10613a1bfabc1c7741ae6a61febba49eebaa7ba5bda035c946e74529e29d5ab5"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-5-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Structures for animal shelters Short Practice",
+      "description": "Short practice quiz after the real world sa lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.5"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "real_world_sa",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-5-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Structures for animal shelters Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.5"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "all_shelters_seen_as_human_made",
+          "structure_type_confused_with_material",
+          "design_judged_only_by_appearance",
+          "materials_selected_without_link_to_purpose"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-1-5-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Structures for animal shelters Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.1.5"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-2-1-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Materials around us Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.NST.2.1 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.2.1"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "air_not_recognised_as_matter",
+          "powders_classified_as_liquids_because_they_pour",
+          "evaporation_seen_as_water_disappearing",
+          "melting_and_dissolving_confused"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:a57d6dd83f7317ac14bb162ea1283959e20074be54dfcd3ff34b006e88f4a994"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-2-1-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Materials around us Short Practice",
+      "description": "Short practice quiz after the exam style lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.2.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-2-1-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Materials around us Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.2.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "air_not_recognised_as_matter",
+          "powders_classified_as_liquids_because_they_pour",
+          "evaporation_seen_as_water_disappearing",
+          "melting_and_dissolving_confused"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-2-1-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Materials around us Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.2.1"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-2-2-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Solid materials Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.NST.2.2 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.2.2"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "manufactured_materials_seen_as_natural",
+          "raw_material_source_not_linked_to_product",
+          "strong_confused_with_hard",
+          "waterproof_confused_with_absorbent"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:9cbb1aa3c95797bbd1b0d6fcaf1345860dcad471bd58dcabf34555e9a91ebdc7"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-2-2-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Solid materials Short Practice",
+      "description": "Short practice quiz after the standard lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.2.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-2-2-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Solid materials Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.2.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "manufactured_materials_seen_as_natural",
+          "raw_material_source_not_linked_to_product",
+          "strong_confused_with_hard",
+          "waterproof_confused_with_absorbent"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-2-2-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Solid materials Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.2.2"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-2-3-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Strengthening materials Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.NST.2.3 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.2.3"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "thicker_always_assumed_stronger",
+          "test_results_not_linked_to_shape"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:d39d8352de6a8caa3f266f905139d42154aa4ad8f44946fd554bded487208175"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-2-3-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Strengthening materials Short Practice",
+      "description": "Short practice quiz after the visual lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.2.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "visual",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-2-3-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Strengthening materials Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.2.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "thicker_always_assumed_stronger",
+          "test_results_not_linked_to_shape"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-2-3-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Strengthening materials Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.2.3"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-2-4-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Strong frame structures Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.NST.2.4 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.2.4"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "square_frames_assumed_as_stable_as_triangles",
+          "struts_confused_with_solid_walls",
+          "indigenous_structures_seen_as_not_engineered",
+          "framework_hidden_by_covering_material"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:11ed4e0892e4f46a791a4c0d17a13b597a9b12f9c1331e2ed65603f2ea7fd166"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-2-4-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Strong frame structures Short Practice",
+      "description": "Short practice quiz after the story lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.2.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "story",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-2-4-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Strong frame structures Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.2.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "square_frames_assumed_as_stable_as_triangles",
+          "struts_confused_with_solid_walls",
+          "indigenous_structures_seen_as_not_engineered",
+          "framework_hidden_by_covering_material"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-2-4-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Strong frame structures Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.2.4"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-3-1-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Energy and energy transfer Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.NST.3.1 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.3.1"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "energy_seen_only_as_electricity",
+          "arrows_in_food_chains_reversed"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:5bdbb09308ccdc1cb95c3b5010a3950a6140661a7294fdc3891704ab90df5da2"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-3-1-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Energy and energy transfer Short Practice",
+      "description": "Short practice quiz after the step by step lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.3.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-3-1-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Energy and energy transfer Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.3.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "energy_seen_only_as_electricity",
+          "arrows_in_food_chains_reversed"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-3-1-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Energy and energy transfer Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.3.1"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-3-2-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Energy around us Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.NST.3.2 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.3.2"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "input_and_output_energy_swapped",
+          "stored_energy_not_recognised_until_used"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:1bf163a65b9a757a63c4a7363bc20310ff8e2fe2422db1c275a4e1a70e4cf999"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-3-2-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Energy around us Short Practice",
+      "description": "Short practice quiz after the real world sa lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.3.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "real_world_sa",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-3-2-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Energy around us Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.3.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "input_and_output_energy_swapped",
+          "stored_energy_not_recognised_until_used"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-3-2-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Energy around us Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.3.2"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-3-3-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Movement and energy in a system Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.NST.3.3 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.3.3"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "sound_seen_as_not_energy",
+          "instrument_system_parts_not_connected_to_output"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:64b8f244890b9b9d3bb2a095b14d7e8f8738e3863af88f79f903afdb92dfe5db"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-3-3-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Movement and energy in a system Short Practice",
+      "description": "Short practice quiz after the exam style lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.3.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-3-3-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Movement and energy in a system Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.3.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "sound_seen_as_not_energy",
+          "instrument_system_parts_not_connected_to_output"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-3-3-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Movement and energy in a system Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.3.3"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-3-4-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Energy and sound Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.NST.3.4 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.3.4"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "sound_travels_only_through_air",
+          "vibration_not_linked_to_sound_source",
+          "pitch_confused_with_volume",
+          "temporary_loudness_not_distinguished_from_noise_pollution"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:7a301e0a31b265e2138b4de2bbdb43c7793bac2bd100801ca7ecdc6804ea88f1"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-3-4-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Energy and sound Short Practice",
+      "description": "Short practice quiz after the standard lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.3.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-3-4-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Energy and sound Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.3.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "sound_travels_only_through_air",
+          "vibration_not_linked_to_sound_source",
+          "pitch_confused_with_volume",
+          "temporary_loudness_not_distinguished_from_noise_pollution"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-3-4-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Energy and sound Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.3.4"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-1-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Planet Earth Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.NST.4.1 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.1"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "earth_seen_as_flat_from_local_view",
+          "air_not_seen_as_part_of_earth_system",
+          "sun_and_moon_seen_as_same_type_of_object",
+          "stars_seen_as_tiny_nearby_lights"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:90d5b239c2fecec7f60a4c2c1753e06b8aa2153e6126f864ced0a60aa1364066"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-1-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Planet Earth Short Practice",
+      "description": "Short practice quiz after the visual lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "visual",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-1-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Planet Earth Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.1"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "earth_seen_as_flat_from_local_view",
+          "air_not_seen_as_part_of_earth_system",
+          "sun_and_moon_seen_as_same_type_of_object",
+          "stars_seen_as_tiny_nearby_lights"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-1-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Planet Earth Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.1"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-2-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "The Sun Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.NST.4.2 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.2"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "sun_seen_as_a_planet",
+          "closest_star_confused_with_nearby_object"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:dc2a69182acc6d5c5de3d588d231c7a9b1e12efa1d1cc0cf93951a62d48bd651"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-2-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "The Sun Short Practice",
+      "description": "Short practice quiz after the story lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "story",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-2-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "The Sun Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.2"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "sun_seen_as_a_planet",
+          "closest_star_confused_with_nearby_object"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-2-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "The Sun Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.2"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-3-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "The Earth and the Sun Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.NST.4.3 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.3"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "sun_orbits_earth",
+          "pluto_counted_as_one_of_eight_planets"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:3318c0e3dbde8d6b573019de4c99319d39e36d0668a044af8c34d3b7d1155c0f"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-3-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "The Earth and the Sun Short Practice",
+      "description": "Short practice quiz after the step by step lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-3-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "The Earth and the Sun Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.3"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "sun_orbits_earth",
+          "pluto_counted_as_one_of_eight_planets"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-3-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "The Earth and the Sun Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.3"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-4-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "The Moon Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.NST.4.4 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.4"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "moon_makes_its_own_light",
+          "moon_phase_changes_caused_by_earth_shadow_each_night",
+          "cultural_stories_treated_as_scientific_measurements",
+          "science_learning_seen_as_excluding_culture"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:0acaf7ef49a407c9dfea00d831b61ec2256759cdaccc182a18e4d246d44a83c8"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-4-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "The Moon Short Practice",
+      "description": "Short practice quiz after the real world sa lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "real_world_sa",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-4-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "The Moon Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.4"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "moon_makes_its_own_light",
+          "moon_phase_changes_caused_by_earth_shadow_each_night",
+          "cultural_stories_treated_as_scientific_measurements",
+          "science_learning_seen_as_excluding_culture"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-4-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "The Moon Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.4"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-5-topic-diagnostic-v2",
+      "type": "topic_diagnostic",
+      "title": "Rocket systems Topic Diagnostic",
+      "description": "Diagnostic covering CAPS 4.NST.4.5 with balanced difficulty and misconception coverage.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.5"
+        ],
+        "item_count": 12,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 3,
+          "moderate": 3,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "misconception_tags": [
+          "rocket_moves_because_air_pushes_from_front",
+          "model_results_not_linked_to_system_variables"
+        ],
+        "require_unique_stems": true,
+        "source_context_hash": "sha256:290d6b31e1244ece7bc2035eb2775c56131c2cd7659fc385ab238cfd740ba4f4"
+      },
+      "linked_lesson_variant": "standard",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-5-short-practice-v2",
+      "type": "short_practice_quiz",
+      "title": "Rocket systems Short Practice",
+      "description": "Short practice quiz after the exam style lesson variant.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.5"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "easy": 2,
+          "moderate": 2,
+          "on_level": 2,
+          "challenging": 2
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-5-recheck-v2",
+      "type": "recheck_assessment",
+      "title": "Rocket systems Recheck",
+      "description": "Targets previously missed misconceptions with on-level and challenging items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.5"
+        ],
+        "item_count": 8,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "moderate": 2,
+          "on_level": 3,
+          "challenging": 3
+        },
+        "prefer_previously_missed_misconception_tags": true,
+        "misconception_tags": [
+          "rocket_moves_because_air_pushes_from_front",
+          "model_results_not_linked_to_system_variables"
+        ],
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "step_by_step",
+      "review_status": "approved"
+    },
+    {
+      "blueprint_id": "grade4-natural-sciences-and-technology-en-4-NST-4-5-mastery-check-v2",
+      "type": "mastery_check",
+      "title": "Rocket systems Mastery Check",
+      "description": "End-of-topic check emphasising on-level and challenging application items.",
+      "selection_rules": {
+        "caps_refs": [
+          "4.NST.4.5"
+        ],
+        "item_count": 6,
+        "review_status": "approved",
+        "difficulty_mix": {
+          "on_level": 3,
+          "challenging": 3
+        },
+        "require_unique_stems": true
+      },
+      "linked_lesson_variant": "exam_style",
+      "review_status": "approved"
+    }
+  ]
+}

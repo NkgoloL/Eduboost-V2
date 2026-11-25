@@ -144,6 +144,10 @@ class Settings(BaseSettings):
     PASSWORD_PASSPHRASE_MIN_LENGTH: int = 16
     PASSWORD_BCRYPT_ROUNDS: int = 12
     CONTENT_STARTUP_SEED_ENABLED: bool = False
+    # Learner diagnostics/mastery are closed until an independently reviewed pilot is authorized.
+    LEARNER_DIAGNOSTIC_ENABLED: bool = False
+    LEARNER_MASTERY_VIEW_ENABLED: bool = False
+    LEARNER_PILOT_AUTHORIZATION: bool = False
 
     # ── CORS ──────────────────────────────────────────────────────────────────
     ALLOWED_ORIGINS: str | list[str] = ["http://localhost:3000", "http://localhost:3002", "http://localhost:3050"]
@@ -251,6 +255,12 @@ class Settings(BaseSettings):
                 setattr(self, field_name, value)
                 updated.add(field_name)
         return updated
+
+    @model_validator(mode="after")
+    def require_pilot_authorization_for_learner_features(self) -> "Settings":
+        if (self.LEARNER_DIAGNOSTIC_ENABLED or self.LEARNER_MASTERY_VIEW_ENABLED) and not self.LEARNER_PILOT_AUTHORIZATION:
+            raise ValueError("Learner diagnostics/mastery require LEARNER_PILOT_AUTHORIZATION=true")
+        return self
 
     @model_validator(mode="after")
     def load_production_secrets_from_key_vault(self) -> "Settings":

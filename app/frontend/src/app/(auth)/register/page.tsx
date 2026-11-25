@@ -187,7 +187,7 @@ export default function RegisterPage() {
               aria-describedby={fieldErrors.consent ? `consent-help ${errorId("consent")}` : "consent-help"}
             />
             <span>
-              I am the learner&apos;s guardian and consent to EduBoost processing this learner&apos;s information for diagnostics, lessons, progress tracking, and parent reporting.
+              I am the learner&apos;s guardian and consent to EduBoost processing this learner&apos;s information for lessons, learning activity, game progress, and parent reporting.
             </span>
           </label>
           <p id="consent-help" className="form-hint">You can export, restrict, or request erasure of learner data from the parent dashboard.</p>

@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-import { InteractiveDiagnostic } from "@/components/eduboost/InteractiveDiagnostic";
 import { DiagnosticSkeleton } from "@/components/learner/DiagnosticSkeleton";
 import { useLearner } from "@/context/LearnerContext";
 import type { ActiveLearner, SubjectCode } from "@/lib/api/types";
@@ -14,7 +13,7 @@ interface DiagnosticEntryClientProps {
 }
 
 export function DiagnosticEntryClient({ initialLearner }: DiagnosticEntryClientProps) {
-  const { learner, setLearner, setMasteryData } = useLearner();
+  const { learner, setLearner } = useLearner();
   const router = useRouter();
 
   useEffect(() => {
@@ -28,13 +27,10 @@ export function DiagnosticEntryClient({ initialLearner }: DiagnosticEntryClientP
   }
 
   return (
-    <InteractiveDiagnostic
-      learner={learner}
-      onComplete={(subject: SubjectCode, mastery: number) => {
-        setMasteryData((prev) => ({ ...prev, [subject]: mastery }));
-        router.push("/plan");
-      }}
-      onBack={() => router.push("/dashboard")}
-    />
+    <main className="mx-auto max-w-3xl p-8" aria-live="polite">
+      <h1 className="text-3xl font-bold">Check-ins are temporarily unavailable</h1>
+      <p className="mt-4 text-lg">The Grade 4 question bank is being rebuilt and reviewed by educators. You can continue with lessons; no mastery or placement score will be shown.</p>
+      <button type="button" className="mt-6 rounded bg-blue-700 px-5 py-3 text-white" onClick={() => router.push("/dashboard")}>Return to dashboard</button>
+    </main>
   );
 }

@@ -22,6 +22,7 @@ from app.models.content_factory import (
     ContentProductionArtifact,
 )
 from app.services.content_scope_registry import ContentScopeRegistry
+from app.core.config import settings
 
 
 @dataclass
@@ -158,6 +159,8 @@ class ContentLearnerReadService:
         """
         from app.models.content_factory import ContentLayer
 
+        if not settings.LEARNER_DIAGNOSTIC_ENABLED:
+            return []
         self._require_learner_visible_scope(scope_id)
 
         # Query production artifacts for diagnostic items

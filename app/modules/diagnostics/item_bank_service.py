@@ -217,6 +217,11 @@ class ItemBankService:
             raise ValueError(
                 f"reviewer_id is required to transition an item to '{new_status}'"
             )
+        if new_status in {"human_reviewed", "approved"} and str(reviewer_id) in {
+            "00000000-0000-0000-0000-000000000001",
+            "00000000-0000-0000-0000-000000000002",
+        }:
+            raise ValueError("synthetic reviewer identities cannot approve learner content")
 
         return await self.repo.update_review_status(
             item_id=item_id,

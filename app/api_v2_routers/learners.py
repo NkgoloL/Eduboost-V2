@@ -6,6 +6,7 @@ from app.core.envelope_route import EnvelopedRoute
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.database import get_db
+from app.core.feature_gates import require_learner_mastery_view_enabled
 from app.core.logging import get_logger
 from app.api_v2_deps.auth import AuthContext, require_auth_context, require_parent_or_admin
 from app.core.security import get_current_user  # noqa: F401
@@ -49,7 +50,7 @@ async def get_learner(
     return LearnerResponse.model_validate(learner)
 
 
-@router.get("/{learner_id}/mastery")
+@router.get("/{learner_id}/mastery", dependencies=[Depends(require_learner_mastery_view_enabled)])
 async def get_mastery(
     learner_id: str,
     db: AsyncSession = Depends(get_db),
@@ -65,7 +66,7 @@ async def get_mastery(
     return await svc.get_mastery(learner_id, actor_id=current_user.user_id)
 
 
-@router.get("/{learner_id}/mastery/summary")
+@router.get("/{learner_id}/mastery/summary", dependencies=[Depends(require_learner_mastery_view_enabled)])
 async def get_mastery_summary(
     learner_id: str,
     db: AsyncSession = Depends(get_db),
@@ -80,7 +81,7 @@ async def get_mastery_summary(
     return await svc.get_subject_mastery_summary(learner_id)
 
 
-@router.get("/{learner_id}/mastery/{caps_ref}")
+@router.get("/{learner_id}/mastery/{caps_ref}", dependencies=[Depends(require_learner_mastery_view_enabled)])
 async def get_topic_mastery(
     learner_id: str,
     caps_ref: str,

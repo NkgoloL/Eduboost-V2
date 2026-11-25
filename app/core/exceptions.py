@@ -37,6 +37,11 @@ class NotFoundError(EduBoostError):
     error_code = "not_found"
 
 
+class FeatureDisabledError(EduBoostError):
+    status_code = status.HTTP_403_FORBIDDEN
+    error_code = "feature_disabled"
+
+
 class ConsentRequiredError(EduBoostError):
     status_code = status.HTTP_403_FORBIDDEN
     error_code = "consent_required"

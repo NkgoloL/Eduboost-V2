@@ -1,0 +1,869 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-03T19:40:06Z",
+  "scope": "grade5_natural_sciences_and_technology_en",
+  "grade": 5,
+  "subject": "Natural Sciences and Technology",
+  "weekly_template": [
+    {
+      "day": "Mon",
+      "caps_ref": "5.NST.1.1",
+      "topic": "Life and living",
+      "activity_type": "lesson",
+      "lesson_variant": "standard",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-1-1-short-practice-v2",
+      "minutes": 40,
+      "teacher_cue": "Teach Life and living using the worked examples, then set the short practice blueprint."
+    },
+    {
+      "day": "Tue",
+      "caps_ref": "5.NST.1.2",
+      "topic": "Structures and animal shelters",
+      "activity_type": "practice",
+      "lesson_variant": "visual",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-1-2-short-practice-v2",
+      "minutes": 25,
+      "teacher_cue": "Run the short practice quiz for Structures and animal shelters and note missed misconception tags."
+    },
+    {
+      "day": "Wed",
+      "caps_ref": "5.NST.1.3",
+      "topic": "Practical investigations",
+      "activity_type": "lesson",
+      "lesson_variant": "story",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-1-3-short-practice-v2",
+      "minutes": 40,
+      "teacher_cue": "Teach Practical investigations using the worked examples, then set the short practice blueprint."
+    },
+    {
+      "day": "Thu",
+      "caps_ref": "5.NST.1.4",
+      "topic": "Assessment",
+      "activity_type": "practice",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-1-4-short-practice-v2",
+      "minutes": 25,
+      "teacher_cue": "Run the short practice quiz for Assessment and note missed misconception tags."
+    },
+    {
+      "day": "Fri",
+      "caps_ref": "5.NST.2.1",
+      "topic": "Matter and materials",
+      "activity_type": "review",
+      "lesson_variant": "real_world_sa",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-2-1-recheck-v2",
+      "minutes": 25,
+      "teacher_cue": "Use the recheck blueprint for Matter and materials and assign step-by-step remediation where needed."
+    }
+  ],
+  "topic_sequence": [
+    {
+      "caps_ref": "5.NST.1.1",
+      "topic": "Life and living",
+      "subtopic": "Life and living",
+      "term": 1,
+      "prerequisites": [],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to life and living.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:db8508343223316e70b551e0a0d7e9bb2e53b472b9e42c7be931777bdae9ba11",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "5.NST.1.2",
+      "topic": "Structures and animal shelters",
+      "subtopic": "Structures and animal shelters",
+      "term": 1,
+      "prerequisites": [
+        "5.NST.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to structures and animal shelters.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:4488c6060b4e5e7c1563bb09f4222bb3d58a84ec662753cc8be4f05b563d0af7",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "5.NST.1.3",
+      "topic": "Practical investigations",
+      "subtopic": "Practical investigations",
+      "term": 1,
+      "prerequisites": [
+        "5.NST.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to practical investigations.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:7d89223dfc917fc646f400a18d49ad1e8b72b74ce5197480c4f864c055b4d928",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "5.NST.1.4",
+      "topic": "Assessment",
+      "subtopic": "Assessment",
+      "term": 1,
+      "prerequisites": [
+        "5.NST.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to assessment.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:8d82c515087237843a7d2a042283037e8a5da271100c19ce913150340fa3e66f",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "5.NST.2.1",
+      "topic": "Matter and materials",
+      "subtopic": "Matter and materials",
+      "term": 2,
+      "prerequisites": [
+        "5.NST.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to matter and materials.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:b312e41771cb62be2315d242b134b81285e9866f483ee2bb5f8c121f1bb11e0c",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "5.NST.2.2",
+      "topic": "Structures and strengthening materials",
+      "subtopic": "Structures and strengthening materials",
+      "term": 2,
+      "prerequisites": [
+        "5.NST.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to structures and strengthening materials.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:88e4cbd216feb24e7ed8bd21753b37ea15129f6c9f8e768f476fde34e8c19e09",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "5.NST.2.3",
+      "topic": "Practical investigations",
+      "subtopic": "Practical investigations",
+      "term": 2,
+      "prerequisites": [
+        "5.NST.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to practical investigations.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:be528952e17bf4a70f2e5e9b473f1a4a68a1816da58db34dbe81094e237e53e4",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "5.NST.2.4",
+      "topic": "Assessment",
+      "subtopic": "Assessment",
+      "term": 2,
+      "prerequisites": [
+        "5.NST.1.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to assessment.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:01f97821b15954331e7c000a144b69a28cb77e658379bc871992b06a11a3a5c3",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "5.NST.3.1",
+      "topic": "Energy and change",
+      "subtopic": "Energy and change",
+      "term": 3,
+      "prerequisites": [
+        "5.NST.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to energy and change.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:64fadc2d88914261426c50ed8d070cabca5daef2f05f24e42d32fa2f2f975974",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "5.NST.3.2",
+      "topic": "Systems and control",
+      "subtopic": "Systems and control",
+      "term": 3,
+      "prerequisites": [
+        "5.NST.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to systems and control.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:965aaf0f360ceba1fee5ea18aea12c81301ad2167cbdd4b8572a61f2a16bf423",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "5.NST.3.3",
+      "topic": "Sound and movement",
+      "subtopic": "Sound and movement",
+      "term": 3,
+      "prerequisites": [
+        "5.NST.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to sound and movement.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:a8c12ed554131af317cd06cba65a99415793f457e958db5a6a342c5145c32c79",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "5.NST.3.4",
+      "topic": "Assessment",
+      "subtopic": "Assessment",
+      "term": 3,
+      "prerequisites": [
+        "5.NST.2.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to assessment.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:ebfa99c990dd8bfb67569ab36fc6b3b888da95365240852177c382ec782e5d97",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "5.NST.4.1",
+      "topic": "Planet Earth and beyond",
+      "subtopic": "Planet Earth and beyond",
+      "term": 4,
+      "prerequisites": [
+        "5.NST.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to planet earth and beyond.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:0788b19e1c7baab662c98ce168d0ad34f5ee453d7d87cbb307215ae93fa35128",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "5.NST.4.2",
+      "topic": "Rocket systems",
+      "subtopic": "Rocket systems",
+      "term": 4,
+      "prerequisites": [
+        "5.NST.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to rocket systems.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:d538c83526b16a408c0f180c945afd5e040deaf3ef3ec7ee4bd520ba540a02e5",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "5.NST.4.3",
+      "topic": "Space models",
+      "subtopic": "Space models",
+      "term": 4,
+      "prerequisites": [
+        "5.NST.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to space models.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:593405b4a4f3ef6f8fdd36e59682ea9f930d4d21992d9b2dfab6f6494e7e4d77",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    },
+    {
+      "caps_ref": "5.NST.4.4",
+      "topic": "Assessment",
+      "subtopic": "Assessment",
+      "term": 4,
+      "prerequisites": [
+        "5.NST.3.1"
+      ],
+      "misconception_tags": [
+        "topic_vocabulary_confusion",
+        "procedure_without_conceptual_understanding"
+      ],
+      "assessment_standards": [
+        "Explain core concepts related to assessment.",
+        "Use CAPS enquiry, practical, creative or source-work skills for the topic."
+      ],
+      "source_context_hash": "sha256:9c5f984e75c372d7cd49c5a3b8b09a2ae6cc32463ea8b77af706e63ac98ba679",
+      "recommended_lesson_variants": [
+        "standard",
+        "visual",
+        "story",
+        "step_by_step"
+      ]
+    }
+  ],
+  "remediation_mappings": [
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "5.NST.1.1",
+      "topic": "Life and living",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "5.NST.1.1",
+      "topic": "Life and living",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-1-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "5.NST.1.2",
+      "topic": "Structures and animal shelters",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-1-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "5.NST.1.2",
+      "topic": "Structures and animal shelters",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-1-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "5.NST.1.3",
+      "topic": "Practical investigations",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-1-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "5.NST.1.3",
+      "topic": "Practical investigations",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-1-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "5.NST.1.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-1-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "5.NST.1.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-1-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "5.NST.2.1",
+      "topic": "Matter and materials",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-2-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "5.NST.2.1",
+      "topic": "Matter and materials",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-2-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "5.NST.2.2",
+      "topic": "Structures and strengthening materials",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-2-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "5.NST.2.2",
+      "topic": "Structures and strengthening materials",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-2-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "5.NST.2.3",
+      "topic": "Practical investigations",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-2-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "5.NST.2.3",
+      "topic": "Practical investigations",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-2-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "5.NST.2.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-2-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "5.NST.2.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-2-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "5.NST.3.1",
+      "topic": "Energy and change",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-3-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "5.NST.3.1",
+      "topic": "Energy and change",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-3-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "5.NST.3.2",
+      "topic": "Systems and control",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-3-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "5.NST.3.2",
+      "topic": "Systems and control",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-3-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "5.NST.3.3",
+      "topic": "Sound and movement",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-3-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "5.NST.3.3",
+      "topic": "Sound and movement",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-3-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "5.NST.3.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-3-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "5.NST.3.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-3-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "5.NST.4.1",
+      "topic": "Planet Earth and beyond",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-4-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "5.NST.4.1",
+      "topic": "Planet Earth and beyond",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-4-1-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "5.NST.4.2",
+      "topic": "Rocket systems",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-4-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "5.NST.4.2",
+      "topic": "Rocket systems",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-4-2-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "5.NST.4.3",
+      "topic": "Space models",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-4-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "5.NST.4.3",
+      "topic": "Space models",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-4-3-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "topic_vocabulary_confusion",
+      "caps_ref": "5.NST.4.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-4-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    },
+    {
+      "misconception_tag": "procedure_without_conceptual_understanding",
+      "caps_ref": "5.NST.4.4",
+      "topic": "Assessment",
+      "lesson_variant": "step_by_step",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-4-4-recheck-v2",
+      "activity_type": "remediation",
+      "minutes": 20
+    }
+  ],
+  "extension_mappings": [
+    {
+      "caps_ref": "5.NST.1.1",
+      "topic": "Life and living",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-1-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "5.NST.1.2",
+      "topic": "Structures and animal shelters",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-1-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "5.NST.1.3",
+      "topic": "Practical investigations",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-1-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "5.NST.1.4",
+      "topic": "Assessment",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-1-4-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "5.NST.2.1",
+      "topic": "Matter and materials",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-2-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "5.NST.2.2",
+      "topic": "Structures and strengthening materials",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-2-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "5.NST.2.3",
+      "topic": "Practical investigations",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-2-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "5.NST.2.4",
+      "topic": "Assessment",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-2-4-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "5.NST.3.1",
+      "topic": "Energy and change",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-3-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "5.NST.3.2",
+      "topic": "Systems and control",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-3-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "5.NST.3.3",
+      "topic": "Sound and movement",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-3-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "5.NST.3.4",
+      "topic": "Assessment",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-3-4-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "5.NST.4.1",
+      "topic": "Planet Earth and beyond",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-4-1-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "5.NST.4.2",
+      "topic": "Rocket systems",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-4-2-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "5.NST.4.3",
+      "topic": "Space models",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-4-3-mastery-check-v2",
+      "minutes": 25
+    },
+    {
+      "caps_ref": "5.NST.4.4",
+      "topic": "Assessment",
+      "lesson_variant": "exam_style",
+      "activity_type": "challenge",
+      "assessment_blueprint_id": "grade5-natural-sciences-and-technology-en-5-NST-4-4-mastery-check-v2",
+      "minutes": 25
+    }
+  ],
+  "pacing_guidance": {
+    "lesson_block_minutes": 25,
+    "practice_block_minutes": 15,
+    "review_day": "Fri",
+    "notes": "Alternate lesson and practice days. Use recheck blueprints after practice when misconception tags were missed."
+  }
+}

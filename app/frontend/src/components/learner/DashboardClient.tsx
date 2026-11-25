@@ -11,12 +11,11 @@ import { SUBJECTS } from "@/components/eduboost/constants";
 import { useLearner } from "@/context/LearnerContext";
 import { LearnerService } from "@/lib/api/services";
 import { extractErrorMessage } from "@/lib/api/client";
-import type { ActiveLearner, GamificationProfile, MasteryEntry } from "@/lib/api/types";
+import type { ActiveLearner, GamificationProfile } from "@/lib/api/types";
 import { DashboardSkeleton } from "./DashboardSkeleton";
 
 interface DashboardClientProps {
   initialLearner: ActiveLearner | null;
-  initialMastery: Record<string, number>;
   initialGamification: GamificationProfile | null;
   fetchedAt?: string;
   source?: "api" | "fixture";
@@ -24,10 +23,9 @@ interface DashboardClientProps {
 
 export function DashboardClient({
   initialLearner,
-  initialMastery,
   initialGamification,
 }: DashboardClientProps) {
-  const { learner, setLearner, masteryData, setMasteryData } = useLearner();
+  const { learner, setLearner } = useLearner();
   const [gamification, setGamification] = useState<GamificationProfile | null>(initialGamification);
   const [loading, setLoading] = useState(!initialGamification);
   const [error, setError] = useState("");
@@ -40,12 +38,6 @@ export function DashboardClient({
     }
   }, [learner, initialLearner, setLearner]);
 
-  useEffect(() => {
-    if (Object.keys(masteryData).length === 0 && Object.keys(initialMastery).length > 0) {
-      setMasteryData(initialMastery);
-    }
-  }, [initialMastery, masteryData, setMasteryData]);
-
   const fetchData = useCallback(async () => {
     if (!learner?.learner_id) {
       return;
@@ -55,21 +47,7 @@ export function DashboardClient({
     setError("");
     setOffline(typeof navigator !== "undefined" && !navigator.onLine);
     try {
-      const [masteryRes, gamificationRes] = await Promise.all([
-        LearnerService.getMastery(learner.id || learner.learner_id),
-        LearnerService.getGamificationProfile(learner.id || learner.learner_id),
-      ]);
-
-      if (masteryRes && masteryRes.mastery) {
-        setMasteryData(() => {
-          const newMastery: Record<string, number> = {};
-          masteryRes.mastery.forEach((entry: MasteryEntry) => {
-            newMastery[entry.subject_code] = Math.round(entry.mastery_score * 100);
-          });
-          return newMastery;
-        });
-      }
-
+      const gamificationRes = await LearnerService.getGamificationProfile(learner.id || learner.learner_id);
       setGamification(gamificationRes);
     } catch (err) {
       console.error("Dashboard fetch error:", err);
@@ -82,7 +60,7 @@ export function DashboardClient({
     } finally {
       setLoading(false);
     }
-  }, [learner?.id, learner?.learner_id, setMasteryData]);
+  }, [learner?.id, learner?.learner_id]);
 
   useEffect(() => {
     if (!initialGamification) {
@@ -120,12 +98,6 @@ export function DashboardClient({
   }
 
   const totalXp = gamification?.total_xp ?? 0;
-  const hasMastery = Object.keys(masteryData).length > 0;
-  const overallMastery = Math.round(
-    Object.values(masteryData).reduce((total, value) => total + value, 0) /
-      (Object.values(masteryData).length || 1)
-  );
-
   return (
     <div className="max-w-6xl mx-auto p-4 md:p-8">
       <header className="mb-10">
@@ -150,47 +122,15 @@ export function DashboardClient({
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <Card className="lg:col-span-2 p-8 bg-gradient-to-br from-[var(--surface)] to-[var(--surface2)] border-none shadow-xl relative overflow-hidden">
           <div className="relative z-10">
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">Learning Progress</h2>
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">Learning</h2>
             <div className="flex flex-col md:flex-row items-center gap-10">
-              <div className="relative w-40 h-40 flex items-center justify-center">
-                <svg className="w-full h-full transform -rotate-90">
-                  <circle cx="80" cy="80" r="70" fill="transparent" stroke="var(--border)" strokeWidth="12" />
-                  <circle
-                    cx="80"
-                    cy="80"
-                    r="70"
-                    fill="transparent"
-                    stroke="var(--gold)"
-                    strokeWidth="12"
-                    strokeDasharray={2 * Math.PI * 70}
-                    strokeDashoffset={2 * Math.PI * 70 * (1 - overallMastery / 100)}
-                    strokeLinecap="round"
-                    className="transition-all duration-1000 ease-out"
-                  />
-                </svg>
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-4xl font-bold">{overallMastery}%</span>
-                  <span className="text-xs text-[var(--muted)] font-bold uppercase tracking-wider">Overall</span>
-                </div>
-              </div>
-
               <div className="flex-1 space-y-6">
-                {hasMastery ? (
-                  <p className="text-lg text-[var(--text)] font-medium leading-relaxed">
-                    You have mastered <strong>{overallMastery}%</strong> of your curriculum goals.
-                    {overallMastery > 50 ? " Keep up the amazing work!" : " Let&apos;s boost those scores today!"}
-                  </p>
-                ) : (
-                  <p className="text-lg text-[var(--text)] font-medium leading-relaxed">
-                    Take a short assessment or start a lesson so your dashboard can build a progress picture.
-                  </p>
-                )}
+                <p className="text-lg text-[var(--text)] font-medium leading-relaxed">
+                  Progress estimates and adaptive check-ins are temporarily unavailable while the question bank is rebuilt and independently reviewed.
+                </p>
                 <div className="flex flex-wrap gap-4">
                   <Button onClick={() => router.push("/lesson")} className="px-8 shadow-lg shadow-blue-500/20">
                     Start New Lesson
-                  </Button>
-                  <Button variant="secondary" onClick={() => router.push("/diagnostic")} className="px-8">
-                    Take Assessment
                   </Button>
                 </div>
               </div>
@@ -229,7 +169,7 @@ export function DashboardClient({
               />
             </div>
             <div className="mt-2 text-xs text-[var(--muted)] font-bold text-right">
-              {100 - (totalXp % 100)} XP to Next Level
+              {100 - (totalXp % 100)} XP to Next Game Level
             </div>
           </Card>
 
@@ -239,7 +179,7 @@ export function DashboardClient({
                 ⭐
               </div>
               <div>
-                <div className="text-sm text-[var(--muted)] font-bold uppercase tracking-wider">Current Level</div>
+                <div className="text-sm text-[var(--muted)] font-bold uppercase tracking-wider">Game Level</div>
                 <div className="text-2xl font-bold text-purple-500">Level {gamification?.level || 1}</div>
               </div>
             </div>
@@ -250,9 +190,7 @@ export function DashboardClient({
       <section className="mt-12">
         <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">Your Subjects</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {SUBJECTS.map((subject) => {
-            const mastery = masteryData[subject.code] || 0;
-            return (
+          {SUBJECTS.map((subject) => (
               <Card
                 key={subject.code}
                 className="p-6 border-none bg-[var(--surface)] shadow-md hover:-translate-y-1 hover:shadow-lg transition-all cursor-pointer group"
@@ -265,21 +203,8 @@ export function DashboardClient({
                   {subject.icon}
                 </div>
                 <h4 className="font-bold text-lg mb-1">{subject.label}</h4>
-                <div className="flex items-end justify-between">
-                  <div className="text-sm font-bold text-[var(--muted)] uppercase tracking-tight">Mastery</div>
-                  <div className="text-xl font-black" style={{ color: subject.color }}>
-                    {mastery}%
-                  </div>
-                </div>
-                <div className="mt-3 h-1.5 bg-[var(--border)] rounded-full overflow-hidden">
-                  <div
-                    className="h-full rounded-full transition-all duration-1000"
-                    style={{ width: `${mastery}%`, backgroundColor: subject.color }}
-                  />
-                </div>
               </Card>
-            );
-          })}
+          ))}
         </div>
       </section>
     </div>
